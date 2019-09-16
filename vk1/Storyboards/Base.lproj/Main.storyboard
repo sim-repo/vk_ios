@@ -79,7 +79,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="u2M-VN-f4b" kind="show" id="jwb-BB-4Oj"/>
+                                                            <segue destination="28x-hE-Guy" kind="show" id="EeX-PK-VzP"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilg-bO-vc3" userLabel="BottomInset">
@@ -135,32 +135,43 @@
             </objects>
             <point key="canvasLocation" x="450" y="20"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="q7y-1K-wsH">
+        <!--Tab Bar Controller-->
+        <scene sceneID="Kiz-Zk-0bN">
             <objects>
-                <viewController id="u2M-VN-f4b" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dfM-6h-guY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Успешная аутентификаци" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgX-MQ-LER">
-                                <rect key="frame" x="103.66666666666669" y="437.66666666666669" width="207" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="YgX-MQ-LER" firstAttribute="centerY" secondItem="dfM-6h-guY" secondAttribute="centerY" id="AAh-Nd-Jel"/>
-                            <constraint firstItem="YgX-MQ-LER" firstAttribute="centerX" secondItem="dfM-6h-guY" secondAttribute="centerX" id="wBS-cX-tPY"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="IXp-n1-4sF"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wxS-LP-HGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="28x-hE-Guy" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cib-LK-b5H">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="igP-bZ-jfo" kind="relationship" relationship="viewControllers" id="nlY-Gd-65P"/>
+                        <segue destination="FBV-yE-gjf" kind="relationship" relationship="viewControllers" id="q2w-v0-Cue"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUA-Hh-8za" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1555" y="21"/>
+            <point key="canvasLocation" x="1526" y="19"/>
+        </scene>
+        <!--Friend-->
+        <scene sceneID="9wN-iK-plW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Friend" id="igP-bZ-jfo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Friends" id="gxC-Va-iA3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MCP-9L-rCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="675" y="483"/>
+        </scene>
+        <!--MyGroup-->
+        <scene sceneID="sEA-FZ-0HP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyGroup" id="FBV-yE-gjf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Groups" id="5wC-FJ-3YO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cJf-OI-AuM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2372" y="483"/>
         </scene>
     </scenes>
     <resources>

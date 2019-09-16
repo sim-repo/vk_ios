@@ -60,6 +60,7 @@ class LoginViewController: UIViewController {
     
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return true
         let login = loginInput.text!
         let password = passwordInput.text!
         if login == "admin" && password == "123456" {
