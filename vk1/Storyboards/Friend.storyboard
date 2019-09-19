@@ -25,16 +25,33 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2S-QA-V1E">
-                                            <rect key="frame" x="20" y="11" width="374" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ava" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3v-uK-fR9" userLabel="ava">
+                                            <rect key="frame" x="28" y="8.5" width="27" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="27" id="CoR-aH-6wD"/>
+                                                <constraint firstAttribute="height" constant="27" id="cC3-dT-ZVA"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2S-QA-V1E" userLabel="friend name">
+                                            <rect key="frame" x="71" y="11.5" width="315" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="o2S-QA-V1E" firstAttribute="leading" secondItem="V3v-uK-fR9" secondAttribute="trailing" constant="16" id="5NX-BG-ocg"/>
+                                        <constraint firstItem="o2S-QA-V1E" firstAttribute="centerY" secondItem="ESC-Iw-QSq" secondAttribute="centerY" id="NF6-7B-qYx"/>
+                                        <constraint firstItem="V3v-uK-fR9" firstAttribute="centerY" secondItem="ESC-Iw-QSq" secondAttribute="centerY" id="iRT-ja-QDq"/>
+                                        <constraint firstItem="V3v-uK-fR9" firstAttribute="leading" secondItem="ESC-Iw-QSq" secondAttribute="leadingMargin" constant="8" id="lAg-OE-MNy"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="o2S-QA-V1E" secondAttribute="trailing" constant="8" id="nSc-ej-hcM"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="friendAva" destination="V3v-uK-fR9" id="EO1-Xh-wJl"/>
                                     <outlet property="friendName" destination="o2S-QA-V1E" id="dUW-Ed-BXm"/>
                                 </connections>
                             </tableViewCell>
@@ -77,20 +94,34 @@
                                     <rect key="frame" x="0.0" y="0.0" width="185" height="193"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJe-4g-E1e">
-                                            <rect key="frame" x="71.5" y="86" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJe-4g-E1e">
+                                            <rect key="frame" x="16" y="162.5" width="153" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ava" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJB-MW-bwv">
+                                            <rect key="frame" x="42.5" y="46.5" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="H65-LJ-RCY"/>
+                                                <constraint firstAttribute="height" constant="100" id="eip-nL-X9n"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="rJe-4g-E1e" firstAttribute="centerY" secondItem="IWg-CK-msM" secondAttribute="centerY" id="BGK-Qn-icB"/>
-                                    <constraint firstItem="rJe-4g-E1e" firstAttribute="centerX" secondItem="IWg-CK-msM" secondAttribute="centerX" id="Fqw-uC-cbO"/>
+                                    <constraint firstItem="ZJB-MW-bwv" firstAttribute="centerX" secondItem="IWg-CK-msM" secondAttribute="centerX" id="0TL-Ha-5oG"/>
+                                    <constraint firstItem="rJe-4g-E1e" firstAttribute="leading" secondItem="IWg-CK-msM" secondAttribute="leadingMargin" constant="8" id="4bo-nO-ERx"/>
+                                    <constraint firstItem="ZJB-MW-bwv" firstAttribute="centerY" secondItem="IWg-CK-msM" secondAttribute="centerY" id="7UP-0D-nmU"/>
+                                    <constraint firstItem="rJe-4g-E1e" firstAttribute="top" secondItem="ZJB-MW-bwv" secondAttribute="bottom" constant="16" id="gpZ-Nu-y1y"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="rJe-4g-E1e" secondAttribute="trailing" constant="8" id="x0I-hH-oqY"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="friendNameLabel" destination="rJe-4g-E1e" id="B4h-kn-dcd"/>
+                                    <outlet property="avaLabel" destination="ZJB-MW-bwv" id="tQo-SL-3iA"/>
+                                    <outlet property="nameLabel" destination="rJe-4g-E1e" id="B4h-kn-dcd"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

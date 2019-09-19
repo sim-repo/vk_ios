@@ -2,20 +2,22 @@ import Foundation
 
 class Friend {
     var name: String!
+    var ava: String!
     
-    init(text: String){
-        self.name = text
+    init(_ name: String, _ ava: String){
+        self.name = name
+        self.ava = ava;
     }
     
     public class func list()->[Friend] {
         return [
-            Friend(text: "Саша"),
-            Friend(text: "Маша"),
-            Friend(text: "Даша"),
-            Friend(text: "Юра"),
-            Friend(text: "Катя"),
-            Friend(text: "Леша"),
-            Friend(text: "Женя")
+            Friend("Саша", "👨‍🦰"),
+            Friend("Маша", "👩‍🦳"),
+            Friend("Даша", "👱‍♀️"),
+            Friend("Юра", "👱🏽‍♂️"),
+            Friend("Катя", "👩🏼‍💼"),
+            Friend("Леша", "👨‍🚀"),
+            Friend("Женя", "👩‍🏭")
         ]
     }
 }

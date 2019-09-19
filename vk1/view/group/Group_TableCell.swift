@@ -10,7 +10,8 @@ import UIKit
 
 class Group_TableCell: UITableViewCell {
 
-    @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var groupLabel: UILabel!
+    @IBOutlet weak var iconLabel: UILabel!
     
     
     override func awakeFromNib() {

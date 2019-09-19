@@ -12,7 +12,7 @@ private let reuseIdentifier = "FriendCollectionCell"
 
 class Friend_CollectionController: UICollectionViewController {
 
-    var friend: Friend?
+    var presenter = DetailFriendPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,8 @@ class Friend_CollectionController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendDetailCell", for: indexPath) as! Friend_CollectionCell
-        cell.friendNameLabel.text = friend?.name
+        cell.nameLabel.text = presenter.getName()
+        cell.avaLabel.text = presenter.getAva()
         return cell
     }
 

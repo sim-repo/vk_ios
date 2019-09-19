@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16200CFD233360FF00F02440 /* GroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CFC233360FF00F02440 /* GroupPresenter.swift */; };
+		16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CFE233371FD00F02440 /* FriendPresenter.swift */; };
+		16200D012333731D00F02440 /* DetailFriendPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D002333731D00F02440 /* DetailFriendPresenter.swift */; };
+		163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */; };
+		163CF9AC2333504A0087C6E2 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9AB2333504A0087C6E2 /* BasePresenter.swift */; };
 		16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B86232F7BF000E21B7F /* Friend.swift */; };
 		16AB0B89232F7C7800E21B7F /* MyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B88232F7C7800E21B7F /* MyGroup.swift */; };
 		16AB0B8C232F7D5400E21B7F /* MyGroup_TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B8B232F7D5400E21B7F /* MyGroup_TableController.swift */; };
@@ -28,6 +33,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16200CFC233360FF00F02440 /* GroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPresenter.swift; sourceTree = "<group>"; };
+		16200CFE233371FD00F02440 /* FriendPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPresenter.swift; sourceTree = "<group>"; };
+		16200D002333731D00F02440 /* DetailFriendPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFriendPresenter.swift; sourceTree = "<group>"; };
+		163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupPresenter.swift; sourceTree = "<group>"; };
+		163CF9AB2333504A0087C6E2 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		16AB0B86232F7BF000E21B7F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		16AB0B88232F7C7800E21B7F /* MyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroup.swift; sourceTree = "<group>"; };
 		16AB0B8B232F7D5400E21B7F /* MyGroup_TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroup_TableController.swift; sourceTree = "<group>"; };
@@ -61,6 +71,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		163CF9A823334D9B0087C6E2 /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */,
+				163CF9AB2333504A0087C6E2 /* BasePresenter.swift */,
+				16200CFC233360FF00F02440 /* GroupPresenter.swift */,
+				16200CFE233371FD00F02440 /* FriendPresenter.swift */,
+				16200D002333731D00F02440 /* DetailFriendPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
 		16AB0B85232F7B6C00E21B7F /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +153,7 @@
 		D4001F372327B7B50070829F /* vk1 */ = {
 			isa = PBXGroup;
 			children = (
+				163CF9A823334D9B0087C6E2 /* presenter */,
 				16AB0B9A232F7E9F00E21B7F /* Storyboards */,
 				16AB0B8A232F7D0D00E21B7F /* view */,
 				16AB0B85232F7B6C00E21B7F /* model */,
@@ -217,12 +240,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				16AB0B99232F7E6600E21B7F /* Group_TableController.swift in Sources */,
+				163CF9AC2333504A0087C6E2 /* BasePresenter.swift in Sources */,
 				16AB0B8C232F7D5400E21B7F /* MyGroup_TableController.swift in Sources */,
+				163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */,
+				16200CFD233360FF00F02440 /* GroupPresenter.swift in Sources */,
 				D4001F4B2327B7DE0070829F /* LoginViewController.swift in Sources */,
 				16AB0B8E232F7D6C00E21B7F /* Friend_TableController.swift in Sources */,
+				16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */,
 				16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */,
 				16AB0B94232F7DC600E21B7F /* MyGroup_TableCell.swift in Sources */,
 				16AB0BA9232F985D00E21B7F /* Group.swift in Sources */,
+				16200D012333731D00F02440 /* DetailFriendPresenter.swift in Sources */,
 				16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */,
 				16AB0B97232F7E4500E21B7F /* Group_TableCell.swift in Sources */,
 				D4001F392327B7B50070829F /* AppDelegate.swift in Sources */,
