@@ -147,6 +147,8 @@
                     <connections>
                         <segue destination="igP-bZ-jfo" kind="relationship" relationship="viewControllers" id="nlY-Gd-65P"/>
                         <segue destination="FBV-yE-gjf" kind="relationship" relationship="viewControllers" id="q2w-v0-Cue"/>
+                        <segue destination="R3r-dy-Gvj" kind="relationship" relationship="viewControllers" id="wdG-ye-7Zr"/>
+                        <segue destination="DlA-V1-eMN" kind="relationship" relationship="viewControllers" id="cs9-fK-XWS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUA-Hh-8za" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -171,10 +173,31 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJf-OI-AuM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2372" y="483"/>
+            <point key="canvasLocation" x="1525" y="483"/>
+        </scene>
+        <!--Wall-->
+        <scene sceneID="Y68-Yj-TP5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wall" id="DlA-V1-eMN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Wall" image="tb_rectangle" id="Hw9-fV-OKW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rhv-CK-ppm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1896" y="480"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="p84-J1-5XQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="R3r-dy-Gvj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="MyPhotos" id="sgU-1q-uqC"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nHc-ld-CWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2398" y="483"/>
         </scene>
     </scenes>
     <resources>
         <image name="logo" width="806" height="614"/>
+        <image name="tb_rectangle" width="24" height="23"/>
     </resources>
 </document>

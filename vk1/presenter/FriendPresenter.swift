@@ -6,7 +6,25 @@ public class FriendPresenter: BasePresenter{
     
     override func initDataSource(){
         friends = Friend.list()
+        var groupingProps: [String] = []
+        for friend in friends {
+            groupingProps.append(friend.name)
+        }
+        setup(_sortedDataSource: friends, _groupingProperties: groupingProps)
     }
+    
+    override func refreshData()->( [AnyObject], [String] ){
+        var friends: [Friend]
+        
+        friends = Friend.list()
+        
+        var groupingProps: [String] = []
+        for friend in friends {
+            groupingProps.append(friend.name )
+        }
+        return (friends, groupingProps)
+    }
+    
     
     func numberOfRowsInSection() -> Int {
         return friends.count
