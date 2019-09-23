@@ -5,16 +5,13 @@ class Wall_CollectionController: UIViewController {
 
     var presenter = WallPresenter()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
 }
 
 
 extension Wall_CollectionController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
