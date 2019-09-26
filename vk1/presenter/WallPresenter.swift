@@ -13,7 +13,7 @@ public class WallPresenter: BasePresenter{
         return wall.count
     }
     
-    func getImage(_ indexPath: IndexPath) -> String {
-        return wall?[indexPath.row].image ?? ""
+    func getImages(_ indexPath: IndexPath) -> [String]? {
+        return wall?[indexPath.row].imageURLs
     }
 }
