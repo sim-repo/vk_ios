@@ -6,6 +6,7 @@ public class BasePresenter {
     private var sectionsOffset: [Int] = []
     private var groupingProperties: [String] = []
     private var sectionsTitle: [Alphabet] = []
+    var filteredText: String?
     
     var numberOfSections: Int {
         return sectionsOffset.count
@@ -75,5 +76,9 @@ public class BasePresenter {
         }
         
         return sortedDataSource[offset + indexPath.row]
+    }
+    
+    func filterData(_ searchText: String) {
+        filteredText = !searchText.isEmpty ? searchText : nil
     }
 }

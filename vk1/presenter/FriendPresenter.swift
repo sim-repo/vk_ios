@@ -16,7 +16,11 @@ public class FriendPresenter: BasePresenter{
     override func refreshData()->( [AnyObject], [String] ){
         var friends: [Friend]
         
-        friends = Friend.list()
+        if let filteredText  = filteredText {
+            friends = Friend.list().filter({$0.name.lowercased().contains(filteredText.lowercased())})
+        } else {
+            friends = Friend.list()
+        }
         
         var groupingProps: [String] = []
         for friend in friends {
