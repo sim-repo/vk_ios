@@ -31,7 +31,8 @@ class Friend_CollectionController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendDetailCell", for: indexPath) as! Friend_CollectionCell
         cell.nameLabel.text = presenter.getName()
-        cell.avaLabel.text = presenter.getAva()
+        cell.avaImage.image = UIImage(named: presenter.getAva())
+        cell.avaImage.userActivityType = .look
         return cell
     }
 

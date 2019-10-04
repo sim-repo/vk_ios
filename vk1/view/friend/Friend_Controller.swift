@@ -76,7 +76,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
         let friend = data as! Friend
         
         cell.name?.text = friend.name
-        cell.ava?.text = friend.ava
+        cell.avaImage?.image = UIImage(named: friend.ava)
         return cell
     }
     
@@ -169,7 +169,7 @@ extension Friend_Controller: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         guard textField.text?.isEmpty ?? true else {return}
         buttonSearchCancel.isEnabled = true
-        buttonSearchCancel.setTitleColor(.black, for: .normal)
+        buttonSearchCancel.setTitleColor(.white, for: .normal)
         UIView.animate(withDuration: 1.0, animations: {
             self.loupeCenterXConstraint.isActive = false
             self.loupeLeadingXConstraint.isActive = true

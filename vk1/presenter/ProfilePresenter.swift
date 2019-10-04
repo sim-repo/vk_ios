@@ -14,6 +14,6 @@ public class ProfilePresenter: BasePresenter{
     }
     
     func getImage(_ indexPath: IndexPath) -> String {
-        return photos?[indexPath.row].image ?? ""
+        return photos?[indexPath.row].imageURL ?? ""
     }
 }

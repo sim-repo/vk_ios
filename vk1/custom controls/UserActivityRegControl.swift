@@ -38,9 +38,9 @@ class UserActivityRegControl: UIImageView {
             return
         }
         switch activity {
-            case .like: // 6.3
+            case .like:
                 doLike()
-            case .look: // 6.2
+            case .look:
                 doLook()
             default:
                 doLook()

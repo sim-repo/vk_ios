@@ -30,7 +30,7 @@ extension Profile_ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableCell", for: indexPath) as! Profile_TableCell
-        cell.photoLabel.text = presenter.getImage(indexPath)
+        cell.photoView.image = UIImage(named: presenter.getImage(indexPath))
         return cell
     }
 }

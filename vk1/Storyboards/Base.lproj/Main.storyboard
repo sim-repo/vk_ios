@@ -43,8 +43,12 @@
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="bJd-09-C2t"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7f-Rz-N5Q">
+                                                        <rect key="frame" x="75.666666666666686" y="466" width="263" height="128"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2AR-9J-EuO">
-                                                        <rect key="frame" x="117" y="466" width="180" height="68"/>
+                                                        <rect key="frame" x="117" y="602" width="180" height="68"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41V-ch-HUb" userLabel="Login Input">
                                                                 <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
@@ -69,7 +73,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9c-fm-Aof" userLabel="Enter">
-                                                        <rect key="frame" x="177" y="542" width="60" height="30"/>
+                                                        <rect key="frame" x="177" y="678" width="60" height="30"/>
                                                         <color key="backgroundColor" red="0.23262091870679225" green="0.45231791751333195" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="UAc-g2-Cgq"/>
@@ -83,7 +87,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilg-bO-vc3" userLabel="BottomInset">
-                                                        <rect key="frame" x="182" y="580" width="50" height="238"/>
+                                                        <rect key="frame" x="182" y="716" width="50" height="102"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -113,11 +117,21 @@
                                     <constraint firstItem="fP4-zx-McN" firstAttribute="top" secondItem="RPH-4g-lK7" secondAttribute="top" id="d2N-ds-tVV"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0a-3p-APi" userLabel="WaitView">
+                                <rect key="frame" x="107" y="562" width="200" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="9Qm-yZ-XGk"/>
+                                    <constraint firstAttribute="height" constant="300" id="pgL-zx-84y"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RPH-4g-lK7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0Y7-PG-ehz"/>
                             <constraint firstItem="fP4-zx-McN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="1Kz-ea-8fe"/>
+                            <constraint firstItem="B0a-3p-APi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Iex-Vd-LxM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="B0a-3p-APi" secondAttribute="bottom" id="SZ9-6C-pha"/>
                             <constraint firstItem="fP4-zx-McN" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="Zjx-sz-AEk"/>
                             <constraint firstItem="RPH-4g-lK7" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="fnD-Vm-dd0"/>
                             <constraint firstItem="RPH-4g-lK7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gKR-hP-a4m"/>
@@ -129,11 +143,12 @@
                         <outlet property="loginInput" destination="41V-ch-HUb" id="9iD-RC-rCK"/>
                         <outlet property="passwordInput" destination="0cH-pw-7y2" id="ral-nk-o69"/>
                         <outlet property="scrollView" destination="RPH-4g-lK7" id="bQU-PQ-WKF"/>
+                        <outlet property="waitView" destination="B0a-3p-APi" id="EUw-Eh-DS6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="450" y="20"/>
+            <point key="canvasLocation" x="449.27536231884062" y="19.419642857142858"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Kiz-Zk-0bN">
