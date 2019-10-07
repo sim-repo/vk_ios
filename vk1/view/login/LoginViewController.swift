@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var waitView: UIView!
+    var waitLoadingContainer: UIView!
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -25,7 +26,9 @@ class LoginViewController: UIViewController {
         
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView.addGestureRecognizer(hideKeyboardGesture)
-        let _ = WaitIndicator(_parentView: waitView)
+        waitLoadingContainer = WaitIndicator2(frame: CGRect(x: view.frame.width/2-78, y: view.frame.height/3, width: 156, height: 100))
+        waitLoadingContainer.backgroundColor = UIColor.clear
+        view.addSubview(waitLoadingContainer)
     }
 
     override func viewWillAppear(_ animated: Bool) {

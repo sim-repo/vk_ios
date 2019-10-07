@@ -12,8 +12,12 @@ public class MyGroupPresenter: BasePresenter{
         return groups.count
     }
     
+    func getName(_ indexPath: IndexPath) -> String {
+           return groups?[indexPath.row].name ?? ""
+       }
+    
     func getDesc(_ indexPath: IndexPath) -> String {
-        return groups?[indexPath.row].name ?? ""
+        return groups?[indexPath.row].desc ?? ""
     }
     
     func getIcon(_ indexPath: IndexPath) -> String {

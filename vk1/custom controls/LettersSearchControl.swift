@@ -139,10 +139,11 @@ public protocol AlphabetSearchViewControlProtocol : class {
             var subView :[UIView] = []
             
             let button = UIButton(type: .system)
-            button.titleLabel?.font =  UIFont.boldSystemFont(ofSize: fontSize)
+            //button.titleLabel?.font =  UIFont.boldSystemFont(ofSize: fontSize)
+            button.titleLabel?.font = UIFont(name: "Courier New", size:fontSize)
             button.setTitle(String(ch), for: .normal)
-            button.setTitleColor(.black, for: .normal)
-            button.setTitleColor(.white, for: .selected)
+            button.setTitleColor(.orange, for: .normal)
+            button.setTitleColor(.orange, for: .selected)
             button.isEnabled = false
             self.buttons.append(button)
             subView.append(button)

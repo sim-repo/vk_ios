@@ -3,23 +3,29 @@ import Foundation
 class Group {
     var id: Int!
     var name: String!
+    var desc: String!
     var icon: String!
     
-    init(_ id: Int, name: String, _ icon: String){
+    init(_ id: Int, _ name: String, _ desc: String, _ icon: String){
         self.id = id;
         self.name = name
+        self.desc = desc
         self.icon = icon
     }
     
     public class func list()->[Group] {
-        return [
-            Group(1, name: "glasses", "👓"),
-            Group(2, name: "fish", "🦈"),
-            Group(3, name: "flowers", "🌿"),
-            Group(4, name: "fruits", "🍎"),
-            Group(5, name: "pizza", "🍕"),
-            Group(6, name: "music", "🎷"),
-            Group(7, name: "cosmos", "🛰")
-        ]
-    }
+           var groups: [Group] = []
+           for i in 0...100 {
+               var index = Int(arc4random_uniform(UInt32(CommonElementDesigner.groupNames.count-1)))
+               let name = CommonElementDesigner.groupNames[index]
+               
+               index = Int(arc4random_uniform(UInt32(CommonElementDesigner.groupDesc.count-1)))
+               let desc = CommonElementDesigner.groupDesc[index]
+               
+               index = Int(arc4random_uniform(UInt32(CommonElementDesigner.groupPictures.count-1)))
+               let icon = CommonElementDesigner.groupPictures[index]
+               groups.append(Group(i, name, desc, icon))
+           }
+           return groups
+       }
 }

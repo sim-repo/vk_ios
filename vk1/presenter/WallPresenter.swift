@@ -16,4 +16,8 @@ public class WallPresenter: BasePresenter{
     func getImages(_ indexPath: IndexPath) -> [String]? {
         return wall?[indexPath.row].imageURLs
     }
+    
+    func getData(_ indexPath: IndexPath) -> Wall? {
+        return wall?[indexPath.row]
+    }
 }

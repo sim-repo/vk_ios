@@ -78,6 +78,10 @@ public class BasePresenter {
         return sortedDataSource[offset + indexPath.row]
     }
     
+    final func getCode(indexPath: IndexPath) -> String {
+        return ""
+    }
+    
     func filterData(_ searchText: String) {
         filteredText = !searchText.isEmpty ? searchText : nil
     }

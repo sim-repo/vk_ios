@@ -5,7 +5,7 @@ enum UserActivityType {
     case like
     case share
     case comment
-    case look
+    case shake
 }
 
 class UserActivityRegControl: UIImageView {
@@ -40,10 +40,10 @@ class UserActivityRegControl: UIImageView {
         switch activity {
             case .like:
                 doLike()
-            case .look:
-                doLook()
+            case .shake:
+                doShake()
             default:
-                doLook()
+                doShake()
         }
     }
     
@@ -74,7 +74,7 @@ class UserActivityRegControl: UIImageView {
     func doLike(){
         var sign: Int = 1
         let numb = Int( (boundMetrics?.text)!)
-        rotateImage()
+        doShake()
         if activated {
             color = UIColor(red: 0.826, green: 0.200, blue: 0.200, alpha: 1.000)
             
@@ -88,13 +88,13 @@ class UserActivityRegControl: UIImageView {
         boundMetrics?.textColor = color
     }
     
-    func doLook(){
+    func doShake(){
         let animation = CASpringAnimation(keyPath: "transform.scale")
         animation.duration = 3
-        animation.fromValue = 0.8
+        animation.fromValue = 0.6
         animation.toValue = 1
         animation.initialVelocity = 10
-        animation.damping = 5.0
+        animation.damping = 3.0
         animation.fillMode = CAMediaTimingFillMode.backwards
         animation.isRemovedOnCompletion = false
         animation.beginTime = CACurrentMediaTime()

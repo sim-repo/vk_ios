@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,6 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0a-3p-APi" userLabel="WaitView">
+                                <rect key="frame" x="107" y="562" width="200" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="9Qm-yZ-XGk"/>
+                                    <constraint firstAttribute="height" constant="300" id="pgL-zx-84y"/>
+                                </constraints>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPH-4g-lK7">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
@@ -27,43 +32,33 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OKg-WQ-ORx">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="my VK app" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="33" translatesAutoresizingMaskIntoConstraints="NO" id="cgl-tb-jGj">
-                                                        <rect key="frame" x="8" y="0.0" width="398" height="50"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend Space" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJ2-Fh-8xA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="yJZ-RR-G9b"/>
+                                                            <constraint firstAttribute="height" constant="150" id="5cr-oW-whD"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="36"/>
-                                                        <color key="textColor" red="0.14660278025202592" green="0.28506062409994598" blue="0.63022182642487046" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="45"/>
+                                                        <color key="textColor" red="0.86162145369999998" green="0.58572281690000005" blue="0.23243252580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="IKE-Pz-rii">
-                                                        <rect key="frame" x="8" y="58" width="398" height="400"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="7C0-RS-Tzr"/>
-                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="bJd-09-C2t"/>
-                                                        </constraints>
-                                                    </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7f-Rz-N5Q">
-                                                        <rect key="frame" x="75.666666666666686" y="466" width="263" height="128"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="75.666666666666686" y="158" width="263" height="128"/>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2AR-9J-EuO">
-                                                        <rect key="frame" x="117" y="602" width="180" height="68"/>
+                                                        <rect key="frame" x="117" y="294" width="180" height="68"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41V-ch-HUb" userLabel="Login Input">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41V-ch-HUb" userLabel="Login Input">
                                                                 <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="Orc-Tl-SIJ"/>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="aND-ir-iBc"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0cH-pw-7y2" userLabel="Password Input">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0cH-pw-7y2" userLabel="Password Input">
                                                                 <rect key="frame" x="0.0" y="38" width="180" height="30"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
@@ -73,13 +68,14 @@
                                                         </constraints>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9c-fm-Aof" userLabel="Enter">
-                                                        <rect key="frame" x="177" y="678" width="60" height="30"/>
-                                                        <color key="backgroundColor" red="0.23262091870679225" green="0.45231791751333195" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <rect key="frame" x="177" y="370" width="60" height="30"/>
+                                                        <color key="backgroundColor" red="0.11765583604574203" green="0.11760816723108292" blue="0.1215643510222435" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="UAc-g2-Cgq"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="XEY-1h-KPT"/>
                                                         </constraints>
-                                                        <state key="normal" title="Войти">
+                                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
+                                                        <state key="normal" title="sign in">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -87,21 +83,18 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilg-bO-vc3" userLabel="BottomInset">
-                                                        <rect key="frame" x="182" y="716" width="50" height="102"/>
+                                                        <rect key="frame" x="182" y="408" width="50" height="410"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="IKE-Pz-rii" secondAttribute="trailing" constant="8" id="1fK-ry-sZm"/>
-                                                    <constraint firstAttribute="trailing" secondItem="cgl-tb-jGj" secondAttribute="trailing" constant="8" id="3p9-jI-dbX"/>
-                                                    <constraint firstItem="cgl-tb-jGj" firstAttribute="leading" secondItem="OKg-WQ-ORx" secondAttribute="leading" constant="8" id="UaJ-d9-su6"/>
-                                                    <constraint firstItem="IKE-Pz-rii" firstAttribute="leading" secondItem="OKg-WQ-ORx" secondAttribute="leading" constant="8" id="tcK-B2-Er1"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tJ2-Fh-8xA" secondAttribute="trailing" id="TVi-ts-fww"/>
+                                                    <constraint firstItem="tJ2-Fh-8xA" firstAttribute="leading" secondItem="OKg-WQ-ORx" secondAttribute="leading" id="gqM-VO-yWD"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="OKg-WQ-ORx" firstAttribute="width" secondItem="fP4-zx-McN" secondAttribute="width" id="1Pj-K8-NP8"/>
                                             <constraint firstItem="OKg-WQ-ORx" firstAttribute="centerY" secondItem="fP4-zx-McN" secondAttribute="centerY" id="LGR-yo-BjW"/>
@@ -117,16 +110,8 @@
                                     <constraint firstItem="fP4-zx-McN" firstAttribute="top" secondItem="RPH-4g-lK7" secondAttribute="top" id="d2N-ds-tVV"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0a-3p-APi" userLabel="WaitView">
-                                <rect key="frame" x="107" y="562" width="200" height="300"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="9Qm-yZ-XGk"/>
-                                    <constraint firstAttribute="height" constant="300" id="pgL-zx-84y"/>
-                                </constraints>
-                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.14902859930000001" green="0.1489804387" blue="0.15293663739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="RPH-4g-lK7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0Y7-PG-ehz"/>
                             <constraint firstItem="fP4-zx-McN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="1Kz-ea-8fe"/>
@@ -153,11 +138,22 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Kiz-Zk-0bN">
             <objects>
-                <tabBarController id="28x-hE-Guy" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cib-LK-b5H">
+                <tabBarController modalPresentationStyle="fullScreen" id="28x-hE-Guy" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="GLj-Oe-nqk"/>
+                    <tabBar key="tabBar" alpha="0.94999999999999996" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cib-LK-b5H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="barTintColor" red="0.14902859930000001" green="0.1489804387" blue="0.15293663739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.86162145369999998" green="0.58572281690000005" blue="0.23243252580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="igP-bZ-jfo" kind="relationship" relationship="viewControllers" id="nlY-Gd-65P"/>
@@ -212,7 +208,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="806" height="614"/>
         <image name="tb_rectangle" width="24" height="23"/>
     </resources>
 </document>
