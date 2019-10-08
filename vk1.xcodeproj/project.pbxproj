@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1611273C234B2C8E0080FD54 /* FriendPost_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611273B234B2C8E0080FD54 /* FriendPost_ViewController.swift */; };
 		1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611273D234B3E940080FD54 /* WaitIndicator2.swift */; };
+		16112740234B45E50080FD54 /* DataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611273F234B45E50080FD54 /* DataGenerator.swift */; };
+		16112742234B4D600080FD54 /* ColorThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16112741234B4D600080FD54 /* ColorThemeHelper.swift */; };
 		161B0E612349D1DA0081008B /* WallLike_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 161B0E602349D1DA0081008B /* WallLike_View.xib */; };
 		161B0E632349D27F0081008B /* WallLike_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B0E622349D27F0081008B /* WallLike_View.swift */; };
 		161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B0E9E2349F8850081008B /* MyGroup_CollectionViewCell.swift */; };
@@ -70,6 +72,8 @@
 		16AB0B9E232F7ED600E21B7F /* MyGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16AB0B9D232F7ED600E21B7F /* MyGroup.storyboard */; };
 		16AB0BA0232F7EE100E21B7F /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16AB0B9F232F7EE100E21B7F /* Friend.storyboard */; };
 		16AB0BA9232F985D00E21B7F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0BA8232F985D00E21B7F /* Group.swift */; };
+		16D64123234B920900AA0D0B /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64122234B920900AA0D0B /* Color+Extensions.swift */; };
+		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
 		D4001F392327B7B50070829F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4001F382327B7B50070829F /* AppDelegate.swift */; };
 		D4001F3E2327B7B50070829F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4001F3C2327B7B50070829F /* Main.storyboard */; };
 		D4001F432327B7B60070829F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4001F412327B7B60070829F /* LaunchScreen.storyboard */; };
@@ -79,6 +83,8 @@
 /* Begin PBXFileReference section */
 		1611273B234B2C8E0080FD54 /* FriendPost_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPost_ViewController.swift; sourceTree = "<group>"; };
 		1611273D234B3E940080FD54 /* WaitIndicator2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitIndicator2.swift; sourceTree = "<group>"; };
+		1611273F234B45E50080FD54 /* DataGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGenerator.swift; sourceTree = "<group>"; };
+		16112741234B4D600080FD54 /* ColorThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeHelper.swift; sourceTree = "<group>"; };
 		161B0E602349D1DA0081008B /* WallLike_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallLike_View.xib; sourceTree = "<group>"; };
 		161B0E622349D27F0081008B /* WallLike_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallLike_View.swift; sourceTree = "<group>"; };
 		161B0E9E2349F8850081008B /* MyGroup_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroup_CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 		16AB0B9D232F7ED600E21B7F /* MyGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyGroup.storyboard; sourceTree = "<group>"; };
 		16AB0B9F232F7EE100E21B7F /* Friend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
 		16AB0BA8232F985D00E21B7F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		16D64122234B920900AA0D0B /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
 		D4001F352327B7B50070829F /* vk1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vk1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4001F382327B7B50070829F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4001F3D2327B7B50070829F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -162,8 +170,8 @@
 		16112739234B2C1D0080FD54 /* 1.friend list */ = {
 			isa = PBXGroup;
 			children = (
-				16AB0B91232F7DAC00E21B7F /* Friend_TableCell.swift */,
 				16200D202338ACCA00F02440 /* Friend_Controller.swift */,
+				16AB0B91232F7DAC00E21B7F /* Friend_TableCell.swift */,
 			);
 			path = "1.friend list";
 			sourceTree = "<group>";
@@ -174,6 +182,16 @@
 				1611273B234B2C8E0080FD54 /* FriendPost_ViewController.swift */,
 			);
 			path = "3.friend post";
+			sourceTree = "<group>";
+		};
+		16172B5E234CE55500D5A748 /* color system */ = {
+			isa = PBXGroup;
+			children = (
+				166667DD2348F50A00FD2B86 /* CommonElementDesigner.swift */,
+				16112741234B4D600080FD54 /* ColorThemeHelper.swift */,
+				16D64122234B920900AA0D0B /* Color+Extensions.swift */,
+			);
+			path = "color system";
 			sourceTree = "<group>";
 		};
 		161B0E9A2349EE780081008B /* common */ = {
@@ -189,7 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				161C1135234718B000A2EC9D /* ImageCellConfigurator.swift */,
-				166667DD2348F50A00FD2B86 /* CommonElementDesigner.swift */,
+				1611273F234B45E50080FD54 /* DataGenerator.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -206,13 +224,14 @@
 		16200D0423388E1E00F02440 /* custom controls */ = {
 			isa = PBXGroup;
 			children = (
+				16200D0523388E5D00F02440 /* RoundedImage.swift */,
 				166667DB234899D100FD2B86 /* CAGradientLayer+Extensions.swift */,
 				166667D92348994100FD2B86 /* UIControls+Extensions.swift */,
 				16200D1E2338AB3300F02440 /* LettersSearchControl.swift */,
 				16200D1C2338A41900F02440 /* UserActivityRegControl.swift */,
-				16200D0523388E5D00F02440 /* RoundedImage.swift */,
 				161C11382347226100A2EC9D /* WaitIndicator.swift */,
 				1611273D234B3E940080FD54 /* WaitIndicator2.swift */,
+				16D64124234BE4FE00AA0D0B /* LineEffect.swift */,
 			);
 			path = "custom controls";
 			sourceTree = "<group>";
@@ -228,8 +247,8 @@
 		16200D0823388F6D00F02440 /* profile */ = {
 			isa = PBXGroup;
 			children = (
-				16200D0F233895EF00F02440 /* Profile_TableCell.swift */,
 				161B0EA8234A27780081008B /* Profile_TableViewController.swift */,
+				16200D0F233895EF00F02440 /* Profile_TableCell.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -386,6 +405,7 @@
 		D4001F372327B7B50070829F /* vk1 */ = {
 			isa = PBXGroup;
 			children = (
+				16172B5E234CE55500D5A748 /* color system */,
 				161C113E23473FDC00A2EC9D /* layout */,
 				161C11372347210200A2EC9D /* helper */,
 				16BA48362345CB6A007D0981 /* xib */,
@@ -497,17 +517,20 @@
 				163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */,
 				161C1136234718B000A2EC9D /* ImageCellConfigurator.swift in Sources */,
 				16200CFD233360FF00F02440 /* GroupPresenter.swift in Sources */,
+				16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */,
 				1611273C234B2C8E0080FD54 /* FriendPost_ViewController.swift in Sources */,
 				D4001F4B2327B7DE0070829F /* LoginViewController.swift in Sources */,
 				166667502347CA1300FD2B86 /* Wall_Cell_tp7.swift in Sources */,
 				16200D212338ACCA00F02440 /* Friend_Controller.swift in Sources */,
 				166667522347CA1A00FD2B86 /* Wall_Cell_tp8.swift in Sources */,
+				16112740234B45E50080FD54 /* DataGenerator.swift in Sources */,
 				161C11422347426100A2EC9D /* StickyFlowLayout.swift in Sources */,
 				1666674C2347CA0300FD2B86 /* Wall_Cell_tp5.swift in Sources */,
 				1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */,
 				161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */,
 				166667452347BFE100FD2B86 /* Wall_Cell_tp2.swift in Sources */,
 				166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */,
+				16D64123234B920900AA0D0B /* Color+Extensions.swift in Sources */,
 				16200D0C2338934A00F02440 /* Photo.swift in Sources */,
 				16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */,
 				166667412347BB9900FD2B86 /* Wall_Controller.swift in Sources */,
@@ -521,6 +544,7 @@
 				16200D0E233893B500F02440 /* ProfilePresenter.swift in Sources */,
 				161B0EA9234A27780081008B /* Profile_TableViewController.swift in Sources */,
 				1666673D2347B8E900FD2B86 /* Wall_Cell_tp1.swift in Sources */,
+				16112742234B4D600080FD54 /* ColorThemeHelper.swift in Sources */,
 				166667DA2348994100FD2B86 /* UIControls+Extensions.swift in Sources */,
 				16200D012333731D00F02440 /* DetailFriendPresenter.swift in Sources */,
 				166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */,

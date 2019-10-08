@@ -1,12 +1,6 @@
-//
-//  AppDelegate.swift
-//  vk1
-//
-//  Created by IgorIvanov on 10/09/2019.
-//  Copyright © 2019 com. All rights reserved.
-//
-
 import UIKit
+
+var isDark = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +9,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        ColorThemeHelper.setupLight()
+        CommonElementDesigner.setupTabBarColor()
         return true
     }
 

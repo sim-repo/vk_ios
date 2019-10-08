@@ -142,8 +142,8 @@ public protocol AlphabetSearchViewControlProtocol : class {
             //button.titleLabel?.font =  UIFont.boldSystemFont(ofSize: fontSize)
             button.titleLabel?.font = UIFont(name: "Courier New", size:fontSize)
             button.setTitle(String(ch), for: .normal)
-            button.setTitleColor(.orange, for: .normal)
-            button.setTitleColor(.orange, for: .selected)
+            button.setTitleColor(ColorThemeHelper.secondary, for: .normal)
+            button.setTitleColor(ColorThemeHelper.secondary, for: .selected)
             button.isEnabled = false
             self.buttons.append(button)
             subView.append(button)

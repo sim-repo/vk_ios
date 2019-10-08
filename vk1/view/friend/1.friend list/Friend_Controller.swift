@@ -7,6 +7,7 @@ class Friend_Controller: UIViewController {
     @IBOutlet weak var lettersSearchControl: LettersSearchControl!
     @IBOutlet weak var tableView: UITableView!
     
+    
     @IBOutlet weak var loupeImageView: UIImageView!
     @IBOutlet weak var loupeLeadingXConstraint: NSLayoutConstraint!
     @IBOutlet weak var loupeCenterXConstraint: NSLayoutConstraint!
@@ -15,11 +16,13 @@ class Friend_Controller: UIViewController {
     @IBOutlet weak var searchTextCenterDxConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchTextCenterXConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchTextWidthConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var searchContainerTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchContainerBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonSearchCancel: UIButton!
     var searchTextWidth: CGFloat = 0
     
-    
+    var lastContentOffset: CGFloat = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,15 +97,12 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let hview = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 20))
-        hview.backgroundColor = UIColor.init(displayP3Red: 48/255, green: 48/255, blue: 48/255, alpha: 1.0)
-    
-        hview.alpha = 0.7
+       
         
         let label = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 20))
         label.text = presenter.sectionName(section: section)
-        label.textColor = .white
         hview.addSubview(label)
-        
+        CommonElementDesigner.headerTableBuilder(view: hview, title: label)
         return hview
     }
     
@@ -192,5 +192,36 @@ extension Friend_Controller: UITextFieldDelegate {
             searchTextReset()
         }
         return true
+    }
+}
+
+
+extension Friend_Controller: UIScrollViewDelegate {
+    
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+       lastContentOffset = scrollView.contentOffset.y
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        if lastContentOffset - 100 > scrollView.contentOffset.y {
+                   UIView.animate(withDuration: 0.2, animations: {
+                       self.searchContainerTopConstraint.isActive = false
+                       self.searchContainerBottomConstraint.isActive = true
+                       self.view.layoutIfNeeded()
+                   })
+            
+               } else if lastContentOffset + 100 < scrollView.contentOffset.y {
+                   UIView.animate(withDuration: 0.2, animations: {
+                       self.searchContainerTopConstraint.isActive = true
+                       self.searchContainerBottomConstraint.isActive = false
+                       self.view.layoutIfNeeded()
+                   })
+               }
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    
+
     }
 }

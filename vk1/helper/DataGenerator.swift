@@ -1,45 +1,6 @@
 import UIKit
 
-
-class CommonElementDesigner {
-    
-    static var cellByCode = ["tp1": "Wall_Cell_tp1",
-                             "tp2": "Wall_Cell_tp2",
-                             "tp3": "Wall_Cell_tp3",
-                             "tp4": "Wall_Cell_tp4",
-                             "tp5": "Wall_Cell_tp5",
-                             "tp6": "Wall_Cell_tp6",
-                             "tp7": "Wall_Cell_tp7",
-                             "tp8": "Wall_Cell_tp8",
-                             "tp9": "Wall_Cell_tp9",]
-    
-    
-    static func setupNavigationBarColor(navigationController: UINavigationController?){
-        var colors = [UIColor]()
-        colors.append(UIColor(red: 38/255, green: 38/255, blue: 38/255, alpha: 0.95))
-        colors.append(UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.95))
-        colors.append(UIColor(red: 38/255, green: 38/255, blue: 38/255, alpha: 0.95))
-        navigationController?.navigationBar.setGradientBackground(colors: colors)
-    }
-    
-    static func setupLikeControl(like: UserActivityRegControl, likeCount: UILabel, message: UserActivityRegControl, eye: UserActivityRegControl, share: UserActivityRegControl) {
-        like.isUserInteractionEnabled = true
-        message.isUserInteractionEnabled = true
-        eye.isUserInteractionEnabled = true
-        share.isUserInteractionEnabled = true
-        
-        like.alpha = CommonElementDesigner.likeControlAlpha
-        message.alpha = CommonElementDesigner.likeControlAlpha
-        eye.alpha = CommonElementDesigner.likeControlAlpha
-        share.alpha = CommonElementDesigner.likeControlAlpha
-        
-        
-        like.userActivityType = .like
-        like.boundMetrics = likeCount
-        message.userActivityType = .shake
-        eye.userActivityType = .shake
-        share.userActivityType = .shake
-    }
+class DataGenerator {
     
     
     static let comments = ["Thanks so much for the birthday money","Thanks so much for driving me home","I really appreciate your help","Thanks so much for cooking dinner. I really appreciate it...","Thanks so much. ...","Excuse me sir, you dropped your wallet)))","Excuse me, do you know what time it is?","I'm sorry for being so late.=/","Be careful!!!","Be careful driving!!","Can you translate this for me????","Chicago is very different from Boston))","Don't worry..","Everyone knows it.","Everything is ready.","Excellent.","From time to time.","Good idea.","He likes it very much.","Help!","He's coming soon.","He's right.", "He's very annoying.", "He's very famous.", "How are you?", "How's work going?", "I ate already.", "I can't hear you.", "I'd like to go for a walk.", "I don't know how to use it.", "I don't like him.", "I don't like it.", "I don't speak very well.", "I don't understand.", "I don't want it.", "I don't want that.", "I don't want to bother you.", "I feel good.", "If you need my help, please let me know.", "I get off of work at 6.", "I have a headache.", "I hope you and your wife have a nice trip.", "I know.", "I like her.", "I'll call you when I leave.", "I'll come back later.", "I'll pay.", "I'll take it.", "I'll take you to the bus stop.", "I love you.", "I'm an American.", "I'm cleaning my room.", "I'm coming to pick you up.", "I'm cold.", "I'm going to leave.", "I'm good, and you?", "I'm happy.", "I'm hungry.", "I'm not busy.", "I'm not ready yet.", "I'm not sure.", "I'm sorry, we're sold out.", "I'm thirsty.", "I'm very busy. I don't have time now.", "I need to change clothes.", "I need to go home.", "I only want a snack.", "Is Mr. Smith an American?", "I think it tastes good.", "I think it's very good.", "I was about to leave the restaurant when my friends arrived.", "Just a moment."]
@@ -50,7 +11,7 @@ class CommonElementDesigner {
     
     static let pictures = ["face1", "face2", "face3","face4","face4","face5","face6","face7","face8","face9","face10","face11","face12","pic1", "pic2", "pic3","pic4","pic4","pic5","pic6","pic7","pic8","pic9","pic10","pic11","pic12","pic13","pic14","pic15","pic16","pic17","pic18","pic19","pic20"]
     
-    static let likeControlAlpha: CGFloat = 0.6
+    
     
     static let groupIcons =
     ["🍏","🍎","🍐","🍊","🥭","🥝","🌶","🥔","🥨","🧀","🥚","🏀","🏈","⚾️","🥎","🎣","🏒","🏓","🥊","🚒","🚨","🛵","🚋","🚟","🚆","🚂","🚈","🚅","📱","🧲",]

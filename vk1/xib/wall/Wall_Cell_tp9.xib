@@ -13,14 +13,14 @@
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Wall_Cell_tp9" id="tbt-XZ-tcD" userLabel="Wall_Cell_tp9" customClass="Wall_Cell_tp9" customModule="vk1" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="620" height="675"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NhW-NU-OgO">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NhW-NU-OgO" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="620" height="675"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9H-Yo-ezz" userLabel="RootView">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9H-Yo-ezz" userLabel="RootView" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="1" y="1" width="618" height="673"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cOe-xZ-pPG">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cOe-xZ-pPG" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="618" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -109,7 +109,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.14902859930000001" green="0.1489804387" blue="0.15293663739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="GG2-FK-Bdf" secondAttribute="trailing" constant="4" id="5yW-o9-XJv"/>
                             <constraint firstItem="GG2-FK-Bdf" firstAttribute="leading" secondItem="u9H-Yo-ezz" secondAttribute="leading" constant="4" id="I9N-JN-4aa"/>
@@ -124,7 +124,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.37255281210000002" green="0.37254408" blue="0.3725458384" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="u9H-Yo-ezz" firstAttribute="top" secondItem="NhW-NU-OgO" secondAttribute="top" constant="1" id="3Zy-FZ-wtj"/>
                     <constraint firstAttribute="trailing" secondItem="u9H-Yo-ezz" secondAttribute="trailing" constant="1" id="8RZ-yg-hSc"/>
@@ -143,6 +143,7 @@
                 <outlet property="imageView7" destination="him-qk-K7t" id="hOB-BH-gWo"/>
                 <outlet property="imageView8" destination="Kpy-5e-25T" id="jw3-pB-F6u"/>
                 <outlet property="imageView9" destination="oTT-Xg-zis" id="7ho-qf-WUs"/>
+                <outlet property="likeView" destination="goS-nc-bVy" id="h0a-J5-w5b"/>
                 <outlet property="title" destination="cOe-xZ-pPG" id="8Lp-R3-G6M"/>
             </connections>
             <point key="canvasLocation" x="1547.8260869565217" y="254.79910714285714"/>

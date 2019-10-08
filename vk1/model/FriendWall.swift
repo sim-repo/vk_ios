@@ -9,29 +9,33 @@ class FriendWall : WallProtocol{
     var title: String!
     var likeCount = 0
     var viewCount = 0
+    var messageCount = 0
+    var shareCount = 0
     
     init(_ id: Int){
         self.id = id
         
-        var index = Int(arc4random_uniform(UInt32(CommonElementDesigner.comments.count-1)))
-        self.title = CommonElementDesigner.comments[index]
+        var index = Int(arc4random_uniform(UInt32(DataGenerator.comments.count-1)))
+        self.title = DataGenerator.comments[index]
       
         
         let emojiCount = 1 + Int(arc4random_uniform(4))
         for _ in 0...emojiCount-1 {
-                index = Int(arc4random_uniform(UInt32(CommonElementDesigner.emoji.count-1)))
-                self.title += CommonElementDesigner.emoji[index]
+                index = Int(arc4random_uniform(UInt32(DataGenerator.emoji.count-1)))
+                self.title += DataGenerator.emoji[index]
         }
         
         
         let picCount = 1 + Int(arc4random_uniform(8))
         for _ in 0...picCount-1 {
-            index = Int(arc4random_uniform(UInt32(CommonElementDesigner.pictures.count-1)))
-            let pic = CommonElementDesigner.pictures[index]
+            index = Int(arc4random_uniform(UInt32(DataGenerator.pictures.count-1)))
+            let pic = DataGenerator.pictures[index]
             self.imageURLs.append(pic)
         }
         self.likeCount = Int(arc4random_uniform(100))
         self.viewCount = Int(arc4random_uniform(100))
+        self.messageCount = Int(arc4random_uniform(100))
+        self.shareCount = Int(arc4random_uniform(100))
         self.date = Date()
         
         switch imageURLs.count {
@@ -56,6 +60,25 @@ class FriendWall : WallProtocol{
     func getTitle() -> String? {
         return title
     }
+    
+    func getLikeCount() -> Int {
+        return likeCount
+    }
+    
+    func getMessageCount()->Int {
+        return messageCount
+    }
+    
+    
+    func getShareCount()->Int {
+        return shareCount
+    }
+    
+    func getEyeCount()->Int {
+        return viewCount
+    }
+    
+    
     
     public class func list()->[FriendWall] {
         var res: [FriendWall] = []

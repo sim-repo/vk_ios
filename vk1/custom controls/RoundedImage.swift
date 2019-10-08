@@ -1,6 +1,6 @@
 import UIKit
 
-//
+
 @IBDesignable class RoundedImage: UIView {
     
     var image: UIImage? = UIImage() {
@@ -10,9 +10,21 @@ import UIKit
     }
     
     
-    
-    
     var imageView = UIImageView()
+    
+    @IBInspectable var noRenderedImageView: UIImage? {
+       willSet{
+           self.imageView.image = newValue
+       }
+    }
+    
+    @IBInspectable var renderedImageView: UIImage? {
+        willSet{
+            self.imageView.image = newValue
+            imageView.contentMode = .scaleAspectFit
+            CommonElementDesigner.renderImage(imageView: imageView)
+        }
+    }
     
     @IBInspectable var cornerRadius: CGFloat = 0 {
         willSet{

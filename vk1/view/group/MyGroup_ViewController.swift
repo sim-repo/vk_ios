@@ -34,7 +34,8 @@ extension MyGroup_ViewController: UICollectionViewDelegate, UICollectionViewData
         cell.nameLabel.text = presenter.getName(indexPath)
         cell.descTextView?.text = presenter.getDesc(indexPath)
         cell.imageView.image = UIImage(named: presenter.getIcon(indexPath))
-         return cell
+        cell.setup()
+        return cell
     }
     
     @IBAction func addGroupPressed(_ sender: Any) {

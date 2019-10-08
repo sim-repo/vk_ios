@@ -57,14 +57,14 @@ class WaitIndicator2: UIView {
        
        let shapeLayer = CAShapeLayer()
        shapeLayer.path = bezierPath.cgPath
-       shapeLayer.strokeColor = UIColor.orange.cgColor
+        shapeLayer.strokeColor = ColorThemeHelper.secondary.cgColor
        shapeLayer.lineWidth = 4
        self.layer.addSublayer(shapeLayer)
        
        let anim1 = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd) )
        anim1.fromValue = 0
        anim1.toValue = 1
-       anim1.duration = 5.0
+       anim1.duration = 4.0
         anim1.fillMode = CAMediaTimingFillMode.forwards
        anim1.isRemovedOnCompletion = false
        shapeLayer.add(anim1, forKey: #keyPath(CAShapeLayer.strokeEnd) )
@@ -72,8 +72,8 @@ class WaitIndicator2: UIView {
        
        let anim2 = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.fillColor) )
        anim2.fromValue = color.cgColor
-       anim2.toValue = UIColor.orange.cgColor
-       anim2.duration = 5.0
+       anim2.toValue = ColorThemeHelper.primary.cgColor
+       anim2.duration = 4.0
         anim2.fillMode = CAMediaTimingFillMode.forwards
        anim2.isRemovedOnCompletion = false
        shapeLayer.add(anim2, forKey: #keyPath(CAShapeLayer.fillColor) )

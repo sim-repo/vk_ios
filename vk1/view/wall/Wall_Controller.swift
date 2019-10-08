@@ -18,7 +18,6 @@ class Wall_Controller: UIViewController {
         layout.itemSize = CGSize(width: width, height: height)
         CommonElementDesigner.setupNavigationBarColor(navigationController: navigationController)
     }
-    
 }
 
 
@@ -36,7 +35,7 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell!
         let wall = presenter.getData(indexPath)!
-        if let name = CommonElementDesigner.cellByCode[wall.code] {
+        if let name = CommonElementDesigner.cellByCode[wall.postTypeCode] {
             cell = cellConfigure(name, indexPath, wall)
         }
         return cell

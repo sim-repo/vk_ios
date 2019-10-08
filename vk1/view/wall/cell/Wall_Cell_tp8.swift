@@ -10,6 +10,7 @@ class Wall_Cell_tp8: UICollectionViewCell {
     @IBOutlet weak var imageView6: UIImageView!
     @IBOutlet weak var imageView7: UIImageView!
     @IBOutlet weak var imageView8: UIImageView!
+    @IBOutlet weak var likeView: WallLike_View!
 }
 
 extension Wall_Cell_tp8: Wall_CellProtocol {
@@ -25,5 +26,10 @@ extension Wall_Cell_tp8: Wall_CellProtocol {
        self.imageView6.image = UIImage(named: imageURLs[5])
        self.imageView7.image = UIImage(named: imageURLs[6])
        self.imageView8.image = UIImage(named: imageURLs[7])
+       self.likeView.likeCount.text = "\(wall.getLikeCount())"
+       self.likeView.messageCount.text = "\(wall.getMessageCount())"
+       self.likeView.shareCount.text = "\(wall.getShareCount())"
+       self.likeView.eyeCount.text = "\(wall.getEyeCount())"
+       CommonElementDesigner.collectionCellBuilder(cell: self, title: nil)
     }
 }

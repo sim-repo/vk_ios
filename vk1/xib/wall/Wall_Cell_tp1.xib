@@ -14,14 +14,14 @@
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Wall_Cell_tp1" id="Tcj-Gj-lsD" customClass="Wall_Cell_tp1" customModule="vk1" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="572" height="393"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nf8-51-Uxy">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nf8-51-Uxy" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="572" height="393"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-cS-hRa">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-cS-hRa" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="1" y="1" width="570" height="391"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q9t-1Z-lRe">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q9t-1Z-lRe" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="4" y="4" width="562" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U1f-Qx-lEq"/>
@@ -41,7 +41,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.14902859930000001" green="0.1489804387" blue="0.15293663739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="q9t-1Z-lRe" firstAttribute="leading" secondItem="1wu-cS-hRa" secondAttribute="leading" constant="4" id="2BK-B9-rjX"/>
                             <constraint firstAttribute="trailing" secondItem="4eh-UL-0M1" secondAttribute="trailing" constant="4" id="93g-9T-Zzw"/>
@@ -56,7 +56,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.36862409114837646" green="0.36865869164466858" blue="0.36470577120780945" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="1wu-cS-hRa" secondAttribute="bottom" constant="1" id="5HI-eU-CBK"/>
                     <constraint firstItem="1wu-cS-hRa" firstAttribute="leading" secondItem="nf8-51-Uxy" secondAttribute="leading" constant="1" id="9QN-nV-kvA"/>
@@ -68,6 +68,7 @@
             <size key="customSize" width="742" height="336"/>
             <connections>
                 <outlet property="imageView" destination="4eh-UL-0M1" id="23m-he-mb5"/>
+                <outlet property="likeView" destination="R5z-Ug-TPi" id="h57-BU-sih"/>
                 <outlet property="title" destination="q9t-1Z-lRe" id="Isa-ro-ypn"/>
             </connections>
             <point key="canvasLocation" x="624.63768115942037" y="161.04910714285714"/>

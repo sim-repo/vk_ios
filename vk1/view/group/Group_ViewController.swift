@@ -7,7 +7,6 @@ class Group_ViewController: UIViewController {
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
     var presenter = GroupPresenter()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -15,8 +14,6 @@ class Group_ViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: 130)
     }
 }
-
-
 
 
 
@@ -36,6 +33,7 @@ extension Group_ViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.imageView.image = UIImage(named: presenter.getIcon(indexPath))
         cell.nameLabel.text = presenter.getName(indexPath)
         cell.descTextView.text = presenter.getDesc(indexPath)
+        cell.setup()
         return cell
     }
     

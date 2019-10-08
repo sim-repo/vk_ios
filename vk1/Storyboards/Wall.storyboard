@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,17 +26,21 @@
             </objects>
             <point key="canvasLocation" x="-545" y="1213"/>
         </scene>
-        <!--Wall Controller-->
+        <!--News-->
         <scene sceneID="7LV-dm-YOx">
             <objects>
                 <viewController id="oep-Qk-SeX" customClass="Wall_Controller" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GXI-Yv-Tz2">
+                    <view key="view" contentMode="scaleToFill" id="GXI-Yv-Tz2" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPz-oL-FWu" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
+                                <rect key="frame" x="1" y="1" width="412" height="894"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9DP-8w-1YS">
                                 <rect key="frame" x="1" y="1" width="412" height="894"/>
-                                <color key="backgroundColor" red="0.14902859930000001" green="0.1489804387" blue="0.15293663739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="4" id="Mqu-62-63y" customClass="CarouselFlowLayout" customModule="vk1" customModuleProvider="target">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -53,16 +56,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.5009319479695431" green="0.3439532775536" blue="0.13997463188303846" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="VPz-oL-FWu" firstAttribute="leading" secondItem="GXI-Yv-Tz2" secondAttribute="leading" constant="1" id="0CX-zR-z6Z"/>
                             <constraint firstAttribute="trailing" secondItem="9DP-8w-1YS" secondAttribute="trailing" constant="1" id="2tk-U1-ld4"/>
                             <constraint firstItem="9DP-8w-1YS" firstAttribute="leading" secondItem="GXI-Yv-Tz2" secondAttribute="leading" constant="1" id="Fqo-Ou-TfX"/>
                             <constraint firstAttribute="bottom" secondItem="9DP-8w-1YS" secondAttribute="bottom" constant="1" id="G0q-bn-3v9"/>
                             <constraint firstItem="9DP-8w-1YS" firstAttribute="centerX" secondItem="GXI-Yv-Tz2" secondAttribute="centerX" id="Rwe-2Y-sMk"/>
                             <constraint firstItem="9DP-8w-1YS" firstAttribute="top" secondItem="GXI-Yv-Tz2" secondAttribute="top" constant="1" id="WyI-r6-xZb"/>
+                            <constraint firstAttribute="bottom" secondItem="VPz-oL-FWu" secondAttribute="bottom" constant="1" id="erN-7f-uiu"/>
+                            <constraint firstAttribute="trailing" secondItem="VPz-oL-FWu" secondAttribute="trailing" constant="1" id="iZg-id-NgZ"/>
                             <constraint firstItem="9DP-8w-1YS" firstAttribute="centerY" secondItem="GXI-Yv-Tz2" secondAttribute="centerY" id="ipP-MO-aSh"/>
+                            <constraint firstItem="VPz-oL-FWu" firstAttribute="top" secondItem="GXI-Yv-Tz2" secondAttribute="top" constant="1" id="tTU-lO-v6G"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="STL-Bq-468"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dmE-zK-u6u"/>
+                    <navigationItem key="navigationItem" title="News" id="dmE-zK-u6u"/>
                     <connections>
                         <outlet property="collectionView" destination="9DP-8w-1YS" id="qle-5d-nIl"/>
                         <outlet property="constraintSpaceX" destination="Fqo-Ou-TfX" id="vHS-e5-3kn"/>

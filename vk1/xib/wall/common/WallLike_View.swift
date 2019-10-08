@@ -6,8 +6,11 @@ class WallLike_View : UIView{
     @IBOutlet weak var likeImageView: UserActivityRegControl!
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var message: UserActivityRegControl!
+    @IBOutlet weak var messageCount: UILabel!
     @IBOutlet weak var eye: UserActivityRegControl!
+    @IBOutlet weak var eyeCount: UILabel!
     @IBOutlet weak var share: UserActivityRegControl!
+    @IBOutlet weak var shareCount: UILabel!
     
 
     override init(frame: CGRect) {
@@ -25,6 +28,14 @@ class WallLike_View : UIView{
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        CommonElementDesigner.setupLikeControl(like: likeImageView, likeCount: likeCount, message: message, eye: eye, share: share)
+        
+        CommonElementDesigner.setupLikeControl(like: likeImageView, likeCount: likeCount, message: message, eye: eye, share: share, messageCount: messageCount, eyeCount: eyeCount, shareCount: shareCount)
+        
+        CommonElementDesigner.renderImage(imageView: likeImageView)
+        CommonElementDesigner.renderImage(imageView: message)
+        CommonElementDesigner.renderImage(imageView: eye)
+        CommonElementDesigner.renderImage(imageView: share)
+
     }
+    
 }
