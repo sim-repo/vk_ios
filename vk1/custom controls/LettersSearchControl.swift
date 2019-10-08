@@ -72,11 +72,16 @@ public protocol AlphabetSearchViewControlProtocol : class {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        if (!isDark) {
+            backgroundColor = ColorThemeHelper.primary_contrast_30
+            alpha = 0.8
+        }
         self.setupView()
     }
     
@@ -148,12 +153,12 @@ public protocol AlphabetSearchViewControlProtocol : class {
             self.buttons.append(button)
             subView.append(button)
             
+            
             let subStackView = UIStackView(arrangedSubviews: subView)
             subStackView.axis = .vertical
             subStackView.alignment = .center
             subStackView.distribution = .fillEqually
             subStackViews.append(subStackView)
-            
         }
         
         stackView = UIStackView(arrangedSubviews: subStackViews)

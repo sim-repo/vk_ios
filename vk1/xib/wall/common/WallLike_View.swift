@@ -31,10 +31,7 @@ class WallLike_View : UIView{
         
         CommonElementDesigner.setupLikeControl(like: likeImageView, likeCount: likeCount, message: message, eye: eye, share: share, messageCount: messageCount, eyeCount: eyeCount, shareCount: shareCount)
         
-        CommonElementDesigner.renderImage(imageView: likeImageView)
-        CommonElementDesigner.renderImage(imageView: message)
-        CommonElementDesigner.renderImage(imageView: eye)
-        CommonElementDesigner.renderImage(imageView: share)
+ 
 
     }
     

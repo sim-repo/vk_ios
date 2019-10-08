@@ -18,6 +18,18 @@ class MyButton_Secondary : UIButton {
 }
 
 
+class MyButton_Adaptive : UIButton {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        if (isDark) {
+            setTitleColor(ColorThemeHelper.secondary, for: .normal)
+        } else {
+            setTitleColor(ColorThemeHelper.primary, for: .normal)
+        }
+    }
+}
+
+
 class MyTitle_OnPrimary : UILabel {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -41,6 +53,17 @@ class MyLabel_OnPrimary : UILabel {
 }
 
 
+class MyLabel_Adaptive : UILabel {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        if (isDark) {
+            textColor = ColorThemeHelper.secondary
+              } else {
+            textColor = ColorThemeHelper.primary_contrast_30
+        }
+    }
+}
+
 class MyLabel_Secondary : UILabel {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -63,6 +86,13 @@ class MyLabel_Secondary_Contrast_60 : UILabel {
     }
 }
 
+class MyLabel_Secondary_Contrast_120 : UILabel {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        textColor = ColorThemeHelper.secondary_constrast_120
+    }
+}
+
 
 class MyTextView_OnBackground : UITextView {
     required init?(coder: NSCoder) {
@@ -80,9 +110,29 @@ class MyTextView_OnPrimary : UITextView {
 }
 
 
+
+class MyImageView_Primary : UIImageView {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        renderImage(imageView: self)
+    }
+    
+    func renderImage(imageView: UIImageView){
+        if let image = imageView.image {
+            let tintableImage = image.withRenderingMode(.alwaysTemplate)
+            imageView.image = tintableImage
+            imageView.tintColor = ColorThemeHelper.primary
+        }
+    }
+}
+
+
 class MyImageView_Secondary : UIImageView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        if (!isDark) {
+            backgroundColor = ColorThemeHelper.primary
+        }
         renderImage(imageView: self)
     }
     

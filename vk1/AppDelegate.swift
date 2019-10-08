@@ -1,6 +1,6 @@
 import UIKit
 
-var isDark = false
+var isDark = true
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

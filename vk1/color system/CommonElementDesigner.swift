@@ -93,12 +93,20 @@ class CommonElementDesigner {
         navigationController?.navigationBar.titleTextAttributes = attributes
         
         var colors = [UIColor]()
-        colors.append(ColorThemeHelper.background)
-        colors.append(ColorThemeHelper.primary)
-        colors.append(ColorThemeHelper.background)
+        if (isDark) {
+            colors.append(ColorThemeHelper.background)
+            colors.append(ColorThemeHelper.primary)
+            colors.append(ColorThemeHelper.background)
+            navigationController?.navigationBar.tintColor = ColorThemeHelper.secondary
+        } else {
+            colors.append(ColorThemeHelper.primary)
+            colors.append(ColorThemeHelper.background)
+            colors.append(ColorThemeHelper.primary)
+            navigationController?.navigationBar.tintColor = ColorThemeHelper.onPrimary
+        }
         
         navigationController?.navigationBar.setGradientBackground(colors: colors)
-        navigationController?.navigationBar.tintColor = ColorThemeHelper.secondary
+        
     }
     
     
@@ -119,10 +127,17 @@ class CommonElementDesigner {
         eye.userActivityType = .shake
         share.userActivityType = .shake
         
-        likeCount.textColor = ColorThemeHelper.secondary
-        messageCount.textColor = ColorThemeHelper.secondary
-        eyeCount.textColor = ColorThemeHelper.secondary
-        shareCount.textColor = ColorThemeHelper.secondary
+        
+        likeCount.textColor = isDark ? ColorThemeHelper.secondary : ColorThemeHelper.primary
+        messageCount.textColor = isDark ? ColorThemeHelper.secondary : ColorThemeHelper.primary
+        eyeCount.textColor = isDark ? ColorThemeHelper.secondary : ColorThemeHelper.primary
+        shareCount.textColor = isDark ? ColorThemeHelper.secondary : ColorThemeHelper.primary
+        
+        
+        renderImage(imageView: like)
+        renderImage(imageView: message)
+        renderImage(imageView: eye)
+        renderImage(imageView: share)
     }
     
     
@@ -130,7 +145,7 @@ class CommonElementDesigner {
         if let image = imageView.image {
             let tintableImage = image.withRenderingMode(.alwaysTemplate)
             imageView.image = tintableImage
-            imageView.tintColor = ColorThemeHelper.secondary
+            imageView.tintColor = isDark ? ColorThemeHelper.secondary : ColorThemeHelper.primary
         }
     }
 }

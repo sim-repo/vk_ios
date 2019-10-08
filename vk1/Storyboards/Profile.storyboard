@@ -33,7 +33,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="открыть профиль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFu-oM-YPu" customClass="MyLabel_Secondary_Contrast_60" customModule="vk1" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="открыть профиль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFu-oM-YPu" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
                                                     <rect key="frame" x="56" y="30.5" width="350" height="17"/>
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="15"/>
                                                     <color key="textColor" red="0.9887628464173619" green="1" blue="0.32763193469523133" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -48,9 +48,18 @@
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="2"/>
+                                                            <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="renderedImageView" value="am-32"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="1" height="1"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -78,20 +87,30 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contacts-32" translatesAutoresizingMaskIntoConstraints="NO" id="tAm-eZ-Cbc" customClass="MyImageView_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="6" width="16" height="32"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbv-by-p07" customClass="RoundedImage" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="10" width="24" height="24"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="IWQ-90-PUr"/>
-                                                        <constraint firstAttribute="width" constant="16" id="naj-Gh-mgo"/>
+                                                        <constraint firstAttribute="height" constant="24" id="Av5-ur-IuM"/>
+                                                        <constraint firstAttribute="width" constant="24" id="NCo-zt-cL3"/>
                                                     </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqm-EZ-W1B" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="40" y="12.5" width="68" height="19"/>
-                                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMK-zY-kyk" customClass="MyButton_Secondary" customModule="vk1" customModuleProvider="target">
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="renderedImageView" value="contacts-32"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="1" height="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMK-zY-kyk" customClass="MyButton_Adaptive" customModule="vk1" customModuleProvider="target">
                                                     <rect key="frame" x="366" y="2" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="5ZX-Iu-0g0"/>
@@ -102,229 +121,318 @@
                                                         <color key="titleColor" red="0.56296398736498676" green="0.36176174576406006" blue="0.13412819099883472" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqm-EZ-W1B" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="12.5" width="68" height="19"/>
+                                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Qqm-EZ-W1B" firstAttribute="centerY" secondItem="tAm-eZ-Cbc" secondAttribute="centerY" id="2w3-CF-Uv2"/>
-                                                <constraint firstItem="tAm-eZ-Cbc" firstAttribute="centerY" secondItem="nmY-n7-SVh" secondAttribute="centerY" id="CcR-yc-a7c"/>
+                                                <constraint firstItem="Qqm-EZ-W1B" firstAttribute="centerY" secondItem="cbv-by-p07" secondAttribute="centerY" id="4Fc-nQ-oiE"/>
+                                                <constraint firstItem="cbv-by-p07" firstAttribute="leading" secondItem="nmY-n7-SVh" secondAttribute="leading" constant="8" id="4dQ-WU-wE0"/>
+                                                <constraint firstItem="cbv-by-p07" firstAttribute="centerY" secondItem="nmY-n7-SVh" secondAttribute="centerY" id="FKA-ak-2Vk"/>
                                                 <constraint firstAttribute="trailing" secondItem="mMK-zY-kyk" secondAttribute="trailing" constant="8" id="R0R-jP-RQu"/>
-                                                <constraint firstItem="Qqm-EZ-W1B" firstAttribute="leading" secondItem="tAm-eZ-Cbc" secondAttribute="trailing" constant="16" id="oCp-5s-Vln"/>
+                                                <constraint firstItem="Qqm-EZ-W1B" firstAttribute="leading" secondItem="cbv-by-p07" secondAttribute="trailing" constant="32" id="WyF-Dx-QaB"/>
                                                 <constraint firstItem="mMK-zY-kyk" firstAttribute="centerY" secondItem="Qqm-EZ-W1B" secondAttribute="centerY" id="oaK-pV-QFd"/>
-                                                <constraint firstItem="tAm-eZ-Cbc" firstAttribute="leading" secondItem="nmY-n7-SVh" secondAttribute="leading" constant="8" id="tHK-8R-XlT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fsR-iV-XZz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vST-co-28H">
                                         <rect key="frame" x="0.0" y="187.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fsR-iV-XZz" id="gft-bj-N77">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vST-co-28H" id="UvZ-lP-Hab">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group-32" translatesAutoresizingMaskIntoConstraints="NO" id="pRq-Qs-bzs" customClass="MyImageView_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="6" width="16" height="32"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBW-AD-6m1" customClass="RoundedImage" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="10" width="24" height="24"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="16" id="EfV-BM-iwC"/>
-                                                        <constraint firstAttribute="height" constant="32" id="doL-6g-QGH"/>
+                                                        <constraint firstAttribute="height" constant="24" id="6Fu-Nw-vzM"/>
+                                                        <constraint firstAttribute="width" constant="24" id="MKK-pF-mwO"/>
                                                     </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3m-na-gfc" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="40" y="12.5" width="58" height="19"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="renderedImageView" value="group-32"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="1" height="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGn-wz-HXt" customClass="MyButton_Adaptive" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="366" y="2" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="5uK-Ev-wvt"/>
+                                                        <constraint firstAttribute="height" constant="40" id="jdr-gf-s5P"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="&gt;">
+                                                        <color key="titleColor" red="0.56296398739999998" green="0.36176174579999998" blue="0.13412819100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIq-N0-eKo" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="12.5" width="58" height="19"/>
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDk-7X-gdK" customClass="MyButton_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="366" y="2" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="Lg6-tw-Zrg"/>
-                                                        <constraint firstAttribute="height" constant="40" id="pY8-m2-nId"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <state key="normal" title="&gt;">
-                                                        <color key="titleColor" red="0.75838753172588835" green="0.48734129287204425" blue="0.18068855200237852" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </state>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="xDk-7X-gdK" firstAttribute="centerY" secondItem="s3m-na-gfc" secondAttribute="centerY" id="0Jz-LJ-E8M"/>
-                                                <constraint firstItem="pRq-Qs-bzs" firstAttribute="leading" secondItem="gft-bj-N77" secondAttribute="leading" constant="8" id="9aK-kY-nwg"/>
-                                                <constraint firstItem="s3m-na-gfc" firstAttribute="centerY" secondItem="pRq-Qs-bzs" secondAttribute="centerY" id="CiG-2x-inT"/>
-                                                <constraint firstItem="s3m-na-gfc" firstAttribute="leading" secondItem="pRq-Qs-bzs" secondAttribute="trailing" constant="16" id="DVH-f5-uNK"/>
-                                                <constraint firstAttribute="trailing" secondItem="xDk-7X-gdK" secondAttribute="trailing" constant="8" id="KU1-5d-OQz"/>
-                                                <constraint firstItem="pRq-Qs-bzs" firstAttribute="centerY" secondItem="gft-bj-N77" secondAttribute="centerY" id="bCw-Wc-6xO"/>
+                                                <constraint firstItem="pIq-N0-eKo" firstAttribute="leading" secondItem="yBW-AD-6m1" secondAttribute="trailing" constant="32" id="9QW-iC-nWv"/>
+                                                <constraint firstItem="yBW-AD-6m1" firstAttribute="leading" secondItem="UvZ-lP-Hab" secondAttribute="leading" constant="8" id="BOg-U7-bZw"/>
+                                                <constraint firstItem="yBW-AD-6m1" firstAttribute="centerY" secondItem="UvZ-lP-Hab" secondAttribute="centerY" id="Bmj-Th-h3A"/>
+                                                <constraint firstItem="pIq-N0-eKo" firstAttribute="centerY" secondItem="yBW-AD-6m1" secondAttribute="centerY" id="Wd6-f7-EZT"/>
+                                                <constraint firstAttribute="trailing" secondItem="OGn-wz-HXt" secondAttribute="trailing" constant="8" id="aYl-pR-MGg"/>
+                                                <constraint firstItem="OGn-wz-HXt" firstAttribute="centerY" secondItem="pIq-N0-eKo" secondAttribute="centerY" id="mUV-RP-1Ig"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zO4-Wg-09P">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="KFG-eV-uOh">
                                         <rect key="frame" x="0.0" y="231" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zO4-Wg-09P" id="asy-Ca-3e5">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KFG-eV-uOh" id="ehd-ps-BBF">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music-32" translatesAutoresizingMaskIntoConstraints="NO" id="Hlv-ct-NWx" customClass="MyImageView_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="6" width="16" height="32"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wy9-m9-eII" customClass="RoundedImage" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="10" width="24" height="24"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="6JG-9Q-azS"/>
-                                                        <constraint firstAttribute="width" constant="16" id="uCc-IK-tDl"/>
+                                                        <constraint firstAttribute="height" constant="24" id="abN-N6-Yku"/>
+                                                        <constraint firstAttribute="width" constant="24" id="dz8-Ak-2Wn"/>
                                                     </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCY-FW-JXs" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="40" y="12.5" width="48.5" height="19"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="renderedImageView" value="film-32"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="1" height="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="onPrimary">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiq-VJ-F0e" customClass="MyButton_Adaptive" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="366" y="2" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="5XF-cR-ilo"/>
+                                                        <constraint firstAttribute="height" constant="40" id="mM9-HA-58K"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="&gt;">
+                                                        <color key="titleColor" red="0.56296398739999998" green="0.36176174579999998" blue="0.13412819100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUg-kb-5oc" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="12.5" width="58" height="19"/>
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKJ-TY-6nz" customClass="MyButton_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="366" y="2" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="MmM-6N-a8G"/>
-                                                        <constraint firstAttribute="width" constant="40" id="wCD-ic-g0U"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <state key="normal" title="&gt;">
-                                                        <color key="titleColor" red="0.72644352791878175" green="0.49879556174855288" blue="0.20298898047211328" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </state>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Hlv-ct-NWx" firstAttribute="centerY" secondItem="asy-Ca-3e5" secondAttribute="centerY" id="00w-1f-ThE"/>
-                                                <constraint firstAttribute="trailing" secondItem="SKJ-TY-6nz" secondAttribute="trailing" constant="8" id="TD0-gy-4Uk"/>
-                                                <constraint firstItem="SKJ-TY-6nz" firstAttribute="centerY" secondItem="pCY-FW-JXs" secondAttribute="centerY" id="eb7-lM-Hn4"/>
-                                                <constraint firstItem="pCY-FW-JXs" firstAttribute="centerY" secondItem="Hlv-ct-NWx" secondAttribute="centerY" id="eq0-3N-ZQq"/>
-                                                <constraint firstItem="Hlv-ct-NWx" firstAttribute="leading" secondItem="asy-Ca-3e5" secondAttribute="leading" constant="8" id="gdw-HP-PQA"/>
-                                                <constraint firstItem="pCY-FW-JXs" firstAttribute="leading" secondItem="Hlv-ct-NWx" secondAttribute="trailing" constant="16" id="ndq-ci-1CW"/>
+                                                <constraint firstItem="wiq-VJ-F0e" firstAttribute="centerY" secondItem="jUg-kb-5oc" secondAttribute="centerY" id="3v4-uK-BPf"/>
+                                                <constraint firstAttribute="trailing" secondItem="wiq-VJ-F0e" secondAttribute="trailing" constant="8" id="4br-Kz-Fhx"/>
+                                                <constraint firstItem="jUg-kb-5oc" firstAttribute="centerY" secondItem="Wy9-m9-eII" secondAttribute="centerY" id="F7r-tz-jjG"/>
+                                                <constraint firstItem="Wy9-m9-eII" firstAttribute="leading" secondItem="ehd-ps-BBF" secondAttribute="leading" constant="8" id="FTm-Rr-cao"/>
+                                                <constraint firstItem="jUg-kb-5oc" firstAttribute="leading" secondItem="Wy9-m9-eII" secondAttribute="trailing" constant="32" id="mFi-4D-2qR"/>
+                                                <constraint firstItem="Wy9-m9-eII" firstAttribute="centerY" secondItem="ehd-ps-BBF" secondAttribute="centerY" id="yrO-BQ-4st"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dIF-5v-iMc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ewn-N1-xOM">
                                         <rect key="frame" x="0.0" y="274.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dIF-5v-iMc" id="mwd-bH-XSD">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ewn-N1-xOM" id="6eo-SQ-Fn6">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-32" translatesAutoresizingMaskIntoConstraints="NO" id="LSO-ey-LkZ" customClass="MyImageView_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="6" width="16" height="32"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qe-5x-Pz4" customClass="RoundedImage" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="10" width="24" height="24"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="Hs6-QB-d4X"/>
-                                                        <constraint firstAttribute="width" constant="16" id="raX-CJ-1ce"/>
+                                                        <constraint firstAttribute="width" constant="24" id="Lvj-fP-BgB"/>
+                                                        <constraint firstAttribute="height" constant="24" id="Wxj-lS-YEa"/>
                                                     </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knU-ga-s1g" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="40" y="12.5" width="58" height="19"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="renderedImageView" value="camera-32"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="1" height="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQo-E4-u9B" customClass="MyButton_Adaptive" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="366" y="2" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="5Tg-qf-of1"/>
+                                                        <constraint firstAttribute="width" constant="40" id="mI0-79-LA9"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="&gt;">
+                                                        <color key="titleColor" red="0.56296398739999998" green="0.36176174579999998" blue="0.13412819100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1e-yu-hLl" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="12.5" width="58" height="19"/>
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6SO-jb-ez0" customClass="MyButton_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="366" y="2" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="aNz-YB-9Ib"/>
-                                                        <constraint firstAttribute="height" constant="40" id="l7R-cy-V2R"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <state key="normal" title="&gt;">
-                                                        <color key="titleColor" red="0.81529584390862941" green="0.5598039390876528" blue="0.22781684436270011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </state>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="knU-ga-s1g" firstAttribute="centerY" secondItem="LSO-ey-LkZ" secondAttribute="centerY" id="H9U-MM-aMy"/>
-                                                <constraint firstItem="6SO-jb-ez0" firstAttribute="centerY" secondItem="knU-ga-s1g" secondAttribute="centerY" id="R7V-JF-SPr"/>
-                                                <constraint firstItem="knU-ga-s1g" firstAttribute="leading" secondItem="LSO-ey-LkZ" secondAttribute="trailing" constant="16" id="R9q-Qa-Cef"/>
-                                                <constraint firstAttribute="trailing" secondItem="6SO-jb-ez0" secondAttribute="trailing" constant="8" id="dU6-3D-tds"/>
-                                                <constraint firstItem="knU-ga-s1g" firstAttribute="centerY" secondItem="mwd-bH-XSD" secondAttribute="centerY" id="fL9-2P-UY7"/>
-                                                <constraint firstItem="LSO-ey-LkZ" firstAttribute="leading" secondItem="mwd-bH-XSD" secondAttribute="leading" constant="8" id="y5W-go-pZ4"/>
+                                                <constraint firstItem="5qe-5x-Pz4" firstAttribute="centerY" secondItem="6eo-SQ-Fn6" secondAttribute="centerY" id="6jK-pl-pUe"/>
+                                                <constraint firstItem="5qe-5x-Pz4" firstAttribute="leading" secondItem="6eo-SQ-Fn6" secondAttribute="leading" constant="8" id="IiJ-Av-ueb"/>
+                                                <constraint firstItem="E1e-yu-hLl" firstAttribute="centerY" secondItem="5qe-5x-Pz4" secondAttribute="centerY" id="RGA-ZS-WXY"/>
+                                                <constraint firstItem="uQo-E4-u9B" firstAttribute="centerY" secondItem="E1e-yu-hLl" secondAttribute="centerY" id="cb1-7e-Ikt"/>
+                                                <constraint firstAttribute="trailing" secondItem="uQo-E4-u9B" secondAttribute="trailing" constant="8" id="r2W-P5-QM5"/>
+                                                <constraint firstItem="E1e-yu-hLl" firstAttribute="leading" secondItem="5qe-5x-Pz4" secondAttribute="trailing" constant="32" id="tTi-pO-2wt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="GrP-6D-dbG">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DIf-B2-Ma9">
                                         <rect key="frame" x="0.0" y="318" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GrP-6D-dbG" id="6pa-Mo-Eq3">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DIf-B2-Ma9" id="MZh-Rn-7gJ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="film-32" translatesAutoresizingMaskIntoConstraints="NO" id="2bL-ku-8OX" customClass="MyImageView_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="6" width="16" height="32"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJI-81-5ql" customClass="RoundedImage" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="10" width="24" height="24"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="16" id="Pch-HW-usq"/>
-                                                        <constraint firstAttribute="height" constant="32" id="r8E-v3-dO9"/>
+                                                        <constraint firstAttribute="width" constant="24" id="JhS-7P-mOz"/>
+                                                        <constraint firstAttribute="height" constant="24" id="vI8-wT-LzE"/>
                                                     </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25f-uk-LON" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="40" y="12.5" width="58" height="19"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="renderedImageView" value="music-32"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="1" height="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7y-NE-gDR" customClass="MyButton_Adaptive" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="366" y="2" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="8lz-48-pdc"/>
+                                                        <constraint firstAttribute="width" constant="40" id="Vyc-Rs-6SN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="&gt;">
+                                                        <color key="titleColor" red="0.56296398739999998" green="0.36176174579999998" blue="0.13412819100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCN-ws-FPa" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="12.5" width="49" height="19"/>
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-N6-vKI" customClass="MyButton_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="366" y="2" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="9SW-zW-xrU"/>
-                                                        <constraint firstAttribute="width" constant="40" id="LWL-MQ-JQU"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <state key="normal" title="&gt;">
-                                                        <color key="titleColor" red="0.94055361675126903" green="0.64580927710396485" blue="0.26281742820488646" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </state>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2bL-ku-8OX" firstAttribute="leading" secondItem="6pa-Mo-Eq3" secondAttribute="leading" constant="8" id="6PY-X6-6YH"/>
-                                                <constraint firstItem="25f-uk-LON" firstAttribute="centerY" secondItem="2bL-ku-8OX" secondAttribute="centerY" id="7kd-gp-SJj"/>
-                                                <constraint firstItem="25f-uk-LON" firstAttribute="leading" secondItem="2bL-ku-8OX" secondAttribute="trailing" constant="16" id="BPl-82-pW4"/>
-                                                <constraint firstItem="2bL-ku-8OX" firstAttribute="centerY" secondItem="6pa-Mo-Eq3" secondAttribute="centerY" id="H9Q-fz-BMG"/>
-                                                <constraint firstItem="tyb-N6-vKI" firstAttribute="centerY" secondItem="25f-uk-LON" secondAttribute="centerY" id="NSx-M7-Il6"/>
-                                                <constraint firstAttribute="trailing" secondItem="tyb-N6-vKI" secondAttribute="trailing" constant="8" id="TdN-sh-IZd"/>
+                                                <constraint firstItem="pCN-ws-FPa" firstAttribute="centerY" secondItem="bJI-81-5ql" secondAttribute="centerY" id="3nT-u9-tcX"/>
+                                                <constraint firstAttribute="trailing" secondItem="e7y-NE-gDR" secondAttribute="trailing" constant="8" id="NVO-2m-qSD"/>
+                                                <constraint firstItem="e7y-NE-gDR" firstAttribute="centerY" secondItem="pCN-ws-FPa" secondAttribute="centerY" id="XTP-g1-cmW"/>
+                                                <constraint firstItem="pCN-ws-FPa" firstAttribute="leading" secondItem="bJI-81-5ql" secondAttribute="trailing" constant="32" id="ZOc-Rz-ryi"/>
+                                                <constraint firstItem="bJI-81-5ql" firstAttribute="centerY" secondItem="MZh-Rn-7gJ" secondAttribute="centerY" id="qyI-Kn-p1d"/>
+                                                <constraint firstItem="bJI-81-5ql" firstAttribute="leading" secondItem="MZh-Rn-7gJ" secondAttribute="leading" constant="8" id="rc9-5I-X9A"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="KmR-1b-Akd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ysG-hK-EI5">
                                         <rect key="frame" x="0.0" y="361.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KmR-1b-Akd" id="5FE-Pc-WHD">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ysG-hK-EI5" id="ICe-rl-Orq">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="online-32" translatesAutoresizingMaskIntoConstraints="NO" id="ifO-59-qcQ" customClass="MyImageView_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="6" width="16" height="32"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4n-U5-lIi" customClass="RoundedImage" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="10" width="24" height="24"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="16" id="SdO-rE-lgc"/>
-                                                        <constraint firstAttribute="height" constant="32" id="ftZ-ZX-ho0"/>
+                                                        <constraint firstAttribute="height" constant="24" id="OH8-cO-53h"/>
+                                                        <constraint firstAttribute="width" constant="24" id="eOI-2U-4kG"/>
                                                     </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIF-wA-aeF" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="40" y="12.5" width="116" height="19"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="renderedImageView" value="online-32"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="1" height="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDx-Qr-Ovk" customClass="MyButton_Adaptive" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="366" y="2" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="5s3-VA-LO0"/>
+                                                        <constraint firstAttribute="width" constant="40" id="XCb-Hd-hwQ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="&gt;">
+                                                        <color key="titleColor" red="0.56296398739999998" green="0.36176174579999998" blue="0.13412819100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqZ-QF-o2Y" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="12.5" width="116" height="19"/>
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ga-e5-Rxz" customClass="MyButton_Secondary" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="366" y="2" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="c9k-cp-4Vy"/>
-                                                        <constraint firstAttribute="height" constant="40" id="cvs-jL-WgT"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <state key="normal" title="&gt;">
-                                                        <color key="titleColor" red="1" green="0.7324620175448" blue="0.20110687317133513" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </state>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="RIF-wA-aeF" firstAttribute="leading" secondItem="ifO-59-qcQ" secondAttribute="trailing" constant="16" id="8Zm-7T-6KI"/>
-                                                <constraint firstItem="4Ga-e5-Rxz" firstAttribute="centerY" secondItem="RIF-wA-aeF" secondAttribute="centerY" id="9mY-wb-kvR"/>
-                                                <constraint firstItem="ifO-59-qcQ" firstAttribute="leading" secondItem="5FE-Pc-WHD" secondAttribute="leading" constant="8" id="Bh7-6R-cni"/>
-                                                <constraint firstItem="ifO-59-qcQ" firstAttribute="centerY" secondItem="5FE-Pc-WHD" secondAttribute="centerY" id="Jse-8D-Z0D"/>
-                                                <constraint firstAttribute="trailing" secondItem="4Ga-e5-Rxz" secondAttribute="trailing" constant="8" id="Klz-8l-LID"/>
-                                                <constraint firstItem="RIF-wA-aeF" firstAttribute="centerY" secondItem="ifO-59-qcQ" secondAttribute="centerY" id="thc-8w-kA1"/>
+                                                <constraint firstItem="LqZ-QF-o2Y" firstAttribute="centerY" secondItem="k4n-U5-lIi" secondAttribute="centerY" id="3XX-e7-C8b"/>
+                                                <constraint firstItem="hDx-Qr-Ovk" firstAttribute="centerY" secondItem="LqZ-QF-o2Y" secondAttribute="centerY" id="DnX-Fq-uZx"/>
+                                                <constraint firstItem="k4n-U5-lIi" firstAttribute="leading" secondItem="ICe-rl-Orq" secondAttribute="leading" constant="8" id="dVS-mh-E2e"/>
+                                                <constraint firstItem="k4n-U5-lIi" firstAttribute="centerY" secondItem="ICe-rl-Orq" secondAttribute="centerY" id="epJ-QJ-kj1"/>
+                                                <constraint firstAttribute="trailing" secondItem="hDx-Qr-Ovk" secondAttribute="trailing" constant="8" id="xMu-Ua-gLU"/>
+                                                <constraint firstItem="LqZ-QF-o2Y" firstAttribute="leading" secondItem="k4n-U5-lIi" secondAttribute="trailing" constant="32" id="xm8-2A-wA0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

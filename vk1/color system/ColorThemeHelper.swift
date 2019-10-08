@@ -3,7 +3,7 @@ import UIKit
 class ColorThemeHelper {
     
     static func setupDark() {
-        
+        isDark = true
         background = #colorLiteral(red: 0.005808433518, green: 0.00166301534, blue: 0.262986809, alpha: 1)
         onBackground = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let primary_color = #colorLiteral(red: 0.4392291903, green: 0.1222558096, blue: 0.9621943831, alpha: 1)
@@ -47,12 +47,13 @@ class ColorThemeHelper {
     
     
     static func setupLight() {
+        isDark = false
         background = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         onBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        let primary_color = #colorLiteral(red: 0.3736752868, green: 0.046080634, blue: 0.8935645819, alpha: 1)
-        let secondary_color = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        let primary_color = #colorLiteral(red: 0.01966415159, green: 0.4033825994, blue: 0.6502324939, alpha: 1)
+        let secondary_color = #colorLiteral(red: 0.7069821954, green: 0.9474993348, blue: 0.01453028899, alpha: 1)
         onPrimary = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        onSecondary = #colorLiteral(red: 0.999904573, green: 1, blue: 0.9998722672, alpha: 1)
+        onSecondary = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         shadow = #colorLiteral(red: 0.1490205228, green: 0.1489917934, blue: 0.1532951891, alpha: 1)
         inactiveControls = #colorLiteral(red: 0.1490205228, green: 0.1489917934, blue: 0.1532951891, alpha: 1)
         titleOnPrimary = #colorLiteral(red: 0.06316316873, green: 0.06318188459, blue: 0.06316071004, alpha: 1)

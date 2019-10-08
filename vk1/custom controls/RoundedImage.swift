@@ -18,13 +18,24 @@ import UIKit
        }
     }
     
+    var drawOnPrimary = 0
+    
+   @IBInspectable var onPrimary: Int = 0 {
+            willSet{
+                drawOnPrimary = newValue
+            }
+         }
+    
     @IBInspectable var renderedImageView: UIImage? {
         willSet{
             self.imageView.image = newValue
             imageView.contentMode = .scaleAspectFit
+            
             CommonElementDesigner.renderImage(imageView: imageView)
         }
     }
+    
+    
     
     @IBInspectable var cornerRadius: CGFloat = 0 {
         willSet{
@@ -90,6 +101,12 @@ import UIKit
     required init?(coder aDecoder: NSCoder) {
         super .init(coder: aDecoder)
         self.contentMode = .scaleAspectFill
+        if (self.drawOnPrimary != 0) {
+            backgroundColor = ColorThemeHelper.primary
+        } else {
+            backgroundColor = .clear
+        }
+       // backgroundColor = ColorThemeHelper.primary
         self.setImage()
         self.shadow()
     }
@@ -104,11 +121,13 @@ import UIKit
     private func setImage() {
         imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
         imageView.image = self.image
-        let roundMask = CAShapeLayer()
-        let round = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
-        roundMask.path = round.cgPath
-        imageView.layer.mask = roundMask
-        imageView.contentMode = .scaleAspectFill
+        if (cornerRadius != 0) {
+            let roundMask = CAShapeLayer()
+            let round = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
+            roundMask.path = round.cgPath
+            imageView.layer.mask = roundMask
+            imageView.contentMode = .scaleAspectFill
+        }
         self.addSubview(imageView)
     }
 }
