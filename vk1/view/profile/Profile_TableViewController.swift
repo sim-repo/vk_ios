@@ -11,6 +11,11 @@ class Profile_TableViewController: UITableViewController {
     @IBAction func onPressButton(_ sender: Any) {
         
     }
+    
+    @IBAction func pressVideo(_ sender: Any) {
+        performSegue(withIdentifier: "VideoSegue", sender: sender)
+    }
+    
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         CommonElementDesigner.headerBuilder(willDisplayHeaderView: view)
     }
