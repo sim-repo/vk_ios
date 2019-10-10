@@ -19,5 +19,13 @@ class Profile_TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         CommonElementDesigner.headerBuilder(willDisplayHeaderView: view)
     }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "VideoSegue", sender: nil)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+    }
 
 }
