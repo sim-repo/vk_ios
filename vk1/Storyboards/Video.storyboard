@@ -12,21 +12,33 @@
         <scene sceneID="SBx-Jv-tn5">
             <objects>
                 <viewController id="HnM-Om-Agd" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qD8-gd-W3h">
+                    <view key="view" contentMode="scaleToFill" id="qD8-gd-W3h" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMy-XK-lgD">
-                                <rect key="frame" x="185" y="437.5" width="44" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKt-Eb-DOe" customClass="MyView_GradiendBackground" customModule="vk1" customModuleProvider="target">
+                                <rect key="frame" x="1" y="1" width="412" height="894"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMy-XK-lgD" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="184" y="436.5" width="44" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="uMy-XK-lgD" firstAttribute="centerY" secondItem="vKt-Eb-DOe" secondAttribute="centerY" id="3le-cd-mpc"/>
+                                    <constraint firstItem="uMy-XK-lgD" firstAttribute="centerX" secondItem="vKt-Eb-DOe" secondAttribute="centerX" id="Wgt-4a-gvP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="uMy-XK-lgD" firstAttribute="centerY" secondItem="qD8-gd-W3h" secondAttribute="centerY" id="ZuJ-x9-7DK"/>
-                            <constraint firstItem="uMy-XK-lgD" firstAttribute="centerX" secondItem="qD8-gd-W3h" secondAttribute="centerX" id="bOR-2G-6Km"/>
+                            <constraint firstItem="vKt-Eb-DOe" firstAttribute="top" secondItem="qD8-gd-W3h" secondAttribute="top" constant="1" id="7SE-YP-cyR"/>
+                            <constraint firstItem="GMY-is-OXe" firstAttribute="trailing" secondItem="vKt-Eb-DOe" secondAttribute="trailing" constant="1" id="Y96-Yz-qe5"/>
+                            <constraint firstAttribute="bottom" secondItem="vKt-Eb-DOe" secondAttribute="bottom" constant="1" id="geF-8g-VNq"/>
+                            <constraint firstItem="vKt-Eb-DOe" firstAttribute="leading" secondItem="GMY-is-OXe" secondAttribute="leading" constant="1" id="y5n-y4-xjY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GMY-is-OXe"/>
                     </view>
