@@ -11,7 +11,7 @@
         <!--Video View Controller-->
         <scene sceneID="SBx-Jv-tn5">
             <objects>
-                <viewController id="HnM-Om-Agd" customClass="Video_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="HnM-Om-Agd" customClass="Video_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qD8-gd-W3h" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,7 +54,7 @@
         <!--Navigation Controller-->
         <scene sceneID="J6L-KN-xua">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="umy-jW-8nU" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="umy-jW-8nU" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DV9-Xp-sl6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
