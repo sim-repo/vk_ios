@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Video View Controller-->
         <scene sceneID="SBx-Jv-tn5">
             <objects>
-                <viewController id="HnM-Om-Agd" sceneMemberID="viewController">
+                <viewController id="HnM-Om-Agd" customClass="Video_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qD8-gd-W3h" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,6 +43,9 @@
                         <viewLayoutGuide key="safeArea" id="GMY-is-OXe"/>
                     </view>
                     <navigationItem key="navigationItem" id="kid-Hy-zlS"/>
+                    <connections>
+                        <outlet property="bkgView" destination="vKt-Eb-DOe" id="P57-AC-FkE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0OO-Wx-fzM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
