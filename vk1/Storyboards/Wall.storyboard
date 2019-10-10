@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,9 +35,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPz-oL-FWu" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPz-oL-FWu" customClass="MyView_GradiendBackground" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="1" y="1" width="412" height="894"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9DP-8w-1YS">
                                 <rect key="frame" x="1" y="1" width="412" height="894"/>
@@ -67,6 +68,7 @@
                             <constraint firstItem="9DP-8w-1YS" firstAttribute="centerY" secondItem="GXI-Yv-Tz2" secondAttribute="centerY" id="ipP-MO-aSh"/>
                             <constraint firstItem="VPz-oL-FWu" firstAttribute="top" secondItem="GXI-Yv-Tz2" secondAttribute="top" constant="1" id="tTU-lO-v6G"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="DFK-FV-6ca"/>
                     </view>
                     <navigationItem key="navigationItem" title="News" id="dmE-zK-u6u"/>
                     <connections>

@@ -120,6 +120,9 @@
                                                     <state key="normal" title="&gt;">
                                                         <color key="titleColor" red="0.56296398736498676" green="0.36176174576406006" blue="0.13412819099883472" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="onPressButton:" destination="I0v-zq-Knl" eventType="touchUpInside" id="epV-j0-SOs"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqm-EZ-W1B" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
                                                     <rect key="frame" x="64" y="12.5" width="68" height="19"/>

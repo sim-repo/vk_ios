@@ -15,7 +15,7 @@ class FriendPost_ViewController: UIViewController{
     var maxTouches = 0
     var prevTouch: CGPoint!
     var isNewSwipe = true
-    let standardItemScale: CGFloat = 0.2
+    let standardItemScale: CGFloat = 0.1
 
     
     
@@ -26,8 +26,9 @@ class FriendPost_ViewController: UIViewController{
                for (idx, image) in friendWall.imageURLs.enumerated() {
                    let newImageView = UIImageView(image: UIImage(named: image))
                    let dx = prototypeImageView.frame.size.width * CGFloat(idx) + imageContainerView.frame.width/2 - prototypeImageView.frame.size.width/2
-                   newImageView.frame = CGRect(x: dx, y: prototypeImageView.frame.origin.y, width: prototypeImageView.frame.width, height: prototypeImageView.frame.height)
-                newImageView.contentMode = .scaleAspectFit
+                   newImageView.frame = CGRect(x: dx, y: prototypeImageView.frame.origin.y, width: imageContainerView.frame.width, height: imageContainerView.frame.height)
+                   newImageView.contentMode = .scaleAspectFit
+                
                    images.append(newImageView)
                    imageContainerView.addSubview(newImageView)
                }
@@ -38,7 +39,7 @@ class FriendPost_ViewController: UIViewController{
     
     override func viewWillDisappear(_ animated: Bool) {
         swipeAnimator?.stopAnimation(true)
-        imageContainerView.removeFromSuperview()
+      //  imageContainerView.removeFromSuperview()
     }
     
     func initSwipeAnimator(dx: CGFloat, sign: CGFloat){

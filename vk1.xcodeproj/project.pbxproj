@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		160405FF234E39050083F3C3 /* NavForwardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160405FE234E39050083F3C3 /* NavForwardAnimator.swift */; };
+		16040601234E390A0083F3C3 /* NavBackAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16040600234E390A0083F3C3 /* NavBackAnimator.swift */; };
+		16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16040602234E39130083F3C3 /* CustomInteractiveTransition.swift */; };
+		16040605234E39170083F3C3 /* NavCustomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16040604234E39170083F3C3 /* NavCustomController.swift */; };
+		1604060D234E5A250083F3C3 /* MyGroupDetail_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604060C234E5A250083F3C3 /* MyGroupDetail_ViewController.swift */; };
+		16040619234E74FE0083F3C3 /* MyGroups_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16040618234E74FE0083F3C3 /* MyGroups_ViewController.swift */; };
 		1611273C234B2C8E0080FD54 /* FriendPost_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611273B234B2C8E0080FD54 /* FriendPost_ViewController.swift */; };
 		1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611273D234B3E940080FD54 /* WaitIndicator2.swift */; };
 		16112740234B45E50080FD54 /* DataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611273F234B45E50080FD54 /* DataGenerator.swift */; };
@@ -14,7 +20,6 @@
 		161B0E612349D1DA0081008B /* WallLike_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 161B0E602349D1DA0081008B /* WallLike_View.xib */; };
 		161B0E632349D27F0081008B /* WallLike_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B0E622349D27F0081008B /* WallLike_View.swift */; };
 		161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B0E9E2349F8850081008B /* MyGroup_CollectionViewCell.swift */; };
-		161B0EA12349F8D90081008B /* MyGroup_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B0EA02349F8D90081008B /* MyGroup_ViewController.swift */; };
 		161B0EA5234A046C0081008B /* Group_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B0EA4234A046C0081008B /* Group_ViewController.swift */; };
 		161B0EA7234A05860081008B /* Group_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B0EA6234A05860081008B /* Group_CollectionViewCell.swift */; };
 		161B0EA9234A27780081008B /* Profile_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B0EA8234A27780081008B /* Profile_TableViewController.swift */; };
@@ -66,6 +71,8 @@
 		166667E3234901B800FD2B86 /* FriendWall_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667E2234901B800FD2B86 /* FriendWall_Controller.swift */; };
 		166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667F92349062E00FD2B86 /* WallProtocol.swift */; };
 		166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667FB234912B800FD2B86 /* FriendWallPresenter.swift */; };
+		166D1B05234EFF0F00C552E4 /* ZoomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D1B04234EFF0F00C552E4 /* ZoomPopAnimator.swift */; };
+		166D1B07234EFF5000C552E4 /* ZoomNavigatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D1B06234EFF5000C552E4 /* ZoomNavigatorController.swift */; };
 		16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B86232F7BF000E21B7F /* Friend.swift */; };
 		16AB0B89232F7C7800E21B7F /* MyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B88232F7C7800E21B7F /* MyGroup.swift */; };
 		16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B91232F7DAC00E21B7F /* Friend_TableCell.swift */; };
@@ -81,6 +88,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		160405FE234E39050083F3C3 /* NavForwardAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavForwardAnimator.swift; sourceTree = "<group>"; };
+		16040600234E390A0083F3C3 /* NavBackAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBackAnimator.swift; sourceTree = "<group>"; };
+		16040602234E39130083F3C3 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
+		16040604234E39170083F3C3 /* NavCustomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavCustomController.swift; sourceTree = "<group>"; };
+		1604060C234E5A250083F3C3 /* MyGroupDetail_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupDetail_ViewController.swift; sourceTree = "<group>"; };
+		16040618234E74FE0083F3C3 /* MyGroups_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroups_ViewController.swift; sourceTree = "<group>"; };
 		1611273B234B2C8E0080FD54 /* FriendPost_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPost_ViewController.swift; sourceTree = "<group>"; };
 		1611273D234B3E940080FD54 /* WaitIndicator2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitIndicator2.swift; sourceTree = "<group>"; };
 		1611273F234B45E50080FD54 /* DataGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGenerator.swift; sourceTree = "<group>"; };
@@ -88,7 +101,6 @@
 		161B0E602349D1DA0081008B /* WallLike_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallLike_View.xib; sourceTree = "<group>"; };
 		161B0E622349D27F0081008B /* WallLike_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallLike_View.swift; sourceTree = "<group>"; };
 		161B0E9E2349F8850081008B /* MyGroup_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroup_CollectionViewCell.swift; sourceTree = "<group>"; };
-		161B0EA02349F8D90081008B /* MyGroup_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroup_ViewController.swift; sourceTree = "<group>"; };
 		161B0EA4234A046C0081008B /* Group_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group_ViewController.swift; sourceTree = "<group>"; };
 		161B0EA6234A05860081008B /* Group_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group_CollectionViewCell.swift; sourceTree = "<group>"; };
 		161B0EA8234A27780081008B /* Profile_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_TableViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +152,8 @@
 		166667E2234901B800FD2B86 /* FriendWall_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWall_Controller.swift; sourceTree = "<group>"; };
 		166667F92349062E00FD2B86 /* WallProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallProtocol.swift; sourceTree = "<group>"; };
 		166667FB234912B800FD2B86 /* FriendWallPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWallPresenter.swift; sourceTree = "<group>"; };
+		166D1B04234EFF0F00C552E4 /* ZoomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomPopAnimator.swift; sourceTree = "<group>"; };
+		166D1B06234EFF5000C552E4 /* ZoomNavigatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomNavigatorController.swift; sourceTree = "<group>"; };
 		16AB0B86232F7BF000E21B7F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		16AB0B88232F7C7800E21B7F /* MyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroup.swift; sourceTree = "<group>"; };
 		16AB0B91232F7DAC00E21B7F /* Friend_TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend_TableCell.swift; sourceTree = "<group>"; };
@@ -167,6 +181,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		160405FD234E38BB0083F3C3 /* transitions */ = {
+			isa = PBXGroup;
+			children = (
+				16040607234E569A0083F3C3 /* zooming */,
+				16040606234E56860083F3C3 /* standard */,
+			);
+			path = transitions;
+			sourceTree = "<group>";
+		};
+		16040606234E56860083F3C3 /* standard */ = {
+			isa = PBXGroup;
+			children = (
+				160405FE234E39050083F3C3 /* NavForwardAnimator.swift */,
+				16040600234E390A0083F3C3 /* NavBackAnimator.swift */,
+				16040602234E39130083F3C3 /* CustomInteractiveTransition.swift */,
+				16040604234E39170083F3C3 /* NavCustomController.swift */,
+			);
+			path = standard;
+			sourceTree = "<group>";
+		};
+		16040607234E569A0083F3C3 /* zooming */ = {
+			isa = PBXGroup;
+			children = (
+				166D1B04234EFF0F00C552E4 /* ZoomPopAnimator.swift */,
+				166D1B06234EFF5000C552E4 /* ZoomNavigatorController.swift */,
+			);
+			path = zooming;
+			sourceTree = "<group>";
+		};
+		1604060A234E59E90083F3C3 /* my */ = {
+			isa = PBXGroup;
+			children = (
+				16040618234E74FE0083F3C3 /* MyGroups_ViewController.swift */,
+				161B0E9E2349F8850081008B /* MyGroup_CollectionViewCell.swift */,
+				1604060C234E5A250083F3C3 /* MyGroupDetail_ViewController.swift */,
+			);
+			path = my;
+			sourceTree = "<group>";
+		};
+		1604060B234E59FB0083F3C3 /* global */ = {
+			isa = PBXGroup;
+			children = (
+				161B0EA4234A046C0081008B /* Group_ViewController.swift */,
+				161B0EA6234A05860081008B /* Group_CollectionViewCell.swift */,
+			);
+			path = global;
+			sourceTree = "<group>";
+		};
 		16112739234B2C1D0080FD54 /* 1.friend list */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,10 +420,8 @@
 		16AB0B95232F7E0E00E21B7F /* group */ = {
 			isa = PBXGroup;
 			children = (
-				161B0EA02349F8D90081008B /* MyGroup_ViewController.swift */,
-				161B0E9E2349F8850081008B /* MyGroup_CollectionViewCell.swift */,
-				161B0EA4234A046C0081008B /* Group_ViewController.swift */,
-				161B0EA6234A05860081008B /* Group_CollectionViewCell.swift */,
+				1604060B234E59FB0083F3C3 /* global */,
+				1604060A234E59E90083F3C3 /* my */,
 			);
 			path = group;
 			sourceTree = "<group>";
@@ -405,6 +465,7 @@
 		D4001F372327B7B50070829F /* vk1 */ = {
 			isa = PBXGroup;
 			children = (
+				160405FD234E38BB0083F3C3 /* transitions */,
 				16172B5E234CE55500D5A748 /* color system */,
 				161C113E23473FDC00A2EC9D /* layout */,
 				161C11372347210200A2EC9D /* helper */,
@@ -511,8 +572,8 @@
 				1666674E2347CA0B00FD2B86 /* Wall_Cell_tp6.swift in Sources */,
 				16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */,
 				166667E02348FA9B00FD2B86 /* FriendWall.swift in Sources */,
-				161B0EA12349F8D90081008B /* MyGroup_ViewController.swift in Sources */,
 				163CF9AC2333504A0087C6E2 /* BasePresenter.swift in Sources */,
+				16040619234E74FE0083F3C3 /* MyGroups_ViewController.swift in Sources */,
 				161C11402347401800A2EC9D /* CarouselFlowLayout.swift in Sources */,
 				163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */,
 				161C1136234718B000A2EC9D /* ImageCellConfigurator.swift in Sources */,
@@ -520,6 +581,7 @@
 				16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */,
 				1611273C234B2C8E0080FD54 /* FriendPost_ViewController.swift in Sources */,
 				D4001F4B2327B7DE0070829F /* LoginViewController.swift in Sources */,
+				166D1B07234EFF5000C552E4 /* ZoomNavigatorController.swift in Sources */,
 				166667502347CA1300FD2B86 /* Wall_Cell_tp7.swift in Sources */,
 				16200D212338ACCA00F02440 /* Friend_Controller.swift in Sources */,
 				166667522347CA1A00FD2B86 /* Wall_Cell_tp8.swift in Sources */,
@@ -530,8 +592,10 @@
 				161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */,
 				166667452347BFE100FD2B86 /* Wall_Cell_tp2.swift in Sources */,
 				166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */,
+				166D1B05234EFF0F00C552E4 /* ZoomPopAnimator.swift in Sources */,
 				16D64123234B920900AA0D0B /* Color+Extensions.swift in Sources */,
 				16200D0C2338934A00F02440 /* Photo.swift in Sources */,
+				1604060D234E5A250083F3C3 /* MyGroupDetail_ViewController.swift in Sources */,
 				16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */,
 				166667412347BB9900FD2B86 /* Wall_Controller.swift in Sources */,
 				16200D1D2338A41900F02440 /* UserActivityRegControl.swift in Sources */,
@@ -545,16 +609,20 @@
 				161B0EA9234A27780081008B /* Profile_TableViewController.swift in Sources */,
 				1666673D2347B8E900FD2B86 /* Wall_Cell_tp1.swift in Sources */,
 				16112742234B4D600080FD54 /* ColorThemeHelper.swift in Sources */,
+				160405FF234E39050083F3C3 /* NavForwardAnimator.swift in Sources */,
 				166667DA2348994100FD2B86 /* UIControls+Extensions.swift in Sources */,
 				16200D012333731D00F02440 /* DetailFriendPresenter.swift in Sources */,
+				16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */,
 				166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */,
 				16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */,
 				161B0EA5234A046C0081008B /* Group_ViewController.swift in Sources */,
 				166667682347E2C700FD2B86 /* Wall_CellProtocol.swift in Sources */,
 				166667DE2348F50A00FD2B86 /* CommonElementDesigner.swift in Sources */,
+				16040605234E39170083F3C3 /* NavCustomController.swift in Sources */,
 				16200D1F2338AB3300F02440 /* LettersSearchControl.swift in Sources */,
 				166667482347C9ED00FD2B86 /* Wall_Cell_tp3.swift in Sources */,
 				161B0E632349D27F0081008B /* WallLike_View.swift in Sources */,
+				16040601234E390A0083F3C3 /* NavBackAnimator.swift in Sources */,
 				D4001F392327B7B50070829F /* AppDelegate.swift in Sources */,
 				16200D1723389C9600F02440 /* Wall.swift in Sources */,
 				161B0EA7234A05860081008B /* Group_CollectionViewCell.swift in Sources */,

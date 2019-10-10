@@ -6,7 +6,8 @@ class FriendWall_Controller: UIViewController {
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
     
     var presenter = FriendWallPresenter()
-        
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         for i in 1...CommonElementDesigner.cellByCode.count {
@@ -26,19 +27,19 @@ class FriendWall_Controller: UIViewController {
 extension FriendWall_Controller {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           performSegue(withIdentifier: "FriendPostSegue", sender: indexPath)
-       }
+       performSegue(withIdentifier: "FriendPostSegue", sender: indexPath)
+    }
        
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        guard let indexPath = sender as? IndexPath else { return }
-       
+
        if segue.identifier == "FriendPostSegue",
         let dest = segue.destination as? FriendPost_ViewController {
         let data = presenter.getData(indexPath)
         //let friendWall = data as! FriendWall
         dest.friendWall = data
        }
-   }
+    }
 }
 
 

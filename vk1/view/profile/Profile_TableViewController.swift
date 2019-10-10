@@ -8,6 +8,9 @@ class Profile_TableViewController: UITableViewController {
         tableView?.backgroundColor = ColorThemeHelper.background
     }
     
+    @IBAction func onPressButton(_ sender: Any) {
+        
+    }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         CommonElementDesigner.headerBuilder(willDisplayHeaderView: view)
     }

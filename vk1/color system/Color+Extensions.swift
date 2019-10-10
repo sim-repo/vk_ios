@@ -9,6 +9,24 @@ class MyView_Background : UIView {
     }
 }
 
+class MyView_GradiendBackground : UIView {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        let topColor: UIColor = ColorThemeHelper.topBackground
+        let bottomColor: UIColor = ColorThemeHelper.bottomBackground
+        let layer = self.layer as! CAGradientLayer
+        layer.colors = [topColor, bottomColor].map{$0.cgColor}
+        layer.startPoint = CGPoint(x: 0.5, y: isDark ? 0.6: 0.7)
+        layer.endPoint = CGPoint (x: 0.5, y: 1)
+    }
+    
+    override class var layerClass: AnyClass {
+       get {
+           return CAGradientLayer.self
+       }
+   }
+}
+
 
 class MyButton_Secondary : UIButton {
     required init?(coder: NSCoder) {
@@ -16,7 +34,6 @@ class MyButton_Secondary : UIButton {
         setTitleColor(ColorThemeHelper.secondary, for: .normal)
     }
 }
-
 
 class MyButton_Adaptive : UIButton {
     required init?(coder: NSCoder) {

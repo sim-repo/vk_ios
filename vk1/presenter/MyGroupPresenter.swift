@@ -8,6 +8,10 @@ public class MyGroupPresenter: BasePresenter{
         groups = MyGroup.list()
     }
     
+    func getData(_ indexPath: IndexPath) -> MyGroup? {
+        return groups?[indexPath.row] 
+    }
+    
     func numberOfRowsInSection() -> Int {
         return groups.count
     }

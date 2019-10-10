@@ -13,9 +13,7 @@ class CommonElementDesigner {
                              "tp6": "Wall_Cell_tp6",
                              "tp7": "Wall_Cell_tp7",
                              "tp8": "Wall_Cell_tp8",
-                             "tp9": "Wall_Cell_tp9",]
-    
-    
+                             "tp9": "Wall_Cell_tp9"]
     
     
     static func headerTableBuilder(view: UIView, title: UILabel) {
@@ -73,6 +71,39 @@ class CommonElementDesigner {
         UITabBar.appearance().barTintColor = ColorThemeHelper.primary_soft_60
         UITabBar.appearance().unselectedItemTintColor = ColorThemeHelper.inactiveControls
         UITabBar.appearance().alpha = ColorThemeHelper.tabBarAlpha
+    }
+    
+    //temporary, delete after use
+    static func setupNavigationBarColor(navigationBar: UINavigationBar?){
+        let font = UIFont.systemFont(ofSize: 25)
+        let shadow = NSShadow()
+        shadow.shadowColor = ColorThemeHelper.background
+        shadow.shadowBlurRadius = 15
+
+        let attributes: [NSAttributedString.Key: Any] = [
+           .font: font,
+           .foregroundColor: ColorThemeHelper.titleOnPrimary,
+           .shadow: shadow
+        ]
+
+
+        //let attributes = [NSAttributedString.Key.foregroundColor:ColorThemeHelper.titleOnPrimary]
+        navigationBar?.titleTextAttributes = attributes
+
+        var colors = [UIColor]()
+        if (isDark) {
+           colors.append(ColorThemeHelper.background)
+           colors.append(ColorThemeHelper.primary)
+           colors.append(ColorThemeHelper.background)
+           navigationBar?.tintColor = ColorThemeHelper.secondary
+        } else {
+           colors.append(ColorThemeHelper.primary)
+           colors.append(ColorThemeHelper.background)
+           colors.append(ColorThemeHelper.primary)
+           navigationBar?.tintColor = ColorThemeHelper.onPrimary
+        }
+
+        navigationBar?.setGradientBackground(colors: colors)
     }
     
     static func setupNavigationBarColor(navigationController: UINavigationController?){

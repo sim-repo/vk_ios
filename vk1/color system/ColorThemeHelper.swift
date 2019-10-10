@@ -5,12 +5,14 @@ class ColorThemeHelper {
     static func setupDark() {
         isDark = true
         background = #colorLiteral(red: 0.005808433518, green: 0.00166301534, blue: 0.262986809, alpha: 1)
+        topBackground = tint(color: background, tint: 0)
+        bottomBackground = tint(color: background, tint: -220)
         onBackground = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let primary_color = #colorLiteral(red: 0.4392291903, green: 0.1222558096, blue: 0.9621943831, alpha: 1)
         let secondary_color =  #colorLiteral(red: 0, green: 0.9903071523, blue: 0.4053229094, alpha: 1)
         onPrimary = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         onSecondary = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        shadow = #colorLiteral(red: 0, green: 0.5730010867, blue: 0.556679666, alpha: 1)
+        shadow = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1) // #colorLiteral(red: 0, green: 0.5730010867, blue: 0.556679666, alpha: 1)
         inactiveControls = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         titleOnPrimary = #colorLiteral(red: 0, green: 0.9903071523, blue: 0.4053229094, alpha: 1)
         tabBarAlpha = 0.8
@@ -22,6 +24,8 @@ class ColorThemeHelper {
         secondary_r = 255*secondary_color.rgba.red
         secondary_g = 255*secondary_color.rgba.green
         secondary_b = 255*secondary_color.rgba.blue
+        
+       
         
         primary_contrast_30 = ColorThemeHelper.primary(tint: 30)
         primary_contrast_60 = ColorThemeHelper.primary(tint: 60)
@@ -46,12 +50,16 @@ class ColorThemeHelper {
     }
     
     
+    
+    
     static func setupLight() {
         isDark = false
         background = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        topBackground = tint(color: background, tint: 30)
+        bottomBackground = tint(color: background, tint: -70)
         onBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        let primary_color = #colorLiteral(red: 0.01966415159, green: 0.4033825994, blue: 0.6502324939, alpha: 1)
-        let secondary_color = #colorLiteral(red: 0.7069821954, green: 0.9474993348, blue: 0.01453028899, alpha: 1)
+        let primary_color = #colorLiteral(red: 0.1408204734, green: 0.6550927758, blue: 0.7994835973, alpha: 1)
+        let secondary_color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         onPrimary = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         onSecondary = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         shadow = #colorLiteral(red: 0.1490205228, green: 0.1489917934, blue: 0.1532951891, alpha: 1)
@@ -94,6 +102,8 @@ class ColorThemeHelper {
     
     
     static var background = UIColor.white
+    static var topBackground = UIColor.white
+    static var bottomBackground = UIColor.white
     static var onBackground = UIColor.black
     
     static var shadow = UIColor.white
@@ -134,7 +144,7 @@ class ColorThemeHelper {
 
     
     static let sectionHeaderAlpha: CGFloat = 0.95
-    static var tabBarAlpha: CGFloat = 0.9
+    static var tabBarAlpha: CGFloat = 1
     static var inactiveControls = #colorLiteral(red: 0.2562765479, green: 0.2563257515, blue: 0.256270051, alpha: 1)
     
     
@@ -156,6 +166,12 @@ class ColorThemeHelper {
       return  UIColor(displayP3Red: (ColorThemeHelper.secondary_r+tint)/255, green: (ColorThemeHelper.secondary_g+tint)/255, blue: (ColorThemeHelper.secondary_b+tint)/255, alpha: 1)
     }
     
+    static func tint(color: UIColor, tint: CGFloat) ->  UIColor {
+        let r = 255*color.rgba.red
+        let g = 255*color.rgba.green
+        let b = 255*color.rgba.blue
+        return  UIColor(displayP3Red: (r + tint)/255, green: (g + tint)/255, blue: (b + tint)/255, alpha: 1)
+    }
 }
 
 

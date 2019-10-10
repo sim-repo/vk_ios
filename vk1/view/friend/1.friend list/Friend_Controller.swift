@@ -12,12 +12,15 @@ class Friend_Controller: UIViewController {
     @IBOutlet weak var loupeLeadingXConstraint: NSLayoutConstraint!
     @IBOutlet weak var loupeCenterXConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchTextCenterDxConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchTextCenterXConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchTextWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchContainerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchContainerBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchTextFieldHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonSearchCancel: UIButton!
     var searchTextWidth: CGFloat = 0
     
@@ -206,17 +209,23 @@ extension Friend_Controller: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
         if lastContentOffset - 100 > scrollView.contentOffset.y {
-                   UIView.animate(withDuration: 0.2, animations: {
-                       self.searchContainerTopConstraint.isActive = false
-                       self.searchContainerBottomConstraint.isActive = true
-                       self.view.layoutIfNeeded()
-                   })
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.searchContainerTopConstraint.isActive = false
+                    self.searchContainerBottomConstraint.isActive = true
+                    self.searchTextFieldHeightConstraint.isActive = false
+                    self.searchContainerHeightConstraint.isActive = false
+                    self.searchView.alpha = 0
+                    self.view.layoutIfNeeded()
+                })
             
                } else if lastContentOffset + 100 < scrollView.contentOffset.y {
-                   UIView.animate(withDuration: 0.2, animations: {
-                       self.searchContainerTopConstraint.isActive = true
-                       self.searchContainerBottomConstraint.isActive = false
-                       self.view.layoutIfNeeded()
+                   UIView.animate(withDuration: 0.4, animations: {
+                        self.searchContainerTopConstraint.isActive = true
+                        self.searchContainerBottomConstraint.isActive = false
+                        self.searchContainerHeightConstraint.isActive = true
+                        self.searchTextFieldHeightConstraint.isActive = true
+                        self.searchView.alpha = 1
+                        self.view.layoutIfNeeded()
                    })
                }
     }
