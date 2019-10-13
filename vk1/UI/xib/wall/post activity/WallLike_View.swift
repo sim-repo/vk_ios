@@ -3,13 +3,13 @@ import UIKit
 class WallLike_View : UIView{
     
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var likeImageView: UserActivityRegControl!
+    @IBOutlet weak var likeImageView: PostImageView!
     @IBOutlet weak var likeCount: UILabel!
-    @IBOutlet weak var message: UserActivityRegControl!
+    @IBOutlet weak var message: PostImageView!
     @IBOutlet weak var messageCount: UILabel!
-    @IBOutlet weak var eye: UserActivityRegControl!
+    @IBOutlet weak var eye: PostImageView!
     @IBOutlet weak var eyeCount: UILabel!
-    @IBOutlet weak var share: UserActivityRegControl!
+    @IBOutlet weak var share: PostImageView!
     @IBOutlet weak var shareCount: UILabel!
     
 
@@ -29,7 +29,7 @@ class WallLike_View : UIView{
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        CommonElementDesigner.setupLikeControl(like: likeImageView, likeCount: likeCount, message: message, eye: eye, share: share, messageCount: messageCount, eyeCount: eyeCount, shareCount: shareCount)
+        UIControlThemeMgt.setupLikeControl(like: likeImageView, likeCount: likeCount, message: message, eye: eye, share: share, messageCount: messageCount, eyeCount: eyeCount, shareCount: shareCount)
         
  
 

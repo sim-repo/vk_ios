@@ -21,6 +21,6 @@ extension Wall_Cell_tp4: Wall_CellProtocol {
         self.likeView.messageCount.text = "\(wall.getMessageCount())"
         self.likeView.shareCount.text = "\(wall.getShareCount())"
         self.likeView.eyeCount.text = "\(wall.getEyeCount())"
-        CommonElementDesigner.collectionCellBuilder(cell: self, title: nil)
+        UIControlThemeMgt.setupCollectionCell(cell: self, title: nil)
     }
 }

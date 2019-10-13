@@ -7,11 +7,11 @@ class Friend {
     
     init(id: Int){
         self.id = id
-        var index = Int(arc4random_uniform(UInt32(DataGenerator.names.count)))
-        self.name = DataGenerator.names[index]
+        var index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.names.count)))
+        self.name = DataGeneratorHelper.names[index]
       
-        index = Int(arc4random_uniform(UInt32(DataGenerator.pictures.count)))
-        self.ava = DataGenerator.pictures[index]
+        index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.pictures.count)))
+        self.ava = DataGeneratorHelper.pictures[index]
     }
     
     public class func list()->[Friend] {

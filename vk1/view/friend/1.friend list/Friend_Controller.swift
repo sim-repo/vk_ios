@@ -31,7 +31,7 @@ class Friend_Controller: UIViewController {
         super.viewDidLoad()
         setupAlphabetSearchControl()
         setupSearchTextField()
-        CommonElementDesigner.setupNavigationBarColor(navigationController: navigationController)
+        UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
     }
     
     func setupAlphabetSearchControl(){
@@ -105,7 +105,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
         let label = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 20))
         label.text = presenter.sectionName(section: section)
         hview.addSubview(label)
-        CommonElementDesigner.headerTableBuilder(view: hview, title: label)
+        UIControlThemeMgt.setupTableHeader(view: hview, title: label)
         return hview
     }
     

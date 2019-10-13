@@ -31,7 +31,7 @@ import UIKit
             self.imageView.image = newValue
             imageView.contentMode = .scaleAspectFit
             
-            CommonElementDesigner.renderImage(imageView: imageView)
+            UIControlThemeMgt.renderImage(imageView: imageView)
         }
     }
     
@@ -102,7 +102,7 @@ import UIKit
         super .init(coder: aDecoder)
         self.contentMode = .scaleAspectFill
         if (self.drawOnPrimary != 0) {
-            backgroundColor = ColorThemeHelper.primary
+            backgroundColor = ColorSystemHelper.primary
         } else {
             backgroundColor = .clear
         }

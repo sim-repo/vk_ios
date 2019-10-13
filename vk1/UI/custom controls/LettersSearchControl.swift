@@ -79,7 +79,7 @@ public protocol AlphabetSearchViewControlProtocol : class {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         if (!isDark) {
-            backgroundColor = ColorThemeHelper.primary_contrast_30
+            backgroundColor = ColorSystemHelper.primary_contrast_30
             alpha = 0.8
         }
         self.setupView()
@@ -147,8 +147,8 @@ public protocol AlphabetSearchViewControlProtocol : class {
             //button.titleLabel?.font =  UIFont.boldSystemFont(ofSize: fontSize)
             button.titleLabel?.font = UIFont(name: "Courier New", size:fontSize)
             button.setTitle(String(ch), for: .normal)
-            button.setTitleColor(ColorThemeHelper.secondary, for: .normal)
-            button.setTitleColor(ColorThemeHelper.secondary, for: .selected)
+            button.setTitleColor(ColorSystemHelper.secondary, for: .normal)
+            button.setTitleColor(ColorSystemHelper.secondary, for: .selected)
             button.isEnabled = false
             self.buttons.append(button)
             subView.append(button)

@@ -9,8 +9,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        ColorThemeHelper.setupDark()
-        CommonElementDesigner.setupTabBarColor()
+        ColorSystemHelper.setupDark()
+        UIControlThemeMgt.setupTabBarColor()
         return true
     }
 

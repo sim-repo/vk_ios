@@ -5,7 +5,7 @@ class Video_ViewController: UIViewController {
     @IBOutlet weak var bkgView: MyView_GradiendBackground!
     override func viewDidLoad() {
         super.viewDidLoad()
-         CommonElementDesigner.setupNavigationBarColor(navigationController: navigationController)
+         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
         let recognizer = UIPanGestureRecognizer(target: self,
                                                              action: #selector(handleGesture(_:)))
         self.bkgView.addGestureRecognizer(recognizer)

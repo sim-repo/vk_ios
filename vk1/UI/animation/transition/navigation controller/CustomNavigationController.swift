@@ -1,10 +1,13 @@
 import UIKit
 
-class ZoomNavigatorController: UINavigationController, UINavigationControllerDelegate {
+class CustomNavigationController: UINavigationController, UINavigationControllerDelegate {
     
     
     let interactiveTransition = CustomInteractiveTransition()
-    let popAnimator = ZoomPopAnimator()
+    var pushAnimator: UIViewControllerAnimatedTransitioning?
+    var popAnimator: UIViewControllerAnimatedTransitioning?
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
@@ -19,7 +22,7 @@ class ZoomNavigatorController: UINavigationController, UINavigationControllerDel
         
         switch operation {
             case .push:
-                return popAnimator
+                return pushAnimator
             case .pop:
                 return popAnimator
             case .none:
@@ -27,5 +30,10 @@ class ZoomNavigatorController: UINavigationController, UINavigationControllerDel
             @unknown default:
                 fatalError()
         }
+    }
+    
+    func setup(pushAnimator: UIViewControllerAnimatedTransitioning, popAnimator: UIViewControllerAnimatedTransitioning){
+        self.pushAnimator = pushAnimator
+        self.popAnimator = popAnimator
     }
 }

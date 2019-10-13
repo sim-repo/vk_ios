@@ -9,7 +9,7 @@ public class BasePresenter {
     var filteredText: String?
     
     var numberOfSections: Int {
-        return sectionsOffset.count
+        return sectionsOffset.count > 0 ? sectionsOffset.count : 1
     }
     
     func initDataSource(){}

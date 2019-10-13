@@ -7,6 +7,6 @@ class Group_CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     func setup(){
-        CommonElementDesigner.collectionCellBuilder(cell: self, title: nameLabel)
+        UIControlThemeMgt.setupCollectionCell(cell: self, title: nameLabel)
     }
 }

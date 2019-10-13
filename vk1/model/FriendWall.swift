@@ -15,21 +15,21 @@ class FriendWall : WallProtocol{
     init(_ id: Int){
         self.id = id
         
-        var index = Int(arc4random_uniform(UInt32(DataGenerator.comments.count-1)))
-        self.title = DataGenerator.comments[index]
+        var index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.comments.count-1)))
+        self.title = DataGeneratorHelper.comments[index]
       
         
         let emojiCount = 1 + Int(arc4random_uniform(4))
         for _ in 0...emojiCount-1 {
-                index = Int(arc4random_uniform(UInt32(DataGenerator.emoji.count-1)))
-                self.title += DataGenerator.emoji[index]
+                index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.emoji.count-1)))
+                self.title += DataGeneratorHelper.emoji[index]
         }
         
         
         let picCount = 1 + Int(arc4random_uniform(8))
         for _ in 0...picCount-1 {
-            index = Int(arc4random_uniform(UInt32(DataGenerator.pictures.count-1)))
-            let pic = DataGenerator.pictures[index]
+            index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.pictures.count-1)))
+            let pic = DataGeneratorHelper.pictures[index]
             self.imageURLs.append(pic)
         }
         self.likeCount = Int(arc4random_uniform(100))

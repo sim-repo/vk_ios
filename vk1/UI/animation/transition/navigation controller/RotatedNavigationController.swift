@@ -1,6 +1,6 @@
 import UIKit
 
-class NavCustomController: UINavigationController, UINavigationControllerDelegate {
+class RotatedNavigationController: UINavigationController, UINavigationControllerDelegate {
     
     
     let interactiveTransition = CustomInteractiveTransition()
@@ -23,9 +23,9 @@ class NavCustomController: UINavigationController, UINavigationControllerDelegat
         
         switch operation {
             case .push:
-                return NavForwardAnimator()
+                return RotatedPushAnimator()
             case .pop:
-                return NavBackAnimator()
+                return RotatedPopAnimator()
             case .none:
                 return nil
             @unknown default:

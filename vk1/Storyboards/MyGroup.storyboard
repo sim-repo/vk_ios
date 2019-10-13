@@ -126,7 +126,7 @@
             </objects>
             <point key="canvasLocation" x="1410.144927536232" y="792.85714285714278"/>
         </scene>
-        <!--My Group Detail View Controller-->
+        <!--Details-->
         <scene sceneID="fWv-25-Edl">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Lui-jc-RTS" customClass="MyGroupDetail_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
@@ -166,7 +166,7 @@
                                         <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcm-iC-VBp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcm-iC-VBp" customClass="MyButton_Adaptive" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="370" y="96" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="LU4-Iy-9kq"/>
@@ -219,11 +219,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JMr-dX-aw0"/>
                     </view>
-                    <navigationItem key="navigationItem" id="E6P-2W-2Ar">
+                    <navigationItem key="navigationItem" title="Details" id="E6P-2W-2Ar">
                         <barButtonItem key="backBarButtonItem" title=" " id="gTy-Nc-KCl"/>
                     </navigationItem>
                     <connections>
                         <outlet property="bkgView" destination="wkF-4k-dYW" id="Uj3-zk-6aW"/>
+                        <outlet property="closeButton" destination="lcm-iC-VBp" id="tF9-Ga-sks"/>
                         <outlet property="descTextView" destination="4DQ-RL-aoU" id="Uo8-cd-BZp"/>
                         <outlet property="imageView" destination="zpR-LP-muB" id="1lK-ua-hfO"/>
                         <outlet property="image_mini_bottom_con" destination="2nH-nl-z9e" id="Li7-7b-tGT"/>
@@ -243,7 +244,7 @@
             </objects>
             <point key="canvasLocation" x="2621.739130434783" y="1123.6607142857142"/>
         </scene>
-        <!--Group View Controller-->
+        <!--Groups-->
         <scene sceneID="EkY-zO-Khy">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Gb6-ID-JfA" customClass="Group_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
@@ -342,7 +343,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xZz-D1-25Z"/>
                     </view>
-                    <navigationItem key="navigationItem" id="uc9-Bc-HCd"/>
+                    <navigationItem key="navigationItem" title="Groups" id="uc9-Bc-HCd">
+                        <barButtonItem key="backBarButtonItem" title=" " id="EbJ-YQ-3c0"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Keu-22-WuD" id="JsE-4u-nV9"/>
                         <outlet property="constraintSpaceX" destination="6BG-FH-ofw" id="ZFR-cM-MhY"/>
@@ -356,7 +359,7 @@
         <!--My Groups-->
         <scene sceneID="WA6-se-ebz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MgQ-0H-Zp7" customClass="ZoomNavigatorController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MgQ-0H-Zp7" customClass="CustomNavigationController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Groups" image="tb_polygon" id="jxU-dW-TE3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AEr-sJ-1yN">

@@ -259,6 +259,7 @@
                             <constraint firstItem="r6g-7A-cgt" firstAttribute="leading" secondItem="xPi-ex-CYf" secondAttribute="leading" id="vY2-X1-dRL"/>
                             <constraint firstAttribute="trailing" secondItem="6xS-Lr-ONF" secondAttribute="trailing" constant="20" id="zFy-X3-Kwe"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pmb-Xe-xLi"/>
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="BFd-SJ-7zb"/>
                     <connections>
@@ -273,7 +274,7 @@
         <!--Friends-->
         <scene sceneID="ujJ-GX-v9s">
             <objects>
-                <navigationController id="DxC-Oq-IxW" customClass="NavCustomController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="DxC-Oq-IxW" customClass="RotatedNavigationController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="tb_polygon" id="eAw-6t-DMI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vdQ-m8-Kx8">

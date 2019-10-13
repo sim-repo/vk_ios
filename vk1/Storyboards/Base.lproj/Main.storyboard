@@ -42,10 +42,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7f-Rz-N5Q">
-                                                        <rect key="frame" x="75.666666666666686" y="158" width="263" height="128"/>
+                                                        <rect key="frame" x="0.0" y="158" width="414" height="273"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-5T-uhg" customClass="LineEffect" customModule="vk1" customModuleProvider="target">
-                                                        <rect key="frame" x="57" y="294" width="300" height="200"/>
+                                                        <rect key="frame" x="57" y="439" width="300" height="200"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2AR-9J-EuO">
                                                                 <rect key="frame" x="60" y="39" width="180" height="122"/>
@@ -94,7 +94,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilg-bO-vc3" userLabel="BottomInset">
-                                                        <rect key="frame" x="182" y="502" width="50" height="316"/>
+                                                        <rect key="frame" x="182" y="647" width="50" height="171"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

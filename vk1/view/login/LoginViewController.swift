@@ -26,7 +26,9 @@ class LoginViewController: UIViewController {
         
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView.addGestureRecognizer(hideKeyboardGesture)
-        waitLoadingContainer = WaitIndicator2(frame: CGRect(x: view.frame.width/2-78, y: view.frame.height/3, width: 156, height: 100))
+        let w: CGFloat = 232.0
+        waitLoadingContainer = WaitIndicator2(frame: CGRect(x: wHalfScreen - w/2.0,
+                                                            y: view.frame.height/3, width: wScreen, height: 100))
         waitLoadingContainer.backgroundColor = UIColor.clear
         view.addSubview(waitLoadingContainer)
     }

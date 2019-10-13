@@ -1,9 +1,9 @@
 import UIKit
 
 
-class ImageCellConfigurator {
+class ImageCellConfigHelper {
     
-    static func configure(parentView: UIView, photoURLs: [String], imageViews: inout [UserActivityRegControl]){
+    static func configure(parentView: UIView, photoURLs: [String], imageViews: inout [PostImageView]){
         
         guard photoURLs.count > 0
             else { return }
@@ -57,10 +57,10 @@ class ImageCellConfigurator {
     }
     
     
-    static func fillView(_ parentView: UIView, _ imageViews: inout [UserActivityRegControl], _ id: Int, _ width: CGFloat, _ height: CGFloat, _ views: inout [String: Any], _ photo: String){
+    static func fillView(_ parentView: UIView, _ imageViews: inout [PostImageView], _ id: Int, _ width: CGFloat, _ height: CGFloat, _ views: inout [String: Any], _ photo: String){
         let view = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         view.translatesAutoresizingMaskIntoConstraints = false
-        let imageView = UserActivityRegControl(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        let imageView = PostImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         imageView.isUserInteractionEnabled = true
         imageView.image = UIImage(named: photo)
         view.addSubview(imageView)

@@ -1,19 +1,19 @@
 import UIKit
 
 
-enum UserActivityType {
+enum PostControlEnum {
     case like
     case share
     case comment
     case shake
 }
 
-class UserActivityRegControl: UIImageView {
+class PostImageView: UIImageView {
     
     private var activated = false
     var boundMetrics: UILabel?
     var color = UIColor(red: 0.919, green: 0.919, blue: 0.919, alpha: 1.000)
-    var userActivityType: UserActivityType?
+    var userActivityType: PostControlEnum?
     
     lazy var tapGestureRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer(target: self,

@@ -25,7 +25,10 @@ class FriendPost_ViewController: UIViewController{
                
                for (idx, image) in friendWall.imageURLs.enumerated() {
                    let newImageView = UIImageView(image: UIImage(named: image))
-                   let dx = prototypeImageView.frame.size.width * CGFloat(idx) + imageContainerView.frame.width/2 - prototypeImageView.frame.size.width/2
+                
+                let half = prototypeImageView.frame.size.width/2
+                
+                let dx = prototypeImageView.frame.size.width * CGFloat(idx) + wScreen / 2.0 - half
                    newImageView.frame = CGRect(x: dx, y: prototypeImageView.frame.origin.y, width: imageContainerView.frame.width, height: imageContainerView.frame.height)
                    newImageView.contentMode = .scaleAspectFit
                 
@@ -51,7 +54,6 @@ class FriendPost_ViewController: UIViewController{
                 let distance = min(abs(self.imageContainerView.frame.midX - abs(image.frame.midX + sign * self.constainerContentSize)), maxDistance)
                 let ratio = (maxDistance - distance)/maxDistance
                 let scale = ratio * (1 - self.standardItemScale) + self.standardItemScale
-
                 image.transform = CGAffineTransform(translationX:dx , y: 0).concatenating(CGAffineTransform(scaleX: 1, y: scale))
                 image.alpha = scale
             })
@@ -65,8 +67,16 @@ class FriendPost_ViewController: UIViewController{
             case .changed:
                 let currTouch = recognizer.translation(in: self.imageContainerView)
            
-                swipeAnimator?.fractionComplete =  -1 * (currTouch.x / 500)
-                
+                var sign: CGFloat = 1
+                switch recognizer.direction {
+                    case .right:
+                        sign = 1
+                    case .left:
+                        sign = -1
+                    default:
+                        return
+                }
+                swipeAnimator?.fractionComplete =  sign * (currTouch.x / 500)
                 if isNewSwipe {
                     if prevTouch == nil {
                         prevTouch = currTouch
@@ -74,6 +84,7 @@ class FriendPost_ViewController: UIViewController{
                     }
                     if prevTouch.x > currTouch.x {
                         guard currNumTouch < maxTouches - 1 else {return}
+                        
                         currNumTouch += 1
                         isNewSwipe = false
                         initSwipeAnimator(dx: -(self.constainerContentSize * CGFloat(self.currNumTouch)), sign: -1)
@@ -91,10 +102,10 @@ class FriendPost_ViewController: UIViewController{
                 isNewSwipe = true
                 swipeAnimator?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 
-            
             default: return
             
         }
     }
-    
 }
+
+

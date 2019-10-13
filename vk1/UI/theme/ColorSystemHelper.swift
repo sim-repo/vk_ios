@@ -1,6 +1,6 @@
 import UIKit
 
-class ColorThemeHelper {
+class ColorSystemHelper {
     
     static func setupDark() {
         isDark = true
@@ -27,25 +27,25 @@ class ColorThemeHelper {
         
        
         
-        primary_contrast_30 = ColorThemeHelper.primary(tint: 30)
-        primary_contrast_60 = ColorThemeHelper.primary(tint: 60)
-        primary_contrast_90 = ColorThemeHelper.primary(tint: 90)
-        primary_contrast_120 = ColorThemeHelper.primary(tint: 120)
-        primary = ColorThemeHelper.primary(alpha: 1)
-        primary_soft_30 = ColorThemeHelper.primary(tint: -30)
-        primary_soft_60 = ColorThemeHelper.primary(tint: -60)
-        primary_soft_90 = ColorThemeHelper.primary(tint: -90)
-        primary_soft_120 = ColorThemeHelper.primary(tint: -120)
+        primary_contrast_30 = ColorSystemHelper.primary(tint: 30)
+        primary_contrast_60 = ColorSystemHelper.primary(tint: 60)
+        primary_contrast_90 = ColorSystemHelper.primary(tint: 90)
+        primary_contrast_120 = ColorSystemHelper.primary(tint: 120)
+        primary = ColorSystemHelper.primary(alpha: 1)
+        primary_soft_30 = ColorSystemHelper.primary(tint: -30)
+        primary_soft_60 = ColorSystemHelper.primary(tint: -60)
+        primary_soft_90 = ColorSystemHelper.primary(tint: -90)
+        primary_soft_120 = ColorSystemHelper.primary(tint: -120)
         
-        secondary_constrast_30 = ColorThemeHelper.secondary(tint: 30)
-        secondary_constrast_60 = ColorThemeHelper.secondary(tint: 60)
-        secondary_constrast_90 = ColorThemeHelper.secondary(tint: 90)
-        secondary_constrast_120 = ColorThemeHelper.secondary(tint: 120)
-        secondary = ColorThemeHelper.secondary(alpha: 1)
-        secondary_soft_30 = ColorThemeHelper.secondary(tint: -30)
-        secondary_soft_60 = ColorThemeHelper.secondary(tint: -60)
-        secondary_soft_90 = ColorThemeHelper.secondary(tint: -90)
-        secondary_soft_120 = ColorThemeHelper.secondary(tint: -120)
+        secondary_constrast_30 = ColorSystemHelper.secondary(tint: 30)
+        secondary_constrast_60 = ColorSystemHelper.secondary(tint: 60)
+        secondary_constrast_90 = ColorSystemHelper.secondary(tint: 90)
+        secondary_constrast_120 = ColorSystemHelper.secondary(tint: 120)
+        secondary = ColorSystemHelper.secondary(alpha: 1)
+        secondary_soft_30 = ColorSystemHelper.secondary(tint: -30)
+        secondary_soft_60 = ColorSystemHelper.secondary(tint: -60)
+        secondary_soft_90 = ColorSystemHelper.secondary(tint: -90)
+        secondary_soft_120 = ColorSystemHelper.secondary(tint: -120)
  
     }
     
@@ -75,25 +75,25 @@ class ColorThemeHelper {
         secondary_g = 255*secondary_color.rgba.green
         secondary_b = 255*secondary_color.rgba.blue
 
-        primary_contrast_30 = ColorThemeHelper.primary(tint: -30)
-        primary_contrast_60 = ColorThemeHelper.primary(tint: -60)
-        primary_contrast_90 = ColorThemeHelper.primary(tint: -90)
-        primary_contrast_120 = ColorThemeHelper.primary(tint: -120)
-        primary = ColorThemeHelper.primary(alpha: 1)
-        primary_soft_30 = ColorThemeHelper.primary(tint: 30)
-        primary_soft_60 = ColorThemeHelper.primary(tint: 60)
-        primary_soft_90 = ColorThemeHelper.primary(tint: 90)
-        primary_soft_120 = ColorThemeHelper.primary(tint: 120)
+        primary_contrast_30 = ColorSystemHelper.primary(tint: -30)
+        primary_contrast_60 = ColorSystemHelper.primary(tint: -60)
+        primary_contrast_90 = ColorSystemHelper.primary(tint: -90)
+        primary_contrast_120 = ColorSystemHelper.primary(tint: -120)
+        primary = ColorSystemHelper.primary(alpha: 1)
+        primary_soft_30 = ColorSystemHelper.primary(tint: 30)
+        primary_soft_60 = ColorSystemHelper.primary(tint: 60)
+        primary_soft_90 = ColorSystemHelper.primary(tint: 90)
+        primary_soft_120 = ColorSystemHelper.primary(tint: 120)
         
-        secondary_constrast_30 = ColorThemeHelper.secondary(tint: -30)
-        secondary_constrast_60 = ColorThemeHelper.secondary(tint: -60)
-        secondary_constrast_90 = ColorThemeHelper.secondary(tint: -90)
-        secondary_constrast_120 = ColorThemeHelper.secondary(tint: -120)
-        secondary = ColorThemeHelper.secondary(alpha: 1)
-        secondary_soft_30 = ColorThemeHelper.secondary(tint: 30)
-        secondary_soft_60 = ColorThemeHelper.secondary(tint: 60)
-        secondary_soft_90 = ColorThemeHelper.secondary(tint: 90)
-        secondary_soft_120 = ColorThemeHelper.secondary(tint: 120)
+        secondary_constrast_30 = ColorSystemHelper.secondary(tint: -30)
+        secondary_constrast_60 = ColorSystemHelper.secondary(tint: -60)
+        secondary_constrast_90 = ColorSystemHelper.secondary(tint: -90)
+        secondary_constrast_120 = ColorSystemHelper.secondary(tint: -120)
+        secondary = ColorSystemHelper.secondary(alpha: 1)
+        secondary_soft_30 = ColorSystemHelper.secondary(tint: 30)
+        secondary_soft_60 = ColorSystemHelper.secondary(tint: 60)
+        secondary_soft_90 = ColorSystemHelper.secondary(tint: 90)
+        secondary_soft_120 = ColorSystemHelper.secondary(tint: 120)
         
         
     }
@@ -120,27 +120,27 @@ class ColorThemeHelper {
     static var titleOnPrimary = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) // #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     
     
-    static var primary_contrast_30 = ColorThemeHelper.primary(tint: 30)
-    static var primary_contrast_60 = ColorThemeHelper.primary(tint: 60)
-    static var primary_contrast_90 = ColorThemeHelper.primary(tint: 90)
-    static var primary_contrast_120 = ColorThemeHelper.primary(tint: 120)
-    static var primary = ColorThemeHelper.primary(alpha: 1)
-    static var primary_soft_30 = ColorThemeHelper.primary(tint: -30)
-    static var primary_soft_60 = ColorThemeHelper.primary(tint: -60)
-    static var primary_soft_90 = ColorThemeHelper.primary(tint: -90)
-    static var primary_soft_120 = ColorThemeHelper.primary(tint: -120)
+    static var primary_contrast_30 = ColorSystemHelper.primary(tint: 30)
+    static var primary_contrast_60 = ColorSystemHelper.primary(tint: 60)
+    static var primary_contrast_90 = ColorSystemHelper.primary(tint: 90)
+    static var primary_contrast_120 = ColorSystemHelper.primary(tint: 120)
+    static var primary = ColorSystemHelper.primary(alpha: 1)
+    static var primary_soft_30 = ColorSystemHelper.primary(tint: -30)
+    static var primary_soft_60 = ColorSystemHelper.primary(tint: -60)
+    static var primary_soft_90 = ColorSystemHelper.primary(tint: -90)
+    static var primary_soft_120 = ColorSystemHelper.primary(tint: -120)
     
     static var onSecondary = UIColor.black
     
-    static var secondary_constrast_30 = ColorThemeHelper.secondary(tint: 30)
-    static var secondary_constrast_60 = ColorThemeHelper.secondary(tint: 60)
-    static var secondary_constrast_90 = ColorThemeHelper.secondary(tint: 90)
-    static var secondary_constrast_120 = ColorThemeHelper.secondary(tint: 120)
-    static var secondary = ColorThemeHelper.secondary(alpha: 1)
-    static var secondary_soft_30 = ColorThemeHelper.secondary(tint: 30)
-    static var secondary_soft_60 = ColorThemeHelper.secondary(tint: 60)
-    static var secondary_soft_90 = ColorThemeHelper.secondary(tint: 90)
-    static var secondary_soft_120 = ColorThemeHelper.secondary(tint: 120)
+    static var secondary_constrast_30 = ColorSystemHelper.secondary(tint: 30)
+    static var secondary_constrast_60 = ColorSystemHelper.secondary(tint: 60)
+    static var secondary_constrast_90 = ColorSystemHelper.secondary(tint: 90)
+    static var secondary_constrast_120 = ColorSystemHelper.secondary(tint: 120)
+    static var secondary = ColorSystemHelper.secondary(alpha: 1)
+    static var secondary_soft_30 = ColorSystemHelper.secondary(tint: 30)
+    static var secondary_soft_60 = ColorSystemHelper.secondary(tint: 60)
+    static var secondary_soft_90 = ColorSystemHelper.secondary(tint: 90)
+    static var secondary_soft_120 = ColorSystemHelper.secondary(tint: 120)
 
     
     static let sectionHeaderAlpha: CGFloat = 0.95
@@ -150,20 +150,20 @@ class ColorThemeHelper {
     
     
     static func primary(alpha: CGFloat) ->  UIColor {
-        return  UIColor(displayP3Red: ColorThemeHelper.primary_r/255, green: ColorThemeHelper.primary_g/255, blue: ColorThemeHelper.primary_b/255, alpha: alpha)
+        return  UIColor(displayP3Red: ColorSystemHelper.primary_r/255, green: ColorSystemHelper.primary_g/255, blue: ColorSystemHelper.primary_b/255, alpha: alpha)
     }
     
     static func primary(tint: CGFloat) ->  UIColor {
-        return  UIColor(displayP3Red: (ColorThemeHelper.primary_r+tint)/255, green: (ColorThemeHelper.primary_g+tint)/255, blue: (ColorThemeHelper.primary_b+tint)/255, alpha: 1)
+        return  UIColor(displayP3Red: (ColorSystemHelper.primary_r+tint)/255, green: (ColorSystemHelper.primary_g+tint)/255, blue: (ColorSystemHelper.primary_b+tint)/255, alpha: 1)
     }
   
     
     static func secondary(alpha: CGFloat) ->  UIColor {
-          return  UIColor(displayP3Red: ColorThemeHelper.secondary_r/255, green: ColorThemeHelper.secondary_g/255, blue: ColorThemeHelper.secondary_b/255, alpha: alpha)
+          return  UIColor(displayP3Red: ColorSystemHelper.secondary_r/255, green: ColorSystemHelper.secondary_g/255, blue: ColorSystemHelper.secondary_b/255, alpha: alpha)
       }
       
     static func secondary(tint: CGFloat) ->  UIColor {
-      return  UIColor(displayP3Red: (ColorThemeHelper.secondary_r+tint)/255, green: (ColorThemeHelper.secondary_g+tint)/255, blue: (ColorThemeHelper.secondary_b+tint)/255, alpha: 1)
+      return  UIColor(displayP3Red: (ColorSystemHelper.secondary_r+tint)/255, green: (ColorSystemHelper.secondary_g+tint)/255, blue: (ColorSystemHelper.secondary_b+tint)/255, alpha: 1)
     }
     
     static func tint(color: UIColor, tint: CGFloat) ->  UIColor {

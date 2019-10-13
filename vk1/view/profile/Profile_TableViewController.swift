@@ -4,8 +4,8 @@ class Profile_TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CommonElementDesigner.setupNavigationBarColor(navigationController: navigationController)
-        tableView?.backgroundColor = ColorThemeHelper.background
+        UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
+        tableView?.backgroundColor = ColorSystemHelper.background
     }
     
     @IBAction func onPressButton(_ sender: Any) {
@@ -17,7 +17,7 @@ class Profile_TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        CommonElementDesigner.headerBuilder(willDisplayHeaderView: view)
+        UIControlThemeMgt.setupTableHeader(willDisplayHeaderView: view)
     }
     
     
