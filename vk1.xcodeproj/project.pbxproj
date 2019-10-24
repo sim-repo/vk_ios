@@ -87,6 +87,7 @@
 		D4001F3E2327B7B50070829F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4001F3C2327B7B50070829F /* Main.storyboard */; };
 		D4001F432327B7B60070829F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4001F412327B7B60070829F /* LaunchScreen.storyboard */; };
 		D4001F4B2327B7DE0070829F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4001F4A2327B7DE0070829F /* LoginViewController.swift */; };
+		D41BDF3323618D3F00A4DF02 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41BDF3223618D3F00A4DF02 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,6 +173,7 @@
 		D4001F422327B7B60070829F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4001F442327B7B60070829F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4001F4A2327B7DE0070829F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D41BDF3223618D3F00A4DF02 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,6 +526,7 @@
 		D4001F372327B7B50070829F /* vk1 */ = {
 			isa = PBXGroup;
 			children = (
+				D41BDF3023618CF700A4DF02 /* service */,
 				16FF6FD423520471001C33CF /* UI */,
 				161C11372347210200A2EC9D /* helper */,
 				163CF9A823334D9B0087C6E2 /* presenter */,
@@ -535,6 +538,22 @@
 				161C11452347592300A2EC9D /* Assets.xcassets */,
 			);
 			path = vk1;
+			sourceTree = "<group>";
+		};
+		D41BDF3023618CF700A4DF02 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				D41BDF3123618D0E00A4DF02 /* network */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		D41BDF3123618D0E00A4DF02 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				D41BDF3223618D3F00A4DF02 /* NetworkManager.swift */,
+			);
+			path = network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -668,6 +687,7 @@
 				16200D012333731D00F02440 /* DetailFriendPresenter.swift in Sources */,
 				16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */,
 				166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */,
+				D41BDF3323618D3F00A4DF02 /* NetworkManager.swift in Sources */,
 				16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */,
 				161B0EA5234A046C0081008B /* Group_ViewController.swift in Sources */,
 				166D1B0C234F6E3900C552E4 /* Video_ViewController.swift in Sources */,
