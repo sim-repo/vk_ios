@@ -5,15 +5,7 @@ class UIControlThemeMgt {
     
     static let likeControlAlpha: CGFloat = 1
     
-    static var cellByCode = ["tp1": "Wall_Cell_tp1",
-                             "tp2": "Wall_Cell_tp2",
-                             "tp3": "Wall_Cell_tp3",
-                             "tp4": "Wall_Cell_tp4",
-                             "tp5": "Wall_Cell_tp5",
-                             "tp6": "Wall_Cell_tp6",
-                             "tp7": "Wall_Cell_tp7",
-                             "tp8": "Wall_Cell_tp8",
-                             "tp9": "Wall_Cell_tp9"]
+
     
     
     static func setupTableHeader(view: UIView, title: UILabel) {

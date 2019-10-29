@@ -1,7 +1,43 @@
 import UIKit
+import Kingfisher
 
+class WallCellConfigurator {
+    
+    static var wallTitleHeight: [Int:CGFloat] = [:]
+    
+    static func getTitleHeight(cellIdx: Int, title: UITextView) -> CGFloat? {
+        var height = wallTitleHeight[cellIdx]
+        if height == nil {
+            let numLines = min((title.contentSize.height / title.font!.lineHeight), 3)
+            height = cellTitleHeight * numLines
+            wallTitleHeight[cellIdx] = height
+            return height
+        } else {
+            return height
+        }
+        return nil
+    }
+    
+    static func setupCollectionCell(cell: Wall_CellProtocol, wall: WallProtocol) {
+        cell.getTitle().text = wall.getTitle()
+        cell.getTitle().textContainer.lineBreakMode = .byTruncatingTail
+        let URLs = wall.getImageURLs()
+        let images = cell.getImagesView()
+        for (idx, url) in URLs.enumerated() {
+            images[idx].kf.setImage(with: url)
+        }
+        cell.getLikeView().likeCount.text = "\(wall.getLikeCount())"
+        cell.getLikeView().messageCount.text = "\(wall.getMessageCount())"
+        cell.getLikeView().shareCount.text = "\(wall.getShareCount())"
+        cell.getLikeView().eyeCount.text = "\(wall.getEyeCount())"
+        
+        if let height = getTitleHeight(cellIdx: cell.getIndexRow(), title: cell.getTitle()) {
+            cell.getConstraintTitleHeight().constant = height
+        }
+    }
 
-class ImageCellConfigHelper {
+    
+    //MARK: Dynamic Setup Image Plan for Cell
     
     static func configure(parentView: UIView, photoURLs: [String], imageViews: inout [PostImageView]){
         

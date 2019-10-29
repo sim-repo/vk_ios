@@ -1,10 +1,12 @@
-import Foundation
+import UIKit
+import SwiftyJSON
 
-class FriendWall : WallProtocol{
+
+class FriendWall : WallProtocol, DecodableProtocol, PlainModelProtocol {
 
     var id: Int!
-    var postTypeCode: String
-    var imageURLs: [String] = []
+    var postTypeCode: String!
+    var imageURLs: [URL] = []
     var date: Date!
     var title: String!
     var likeCount = 0
@@ -12,81 +14,67 @@ class FriendWall : WallProtocol{
     var messageCount = 0
     var shareCount = 0
     
-    init(_ id: Int){
-        self.id = id
-        
-        var index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.comments.count-1)))
-        self.title = DataGeneratorHelper.comments[index]
-      
-        
-        let emojiCount = 1 + Int(arc4random_uniform(4))
-        for _ in 0...emojiCount-1 {
-                index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.emoji.count-1)))
-                self.title += DataGeneratorHelper.emoji[index]
-        }
-        
-        
-        let picCount = 1 + Int(arc4random_uniform(8))
-        for _ in 0...picCount-1 {
-            index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.pictures.count-1)))
-            let pic = DataGeneratorHelper.pictures[index]
-            self.imageURLs.append(pic)
-        }
-        self.likeCount = Int(arc4random_uniform(100))
-        self.viewCount = Int(arc4random_uniform(100))
-        self.messageCount = Int(arc4random_uniform(100))
-        self.shareCount = Int(arc4random_uniform(100))
-        self.date = Date()
-        
-        switch imageURLs.count {
-            case 1: postTypeCode = "tp1"
-            case 2: postTypeCode = "tp2"
-            case 3: postTypeCode = "tp3"
-            case 4: postTypeCode = "tp4"
-            case 5: postTypeCode = "tp5"
-            case 6: postTypeCode = "tp6"
-            case 7: postTypeCode = "tp7"
-            case 8: postTypeCode = "tp8"
-            case 9: postTypeCode = "tp9"
-            default:
-                postTypeCode = "tp9"
-        }
+    required init(){}
+
+    func getId()->Int{
+       return id
     }
-    
-    func getImageURLs() -> [String] {
-        return imageURLs
+
+    func setup(json: JSON?) {
+        if let json = json {
+           id = json["id"].intValue
+           print(json)
+           //TODO:
+           date = Date()
+           title = json["text"].stringValue
+           viewCount = json["views"]["count"].intValue
+           likeCount = json["likes"]["count"].intValue
+           messageCount = json["comments"]["count"].intValue
+           shareCount = json["reposts"]["count"].intValue
+           
+           let attachmentsWithPhoto = json["attachments"].arrayValue.filter({ (json) -> Bool in
+               json["type"].stringValue == "photo"
+           })
+           
+           postTypeCode = getImagePlanCode(imageCount: attachmentsWithPhoto.count)
+           
+         
+           if let attachments = json["attachments"].array {
+               for element in attachments {
+                   let mPhotos = element["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
+                       json["type"].stringValue == "q"
+                   })
+                   for photo in mPhotos {
+                       if let url = URL(string: photo["url"].stringValue) {
+                           imageURLs.append(url)
+                       }
+                   }
+               }
+           }
+       }
     }
-    
+
+    func getImageURLs() -> [URL] {
+       return imageURLs
+    }
+
     func getTitle() -> String? {
-        return title
+       return title
     }
-    
+
     func getLikeCount() -> Int {
-        return likeCount
+          return likeCount
     }
-    
+
     func getMessageCount()->Int {
-        return messageCount
+         return messageCount
     }
-    
-    
+     
     func getShareCount()->Int {
-        return shareCount
+     return shareCount
     }
-    
+
     func getEyeCount()->Int {
-        return viewCount
-    }
-    
-    
-    
-    public class func list()->[FriendWall] {
-        var res: [FriendWall] = []
-        for i in 0...100 {
-            let post = FriendWall(i)
-            res.append(post)
-        }
-        
-        return res
+     return viewCount
     }
 }

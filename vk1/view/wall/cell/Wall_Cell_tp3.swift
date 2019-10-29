@@ -1,4 +1,6 @@
 import UIKit
+import Kingfisher
+
 
 class Wall_Cell_tp3: UICollectionViewCell {
     @IBOutlet weak var title: UITextView!
@@ -6,19 +8,35 @@ class Wall_Cell_tp3: UICollectionViewCell {
     @IBOutlet weak var imageView2: UIImageView!
     @IBOutlet weak var imageView3: UIImageView!
     @IBOutlet weak var likeView: WallLike_View!
+    @IBOutlet weak var conHeightTitle: NSLayoutConstraint!
+    var indexRow: Int = 0
 }
 
 extension Wall_Cell_tp3: Wall_CellProtocol {
-    func setup(_ wall: WallProtocol) {
-        let imageURLs = wall.getImageURLs()
-        title.text = wall.getTitle()
-        self.imageView1.image = UIImage(named: imageURLs[0])
-        self.imageView2.image = UIImage(named: imageURLs[1])
-        self.imageView3.image = UIImage(named: imageURLs[2])
-        self.likeView.likeCount.text = "\(wall.getLikeCount())"
-        self.likeView.messageCount.text = "\(wall.getMessageCount())"
-        self.likeView.shareCount.text = "\(wall.getShareCount())"
-        self.likeView.eyeCount.text = "\(wall.getEyeCount())"
-        UIControlThemeMgt.setupCollectionCell(cell: self, title: nil)
+    
+    func setup(_ wall: WallProtocol, indexRow: Int) {
+        self.indexRow = indexRow
+        WallCellConfigurator.setupCollectionCell(cell: self, wall: wall)
+        layoutIfNeeded()
+    }
+    
+    func getTitle() -> UITextView {
+        return title
+    }
+       
+    func getImagesView() -> [UIImageView] {
+       return [imageView1, imageView2, imageView3]
+    }
+
+    func getLikeView() -> WallLike_View {
+       return likeView
+    }
+
+    func getConstraintTitleHeight() -> NSLayoutConstraint {
+       return conHeightTitle
+    }
+
+    func getIndexRow() -> Int {
+       return indexRow
     }
 }

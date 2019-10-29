@@ -34,13 +34,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klf-nZ-NfF" userLabel="ImageView">
                                 <rect key="frame" x="4" y="30" width="618" height="540"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eNy-VO-Niw">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eNy-VO-Niw">
                                         <rect key="frame" x="0.0" y="0.0" width="305" height="162"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FcK-PF-ueO">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FcK-PF-ueO">
                                         <rect key="frame" x="313" y="0.0" width="305" height="162"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqF-EM-a7K">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqF-EM-a7K">
                                         <rect key="frame" x="0.0" y="170" width="618" height="370"/>
                                     </imageView>
                                 </subviews>
@@ -92,6 +92,7 @@
             </collectionViewCellContentView>
             <size key="customSize" width="628" height="555"/>
             <connections>
+                <outlet property="conHeightTitle" destination="ld2-4F-ezm" id="3WY-Mt-UPR"/>
                 <outlet property="imageView1" destination="eNy-VO-Niw" id="PCN-Ja-MQa"/>
                 <outlet property="imageView2" destination="FcK-PF-ueO" id="l4S-Ej-AsZ"/>
                 <outlet property="imageView3" destination="bqF-EM-a7K" id="PvK-ie-Kyc"/>

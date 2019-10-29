@@ -48,11 +48,26 @@ func renderImage(imageView: UIImageView, color: UIColor) {
    }
 }
 
-//func getRenderedImage(image: UIImage) -> UIImage {
-//    let tintableImage = image.withRenderingMode(.alwaysTemplate)
-//    tintableImage.tin
-//       imageView.image = tintableImage
-//       imageView.tintColor = ColorSystemHelper.primary
-//
-//}
+func UI_THREAD(_ block: @escaping (() -> Void)) {
+    DispatchQueue.main.async(execute: block)
+}
 
+
+func BKG_THREAD(_ block: @escaping (() -> Void)) {
+    DispatchQueue.global(qos: .background).async(execute: block)
+}
+
+
+func isRowPresentInTableView(indexPath: IndexPath, tableView: UITableView) -> Bool{
+    if indexPath.section < tableView.numberOfSections{
+        if indexPath.row < tableView.numberOfRows(inSection: indexPath.section){
+            return true
+        }
+    }
+
+    return false
+}
+
+func catchError(){
+    fatalError()
+}

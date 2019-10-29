@@ -2,7 +2,7 @@ import UIKit
 
 class Friend_Controller: UIViewController {
 
-    var presenter = FriendPresenter()
+    var presenter: SectionedPresenterProtocol!
     
     @IBOutlet weak var lettersSearchControl: LettersSearchControl!
     @IBOutlet weak var tableView: UITableView!
@@ -26,20 +26,25 @@ class Friend_Controller: UIViewController {
     
     var lastContentOffset: CGFloat = 0
 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupPresenter()
         setupAlphabetSearchControl()
         setupSearchTextField()
         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
     }
     
-    func setupAlphabetSearchControl(){
+    private func setupPresenter(){
+        presenter = PresenterFactory.shared.getSectioned(vc: self)
+    }
+    
+    private func setupAlphabetSearchControl(){
         lettersSearchControl.delegate = self
         lettersSearchControl.updateControl(with: presenter.getGroupingProperties())
     }
     
-    func setupSearchTextField(){
+    private func setupSearchTextField(){
         searchTextField.layer.cornerRadius = 0
         searchTextField.layer.borderWidth = 1.0
         searchTextField.delegate = self
@@ -56,11 +61,6 @@ class Friend_Controller: UIViewController {
         tableView.reloadData()
     }
     
-    public func refreshDataSource(){
-        presenter.refreshDataSource(){ [unowned self] (names) in
-            self.lettersSearchControl.updateControl(with: names)
-        }
-    }
     
     @IBAction func pressButtonSearchCancel(_ sender: Any) {
         searchTextReset()
@@ -74,29 +74,31 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
         return presenter.numberOfSections
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfRowsInSection(section: section)
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! Friend_TableCell
         
         guard let data = presenter.getData(indexPath: indexPath)
-            else {
-                return UITableViewCell()
-        }
-        
+           else {
+               return UITableViewCell()
+           }
+       
         let friend = data as! Friend
-        
-        cell.name?.text = friend.name
-        cell.avaImage?.image = UIImage(named: friend.ava)
+        cell.setup(friend: friend)
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "FriendDetailSegue", sender: indexPath)
     }
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let hview = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 20))
@@ -114,12 +116,18 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
         return presenter.sectionName(section: section)
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let presenter = presenter as? FriendPresenter
+               else {
+                   //TODO: throw err
+                   return
+               }
         if segue.identifier == "FriendDetailSegue" {
             if let dest = segue.destination as? FriendWall_Controller,
                 let index = sender as? IndexPath {
-                guard let friend = presenter.getFriend(index)
-                    else {return}
+                guard let friend = presenter.getData(indexPath: index) as? Friend
+                    else { return }
                 dest.presenter.setFriend(friend: friend)
             }
         }
@@ -230,7 +238,32 @@ extension Friend_Controller: UIScrollViewDelegate {
                }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
-
     }
 }
+
+
+extension Friend_Controller: ViewProtocolDelegate{
+     
+    func className() -> String {
+         return String(describing: Friend_Controller.self)
+     }
+    
+    public func refreshDataSource(){
+        self.presenter.refreshDataSource(){ [weak self] (names) in
+            self?.lettersSearchControl.updateControl(with: names)
+            self?.tableView.reloadData()
+        }
+    }
+    
+    func optimReloadCell(indexPath: IndexPath) {
+        
+        if isRowPresentInTableView(indexPath: indexPath, tableView: tableView) {
+            tableView.beginUpdates()
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates();
+        }
+    }
+}
+
+
+

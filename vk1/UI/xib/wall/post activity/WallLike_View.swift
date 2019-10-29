@@ -30,9 +30,5 @@ class WallLike_View : UIView{
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         UIControlThemeMgt.setupLikeControl(like: likeImageView, likeCount: likeCount, message: message, eye: eye, share: share, messageCount: messageCount, eyeCount: eyeCount, shareCount: shareCount)
-        
- 
-
     }
-    
 }

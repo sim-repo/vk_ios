@@ -1,31 +1,39 @@
 import Foundation
+import SwiftyJSON
 
-class Group {
-    var id: Int!
-    var name: String!
-    var desc: String!
-    var icon: String!
-    
-    init(_ id: Int, _ name: String, _ desc: String, _ icon: String){
-        self.id = id;
-        self.name = name
-        self.desc = desc
-        self.icon = icon
-    }
-    
-    public class func list()->[Group] {
-           var groups: [Group] = []
-           for i in 0...100 {
-               var index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.groupNames.count-1)))
-               let name = DataGeneratorHelper.groupNames[index]
-               
-               index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.groupDesc.count-1)))
-               let desc = DataGeneratorHelper.groupDesc[index]
-               
-               index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.groupPictures.count-1)))
-               let icon = DataGeneratorHelper.groupPictures[index]
-               groups.append(Group(i, name, desc, icon))
-           }
-           return groups
+
+class Group: SectionedModelProtocol {
+   
+   var id: Int = 0
+   var name: String = ""
+   var desc: String = ""
+   var icon: String = ""
+   var avaURL50: String?
+   var avaURL200: String?
+   var image50: UIImage?
+   var image200: UIImage?
+   var groupBy: MyGroupByType = .name
+   
+   required init(){}
+   
+   func getId()->Int{
+       return id
+   }
+   
+   func setup(json: JSON?){
+       if let json = json {
+           id = json["id"].intValue
+           name = json["name"].stringValue
+           desc = json["description"].stringValue
+           avaURL50 = json["photo_50"].stringValue
+           avaURL200 = json["photo_200"].stringValue
        }
+   }
+   
+   func getGroupByField()->String {
+        switch groupBy {
+          case .name:
+              return name
+        }
+   }
 }

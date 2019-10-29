@@ -1,13 +1,10 @@
 import Foundation
 
 
-public class ProfilePresenter: BasePresenter{
+public class ProfilePresenter: SectionedBasePresenter{
 
     var photos: [Photo]!
     
-    override func initDataSource(){
-        photos = Photo.list()
-    }
     
     func numberOfRowsInSection() -> Int {
         return photos.count

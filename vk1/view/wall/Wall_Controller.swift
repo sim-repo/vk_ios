@@ -4,38 +4,46 @@ class Wall_Controller: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
-    var presenter = WallPresenter()
+    
+    var presenter: PlainPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in 1...UIControlThemeMgt.cellByCode.count {
-            collectionView.register(UINib(nibName: UIControlThemeMgt.cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: UIControlThemeMgt.cellByCode["tp\(i)"]!)
+        setupPresenter()
+        for i in 1...cellByCode.count {
+            collectionView.register(UINib(nibName: cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: cellByCode["tp\(i)"]!)
         }
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let width = view.frame.size.width - constraintSpaceX.constant * 40
-        let height = view.frame.size.height*0.5
+        let height = view.frame.size.height*0.3
         layout.minimumLineSpacing = 50
         layout.itemSize = CGSize(width: width, height: height)
         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
     }
+    
+    private func setupPresenter(){
+        presenter = PresenterFactory.shared.getPlain(vc: self)
+    }
 }
 
 
-extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource {
+extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return presenter.numberOfSections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.numberOfRowsInSection()
+        return presenter.numberOfRowsInSection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell!
-        let wall = presenter.getData(indexPath)!
-        if let name = UIControlThemeMgt.cellByCode[wall.postTypeCode] {
+        guard let wall = presenter.getData(indexPath) as? Wall
+            else { return UICollectionViewCell() }
+        
+        if let name = cellByCode[wall.postTypeCode] {
             cell = cellConfigure(name, indexPath, wall)
         }
         return cell
@@ -43,7 +51,33 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource 
     
     func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ wall: Wall) -> UICollectionViewCell{
         let c = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as! Wall_CellProtocol
-        c.setup(wall)
+        c.setup(wall, indexRow: indexPath.row)
         return c
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let wall = presenter.getData(indexPath) as? Wall
+            else { return CGSize(width: 100.0, height: 100.0) }
+        
+        
+        let width = view.frame.size.width - constraintSpaceX.constant * 40
+        let height = view.frame.size.height*0.4
+    
+        return CGSize(width: width, height: height)
+    }
+}
+
+
+extension Wall_Controller: ViewProtocolDelegate{
+    func refreshDataSource() {
+        collectionView.reloadData()
+    }
+    
+    func className() -> String {
+         return String(describing: Wall_Controller.self)
+     }
+    
+    func optimReloadCell(indexPath: IndexPath) {
+       collectionView.reloadItems(at: [indexPath])
     }
 }

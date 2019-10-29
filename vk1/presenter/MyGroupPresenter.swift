@@ -1,48 +1,40 @@
 import Foundation
+import Alamofire
 
-public class MyGroupPresenter: BasePresenter{
+public class MyGroupPresenter: SectionedBasePresenter{
     
-    var groups: [MyGroup]!
+    let urlPath: String = "groups.get"
     
-    override func initDataSource(){
-        groups = MyGroup.list()
-    }
-    
-    func getData(_ indexPath: IndexPath) -> MyGroup? {
-        return groups?[indexPath.row] 
-    }
-    
-    func numberOfRowsInSection() -> Int {
-        return groups.count
-    }
-    
-    func getName(_ indexPath: IndexPath) -> String {
-           return groups?[indexPath.row].name ?? ""
-       }
-    
-    func getDesc(_ indexPath: IndexPath) -> String {
-        return groups?[indexPath.row].desc ?? ""
-    }
-    
-    func getIcon(_ indexPath: IndexPath) -> String {
-        return groups?[indexPath.row].icon ?? ""
+    override func loadFromNetwork(completion: (()->Void)? = nil){
+           let params: Parameters = [
+               "access_token": Session.shared.token,
+               "extended": "1",
+               "fields":["description","members_count","photo_50","photo_200"],
+               "v": "5.80"
+           ]
+           let outerCompletion: (([DecodableProtocol]) -> Void)? = {[weak self] (arr: [DecodableProtocol]) in
+               self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
+               completion?()
+           }
+           AlamofireNetworkManager.request(clazz: MyGroup.self, urlPath: urlPath, params: params, completion: outerCompletion)
     }
     
     func getIndexPath() -> IndexPath {
-        let rowIndex = groups.count - 1
+        let rowIndex = sortedDataSource.count - 1
         return IndexPath(row: rowIndex, section: 0)
     }
     
     func addGroup(group: Group) -> Bool {
-        let has = groups.contains {$0.id == group.id}
+        let has = sortedDataSource.contains {$0.getId() == group.id}
         guard !has
             else { return false }
         
-        groups.append(MyGroup(group: group))
+        //groups.append(MyGroup(group: group))
         return true
     }
     
     func removeGroup(indexPath: IndexPath) {
-        groups.remove(at: indexPath.row)
+        sortedDataSource.remove(at: indexPath.row)
     }
 }
+

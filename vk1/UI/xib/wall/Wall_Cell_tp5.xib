@@ -34,19 +34,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="407-Mj-FJx" userLabel="ImageView">
                                 <rect key="frame" x="4" y="30" width="610" height="603"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hk5-Ma-A4b">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hk5-Ma-A4b">
                                         <rect key="frame" x="0.0" y="0.0" width="146.5" height="151"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lK4-SS-ZCe">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lK4-SS-ZCe">
                                         <rect key="frame" x="154.5" y="0.0" width="146.5" height="151"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ibd-ko-fKH">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ibd-ko-fKH">
                                         <rect key="frame" x="309" y="0.0" width="146.5" height="151"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qBn-cQ-6oz">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qBn-cQ-6oz">
                                         <rect key="frame" x="0.0" y="159" width="610" height="444"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AFX-j5-SAl">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AFX-j5-SAl">
                                         <rect key="frame" x="463.5" y="0.0" width="146.5" height="151"/>
                                     </imageView>
                                 </subviews>
@@ -105,6 +105,7 @@
             </collectionViewCellContentView>
             <size key="customSize" width="620" height="618"/>
             <connections>
+                <outlet property="conHeightTitle" destination="hX7-vI-pMe" id="UIb-r0-lyQ"/>
                 <outlet property="imageView1" destination="hk5-Ma-A4b" id="nJc-VS-htb"/>
                 <outlet property="imageView2" destination="lK4-SS-ZCe" id="29Y-K6-mAs"/>
                 <outlet property="imageView3" destination="Ibd-ko-fKH" id="Jlf-YP-xHa"/>

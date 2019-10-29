@@ -11,6 +11,7 @@ class Group_ViewController: UIViewController {
     
     var presenter = GroupPresenter()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -45,3 +46,4 @@ extension Group_ViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return presenter.getGroup(indexPath)
     }
 }
+

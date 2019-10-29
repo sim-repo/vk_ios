@@ -1,26 +1,37 @@
 import Foundation
+import SwiftyJSON
 
-class Friend {
-    var id: Int!
-    var name: String!
-    var ava: String!
+class Friend: SectionedModelProtocol, DecodableProtocol {
     
-    init(id: Int){
-        self.id = id
-        var index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.names.count)))
-        self.name = DataGeneratorHelper.names[index]
-      
-        index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.pictures.count)))
-        self.ava = DataGeneratorHelper.pictures[index]
+    var id: Int = 0
+    var firstName: String = ""
+    var lastName: String = ""
+    var avaURL50: String?
+    var avaURL200: String?
+    var groupBy: FriendGroupByType = .firstName
+    
+    required init(){}
+    
+    func getId()->Int{
+        return id
     }
     
-    public class func list()->[Friend] {
-        var friends: [Friend] = []
-        for i in 0...100 {
-            let friend = Friend(id: i)
-            friends.append(friend)
+    func setup(json: JSON?) {
+        if let json = json {
+            id = json["id"].intValue
+            firstName = json["first_name"].stringValue
+            lastName = json["last_name"].stringValue
+            avaURL50 = json["photo_50"].stringValue
+            avaURL200 = json["photo_200_orig"].stringValue
         }
-        
-        return friends.sorted(by: { $0.name < $1.name })
+    }
+    
+    func getGroupByField()->String {
+        switch groupBy {
+        case .firstName:
+            return firstName
+        case .lastName:
+            return lastName
+        }
     }
 }

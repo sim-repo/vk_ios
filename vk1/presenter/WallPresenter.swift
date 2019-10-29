@@ -1,23 +1,24 @@
 import Foundation
+import Alamofire
 
+public class WallPresenter: PlainBasePresenter {
+    
+    let urlPath: String = "wall.get"
+    
+    override func loadFromNetwork(completion: (()->Void)? = nil){
+        let params: Parameters = [
+        "access_token": Session.shared.token,
+        "extended": "1",
+        //"filter":["type":["photo"]],
+        "v": "5.80"
+        ]
+        let outerCompletion: (([DecodableProtocol]) -> Void)? = {[weak self] (arr: [DecodableProtocol]) in
+            self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
+            completion?()
+        }
+        AlamofireNetworkManager.request(clazz: Wall.self, urlPath: urlPath, params: params, completion: outerCompletion)
+    }
 
-public class WallPresenter: BasePresenter{
-    
-    var wall: [Wall]!
-    
-    override func initDataSource(){
-        wall = Wall.list()
-    }
-    
-    func numberOfRowsInSection() -> Int {
-        return wall.count
-    }
-    
-    func getImages(_ indexPath: IndexPath) -> [String]? {
-        return wall?[indexPath.row].imageURLs
-    }
-    
-    func getData(_ indexPath: IndexPath) -> Wall? {
-        return wall?[indexPath.row]
-    }
 }
+
+

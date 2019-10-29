@@ -1,12 +1,17 @@
 import Foundation
+import Alamofire
 
-public class GroupPresenter: BasePresenter{
+public class GroupPresenter: SectionedBasePresenter{
+    
+    let urlPath: String = "groups.search"
     
     var groups: [Group]!
     
-    override func initDataSource(){
-        groups = Group.list()
+    override func loadFromNetwork(completion: (()->Void)? = nil){
+       
     }
+    
+
     
     func numberOfRowsInSection() -> Int {
         return groups.count

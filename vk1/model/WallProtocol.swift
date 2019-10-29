@@ -1,7 +1,7 @@
-import Foundation
+import UIKit
 
-protocol WallProtocol {
-    func getImageURLs()->[String]
+protocol WallProtocol{
+    func getImageURLs()->[URL]
     func getTitle()->String?
     func getLikeCount()->Int
     func getMessageCount()->Int

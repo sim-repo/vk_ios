@@ -1,6 +1,6 @@
 import Foundation
 
-public class DetailFriendPresenter: BasePresenter{
+public class DetailFriendPresenter: SectionedBasePresenter{
     
     var friend: Friend!
     
@@ -10,12 +10,16 @@ public class DetailFriendPresenter: BasePresenter{
     }
     
     
-    func getName() -> String {
-        return friend.name
+    func getFirstName() -> String {
+        return friend.firstName ?? ""
     }
     
     func getAva() -> String {
-        return friend.ava
+        guard let url = friend.avaURL50
+        else {
+            //TODO: log err
+            return DefaultHelper.getAvaURL50()
+        }
+        return url
     }
-    
 }

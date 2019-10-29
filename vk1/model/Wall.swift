@@ -1,10 +1,11 @@
 import Foundation
-import UIKit
+import SwiftyJSON
 
-class Wall : WallProtocol{
+class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
+    
     var id: Int!
     var postTypeCode: String!
-    var imageURLs: [String] = []
+    var imageURLs: [URL] = []
     var date: Date!
     var title: String!
     var likeCount = 0
@@ -12,48 +13,67 @@ class Wall : WallProtocol{
     var messageCount = 0
     var shareCount = 0
     
-    init(_ id: Int){
-        self.id = id
-        
-        var index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.comments.count-1)))
-        self.title = DataGeneratorHelper.comments[index]
-      
-        
-        let emojiCount = 1 + Int(arc4random_uniform(4))
-        for _ in 0...emojiCount-1 {
-                index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.emoji.count-1)))
-                self.title += DataGeneratorHelper.emoji[index]
-        }
-        
-        
-        let picCount = 1 + Int(arc4random_uniform(8))
-        for _ in 0...picCount-1 {
-            index = Int(arc4random_uniform(UInt32(DataGeneratorHelper.pictures.count-1)))
-            let pic = DataGeneratorHelper.pictures[index]
-            self.imageURLs.append(pic)
-        }
-        self.likeCount = Int(arc4random_uniform(100))
-        self.viewCount = Int(arc4random_uniform(100))
-        self.messageCount = Int(arc4random_uniform(100))
-        self.shareCount = Int(arc4random_uniform(100))
-        self.date = Date()
-        
-        switch imageURLs.count {
-            case 1: postTypeCode = "tp1"
-            case 2: postTypeCode = "tp2"
-            case 3: postTypeCode = "tp3"
-            case 4: postTypeCode = "tp4"
-            case 5: postTypeCode = "tp5"
-            case 6: postTypeCode = "tp6"
-            case 7: postTypeCode = "tp7"
-            case 8: postTypeCode = "tp8"
-            case 9: postTypeCode = "tp9"
-            default:
-                postTypeCode = "tp9"
+    required init(){}
+    
+    func getId()->Int{
+        return id
+    }
+    
+    func setup(json: JSON?) {
+         if let json = json {
+            
+            
+            
+            id = json["id"].intValue
+            //print(json)
+            //TODO:
+            date = Date()
+            title = json["text"].stringValue
+            viewCount = json["views"]["count"].intValue
+            likeCount = json["likes"]["count"].intValue
+            messageCount = json["comments"]["count"].intValue
+            shareCount = json["reposts"]["count"].intValue
+             
+            
+            let photos = getPhotos(json: json)
+            postTypeCode = getImagePlanCode(imageCount: photos.count)
+            
+            
+            for photo in photos {
+                let mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
+                    json["type"].stringValue == "q"
+                })
+                for photo in mPhotos {
+                    if let url = URL(string: photo["url"].stringValue) {
+                        imageURLs.append(url)
+                    }
+                }
+            }
         }
     }
     
-    func getImageURLs() -> [String] {
+    private func getPhotos(json: JSON) -> [JSON] {
+        var photos: [JSON] = []
+        let arr = json["copy_history"].arrayValue
+        if arr.count > 0 {
+            if let histories = json["copy_history"].array {
+                           for history in histories {
+                               photos = history["attachments"].arrayValue.filter({ (json) -> Bool in
+                                               json["type"].stringValue == "photo"
+                                           })
+                           }
+                       }
+            
+        } else {
+            photos = json["attachments"].arrayValue.filter({ (json) -> Bool in
+                            json["type"].stringValue == "photo" })
+        }
+         return photos
+    }
+
+    
+    
+    func getImageURLs() -> [URL] {
         return imageURLs
     }
     
@@ -67,8 +87,7 @@ class Wall : WallProtocol{
     
     func getMessageCount()->Int {
           return messageCount
-      }
-      
+    }
       
     func getShareCount()->Int {
       return shareCount
@@ -77,15 +96,5 @@ class Wall : WallProtocol{
     func getEyeCount()->Int {
       return viewCount
     }
-      
-    
-    public class func list()->[Wall] {
-        var res: [Wall] = []
-              for i in 0...100 {
-                  let post = Wall(i)
-                  res.append(post)
-              }
-              
-        return res
-    }
+
 }

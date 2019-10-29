@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-cS-hRa" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="1" y="1" width="570" height="391"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q9t-1Z-lRe" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q9t-1Z-lRe" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="4" y="4" width="562" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U1f-Qx-lEq"/>
@@ -31,7 +31,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-UL-0M1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-UL-0M1">
                                 <rect key="frame" x="4" y="38" width="562" height="313"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5z-Ug-TPi" userLabel="LikeView" customClass="WallLike_View" customModule="vk1" customModuleProvider="target">
@@ -67,6 +67,7 @@
             <viewLayoutGuide key="safeArea" id="ycv-qo-a6x"/>
             <size key="customSize" width="742" height="336"/>
             <connections>
+                <outlet property="conHeightTitle" destination="U1f-Qx-lEq" id="yVQ-cS-p1o"/>
                 <outlet property="imageView" destination="4eh-UL-0M1" id="23m-he-mb5"/>
                 <outlet property="likeView" destination="R5z-Ug-TPi" id="h57-BU-sih"/>
                 <outlet property="title" destination="q9t-1Z-lRe" id="Isa-ro-ypn"/>

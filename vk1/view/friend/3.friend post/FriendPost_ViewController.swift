@@ -1,5 +1,5 @@
 import UIKit
-
+import Kingfisher
 
 class FriendPost_ViewController: UIViewController{
     
@@ -18,25 +18,26 @@ class FriendPost_ViewController: UIViewController{
     let standardItemScale: CGFloat = 0.1
 
     
-    
     override func viewDidLoad() {
          let swipeRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
-               imageContainerView.addGestureRecognizer(swipeRecognizer)
-               
-               for (idx, image) in friendWall.imageURLs.enumerated() {
-                   let newImageView = UIImageView(image: UIImage(named: image))
-                
+           imageContainerView.addGestureRecognizer(swipeRecognizer)
+           
+           for (idx, url) in friendWall.imageURLs.enumerated() {
+            
+                let imageView: UIImageView = UIImageView()
+                imageView.kf.setImage(with: url)
+
                 let half = prototypeImageView.frame.size.width/2
-                
+
                 let dx = prototypeImageView.frame.size.width * CGFloat(idx) + wScreen / 2.0 - half
-                   newImageView.frame = CGRect(x: dx, y: prototypeImageView.frame.origin.y, width: imageContainerView.frame.width, height: imageContainerView.frame.height)
-                   newImageView.contentMode = .scaleAspectFit
-                
-                   images.append(newImageView)
-                   imageContainerView.addSubview(newImageView)
-               }
-               maxTouches = friendWall.imageURLs.count
-               constainerContentSize = prototypeImageView.frame.width
+                imageView.frame = CGRect(x: dx, y: prototypeImageView.frame.origin.y, width: imageContainerView.frame.width, height: imageContainerView.frame.height)
+                imageView.contentMode = .scaleAspectFit
+
+                images.append(imageView)
+                imageContainerView.addSubview(imageView)
+           }
+           maxTouches = friendWall.imageURLs.count
+           constainerContentSize = prototypeImageView.frame.width
     }
     
     

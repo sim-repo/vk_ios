@@ -1,50 +1,22 @@
 import Foundation
+import Alamofire
 
-public class FriendPresenter: BasePresenter{
+public class FriendPresenter: SectionedBasePresenter{
     
-    var friends: [Friend]!
-    
-    override func initDataSource(){
-        friends = Friend.list()
-        var groupingProps: [String] = []
-        for friend in friends {
-            groupingProps.append(friend.name)
+    let urlPath: String = "friends.get"
+
+    override func loadFromNetwork(completion: (()->Void)? = nil){
+        let params: Parameters = [
+        "access_token": Session.shared.token,
+        "extended": "1",
+        "fields":["bdate","sex","photo_50","photo_200_orig"],
+        "v": "5.80"
+        ]
+        let outerCompletion: (([DecodableProtocol]) -> Void)? = {[weak self] (arr: [DecodableProtocol]) in
+            self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
+            completion?()
         }
-        setup(_sortedDataSource: friends, _groupingProperties: groupingProps)
-    }
-    
-    override func refreshData()->( [AnyObject], [String] ){
-        var friends: [Friend]
-        
-        if let filteredText  = filteredText {
-            friends = Friend.list().filter({$0.name.lowercased().contains(filteredText.lowercased())})
-        } else {
-            friends = Friend.list()
-        }
-        
-        var groupingProps: [String] = []
-        for friend in friends {
-            groupingProps.append(friend.name )
-        }
-        return (friends, groupingProps)
-    }
-    
-    
-    func numberOfRowsInSection() -> Int {
-        return friends.count
-    }
-    
-    func getName(_ indexPath: IndexPath) -> String {
-        return friends?[indexPath.row].name ?? ""
-    }
-    
-    func getAva(_ indexPath: IndexPath) -> String {
-        return friends?[indexPath.row].ava ?? ""
-    }
-    
-    func getFriend(_ indexPath: IndexPath?) -> Friend? {
-        guard let idxPath = indexPath
-            else {return nil}
-        return friends[idxPath.row]
+        AlamofireNetworkManager.request(clazz: Friend.self, urlPath: urlPath, params: params, completion: outerCompletion)
     }
 }
+
