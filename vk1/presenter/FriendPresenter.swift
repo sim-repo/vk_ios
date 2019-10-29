@@ -5,6 +5,8 @@ public class FriendPresenter: SectionedBasePresenter{
     
     let urlPath: String = "friends.get"
 
+
+    
     override func loadFromNetwork(completion: (()->Void)? = nil){
         let params: Parameters = [
         "access_token": Session.shared.token,
@@ -16,7 +18,12 @@ public class FriendPresenter: SectionedBasePresenter{
             self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
             completion?()
         }
-        AlamofireNetworkManager.request(clazz: Friend.self, urlPath: urlPath, params: params, completion: outerCompletion)
+        AlamofireNetworkManager.requestItems(clazz: Friend.self, urlPath: urlPath, params: params, completion: outerCompletion)
     }
+    
+    override func subscribe(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.addModel(_:)), name: .friendInserted, object: nil)
+    }
+   
 }
 

@@ -45,7 +45,6 @@
 		1647649C2365E031007D1B19 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649B2365E031007D1B19 /* Session.swift */; };
 		1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */; };
 		164764A32365E1E5007D1B19 /* SectionedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764A22365E1E5007D1B19 /* SectionedModelProtocol.swift */; };
-		164764A72365EDC8007D1B19 /* DefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764A62365EDC8007D1B19 /* DefaultHelper.swift */; };
 		164764AA2365EFDA007D1B19 /* SectionedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764A92365EFDA007D1B19 /* SectionedPresenterProtocol.swift */; };
 		164764B32365FB86007D1B19 /* ViewProtocolDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B22365FB86007D1B19 /* ViewProtocolDelegate.swift */; };
 		164764B62365FC2E007D1B19 /* constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B52365FC2E007D1B19 /* constant.swift */; };
@@ -93,6 +92,9 @@
 		16D58BE82366C6BE00735296 /* PlainModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BE72366C6BE00735296 /* PlainModelProtocol.swift */; };
 		16D58BEB23671B6E00735296 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEA23671B6E00735296 /* PresenterFactory.swift */; };
 		16D58BED236725DC00735296 /* PresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEC236725DC00735296 /* PresenterProtocol.swift */; };
+		16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEF236847C300735296 /* CellImagesHelper.swift */; };
+		16D58BF52368516800735296 /* WallHeader_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D58BF42368516800735296 /* WallHeader_View.xib */; };
+		16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BF623685F0900735296 /* WallHeader_View.swift */; };
 		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
 		16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */; };
 		16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD22351FDCD001C33CF /* PostImageView.swift */; };
@@ -144,7 +146,6 @@
 		1647649B2365E031007D1B19 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkManager.swift; sourceTree = "<group>"; };
 		164764A22365E1E5007D1B19 /* SectionedModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedModelProtocol.swift; sourceTree = "<group>"; };
-		164764A62365EDC8007D1B19 /* DefaultHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultHelper.swift; sourceTree = "<group>"; };
 		164764A92365EFDA007D1B19 /* SectionedPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedPresenterProtocol.swift; sourceTree = "<group>"; };
 		164764B22365FB86007D1B19 /* ViewProtocolDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocolDelegate.swift; sourceTree = "<group>"; };
 		164764B52365FC2E007D1B19 /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
@@ -192,6 +193,9 @@
 		16D58BE72366C6BE00735296 /* PlainModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainModelProtocol.swift; sourceTree = "<group>"; };
 		16D58BEA23671B6E00735296 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
 		16D58BEC236725DC00735296 /* PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocol.swift; sourceTree = "<group>"; };
+		16D58BEF236847C300735296 /* CellImagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImagesHelper.swift; sourceTree = "<group>"; };
+		16D58BF42368516800735296 /* WallHeader_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallHeader_View.xib; sourceTree = "<group>"; };
+		16D58BF623685F0900735296 /* WallHeader_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallHeader_View.swift; sourceTree = "<group>"; };
 		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
 		16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPushAnimator.swift; sourceTree = "<group>"; };
 		16FF6FD22351FDCD001C33CF /* PostImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
@@ -305,9 +309,9 @@
 		161C11372347210200A2EC9D /* helper */ = {
 			isa = PBXGroup;
 			children = (
-				164764A62365EDC8007D1B19 /* DefaultHelper.swift */,
 				1611273F234B45E50080FD54 /* DataGeneratorHelper.swift */,
 				16FF6FD523522E41001C33CF /* Extensions.swift */,
+				16D58BEF236847C300735296 /* CellImagesHelper.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -473,6 +477,7 @@
 		166667FF234938B200FD2B86 /* wall */ = {
 			isa = PBXGroup;
 			children = (
+				16D58BF1236850C500735296 /* header */,
 				161B0E9A2349EE780081008B /* post activity */,
 				1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */,
 				166667572347CB5100FD2B86 /* Wall_Cell_tp2.xib */,
@@ -578,6 +583,15 @@
 				161C1135234718B000A2EC9D /* WallCellConfigurator.swift */,
 			);
 			path = configurator;
+			sourceTree = "<group>";
+		};
+		16D58BF1236850C500735296 /* header */ = {
+			isa = PBXGroup;
+			children = (
+				16D58BF42368516800735296 /* WallHeader_View.xib */,
+				16D58BF623685F0900735296 /* WallHeader_View.swift */,
+			);
+			path = header;
 			sourceTree = "<group>";
 		};
 		16FF6FCC2351F1ED001C33CF /* navigation controller */ = {
@@ -755,6 +769,7 @@
 				1666673B2347B75F00FD2B86 /* Wall_Cell_tp1.xib in Resources */,
 				166667622347CB8A00FD2B86 /* Wall_Cell_tp7.xib in Resources */,
 				166D1B09234F6C7100C552E4 /* Video.storyboard in Resources */,
+				16D58BF52368516800735296 /* WallHeader_View.xib in Resources */,
 				1666675E2347CB7300FD2B86 /* Wall_Cell_tp5.xib in Resources */,
 				D4001F432327B7B60070829F /* LaunchScreen.storyboard in Resources */,
 				166667662347CBA100FD2B86 /* Wall_Cell_tp9.xib in Resources */,
@@ -817,6 +832,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				161C11392347226100A2EC9D /* WaitIndicator.swift in Sources */,
+				16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */,
 				1666674E2347CA0B00FD2B86 /* Wall_Cell_tp6.swift in Sources */,
 				16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */,
 				16D58BE02366BABD00735296 /* DecodableProtocol.swift in Sources */,
@@ -825,7 +841,6 @@
 				16040619234E74FE0083F3C3 /* MyGroups_ViewController.swift in Sources */,
 				161C11402347401800A2EC9D /* CarouselFlowLayout.swift in Sources */,
 				16D58BED236725DC00735296 /* PresenterProtocol.swift in Sources */,
-				164764A72365EDC8007D1B19 /* DefaultHelper.swift in Sources */,
 				164764A32365E1E5007D1B19 /* SectionedModelProtocol.swift in Sources */,
 				16D58BEB23671B6E00735296 /* PresenterFactory.swift in Sources */,
 				163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */,
@@ -853,6 +868,7 @@
 				16D58BE82366C6BE00735296 /* PlainModelProtocol.swift in Sources */,
 				166D1B05234EFF0F00C552E4 /* ZoomAnimator.swift in Sources */,
 				16200D0C2338934A00F02440 /* Photo.swift in Sources */,
+				16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */,
 				1604060D234E5A250083F3C3 /* MyGroupDetail_ViewController.swift in Sources */,
 				16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */,
 				166667412347BB9900FD2B86 /* Wall_Controller.swift in Sources */,

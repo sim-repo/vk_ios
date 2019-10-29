@@ -20,25 +20,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tY9-At-0cZ" userLabel="RootView" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="1" y="1" width="468" height="610"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ivm-pd-q2f" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="468" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYh-Tl-s2X" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="468" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Ioy-Xw-JpC"/>
+                                    <constraint firstAttribute="height" constant="120" id="mQj-Ig-eqC"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3v8-Nz-UQn" userLabel="ImageView">
-                                <rect key="frame" x="4" y="30" width="460" height="540"/>
+                                <rect key="frame" x="4" y="124" width="460" height="446"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XUV-7o-4eJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="460" height="270"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="460" height="223"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E3D-ec-6ZK">
-                                        <rect key="frame" x="0.0" y="270" width="460" height="270"/>
+                                        <rect key="frame" x="0.0" y="223" width="460" height="223"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -63,15 +58,15 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ivm-pd-q2f" firstAttribute="top" secondItem="tY9-At-0cZ" secondAttribute="top" id="2L2-JE-cAI"/>
                             <constraint firstAttribute="trailing" secondItem="bwU-zo-3xE" secondAttribute="trailing" constant="4" id="3Lt-sh-j6b"/>
                             <constraint firstItem="3v8-Nz-UQn" firstAttribute="leading" secondItem="tY9-At-0cZ" secondAttribute="leading" constant="4" id="3mX-T8-9fp"/>
-                            <constraint firstItem="3v8-Nz-UQn" firstAttribute="top" secondItem="ivm-pd-q2f" secondAttribute="bottom" id="Eqj-G9-F7O"/>
+                            <constraint firstItem="bYh-Tl-s2X" firstAttribute="top" secondItem="tY9-At-0cZ" secondAttribute="top" id="Edu-NK-0ca"/>
                             <constraint firstAttribute="bottom" secondItem="bwU-zo-3xE" secondAttribute="bottom" constant="4" id="FWc-cX-LIQ"/>
                             <constraint firstItem="bwU-zo-3xE" firstAttribute="top" secondItem="3v8-Nz-UQn" secondAttribute="bottom" id="Iag-bc-3Hl"/>
                             <constraint firstItem="bwU-zo-3xE" firstAttribute="leading" secondItem="tY9-At-0cZ" secondAttribute="leading" constant="4" id="Jlp-qe-B1C"/>
-                            <constraint firstAttribute="trailing" secondItem="ivm-pd-q2f" secondAttribute="trailing" id="jTs-jV-R0c"/>
-                            <constraint firstItem="ivm-pd-q2f" firstAttribute="leading" secondItem="tY9-At-0cZ" secondAttribute="leading" id="p7k-WF-bOF"/>
+                            <constraint firstItem="bYh-Tl-s2X" firstAttribute="leading" secondItem="tY9-At-0cZ" secondAttribute="leading" id="Szm-uR-nsV"/>
+                            <constraint firstAttribute="trailing" secondItem="bYh-Tl-s2X" secondAttribute="trailing" id="WLH-yR-ryl"/>
+                            <constraint firstItem="3v8-Nz-UQn" firstAttribute="top" secondItem="bYh-Tl-s2X" secondAttribute="bottom" constant="4" id="byi-VI-AMm"/>
                             <constraint firstAttribute="trailing" secondItem="3v8-Nz-UQn" secondAttribute="trailing" constant="4" id="sxx-tG-rNa"/>
                         </constraints>
                     </view>
@@ -86,11 +81,11 @@
             </collectionViewCellContentView>
             <size key="customSize" width="470" height="555"/>
             <connections>
-                <outlet property="conHeightTitle" destination="Ioy-Xw-JpC" id="jyu-Ah-Ad6"/>
+                <outlet property="hConHeaderView" destination="mQj-Ig-eqC" id="BFj-q8-8lv"/>
+                <outlet property="headerView" destination="bYh-Tl-s2X" id="Wfw-QU-7cl"/>
                 <outlet property="imageView1" destination="XUV-7o-4eJ" id="p6A-2n-dDw"/>
                 <outlet property="imageView2" destination="E3D-ec-6ZK" id="pO3-2I-wHM"/>
                 <outlet property="likeView" destination="bwU-zo-3xE" id="6bd-Js-AVT"/>
-                <outlet property="title" destination="ivm-pd-q2f" id="gEU-du-3KO"/>
             </connections>
             <point key="canvasLocation" x="427.536231884058" y="234.375"/>
         </collectionViewCell>

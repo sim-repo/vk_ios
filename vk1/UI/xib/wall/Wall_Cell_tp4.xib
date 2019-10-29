@@ -20,31 +20,26 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2iA-PF-EHm" userLabel="RootView" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="1" y="1" width="528" height="673"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c49-VO-xi2" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="528" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phj-N8-blj" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="528" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="gyB-O0-qYb"/>
+                                    <constraint firstAttribute="height" constant="120" id="It5-nH-aaP"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLs-YX-nTH" userLabel="ImageView">
-                                <rect key="frame" x="4" y="30" width="520" height="603"/>
+                                <rect key="frame" x="4" y="124" width="520" height="509"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hnm-wo-EIR">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="297.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="250.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vlP-dO-VXv">
-                                        <rect key="frame" x="264" y="0.0" width="256" height="297.5"/>
+                                        <rect key="frame" x="264" y="0.0" width="256" height="250.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mvh-Du-ABL">
-                                        <rect key="frame" x="0.0" y="305.5" width="256" height="297.5"/>
+                                        <rect key="frame" x="0.0" y="258.5" width="256" height="250.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QO6-F6-Py1">
-                                        <rect key="frame" x="264" y="305.5" width="256" height="297.5"/>
+                                        <rect key="frame" x="264" y="258.5" width="256" height="250.5"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -75,16 +70,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="phj-N8-blj" firstAttribute="leading" secondItem="2iA-PF-EHm" secondAttribute="leading" id="1ba-kh-AHl"/>
                             <constraint firstAttribute="bottom" secondItem="3Ta-9E-1Pg" secondAttribute="bottom" constant="4" id="8UM-OU-mZS"/>
                             <constraint firstAttribute="trailing" secondItem="WLs-YX-nTH" secondAttribute="trailing" constant="4" id="9d9-Kz-k4k"/>
+                            <constraint firstAttribute="trailing" secondItem="phj-N8-blj" secondAttribute="trailing" id="By0-L3-NgT"/>
                             <constraint firstItem="3Ta-9E-1Pg" firstAttribute="top" secondItem="WLs-YX-nTH" secondAttribute="bottom" id="CBj-ri-O4C"/>
-                            <constraint firstItem="WLs-YX-nTH" firstAttribute="top" secondItem="c49-VO-xi2" secondAttribute="bottom" id="EJQ-NO-wPU"/>
-                            <constraint firstItem="c49-VO-xi2" firstAttribute="leading" secondItem="2iA-PF-EHm" secondAttribute="leading" id="ELk-TV-NFj"/>
+                            <constraint firstItem="phj-N8-blj" firstAttribute="leading" secondItem="2iA-PF-EHm" secondAttribute="leading" id="M4d-Wb-zg0"/>
                             <constraint firstItem="3Ta-9E-1Pg" firstAttribute="leading" secondItem="2iA-PF-EHm" secondAttribute="leading" constant="4" id="Mob-BI-Srv"/>
-                            <constraint firstAttribute="trailing" secondItem="c49-VO-xi2" secondAttribute="trailing" id="Sz1-Fd-khd"/>
+                            <constraint firstAttribute="trailing" secondItem="phj-N8-blj" secondAttribute="trailing" id="WXW-3G-XZt"/>
                             <constraint firstItem="WLs-YX-nTH" firstAttribute="leading" secondItem="2iA-PF-EHm" secondAttribute="leading" constant="4" id="d7A-Kz-sKw"/>
                             <constraint firstAttribute="trailing" secondItem="3Ta-9E-1Pg" secondAttribute="trailing" constant="4" id="e2s-YO-WHG"/>
-                            <constraint firstItem="c49-VO-xi2" firstAttribute="top" secondItem="2iA-PF-EHm" secondAttribute="top" id="lsS-mr-HkM"/>
+                            <constraint firstItem="phj-N8-blj" firstAttribute="top" secondItem="2iA-PF-EHm" secondAttribute="top" id="f1A-Q3-4AK"/>
+                            <constraint firstItem="WLs-YX-nTH" firstAttribute="top" secondItem="phj-N8-blj" secondAttribute="bottom" constant="4" id="vxu-lh-hxF"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -98,13 +95,13 @@
             </collectionViewCellContentView>
             <size key="customSize" width="530" height="618"/>
             <connections>
-                <outlet property="conHeightTitle" destination="gyB-O0-qYb" id="Dev-VF-1C3"/>
+                <outlet property="hConHeaderView" destination="It5-nH-aaP" id="14U-Nz-AT8"/>
+                <outlet property="headerView" destination="phj-N8-blj" id="57w-Gt-xA0"/>
                 <outlet property="imageView1" destination="Hnm-wo-EIR" id="jx0-fK-tGf"/>
                 <outlet property="imageView2" destination="vlP-dO-VXv" id="W6T-eN-4Fm"/>
                 <outlet property="imageView3" destination="Mvh-Du-ABL" id="QsK-OR-w8Q"/>
                 <outlet property="imageView4" destination="QO6-F6-Py1" id="5Nc-QQ-VHL"/>
                 <outlet property="likeView" destination="3Ta-9E-1Pg" id="sSB-kx-VOg"/>
-                <outlet property="title" destination="c49-VO-xi2" id="1lQ-am-OFr"/>
             </connections>
             <point key="canvasLocation" x="469.56521739130437" y="255.46875"/>
         </collectionViewCell>

@@ -12,30 +12,26 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Wall_Cell_tp1" customModule="vk1" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Wall_Cell_tp1" id="Tcj-Gj-lsD" customClass="Wall_Cell_tp1" customModule="vk1" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="572" height="393"/>
+            <rect key="frame" x="0.0" y="0.0" width="408" height="420"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nf8-51-Uxy" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
-                <rect key="frame" x="0.0" y="0.0" width="572" height="393"/>
+                <rect key="frame" x="0.0" y="0.0" width="408" height="420"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-cS-hRa" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
-                        <rect key="frame" x="1" y="1" width="570" height="391"/>
+                        <rect key="frame" x="1" y="1" width="406" height="418"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q9t-1Z-lRe" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="4" y="4" width="562" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3r-Qa-YN5" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="406" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="U1f-Qx-lEq"/>
+                                    <constraint firstAttribute="height" constant="120" id="Ciz-0x-4Ca"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-UL-0M1">
-                                <rect key="frame" x="4" y="38" width="562" height="313"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-UL-0M1">
+                                <rect key="frame" x="4" y="124" width="398" height="254"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5z-Ug-TPi" userLabel="LikeView" customClass="WallLike_View" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="4" y="351" width="562" height="36"/>
+                                <rect key="frame" x="4" y="378" width="398" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="MdS-z8-mER"/>
                                 </constraints>
@@ -43,15 +39,15 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="q9t-1Z-lRe" firstAttribute="leading" secondItem="1wu-cS-hRa" secondAttribute="leading" constant="4" id="2BK-B9-rjX"/>
+                            <constraint firstItem="M3r-Qa-YN5" firstAttribute="leading" secondItem="1wu-cS-hRa" secondAttribute="leading" id="5T4-35-gvQ"/>
+                            <constraint firstItem="4eh-UL-0M1" firstAttribute="top" secondItem="M3r-Qa-YN5" secondAttribute="bottom" constant="4" id="6aB-xF-xOh"/>
                             <constraint firstAttribute="trailing" secondItem="4eh-UL-0M1" secondAttribute="trailing" constant="4" id="93g-9T-Zzw"/>
                             <constraint firstItem="4eh-UL-0M1" firstAttribute="leading" secondItem="1wu-cS-hRa" secondAttribute="leading" constant="4" id="PDn-V0-DCP"/>
-                            <constraint firstItem="4eh-UL-0M1" firstAttribute="top" secondItem="q9t-1Z-lRe" secondAttribute="bottom" constant="4" id="UBV-3j-DBe"/>
-                            <constraint firstItem="q9t-1Z-lRe" firstAttribute="top" secondItem="1wu-cS-hRa" secondAttribute="top" constant="4" id="XC1-QR-Z8X"/>
                             <constraint firstAttribute="trailing" secondItem="R5z-Ug-TPi" secondAttribute="trailing" constant="4" id="ZcA-x3-4hz"/>
+                            <constraint firstItem="M3r-Qa-YN5" firstAttribute="top" secondItem="1wu-cS-hRa" secondAttribute="top" id="bvu-Qf-jod"/>
                             <constraint firstItem="R5z-Ug-TPi" firstAttribute="top" secondItem="4eh-UL-0M1" secondAttribute="bottom" id="gpY-Hk-K8S"/>
+                            <constraint firstAttribute="trailing" secondItem="M3r-Qa-YN5" secondAttribute="trailing" id="oUi-sK-UdN"/>
                             <constraint firstItem="R5z-Ug-TPi" firstAttribute="leading" secondItem="1wu-cS-hRa" secondAttribute="leading" constant="4" id="uL5-gB-ZD9"/>
-                            <constraint firstAttribute="trailing" secondItem="q9t-1Z-lRe" secondAttribute="trailing" constant="4" id="viC-Ps-QvV"/>
                             <constraint firstAttribute="bottom" secondItem="R5z-Ug-TPi" secondAttribute="bottom" constant="4" id="yEm-8H-sdS"/>
                         </constraints>
                     </view>
@@ -65,14 +61,14 @@
                 </constraints>
             </collectionViewCellContentView>
             <viewLayoutGuide key="safeArea" id="ycv-qo-a6x"/>
-            <size key="customSize" width="742" height="336"/>
+            <size key="customSize" width="578" height="363"/>
             <connections>
-                <outlet property="conHeightTitle" destination="U1f-Qx-lEq" id="yVQ-cS-p1o"/>
+                <outlet property="hConHeaderView" destination="Ciz-0x-4Ca" id="Dp3-rF-ykM"/>
+                <outlet property="headerView" destination="M3r-Qa-YN5" id="pDT-69-Pnq"/>
                 <outlet property="imageView" destination="4eh-UL-0M1" id="23m-he-mb5"/>
                 <outlet property="likeView" destination="R5z-Ug-TPi" id="h57-BU-sih"/>
-                <outlet property="title" destination="q9t-1Z-lRe" id="Isa-ro-ypn"/>
             </connections>
-            <point key="canvasLocation" x="624.63768115942037" y="161.04910714285714"/>
+            <point key="canvasLocation" x="505.79710144927537" y="169.41964285714286"/>
         </collectionViewCell>
     </objects>
 </document>

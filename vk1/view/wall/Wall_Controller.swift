@@ -56,14 +56,14 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let wall = presenter.getData(indexPath) as? Wall
-            else { return CGSize(width: 100.0, height: 100.0) }
+      //  guard let wall = presenter.getData(indexPath) as? Wall
+        //    else { return CGSize(width: 100.0, height: 300.0) }
         
         
         let width = view.frame.size.width - constraintSpaceX.constant * 40
-        let height = view.frame.size.height*0.4
+        //let height = view.frame.size.height*0.6
     
-        return CGSize(width: width, height: height)
+        return CGSize(width: width, height: cellHeaderHeight + cellImageHeight + cellBottomHeight)
     }
 }
 

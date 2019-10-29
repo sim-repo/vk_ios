@@ -62,4 +62,14 @@ var cellByCode = ["tp1": "Wall_Cell_tp1",
                  "tp9": "Wall_Cell_tp9"]
 
 
-var cellTitleHeight: CGFloat = 30
+var cellHeaderHeight: CGFloat = 120
+var cellQuarterHeight: CGFloat = 120 / 4
+var cellImageHeight: CGFloat = 220
+var cellBottomHeight: CGFloat = 30
+
+extension Notification.Name {
+    static let friendInserted = Notification.Name("friendInserted")
+    static let groupInserted = Notification.Name("groupInserted")
+}
+
+

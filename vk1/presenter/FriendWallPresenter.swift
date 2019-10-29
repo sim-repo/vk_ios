@@ -17,7 +17,7 @@ public class FriendWallPresenter: PlainBasePresenter{
            self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
            completion?()
        }
-       AlamofireNetworkManager.request(clazz: Wall.self, urlPath: urlPath, params: params, completion: outerCompletion)
+       AlamofireNetworkManager.requestItems(clazz: Wall.self, urlPath: urlPath, params: params, completion: outerCompletion)
     }
     
     func setFriend(friend: Friend) {

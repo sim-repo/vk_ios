@@ -20,34 +20,29 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbs-2v-d5U" userLabel="RootView" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="1" y="1" width="618" height="673"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Oi-fB-YEp" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="618" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acu-SR-FyE" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="618" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hX7-vI-pMe"/>
+                                    <constraint firstAttribute="height" constant="120" id="zlj-0g-QK4"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="407-Mj-FJx" userLabel="ImageView">
-                                <rect key="frame" x="4" y="30" width="610" height="603"/>
+                                <rect key="frame" x="4" y="124" width="610" height="509"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hk5-Ma-A4b">
-                                        <rect key="frame" x="0.0" y="0.0" width="146.5" height="151"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="149.5" height="127.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lK4-SS-ZCe">
-                                        <rect key="frame" x="154.5" y="0.0" width="146.5" height="151"/>
+                                        <rect key="frame" x="153.5" y="0.0" width="149.5" height="127.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ibd-ko-fKH">
-                                        <rect key="frame" x="309" y="0.0" width="146.5" height="151"/>
+                                        <rect key="frame" x="307" y="0.0" width="149.5" height="127.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qBn-cQ-6oz">
-                                        <rect key="frame" x="0.0" y="159" width="610" height="444"/>
+                                        <rect key="frame" x="0.0" y="131.5" width="610" height="377.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AFX-j5-SAl">
-                                        <rect key="frame" x="463.5" y="0.0" width="146.5" height="151"/>
+                                        <rect key="frame" x="460.5" y="0.0" width="149.5" height="127.5"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -60,16 +55,16 @@
                                     <constraint firstAttribute="trailing" secondItem="AFX-j5-SAl" secondAttribute="trailing" id="Hfj-i0-ume"/>
                                     <constraint firstItem="Ibd-ko-fKH" firstAttribute="width" secondItem="lK4-SS-ZCe" secondAttribute="width" id="MJ8-C1-WbN"/>
                                     <constraint firstItem="Ibd-ko-fKH" firstAttribute="height" secondItem="lK4-SS-ZCe" secondAttribute="height" id="Uf6-7g-MuO"/>
-                                    <constraint firstItem="AFX-j5-SAl" firstAttribute="leading" secondItem="Ibd-ko-fKH" secondAttribute="trailing" constant="8" id="a8a-Cx-hXW"/>
+                                    <constraint firstItem="AFX-j5-SAl" firstAttribute="leading" secondItem="Ibd-ko-fKH" secondAttribute="trailing" constant="4" id="a8a-Cx-hXW"/>
                                     <constraint firstItem="hk5-Ma-A4b" firstAttribute="width" secondItem="lK4-SS-ZCe" secondAttribute="width" id="ehs-KM-Qdb"/>
                                     <constraint firstAttribute="bottom" secondItem="qBn-cQ-6oz" secondAttribute="bottom" id="hQh-pL-9NU"/>
                                     <constraint firstItem="hk5-Ma-A4b" firstAttribute="top" secondItem="407-Mj-FJx" secondAttribute="top" id="jWG-d3-fER"/>
-                                    <constraint firstItem="lK4-SS-ZCe" firstAttribute="leading" secondItem="hk5-Ma-A4b" secondAttribute="trailing" constant="8" id="m15-9f-4dW"/>
+                                    <constraint firstItem="lK4-SS-ZCe" firstAttribute="leading" secondItem="hk5-Ma-A4b" secondAttribute="trailing" constant="4" id="m15-9f-4dW"/>
                                     <constraint firstItem="AFX-j5-SAl" firstAttribute="height" secondItem="Ibd-ko-fKH" secondAttribute="height" id="md0-a7-3ZI"/>
-                                    <constraint firstItem="Ibd-ko-fKH" firstAttribute="leading" secondItem="lK4-SS-ZCe" secondAttribute="trailing" constant="8" id="msO-Kz-NzM"/>
+                                    <constraint firstItem="Ibd-ko-fKH" firstAttribute="leading" secondItem="lK4-SS-ZCe" secondAttribute="trailing" constant="4" id="msO-Kz-NzM"/>
                                     <constraint firstItem="qBn-cQ-6oz" firstAttribute="leading" secondItem="407-Mj-FJx" secondAttribute="leading" id="oIH-Q9-2YN"/>
                                     <constraint firstItem="hk5-Ma-A4b" firstAttribute="height" secondItem="407-Mj-FJx" secondAttribute="height" multiplier="0.25" id="sWI-3F-hT7"/>
-                                    <constraint firstItem="qBn-cQ-6oz" firstAttribute="top" secondItem="hk5-Ma-A4b" secondAttribute="bottom" constant="8" id="vuG-D9-fyY"/>
+                                    <constraint firstItem="qBn-cQ-6oz" firstAttribute="top" secondItem="hk5-Ma-A4b" secondAttribute="bottom" constant="4" id="vuG-D9-fyY"/>
                                     <constraint firstItem="Ibd-ko-fKH" firstAttribute="top" secondItem="407-Mj-FJx" secondAttribute="top" id="zew-8b-Mi1"/>
                                 </constraints>
                             </view>
@@ -82,14 +77,16 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="407-Mj-FJx" firstAttribute="top" secondItem="4Oi-fB-YEp" secondAttribute="bottom" id="1eN-0M-xET"/>
+                            <constraint firstItem="acu-SR-FyE" firstAttribute="leading" secondItem="mbs-2v-d5U" secondAttribute="leading" id="57P-go-Usf"/>
                             <constraint firstAttribute="trailing" secondItem="hlr-P8-CGL" secondAttribute="trailing" constant="4" id="7N9-ct-EJN"/>
+                            <constraint firstAttribute="trailing" secondItem="acu-SR-FyE" secondAttribute="trailing" id="FF6-ra-q0g"/>
                             <constraint firstItem="hlr-P8-CGL" firstAttribute="top" secondItem="407-Mj-FJx" secondAttribute="bottom" id="Hsn-ir-YpG"/>
-                            <constraint firstAttribute="trailing" secondItem="4Oi-fB-YEp" secondAttribute="trailing" id="I19-JJ-4UK"/>
-                            <constraint firstItem="4Oi-fB-YEp" firstAttribute="leading" secondItem="mbs-2v-d5U" secondAttribute="leading" id="UW7-eg-vlO"/>
-                            <constraint firstItem="4Oi-fB-YEp" firstAttribute="top" secondItem="mbs-2v-d5U" secondAttribute="top" id="bgb-V8-WPs"/>
+                            <constraint firstItem="acu-SR-FyE" firstAttribute="top" secondItem="mbs-2v-d5U" secondAttribute="top" id="Iht-yw-xB7"/>
+                            <constraint firstItem="acu-SR-FyE" firstAttribute="leading" secondItem="mbs-2v-d5U" secondAttribute="leading" id="M0K-nY-gCC"/>
+                            <constraint firstAttribute="trailing" secondItem="acu-SR-FyE" secondAttribute="trailing" id="UfN-d9-sRg"/>
                             <constraint firstItem="hlr-P8-CGL" firstAttribute="leading" secondItem="mbs-2v-d5U" secondAttribute="leading" constant="4" id="fKl-br-llm"/>
                             <constraint firstItem="407-Mj-FJx" firstAttribute="leading" secondItem="mbs-2v-d5U" secondAttribute="leading" constant="4" id="j4S-AQ-sib"/>
+                            <constraint firstItem="407-Mj-FJx" firstAttribute="top" secondItem="acu-SR-FyE" secondAttribute="bottom" constant="4" id="rZt-w5-6RU"/>
                             <constraint firstAttribute="bottom" secondItem="hlr-P8-CGL" secondAttribute="bottom" constant="4" id="u7o-DE-zaw"/>
                             <constraint firstAttribute="trailing" secondItem="407-Mj-FJx" secondAttribute="trailing" constant="4" id="xaq-Wc-Gt8"/>
                         </constraints>
@@ -105,14 +102,14 @@
             </collectionViewCellContentView>
             <size key="customSize" width="620" height="618"/>
             <connections>
-                <outlet property="conHeightTitle" destination="hX7-vI-pMe" id="UIb-r0-lyQ"/>
+                <outlet property="hConHeaderView" destination="zlj-0g-QK4" id="Cfv-hH-UPM"/>
+                <outlet property="headerView" destination="acu-SR-FyE" id="eX5-66-qZX"/>
                 <outlet property="imageView1" destination="hk5-Ma-A4b" id="nJc-VS-htb"/>
                 <outlet property="imageView2" destination="lK4-SS-ZCe" id="29Y-K6-mAs"/>
                 <outlet property="imageView3" destination="Ibd-ko-fKH" id="Jlf-YP-xHa"/>
                 <outlet property="imageView4" destination="AFX-j5-SAl" id="Dlh-qs-Jk8"/>
                 <outlet property="imageView5" destination="qBn-cQ-6oz" id="NKb-E1-E4l"/>
                 <outlet property="likeView" destination="hlr-P8-CGL" id="Q8a-R6-2hN"/>
-                <outlet property="title" destination="4Oi-fB-YEp" id="3Lb-h9-kh9"/>
             </connections>
             <point key="canvasLocation" x="534.78260869565224" y="255.46875"/>
         </collectionViewCell>

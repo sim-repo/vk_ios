@@ -21,7 +21,9 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     
     //MARK: constuctor
     
-    required init() {}
+    required init() {
+        subscribe()
+    }
     
     // init from view
     required convenience init(beginLoadFrom: LoadModelType, completion: (()->Void)?) {
@@ -39,12 +41,19 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     }
 
     
+    
     func setView(view: ViewProtocolDelegate, completion: (()->Void)?) {
         self.view = view
         completion?()
     }
     
+    func subscribe(){}
 
+
+    
+
+    
+    
     private final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
         switch loadType {
         case .diskFirst:
@@ -101,6 +110,15 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
         didSaveModel()
     }
     
+    @objc func addModel(_ notification: NSNotification){
+        if let dict = notification.userInfo as NSDictionary? {
+            if let model = dict["model"] as? SectionedModelProtocol {
+                sortedDataSource.append(model)
+            }
+        }
+    }
+    
+    
     private func didSaveModel(){
         UI_THREAD { [weak self] in
             self?.view?.refreshDataSource()
@@ -130,6 +148,8 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     func getModel()->[SectionedModelProtocol] {
        return sortedDataSource
     }
+    
+
 
     final func setup(_sortedDataSource: [SectionedModelProtocol], _groupingProperties: [String]){
        guard _sortedDataSource.count > 0 else {

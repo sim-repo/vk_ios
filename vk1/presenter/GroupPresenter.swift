@@ -11,8 +11,6 @@ public class GroupPresenter: SectionedBasePresenter{
        
     }
     
-
-    
     func numberOfRowsInSection() -> Int {
         return groups.count
     }

@@ -71,3 +71,13 @@ func isRowPresentInTableView(indexPath: IndexPath, tableView: UITableView) -> Bo
 func catchError(){
     fatalError()
 }
+
+
+func convertUnixTime(unixTime: Double) -> String {
+    let date = Date(timeIntervalSince1970: unixTime)
+    let dateFormatter = DateFormatter()
+    dateFormatter.timeStyle = DateFormatter.Style.medium
+    dateFormatter.dateStyle = DateFormatter.Style.medium
+    dateFormatter.timeZone = .current
+    return dateFormatter.string(from: date)
+}

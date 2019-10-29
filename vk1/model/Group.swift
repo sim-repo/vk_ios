@@ -29,6 +29,12 @@ class Group: SectionedModelProtocol {
            avaURL200 = json["photo_200"].stringValue
        }
    }
+    
+   func setupFromWall(json: JSON?){
+        setup(json: json)
+        let dict:[String: SectionedModelProtocol] = ["model": self]
+        NotificationCenter.default.post(name: .groupInserted, object: nil, userInfo: dict)
+   }
    
    func getGroupByField()->String {
         switch groupBy {

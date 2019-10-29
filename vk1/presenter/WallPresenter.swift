@@ -9,14 +9,14 @@ public class WallPresenter: PlainBasePresenter {
         let params: Parameters = [
         "access_token": Session.shared.token,
         "extended": "1",
-        //"filter":["type":["photo"]],
-        "v": "5.80"
+        "fields":["photo_50","photo_100", "photo_200"],
+        "v": "5.103"
         ]
         let outerCompletion: (([DecodableProtocol]) -> Void)? = {[weak self] (arr: [DecodableProtocol]) in
             self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
             completion?()
         }
-        AlamofireNetworkManager.request(clazz: Wall.self, urlPath: urlPath, params: params, completion: outerCompletion)
+        AlamofireNetworkManager.wallRequest(urlPath: urlPath, params: params, completion: outerCompletion)
     }
 
 }

@@ -16,7 +16,11 @@ public class MyGroupPresenter: SectionedBasePresenter{
                self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
                completion?()
            }
-           AlamofireNetworkManager.request(clazz: MyGroup.self, urlPath: urlPath, params: params, completion: outerCompletion)
+           AlamofireNetworkManager.requestItems(clazz: MyGroup.self, urlPath: urlPath, params: params, completion: outerCompletion)
+    }
+    
+    override func subscribe(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.addModel(_:)), name: .groupInserted, object: nil)
     }
     
     func getIndexPath() -> IndexPath {

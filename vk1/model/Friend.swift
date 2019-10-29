@@ -7,6 +7,7 @@ class Friend: SectionedModelProtocol, DecodableProtocol {
     var firstName: String = ""
     var lastName: String = ""
     var avaURL50: String?
+    var avaURL100: String?
     var avaURL200: String?
     var groupBy: FriendGroupByType = .firstName
     
@@ -22,8 +23,15 @@ class Friend: SectionedModelProtocol, DecodableProtocol {
             firstName = json["first_name"].stringValue
             lastName = json["last_name"].stringValue
             avaURL50 = json["photo_50"].stringValue
+            avaURL100 = json["photo_100"].stringValue
             avaURL200 = json["photo_200_orig"].stringValue
         }
+    }
+    
+    func setupFromWall(json: JSON?){
+        setup(json: json)
+        let dict:[String: SectionedModelProtocol] = ["model": self]
+        NotificationCenter.default.post(name: .friendInserted, object: nil, userInfo: dict)
     }
     
     func getGroupByField()->String {
