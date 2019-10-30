@@ -10,12 +10,12 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     // wall header block
     var myAvaURL: URL?
     var myName: String = ""
-    var myPostDate = ""
+    var myPostDate: Double = 0
     var title: String = ""
     
     var origAvaURL: URL?
     var origName: String = ""
-    var origPostDate = ""
+    var origPostDate: Double = 0
     var origTitle: String = ""
     
     // wall image block
@@ -33,133 +33,28 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
         return id
     }
     
-    
     func setup(json: JSON?){}
     
     func setup(json: JSON?, friends: [Int:Friend], groups: [Int:Group]) {
+        
         if let json = json {
-            let repost = isRepost(json)
             
-            id = json["id"].intValue
-           // print(json)
-     
-            let myId = json["owner_id"].intValue
-            let authorId = abs(getAuthorId(json, repost))
+            id = WallParser.parseId(json: json)
             
+            // wall header block
+            (myAvaURL, myName, myPostDate, title) = WallParser.parseMyRepost(json: json, friends: friends)
             
-            if repost {
-                if let f = friends[myId] {
-                    if let url = f.avaURL100 {
-                        myAvaURL = URL(string: url)
-                    }
-                    myName = f.firstName + " "+f.lastName
-                    title = getTitle(json, false)
-                    let unixTime = getDate(json, false)
-                    myPostDate = convertUnixTime(unixTime: unixTime)
-                }
-            }
+            (origAvaURL, origName, origPostDate, origTitle) = WallParser.parseOrigPost(json: json, groups: groups)
             
-            if let g = groups[authorId] {
-                if let url = g.avaURL200 {
-                    origAvaURL = URL(string: url)
-                }
-                origName = g.name
-                origTitle = getTitle(json, repost)
-                
-                let unixTime = getDate(json, repost)
-                origPostDate = convertUnixTime(unixTime: unixTime)
-            }
+            // wall image block
+            imageURLs = WallParser.parseImages(json: json)
+            postTypeCode = getImagePlanCode(imageCount: imageURLs.count)
             
-            
-            
-            viewCount = json["views"]["count"].intValue
-            likeCount = json["likes"]["count"].intValue
-            messageCount = json["comments"]["count"].intValue
-            shareCount = json["reposts"]["count"].intValue
-            
-            
-            let photos = getPhotos(json, repost)
-            postTypeCode = getImagePlanCode(imageCount: photos.count)
-            
-            
-            for photo in photos {
-                let mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
-                    json["type"].stringValue == "q"
-                })
-                for photo in mPhotos {
-                    if let url = URL(string: photo["url"].stringValue) {
-                        imageURLs.append(url)
-                    }
-                }
-            }
+            // wall bottom block
+            (viewCount, likeCount, messageCount, shareCount) = WallParser.parseBottomBlock(json: json)
         }
     }
     
-    
-    private func isRepost(_ json: JSON) -> Bool {
-        let arr = json["copy_history"].arrayValue
-        return arr.count > 0
-    }
-    
-    
-    private func getAuthorId(_ json: JSON, _ repost: Bool) -> Int {
-        if repost {
-            if let histories = json["copy_history"].array {
-                for history in histories {
-                    return history["owner_id"].intValue
-                }
-            }
-        } else {
-             return json["owner_id"].intValue
-        }
-        return 0
-    }
-    
-    private func getPhotos(_ json: JSON, _ repost: Bool) -> [JSON] {
-        var photos: [JSON] = []
-        if repost {
-            if let histories = json["copy_history"].array {
-                           for history in histories {
-                               photos = history["attachments"].arrayValue.filter({ (json) -> Bool in
-                                               json["type"].stringValue == "photo"
-                                           })
-                           }
-                       }
-            
-        } else {
-            photos = json["attachments"].arrayValue.filter({ (json) -> Bool in
-                            json["type"].stringValue == "photo" })
-        }
-         return photos
-    }
-    
-    
-    private func getTitle(_ json: JSON, _ repost: Bool) -> String {
-        if repost {
-            if let histories = json["copy_history"].array {
-                for history in histories {
-                    return history["text"].stringValue
-                }
-            }
-        } else {
-             return json["text"].stringValue
-        }
-        return ""
-    }
-    
-    private func getDate(_ json: JSON, _ repost: Bool) -> Double {
-        if repost {
-            if let histories = json["copy_history"].array {
-                for history in histories {
-                    return history["date"].doubleValue
-                }
-            }
-        } else {
-             return json["date"].doubleValue
-        }
-        return 0
-    }
-
     
     
     // wall header block >>
@@ -171,7 +66,7 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
         return myAvaURL
     }
     
-    func getMyPostDate() -> String? {
+    func getMyPostDate() -> Double {
         return myPostDate
     }
     
@@ -188,7 +83,7 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     }
     
     
-    func getOrigPostDate() -> String? {
+    func getOrigPostDate() -> Double {
         return origPostDate
     }
     

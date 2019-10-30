@@ -5,12 +5,12 @@ protocol WallProtocol{
     // wall header block
     func getMyName() -> String?
     func getMyAvaURL() -> URL?
-    func getMyPostDate() -> String?
+    func getMyPostDate() -> Double
     func getTitle() -> String?
     
     func getOrigName() -> String?
     func getOrigAvaURL() -> URL?
-    func getOrigPostDate() -> String?
+    func getOrigPostDate() -> Double
     func getOrigTitle() -> String?
     
     // wall images block

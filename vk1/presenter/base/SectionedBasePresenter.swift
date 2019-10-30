@@ -31,15 +31,7 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
         self.view = vc
     }
     
-//    // view is not exists
-//    required convenience init(vc: ViewInputProtocol, beginLoadFrom: LoadModelType, completion: (()->Void)?) {
-//        self.init()
-//        self.view = vc
-//        UI_THREAD { [weak self] in
-//            self?.loadModel(beginLoadFrom, completion)
-//        }
-//    }
-
+    
     func getDataSource() -> [SectionedModelProtocol] {
         return sortedDataSource
     }
@@ -54,33 +46,6 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     }
     
     func subscribe(){}
-
-    private final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
-        switch loadType {
-        case .diskFirst:
-            console(msg: "\(String(describing: self)): start fetching from disk")
-            let outerCompletion = {[weak self] in
-                if self?.sortedDataSource.count == 0 {
-                    console(msg: "\(String(describing: self)): start loading from network")
-                    self?.loadFromNetwork(completion: completion)
-                } else {
-                    completion?()
-                }
-            }
-            loadFromDisk(completion: outerCompletion)
-        case .networkFirst:
-            console(msg: "\(String(describing: self)): start loading from network")
-            let outerCompletion = {[weak self] in
-                if self?.sortedDataSource.count == 0 {
-                    console(msg: "\(String(describing: self)): start fetching from disk")
-                    self?.loadFromDisk(completion: completion)
-                } else {
-                    completion?()
-                }
-            }
-            loadFromNetwork(completion: outerCompletion)
-        }
-    }
     
     func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
         guard ds.count > 0

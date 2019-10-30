@@ -10,12 +10,12 @@ class FriendWall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     // header block
     var myAvaURL: URL?
     var myName: String = ""
-    var myPostDate = ""
+    var myPostDate: Double = 0
     var title: String = ""
 
     var origAvaURL: URL?
     var origName: String = ""
-    var origPostDate = ""
+    var origPostDate: Double = 0
     var origTitle: String = ""
 
     // image block
@@ -38,7 +38,7 @@ class FriendWall : WallProtocol, DecodableProtocol, PlainModelProtocol {
             id = json["id"].intValue
             print(json)
             //TODO:
-            myPostDate = "xxxxxx"
+            //myPostDate = "xxxxxx"
             title = json["text"].stringValue
             viewCount = json["views"]["count"].intValue
             likeCount = json["likes"]["count"].intValue
@@ -77,7 +77,7 @@ class FriendWall : WallProtocol, DecodableProtocol, PlainModelProtocol {
         return myAvaURL
     }
     
-    func getMyPostDate() -> String? {
+    func getMyPostDate() -> Double {
         return myPostDate
     }
     
@@ -94,7 +94,7 @@ class FriendWall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     }
     
     
-    func getOrigPostDate() -> String? {
+    func getOrigPostDate() -> Double {
         return origPostDate
     }
     

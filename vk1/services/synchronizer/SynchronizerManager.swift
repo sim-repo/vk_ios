@@ -59,23 +59,31 @@ class SynchronizerManager {
                 
                 
                 var ids:[Int] = []
-//                friendDS?.forEach { model in
-//                    ids.append(model.getId())
-//                }
                 
                 groupDS?.forEach { model in
                     ids.append(model.getId())
                 }
                 
                 
+                friendDS?.forEach { model in
+                    ids.append(model.getId())
+                }
+                
+                self.dispatchGroup = DispatchGroup()
+                
                 let wallPresenter: WallPresenter = PresenterFactory.shared.getInstance()
                 wallPresenter.clearDataSource()
                 for id in ids {
+                    self.dispatchGroup?.enter()
                     wallPresenter.loadFromNetwork(ownerId: id) {
-                        print("syncing..")
+                        self.dispatchGroup?.leave()
                     }
                 }
-                //console(msg: "SynchronizerManager: startSync: sync completed!")
+                
+                self.dispatchGroup?.notify(queue: DispatchQueue.main) { [weak self] in
+                    console(msg: "SynchronizerManager: startSync: sync completed!")
+                    wallPresenter.sort()
+                }
             }
         }
     }

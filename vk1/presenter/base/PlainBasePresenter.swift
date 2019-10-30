@@ -3,9 +3,6 @@ import Foundation
 
 public class PlainBasePresenter: PlainPresenterProtocol {
 
-    
-
-    
     var numberOfSections: Int = 1
     
     var numberOfRowsInSection: Int {
@@ -45,35 +42,6 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     func clearDataSource() {
         dataSource.removeAll()
     }
-    
-    
-    
-//    final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
-//        switch loadType {
-//        case .diskFirst:
-//            console(msg: "\(String(describing: self)): start fetching from disk")
-//            let outerCompletion = {[weak self] in
-//                if self?.dataSource.count == 0 {
-//                    console(msg: "\(String(describing: self)): start loading from network")
-//                    self?.loadFromNetwork(completion: completion)
-//                } else {
-//                    completion?()
-//                }
-//            }
-//            loadFromDisk(completion: outerCompletion)
-//        case .networkFirst:
-//            console(msg: "\(String(describing: self)): start loading from network")
-//            let outerCompletion = {[weak self] in
-//                if self?.dataSource.count == 0 {
-//                    console(msg: "\(String(describing: self)): start fetching from disk")
-//                    self?.loadFromDisk(completion: completion)
-//                } else {
-//                    completion?()
-//                }
-//            }
-//            loadFromNetwork(completion: outerCompletion)
-//        }
-//    }
 
     
     func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
@@ -94,7 +62,7 @@ public class PlainBasePresenter: PlainPresenterProtocol {
                 saveModel(ds: ds)
        }
     }
-       
+
     func saveModel(ds: [DecodableProtocol]) {
         // TODO: implement
         didSaveModel()
