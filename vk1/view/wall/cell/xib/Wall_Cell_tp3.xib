@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="628" height="612"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3V3-sO-M01" userLabel="RootView" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3V3-sO-M01" userLabel="RootView" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="1" y="1" width="626" height="610"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbh-hI-FCO" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
@@ -29,13 +29,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klf-nZ-NfF" userLabel="ImageView">
                                 <rect key="frame" x="4" y="124" width="618" height="446"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eNy-VO-Niw">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eNy-VO-Niw" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="307" height="134"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FcK-PF-ueO">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FcK-PF-ueO" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="311" y="0.0" width="307" height="134"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqF-EM-a7K">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqF-EM-a7K" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="138" width="618" height="308"/>
                                     </imageView>
                                 </subviews>

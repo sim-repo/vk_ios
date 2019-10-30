@@ -1,12 +1,7 @@
 import UIKit
 
 
-class MyView_Background : UIView {
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.backgroundColor = ColorSystemHelper.background
-    }
-}
+
 
 class MyView_GradiendBackground : UIView {
     required init?(coder: NSCoder) {
@@ -152,6 +147,13 @@ class MyImageView_Secondary : UIImageView {
 }
 
 
+class MyImageView_DarkPrimary : UIImageView {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        backgroundColor = ColorSystemHelper.bottomBackground
+    }
+}
+
 class MyTextField_Secondary : UITextField {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -183,6 +185,20 @@ class MyView_SecondaryDark : UIView {
     }
 }
 
+class MyView_Background : UIView {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.backgroundColor = ColorSystemHelper.background
+    }
+}
+
+
+class MyView_DarkBackground : UIView {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.backgroundColor = ColorSystemHelper.midBottomBackground
+    }
+}
 
 
 extension UINavigationBar {

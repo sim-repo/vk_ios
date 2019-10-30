@@ -6,6 +6,7 @@ class ColorSystemHelper {
         isDark = true
         background = #colorLiteral(red: 0.005808433518, green: 0.00166301534, blue: 0.262986809, alpha: 1)
         topBackground = tint(color: background, tint: 0)
+        midBottomBackground = tint(color: background, tint: -20)
         bottomBackground = tint(color: background, tint: -220)
         onBackground = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let primary_color = #colorLiteral(red: 0.4392291903, green: 0.1222558096, blue: 0.9621943831, alpha: 1)
@@ -56,6 +57,7 @@ class ColorSystemHelper {
         isDark = false
         background = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         topBackground = tint(color: background, tint: 30)
+        midBottomBackground = tint(color: background, tint: -30)
         bottomBackground = tint(color: background, tint: -70)
         onBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         let primary_color = #colorLiteral(red: 0.1408204734, green: 0.6550927758, blue: 0.7994835973, alpha: 1)
@@ -103,6 +105,7 @@ class ColorSystemHelper {
     
     static var background = UIColor.white
     static var topBackground = UIColor.white
+    static var midBottomBackground = UIColor.white
     static var bottomBackground = UIColor.white
     static var onBackground = UIColor.black
     

@@ -53,7 +53,8 @@ class WallCellConfigurator {
         cell.getHeaderView().origNameLabel.text = wall.getOrigName()
         cell.getHeaderView().origPostDateLabel.text = convertUnixTime(unixTime: wall.getOrigPostDate())
         cell.getHeaderView().origTitleTextView.text = wall.getOrigTitle()
-        cell.getHeaderView().origTitleTextView.textContainer.lineBreakMode = .byTruncatingTail
+        cell.getHeaderView().origTitleTextView.textContainer.lineBreakMode = .byWordWrapping
+        cell.getHeaderView().origTitleTextView.textContainer.maximumNumberOfLines = 4
         
         
          // wall image block >>

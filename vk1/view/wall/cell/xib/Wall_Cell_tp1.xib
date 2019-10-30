@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="408" height="420"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-cS-hRa" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-cS-hRa" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="1" y="1" width="406" height="418"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3r-Qa-YN5" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="height" constant="120" id="Ciz-0x-4Ca"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-UL-0M1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-UL-0M1" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="4" y="124" width="398" height="254"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5z-Ug-TPi" userLabel="LikeView" customClass="WallLike_View" customModule="vk1" customModuleProvider="target">
@@ -37,7 +37,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="M3r-Qa-YN5" firstAttribute="leading" secondItem="1wu-cS-hRa" secondAttribute="leading" id="5T4-35-gvQ"/>
                             <constraint firstItem="4eh-UL-0M1" firstAttribute="top" secondItem="M3r-Qa-YN5" secondAttribute="bottom" constant="4" id="6aB-xF-xOh"/>
@@ -52,7 +51,6 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="1wu-cS-hRa" secondAttribute="bottom" constant="1" id="5HI-eU-CBK"/>
                     <constraint firstItem="1wu-cS-hRa" firstAttribute="leading" secondItem="nf8-51-Uxy" secondAttribute="leading" constant="1" id="9QN-nV-kvA"/>
