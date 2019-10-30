@@ -3,41 +3,23 @@ import Kingfisher
 
 class WallCellConfigurator {
     
-    static var wallTitleHeight: [Int:CGFloat] = [:]
     
-    static func getTitleHeight(cellIdx: Int, title: UITextView) -> CGFloat? {
-        var height = wallTitleHeight[cellIdx]
-        if height == nil {
-            if title.text.count == 0 {
-                wallTitleHeight[cellIdx] = 0
-                return 0
-            }
-            
-            let numLines = min((title.contentSize.height / title.font!.lineHeight), 3)
-            height = cellHeaderHeight * numLines
-            wallTitleHeight[cellIdx] = height
-            return height
-        } else {
-            return height
-        }
-    }
-    
-    static func setupCollectionCell(cell: Wall_CellProtocol, wall: WallProtocol) {
+    static func setupCell(cell: Wall_CellProtocol, wall: WallProtocol) {
         
+        // wall header block >>
         
-        cell.getHeaderView().myAvaImageView.kf.setImage(with: wall.getMyAvaURL())
-        cell.getHeaderView().myNameLabel.text = wall.getMyName()
-        cell.getHeaderView().myPostDateLabel.text = wall.getMyPostDate()
+        // set initial height
+        cell.getHConHeaderView().constant = cellHeaderHeight
+        cell.getHeaderView().hConRepostTitleTextView.constant = cellQuarterHeight
+        cell.getHeaderView().hConOrigAuthorContentView.constant = cellQuarterHeight
+        cell.getHeaderView().hConOrigTitleTextView.constant = cellQuarterHeight
         
-        
+        // search and hide empty
         var negativeHCon: CGFloat = 0
         if wall.getTitle()?.count == 0 {
             cell.getHeaderView().hConRepostTitleTextView.constant = 0
             negativeHCon += cellQuarterHeight
         }
-        cell.getHeaderView().myTitleTextView.text = wall.getTitle()
-        cell.getHeaderView().myTitleTextView.textContainer.lineBreakMode = .byTruncatingTail
-        
         
         if wall.getOrigAvaURL() == nil {
             cell.getHeaderView().hConOrigAuthorContentView.constant = 0
@@ -49,10 +31,16 @@ class WallCellConfigurator {
             negativeHCon += cellQuarterHeight
         }
         
-        cell.getHConHeaderView().constant = cellHeaderHeight - negativeHCon
+        // parent block: decrease height
+        cell.getHConHeaderView().constant -= negativeHCon
         
         
-        
+        // set attributes
+        cell.getHeaderView().myAvaImageView.kf.setImage(with: wall.getMyAvaURL())
+        cell.getHeaderView().myNameLabel.text = wall.getMyName()
+        cell.getHeaderView().myPostDateLabel.text = wall.getMyPostDate()
+        cell.getHeaderView().myTitleTextView.text = wall.getTitle()
+        cell.getHeaderView().myTitleTextView.textContainer.lineBreakMode = .byTruncatingTail
         cell.getHeaderView().origAvaImageView.kf.setImage(with: wall.getOrigAvaURL())
         cell.getHeaderView().origNameLabel.text = wall.getOrigName()
         cell.getHeaderView().origPostDateLabel.text = wall.getOrigPostDate()
@@ -60,11 +48,14 @@ class WallCellConfigurator {
         cell.getHeaderView().origTitleTextView.textContainer.lineBreakMode = .byTruncatingTail
         
         
+         // wall image block >>
         let URLs = wall.getImageURLs()
         let images = cell.getImagesView()
         for (idx, url) in URLs.enumerated() {
             images[idx].kf.setImage(with: url)
         }
+        
+         // wall bottom block >>
         cell.getLikeView().likeCount.text = "\(wall.getLikeCount())"
         cell.getLikeView().messageCount.text = "\(wall.getMessageCount())"
         cell.getLikeView().shareCount.text = "\(wall.getShareCount())"

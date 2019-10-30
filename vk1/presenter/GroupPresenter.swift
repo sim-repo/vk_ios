@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-public class GroupPresenter: SectionedBasePresenter{
+public class GroupPresenter: SectionedBasePresenter {
     
     let urlPath: String = "groups.search"
     

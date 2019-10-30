@@ -2,7 +2,7 @@ import UIKit
 
 protocol WallProtocol{
     
-    // header block
+    // wall header block
     func getMyName() -> String?
     func getMyAvaURL() -> URL?
     func getMyPostDate() -> String?
@@ -13,11 +13,11 @@ protocol WallProtocol{
     func getOrigPostDate() -> String?
     func getOrigTitle() -> String?
     
-    // images block
+    // wall images block
     func getImageURLs() -> [URL]
     
     
-    // bottom block
+    // wall bottom block
     func getLikeCount() -> Int
     func getMessageCount() -> Int
     func getShareCount() -> Int

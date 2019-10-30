@@ -68,10 +68,18 @@ func isRowPresentInTableView(indexPath: IndexPath, tableView: UITableView) -> Bo
     return false
 }
 
-func catchError(){
-    fatalError()
+func catchError(msg: String){
+    #if DEBUG
+        fatalError(msg)
+    #else
+        sendCrashlytics(msg)
+    #endif
 }
 
+
+func sendCrashlytics(_ msg: String) {
+    //TODO
+}
 
 func convertUnixTime(unixTime: Double) -> String {
     let date = Date(timeIntervalSince1970: unixTime)
@@ -80,4 +88,23 @@ func convertUnixTime(unixTime: Double) -> String {
     dateFormatter.dateStyle = DateFormatter.Style.medium
     dateFormatter.timeZone = .current
     return dateFormatter.string(from: date)
+}
+
+
+func console(msg: String) {
+    #if DEBUG
+        print()
+        print()
+        print("----------------------------------------------------------------------")
+        print(msg)
+        print("----------------------------------------------------------------------")
+        print()
+        print()
+    #else
+           logInf(msg)
+    #endif
+}
+
+func logInf(msg: String) {
+    //TODO
 }

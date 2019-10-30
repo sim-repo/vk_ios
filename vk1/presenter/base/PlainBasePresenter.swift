@@ -10,7 +10,7 @@ public class PlainBasePresenter: PlainPresenterProtocol {
         return dataSource.count 
     }
     
-    weak var view: ViewProtocolDelegate?
+    weak var view: ViewProtocol?
     var dataSource: [PlainModelProtocol] = []
     
 
@@ -23,16 +23,19 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     }
     
     // view is not exists
-    required convenience init(vc: ViewProtocolDelegate, beginLoadFrom: LoadModelType, completion: (()->Void)?) {
+    required convenience init(vc: ViewProtocol, beginLoadFrom: LoadModelType, completion: (()->Void)?) {
         self.init()
         self.view = vc
         loadModel(beginLoadFrom, completion)
     }
     
     
-    func setView(view: ViewProtocolDelegate, completion: (()->Void)?) {
+    func setView(view: ViewProtocol, completion: (()->Void)?) {
         self.view = view
-        completion?()
+        UI_THREAD { [weak self] in
+            self?.view?.refreshDataSource()
+            completion?()
+        }
     }
     
     
@@ -45,10 +48,10 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     private final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
         switch loadType {
         case .diskFirst:
-            print("######## LOADING FROM DISK ########")
+            console(msg: "\(String(describing: self)): start fetching from disk")
             let outerCompletion = {[weak self] in
                 if self?.dataSource.count == 0 {
-                    print("######## TRYING LOADING FROM NETWORK ########")
+                    console(msg: "\(String(describing: self)): start loading from network")
                     self?.loadFromNetwork(completion: completion)
                 } else {
                     completion?()
@@ -56,10 +59,10 @@ public class PlainBasePresenter: PlainPresenterProtocol {
             }
             loadFromDisk(completion: outerCompletion)
         case .networkFirst:
-            print("######## LOADING FROM NETWORK ########")
+            console(msg: "\(String(describing: self)): start loading from network")
             let outerCompletion = {[weak self] in
                 if self?.dataSource.count == 0 {
-                    print("######## TRYING LOADING FROM DISK ########")
+                    console(msg: "\(String(describing: self)): start fetching from disk")
                     self?.loadFromDisk(completion: completion)
                 } else {
                     completion?()
@@ -73,8 +76,8 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
         guard ds.count > 0
         else {
-            catchError()
-            return
+             catchError(msg: "PlainBasePresenter: setModel: datasource is empty")
+             return
         }
         
        switch didLoadedFrom {
@@ -117,11 +120,11 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     //MARK: overriding functions
     
     func loadFromNetwork(completion: (()->Void)? = nil){
-        fatalError("Override Error: this method must be overrided by child classes")
+        catchError(msg: "PlainBasePresenter: loadFromNetwork: override error")
     }
     
     func loadFromDisk(completion: (()->Void)? = nil){
-        fatalError("Override Error: this method must be overrided by child classes")
+        catchError(msg: "PlainBasePresenter: loadFromDisk: override error")
     }
 }
 

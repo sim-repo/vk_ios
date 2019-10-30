@@ -173,7 +173,7 @@ extension MyGroups_ViewController {
 
 
 
-extension MyGroups_ViewController: ViewProtocolDelegate{
+extension MyGroups_ViewController: ViewProtocol{
      
     func refreshDataSource(){
         presenter.refreshDataSource(){ [weak self] (titles) in

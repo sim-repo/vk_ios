@@ -19,7 +19,7 @@ extension Wall_Cell_tp7: Wall_CellProtocol {
     
    func setup(_ wall: WallProtocol, indexRow: Int) {
         self.indexRow = indexRow
-        WallCellConfigurator.setupCollectionCell(cell: self, wall: wall)
+        WallCellConfigurator.setupCell(cell: self, wall: wall)
         layoutIfNeeded()
     }
     

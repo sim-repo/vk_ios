@@ -2,7 +2,7 @@ import Foundation
 
 protocol SectionedPresenterProtocol: PresenterProtocol {
     
-    var view: ViewProtocolDelegate? {get set}
+    var view: ViewProtocol? {get set}
     var numberOfSections: Int {get}
     func numberOfRowsInSection (section: Int)->Int
     func filterData(_ filterText: String)

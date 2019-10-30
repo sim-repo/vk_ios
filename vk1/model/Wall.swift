@@ -7,7 +7,7 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     var id: Int!
     var postTypeCode: String!
     
-    // header block
+    // wall header block
     var myAvaURL: URL?
     var myName: String = ""
     var myPostDate = ""
@@ -18,10 +18,10 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     var origPostDate = ""
     var origTitle: String = ""
     
-    // image block
+    // wall image block
     var imageURLs: [URL] = []
     
-    // bottom block
+    // wall bottom block
     var likeCount = 0
     var viewCount = 0
     var messageCount = 0
@@ -41,7 +41,7 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
             let repost = isRepost(json)
             
             id = json["id"].intValue
-            print(json)
+            //print(json)
      
             let myId = json["owner_id"].intValue
             let authorId = abs(getAuthorId(json, repost))
@@ -158,7 +158,7 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
 
     
     
-    // header block
+    // wall header block >>
     func getMyName() -> String? {
         return myName
     }
@@ -192,12 +192,13 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
         return origTitle
     }
     
-    // image block
+    // wall image block >>
     func getImageURLs() -> [URL] {
         return imageURLs
     }
 
-    // bottom block
+    // wall bottom block >>
+    
     func getLikeCount() -> Int {
            return likeCount
     }

@@ -16,8 +16,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startSynchonizer()
+        
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView.addGestureRecognizer(hideKeyboardGesture)
+       
+        
         let w: CGFloat = 232.0
         waitLoadingContainer = WaitIndicator2(frame: CGRect(x: wHalfScreen - w/2.0,
                                                             y: view.frame.height/3, width: wScreen, height: 100))
@@ -37,6 +41,11 @@ class LoginViewController: UIViewController {
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    private func startSynchonizer(){
+        SynchronizerManager.shared.startSync()
     }
     
     @objc func keyboardWasShown(_ notification: NSNotification){

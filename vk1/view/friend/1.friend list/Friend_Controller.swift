@@ -242,7 +242,7 @@ extension Friend_Controller: UIScrollViewDelegate {
 }
 
 
-extension Friend_Controller: ViewProtocolDelegate{
+extension Friend_Controller: ViewProtocol{
      
     func className() -> String {
          return String(describing: Friend_Controller.self)

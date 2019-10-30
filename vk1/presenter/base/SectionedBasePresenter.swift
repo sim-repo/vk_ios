@@ -2,7 +2,7 @@ import Foundation
 
 public class SectionedBasePresenter: SectionedPresenterProtocol {
 
-    weak var view: ViewProtocolDelegate?
+    weak var view: ViewProtocol?
     
     var sortedDataSource: [SectionedModelProtocol] = []
     
@@ -32,7 +32,7 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     }
     
     // view is not exists
-    required convenience init(vc: ViewProtocolDelegate, beginLoadFrom: LoadModelType, completion: (()->Void)?) {
+    required convenience init(vc: ViewProtocol, beginLoadFrom: LoadModelType, completion: (()->Void)?) {
         self.init()
         self.view = vc
         UI_THREAD { [weak self] in
@@ -41,26 +41,23 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     }
 
     
-    
-    func setView(view: ViewProtocolDelegate, completion: (()->Void)?) {
+    func setView(view: ViewProtocol, completion: (()->Void)?) {
         self.view = view
-        completion?()
+        UI_THREAD { [weak self] in
+           self?.view?.refreshDataSource()
+           completion?()
+        }
     }
     
     func subscribe(){}
 
-
-    
-
-    
-    
     private final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
         switch loadType {
         case .diskFirst:
-            print("######## LOADING FROM DISK ########")
+            console(msg: "\(String(describing: self)): start fetching from disk")
             let outerCompletion = {[weak self] in
                 if self?.sortedDataSource.count == 0 {
-                    print("######## TRYING LOADING FROM NETWORK ########")
+                    console(msg: "\(String(describing: self)): start loading from network")
                     self?.loadFromNetwork(completion: completion)
                 } else {
                     completion?()
@@ -68,10 +65,10 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
             }
             loadFromDisk(completion: outerCompletion)
         case .networkFirst:
-            print("######## LOADING FROM NETWORK ########")
+            console(msg: "\(String(describing: self)): start loading from network")
             let outerCompletion = {[weak self] in
                 if self?.sortedDataSource.count == 0 {
-                    print("######## TRYING LOADING FROM DISK ########")
+                    console(msg: "\(String(describing: self)): start fetching from disk")
                     self?.loadFromDisk(completion: completion)
                 } else {
                     completion?()
@@ -84,7 +81,7 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
         guard ds.count > 0
         else {
-            catchError()
+            catchError(msg: "SectionBasePresenter: setModel: datasource is empty")
             return
         }
         
@@ -258,12 +255,10 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     //MARK: overriding functions
     
     func loadFromDisk(completion: (()->Void)? = nil){
-        fatalError("Override Error: this method must be overrided by child classes")
+        catchError(msg: "SectionBasePresenter: loadFromDisk: override error")
     }
     
     func loadFromNetwork(completion: (()->Void)? = nil){
-        fatalError("Override Error: this method must be overrided by child classes")
+        catchError(msg: "SectionBasePresenter: loadFromNetwork: override error")
     }
-    
-   
 }

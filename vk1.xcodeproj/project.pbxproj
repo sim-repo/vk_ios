@@ -46,7 +46,7 @@
 		1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */; };
 		164764A32365E1E5007D1B19 /* SectionedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764A22365E1E5007D1B19 /* SectionedModelProtocol.swift */; };
 		164764AA2365EFDA007D1B19 /* SectionedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764A92365EFDA007D1B19 /* SectionedPresenterProtocol.swift */; };
-		164764B32365FB86007D1B19 /* ViewProtocolDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B22365FB86007D1B19 /* ViewProtocolDelegate.swift */; };
+		164764B32365FB86007D1B19 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B22365FB86007D1B19 /* ViewProtocol.swift */; };
 		164764B62365FC2E007D1B19 /* constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B52365FC2E007D1B19 /* constant.swift */; };
 		164764BB23662209007D1B19 /* VKLogin_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764BA23662209007D1B19 /* VKLogin_ViewController.swift */; };
 		164764BD23664DE0007D1B19 /* GroupSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764BC23664DE0007D1B19 /* GroupSectionHeader.swift */; };
@@ -95,6 +95,7 @@
 		16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEF236847C300735296 /* CellImagesHelper.swift */; };
 		16D58BF52368516800735296 /* WallHeader_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D58BF42368516800735296 /* WallHeader_View.xib */; };
 		16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BF623685F0900735296 /* WallHeader_View.swift */; };
+		16D58BFE236986EB00735296 /* SynchronizerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFD236986EB00735296 /* SynchronizerManager.swift */; };
 		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
 		16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */; };
 		16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD22351FDCD001C33CF /* PostImageView.swift */; };
@@ -147,7 +148,7 @@
 		1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkManager.swift; sourceTree = "<group>"; };
 		164764A22365E1E5007D1B19 /* SectionedModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedModelProtocol.swift; sourceTree = "<group>"; };
 		164764A92365EFDA007D1B19 /* SectionedPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedPresenterProtocol.swift; sourceTree = "<group>"; };
-		164764B22365FB86007D1B19 /* ViewProtocolDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocolDelegate.swift; sourceTree = "<group>"; };
+		164764B22365FB86007D1B19 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		164764B52365FC2E007D1B19 /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
 		164764BA23662209007D1B19 /* VKLogin_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLogin_ViewController.swift; sourceTree = "<group>"; };
 		164764BC23664DE0007D1B19 /* GroupSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSectionHeader.swift; sourceTree = "<group>"; };
@@ -196,6 +197,7 @@
 		16D58BEF236847C300735296 /* CellImagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImagesHelper.swift; sourceTree = "<group>"; };
 		16D58BF42368516800735296 /* WallHeader_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallHeader_View.xib; sourceTree = "<group>"; };
 		16D58BF623685F0900735296 /* WallHeader_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallHeader_View.swift; sourceTree = "<group>"; };
+		16D58BFD236986EB00735296 /* SynchronizerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizerManager.swift; sourceTree = "<group>"; };
 		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
 		16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPushAnimator.swift; sourceTree = "<group>"; };
 		16FF6FD22351FDCD001C33CF /* PostImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
@@ -297,13 +299,13 @@
 			path = theme;
 			sourceTree = "<group>";
 		};
-		161B0E9A2349EE780081008B /* post activity */ = {
+		161B0E9A2349EE780081008B /* bottom */ = {
 			isa = PBXGroup;
 			children = (
 				161B0E602349D1DA0081008B /* WallLike_View.xib */,
 				161B0E622349D27F0081008B /* WallLike_View.swift */,
 			);
-			path = "post activity";
+			path = bottom;
 			sourceTree = "<group>";
 		};
 		161C11372347210200A2EC9D /* helper */ = {
@@ -365,7 +367,6 @@
 		163CF9A823334D9B0087C6E2 /* presenter */ = {
 			isa = PBXGroup;
 			children = (
-				164764AE2365FAEC007D1B19 /* factory */,
 				16D58BE9236706B800735296 /* base */,
 				163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */,
 				16200CFC233360FF00F02440 /* GroupPresenter.swift */,
@@ -381,6 +382,9 @@
 		164764992365DF8A007D1B19 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				164764AE2365FAEC007D1B19 /* factory */,
+				16D58BFC236986A600735296 /* synchronizer */,
+				16D58BFA2369645E00735296 /* configurator */,
 				1647649A2365E012007D1B19 /* network */,
 			);
 			path = services;
@@ -408,6 +412,7 @@
 		164764A12365E1C9007D1B19 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				16D58BFB2369669C00735296 /* wall */,
 				164764A22365E1E5007D1B19 /* SectionedModelProtocol.swift */,
 				16D58BE72366C6BE00735296 /* PlainModelProtocol.swift */,
 				16D58BDF2366BABD00735296 /* DecodableProtocol.swift */,
@@ -436,7 +441,7 @@
 		164764B12365FB78007D1B19 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				164764B22365FB86007D1B19 /* ViewProtocolDelegate.swift */,
+				164764B22365FB86007D1B19 /* ViewProtocol.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 		166667462347C9D200FD2B86 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				16BA48362345CB6A007D0981 /* xib */,
 				166667672347E2C700FD2B86 /* Wall_CellProtocol.swift */,
 				1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */,
 				166667442347BFE100FD2B86 /* Wall_Cell_tp2.swift */,
@@ -474,24 +480,6 @@
 			path = "2.friend wall";
 			sourceTree = "<group>";
 		};
-		166667FF234938B200FD2B86 /* wall */ = {
-			isa = PBXGroup;
-			children = (
-				16D58BF1236850C500735296 /* header */,
-				161B0E9A2349EE780081008B /* post activity */,
-				1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */,
-				166667572347CB5100FD2B86 /* Wall_Cell_tp2.xib */,
-				166667592347CB5D00FD2B86 /* Wall_Cell_tp3.xib */,
-				1666675B2347CB6700FD2B86 /* Wall_Cell_tp4.xib */,
-				1666675D2347CB7300FD2B86 /* Wall_Cell_tp5.xib */,
-				1666675F2347CB7E00FD2B86 /* Wall_Cell_tp6.xib */,
-				166667612347CB8A00FD2B86 /* Wall_Cell_tp7.xib */,
-				166667632347CB9600FD2B86 /* Wall_Cell_tp8.xib */,
-				166667652347CBA100FD2B86 /* Wall_Cell_tp9.xib */,
-			);
-			path = wall;
-			sourceTree = "<group>";
-		};
 		166D1B0A234F6E2900C552E4 /* video */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,7 +491,6 @@
 		16AB0B85232F7B6C00E21B7F /* model */ = {
 			isa = PBXGroup;
 			children = (
-				166667F92349062E00FD2B86 /* WallProtocol.swift */,
 				166667DF2348FA9B00FD2B86 /* FriendWall.swift */,
 				16200D1623389C9600F02440 /* Wall.swift */,
 				16AB0B86232F7BF000E21B7F /* Friend.swift */,
@@ -563,7 +550,17 @@
 		16BA48362345CB6A007D0981 /* xib */ = {
 			isa = PBXGroup;
 			children = (
-				166667FF234938B200FD2B86 /* wall */,
+				16D58BF1236850C500735296 /* header */,
+				161B0E9A2349EE780081008B /* bottom */,
+				1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */,
+				166667572347CB5100FD2B86 /* Wall_Cell_tp2.xib */,
+				166667592347CB5D00FD2B86 /* Wall_Cell_tp3.xib */,
+				1666675B2347CB6700FD2B86 /* Wall_Cell_tp4.xib */,
+				1666675D2347CB7300FD2B86 /* Wall_Cell_tp5.xib */,
+				1666675F2347CB7E00FD2B86 /* Wall_Cell_tp6.xib */,
+				166667612347CB8A00FD2B86 /* Wall_Cell_tp7.xib */,
+				166667632347CB9600FD2B86 /* Wall_Cell_tp8.xib */,
+				166667652347CBA100FD2B86 /* Wall_Cell_tp9.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -577,14 +574,6 @@
 			path = base;
 			sourceTree = "<group>";
 		};
-		16D58BEE23682AA400735296 /* configurator */ = {
-			isa = PBXGroup;
-			children = (
-				161C1135234718B000A2EC9D /* WallCellConfigurator.swift */,
-			);
-			path = configurator;
-			sourceTree = "<group>";
-		};
 		16D58BF1236850C500735296 /* header */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +581,30 @@
 				16D58BF623685F0900735296 /* WallHeader_View.swift */,
 			);
 			path = header;
+			sourceTree = "<group>";
+		};
+		16D58BFA2369645E00735296 /* configurator */ = {
+			isa = PBXGroup;
+			children = (
+				161C1135234718B000A2EC9D /* WallCellConfigurator.swift */,
+			);
+			path = configurator;
+			sourceTree = "<group>";
+		};
+		16D58BFB2369669C00735296 /* wall */ = {
+			isa = PBXGroup;
+			children = (
+				166667F92349062E00FD2B86 /* WallProtocol.swift */,
+			);
+			path = wall;
+			sourceTree = "<group>";
+		};
+		16D58BFC236986A600735296 /* synchronizer */ = {
+			isa = PBXGroup;
+			children = (
+				16D58BFD236986EB00735296 /* SynchronizerManager.swift */,
+			);
+			path = synchronizer;
 			sourceTree = "<group>";
 		};
 		16FF6FCC2351F1ED001C33CF /* navigation controller */ = {
@@ -637,11 +650,9 @@
 		16FF6FD423520471001C33CF /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				16D58BEE23682AA400735296 /* configurator */,
 				16FF6FCE2351F348001C33CF /* animation */,
 				16172B5E234CE55500D5A748 /* theme */,
 				16200D0423388E1E00F02440 /* custom controls */,
-				16BA48362345CB6A007D0981 /* xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -875,7 +886,7 @@
 				1666674A2347C9FA00FD2B86 /* Wall_Cell_tp4.swift in Sources */,
 				16200D1923389CCE00F02440 /* WallPresenter.swift in Sources */,
 				16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */,
-				164764B32365FB86007D1B19 /* ViewProtocolDelegate.swift in Sources */,
+				164764B32365FB86007D1B19 /* ViewProtocol.swift in Sources */,
 				16AB0BA9232F985D00E21B7F /* Group.swift in Sources */,
 				1647649C2365E031007D1B19 /* Session.swift in Sources */,
 				16200D0623388E5D00F02440 /* RoundedImage.swift in Sources */,
@@ -900,6 +911,7 @@
 				16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */,
 				16040605234E39170083F3C3 /* RotatedNavigationController.swift in Sources */,
 				16200D1F2338AB3300F02440 /* LettersSearchControl.swift in Sources */,
+				16D58BFE236986EB00735296 /* SynchronizerManager.swift in Sources */,
 				166667482347C9ED00FD2B86 /* Wall_Cell_tp3.swift in Sources */,
 				161B0E632349D27F0081008B /* WallLike_View.swift in Sources */,
 				16040601234E390A0083F3C3 /* RotatedPopAnimator.swift in Sources */,
