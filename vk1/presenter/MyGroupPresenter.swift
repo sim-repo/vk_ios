@@ -42,3 +42,9 @@ public class MyGroupPresenter: SectionedBasePresenter{
     }
 }
 
+
+extension MyGroupPresenter: BasicNetworkProtocol {
+    func datasourceIsEmpty() -> Bool {
+        return sortedDataSource.isEmpty
+    }
+}

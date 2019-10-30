@@ -89,6 +89,8 @@
             </collectionViewCellContentView>
             <size key="customSize" width="628" height="555"/>
             <connections>
+                <outlet property="hConHeaderView" destination="UXG-NI-bHB" id="vWv-xg-wP0"/>
+                <outlet property="headerView" destination="dbh-hI-FCO" id="QKN-aX-PZp"/>
                 <outlet property="imageView1" destination="eNy-VO-Niw" id="PCN-Ja-MQa"/>
                 <outlet property="imageView2" destination="FcK-PF-ueO" id="l4S-Ej-AsZ"/>
                 <outlet property="imageView3" destination="bqF-EM-a7K" id="PvK-ie-Kyc"/>

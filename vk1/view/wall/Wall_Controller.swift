@@ -68,7 +68,7 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
 }
 
 
-extension Wall_Controller: ViewProtocol{
+extension Wall_Controller: ViewInputProtocol{
     func refreshDataSource() {
         collectionView.reloadData()
     }

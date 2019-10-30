@@ -2,7 +2,9 @@ import Foundation
 
 public class SectionedBasePresenter: SectionedPresenterProtocol {
 
-    weak var view: ViewProtocol?
+    
+
+    weak var view: ViewInputProtocol?
     
     var sortedDataSource: [SectionedModelProtocol] = []
     
@@ -21,27 +23,29 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     
     //MARK: constuctor
     
-    required init() {
-        subscribe()
-    }
-    
-    // init from view
-    required convenience init(beginLoadFrom: LoadModelType, completion: (()->Void)?) {
-       self.init()
-       loadModel(beginLoadFrom, completion)
-    }
-    
+    required init(){}
+
     // view is not exists
-    required convenience init(vc: ViewProtocol, beginLoadFrom: LoadModelType, completion: (()->Void)?) {
+    required convenience init(vc: ViewInputProtocol, completion: (()->Void)?) {
         self.init()
         self.view = vc
-        UI_THREAD { [weak self] in
-            self?.loadModel(beginLoadFrom, completion)
-        }
     }
-
     
-    func setView(view: ViewProtocol, completion: (()->Void)?) {
+//    // view is not exists
+//    required convenience init(vc: ViewInputProtocol, beginLoadFrom: LoadModelType, completion: (()->Void)?) {
+//        self.init()
+//        self.view = vc
+//        UI_THREAD { [weak self] in
+//            self?.loadModel(beginLoadFrom, completion)
+//        }
+//    }
+
+    func getDataSource() -> [SectionedModelProtocol] {
+        return sortedDataSource
+    }
+    
+    
+    func setView(view: ViewInputProtocol, completion: (()->Void)?) {
         self.view = view
         UI_THREAD { [weak self] in
            self?.view?.refreshDataSource()

@@ -70,7 +70,8 @@ func isRowPresentInTableView(indexPath: IndexPath, tableView: UITableView) -> Bo
 
 func catchError(msg: String){
     #if DEBUG
-        fatalError(msg)
+        print(msg)
+        //fatalError(msg)
     #else
         sendCrashlytics(msg)
     #endif

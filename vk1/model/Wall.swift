@@ -41,18 +41,22 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
             let repost = isRepost(json)
             
             id = json["id"].intValue
-            //print(json)
+           // print(json)
      
             let myId = json["owner_id"].intValue
             let authorId = abs(getAuthorId(json, repost))
             
-            if let f = friends[myId] {
-                if let url = f.avaURL100 {
-                    myAvaURL = URL(string: url)
+            
+            if repost {
+                if let f = friends[myId] {
+                    if let url = f.avaURL100 {
+                        myAvaURL = URL(string: url)
+                    }
+                    myName = f.firstName + " "+f.lastName
+                    title = getTitle(json, false)
+                    let unixTime = getDate(json, false)
+                    myPostDate = convertUnixTime(unixTime: unixTime)
                 }
-                myName = f.firstName + " "+f.lastName
-                let unixTime = getDate(json, false)
-                myPostDate = convertUnixTime(unixTime: unixTime)
             }
             
             if let g = groups[authorId] {
@@ -67,7 +71,7 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
             }
             
             
-            title = getTitle(json, false)
+            
             viewCount = json["views"]["count"].intValue
             likeCount = json["likes"]["count"].intValue
             messageCount = json["comments"]["count"].intValue

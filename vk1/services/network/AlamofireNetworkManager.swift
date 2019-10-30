@@ -75,8 +75,10 @@ class AlamofireNetworkManager{
         let dicFriends = parseFriend(jsonProfiles)
         for j in items {
             let w = Wall()
-            w.setup(json: j, friends: dicFriends, groups: dicGroups)
-            res.append(w)
+            if WallParser.hasImages(json: j) {
+                w.setup(json: j, friends: dicFriends, groups: dicGroups)
+                res.append(w)
+            }
         }
         return res
     }

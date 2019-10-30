@@ -46,7 +46,7 @@
 		1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */; };
 		164764A32365E1E5007D1B19 /* SectionedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764A22365E1E5007D1B19 /* SectionedModelProtocol.swift */; };
 		164764AA2365EFDA007D1B19 /* SectionedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764A92365EFDA007D1B19 /* SectionedPresenterProtocol.swift */; };
-		164764B32365FB86007D1B19 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B22365FB86007D1B19 /* ViewProtocol.swift */; };
+		164764B32365FB86007D1B19 /* ViewInputProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B22365FB86007D1B19 /* ViewInputProtocol.swift */; };
 		164764B62365FC2E007D1B19 /* constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B52365FC2E007D1B19 /* constant.swift */; };
 		164764BB23662209007D1B19 /* VKLogin_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764BA23662209007D1B19 /* VKLogin_ViewController.swift */; };
 		164764BD23664DE0007D1B19 /* GroupSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764BC23664DE0007D1B19 /* GroupSectionHeader.swift */; };
@@ -96,6 +96,9 @@
 		16D58BF52368516800735296 /* WallHeader_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D58BF42368516800735296 /* WallHeader_View.xib */; };
 		16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BF623685F0900735296 /* WallHeader_View.swift */; };
 		16D58BFE236986EB00735296 /* SynchronizerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFD236986EB00735296 /* SynchronizerManager.swift */; };
+		16D58C002369B60C00735296 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFF2369B60C00735296 /* ViewProtocol.swift */; };
+		16D58C022369C12600735296 /* BasicNetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C012369C12600735296 /* BasicNetworkProtocol.swift */; };
+		16D58C052369D65100735296 /* WallParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C042369D65100735296 /* WallParser.swift */; };
 		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
 		16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */; };
 		16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD22351FDCD001C33CF /* PostImageView.swift */; };
@@ -148,7 +151,7 @@
 		1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkManager.swift; sourceTree = "<group>"; };
 		164764A22365E1E5007D1B19 /* SectionedModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedModelProtocol.swift; sourceTree = "<group>"; };
 		164764A92365EFDA007D1B19 /* SectionedPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedPresenterProtocol.swift; sourceTree = "<group>"; };
-		164764B22365FB86007D1B19 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		164764B22365FB86007D1B19 /* ViewInputProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInputProtocol.swift; sourceTree = "<group>"; };
 		164764B52365FC2E007D1B19 /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
 		164764BA23662209007D1B19 /* VKLogin_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLogin_ViewController.swift; sourceTree = "<group>"; };
 		164764BC23664DE0007D1B19 /* GroupSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSectionHeader.swift; sourceTree = "<group>"; };
@@ -198,6 +201,9 @@
 		16D58BF42368516800735296 /* WallHeader_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallHeader_View.xib; sourceTree = "<group>"; };
 		16D58BF623685F0900735296 /* WallHeader_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallHeader_View.swift; sourceTree = "<group>"; };
 		16D58BFD236986EB00735296 /* SynchronizerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizerManager.swift; sourceTree = "<group>"; };
+		16D58BFF2369B60C00735296 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		16D58C012369C12600735296 /* BasicNetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicNetworkProtocol.swift; sourceTree = "<group>"; };
+		16D58C042369D65100735296 /* WallParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallParser.swift; sourceTree = "<group>"; };
 		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
 		16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPushAnimator.swift; sourceTree = "<group>"; };
 		16FF6FD22351FDCD001C33CF /* PostImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
@@ -382,6 +388,7 @@
 		164764992365DF8A007D1B19 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				16D58C032369D61000735296 /* parser */,
 				164764AE2365FAEC007D1B19 /* factory */,
 				16D58BFC236986A600735296 /* synchronizer */,
 				16D58BFA2369645E00735296 /* configurator */,
@@ -426,6 +433,7 @@
 				16D58BEC236725DC00735296 /* PresenterProtocol.swift */,
 				164764A92365EFDA007D1B19 /* SectionedPresenterProtocol.swift */,
 				16D58BE32366BEB100735296 /* PlainPresenterProtocol.swift */,
+				16D58C012369C12600735296 /* BasicNetworkProtocol.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -441,7 +449,8 @@
 		164764B12365FB78007D1B19 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				164764B22365FB86007D1B19 /* ViewProtocol.swift */,
+				16D58BFF2369B60C00735296 /* ViewProtocol.swift */,
+				164764B22365FB86007D1B19 /* ViewInputProtocol.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -605,6 +614,14 @@
 				16D58BFD236986EB00735296 /* SynchronizerManager.swift */,
 			);
 			path = synchronizer;
+			sourceTree = "<group>";
+		};
+		16D58C032369D61000735296 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				16D58C042369D65100735296 /* WallParser.swift */,
+			);
+			path = parser;
 			sourceTree = "<group>";
 		};
 		16FF6FCC2351F1ED001C33CF /* navigation controller */ = {
@@ -868,9 +885,11 @@
 				166667522347CA1A00FD2B86 /* Wall_Cell_tp8.swift in Sources */,
 				16112740234B45E50080FD54 /* DataGeneratorHelper.swift in Sources */,
 				161C11422347426100A2EC9D /* StickyFlowLayout.swift in Sources */,
+				16D58C002369B60C00735296 /* ViewProtocol.swift in Sources */,
 				1666674C2347CA0300FD2B86 /* Wall_Cell_tp5.swift in Sources */,
 				1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */,
 				161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */,
+				16D58C052369D65100735296 /* WallParser.swift in Sources */,
 				166667452347BFE100FD2B86 /* Wall_Cell_tp2.swift in Sources */,
 				16D58BE42366BEB100735296 /* PlainPresenterProtocol.swift in Sources */,
 				16FF6FD623522E41001C33CF /* Extensions.swift in Sources */,
@@ -886,7 +905,7 @@
 				1666674A2347C9FA00FD2B86 /* Wall_Cell_tp4.swift in Sources */,
 				16200D1923389CCE00F02440 /* WallPresenter.swift in Sources */,
 				16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */,
-				164764B32365FB86007D1B19 /* ViewProtocol.swift in Sources */,
+				164764B32365FB86007D1B19 /* ViewInputProtocol.swift in Sources */,
 				16AB0BA9232F985D00E21B7F /* Group.swift in Sources */,
 				1647649C2365E031007D1B19 /* Session.swift in Sources */,
 				16200D0623388E5D00F02440 /* RoundedImage.swift in Sources */,
@@ -894,6 +913,7 @@
 				16200D0E233893B500F02440 /* ProfilePresenter.swift in Sources */,
 				161B0EA9234A27780081008B /* Profile_TableViewController.swift in Sources */,
 				164764BD23664DE0007D1B19 /* GroupSectionHeader.swift in Sources */,
+				16D58C022369C12600735296 /* BasicNetworkProtocol.swift in Sources */,
 				1666673D2347B8E900FD2B86 /* Wall_Cell_tp1.swift in Sources */,
 				16112742234B4D600080FD54 /* ColorSystemHelper.swift in Sources */,
 				166667DA2348994100FD2B86 /* UIControl+Extensions.swift in Sources */,

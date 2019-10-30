@@ -4,33 +4,28 @@ import Foundation
 public class PlainBasePresenter: PlainPresenterProtocol {
 
     
+
+    
     var numberOfSections: Int = 1
     
     var numberOfRowsInSection: Int {
         return dataSource.count 
     }
     
-    weak var view: ViewProtocol?
+    weak var view: ViewInputProtocol?
     var dataSource: [PlainModelProtocol] = []
     
 
     //MARK: constuctor
-    
-    // init from view
-    required convenience init(beginLoadFrom: LoadModelType, completion: (()->Void)?) {
-        self.init()
-        loadModel(beginLoadFrom, completion)
-    }
+    required init() {}
     
     // view is not exists
-    required convenience init(vc: ViewProtocol, beginLoadFrom: LoadModelType, completion: (()->Void)?) {
+    required convenience init(vc: ViewInputProtocol, completion: (()->Void)?) {
         self.init()
         self.view = vc
-        loadModel(beginLoadFrom, completion)
     }
     
-    
-    func setView(view: ViewProtocol, completion: (()->Void)?) {
+    func setView(view: ViewInputProtocol, completion: (()->Void)?) {
         self.view = view
         UI_THREAD { [weak self] in
             self?.view?.refreshDataSource()
@@ -43,34 +38,42 @@ public class PlainBasePresenter: PlainPresenterProtocol {
         return String(describing: PlainPresenterProtocol.self)
     }
 
-
-    
-    private final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
-        switch loadType {
-        case .diskFirst:
-            console(msg: "\(String(describing: self)): start fetching from disk")
-            let outerCompletion = {[weak self] in
-                if self?.dataSource.count == 0 {
-                    console(msg: "\(String(describing: self)): start loading from network")
-                    self?.loadFromNetwork(completion: completion)
-                } else {
-                    completion?()
-                }
-            }
-            loadFromDisk(completion: outerCompletion)
-        case .networkFirst:
-            console(msg: "\(String(describing: self)): start loading from network")
-            let outerCompletion = {[weak self] in
-                if self?.dataSource.count == 0 {
-                    console(msg: "\(String(describing: self)): start fetching from disk")
-                    self?.loadFromDisk(completion: completion)
-                } else {
-                    completion?()
-                }
-            }
-            loadFromNetwork(completion: outerCompletion)
-        }
+    func getDataSource() -> [PlainModelProtocol] {
+        return dataSource
     }
+    
+    func clearDataSource() {
+        dataSource.removeAll()
+    }
+    
+    
+    
+//    final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
+//        switch loadType {
+//        case .diskFirst:
+//            console(msg: "\(String(describing: self)): start fetching from disk")
+//            let outerCompletion = {[weak self] in
+//                if self?.dataSource.count == 0 {
+//                    console(msg: "\(String(describing: self)): start loading from network")
+//                    self?.loadFromNetwork(completion: completion)
+//                } else {
+//                    completion?()
+//                }
+//            }
+//            loadFromDisk(completion: outerCompletion)
+//        case .networkFirst:
+//            console(msg: "\(String(describing: self)): start loading from network")
+//            let outerCompletion = {[weak self] in
+//                if self?.dataSource.count == 0 {
+//                    console(msg: "\(String(describing: self)): start fetching from disk")
+//                    self?.loadFromDisk(completion: completion)
+//                } else {
+//                    completion?()
+//                }
+//            }
+//            loadFromNetwork(completion: outerCompletion)
+//        }
+//    }
 
     
     func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
@@ -84,7 +87,10 @@ public class PlainBasePresenter: PlainPresenterProtocol {
            case .diskFirst:
                return // data stored already
            case .networkFirst:
-                dataSource = ds as! [PlainModelProtocol]
+                let models = ds as! [PlainModelProtocol]
+                for model in models {
+                    dataSource.append(model)
+                }
                 saveModel(ds: ds)
        }
     }

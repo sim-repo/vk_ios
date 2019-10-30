@@ -33,3 +33,10 @@ public class GroupPresenter: SectionedBasePresenter {
         return groups[idxPath.row]
     }
 }
+
+
+extension GroupPresenter: BasicNetworkProtocol {
+    func datasourceIsEmpty() -> Bool {
+        return sortedDataSource.isEmpty
+    }
+}

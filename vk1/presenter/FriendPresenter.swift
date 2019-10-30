@@ -1,11 +1,9 @@
 import Foundation
 import Alamofire
 
-public class FriendPresenter: SectionedBasePresenter{
+public class FriendPresenter: SectionedBasePresenter {
     
     let urlPath: String = "friends.get"
-
-
     
     override func loadFromNetwork(completion: (()->Void)? = nil){
         let params: Parameters = [
@@ -24,6 +22,13 @@ public class FriendPresenter: SectionedBasePresenter{
     override func subscribe(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.addModel(_:)), name: .friendInserted, object: nil)
     }
-   
+    
+    
 }
 
+
+extension FriendPresenter: BasicNetworkProtocol {
+    func datasourceIsEmpty() -> Bool {
+        return sortedDataSource.isEmpty
+    }
+}

@@ -52,7 +52,9 @@ class WallCellConfigurator {
         let URLs = wall.getImageURLs()
         let images = cell.getImagesView()
         for (idx, url) in URLs.enumerated() {
-            images[idx].kf.setImage(with: url)
+            if idx < 9 {
+                images[idx].kf.setImage(with: url)
+            }
         }
         
          // wall bottom block >>
