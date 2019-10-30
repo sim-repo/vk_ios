@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 class MyGroupDetail_ViewController: UIViewController {
     
@@ -29,7 +30,8 @@ class MyGroupDetail_ViewController: UIViewController {
     private func setup(){
         nameLabel.text = myGroup?.name
         descTextView?.text = myGroup?.desc
-        imageView.image = UIImage(named: myGroup!.icon)
+        imageView.kf.setImage(with: myGroup?.avaURL200)
+
         primaryView.alpha = 0
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.hidesBackButton = true
@@ -57,9 +59,6 @@ class MyGroupDetail_ViewController: UIViewController {
 
         }
     }
-    
-
-
 }
 
 

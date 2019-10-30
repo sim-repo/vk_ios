@@ -34,14 +34,13 @@ class AlamofireNetworkManager{
     }
     
     
-    
     public static func wallRequest(urlPath: String, params: Parameters, completion: (([Wall])->Void)? = nil ){
 
         AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let val):
                 BKG_THREAD {
-                    let arr:[Wall]? = parseWallJson(val)
+                    let arr:[Wall]? = WallParser.parseWallJson(val)
                     if let arr = arr {
                         completion?(arr)
                     }
@@ -65,42 +64,5 @@ class AlamofireNetworkManager{
         return res
     }
     
-    private static func parseWallJson(_ val: Any)->[Wall]?{
-        let json = JSON(val)
-        var res: [Wall] = []
-        let items = json["response"]["items"].arrayValue
-        let jsonProfiles = json["response"]["profiles"].arrayValue
-        let jsonGroups = json["response"]["groups"].arrayValue
-        let dicGroups = parseGroup(jsonGroups)
-        let dicFriends = parseFriend(jsonProfiles)
-        for j in items {
-            let w = Wall()
-            if WallParser.hasImages(json: j) {
-                w.setup(json: j, friends: dicFriends, groups: dicGroups)
-                res.append(w)
-            }
-        }
-        return res
-    }
-    
-    private static func parseFriend(_ profiles: [JSON]) -> [Int:Friend]{
-        var res: [Int:Friend] = [:]
-        for json in profiles {
-            let friend = Friend()
-            friend.setupFromWall(json: json)
-            res[friend.getId()] = friend
-        }
-        return res
-    }
-    
-    private static func parseGroup(_ groups: [JSON]) -> [Int:Group]{
-        var res: [Int:Group] = [:]
-        for json in groups {
-            let group = Group()
-            group.setupFromWall(json: json)
-            res[group.getId()] = group
-        }
-        return res
-    }
 }
 

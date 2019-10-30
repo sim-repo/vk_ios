@@ -3,12 +3,36 @@ import SwiftyJSON
 class WallParser {
     
     
+    //MARK: called from networking service >>
+    public static func parseWallJson(_ val: Any)->[Wall]?{
+        let json = JSON(val)
+        var res: [Wall] = []
+        let items = json["response"]["items"].arrayValue
+        let jsonProfiles = json["response"]["profiles"].arrayValue
+        let jsonGroups = json["response"]["groups"].arrayValue
+        let dicGroups = parseGroup(jsonGroups)
+        let dicProfile = parseProfiles(jsonProfiles)
+        for j in items {
+            let w = Wall()
+            if WallParser.hasImages(json: j) {
+                w.setup(json: j, profiles: dicProfile, groups: dicGroups)
+                res.append(w)
+            }
+        }
+        return res
+    }
+    
+    
+    
+    
+    //MARK: called from model layer >>
 
     public static func parseId(json: JSON) -> Int{
            return json["id"].intValue
     }
     
-    public static func parseMyRepost(json: JSON, friends: [Int:Friend]) -> (URL?, String, Double, String){
+    
+    public static func parseMyRepost(json: JSON, profiles: [Int:Friend]) -> (URL?, String, Double, String){
         var avaUrl: URL?
         var name: String = ""
         var unixTime: Double = 0
@@ -16,20 +40,20 @@ class WallParser {
 
             if isRepost(json) {
                 let myId = json["owner_id"].intValue
-                if let f = friends[myId] {
+                if let f = profiles[myId] {
                    if let url = f.avaURL100 {
                        avaUrl = URL(string: url)
                    }
                    name = f.firstName + " "+f.lastName
                    title = getTitle(json, false)
                    unixTime = getDate(json, false)
-            }
+                }
         }
         return (avaUrl, name, unixTime, title)
     }
     
     
-    public static func parseOrigPost(json: JSON, groups: [Int:Group]) -> (URL?, String, Double, String){
+    public static func parseOrigPost(json: JSON, groups: [Int:Group], profiles: [Int:Friend]) -> (URL?, String, Double, String){
         var avaUrl: URL?
         var name: String = ""
         var unixTime: Double = 0
@@ -45,6 +69,15 @@ class WallParser {
             title = getTitle(json, repost)
             unixTime = getDate(json, repost)
         }
+        
+        if let f = profiles[authorId] {
+           if let url = f.avaURL100 {
+               avaUrl = URL(string: url)
+           }
+           name = f.firstName + " "+f.lastName
+           title = getTitle(json, true)
+           unixTime = getDate(json, true)
+        }
         return (avaUrl, name, unixTime, title)
     }
     
@@ -54,14 +87,26 @@ class WallParser {
         let repost = isRepost(json)
         let photos = getPhotos(json, repost)
            for photo in photos {
-               let mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
-                   json["type"].stringValue == "q"
-               })
-               for photo in mPhotos {
-                   if let url = URL(string: photo["url"].stringValue) {
-                       imageURLs.append(url)
-                   }
+            
+            // priority: q->x->m
+            var mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
+                   json["type"].stringValue == "q"})
+            
+            if mPhotos.count == 0 {
+                mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
+                json["type"].stringValue == "x" })
+            }
+            
+            if mPhotos.count == 0 {
+                mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
+                json["type"].stringValue == "m" })
+            }
+            
+           for photo in mPhotos {
+               if let url = URL(string: photo["url"].stringValue) {
+                   imageURLs.append(url)
                }
+           }
         }
         return imageURLs
     }
@@ -77,21 +122,43 @@ class WallParser {
     }
     
     
-    
+    // validator:
     public static func hasImages(json: JSON) -> Bool {
         let repost = isRepost(json)
         return hasPhotos(json, repost)
     }
     
     
+    //MARK: private functions
     
-    public static func isRepost(_ json: JSON) -> Bool {
+    private static func isRepost(_ json: JSON) -> Bool {
         let arr = json["copy_history"].arrayValue
         return arr.count > 0
     }
     
     
-    public static func hasPhotos(_ json: JSON, _ repost: Bool) -> Bool {
+    private static func parseProfiles(_ profiles: [JSON]) -> [Int:Friend]{
+        var res: [Int:Friend] = [:]
+        for json in profiles {
+            let friend = Friend()
+            friend.setupFromWall(json: json)
+            res[friend.getId()] = friend
+        }
+        return res
+    }
+    
+    private static func parseGroup(_ groups: [JSON]) -> [Int:Group]{
+        var res: [Int:Group] = [:]
+        for json in groups {
+            let group = Group()
+            group.setupFromWall(json: json)
+            res[group.getId()] = group
+        }
+        return res
+    }
+    
+    
+    private static func hasPhotos(_ json: JSON, _ repost: Bool) -> Bool {
         if repost {
             if let histories = json["copy_history"].array {
                            for history in histories {
@@ -112,7 +179,7 @@ class WallParser {
     
     
     
-    public static func getAuthorId(_ json: JSON, _ repost: Bool) -> Int {
+    private static func getAuthorId(_ json: JSON, _ repost: Bool) -> Int {
         if repost {
             if let histories = json["copy_history"].array {
                 for history in histories {
@@ -127,7 +194,7 @@ class WallParser {
     
     
     
-    public static func getPhotos(_ json: JSON, _ repost: Bool) -> [JSON] {
+    private static func getPhotos(_ json: JSON, _ repost: Bool) -> [JSON] {
         var photos: [JSON] = []
         if repost {
             if let histories = json["copy_history"].array {
@@ -146,7 +213,7 @@ class WallParser {
     }
     
     
-    public static func getTitle(_ json: JSON, _ repost: Bool) -> String {
+    private static func getTitle(_ json: JSON, _ repost: Bool) -> String {
         if repost {
             if let histories = json["copy_history"].array {
                 for history in histories {
@@ -161,7 +228,7 @@ class WallParser {
     
     
     
-    public static func getDate(_ json: JSON, _ repost: Bool) -> Double {
+    private static func getDate(_ json: JSON, _ repost: Bool) -> Double {
         if repost {
             if let histories = json["copy_history"].array {
                 for history in histories {

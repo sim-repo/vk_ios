@@ -5,9 +5,8 @@ class MyGroup: SectionedModelProtocol, DecodableProtocol {
     var id: Int = 0
     var name: String = ""
     var desc: String = ""
-    var icon: String = ""
-    var avaURL50: String?
-    var avaURL200: String?
+    var avaURL50: URL?
+    var avaURL200: URL?
     var groupBy: MyGroupByType = .name
     
     required init(){}
@@ -21,8 +20,8 @@ class MyGroup: SectionedModelProtocol, DecodableProtocol {
             id = json["id"].intValue
             name = json["name"].stringValue
             desc = json["description"].stringValue
-            avaURL50 = json["photo_50"].stringValue
-            avaURL200 = json["photo_200"].stringValue
+            avaURL50 = URL(string: json["photo_50"].stringValue)
+            avaURL200 = URL(string: json["photo_200"].stringValue)
         }
     }
     

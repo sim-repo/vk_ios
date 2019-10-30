@@ -35,16 +35,16 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     
     func setup(json: JSON?){}
     
-    func setup(json: JSON?, friends: [Int:Friend], groups: [Int:Group]) {
+    func setup(json: JSON?, profiles: [Int:Friend], groups: [Int:Group]) {
         
         if let json = json {
             
             id = WallParser.parseId(json: json)
             
             // wall header block
-            (myAvaURL, myName, myPostDate, title) = WallParser.parseMyRepost(json: json, friends: friends)
+            (myAvaURL, myName, myPostDate, title) = WallParser.parseMyRepost(json: json, profiles: profiles)
             
-            (origAvaURL, origName, origPostDate, origTitle) = WallParser.parseOrigPost(json: json, groups: groups)
+            (origAvaURL, origName, origPostDate, origTitle) = WallParser.parseOrigPost(json: json, groups: groups, profiles: profiles)
             
             // wall image block
             imageURLs = WallParser.parseImages(json: json)

@@ -61,14 +61,18 @@ class SynchronizerManager {
                 var ids:[Int] = []
                 
                 groupDS?.forEach { model in
-                    ids.append(model.getId())
+                    ids.append(-model.getId())
                 }
-                
+
                 
                 friendDS?.forEach { model in
+                    let f = model as! Friend
+                    print(f.firstName + "  \(f.id)")
                     ids.append(model.getId())
                 }
                 
+                
+              //  ids.append(810433)
                 self.dispatchGroup = DispatchGroup()
                 
                 let wallPresenter: WallPresenter = PresenterFactory.shared.getInstance()

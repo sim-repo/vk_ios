@@ -14,10 +14,6 @@ class MyGroup_CollectionViewCell: UICollectionViewCell {
         
         nameLabel.text = group.name
         descTextView?.text = group.desc
-        
-        if let urlStr = group.avaURL200 {
-            let url = URL(string: urlStr)
-            imageView.kf.setImage(with: url)
-        }
+        imageView.kf.setImage(with: group.avaURL200)
     }
 }
