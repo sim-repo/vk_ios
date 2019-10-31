@@ -206,13 +206,13 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zpR-LP-muB">
-                                        <rect key="frame" x="0.0" y="236" width="414" height="414"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zpR-LP-muB" secondAttribute="height" multiplier="1:1" id="3sR-50-jR9"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dar-dB-q7c" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="52" width="346" height="60"/>
+                                        <rect key="frame" x="8" y="406" width="398" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="fhE-nk-YFy"/>
                                         </constraints>
@@ -221,7 +221,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4DQ-RL-aoU" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="128" width="398" height="100"/>
+                                        <rect key="frame" x="8" y="474" width="398" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="i6k-OX-meE"/>
                                         </constraints>
@@ -247,9 +247,9 @@
                                     <constraint firstAttribute="bottom" secondItem="zpR-LP-muB" secondAttribute="bottom" constant="8" id="2nH-nl-z9e"/>
                                     <constraint firstAttribute="trailing" secondItem="lcm-iC-VBp" secondAttribute="trailing" constant="8" id="5W7-sh-fpp"/>
                                     <constraint firstItem="4DQ-RL-aoU" firstAttribute="leading" secondItem="wkF-4k-dYW" secondAttribute="leading" constant="8" id="5he-xu-P6H"/>
-                                    <constraint firstItem="zpR-LP-muB" firstAttribute="top" secondItem="4DQ-RL-aoU" secondAttribute="bottom" constant="8" id="Cfl-pZ-KzS"/>
-                                    <constraint firstItem="Dar-dB-q7c" firstAttribute="top" secondItem="wkF-4k-dYW" secondAttribute="topMargin" id="E8m-Tv-bnn"/>
-                                    <constraint firstItem="lcm-iC-VBp" firstAttribute="leading" secondItem="Dar-dB-q7c" secondAttribute="trailing" constant="16" id="Fos-hi-pdK"/>
+                                    <constraint firstItem="zpR-LP-muB" firstAttribute="top" secondItem="wkF-4k-dYW" secondAttribute="top" id="Cfl-pZ-KzS"/>
+                                    <constraint firstItem="Dar-dB-q7c" firstAttribute="top" secondItem="zpR-LP-muB" secondAttribute="bottomMargin" id="E8m-Tv-bnn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dar-dB-q7c" secondAttribute="trailing" constant="8" id="Fos-hi-pdK"/>
                                     <constraint firstItem="p9Q-TK-Hy6" firstAttribute="top" secondItem="wkF-4k-dYW" secondAttribute="top" id="Ktx-IM-zfx"/>
                                     <constraint firstItem="zpR-LP-muB" firstAttribute="leading" secondItem="wkF-4k-dYW" secondAttribute="leading" id="Rmp-8W-Ow9"/>
                                     <constraint firstAttribute="trailing" secondItem="4DQ-RL-aoU" secondAttribute="trailing" constant="8" id="S0j-w7-k5d"/>
@@ -257,7 +257,7 @@
                                     <constraint firstItem="zpR-LP-muB" firstAttribute="top" secondItem="wkF-4k-dYW" secondAttribute="top" constant="8" id="dVH-fm-LMf"/>
                                     <constraint firstItem="p9Q-TK-Hy6" firstAttribute="leading" secondItem="wkF-4k-dYW" secondAttribute="leading" id="hXU-uS-tbE"/>
                                     <constraint firstItem="zpR-LP-muB" firstAttribute="leading" secondItem="wkF-4k-dYW" secondAttribute="leading" constant="8" id="jTA-df-t9b"/>
-                                    <constraint firstItem="4DQ-RL-aoU" firstAttribute="top" secondItem="Dar-dB-q7c" secondAttribute="bottom" constant="16" id="nIk-vH-gBb"/>
+                                    <constraint firstItem="4DQ-RL-aoU" firstAttribute="top" secondItem="Dar-dB-q7c" secondAttribute="bottom" constant="8" id="nIk-vH-gBb"/>
                                     <constraint firstItem="lcm-iC-VBp" firstAttribute="top" secondItem="wkF-4k-dYW" secondAttribute="topMargin" id="rTF-47-X8L"/>
                                     <constraint firstAttribute="trailing" secondItem="p9Q-TK-Hy6" secondAttribute="trailing" id="u1Y-4H-H7B"/>
                                     <constraint firstAttribute="bottom" secondItem="p9Q-TK-Hy6" secondAttribute="bottom" id="uQH-YL-Kep"/>

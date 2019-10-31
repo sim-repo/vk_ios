@@ -45,7 +45,7 @@ class SynchronizerManager {
                 }
             }
 
-            // all sync had finished
+            // all sync has finished
             self.dispatchGroup?.notify(queue: DispatchQueue.main) { [weak self] in
                 guard let self = self else { return }
                 

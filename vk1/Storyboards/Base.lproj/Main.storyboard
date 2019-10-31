@@ -252,7 +252,7 @@
         <!--My GROUP-->
         <scene sceneID="3CM-nZ-XbE">
             <objects>
-                <navigationController title="My GROUP" modalPresentationStyle="fullScreen" id="Lub-WP-b7P" customClass="CustomNavigationControlle" sceneMemberID="viewController">
+                <navigationController title="My GROUP" modalPresentationStyle="fullScreen" id="Lub-WP-b7P" customClass="CustomNavigationController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Groups" image="g.circle.fill" catalog="system" id="SpF-DC-kSX" customClass="RAMAnimatedTabBarItem" customModule="vk1" customModuleProvider="target">
                         <connections>
                             <outlet property="animation" destination="dvf-ew-qfT" id="ZyB-SD-XdU"/>
