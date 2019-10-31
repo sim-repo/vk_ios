@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MgQ-0H-Zp7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="64S-nl-E60">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rwo-na-gwH">
-                                <rect key="frame" x="1" y="88" width="412" height="808"/>
+                                <rect key="frame" x="1" y="44" width="412" height="852"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ALt-KX-7lm">
                                     <size key="itemSize" width="397" height="137"/>
@@ -206,13 +206,13 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zpR-LP-muB">
-                                        <rect key="frame" x="0.0" y="280" width="414" height="414"/>
+                                        <rect key="frame" x="0.0" y="236" width="414" height="414"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zpR-LP-muB" secondAttribute="height" multiplier="1:1" id="3sR-50-jR9"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dar-dB-q7c" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="96" width="346" height="60"/>
+                                        <rect key="frame" x="8" y="52" width="346" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="fhE-nk-YFy"/>
                                         </constraints>
@@ -221,7 +221,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4DQ-RL-aoU" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="172" width="398" height="100"/>
+                                        <rect key="frame" x="8" y="128" width="398" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="i6k-OX-meE"/>
                                         </constraints>
@@ -231,7 +231,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcm-iC-VBp" customClass="MyButton_Adaptive" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="370" y="96" width="36" height="36"/>
+                                        <rect key="frame" x="370" y="52" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="LU4-Iy-9kq"/>
                                             <constraint firstAttribute="width" constant="36" id="V2J-e4-8Tw"/>
@@ -394,7 +394,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Keu-22-WuD" firstAttribute="leading" secondItem="et3-KF-LV9" secondAttribute="leading" constant="1" id="6BG-FH-ofw"/>
                             <constraint firstAttribute="bottom" secondItem="UZ1-Nh-YKM" secondAttribute="bottom" constant="1" id="GNk-h5-UyI"/>
@@ -420,28 +420,8 @@
             </objects>
             <point key="canvasLocation" x="2623.1884057971015" y="354.91071428571428"/>
         </scene>
-        <!--My Groups-->
-        <scene sceneID="WA6-se-ebz">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MgQ-0H-Zp7" customClass="CustomNavigationController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Groups" image="tb_polygon" id="jxU-dW-TE3"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AEr-sJ-1yN">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="64S-nl-E60" kind="relationship" relationship="rootViewController" id="FLI-g5-YEp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pha-xE-TyX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="500.00000000000006" y="792.85714285714278"/>
-        </scene>
     </scenes>
     <resources>
         <image name="clear" catalog="system" width="64" height="56"/>
-        <image name="tb_polygon" width="24" height="27"/>
     </resources>
 </document>

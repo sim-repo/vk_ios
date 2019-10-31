@@ -80,6 +80,11 @@
 		166D1B07234EFF5000C552E4 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D1B06234EFF5000C552E4 /* CustomNavigationController.swift */; };
 		166D1B09234F6C7100C552E4 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166D1B08234F6C7100C552E4 /* Video.storyboard */; };
 		166D1B0C234F6E3900C552E4 /* Video_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D1B0B234F6E3900C552E4 /* Video_ViewController.swift */; };
+		168AC5AC236AC31900A1B2A6 /* RAMAnimatedTabBarController+BottomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AC5AB236AC31900A1B2A6 /* RAMAnimatedTabBarController+BottomLine.swift */; };
+		168AC5AE236AC31D00A1B2A6 /* RAMBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AC5AD236AC31D00A1B2A6 /* RAMBadge.swift */; };
+		168AC5B0236AC32D00A1B2A6 /* RAMItemAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AC5AF236AC32D00A1B2A6 /* RAMItemAnimationProtocol.swift */; };
+		168AC5B2236AC33700A1B2A6 /* RAMAnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AC5B1236AC33700A1B2A6 /* RAMAnimatedTabBarController.swift */; };
+		168AC5B4236AC37E00A1B2A6 /* RAMFumeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AC5B3236AC37E00A1B2A6 /* RAMFumeAnimation.swift */; };
 		16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B86232F7BF000E21B7F /* Friend.swift */; };
 		16AB0B89232F7C7800E21B7F /* MyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B88232F7C7800E21B7F /* MyGroup.swift */; };
 		16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B91232F7DAC00E21B7F /* Friend_TableCell.swift */; };
@@ -100,6 +105,7 @@
 		16D58C022369C12600735296 /* BasicNetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C012369C12600735296 /* BasicNetworkProtocol.swift */; };
 		16D58C052369D65100735296 /* WallParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C042369D65100735296 /* WallParser.swift */; };
 		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
+		16E08B2A236ADAEA00340F09 /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B29236ADAEA00340F09 /* RAMBounceAnimation.swift */; };
 		16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */; };
 		16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD22351FDCD001C33CF /* PostImageView.swift */; };
 		16FF6FD623522E41001C33CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD523522E41001C33CF /* Extensions.swift */; };
@@ -185,6 +191,12 @@
 		166D1B06234EFF5000C552E4 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		166D1B08234F6C7100C552E4 /* Video.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Video.storyboard; path = vk1/Storyboards/Video.storyboard; sourceTree = SOURCE_ROOT; };
 		166D1B0B234F6E3900C552E4 /* Video_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video_ViewController.swift; sourceTree = "<group>"; };
+		168AC57C236ABDB800A1B2A6 /* RAMAnimatedTabBarController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RAMAnimatedTabBarController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		168AC5AB236AC31900A1B2A6 /* RAMAnimatedTabBarController+BottomLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RAMAnimatedTabBarController+BottomLine.swift"; sourceTree = "<group>"; };
+		168AC5AD236AC31D00A1B2A6 /* RAMBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBadge.swift; sourceTree = "<group>"; };
+		168AC5AF236AC32D00A1B2A6 /* RAMItemAnimationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMItemAnimationProtocol.swift; sourceTree = "<group>"; };
+		168AC5B1236AC33700A1B2A6 /* RAMAnimatedTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimatedTabBarController.swift; sourceTree = "<group>"; };
+		168AC5B3236AC37E00A1B2A6 /* RAMFumeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFumeAnimation.swift; sourceTree = "<group>"; };
 		16AB0B86232F7BF000E21B7F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		16AB0B88232F7C7800E21B7F /* MyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroup.swift; sourceTree = "<group>"; };
 		16AB0B91232F7DAC00E21B7F /* Friend_TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend_TableCell.swift; sourceTree = "<group>"; };
@@ -205,6 +217,7 @@
 		16D58C012369C12600735296 /* BasicNetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicNetworkProtocol.swift; sourceTree = "<group>"; };
 		16D58C042369D65100735296 /* WallParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallParser.swift; sourceTree = "<group>"; };
 		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
+		16E08B29236ADAEA00340F09 /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
 		16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPushAnimator.swift; sourceTree = "<group>"; };
 		16FF6FD22351FDCD001C33CF /* PostImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		16FF6FD523522E41001C33CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -463,6 +476,17 @@
 			path = constant;
 			sourceTree = "<group>";
 		};
+		164F8D5F236AD958003C50E3 /* waiter */ = {
+			isa = PBXGroup;
+			children = (
+				161C11382347226100A2EC9D /* WaitIndicator.swift */,
+				1611273D234B3E940080FD54 /* WaitIndicator2.swift */,
+				16D64124234BE4FE00AA0D0B /* LineEffect.swift */,
+				16FF6FD723526DFF001C33CF /* LinesEffect.swift */,
+			);
+			path = waiter;
+			sourceTree = "<group>";
+		};
 		166667462347C9D200FD2B86 /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +519,18 @@
 				166D1B0B234F6E3900C552E4 /* Video_ViewController.swift */,
 			);
 			path = video;
+			sourceTree = "<group>";
+		};
+		168AC579236ABCEA00A1B2A6 /* tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				16E08B28236ADAD400340F09 /* animation */,
+				168AC5AB236AC31900A1B2A6 /* RAMAnimatedTabBarController+BottomLine.swift */,
+				168AC5AD236AC31D00A1B2A6 /* RAMBadge.swift */,
+				168AC5B1236AC33700A1B2A6 /* RAMAnimatedTabBarController.swift */,
+				168AC5AF236AC32D00A1B2A6 /* RAMItemAnimationProtocol.swift */,
+			);
+			path = tabbar;
 			sourceTree = "<group>";
 		};
 		16AB0B85232F7B6C00E21B7F /* model */ = {
@@ -624,6 +660,15 @@
 			path = parser;
 			sourceTree = "<group>";
 		};
+		16E08B28236ADAD400340F09 /* animation */ = {
+			isa = PBXGroup;
+			children = (
+				16E08B29236ADAEA00340F09 /* RAMBounceAnimation.swift */,
+				168AC5B3236AC37E00A1B2A6 /* RAMFumeAnimation.swift */,
+			);
+			path = animation;
+			sourceTree = "<group>";
+		};
 		16FF6FCC2351F1ED001C33CF /* navigation controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,10 +701,8 @@
 		16FF6FCF2351F3C0001C33CF /* control */ = {
 			isa = PBXGroup;
 			children = (
-				161C11382347226100A2EC9D /* WaitIndicator.swift */,
-				1611273D234B3E940080FD54 /* WaitIndicator2.swift */,
-				16D64124234BE4FE00AA0D0B /* LineEffect.swift */,
-				16FF6FD723526DFF001C33CF /* LinesEffect.swift */,
+				164F8D5F236AD958003C50E3 /* waiter */,
+				168AC579236ABCEA00A1B2A6 /* tabbar */,
 			);
 			path = control;
 			sourceTree = "<group>";
@@ -723,6 +766,7 @@
 		F0038105E341CE9E3EAFED49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				168AC57C236ABDB800A1B2A6 /* RAMAnimatedTabBarController.framework */,
 				830F3652B00CE8DB38397368 /* Pods_vk1.framework */,
 			);
 			name = Frameworks;
@@ -864,10 +908,12 @@
 				1666674E2347CA0B00FD2B86 /* Wall_Cell_tp6.swift in Sources */,
 				16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */,
 				16D58BE02366BABD00735296 /* DecodableProtocol.swift in Sources */,
+				168AC5B2236AC33700A1B2A6 /* RAMAnimatedTabBarController.swift in Sources */,
 				166667E02348FA9B00FD2B86 /* FriendWall.swift in Sources */,
 				163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */,
 				16040619234E74FE0083F3C3 /* MyGroups_ViewController.swift in Sources */,
 				161C11402347401800A2EC9D /* CarouselFlowLayout.swift in Sources */,
+				168AC5B4236AC37E00A1B2A6 /* RAMFumeAnimation.swift in Sources */,
 				16D58BED236725DC00735296 /* PresenterProtocol.swift in Sources */,
 				164764A32365E1E5007D1B19 /* SectionedModelProtocol.swift in Sources */,
 				16D58BEB23671B6E00735296 /* PresenterFactory.swift in Sources */,
@@ -883,6 +929,7 @@
 				166667502347CA1300FD2B86 /* Wall_Cell_tp7.swift in Sources */,
 				16200D212338ACCA00F02440 /* Friend_Controller.swift in Sources */,
 				166667522347CA1A00FD2B86 /* Wall_Cell_tp8.swift in Sources */,
+				168AC5B0236AC32D00A1B2A6 /* RAMItemAnimationProtocol.swift in Sources */,
 				16112740234B45E50080FD54 /* DataGeneratorHelper.swift in Sources */,
 				161C11422347426100A2EC9D /* StickyFlowLayout.swift in Sources */,
 				16D58C002369B60C00735296 /* ViewProtocol.swift in Sources */,
@@ -895,6 +942,7 @@
 				16FF6FD623522E41001C33CF /* Extensions.swift in Sources */,
 				166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */,
 				164764BB23662209007D1B19 /* VKLogin_ViewController.swift in Sources */,
+				16E08B2A236ADAEA00340F09 /* RAMBounceAnimation.swift in Sources */,
 				16D58BE82366C6BE00735296 /* PlainModelProtocol.swift in Sources */,
 				166D1B05234EFF0F00C552E4 /* ZoomAnimator.swift in Sources */,
 				16200D0C2338934A00F02440 /* Photo.swift in Sources */,
@@ -935,6 +983,8 @@
 				166667482347C9ED00FD2B86 /* Wall_Cell_tp3.swift in Sources */,
 				161B0E632349D27F0081008B /* WallLike_View.swift in Sources */,
 				16040601234E390A0083F3C3 /* RotatedPopAnimator.swift in Sources */,
+				168AC5AE236AC31D00A1B2A6 /* RAMBadge.swift in Sources */,
+				168AC5AC236AC31900A1B2A6 /* RAMAnimatedTabBarController+BottomLine.swift in Sources */,
 				D4001F392327B7B50070829F /* AppDelegate.swift in Sources */,
 				16200D1723389C9600F02440 /* Wall.swift in Sources */,
 				161B0EA7234A05860081008B /* Group_CollectionViewCell.swift in Sources */,

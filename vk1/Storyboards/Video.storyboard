@@ -4,13 +4,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Video-->
         <scene sceneID="OF6-Ac-zBu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r49-JO-I0n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="jtF-AS-Mfn" customClass="Video_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1TQ-Ie-7GH" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -40,12 +40,14 @@
                             <constraint firstAttribute="trailing" secondItem="R5l-HS-Roh" secondAttribute="trailing" constant="1" id="Emb-Yn-U8Z"/>
                             <constraint firstAttribute="bottom" secondItem="R5l-HS-Roh" secondAttribute="bottom" constant="1" id="ILn-9E-vVW"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZQF-eR-e0w"/>
                     </view>
                     <navigationItem key="navigationItem" title="Video" id="8Xa-Kq-b0y"/>
                     <connections>
                         <outlet property="bkgView" destination="R5l-HS-Roh" id="PVB-Pz-uCj"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r49-JO-I0n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-345" y="145"/>
         </scene>
@@ -70,7 +72,11 @@
         <scene sceneID="SRv-dg-Hby">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fqi-VP-YIB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="sH5-pd-2lL"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="sH5-pd-2lL" customClass="RAMAnimatedTabBarItem" customModule="vk1" customModuleProvider="target">
+                        <connections>
+                            <outlet property="animation" destination="tkY-6L-szO" id="TKd-4Z-Mb3"/>
+                        </connections>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y3S-Jt-o3Z">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -82,6 +88,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNZ-NK-MiO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="tkY-6L-szO" customClass="RAMFumeAnimation" customModule="vk1" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-1214.4927536231885" y="137.94642857142856"/>
         </scene>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fhh-1f-gpv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I0v-zq-Knl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -795,27 +795,6 @@
             </objects>
             <point key="canvasLocation" x="-668.11594202898561" y="748.66071428571422"/>
         </scene>
-        <!--Profile-->
-        <scene sceneID="khi-hX-Ebn">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fhh-1f-gpv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="tb_oval" id="jl2-da-09O"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jqW-YP-bgm">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.94055361680000005" green="0.64580927710000002" blue="0.26281742819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="I0v-zq-Knl" kind="relationship" relationship="rootViewController" id="8kh-Ou-AI8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LHQ-Va-Eir" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1539" y="749"/>
-        </scene>
         <!--Video-->
         <scene sceneID="nvZ-3b-xCl">
             <objects>
@@ -911,6 +890,5 @@
         <image name="profile1" width="48" height="48"/>
         <image name="profile2" width="48" height="48"/>
         <image name="profile3" width="48" height="48"/>
-        <image name="tb_oval" width="26" height="26"/>
     </resources>
 </document>

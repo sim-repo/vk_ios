@@ -59,6 +59,7 @@ class UIControlThemeMgt {
         UITabBar.appearance().alpha = ColorSystemHelper.tabBarAlpha
     }
     
+    
     static func setupNavigationBarColor(navigationController: UINavigationController?){
         
         let font = UIFont.systemFont(ofSize: 25)
