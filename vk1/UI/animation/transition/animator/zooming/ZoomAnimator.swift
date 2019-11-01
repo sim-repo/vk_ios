@@ -1,11 +1,10 @@
 import UIKit
 
 
-
 class ZoomAnimator: NSObject, UIViewControllerAnimatedTransitioning {
   
     
-    let duration = 2.0
+    let duration = 0.3
     var presenting = true
     var originFrame = CGRect.zero
 

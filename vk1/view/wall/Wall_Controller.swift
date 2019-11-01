@@ -22,7 +22,7 @@ class Wall_Controller: UIViewController {
     }
     
     private func setupPresenter(){
-        presenter = PresenterFactory.shared.getPlain(vc: self)
+        presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
     }
 }
 

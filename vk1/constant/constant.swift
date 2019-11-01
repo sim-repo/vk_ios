@@ -1,6 +1,12 @@
 import UIKit
 
 
+
+let versionAPI = "5.103"
+let clientAPI = "7192541"
+
+let networkTimeout: TimeInterval = 3 // in sec
+
 enum LoadModelType{
     case networkFirst
     case diskFirst
@@ -74,3 +80,7 @@ extension Notification.Name {
 }
 
 
+
+typealias onSuccessSyncCompletion = ()->Void
+typealias onErrSyncCompletion = (NSError)->Void
+typealias onSuccessPresenterCompletion = ([DecodableProtocol]) -> Void

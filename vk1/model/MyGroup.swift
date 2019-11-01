@@ -8,6 +8,11 @@ class MyGroup: SectionedModelProtocol, DecodableProtocol {
     var avaURL50: URL?
     var avaURL200: URL?
     var groupBy: MyGroupByType = .name
+    var coverURL400: URL?
+    var membersCount: Int = 0
+    var isClosed: Int = 0
+    var isDeactivated: Int = 0
+    
     
     required init(){}
     
@@ -22,6 +27,10 @@ class MyGroup: SectionedModelProtocol, DecodableProtocol {
             desc = json["description"].stringValue
             avaURL50 = URL(string: json["photo_50"].stringValue)
             avaURL200 = URL(string: json["photo_200"].stringValue)
+            membersCount = json["members_count"].intValue
+            coverURL400 = GroupParser.parseCoverURL400(json: json)
+            isClosed = json["is_closed"].intValue
+            isDeactivated = json["deactivated"].intValue
         }
     }
     

@@ -12,111 +12,218 @@ class SynchronizerManager {
     
     static let shared = SynchronizerManager()
     private init() {}
+    var wallSyncing = false
     
     var dispatchGroup: DispatchGroup?
     
+    // called from PresenterFactory
+    public func viewDidLoad(presenter: PresenterProtocol?, _ completion: (()->Void)? = nil){
+        switch presenter {
+            
+               case is LoginPresenter:
+                    syncWall(force: true)
+            
+               case is BasicNetworkProtocol:
+                   let p = presenter as! BasicNetworkProtocol
+                   if p.datasourceIsEmpty() {
+                        p.loadFromNetwork(completion: completion)
+                   }
+            
+               case is MyGroup:
+                    let p = presenter as! MyGroupPresenter
+                    if p.datasourceIsEmpty() {
+                        syncMyGroup(p)
+                    }
+               
+               case is WallPresenter:
+                   syncWall(force: false)
+            
+               case is MyGroupDetailPresenter:
+                   let p = presenter as! MyGroupDetailPresenter
+                   syncGroupDetail(p)
+            
+               default:
+                   catchError(msg: "SynchronizerManager: presenterSetup: no presenter has found: \(String(describing: presenter))")
+        }
+    }
     
-    public func startSync(force: Bool){
+    
+    private func getOnErrorCompletion(_ completion: (()-> Void)? = nil ) -> onErrSyncCompletion {
+        let onError: onErrSyncCompletion = { (error) in
+            completion?()
+            catchError(msg: "\(error.domain)")
+        }
+        return onError
+    }
+    
+
+    
+    //MARK: private sync functions
+    
+    
+    //MARK: FRIEND
+    private func syncFriend(_ presenter: FriendPresenter,
+                            _ completion: (()-> Void)? = nil ) {
+        
+        let onSuccessCompletion = presenter.didLoadFromNetwork(completion: {
+            completion?()
+        })
+        ApiVK.friendRequest(onSuccess: onSuccessCompletion, onError: getOnErrorCompletion())
+    }
+    
+    
+    // MY GROUP
+    private func syncMyGroup(_ presenter: MyGroupPresenter,
+                             _ completion: (()-> Void)? = nil ) {
+        
+        let onSuccessPresenterCompletion = presenter.didLoadFromNetwork(completion: {
+            completion?()
+        })
+        ApiVK.myGroupRequest(onSuccess: onSuccessPresenterCompletion, onError: getOnErrorCompletion())
+    }
+    
+    
+    // GROUP DETAIL
+    private func syncGroupDetail(_ presenter: MyGroupDetailPresenter,
+                                 _ completion: (()-> Void)? = nil ) {
+        
+        let onSuccessCompletion = presenter.didLoadFromNetwork(completion: {
+            completion?()
+        })
+        guard let id = presenter.getGroup()?.getId()
+        else {
+            catchError(msg: "SynchronizerManager: viewDidLoad(): MyGroupDetailPresenter.getId() is nil")
+            return
+        }
+        ApiVK.detailGroupRequest(group_id: id, onSuccess: onSuccessCompletion, onError: getOnErrorCompletion())
+    }
+    
+    
+    
+    // WALL
+    private func syncWall(force: Bool){
+        
+        if wallSyncing {
+            return
+        }
+        wallSyncing = true
+        
         
         dispatchGroup = DispatchGroup()
-        console(msg: "SynchronizerManager: startSync..")
-        
+        console(msg: "SynchronizerManager: syncWall..")
+
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
-            
-        
-            // network loading
+
+
+            // create or get exists presenter
             let friendPresenter: FriendPresenter = PresenterFactory.shared.getInstance()
+
+            // start syncing
             if force || friendPresenter.datasourceIsEmpty() {
+                friendPresenter.clearDataSource()
                 self.dispatchGroup?.enter()
-                friendPresenter.loadFromNetwork(){
-                    console(msg: "SynchronizerManager: startSync: FriendPresenter - sync completed" )
-                    self.dispatchGroup?.leave()
+                self.syncFriend(friendPresenter) { [weak self] in
+                   console(msg: "SynchronizerManager: syncWall: FriendPresenter - sync completed" )
+                   self?.dispatchGroup?.leave()
                 }
             }
-            
-            // network loading
+
+
+            // create or get exists presenter
             let groupPresenter: MyGroupPresenter = PresenterFactory.shared.getInstance()
+
+            // start syncing
             if force || groupPresenter.datasourceIsEmpty() {
+                friendPresenter.clearDataSource()
                 self.dispatchGroup?.enter()
-                groupPresenter.loadFromNetwork(){
-                    console(msg: "SynchronizerManager: startSync: GroupPresenter - sync completed" )
-                    self.dispatchGroup?.leave()
+                self.syncMyGroup(groupPresenter) { [weak self] in
+                   console(msg: "SynchronizerManager: syncWall: GroupPresenter - sync completed" )
+                   self?.dispatchGroup?.leave()
                 }
             }
 
             // all sync has finished
             self.dispatchGroup?.notify(queue: DispatchQueue.main) { [weak self] in
                 guard let self = self else { return }
-                
+
                 self.dispatchGroup = nil
                 
-                let friendPresenter: FriendPresenter? = PresenterFactory.shared.getPresenter()
-                let friendDS = friendPresenter?.getDataSource()
-                
-                let groupPresenter: MyGroupPresenter? = PresenterFactory.shared.getPresenter()
-                let groupDS = groupPresenter?.getDataSource()
-                
-                
-                var ids:[Int] = []
-                
-                groupDS?.forEach { model in
-                    ids.append(-model.getId())
-                }
+                let friendDS = friendPresenter.getDataSource()
+                let groupDS = groupPresenter.getDataSource()
+
+
+                guard friendDS.isEmpty == false || groupDS.isEmpty == false
+                   else {
+                       catchError(msg: "SynchronizerManager: syncWall: friend & group DS is null")
+                       return
+                   }
+
+                // create or get exists presenter
+                let wallPresenter: WallPresenter = PresenterFactory.shared.getInstance()
 
                 
-                friendDS?.forEach { model in
-                    let f = model as! Friend
-                    print(f.firstName + "  \(f.id)")
-                    ids.append(model.getId())
+                guard wallPresenter.datasourceIsEmpty() || force
+                    else {
+                    return
+                }
+                
+
+                // ids as parameters for wall-requests
+                var ids:[Int] = []
+
+                groupDS.forEach { model in
+                   ids.append(-model.getId())
+                }
+
+                friendDS.forEach { model in
+                   ids.append(model.getId())
                 }
                 
                 
-              //  ids.append(810433)
                 self.dispatchGroup = DispatchGroup()
-                
-                let wallPresenter: WallPresenter = PresenterFactory.shared.getInstance()
+
                 wallPresenter.clearDataSource()
-                for id in ids {
-                    self.dispatchGroup?.enter()
-                    wallPresenter.loadFromNetwork(ownerId: id) {
-                        self.dispatchGroup?.leave()
-                    }
-                }
+
                 
-                self.dispatchGroup?.notify(queue: DispatchQueue.main) { [weak self] in
-                    console(msg: "SynchronizerManager: startSync: sync completed!")
-                    wallPresenter.sort()
+                let semaphore = DispatchSemaphore(value: 3)
+                let queue = DispatchQueue.global(qos: .userInitiated)
+                
+                for _ in ids {
+                     self.dispatchGroup?.enter()
                 }
-            }
-        }
-    }
-    
-    
-    public func viewDidLoad(vc: ViewProtocol, _ completion: (()->Void)? = nil) {
-        switch vc {
-               case is LoginViewController:
-                   startSync(force: true)
-               default:
-                    break
-        }
-    }
-    
-    // called from PresenterFactory
-    public func presenterSetup(presenter: PresenterProtocol?, _ completion: (()->Void)? = nil){
-        switch presenter {
-               case is BasicNetworkProtocol:
-                   let p = presenter as! BasicNetworkProtocol
-                   if p.datasourceIsEmpty() {
-                        p.loadFromNetwork(completion: completion)
+                // send requests
+                queue.async {
+                    for id in ids {
+                        
+                        // lock
+                        semaphore.wait()
+                       // self.dispatchGroup?.enter()
+                        print(id)
+                        let onSuccessCompletion = wallPresenter.didLoadFromNetwork(completion: { [weak self] in
+                            //release:
+                            self?.dispatchGroup?.leave()
+                            semaphore.signal()
+                        })
+                        let onErrorCompletion = self.getOnErrorCompletion() { [weak self] in
+                            //release:
+                            self?.dispatchGroup?.leave()
+                            semaphore.signal()
+                        }
+                        ApiVK.wallRequest(ownerId: id, onSuccess: onSuccessCompletion, onError: onErrorCompletion)
+                        
                     }
-               case is WallPresenter:
-                   let p = presenter as! WallPresenter
-                   if p.datasourceIsEmpty() {
-                      startSync(force: false)
-                   }
-               default:
-                   catchError(msg: "SynchronizerManager: presenterSetup: no presenter has found: \(String(describing: presenter))")
+                }
+
+                // sort all data when all requests has done
+                self.dispatchGroup?.notify(queue: DispatchQueue.main) {
+                   console(msg: "SynchronizerManager: syncWall: sync completed!")
+                   wallPresenter.sort()
+                   self.wallSyncing = false
+                }
         }
     }
+}
+
+           
 }

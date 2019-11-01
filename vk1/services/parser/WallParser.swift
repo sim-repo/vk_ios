@@ -24,7 +24,6 @@ class WallParser {
     
     
     
-    
     //MARK: called from model layer >>
 
     public static func parseId(json: JSON) -> Int{
@@ -84,29 +83,35 @@ class WallParser {
     
     public static func parseImages(json: JSON) -> [URL] {
         var imageURLs: [URL] = []
-        let repost = isRepost(json)
-        let photos = getPhotos(json, repost)
+        let photos = getPhotos(json)
            for photo in photos {
             
-            // priority: q->x->m
-            var mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
-                   json["type"].stringValue == "q"})
-            
-            if mPhotos.count == 0 {
-                mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
-                json["type"].stringValue == "x" })
-            }
-            
-            if mPhotos.count == 0 {
-                mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
-                json["type"].stringValue == "m" })
-            }
-            
-           for photo in mPhotos {
-               if let url = URL(string: photo["url"].stringValue) {
-                   imageURLs.append(url)
+                // priority: q->x->m
+                var mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
+                       json["type"].stringValue == "q"})
+                
+                if mPhotos.count == 0 {
+                    mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
+                    json["type"].stringValue == "x" })
+                }
+                
+                if mPhotos.count == 0 {
+                    mPhotos = photo["photo"]["sizes"].arrayValue.filter({ (json) -> Bool in
+                    json["type"].stringValue == "m" })
+                }
+                
+               for photo in mPhotos {
+                   if let url = URL(string: photo["url"].stringValue) {
+                       imageURLs.append(url)
+                   }
                }
-           }
+        }
+        if photos.isEmpty {
+            if let photo = getPhoto(json) {
+                if let url = URL(string: photo["url"].stringValue) {
+                    imageURLs.append(url)
+                }
+            }
         }
         return imageURLs
     }
@@ -173,6 +178,10 @@ class WallParser {
                 return true
             }
             
+            if let j = json["attachments"].arrayValue.first(where: { $0["type"].stringValue == "link" }) {
+                let h = j["link"]["photo"].dictionaryValue
+                return h["sizes"] != nil
+            }
         }
          return false
     }
@@ -194,10 +203,10 @@ class WallParser {
     
     
     
-    private static func getPhotos(_ json: JSON, _ repost: Bool) -> [JSON] {
+    private static func getPhotos(_ json: JSON) -> [JSON] {
         var photos: [JSON] = []
-        if repost {
-            if let histories = json["copy_history"].array {
+        
+        if let histories = json["copy_history"].array {
                            for history in histories {
                                photos = history["attachments"].arrayValue.filter({ (json) -> Bool in
                                                json["type"].stringValue == "photo"
@@ -205,11 +214,24 @@ class WallParser {
                            }
                        }
             
-        } else {
+        if photos.isEmpty {
             photos = json["attachments"].arrayValue.filter({ (json) -> Bool in
-                            json["type"].stringValue == "photo" })
+            json["type"].stringValue == "photo" })
         }
-         return photos
+        return photos
+    }
+    
+    
+    private static func getPhoto(_ json: JSON) -> JSON? {
+        
+        let links = json["attachments"].arrayValue.filter({ (json) -> Bool in
+                json["type"].stringValue == "link" })
+            
+
+        for link in links  {
+            return link["link"]["photo"]["sizes"].arrayValue.first(where: { $0["type"].stringValue == "l"})
+        }
+        return nil
     }
     
     

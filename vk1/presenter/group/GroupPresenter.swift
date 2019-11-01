@@ -7,10 +7,6 @@ public class GroupPresenter: SectionedBasePresenter {
     
     var groups: [Group]!
     
-    override func loadFromNetwork(completion: (()->Void)? = nil){
-       
-    }
-    
     func numberOfRowsInSection() -> Int {
         return groups.count
     }
@@ -31,6 +27,15 @@ public class GroupPresenter: SectionedBasePresenter {
         guard let idxPath = indexPath
             else {return nil}
         return groups[idxPath.row]
+    }
+    
+    //MARK: override func
+    override func validate(_ ds: [DecodableProtocol]) {
+        guard ds is [Group]
+        else {
+            catchError(msg: "GroupPresenter: validate()")
+            return
+        }
     }
 }
 

@@ -57,6 +57,13 @@ func BKG_THREAD(_ block: @escaping (() -> Void)) {
     DispatchQueue.global(qos: .background).async(execute: block)
 }
 
+func DELAY_THREAD(_ block: @escaping (() -> Void)) {
+    let period = 10
+    DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(period), qos: .background){
+        block()
+    }
+}
+
 
 func isRowPresentInTableView(indexPath: IndexPath, tableView: UITableView) -> Bool{
     if indexPath.section < tableView.numberOfSections{
@@ -70,7 +77,7 @@ func isRowPresentInTableView(indexPath: IndexPath, tableView: UITableView) -> Bo
 
 func catchError(msg: String){
     #if DEBUG
-        print(msg)
+        print("error occurred: " + msg)
         //fatalError(msg)
     #else
         sendCrashlytics(msg)
@@ -108,4 +115,14 @@ func console(msg: String) {
 
 func logInf(msg: String) {
     //TODO
+}
+
+
+extension Int
+{
+    func toString() -> String
+    {
+        let myString = String(self)
+        return myString
+    }
 }

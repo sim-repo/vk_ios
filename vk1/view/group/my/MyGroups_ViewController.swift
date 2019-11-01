@@ -1,14 +1,11 @@
 import UIKit
 
-
-
-
 class MyGroups_ViewController: UIViewController  {
     
     var presenter: SectionedPresenterProtocol!
     
     static let cellId = "MyGroup_CollectionViewCell"
-    static let detailsSegueId = "MyGroupDetailSegue"
+    static let detailSegueId = "MyGroupDetailSegue"
     static let groupSegueId = "GroupSegue"
     static let addGroupSegueId = "addGroupSegue"
     static let itemHeight:CGFloat = 130
@@ -29,7 +26,7 @@ class MyGroups_ViewController: UIViewController  {
     }
     
     private func setupPresenter(){
-        presenter = PresenterFactory.shared.getSectioned(vc: self)
+        presenter = PresenterFactory.shared.getSectioned(viewDidLoad: self)
     }
     
     private func setupAlphabetSearchControl(){
@@ -88,7 +85,7 @@ extension MyGroups_ViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         prepareDetailedSegue()
-        performSegue(withIdentifier: MyGroups_ViewController.detailsSegueId, sender: indexPath)
+        performSegue(withIdentifier: MyGroups_ViewController.detailSegueId, sender: indexPath)
     }
 }
 
@@ -110,12 +107,12 @@ extension MyGroups_ViewController {
           }
             
         switch segue.identifier {
-            case MyGroups_ViewController.detailsSegueId:
+            case MyGroups_ViewController.detailSegueId:
                 guard let indexPath = sender as? IndexPath,
                       let dest = segue.destination as? MyGroupDetail_ViewController
                 else { return } // TODO: throw err
                 dest.modalPresentationStyle = .custom
-                dest.myGroup = presenter.getData(indexPath: indexPath) as? MyGroup
+                presenter.onPerfomSegue_Details(selected: indexPath)
             default:
                 return
         }

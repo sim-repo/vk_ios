@@ -36,7 +36,7 @@ class Friend_Controller: UIViewController {
     }
     
     private func setupPresenter(){
-        presenter = PresenterFactory.shared.getSectioned(vc: self)
+        presenter = PresenterFactory.shared.getSectioned(viewDidLoad: self)
     }
     
     private func setupAlphabetSearchControl(){

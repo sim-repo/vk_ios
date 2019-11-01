@@ -13,17 +13,35 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     var dataSource: [PlainModelProtocol] = []
     
 
-    //MARK: constuctor
+    //MARK: initial
+    
+    // when view is not exists
     required init() {}
     
-    // view is not exists
+    // init presenter and view simultaneously
     required convenience init(vc: ViewInputProtocol, completion: (()->Void)?) {
         self.init()
         self.view = vc
     }
     
+    
+    //MARK: network events
+    
+    // when data loaded from network
+    final func didLoadFromNetwork(completion: onSuccessSyncCompletion? = nil) -> onSuccessPresenterCompletion {
+        let outerCompletion: onSuccessPresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
+            self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
+            completion?()
+        }
+        return outerCompletion
+    }
+    
+    
+    
     func setView(view: ViewInputProtocol, completion: (()->Void)?) {
         self.view = view
+        guard dataSource.count > 0
+            else { return }
         UI_THREAD { [weak self] in
             self?.view?.refreshDataSource()
             completion?()
@@ -32,7 +50,7 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     
     
     func className() -> String {
-        return String(describing: PlainPresenterProtocol.self)
+        return String(describing: self)
     }
 
     func getDataSource() -> [PlainModelProtocol] {
@@ -43,15 +61,18 @@ public class PlainBasePresenter: PlainPresenterProtocol {
         dataSource.removeAll()
     }
 
+    func viewDidDisappear() {
+    }
     
     func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
         guard ds.count > 0
         else {
-             catchError(msg: "PlainBasePresenter: setModel: datasource is empty")
+            catchError(msg: "PlainBasePresenter: setModel: datasource is empty: " + self.className())
              return
         }
         
-       switch didLoadedFrom {
+        validate(ds)
+        switch didLoadedFrom {
            case .diskFirst:
                return // data stored already
            case .networkFirst:
@@ -60,7 +81,12 @@ public class PlainBasePresenter: PlainPresenterProtocol {
                     dataSource.append(model)
                 }
                 saveModel(ds: ds)
-       }
+        }
+    }
+    
+    // check if datasource is conformed to model expected
+    func validate(_ ds: [DecodableProtocol]) {
+        catchError(msg: "SectionBasePresenter: validate: override error")
     }
 
     func saveModel(ds: [DecodableProtocol]) {
@@ -68,18 +94,31 @@ public class PlainBasePresenter: PlainPresenterProtocol {
         didSaveModel()
     }
     
-    private func didSaveModel(){
+    func didSaveModel(){
         UI_THREAD { [weak self] in
             self?.view?.refreshDataSource()
         }
     }
     
-    final func getData(_ indexPath: IndexPath) -> PlainModelProtocol? {
-        guard dataSource.count > indexPath.row
+    final func getData(_ indexPath: IndexPath? = nil) -> PlainModelProtocol? {
+        // for non-list DS
+        if indexPath == nil {
+            guard dataSource.count == 1
+                else {
+                    catchError(msg: "PlainBasePresenter: getData(): datasource must be 1")
+                    return nil
+                }
+            return dataSource[0]
+        }
+        
+        // else for list DS
+        guard let idx = indexPath
+            else { return nil }
+        guard dataSource.count > idx.row
             else {
                 return nil
         }
-        return dataSource[indexPath.row]
+        return dataSource[idx.row]
     }
     
     

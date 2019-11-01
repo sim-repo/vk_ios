@@ -7,6 +7,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var waitView: UIView!
+    
+    var presenter: PlainPresenterProtocol!
+    
     var waitLoadingContainer: UIView!
     
     deinit {
@@ -16,7 +19,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SynchronizerManager.shared.viewDidLoad(vc: self)
+        setupPresenter()
         
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView.addGestureRecognizer(hideKeyboardGesture)
@@ -29,6 +32,7 @@ class LoginViewController: UIViewController {
         view.addSubview(waitLoadingContainer)
     }
 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -41,6 +45,10 @@ class LoginViewController: UIViewController {
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func setupPresenter(){
+        presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
     }
     
     @objc func keyboardWasShown(_ notification: NSNotification){
@@ -81,8 +89,15 @@ class LoginViewController: UIViewController {
 }
 
 
-extension LoginViewController: ViewProtocol {
+
+extension LoginViewController: ViewInputProtocol{
+    func refreshDataSource() {
+    }
+    
     func className() -> String {
-        return String(describing: LoginViewController.self)
+         return String(describing: LoginViewController.self)
+     }
+    
+    func optimReloadCell(indexPath: IndexPath) {
     }
 }

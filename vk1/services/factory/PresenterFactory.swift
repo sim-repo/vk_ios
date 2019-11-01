@@ -43,8 +43,12 @@ class PresenterFactory {
             return String(describing: MyGroups_ViewController.self)
         case is GroupPresenter:
             return String(describing: Group_ViewController.self)
+        case is MyGroupDetailPresenter:
+            return String(describing: MyGroupDetail_ViewController.self)
         case is WallPresenter:
             return String(describing: Wall_Controller.self)
+        case is LoginPresenter:
+            return String(describing: LoginPresenter.self)
         default:
             catchError(msg: "PresenterFactory: getViewCode: no vc for \(String(describing: presenter))")
         }
@@ -54,20 +58,20 @@ class PresenterFactory {
     
     
     
-    //MARK: called from VCs >>
+    //MARK: viewDidLoad called from VC >>
     
-    public func getSectioned(vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> SectionedPresenterProtocol? {
-        return getFromFactory(vc) as? SectionedPresenterProtocol
+    public func getSectioned(viewDidLoad vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> SectionedPresenterProtocol? {
+        return getFromFactory(viewDidLoad: vc) as? SectionedPresenterProtocol
     }
     
-    public func getPlain(vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> PlainPresenterProtocol? {
-        return getFromFactory(vc) as? PlainPresenterProtocol
+    public func getPlain(viewDidLoad vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> PlainPresenterProtocol? {
+        return getFromFactory(viewDidLoad: vc) as? PlainPresenterProtocol
     }
     
     
     // private methods
     
-    private func getFromFactory(_ vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> PresenterProtocol? {
+    private func getFromFactory(viewDidLoad vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> PresenterProtocol? {
         var res: PresenterProtocol?
         switch vc {
                    case is Friend_Controller :
@@ -76,16 +80,22 @@ class PresenterFactory {
                    case is MyGroups_ViewController :
                         let p: MyGroupPresenter? = getPresenter(vc: vc, completion)
                         res = p
+                   case is MyGroupDetail_ViewController :
+                        let p: MyGroupDetailPresenter? = getPresenter(vc: vc, completion)
+                        res = p
                    case is Group_ViewController:
                         let p: GroupPresenter? = getPresenter(vc: vc, completion)
                         res = p
                    case is Wall_Controller:
                         let p: WallPresenter? = getPresenter(vc: vc, completion)
                         res = p
+                   case is LoginViewController:
+                        let p: LoginPresenter? = getPresenter(vc: vc, completion)
+                        res = p
                    default:
                         catchError(msg: "PresenterFactory: getFromFactory: no presenter for \(vc)")
         }
-        SynchronizerManager.shared.presenterSetup(presenter: res)
+        SynchronizerManager.shared.viewDidLoad(presenter: res)
         return res
     }
     

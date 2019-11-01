@@ -10,7 +10,6 @@ class VKLogin_ViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         var urlComponents = URLComponents()
@@ -18,7 +17,7 @@ class VKLogin_ViewController: UIViewController {
                urlComponents.host = "oauth.vk.com"
                urlComponents.path = "/authorize"
                urlComponents.queryItems = [
-                   URLQueryItem(name: "client_id", value: "7190604"),
+                   URLQueryItem(name: "client_id", value: clientAPI),
                    URLQueryItem(name: "display", value: "mobile"),
                    URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
                    URLQueryItem(name: "scope", value: "262150"),

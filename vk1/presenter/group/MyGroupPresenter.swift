@@ -2,23 +2,7 @@ import Foundation
 import Alamofire
 
 public class MyGroupPresenter: SectionedBasePresenter{
-    
-    let urlPath: String = "groups.get"
-    
-    override func loadFromNetwork(completion: (()->Void)? = nil){
-           let params: Parameters = [
-               "access_token": Session.shared.token,
-               "extended": "1",
-               "fields":["description","members_count","photo_50","photo_200"],
-               "v": "5.80"
-           ]
-           let outerCompletion: (([DecodableProtocol]) -> Void)? = {[weak self] (arr: [DecodableProtocol]) in
-               self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
-               completion?()
-           }
-           AlamofireNetworkManager.requestItems(clazz: MyGroup.self, urlPath: urlPath, params: params, completion: outerCompletion)
-    }
-    
+
     override func subscribe(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.addModel(_:)), name: .groupInserted, object: nil)
     }
@@ -26,6 +10,16 @@ public class MyGroupPresenter: SectionedBasePresenter{
     func getIndexPath() -> IndexPath {
         let rowIndex = sortedDataSource.count - 1
         return IndexPath(row: rowIndex, section: 0)
+    }
+    
+    func onPerfomSegue_Details(selected indexPath: IndexPath) {
+        guard let group = getData(indexPath: indexPath) as? MyGroup
+            else {
+                catchError(msg: "MyGroupPresenter: onPerfomSegue_Details")
+                return
+            }
+        let groupDetailPresenter: MyGroupDetailPresenter? = PresenterFactory.shared.getInstance()
+        groupDetailPresenter?.setGroup(group: group)
     }
     
     func addGroup(group: Group) -> Bool {
@@ -39,6 +33,15 @@ public class MyGroupPresenter: SectionedBasePresenter{
     
     func removeGroup(indexPath: IndexPath) {
         sortedDataSource.remove(at: indexPath.row)
+    }
+    
+    //MARK: override func
+    override func validate(_ ds: [DecodableProtocol]) {
+        guard ds is [MyGroup]
+        else {
+            catchError(msg: "MyGroupPresenter: validate()")
+            return
+        }
     }
 }
 

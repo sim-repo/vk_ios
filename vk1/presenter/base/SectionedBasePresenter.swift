@@ -20,24 +20,18 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
         return sectionsOffset.count > 0 ? sectionsOffset.count : 1
     }
     
+    //MARK: initial
     
-    //MARK: constuctor
-    
+    // when view is not exists
     required init(){}
 
-    // view is not exists
+    // init presenter and view simultaneously
     required convenience init(vc: ViewInputProtocol, completion: (()->Void)?) {
         self.init()
         self.view = vc
     }
     
-    
-    func getDataSource() -> [SectionedModelProtocol] {
-        return sortedDataSource
-    }
-    
-    
-    func setView(view: ViewInputProtocol, completion: (()->Void)?) {
+    final func setView(view: ViewInputProtocol, completion: (()->Void)?) {
         self.view = view
         UI_THREAD { [weak self] in
            self?.view?.refreshDataSource()
@@ -45,15 +39,40 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
         }
     }
     
+    
+    //MARK: network events
+    
+    // when data loaded from network
+    final func didLoadFromNetwork(completion: onSuccessSyncCompletion? = nil) -> onSuccessPresenterCompletion {
+        let outerCompletion: onSuccessPresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
+            self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
+            completion?()
+        }
+        return outerCompletion
+    }
+    
+    
+    
+    func clearDataSource() {
+        sortedDataSource.removeAll()
+    }
+    
+    func getDataSource() -> [SectionedModelProtocol] {
+        return sortedDataSource
+    }
+    
+    
     func subscribe(){}
+    
     
     func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
         guard ds.count > 0
         else {
-            catchError(msg: "SectionBasePresenter: setModel: datasource is empty")
+            catchError(msg: "SectionBasePresenter: setModel: datasource is empty "  + self.className())
             return
         }
         
+        validate(ds)
         self.sortedDataSource = sortModel(ds)
         
         switch didLoadedFrom {
@@ -64,6 +83,10 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
         }
     }
 
+    // check if datasource is conformed to model expected
+    func validate(_ ds: [DecodableProtocol]) {
+        catchError(msg: "SectionBasePresenter: validate: override error")
+    }
 
     func sortModel(_ ds: [DecodableProtocol]) -> [SectionedModelProtocol]{
         let sectioned = ds as! [SectionedModelProtocol]
