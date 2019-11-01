@@ -3,6 +3,10 @@ import Foundation
 
 public class PlainBasePresenter: PlainPresenterProtocol {
 
+    var modelType: AnyClass?  {
+        return nil
+    }
+    
     var numberOfSections: Int = 1
     
     var numberOfRowsInSection: Int {
@@ -35,8 +39,6 @@ public class PlainBasePresenter: PlainPresenterProtocol {
         }
         return outerCompletion
     }
-    
-    
     
     func setView(view: ViewInputProtocol, completion: (()->Void)?) {
         self.view = view

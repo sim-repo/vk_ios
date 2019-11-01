@@ -112,6 +112,8 @@
 		16E08B37236B62FD00340F09 /* DetailGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B36236B62FD00340F09 /* DetailGroup.swift */; };
 		16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B38236C45E500340F09 /* SpinnerViewController.swift */; };
 		16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3B236C6C9800340F09 /* LoginPresenter.swift */; };
+		16E08B3E236CEBB800340F09 /* ModelOwnerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */; };
+		16E08B40236CECE800340F09 /* HybridSectionedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */; };
 		16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */; };
 		16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD22351FDCD001C33CF /* PostImageView.swift */; };
 		16FF6FD623522E41001C33CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD523522E41001C33CF /* Extensions.swift */; };
@@ -230,6 +232,8 @@
 		16E08B36236B62FD00340F09 /* DetailGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGroup.swift; sourceTree = "<group>"; };
 		16E08B38236C45E500340F09 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		16E08B3B236C6C9800340F09 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOwnerProtocol.swift; sourceTree = "<group>"; };
+		16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HybridSectionedProtocol.swift; sourceTree = "<group>"; };
 		16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPushAnimator.swift; sourceTree = "<group>"; };
 		16FF6FD22351FDCD001C33CF /* PostImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		16FF6FD523522E41001C33CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -458,6 +462,8 @@
 				164764A92365EFDA007D1B19 /* SectionedPresenterProtocol.swift */,
 				16D58BE32366BEB100735296 /* PlainPresenterProtocol.swift */,
 				16D58C012369C12600735296 /* BasicNetworkProtocol.swift */,
+				16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */,
+				16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -971,6 +977,7 @@
 				163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */,
 				16040619234E74FE0083F3C3 /* MyGroups_ViewController.swift in Sources */,
 				161C11402347401800A2EC9D /* CarouselFlowLayout.swift in Sources */,
+				16E08B40236CECE800340F09 /* HybridSectionedProtocol.swift in Sources */,
 				168AC5B4236AC37E00A1B2A6 /* RAMFumeAnimation.swift in Sources */,
 				16D58BED236725DC00735296 /* PresenterProtocol.swift in Sources */,
 				164764A32365E1E5007D1B19 /* SectionedModelProtocol.swift in Sources */,
@@ -1002,6 +1009,7 @@
 				16D58BE42366BEB100735296 /* PlainPresenterProtocol.swift in Sources */,
 				16FF6FD623522E41001C33CF /* Extensions.swift in Sources */,
 				166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */,
+				16E08B3E236CEBB800340F09 /* ModelOwnerProtocol.swift in Sources */,
 				164764BB23662209007D1B19 /* VKLogin_ViewController.swift in Sources */,
 				16E08B2A236ADAEA00340F09 /* RAMBounceAnimation.swift in Sources */,
 				16D58BE82366C6BE00735296 /* PlainModelProtocol.swift in Sources */,

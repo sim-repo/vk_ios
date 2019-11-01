@@ -5,7 +5,9 @@ import UIKit
 let versionAPI = "5.103"
 let clientAPI = "7192541"
 
-let networkTimeout: TimeInterval = 3 // in sec
+let networkTimeout: TimeInterval = 1 // in sec
+let networkDelayBetweenRequests = 500 // in ms
+
 
 enum LoadModelType{
     case networkFirst

@@ -1,7 +1,12 @@
 import Foundation
 import Alamofire
 
-public class MyGroupPresenter: SectionedBasePresenter{
+class MyGroupPresenter: HybridSectionedPresenter {
+
+    // implements ModelOwnerProtocol
+    var modelClass: AnyClass  {
+        return MyGroup.self
+    }
 
     override func subscribe(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.addModel(_:)), name: .groupInserted, object: nil)
@@ -36,13 +41,13 @@ public class MyGroupPresenter: SectionedBasePresenter{
     }
     
     //MARK: override func
-    override func validate(_ ds: [DecodableProtocol]) {
-        guard ds is [MyGroup]
-        else {
-            catchError(msg: "MyGroupPresenter: validate()")
-            return
-        }
-    }
+//    override func validate(_ ds: [DecodableProtocol]) {
+//        guard ds is [MyGroup]
+//        else {
+//            catchError(msg: "MyGroupPresenter: validate()")
+//            return
+//        }
+//    }
 }
 
 

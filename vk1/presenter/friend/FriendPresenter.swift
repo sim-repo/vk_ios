@@ -1,20 +1,29 @@
 import Foundation
 import Alamofire
 
-public class FriendPresenter: SectionedBasePresenter {
+class FriendPresenter: HybridSectionedPresenter {
+    
+    var modelClass: AnyClass  {
+        return Friend.self
+    }
     
     //MARK: override func
     override func subscribe(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.addModel(_:)), name: .friendInserted, object: nil)
     }
     
-    override func validate(_ ds: [DecodableProtocol]) {
-        guard ds is [Friend]
-            else {
-                catchError(msg: "FriendPresenter: validate()")
-                return
-            }
-    }
+//    override func validate(_ ds: [DecodableProtocol]) {
+//        
+//        
+//        
+//        print(String(describing: type(of: ds)))
+//        
+//        guard ds is [Friend]
+//            else {
+//                catchError(msg: "FriendPresenter: validate()")
+//                return
+//            }
+//    }
 }
 
 

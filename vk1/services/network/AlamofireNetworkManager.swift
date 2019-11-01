@@ -109,7 +109,9 @@ class AlamofireNetworkManager{
                             let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null : \(json)", code: 123, userInfo: nil)
                             onError(err)
                         } else {
-                            onSuccess(arr)
+                            DELAY_THREAD {
+                                onSuccess(arr)
+                            }
                         }
                     }
                 }

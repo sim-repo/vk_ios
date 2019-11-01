@@ -186,8 +186,8 @@ class SynchronizerManager {
                 wallPresenter.clearDataSource()
 
                 
-                let semaphore = DispatchSemaphore(value: 3)
-                let queue = DispatchQueue.global(qos: .userInitiated)
+                let semaphore = DispatchSemaphore(value: 1)
+                let queue = DispatchQueue.global(qos: .background)
                 
                 for _ in ids {
                      self.dispatchGroup?.enter()

@@ -2,8 +2,6 @@ import Foundation
 
 public class SectionedBasePresenter: SectionedPresenterProtocol {
 
-    
-
     weak var view: ViewInputProtocol?
     
     var sortedDataSource: [SectionedModelProtocol] = []
@@ -64,17 +62,11 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     
     func subscribe(){}
     
+
     
     func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
-        guard ds.count > 0
-        else {
-            catchError(msg: "SectionBasePresenter: setModel: datasource is empty "  + self.className())
-            return
-        }
-        
         validate(ds)
         self.sortedDataSource = sortModel(ds)
-        
         switch didLoadedFrom {
             case .diskFirst:
                 return // data stored already
@@ -85,8 +77,23 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
 
     // check if datasource is conformed to model expected
     func validate(_ ds: [DecodableProtocol]) {
-        catchError(msg: "SectionBasePresenter: validate: override error")
+        guard ds.count > 0
+        else {
+           catchError(msg: "SectionBasePresenter: validate(): datasource is empty "  + self.className())
+           return
+        }
+        guard let childPresenter = self as? ModelOwnerProtocol else {
+            return
+        }
+        let required = "\(childPresenter.modelClass)"
+        let current = getRawClassName(object: type(of: ds[0]))
+        guard required == current
+        else {
+            catchError(msg: "SectionBasePresenter: validate(): returned datasource incorrected")
+            return
+        }
     }
+    
 
     func sortModel(_ ds: [DecodableProtocol]) -> [SectionedModelProtocol]{
         let sectioned = ds as! [SectionedModelProtocol]

@@ -58,8 +58,7 @@ func BKG_THREAD(_ block: @escaping (() -> Void)) {
 }
 
 func DELAY_THREAD(_ block: @escaping (() -> Void)) {
-    let period = 10
-    DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(period), qos: .background){
+    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(networkDelayBetweenRequests), qos: .background){
         block()
     }
 }
@@ -125,4 +124,13 @@ extension Int
         let myString = String(self)
         return myString
     }
+}
+
+
+
+func getRawClassName(object: AnyClass) -> String {
+    
+    let name = NSStringFromClass(object)
+    let components = name.components(separatedBy: ".")
+    return components.last ?? "Unknown"
 }
