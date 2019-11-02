@@ -28,7 +28,7 @@ class Friend: SectionedModelProtocol, DecodableProtocol {
         }
     }
     
-    func getGroupByField()->String {
+    func getGroupBy() -> String {
         switch groupBy {
         case .firstName:
             return firstName

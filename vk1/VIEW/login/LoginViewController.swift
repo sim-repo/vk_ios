@@ -89,15 +89,7 @@ class LoginViewController: UIViewController {
 }
 
 
-
 extension LoginViewController: ViewInputProtocol{
     func refreshDataSource() {
-    }
-    
-    func className() -> String {
-         return String(describing: LoginViewController.self)
-     }
-    
-    func optimReloadCell(indexPath: IndexPath) {
     }
 }

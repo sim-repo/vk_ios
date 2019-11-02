@@ -77,14 +77,5 @@ extension FriendWall_Controller: UICollectionViewDelegate, UICollectionViewDataS
 
 extension FriendWall_Controller: ViewInputProtocol {
     func refreshDataSource() {
-        
-    }
-    
-    func optimReloadCell(indexPath: IndexPath) {
-        
-    }
-    
-    func className() -> String {
-        return String(describing: FriendWall_Controller.self)
     }
 }

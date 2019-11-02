@@ -30,7 +30,7 @@ class Group: SectionedModelProtocol {
        }
    }
    
-   func getGroupByField()->String {
+   func getGroupBy()->String {
         switch groupBy {
           case .name:
               return name

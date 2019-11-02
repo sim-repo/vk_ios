@@ -53,7 +53,7 @@ class PresenterFactory {
         if presenter == nil {
             presenter = createPresenter(clazz: presenterEnum.presenter, vc, completion)
         } else {
-            presenter?.setView(view: vc, completion: completion)
+            presenter?.setView(vc: vc, completion: completion)
         }
         SynchronizerManager.shared.viewDidLoad(presenterEnum: presenterEnum)
         return presenter
@@ -66,5 +66,4 @@ class PresenterFactory {
         presenters[presenterEnum] = presenter
         return presenter
     }
-  
 }

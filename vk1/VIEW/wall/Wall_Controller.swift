@@ -69,13 +69,10 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
 
 
 extension Wall_Controller: ViewInputProtocol{
+    
     func refreshDataSource() {
         collectionView.reloadData()
     }
-    
-    func className() -> String {
-         return String(describing: Wall_Controller.self)
-     }
     
     func optimReloadCell(indexPath: IndexPath) {
        collectionView.reloadItems(at: [indexPath])

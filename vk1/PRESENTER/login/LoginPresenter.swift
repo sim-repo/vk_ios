@@ -1,6 +1,11 @@
 import Foundation
 
-public class LoginPresenter: PlainBasePresenter {
+
+class LoginPresenter: HybridPlainPresenter {
+    
+    var modelClass: AnyClass  {
+        return Login.self
+    }
 }
 
 

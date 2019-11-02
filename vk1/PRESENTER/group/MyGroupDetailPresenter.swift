@@ -1,12 +1,14 @@
 import Foundation
 import Alamofire
 
-public class MyGroupDetailPresenter: PlainBasePresenter {
+class MyGroupDetailPresenter: HybridPlainPresenter {
+    
+    var modelClass: AnyClass  {
+        return DetailGroup.self
+    }
        
     var group: MyGroup?
 
-    
-    
     func setGroup(group: MyGroup) {
         self.group = group
     }
@@ -22,7 +24,6 @@ public class MyGroupDetailPresenter: PlainBasePresenter {
     
     
     //MARK: override func
-
     override func saveModel(ds: [DecodableProtocol]) {
         let detailGroup = ds[0] as! DetailGroup
         guard let gr = group
@@ -31,14 +32,6 @@ public class MyGroupDetailPresenter: PlainBasePresenter {
             return
         }
         detailGroup.setup(group: gr)
-        didSaveModel()
-    }
-    
-    override func validate(_ ds: [DecodableProtocol]) {
-        guard ds is [DetailGroup]
-        else {
-            catchError(msg: "MyGroupDetailPresenter: validate()")
-            return
-        }
+        super.saveModel(ds: ds)
     }
 }

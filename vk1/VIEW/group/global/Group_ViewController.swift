@@ -47,18 +47,9 @@ extension Group_ViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension Group_ViewController: ViewInputProtocol {
-    func refreshDataSource() {
 
+extension Group_ViewController: PlainViewInputProtocol{
+    func viewReloadData() {
+        self.collectionView.reloadData()
     }
-    
-    func optimReloadCell(indexPath: IndexPath) {
-
-    }
-    
-    func className() -> String {
-        return String(describing: Group_ViewController.self)
-    }
-    
-    
 }

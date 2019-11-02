@@ -2,13 +2,15 @@ import Foundation
 
 protocol SectionedPresenterProtocol: PresenterProtocol {
     
-    var view: ViewInputProtocol? {get set}
+    var view: SectionedViewInputProtocol? {get set}
     var numberOfSections: Int {get}
+    
     func numberOfRowsInSection (section: Int)->Int
-    func filterData(_ filterText: String)
-    func getGroupingProperties() -> [String]
-    func refreshDataSource(with completion: (([String])->Void)? )
+    func getGroupBy() -> [String]
     func getData(indexPath: IndexPath) -> SectionedModelProtocol?
     func sectionName(section: Int)->String
     func getDataSource() -> [SectionedModelProtocol]
+    
+    
+    func viewDidFilterInput(_ filterText: String)
 }

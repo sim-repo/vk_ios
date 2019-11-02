@@ -34,7 +34,7 @@ class MyGroup: SectionedModelProtocol, DecodableProtocol {
         }
     }
     
-    func getGroupByField()->String {
+    func getGroupBy()->String {
          switch groupBy {
            case .name:
                return name

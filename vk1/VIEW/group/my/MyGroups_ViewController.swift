@@ -31,7 +31,7 @@ class MyGroups_ViewController: UIViewController  {
     
     private func setupAlphabetSearchControl(){
         lettersSearchControl.delegate = self
-        lettersSearchControl.updateControl(with: presenter.getGroupingProperties())
+        lettersSearchControl.updateControl(with: presenter.getGroupBy())
     }
 }
 
@@ -170,20 +170,10 @@ extension MyGroups_ViewController {
 
 
 
-extension MyGroups_ViewController: ViewInputProtocol{
-     
-    func refreshDataSource(){
-        presenter.refreshDataSource(){ [weak self] (titles) in
-            self?.lettersSearchControl.updateControl(with: titles)
-            self?.collectionView.reloadData()
-        }
-    }
-    
-    func className() -> String {
-         return String(describing: MyGroups_ViewController.self)
-     }
-    
-    func optimReloadCell(indexPath: IndexPath) {
-       collectionView.reloadItems(at: [indexPath])
+
+extension MyGroups_ViewController: SectionedViewInputProtocol{
+    func viewReloadData(groupByIds: [String]) {
+        self.lettersSearchControl.updateControl(with: groupByIds)
+        self.collectionView.reloadData()
     }
 }

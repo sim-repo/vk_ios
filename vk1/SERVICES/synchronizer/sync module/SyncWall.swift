@@ -71,7 +71,7 @@ class SyncWall {
                 let wallPresenter: WallPresenter = PresenterFactory.shared.getInstance()
                 
                 
-                guard wallPresenter.datasourceIsEmpty() || force
+                guard wallPresenter.dataSourceIsEmpty() || force
                     else {
                         return
                 }

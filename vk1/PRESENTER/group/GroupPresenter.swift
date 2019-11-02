@@ -28,13 +28,4 @@ public class GroupPresenter: SectionedBasePresenter {
             else {return nil}
         return groups[idxPath.row]
     }
-    
-    //MARK: override func
-    override func validate(_ ds: [DecodableProtocol]) {
-        guard ds is [Group]
-        else {
-            catchError(msg: "GroupPresenter: validate()")
-            return
-        }
-    }
 }

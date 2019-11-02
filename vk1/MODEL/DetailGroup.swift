@@ -21,7 +21,6 @@ class DetailGroup: DecodableProtocol, PlainModelProtocol {
     var isClosed: Int = 0
     var isDeactivated: Int = 0
     
-    
     required init(){}
     
     func getId()->Int{

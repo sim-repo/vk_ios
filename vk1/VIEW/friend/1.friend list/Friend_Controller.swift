@@ -41,7 +41,7 @@ class Friend_Controller: UIViewController {
     
     private func setupAlphabetSearchControl(){
         lettersSearchControl.delegate = self
-        lettersSearchControl.updateControl(with: presenter.getGroupingProperties())
+        lettersSearchControl.updateControl(with: presenter.getGroupBy())
     }
     
     private func setupSearchTextField(){
@@ -51,18 +51,16 @@ class Friend_Controller: UIViewController {
         searchTextWidth = searchTextWidthConstraint.constant
     }
     
-    @IBAction func searchTextEditingChanged(_ sender: Any) {
+    @IBAction func viewDidFilterInput(_ sender: Any) {
         if searchTextField.text?.isEmpty ?? true {
             searchTextReset()
             return
         }
-        presenter.filterData(searchTextField.text!)
-        refreshDataSource()
-        tableView.reloadData()
+        presenter.viewDidFilterInput(searchTextField.text!)
     }
     
     
-    @IBAction func pressButtonSearchCancel(_ sender: Any) {
+    @IBAction func didPressButtonSearchCancel(_ sender: Any) {
         searchTextReset()
     }
     
@@ -147,12 +145,19 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
             
             self.view.layoutIfNeeded()
         })
-        presenter.filterData("")
-        refreshDataSource()
-        tableView.reloadData()
+        presenter.viewDidFilterInput("")
     }
     
 }
+
+
+extension Friend_Controller: SectionedViewInputProtocol{
+    func viewReloadData(groupByIds: [String]) {
+        self.lettersSearchControl.updateControl(with: groupByIds)
+        self.tableView.reloadData()
+    }
+}
+
 
 
 extension Friend_Controller: AlphabetSearchViewControlProtocol {
@@ -241,29 +246,6 @@ extension Friend_Controller: UIScrollViewDelegate {
     }
 }
 
-
-extension Friend_Controller: ViewInputProtocol{
-     
-    func className() -> String {
-         return String(describing: Friend_Controller.self)
-     }
-    
-    public func refreshDataSource(){
-        self.presenter.refreshDataSource(){ [weak self] (names) in
-            self?.lettersSearchControl.updateControl(with: names)
-            self?.tableView.reloadData()
-        }
-    }
-    
-    func optimReloadCell(indexPath: IndexPath) {
-        
-        if isRowPresentInTableView(indexPath: indexPath, tableView: tableView) {
-            tableView.beginUpdates()
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates();
-        }
-    }
-}
 
 
 

@@ -100,7 +100,6 @@
 		16D58BF52368516800735296 /* WallHeader_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D58BF42368516800735296 /* WallHeader_View.xib */; };
 		16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BF623685F0900735296 /* WallHeader_View.swift */; };
 		16D58BFE236986EB00735296 /* SynchronizerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFD236986EB00735296 /* SynchronizerManager.swift */; };
-		16D58C002369B60C00735296 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFF2369B60C00735296 /* ViewProtocol.swift */; };
 		16D58C052369D65100735296 /* WallParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C042369D65100735296 /* WallParser.swift */; };
 		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
 		16E08B2A236ADAEA00340F09 /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B29236ADAEA00340F09 /* RAMBounceAnimation.swift */; };
@@ -110,7 +109,7 @@
 		16E08B37236B62FD00340F09 /* DetailGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B36236B62FD00340F09 /* DetailGroup.swift */; };
 		16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B38236C45E500340F09 /* SpinnerViewController.swift */; };
 		16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3B236C6C9800340F09 /* LoginPresenter.swift */; };
-		16E08B3E236CEBB800340F09 /* ModelOwnerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */; };
+		16E08B3E236CEBB800340F09 /* OwnModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3D236CEBB800340F09 /* OwnModelProtocol.swift */; };
 		16E08B40236CECE800340F09 /* HybridSectionedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */; };
 		16E08B42236DBBF000340F09 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B41236DBBF000340F09 /* PresenterFactory.swift */; };
 		16E08B47236DD6E300340F09 /* SyncWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B46236DD6E300340F09 /* SyncWall.swift */; };
@@ -122,6 +121,10 @@
 		16E08B53236DDB1B00340F09 /* SyncDetailFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */; };
 		16E08B55236DDBAE00340F09 /* SyncLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B54236DDBAE00340F09 /* SyncLogin.swift */; };
 		16E08B57236DDEB700340F09 /* SyncGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B56236DDEB700340F09 /* SyncGroup.swift */; };
+		16E08B59236DF13700340F09 /* HybridPlainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B58236DF13700340F09 /* HybridPlainProtocol.swift */; };
+		16E08B5B236DF1B900340F09 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B5A236DF1B900340F09 /* Login.swift */; };
+		16E08B5D236E34A200340F09 /* SectionedViewInputProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B5C236E34A200340F09 /* SectionedViewInputProtocol.swift */; };
+		16E08B5F236E34B200340F09 /* PlainViewInputProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B5E236E34B200340F09 /* PlainViewInputProtocol.swift */; };
 		16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */; };
 		16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD22351FDCD001C33CF /* PostImageView.swift */; };
 		16FF6FD623522E41001C33CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD523522E41001C33CF /* Extensions.swift */; };
@@ -228,7 +231,6 @@
 		16D58BF42368516800735296 /* WallHeader_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallHeader_View.xib; sourceTree = "<group>"; };
 		16D58BF623685F0900735296 /* WallHeader_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallHeader_View.swift; sourceTree = "<group>"; };
 		16D58BFD236986EB00735296 /* SynchronizerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizerManager.swift; sourceTree = "<group>"; };
-		16D58BFF2369B60C00735296 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		16D58C042369D65100735296 /* WallParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallParser.swift; sourceTree = "<group>"; };
 		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
 		16E08B29236ADAEA00340F09 /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
@@ -238,7 +240,7 @@
 		16E08B36236B62FD00340F09 /* DetailGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGroup.swift; sourceTree = "<group>"; };
 		16E08B38236C45E500340F09 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		16E08B3B236C6C9800340F09 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOwnerProtocol.swift; sourceTree = "<group>"; };
+		16E08B3D236CEBB800340F09 /* OwnModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnModelProtocol.swift; sourceTree = "<group>"; };
 		16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HybridSectionedProtocol.swift; sourceTree = "<group>"; };
 		16E08B41236DBBF000340F09 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
 		16E08B46236DD6E300340F09 /* SyncWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncWall.swift; sourceTree = "<group>"; };
@@ -250,6 +252,10 @@
 		16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDetailFriend.swift; sourceTree = "<group>"; };
 		16E08B54236DDBAE00340F09 /* SyncLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogin.swift; sourceTree = "<group>"; };
 		16E08B56236DDEB700340F09 /* SyncGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncGroup.swift; sourceTree = "<group>"; };
+		16E08B58236DF13700340F09 /* HybridPlainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HybridPlainProtocol.swift; sourceTree = "<group>"; };
+		16E08B5A236DF1B900340F09 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		16E08B5C236E34A200340F09 /* SectionedViewInputProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedViewInputProtocol.swift; sourceTree = "<group>"; };
+		16E08B5E236E34B200340F09 /* PlainViewInputProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainViewInputProtocol.swift; sourceTree = "<group>"; };
 		16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPushAnimator.swift; sourceTree = "<group>"; };
 		16FF6FD22351FDCD001C33CF /* PostImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		16FF6FD523522E41001C33CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -359,14 +365,14 @@
 			path = bottom;
 			sourceTree = "<group>";
 		};
-		161C11372347210200A2EC9D /* helper */ = {
+		161C11372347210200A2EC9D /* HELPER */ = {
 			isa = PBXGroup;
 			children = (
 				1611273F234B45E50080FD54 /* DataGeneratorHelper.swift */,
 				16FF6FD523522E41001C33CF /* Extensions.swift */,
 				16D58BEF236847C300735296 /* CellImagesHelper.swift */,
 			);
-			path = helper;
+			path = HELPER;
 			sourceTree = "<group>";
 		};
 		161C113E23473FDC00A2EC9D /* layout */ = {
@@ -428,7 +434,7 @@
 			path = PRESENTER;
 			sourceTree = "<group>";
 		};
-		164764992365DF8A007D1B19 /* services */ = {
+		164764992365DF8A007D1B19 /* SERVICES */ = {
 			isa = PBXGroup;
 			children = (
 				16D58C032369D61000735296 /* parser */,
@@ -437,7 +443,7 @@
 				16D58BFA2369645E00735296 /* configurator */,
 				1647649A2365E012007D1B19 /* network */,
 			);
-			path = services;
+			path = SERVICES;
 			sourceTree = "<group>";
 		};
 		1647649A2365E012007D1B19 /* network */ = {
@@ -450,14 +456,14 @@
 			path = network;
 			sourceTree = "<group>";
 		};
-		164764A02365E1C2007D1B19 /* protocol */ = {
+		164764A02365E1C2007D1B19 /* PROTOCOL */ = {
 			isa = PBXGroup;
 			children = (
 				164764B12365FB78007D1B19 /* view */,
 				164764A82365EFC7007D1B19 /* presenter */,
 				164764A12365E1C9007D1B19 /* model */,
 			);
-			path = protocol;
+			path = PROTOCOL;
 			sourceTree = "<group>";
 		};
 		164764A12365E1C9007D1B19 /* model */ = {
@@ -477,8 +483,9 @@
 				16D58BEC236725DC00735296 /* PresenterProtocol.swift */,
 				164764A92365EFDA007D1B19 /* SectionedPresenterProtocol.swift */,
 				16D58BE32366BEB100735296 /* PlainPresenterProtocol.swift */,
-				16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */,
+				16E08B3D236CEBB800340F09 /* OwnModelProtocol.swift */,
 				16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */,
+				16E08B58236DF13700340F09 /* HybridPlainProtocol.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -494,18 +501,19 @@
 		164764B12365FB78007D1B19 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				16D58BFF2369B60C00735296 /* ViewProtocol.swift */,
 				164764B22365FB86007D1B19 /* ViewInputProtocol.swift */,
+				16E08B5C236E34A200340F09 /* SectionedViewInputProtocol.swift */,
+				16E08B5E236E34B200340F09 /* PlainViewInputProtocol.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
 		};
-		164764B42365FC1C007D1B19 /* constant */ = {
+		164764B42365FC1C007D1B19 /* CONSTANT */ = {
 			isa = PBXGroup;
 			children = (
 				164764B52365FC2E007D1B19 /* constant.swift */,
 			);
-			path = constant;
+			path = CONSTANT;
 			sourceTree = "<group>";
 		};
 		164F8D5F236AD958003C50E3 /* waiter */ = {
@@ -576,6 +584,7 @@
 				16AB0BA8232F985D00E21B7F /* Group.swift */,
 				16E08B36236B62FD00340F09 /* DetailGroup.swift */,
 				16200D0B2338934A00F02440 /* Photo.swift */,
+				16E08B5A236DF1B900340F09 /* Login.swift */,
 			);
 			path = MODEL;
 			sourceTree = "<group>";
@@ -843,14 +852,14 @@
 		D4001F372327B7B50070829F /* vk1 */ = {
 			isa = PBXGroup;
 			children = (
-				164764B42365FC1C007D1B19 /* constant */,
-				164764992365DF8A007D1B19 /* services */,
+				164764B42365FC1C007D1B19 /* CONSTANT */,
+				164764992365DF8A007D1B19 /* SERVICES */,
 				16FF6FD423520471001C33CF /* UI */,
-				161C11372347210200A2EC9D /* helper */,
+				161C11372347210200A2EC9D /* HELPER */,
 				163CF9A823334D9B0087C6E2 /* PRESENTER */,
 				16AB0B8A232F7D0D00E21B7F /* VIEW */,
 				16AB0B85232F7B6C00E21B7F /* MODEL */,
-				164764A02365E1C2007D1B19 /* protocol */,
+				164764A02365E1C2007D1B19 /* PROTOCOL */,
 				16AB0B9A232F7E9F00E21B7F /* storyboards */,
 				D4001F382327B7B50070829F /* AppDelegate.swift */,
 				D4001F442327B7B60070829F /* Info.plist */,
@@ -1020,6 +1029,7 @@
 				16E08B4D236DD7DB00340F09 /* SyncGroupDetail.swift in Sources */,
 				16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */,
 				16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */,
+				16E08B5B236DF1B900340F09 /* Login.swift in Sources */,
 				1611273C234B2C8E0080FD54 /* FriendPost_ViewController.swift in Sources */,
 				164764B62365FC2E007D1B19 /* constant.swift in Sources */,
 				D4001F4B2327B7DE0070829F /* LoginViewController.swift in Sources */,
@@ -1033,17 +1043,18 @@
 				16112740234B45E50080FD54 /* DataGeneratorHelper.swift in Sources */,
 				16E08B4F236DD80800340F09 /* SyncProfile.swift in Sources */,
 				161C11422347426100A2EC9D /* StickyFlowLayout.swift in Sources */,
-				16D58C002369B60C00735296 /* ViewProtocol.swift in Sources */,
 				1666674C2347CA0300FD2B86 /* Wall_Cell_tp5.swift in Sources */,
 				1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */,
 				161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */,
+				16E08B5D236E34A200340F09 /* SectionedViewInputProtocol.swift in Sources */,
 				16D58C052369D65100735296 /* WallParser.swift in Sources */,
 				16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */,
 				166667452347BFE100FD2B86 /* Wall_Cell_tp2.swift in Sources */,
 				16D58BE42366BEB100735296 /* PlainPresenterProtocol.swift in Sources */,
 				16FF6FD623522E41001C33CF /* Extensions.swift in Sources */,
 				166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */,
-				16E08B3E236CEBB800340F09 /* ModelOwnerProtocol.swift in Sources */,
+				16E08B5F236E34B200340F09 /* PlainViewInputProtocol.swift in Sources */,
+				16E08B3E236CEBB800340F09 /* OwnModelProtocol.swift in Sources */,
 				164764BB23662209007D1B19 /* VKLogin_ViewController.swift in Sources */,
 				16E08B2A236ADAEA00340F09 /* RAMBounceAnimation.swift in Sources */,
 				16D58BE82366C6BE00735296 /* PlainModelProtocol.swift in Sources */,
@@ -1052,6 +1063,7 @@
 				16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */,
 				16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */,
 				1604060D234E5A250083F3C3 /* MyGroupDetail_ViewController.swift in Sources */,
+				16E08B59236DF13700340F09 /* HybridPlainProtocol.swift in Sources */,
 				16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */,
 				166667412347BB9900FD2B86 /* Wall_Controller.swift in Sources */,
 				1666674A2347C9FA00FD2B86 /* Wall_Cell_tp4.swift in Sources */,

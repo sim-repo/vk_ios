@@ -13,7 +13,7 @@ public class PlainBasePresenter: PlainPresenterProtocol {
         return dataSource.count 
     }
     
-    weak var view: ViewInputProtocol?
+    weak var view: PlainViewInputProtocol?
     var dataSource: [PlainModelProtocol] = []
     
 
@@ -25,7 +25,12 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     // init presenter and view simultaneously
     required convenience init(vc: ViewInputProtocol, completion: (()->Void)?) {
         self.init()
-        self.view = vc
+        guard let _view = vc as? PlainViewInputProtocol
+        else {
+            catchError(msg: "PlainBasePresenter: init(vc:completion) - incorrect passed vc")
+            return
+        }
+        self.view = _view
     }
     
     
@@ -40,13 +45,24 @@ public class PlainBasePresenter: PlainPresenterProtocol {
         return outerCompletion
     }
     
-    func setView(view: ViewInputProtocol, completion: (()->Void)?) {
-        self.view = view
+    func setView(vc: ViewInputProtocol, completion: (()->Void)?) {
+        validateView(vc)
+        self.view = vc as? PlainViewInputProtocol
         guard dataSource.count > 0
             else { return }
         UI_THREAD { [weak self] in
-            self?.view?.refreshDataSource()
+            guard let self = self else { return }
+            self.view?.viewReloadData()
             completion?()
+        }
+    }
+    
+    
+    private func validateView(_ vc: ViewInputProtocol){
+        guard let _ = vc as? SectionedViewInputProtocol
+        else {
+            catchError(msg: "SectionedBasePresenter: init(vc:completion) - incorrect passed vc")
+            return
         }
     }
     
@@ -91,18 +107,31 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     }
     
     // check if datasource is conformed to model expected
-    func validate(_ ds: [DecodableProtocol]) {
-        catchError(msg: "SectionBasePresenter: validate: override error")
+    private func validate(_ ds: [DecodableProtocol]) {
+        guard ds.count > 0
+        else {
+           catchError(msg: "PlainBasePresenter: validate(): datasource is empty "  + self.className())
+           return
+        }
+        guard let childPresenter = self as? OwnModelProtocol else {
+            return
+        }
+        let required = "\(childPresenter.modelClass)"
+        let current = getRawClassName(object: type(of: ds[0]))
+        guard required == current
+        else {
+            catchError(msg: "PlainBasePresenter: validate(): returned datasource incorrected")
+            return
+        }
     }
-
+    
     func saveModel(ds: [DecodableProtocol]) {
-        // TODO: implement
         didSaveModel()
     }
     
     func didSaveModel(){
         UI_THREAD { [weak self] in
-            self?.view?.refreshDataSource()
+            self?.view?.viewReloadData()
         }
     }
     
@@ -135,15 +164,5 @@ public class PlainBasePresenter: PlainPresenterProtocol {
         return IndexPath(row: idx, section: 0)
     }
     
-    
-    //MARK: overriding functions
-    
-    func loadFromNetwork(completion: (()->Void)? = nil){
-        catchError(msg: "PlainBasePresenter: loadFromNetwork: override error")
-    }
-    
-    func loadFromDisk(completion: (()->Void)? = nil){
-        catchError(msg: "PlainBasePresenter: loadFromDisk: override error")
-    }
 }
 

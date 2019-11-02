@@ -119,12 +119,4 @@ extension MyGroupDetail_ViewController: ViewInputProtocol{
         isDeactivatedLabel.text = "[deactivated]: " + group.isDeactivated.toString()
         parentView.alpha = 1
     }
-    
-    func className() -> String {
-         return String(describing: MyGroupDetail_ViewController.self)
-     }
-    
-    func optimReloadCell(indexPath: IndexPath) {
-        //TODO:
-    }
 }
