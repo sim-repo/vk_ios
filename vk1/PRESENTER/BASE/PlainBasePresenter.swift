@@ -51,6 +51,10 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     }
     
     
+    func dataSourceIsEmpty() -> Bool {
+        return dataSource.isEmpty
+    }
+    
     func className() -> String {
         return String(describing: self)
     }

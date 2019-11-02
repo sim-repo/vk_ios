@@ -47,3 +47,18 @@ extension Group_ViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
+extension Group_ViewController: ViewInputProtocol {
+    func refreshDataSource() {
+
+    }
+    
+    func optimReloadCell(indexPath: IndexPath) {
+
+    }
+    
+    func className() -> String {
+        return String(describing: Group_ViewController.self)
+    }
+    
+    
+}

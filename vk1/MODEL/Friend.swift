@@ -28,12 +28,6 @@ class Friend: SectionedModelProtocol, DecodableProtocol {
         }
     }
     
-    func setupFromWall(json: JSON?){
-        setup(json: json)
-        let dict:[String: SectionedModelProtocol] = ["model": self]
-        NotificationCenter.default.post(name: .friendInserted, object: nil, userInfo: dict)
-    }
-    
     func getGroupByField()->String {
         switch groupBy {
         case .firstName:

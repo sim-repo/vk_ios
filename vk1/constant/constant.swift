@@ -21,6 +21,146 @@ enum FriendGroupByType: String {
 }
 
 
+enum PresenterEnum  {
+    case friendPresenter
+    case detailFriendPresenter
+    case myGroupPresenter
+    case myGroupDetailPresenter
+    case groupPresenter
+    case wallPresenter
+    case friendWallPresenter
+    case profilePresenter
+    case loginPresenter
+    
+    init(presenterType: PresenterProtocol.Type) {
+        switch presenterType {
+        case is FriendPresenter.Type:
+                   self = .friendPresenter
+        case is DetailFriendPresenter.Type:
+                   self = .detailFriendPresenter
+        case is MyGroupPresenter.Type:
+                   self = .myGroupPresenter
+        case is MyGroupDetailPresenter.Type:
+                   self = .myGroupDetailPresenter
+        case is GroupPresenter.Type:
+                   self = .groupPresenter
+        case is WallPresenter.Type:
+                   self = .wallPresenter
+        case is FriendWallPresenter.Type:
+                   self = .friendWallPresenter
+        case is ProfilePresenter.Type:
+                   self = .profilePresenter
+        default:
+            self = .friendPresenter
+            catchError(msg: "")
+        }
+    }
+    
+    init(presenter: PresenterProtocol) {
+        switch presenter {
+        case is FriendPresenter:
+                   self = .friendPresenter
+        case is DetailFriendPresenter:
+                   self = .detailFriendPresenter
+        case is MyGroupPresenter:
+                   self = .myGroupPresenter
+        case is MyGroupDetailPresenter:
+                   self = .myGroupDetailPresenter
+        case is GroupPresenter:
+                   self = .groupPresenter
+        case is WallPresenter:
+                   self = .wallPresenter
+        case is FriendWallPresenter:
+                   self = .friendWallPresenter
+        case is ProfilePresenter:
+                   self = .profilePresenter
+        case is LoginPresenter:
+            self = .loginPresenter
+        default:
+            self = .friendPresenter
+            catchError(msg: "")
+        }
+    }
+    
+    init(vc: ViewInputProtocol) {
+        switch vc {
+        case is Friend_Controller:
+                   self = .friendPresenter
+        case is FriendWall_Controller:
+                   self = .detailFriendPresenter
+        case is MyGroups_ViewController:
+                   self = .myGroupPresenter
+        case is MyGroupDetail_ViewController:
+                   self = .myGroupDetailPresenter
+        case is Group_ViewController:
+                   self = .groupPresenter
+        case is Wall_Controller:
+                   self = .wallPresenter
+        case is FriendWall_Controller:
+                   self = .friendWallPresenter
+        case is Profile_TableViewController:
+                   self = .profilePresenter
+        case is LoginViewController:
+                   self = .loginPresenter
+        default:
+            self = .friendPresenter
+            catchError(msg: "")
+        }
+    }
+    
+    
+    var vc: ViewInputProtocol.Type {
+           switch self {
+               case .friendPresenter:
+                   return Friend_Controller.self
+               case .detailFriendPresenter:
+                   return FriendWall_Controller.self
+               case .myGroupPresenter:
+                   return MyGroups_ViewController.self
+               case .myGroupDetailPresenter:
+                   return MyGroupDetail_ViewController.self
+               case .groupPresenter:
+                   return Group_ViewController.self
+               case .wallPresenter:
+                   return Wall_Controller.self
+               case .friendWallPresenter:
+                   return FriendWall_Controller.self
+               case .profilePresenter:
+                    return Profile_TableViewController.self
+               case .loginPresenter:
+                    return LoginViewController.self
+           }
+       }
+    
+    var presenter: PresenterProtocol.Type {
+        switch self {
+            case .friendPresenter:
+                return FriendPresenter.self
+            case .detailFriendPresenter:
+                return DetailFriendPresenter.self
+            case .myGroupPresenter:
+                return MyGroupPresenter.self
+            case .myGroupDetailPresenter:
+                return MyGroupDetailPresenter.self
+            case .groupPresenter:
+                return GroupPresenter.self
+            case .wallPresenter:
+                return WallPresenter.self
+            case .friendWallPresenter:
+                return FriendWallPresenter.self
+            case .profilePresenter:
+                return ProfilePresenter.self
+            case .loginPresenter:
+                return LoginPresenter.self
+        }
+    }
+}
+
+
+
+
+
+
 enum FriendImagesType: Int {
    case image50
    case image200

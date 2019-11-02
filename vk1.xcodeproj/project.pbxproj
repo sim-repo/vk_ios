@@ -95,14 +95,12 @@
 		16D58BE22366BE2900735296 /* PlainBasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BE12366BE2900735296 /* PlainBasePresenter.swift */; };
 		16D58BE42366BEB100735296 /* PlainPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BE32366BEB100735296 /* PlainPresenterProtocol.swift */; };
 		16D58BE82366C6BE00735296 /* PlainModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BE72366C6BE00735296 /* PlainModelProtocol.swift */; };
-		16D58BEB23671B6E00735296 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEA23671B6E00735296 /* PresenterFactory.swift */; };
 		16D58BED236725DC00735296 /* PresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEC236725DC00735296 /* PresenterProtocol.swift */; };
 		16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEF236847C300735296 /* CellImagesHelper.swift */; };
 		16D58BF52368516800735296 /* WallHeader_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D58BF42368516800735296 /* WallHeader_View.xib */; };
 		16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BF623685F0900735296 /* WallHeader_View.swift */; };
 		16D58BFE236986EB00735296 /* SynchronizerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFD236986EB00735296 /* SynchronizerManager.swift */; };
 		16D58C002369B60C00735296 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFF2369B60C00735296 /* ViewProtocol.swift */; };
-		16D58C022369C12600735296 /* BasicNetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C012369C12600735296 /* BasicNetworkProtocol.swift */; };
 		16D58C052369D65100735296 /* WallParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C042369D65100735296 /* WallParser.swift */; };
 		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
 		16E08B2A236ADAEA00340F09 /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B29236ADAEA00340F09 /* RAMBounceAnimation.swift */; };
@@ -114,6 +112,17 @@
 		16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3B236C6C9800340F09 /* LoginPresenter.swift */; };
 		16E08B3E236CEBB800340F09 /* ModelOwnerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */; };
 		16E08B40236CECE800340F09 /* HybridSectionedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */; };
+		16E08B42236DBBF000340F09 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B41236DBBF000340F09 /* PresenterFactory.swift */; };
+		16E08B44236DD61200340F09 /* SyncFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B43236DD61200340F09 /* SyncFunctions.swift */; };
+		16E08B47236DD6E300340F09 /* SyncWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B46236DD6E300340F09 /* SyncWall.swift */; };
+		16E08B49236DD7B900340F09 /* SyncFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B48236DD7B900340F09 /* SyncFriend.swift */; };
+		16E08B4B236DD7C800340F09 /* SyncMyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */; };
+		16E08B4D236DD7DB00340F09 /* SyncGroupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B4C236DD7DB00340F09 /* SyncGroupDetail.swift */; };
+		16E08B4F236DD80800340F09 /* SyncProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B4E236DD80800340F09 /* SyncProfile.swift */; };
+		16E08B51236DD82100340F09 /* SyncFriendWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B50236DD82100340F09 /* SyncFriendWall.swift */; };
+		16E08B53236DDB1B00340F09 /* SyncDetailFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */; };
+		16E08B55236DDBAE00340F09 /* SyncLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B54236DDBAE00340F09 /* SyncLogin.swift */; };
+		16E08B57236DDEB700340F09 /* SyncGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B56236DDEB700340F09 /* SyncGroup.swift */; };
 		16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */; };
 		16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD22351FDCD001C33CF /* PostImageView.swift */; };
 		16FF6FD623522E41001C33CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD523522E41001C33CF /* Extensions.swift */; };
@@ -215,14 +224,12 @@
 		16D58BE12366BE2900735296 /* PlainBasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainBasePresenter.swift; sourceTree = "<group>"; };
 		16D58BE32366BEB100735296 /* PlainPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainPresenterProtocol.swift; sourceTree = "<group>"; };
 		16D58BE72366C6BE00735296 /* PlainModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainModelProtocol.swift; sourceTree = "<group>"; };
-		16D58BEA23671B6E00735296 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
 		16D58BEC236725DC00735296 /* PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocol.swift; sourceTree = "<group>"; };
 		16D58BEF236847C300735296 /* CellImagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImagesHelper.swift; sourceTree = "<group>"; };
 		16D58BF42368516800735296 /* WallHeader_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallHeader_View.xib; sourceTree = "<group>"; };
 		16D58BF623685F0900735296 /* WallHeader_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallHeader_View.swift; sourceTree = "<group>"; };
 		16D58BFD236986EB00735296 /* SynchronizerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizerManager.swift; sourceTree = "<group>"; };
 		16D58BFF2369B60C00735296 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
-		16D58C012369C12600735296 /* BasicNetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicNetworkProtocol.swift; sourceTree = "<group>"; };
 		16D58C042369D65100735296 /* WallParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallParser.swift; sourceTree = "<group>"; };
 		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
 		16E08B29236ADAEA00340F09 /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
@@ -234,6 +241,17 @@
 		16E08B3B236C6C9800340F09 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOwnerProtocol.swift; sourceTree = "<group>"; };
 		16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HybridSectionedProtocol.swift; sourceTree = "<group>"; };
+		16E08B41236DBBF000340F09 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
+		16E08B43236DD61200340F09 /* SyncFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFunctions.swift; sourceTree = "<group>"; };
+		16E08B46236DD6E300340F09 /* SyncWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncWall.swift; sourceTree = "<group>"; };
+		16E08B48236DD7B900340F09 /* SyncFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFriend.swift; sourceTree = "<group>"; };
+		16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMyGroup.swift; sourceTree = "<group>"; };
+		16E08B4C236DD7DB00340F09 /* SyncGroupDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncGroupDetail.swift; sourceTree = "<group>"; };
+		16E08B4E236DD80800340F09 /* SyncProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncProfile.swift; sourceTree = "<group>"; };
+		16E08B50236DD82100340F09 /* SyncFriendWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFriendWall.swift; sourceTree = "<group>"; };
+		16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDetailFriend.swift; sourceTree = "<group>"; };
+		16E08B54236DDBAE00340F09 /* SyncLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogin.swift; sourceTree = "<group>"; };
+		16E08B56236DDEB700340F09 /* SyncGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncGroup.swift; sourceTree = "<group>"; };
 		16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPushAnimator.swift; sourceTree = "<group>"; };
 		16FF6FD22351FDCD001C33CF /* PostImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		16FF6FD523522E41001C33CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -399,17 +417,17 @@
 			path = wall;
 			sourceTree = "<group>";
 		};
-		163CF9A823334D9B0087C6E2 /* presenter */ = {
+		163CF9A823334D9B0087C6E2 /* PRESENTER */ = {
 			isa = PBXGroup;
 			children = (
-				16D58BE9236706B800735296 /* base */,
+				16D58BE9236706B800735296 /* BASE */,
 				16E08B3A236C6C7F00340F09 /* login */,
 				16E08B2E236B3BED00340F09 /* friend */,
 				16E08B2D236B3BDA00340F09 /* group */,
 				16E08B2F236B3BFE00340F09 /* wall */,
 				16E08B30236B3C1000340F09 /* profile */,
 			);
-			path = presenter;
+			path = PRESENTER;
 			sourceTree = "<group>";
 		};
 		164764992365DF8A007D1B19 /* services */ = {
@@ -461,7 +479,6 @@
 				16D58BEC236725DC00735296 /* PresenterProtocol.swift */,
 				164764A92365EFDA007D1B19 /* SectionedPresenterProtocol.swift */,
 				16D58BE32366BEB100735296 /* PlainPresenterProtocol.swift */,
-				16D58C012369C12600735296 /* BasicNetworkProtocol.swift */,
 				16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */,
 				16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */,
 			);
@@ -471,7 +488,7 @@
 		164764AE2365FAEC007D1B19 /* factory */ = {
 			isa = PBXGroup;
 			children = (
-				16D58BEA23671B6E00735296 /* PresenterFactory.swift */,
+				16E08B41236DBBF000340F09 /* PresenterFactory.swift */,
 			);
 			path = factory;
 			sourceTree = "<group>";
@@ -551,7 +568,7 @@
 			path = tabbar;
 			sourceTree = "<group>";
 		};
-		16AB0B85232F7B6C00E21B7F /* model */ = {
+		16AB0B85232F7B6C00E21B7F /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
 				166667DF2348FA9B00FD2B86 /* FriendWall.swift */,
@@ -562,10 +579,10 @@
 				16E08B36236B62FD00340F09 /* DetailGroup.swift */,
 				16200D0B2338934A00F02440 /* Photo.swift */,
 			);
-			path = model;
+			path = MODEL;
 			sourceTree = "<group>";
 		};
-		16AB0B8A232F7D0D00E21B7F /* view */ = {
+		16AB0B8A232F7D0D00E21B7F /* VIEW */ = {
 			isa = PBXGroup;
 			children = (
 				166D1B0A234F6E2900C552E4 /* video */,
@@ -575,7 +592,7 @@
 				16AB0B90232F7D8000E21B7F /* friend */,
 				16AB0B95232F7E0E00E21B7F /* group */,
 			);
-			path = view;
+			path = VIEW;
 			sourceTree = "<group>";
 		};
 		16AB0B90232F7D8000E21B7F /* friend */ = {
@@ -629,13 +646,13 @@
 			path = xib;
 			sourceTree = "<group>";
 		};
-		16D58BE9236706B800735296 /* base */ = {
+		16D58BE9236706B800735296 /* BASE */ = {
 			isa = PBXGroup;
 			children = (
 				16D58BE12366BE2900735296 /* PlainBasePresenter.swift */,
 				163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */,
 			);
-			path = base;
+			path = BASE;
 			sourceTree = "<group>";
 		};
 		16D58BF1236850C500735296 /* header */ = {
@@ -666,7 +683,9 @@
 		16D58BFC236986A600735296 /* synchronizer */ = {
 			isa = PBXGroup;
 			children = (
+				16E08B45236DD67D00340F09 /* sync module */,
 				16D58BFD236986EB00735296 /* SynchronizerManager.swift */,
+				16E08B43236DD61200340F09 /* SyncFunctions.swift */,
 			);
 			path = synchronizer;
 			sourceTree = "<group>";
@@ -731,6 +750,22 @@
 				16E08B3B236C6C9800340F09 /* LoginPresenter.swift */,
 			);
 			path = login;
+			sourceTree = "<group>";
+		};
+		16E08B45236DD67D00340F09 /* sync module */ = {
+			isa = PBXGroup;
+			children = (
+				16E08B48236DD7B900340F09 /* SyncFriend.swift */,
+				16E08B50236DD82100340F09 /* SyncFriendWall.swift */,
+				16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */,
+				16E08B46236DD6E300340F09 /* SyncWall.swift */,
+				16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */,
+				16E08B56236DDEB700340F09 /* SyncGroup.swift */,
+				16E08B4C236DD7DB00340F09 /* SyncGroupDetail.swift */,
+				16E08B4E236DD80800340F09 /* SyncProfile.swift */,
+				16E08B54236DDBAE00340F09 /* SyncLogin.swift */,
+			);
+			path = "sync module";
 			sourceTree = "<group>";
 		};
 		16FF6FCC2351F1ED001C33CF /* navigation controller */ = {
@@ -815,9 +850,9 @@
 				164764992365DF8A007D1B19 /* services */,
 				16FF6FD423520471001C33CF /* UI */,
 				161C11372347210200A2EC9D /* helper */,
-				163CF9A823334D9B0087C6E2 /* presenter */,
-				16AB0B8A232F7D0D00E21B7F /* view */,
-				16AB0B85232F7B6C00E21B7F /* model */,
+				163CF9A823334D9B0087C6E2 /* PRESENTER */,
+				16AB0B8A232F7D0D00E21B7F /* VIEW */,
+				16AB0B85232F7B6C00E21B7F /* MODEL */,
 				164764A02365E1C2007D1B19 /* protocol */,
 				16AB0B9A232F7E9F00E21B7F /* storyboards */,
 				D4001F382327B7B50070829F /* AppDelegate.swift */,
@@ -981,10 +1016,11 @@
 				168AC5B4236AC37E00A1B2A6 /* RAMFumeAnimation.swift in Sources */,
 				16D58BED236725DC00735296 /* PresenterProtocol.swift in Sources */,
 				164764A32365E1E5007D1B19 /* SectionedModelProtocol.swift in Sources */,
-				16D58BEB23671B6E00735296 /* PresenterFactory.swift in Sources */,
 				163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */,
+				16E08B57236DDEB700340F09 /* SyncGroup.swift in Sources */,
 				161C1136234718B000A2EC9D /* WallCellConfigurator.swift in Sources */,
 				16200CFD233360FF00F02440 /* GroupPresenter.swift in Sources */,
+				16E08B4D236DD7DB00340F09 /* SyncGroupDetail.swift in Sources */,
 				16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */,
 				16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */,
 				1611273C234B2C8E0080FD54 /* FriendPost_ViewController.swift in Sources */,
@@ -998,6 +1034,7 @@
 				166667522347CA1A00FD2B86 /* Wall_Cell_tp8.swift in Sources */,
 				168AC5B0236AC32D00A1B2A6 /* RAMItemAnimationProtocol.swift in Sources */,
 				16112740234B45E50080FD54 /* DataGeneratorHelper.swift in Sources */,
+				16E08B4F236DD80800340F09 /* SyncProfile.swift in Sources */,
 				161C11422347426100A2EC9D /* StickyFlowLayout.swift in Sources */,
 				16D58C002369B60C00735296 /* ViewProtocol.swift in Sources */,
 				1666674C2347CA0300FD2B86 /* Wall_Cell_tp5.swift in Sources */,
@@ -1007,6 +1044,7 @@
 				16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */,
 				166667452347BFE100FD2B86 /* Wall_Cell_tp2.swift in Sources */,
 				16D58BE42366BEB100735296 /* PlainPresenterProtocol.swift in Sources */,
+				16E08B44236DD61200340F09 /* SyncFunctions.swift in Sources */,
 				16FF6FD623522E41001C33CF /* Extensions.swift in Sources */,
 				166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */,
 				16E08B3E236CEBB800340F09 /* ModelOwnerProtocol.swift in Sources */,
@@ -1031,7 +1069,7 @@
 				16200D0E233893B500F02440 /* ProfilePresenter.swift in Sources */,
 				161B0EA9234A27780081008B /* Profile_TableViewController.swift in Sources */,
 				164764BD23664DE0007D1B19 /* GroupSectionHeader.swift in Sources */,
-				16D58C022369C12600735296 /* BasicNetworkProtocol.swift in Sources */,
+				16E08B55236DDBAE00340F09 /* SyncLogin.swift in Sources */,
 				1666673D2347B8E900FD2B86 /* Wall_Cell_tp1.swift in Sources */,
 				16112742234B4D600080FD54 /* ColorSystemHelper.swift in Sources */,
 				166667DA2348994100FD2B86 /* UIControl+Extensions.swift in Sources */,
@@ -1041,17 +1079,22 @@
 				1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */,
 				166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */,
 				16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */,
+				16E08B51236DD82100340F09 /* SyncFriendWall.swift in Sources */,
 				161B0EA5234A046C0081008B /* Group_ViewController.swift in Sources */,
 				16D58BE22366BE2900735296 /* PlainBasePresenter.swift in Sources */,
 				166D1B0C234F6E3900C552E4 /* Video_ViewController.swift in Sources */,
 				166667682347E2C700FD2B86 /* Wall_CellProtocol.swift in Sources */,
+				16E08B47236DD6E300340F09 /* SyncWall.swift in Sources */,
 				166667DE2348F50A00FD2B86 /* UIControlThemeMgt.swift in Sources */,
+				16E08B4B236DD7C800340F09 /* SyncMyGroup.swift in Sources */,
 				16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */,
 				16040605234E39170083F3C3 /* RotatedNavigationController.swift in Sources */,
 				16200D1F2338AB3300F02440 /* LettersSearchControl.swift in Sources */,
 				16D58BFE236986EB00735296 /* SynchronizerManager.swift in Sources */,
 				166667482347C9ED00FD2B86 /* Wall_Cell_tp3.swift in Sources */,
+				16E08B49236DD7B900340F09 /* SyncFriend.swift in Sources */,
 				161B0E632349D27F0081008B /* WallLike_View.swift in Sources */,
+				16E08B42236DBBF000340F09 /* PresenterFactory.swift in Sources */,
 				16040601234E390A0083F3C3 /* RotatedPopAnimator.swift in Sources */,
 				168AC5AE236AC31D00A1B2A6 /* RAMBadge.swift in Sources */,
 				168AC5AC236AC31900A1B2A6 /* RAMAnimatedTabBarController+BottomLine.swift in Sources */,
@@ -1061,6 +1104,7 @@
 				161B0EA7234A05860081008B /* Group_CollectionViewCell.swift in Sources */,
 				16AB0B89232F7C7800E21B7F /* MyGroup.swift in Sources */,
 				16FF6FD823526DFF001C33CF /* LinesEffect.swift in Sources */,
+				16E08B53236DDB1B00340F09 /* SyncDetailFriend.swift in Sources */,
 				16E08B33236B3C5F00340F09 /* MyGroupDetailPresenter.swift in Sources */,
 				166667562347CA2A00FD2B86 /* Wall_Cell_tp9.swift in Sources */,
 			);

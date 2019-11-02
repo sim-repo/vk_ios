@@ -51,6 +51,10 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     
     
     
+    func dataSourceIsEmpty() -> Bool {
+        return sortedDataSource.isEmpty
+    }
+    
     func clearDataSource() {
         sortedDataSource.removeAll()
     }
@@ -58,11 +62,6 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     func getDataSource() -> [SectionedModelProtocol] {
         return sortedDataSource
     }
-    
-    
-    func subscribe(){}
-    
-
     
     func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
         validate(ds)

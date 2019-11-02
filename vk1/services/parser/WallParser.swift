@@ -146,7 +146,7 @@ class WallParser {
         var res: [Int:Friend] = [:]
         for json in profiles {
             let friend = Friend()
-            friend.setupFromWall(json: json)
+            friend.setup(json: json)
             res[friend.getId()] = friend
         }
         return res
@@ -156,7 +156,7 @@ class WallParser {
         var res: [Int:Group] = [:]
         for json in groups {
             let group = Group()
-            group.setupFromWall(json: json)
+            group.setup(json: json)
             res[group.getId()] = group
         }
         return res

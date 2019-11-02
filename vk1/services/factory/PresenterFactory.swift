@@ -8,9 +8,7 @@ class PresenterFactory {
     private init(){}
 
     // store
-    private lazy var view2Presenter: [String:PresenterProtocol] = [:]
-    private lazy var presenters: [String:PresenterProtocol] = [:]
-    
+    private lazy var presenters: [PresenterEnum:PresenterProtocol] = [:]
     
     
     //MARK: called from Synchronizer >>
@@ -21,104 +19,51 @@ class PresenterFactory {
         }
         
         let presenter: T = T()
-        let clazz = String(describing: T.self)
-        presenters[clazz] = presenter
-        if let nameVC = getViewCode(presenter) {
-            view2Presenter[nameVC] = presenter
-        }
+        let presenterEnum = PresenterEnum(presenter: presenter)
+        presenters[presenterEnum] = presenter
         return presenter
     }
     
     public func getPresenter<T: PresenterProtocol>() -> T? {
-        let clazz = String(describing: T.self)
-        let res: T? = presenters[clazz] as? T
+        let presenterEnum = PresenterEnum(presenterType: T.self)
+        let res: T? = presenters[presenterEnum] as? T
         return res
     }
     
-    private func getViewCode<T:PresenterProtocol>(_ presenter: T) -> String? {
-        switch presenter {
-        case is FriendPresenter:
-            return String(describing: Friend_Controller.self)
-        case is MyGroupPresenter:
-            return String(describing: MyGroups_ViewController.self)
-        case is GroupPresenter:
-            return String(describing: Group_ViewController.self)
-        case is MyGroupDetailPresenter:
-            return String(describing: MyGroupDetail_ViewController.self)
-        case is WallPresenter:
-            return String(describing: Wall_Controller.self)
-        case is LoginPresenter:
-            return String(describing: LoginPresenter.self)
-        default:
-            catchError(msg: "PresenterFactory: getViewCode: no vc for \(String(describing: presenter))")
-        }
-        return nil
-    }
-    
-    
-    
-    
+
     //MARK: viewDidLoad called from VC >>
     
     public func getSectioned(viewDidLoad vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> SectionedPresenterProtocol? {
-        return getFromFactory(viewDidLoad: vc) as? SectionedPresenterProtocol
+        return getPresenter(viewDidLoad: vc) as? SectionedPresenterProtocol
     }
     
     public func getPlain(viewDidLoad vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> PlainPresenterProtocol? {
-        return getFromFactory(viewDidLoad: vc) as? PlainPresenterProtocol
+        return getPresenter(viewDidLoad: vc) as? PlainPresenterProtocol
     }
     
-    
+
     // private methods
     
-    private func getFromFactory(viewDidLoad vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> PresenterProtocol? {
-        var res: PresenterProtocol?
-        switch vc {
-                   case is Friend_Controller :
-                        let p: FriendPresenter? = getPresenter(vc: vc, completion)
-                        res = p
-                   case is MyGroups_ViewController :
-                        let p: MyGroupPresenter? = getPresenter(vc: vc, completion)
-                        res = p
-                   case is MyGroupDetail_ViewController :
-                        let p: MyGroupDetailPresenter? = getPresenter(vc: vc, completion)
-                        res = p
-                   case is Group_ViewController:
-                        let p: GroupPresenter? = getPresenter(vc: vc, completion)
-                        res = p
-                   case is Wall_Controller:
-                        let p: WallPresenter? = getPresenter(vc: vc, completion)
-                        res = p
-                   case is LoginViewController:
-                        let p: LoginPresenter? = getPresenter(vc: vc, completion)
-                        res = p
-                   default:
-                        catchError(msg: "PresenterFactory: getFromFactory: no presenter for \(vc)")
-        }
-        SynchronizerManager.shared.viewDidLoad(presenter: res)
-        return res
-    }
-    
-    
-    private func getPresenter<T: PresenterProtocol>(vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> T? {
-        let clazz = vc.className()
-        var res: T? = view2Presenter[clazz] as? T
+    private func getPresenter(viewDidLoad vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> PresenterProtocol? {
         
-        if res == nil {
-            res = createPresenter(vc, completion)
+        let presenterEnum = PresenterEnum(vc: vc)
+        
+        var presenter = presenters[presenterEnum]
+        
+        if presenter == nil {
+            presenter = createPresenter(clazz: presenterEnum.presenter, vc, completion)
         } else {
-            res?.setView(view: vc, completion: completion)
+            presenter?.setView(view: vc, completion: completion)
         }
-        return res
+        SynchronizerManager.shared.viewDidLoad(presenterEnum: presenterEnum)
+        return presenter
     }
     
     
-    private func createPresenter<T: PresenterProtocol>(_ vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> T? {
-        let presenter: T = T(vc: vc, completion: completion)
-        let nameVC = vc.className()
-        view2Presenter[nameVC] = presenter
-        let clazz = String(describing: T.self)
-        presenters[clazz] = presenter
+    private func createPresenter(clazz: PresenterProtocol.Type, _ vc: ViewInputProtocol, _ completion: (()->Void)? = nil) -> PresenterProtocol? {
+        let presenter = clazz.init(vc: vc, completion: completion)
+        let presenterEnum = PresenterEnum(presenter: presenter)
+        presenters[presenterEnum] = presenter
         return presenter
     }
   
