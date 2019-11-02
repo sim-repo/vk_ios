@@ -9,7 +9,7 @@ class Friend: SectionedModelProtocol, DecodableProtocol {
     var avaURL50: String?
     var avaURL100: String?
     var avaURL200: String?
-    var groupBy: FriendGroupByType = .firstName
+    var groupBy: FriendGroupByEnum = .firstName
     
     required init(){}
     

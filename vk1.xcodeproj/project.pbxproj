@@ -113,7 +113,6 @@
 		16E08B3E236CEBB800340F09 /* ModelOwnerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */; };
 		16E08B40236CECE800340F09 /* HybridSectionedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */; };
 		16E08B42236DBBF000340F09 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B41236DBBF000340F09 /* PresenterFactory.swift */; };
-		16E08B44236DD61200340F09 /* SyncFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B43236DD61200340F09 /* SyncFunctions.swift */; };
 		16E08B47236DD6E300340F09 /* SyncWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B46236DD6E300340F09 /* SyncWall.swift */; };
 		16E08B49236DD7B900340F09 /* SyncFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B48236DD7B900340F09 /* SyncFriend.swift */; };
 		16E08B4B236DD7C800340F09 /* SyncMyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */; };
@@ -242,7 +241,6 @@
 		16E08B3D236CEBB800340F09 /* ModelOwnerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOwnerProtocol.swift; sourceTree = "<group>"; };
 		16E08B3F236CECE800340F09 /* HybridSectionedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HybridSectionedProtocol.swift; sourceTree = "<group>"; };
 		16E08B41236DBBF000340F09 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
-		16E08B43236DD61200340F09 /* SyncFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFunctions.swift; sourceTree = "<group>"; };
 		16E08B46236DD6E300340F09 /* SyncWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncWall.swift; sourceTree = "<group>"; };
 		16E08B48236DD7B900340F09 /* SyncFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFriend.swift; sourceTree = "<group>"; };
 		16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMyGroup.swift; sourceTree = "<group>"; };
@@ -685,7 +683,6 @@
 			children = (
 				16E08B45236DD67D00340F09 /* sync module */,
 				16D58BFD236986EB00735296 /* SynchronizerManager.swift */,
-				16E08B43236DD61200340F09 /* SyncFunctions.swift */,
 			);
 			path = synchronizer;
 			sourceTree = "<group>";
@@ -1044,7 +1041,6 @@
 				16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */,
 				166667452347BFE100FD2B86 /* Wall_Cell_tp2.swift in Sources */,
 				16D58BE42366BEB100735296 /* PlainPresenterProtocol.swift in Sources */,
-				16E08B44236DD61200340F09 /* SyncFunctions.swift in Sources */,
 				16FF6FD623522E41001C33CF /* Extensions.swift in Sources */,
 				166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */,
 				16E08B3E236CEBB800340F09 /* ModelOwnerProtocol.swift in Sources */,

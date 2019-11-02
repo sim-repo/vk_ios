@@ -7,7 +7,7 @@ class MyGroup: SectionedModelProtocol, DecodableProtocol {
     var desc: String = ""
     var avaURL50: URL?
     var avaURL200: URL?
-    var groupBy: MyGroupByType = .name
+    var groupBy: MyGroupByEnum = .name
     var coverURL400: URL?
     var membersCount: Int = 0
     var isClosed: Int = 0

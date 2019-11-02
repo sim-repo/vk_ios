@@ -12,7 +12,7 @@ class Group: SectionedModelProtocol {
    var avaURL200: String?
    var image50: UIImage?
    var image200: UIImage?
-   var groupBy: MyGroupByType = .name
+   var groupBy: MyGroupByEnum = .name
    
    required init(){}
    

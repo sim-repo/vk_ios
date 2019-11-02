@@ -43,7 +43,7 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     // when data loaded from network
     final func didLoadFromNetwork(completion: onSuccessSyncCompletion? = nil) -> onSuccessPresenterCompletion {
         let outerCompletion: onSuccessPresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
-            self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
+            self?.setModel(ds: arr, didLoadedFrom: .network)
             completion?()
         }
         return outerCompletion
@@ -63,13 +63,13 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
         return sortedDataSource
     }
     
-    func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
+    func setModel(ds: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
         validate(ds)
         self.sortedDataSource = sortModel(ds)
         switch didLoadedFrom {
-            case .diskFirst:
+            case .disk:
                 return // data stored already
-            case .networkFirst:
+            case .network:
                 saveModel(ds: ds)
         }
     }

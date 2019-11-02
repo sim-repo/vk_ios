@@ -34,7 +34,7 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     // when data loaded from network
     final func didLoadFromNetwork(completion: onSuccessSyncCompletion? = nil) -> onSuccessPresenterCompletion {
         let outerCompletion: onSuccessPresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
-            self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
+            self?.setModel(ds: arr, didLoadedFrom: .network)
             completion?()
         }
         return outerCompletion
@@ -70,7 +70,7 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     func viewDidDisappear() {
     }
     
-    func setModel(ds: [DecodableProtocol], didLoadedFrom: LoadModelType) {
+    func setModel(ds: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
         guard ds.count > 0
         else {
             catchError(msg: "PlainBasePresenter: setModel: datasource is empty: " + self.className())
@@ -79,9 +79,9 @@ public class PlainBasePresenter: PlainPresenterProtocol {
         
         validate(ds)
         switch didLoadedFrom {
-           case .diskFirst:
+           case .disk:
                return // data stored already
-           case .networkFirst:
+           case .network:
                 let models = ds as! [PlainModelProtocol]
                 for model in models {
                     dataSource.append(model)

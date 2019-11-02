@@ -9,49 +9,43 @@ let networkTimeout: TimeInterval = 1 // in sec
 let networkDelayBetweenRequests = 500 // in ms
 
 
-enum LoadModelType{
-    case networkFirst
-    case diskFirst
+enum ModelLoadedFromEnum{
+    case network
+    case disk
 }
 
 
-enum FriendGroupByType: String {
-    case firstName = "По Имени"
-    case lastName = "По Фамилии"
-}
-
-
-enum PresenterEnum  {
-    case friendPresenter
-    case detailFriendPresenter
-    case myGroupPresenter
-    case myGroupDetailPresenter
-    case groupPresenter
-    case wallPresenter
-    case friendWallPresenter
-    case profilePresenter
-    case loginPresenter
+enum ModuleEnum  {
+    case friend
+    case detail_friend
+    case my_group
+    case my_group_detail
+    case group
+    case wall
+    case friend_wall
+    case profile
+    case login
     
     init(presenterType: PresenterProtocol.Type) {
         switch presenterType {
         case is FriendPresenter.Type:
-                   self = .friendPresenter
+                   self = .friend
         case is DetailFriendPresenter.Type:
-                   self = .detailFriendPresenter
+                   self = .detail_friend
         case is MyGroupPresenter.Type:
-                   self = .myGroupPresenter
+                   self = .my_group
         case is MyGroupDetailPresenter.Type:
-                   self = .myGroupDetailPresenter
+                   self = .my_group_detail
         case is GroupPresenter.Type:
-                   self = .groupPresenter
+                   self = .group
         case is WallPresenter.Type:
-                   self = .wallPresenter
+                   self = .wall
         case is FriendWallPresenter.Type:
-                   self = .friendWallPresenter
+                   self = .friend_wall
         case is ProfilePresenter.Type:
-                   self = .profilePresenter
+                   self = .profile
         default:
-            self = .friendPresenter
+            self = .friend
             catchError(msg: "")
         }
     }
@@ -59,25 +53,25 @@ enum PresenterEnum  {
     init(presenter: PresenterProtocol) {
         switch presenter {
         case is FriendPresenter:
-                   self = .friendPresenter
+                   self = .friend
         case is DetailFriendPresenter:
-                   self = .detailFriendPresenter
+                   self = .detail_friend
         case is MyGroupPresenter:
-                   self = .myGroupPresenter
+                   self = .my_group
         case is MyGroupDetailPresenter:
-                   self = .myGroupDetailPresenter
+                   self = .my_group_detail
         case is GroupPresenter:
-                   self = .groupPresenter
+                   self = .group
         case is WallPresenter:
-                   self = .wallPresenter
+                   self = .wall
         case is FriendWallPresenter:
-                   self = .friendWallPresenter
+                   self = .friend_wall
         case is ProfilePresenter:
-                   self = .profilePresenter
+                   self = .profile
         case is LoginPresenter:
-            self = .loginPresenter
+            self = .login
         default:
-            self = .friendPresenter
+            self = .friend
             catchError(msg: "")
         }
     }
@@ -85,25 +79,25 @@ enum PresenterEnum  {
     init(vc: ViewInputProtocol) {
         switch vc {
         case is Friend_Controller:
-                   self = .friendPresenter
+                   self = .friend
         case is FriendWall_Controller:
-                   self = .detailFriendPresenter
+                   self = .detail_friend
         case is MyGroups_ViewController:
-                   self = .myGroupPresenter
+                   self = .my_group
         case is MyGroupDetail_ViewController:
-                   self = .myGroupDetailPresenter
+                   self = .my_group_detail
         case is Group_ViewController:
-                   self = .groupPresenter
+                   self = .group
         case is Wall_Controller:
-                   self = .wallPresenter
+                   self = .wall
         case is FriendWall_Controller:
-                   self = .friendWallPresenter
+                   self = .friend_wall
         case is Profile_TableViewController:
-                   self = .profilePresenter
+                   self = .profile
         case is LoginViewController:
-                   self = .loginPresenter
+                   self = .login
         default:
-            self = .friendPresenter
+            self = .friend
             catchError(msg: "")
         }
     }
@@ -111,46 +105,46 @@ enum PresenterEnum  {
     
     var vc: ViewInputProtocol.Type {
            switch self {
-               case .friendPresenter:
+               case .friend:
                    return Friend_Controller.self
-               case .detailFriendPresenter:
+               case .detail_friend:
                    return FriendWall_Controller.self
-               case .myGroupPresenter:
+               case .my_group:
                    return MyGroups_ViewController.self
-               case .myGroupDetailPresenter:
+               case .my_group_detail:
                    return MyGroupDetail_ViewController.self
-               case .groupPresenter:
+               case .group:
                    return Group_ViewController.self
-               case .wallPresenter:
+               case .wall:
                    return Wall_Controller.self
-               case .friendWallPresenter:
+               case .friend_wall:
                    return FriendWall_Controller.self
-               case .profilePresenter:
+               case .profile:
                     return Profile_TableViewController.self
-               case .loginPresenter:
+               case .login:
                     return LoginViewController.self
            }
        }
     
     var presenter: PresenterProtocol.Type {
         switch self {
-            case .friendPresenter:
+            case .friend:
                 return FriendPresenter.self
-            case .detailFriendPresenter:
+            case .detail_friend:
                 return DetailFriendPresenter.self
-            case .myGroupPresenter:
+            case .my_group:
                 return MyGroupPresenter.self
-            case .myGroupDetailPresenter:
+            case .my_group_detail:
                 return MyGroupDetailPresenter.self
-            case .groupPresenter:
+            case .group:
                 return GroupPresenter.self
-            case .wallPresenter:
+            case .wall:
                 return WallPresenter.self
-            case .friendWallPresenter:
+            case .friend_wall:
                 return FriendWallPresenter.self
-            case .profilePresenter:
+            case .profile:
                 return ProfilePresenter.self
-            case .loginPresenter:
+            case .login:
                 return LoginPresenter.self
         }
     }
@@ -158,28 +152,14 @@ enum PresenterEnum  {
 
 
 
-
-
-
-enum FriendImagesType: Int {
-   case image50
-   case image200
+enum FriendGroupByEnum: String {
+    case firstName = "By Name"
+    case lastName = "By Surname"
 }
 
 
-enum MyGroupByType: String {
-    case name = "По Названию"
-}
-
-
-enum GroupImagesType: Int{
-    case image50
-    case image200
-}
-
-enum WallImagesType: Int{
-    case m
-    case l
+enum MyGroupByEnum: String {
+    case name = "By Name"
 }
 
 

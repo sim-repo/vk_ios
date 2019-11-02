@@ -14,89 +14,57 @@ class SynchronizerManager {
     private init() {}
     
     // called from PresenterFactory
-//    public func viewDidLoad(presenter: PresenterProtocol?, _ completion: (()->Void)? = nil){
-//
-//        switch presenter {
-//               case is LoginPresenter:
-//                    let p = presenter as! LoginPresenter
-//                    SyncLogin.sync(p, completion)
-//
-//
-//               case is MyGroupPresenter:
-//                    let p = presenter as! MyGroupPresenter
-//                    if p.dataSourceIsEmpty() {
-//                        syncMyGroup(p)
-//                    }
-//
-//               case is MyGroupDetailPresenter:
-//                    let p = presenter as! MyGroupDetailPresenter
-//                    syncGroupDetail(p)
-//
-//               case is FriendPresenter:
-//                    let p = presenter as! FriendPresenter
-//                    syncFriend(p)
-//
-//               case is WallPresenter:
-//                   syncWall(force: false)
-//
-//               default:
-//                   catchError(msg: "SynchronizerManager: presenterSetup: no presenter has found: \(String(describing: presenter))")
-//        }
-//    }
-//
-//
-    
-    public func viewDidLoad(presenterEnum: PresenterEnum, _ completion: (()->Void)? = nil){
+    public func viewDidLoad(presenterEnum: ModuleEnum, _ completion: (()->Void)? = nil){
         
         switch presenterEnum {
         
-        case .friendPresenter:
+        case .friend:
             let p: FriendPresenter = PresenterFactory.shared.getInstance()
             if p.dataSourceIsEmpty() {
                 SyncFriend.shared.sync(p, completion)
             }
             
-        case .detailFriendPresenter:
+        case .detail_friend:
             let p: DetailFriendPresenter = PresenterFactory.shared.getInstance()
             if p.dataSourceIsEmpty() {
                 SyncDetailFriend.shared.sync(p, completion)
             }
             
-        case .myGroupPresenter:
+        case .my_group:
             let p: MyGroupPresenter = PresenterFactory.shared.getInstance()
             if p.dataSourceIsEmpty() {
                 SyncMyGroup.shared.sync(p, completion)
             }
             
-        case .myGroupDetailPresenter:
+        case .my_group_detail:
             let p: MyGroupDetailPresenter = PresenterFactory.shared.getInstance()
             if p.dataSourceIsEmpty() {
                 SyncGroupDetail.shared.sync(p, completion)
             }
             
-        case .groupPresenter:
+        case .group:
             let p: GroupPresenter = PresenterFactory.shared.getInstance()
             if p.dataSourceIsEmpty() {
                 SyncGroup.shared.sync(p, completion)
             }
         
-        case .wallPresenter:
+        case .wall:
             let p: WallPresenter = PresenterFactory.shared.getInstance()
             if p.dataSourceIsEmpty() {
                 SyncWall.shared.sync(force: false)
             }
 
-        case .friendWallPresenter:
+        case .friend_wall:
             let p: FriendWallPresenter =  PresenterFactory.shared.getInstance()
             if p.dataSourceIsEmpty() {
                 SyncFriendWall.shared.sync(p, completion)
             }
             
-        case .profilePresenter:
+        case .profile:
             let p: ProfilePresenter = PresenterFactory.shared.getInstance()
             SyncProfile.shared.sync(p, completion)
             
-        case .loginPresenter:
+        case .login:
             SyncLogin.shared.sync(force: true)
         }
     }
