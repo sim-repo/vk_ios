@@ -18,6 +18,25 @@ class ApiVK {
     }
     
     
+    static func friendWallRequest(ownerId: Double, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
+
+        let urlPath: String = "wall.get"
+        
+        let params: Parameters = [
+                 "owner_id": ownerId,
+                 "access_token": Session.shared.token,
+                 "extended": "1",
+                 "fields":["photo_50","photo_100", "photo_200"],
+                 "filter": "all",
+                 "count": "100",
+                 "v": versionAPI
+        ]
+        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError)
+        
+    }
+      
+    
+    
     static func myGroupRequest(onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
         
         let urlPath: String = "groups.get"
@@ -58,7 +77,7 @@ class ApiVK {
                  "extended": "1",
                  "fields":["photo_50","photo_100", "photo_200"],
                  "filter": "all",
-                 "count": "5",
+                 "count": "1",
                  "v": versionAPI
         ]
         AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError)

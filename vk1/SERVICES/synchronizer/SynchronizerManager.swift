@@ -24,12 +24,12 @@ class SynchronizerManager {
                 SyncFriend.shared.sync(p)
             }
             
-        case .detail_friend:
-            let p = PresenterFactory.shared.getInstance(clazz: DetailFriendPresenter.self)
-            if p.dataSourceIsEmpty() {
-                SyncDetailFriend.shared.sync(p)
-            }
-            
+//        case .detail_friend:
+//            let p = PresenterFactory.shared.getInstance(clazz: DetailFriendPresenter.self)
+//            if p.dataSourceIsEmpty() {
+//                SyncDetailFriend.shared.sync(p)
+//            }
+//            
         case .my_group:
             let p = PresenterFactory.shared.getInstance(clazz: MyGroupPresenter.self)
             if p.dataSourceIsEmpty() {

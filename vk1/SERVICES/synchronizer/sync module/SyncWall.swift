@@ -53,6 +53,7 @@ class SyncWall {
                 }
             }
             
+            
             // all sync has finished
             self.dispatchGroup?.notify(queue: DispatchQueue.main) { [weak self] in
                 guard let self = self else { return }
@@ -90,6 +91,7 @@ class SyncWall {
                     ids.append(model.getId())
                 }
                 
+                ids = []
                 
                 self.dispatchGroup = DispatchGroup()
                 

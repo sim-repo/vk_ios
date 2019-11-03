@@ -20,6 +20,7 @@ class SyncGroupDetail {
             catchError(msg: "SynchronizerManager: viewDidLoad(): MyGroupDetailPresenter.getId() is nil")
             return
         }
+        
         ApiVK.detailGroupRequest(group_id: id,
                                  onSuccess: onSuccess_PresenterCompletion,
                                  onError: SynchronizerManager.shared.getOnErrorCompletion())

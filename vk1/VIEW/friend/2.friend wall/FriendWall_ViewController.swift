@@ -1,49 +1,32 @@
 import UIKit
 
-class FriendWall_Controller: UIViewController {
+class FriendWall_ViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
     
-    var presenter = FriendWallPresenter()
-    
+    var presenter: PullPlainPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupPresenter()
         for i in 1...cellByCode.count {
             collectionView.register(UINib(nibName: cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: cellByCode["tp\(i)"]!)
         }
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let width = view.frame.size.width - constraintSpaceX.constant * 40
-        let height = view.frame.size.height*0.5
+        let height = view.frame.size.height*0.3
         layout.minimumLineSpacing = 50
         layout.itemSize = CGSize(width: width, height: height)
     }
-        
-}
-
-
-// Segue Actions
-extension FriendWall_Controller {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       performSegue(withIdentifier: "FriendPostSegue", sender: indexPath)
-    }
-       
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       guard let indexPath = sender as? IndexPath else { return }
-
-       if segue.identifier == "FriendPostSegue",
-        let dest = segue.destination as? FriendPost_ViewController {
-        if let data = presenter.getData(indexPath: indexPath) as? FriendWall {
-                dest.friendWall = data
-            }
-       }
+ 
+    private func setupPresenter(){
+        presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
     }
 }
 
 
-extension FriendWall_Controller: UICollectionViewDelegate, UICollectionViewDataSource {
+extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -56,10 +39,8 @@ extension FriendWall_Controller: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell!
-        guard let wall = presenter.getData(indexPath: indexPath) as? FriendWall
-        else {
-            return UICollectionViewCell()
-        }
+        guard let wall = presenter.getData(indexPath: indexPath) as? Wall
+            else { return UICollectionViewCell() }
         
         if let name = cellByCode[wall.postTypeCode] {
             cell = cellConfigure(name, indexPath, wall)
@@ -67,15 +48,28 @@ extension FriendWall_Controller: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
-    func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ wall: FriendWall) -> UICollectionViewCell{
+    func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ wall: Wall) -> UICollectionViewCell{
         let c = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as! Wall_CellProtocol
         c.setup(wall, indexRow: indexPath.row)
         return c
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      //  guard let wall = presenter.getData(indexPath) as? Wall
+        //    else { return CGSize(width: 100.0, height: 300.0) }
+        
+        
+        let width = view.frame.size.width - constraintSpaceX.constant * 40
+        //let height = view.frame.size.height*0.6
+    
+        return CGSize(width: width, height: cellHeaderHeight + cellImageHeight + cellBottomHeight)
+    }
 }
 
 
-extension FriendWall_Controller: PushPlainViewProtocol {
+extension FriendWall_ViewController: PushPlainViewProtocol{
+    
     func viewReloadData() {
+        collectionView.reloadData()
     }
 }

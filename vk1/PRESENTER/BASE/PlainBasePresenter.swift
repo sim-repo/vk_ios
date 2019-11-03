@@ -25,7 +25,7 @@ public class PlainBasePresenter {
         self.init()
         guard let _view = vc as? PushPlainViewProtocol
         else {
-            catchError(msg: "PlainBasePresenter: init(vc:completion) - incorrect passed vc")
+            catchError(msg: "PlainBasePresenter: init(vc:) - incorrect passed vc")
             return
         }
         self.view = _view
@@ -33,9 +33,9 @@ public class PlainBasePresenter {
     
     
     private func validateView(_ vc: PushViewProtocol){
-        guard let _ = vc as? PushSectionedViewProtocol
+        guard let _ = vc as? PushPlainViewProtocol
         else {
-            catchError(msg: "SectionedBasePresenter: init(vc:completion) - incorrect passed vc")
+            catchError(msg: "PlainBasePresenter: validateView(vc:) - incorrect passed vc")
             return
         }
     }
@@ -181,7 +181,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     final func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion? = nil) -> onSuccess_PresenterCompletion {
         let outerCompletion: onSuccess_PresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
             self?.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
-            console(msg: "SectionedBasePresenter: \(self?.clazz): didSuccessNetworkResponse")
+            console(msg: "PlainBasePresenter: \(self?.clazz): didSuccessNetworkResponse")
             completion?()
         }
         return outerCompletion

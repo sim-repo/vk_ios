@@ -9,7 +9,7 @@ class FriendPost_ViewController: UIViewController{
     var swipeAnimator: UIViewPropertyAnimator?
     var constainerContentSize: CGFloat!
     
-    var friendWall: FriendWall!
+    var wall: Wall!
     var images: [UIImageView] = []
     var currNumTouch = 0
     var maxTouches = 0
@@ -22,7 +22,7 @@ class FriendPost_ViewController: UIViewController{
          let swipeRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
            imageContainerView.addGestureRecognizer(swipeRecognizer)
            
-           for (idx, url) in friendWall.imageURLs.enumerated() {
+           for (idx, url) in wall.imageURLs.enumerated() {
             
                 let imageView: UIImageView = UIImageView()
                 imageView.kf.setImage(with: url)
@@ -36,7 +36,7 @@ class FriendPost_ViewController: UIViewController{
                 images.append(imageView)
                 imageContainerView.addSubview(imageView)
            }
-           maxTouches = friendWall.imageURLs.count
+           maxTouches = wall.imageURLs.count
            constainerContentSize = prototypeImageView.frame.width
     }
     

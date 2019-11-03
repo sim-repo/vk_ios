@@ -102,7 +102,7 @@ extension MyGroups_ViewController {
         
         guard let presenter = presenter as? MyGroupPresenter
           else {
-              //TODO: throw err
+              catchError(msg: "MyGroups_ViewController: prepare(for segue:)")
               return
           }
             
@@ -110,7 +110,10 @@ extension MyGroups_ViewController {
             case MyGroups_ViewController.detailSegueId:
                 guard let indexPath = sender as? IndexPath,
                       let dest = segue.destination as? MyGroupDetail_ViewController
-                else { return } // TODO: throw err
+                else {
+                    catchError(msg: "MyGroups_ViewController: prepare(for segue:)")
+                    return
+                } // TODO: throw err
                 dest.modalPresentationStyle = .custom
                 presenter.onPerfomSegue_Details(selected: indexPath)
             default:

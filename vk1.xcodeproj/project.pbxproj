@@ -72,8 +72,6 @@
 		166667682347E2C700FD2B86 /* Wall_CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667672347E2C700FD2B86 /* Wall_CellProtocol.swift */; };
 		166667DA2348994100FD2B86 /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667D92348994100FD2B86 /* UIControl+Extensions.swift */; };
 		166667DE2348F50A00FD2B86 /* UIControlThemeMgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667DD2348F50A00FD2B86 /* UIControlThemeMgt.swift */; };
-		166667E02348FA9B00FD2B86 /* FriendWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667DF2348FA9B00FD2B86 /* FriendWall.swift */; };
-		166667E3234901B800FD2B86 /* FriendWall_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667E2234901B800FD2B86 /* FriendWall_Controller.swift */; };
 		166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667F92349062E00FD2B86 /* WallProtocol.swift */; };
 		166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667FB234912B800FD2B86 /* FriendWallPresenter.swift */; };
 		166D1B05234EFF0F00C552E4 /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D1B04234EFF0F00C552E4 /* ZoomAnimator.swift */; };
@@ -127,6 +125,7 @@
 		16E08B5F236E34B200340F09 /* PushPlainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B5E236E34B200340F09 /* PushPlainViewProtocol.swift */; };
 		16E08B62236EC64700340F09 /* SynchronizedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B61236EC64700340F09 /* SynchronizedPresenterProtocol.swift */; };
 		16E08B64236ED9FF00340F09 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B63236ED9FF00340F09 /* ModelProtocol.swift */; };
+		16E08B66236F80B800340F09 /* FriendWall_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B65236F80B800340F09 /* FriendWall_ViewController.swift */; };
 		16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */; };
 		16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD22351FDCD001C33CF /* PostImageView.swift */; };
 		16FF6FD623522E41001C33CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD523522E41001C33CF /* Extensions.swift */; };
@@ -137,6 +136,37 @@
 		D4001F4B2327B7DE0070829F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4001F4A2327B7DE0070829F /* LoginViewController.swift */; };
 		FD039017CC5E1E8D227B28C3 /* Pods_vk1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830F3652B00CE8DB38397368 /* Pods_vk1.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		16E08B6E236F924400340F09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D797E9A5C5782CE845840781FA1CC81;
+			remoteInfo = Alamofire;
+		};
+		16E08B70236F924400340F09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C3F44C782D64D7EB20B61CE3844EBFAD;
+			remoteInfo = Kingfisher;
+		};
+		16E08B72236F924400340F09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEE5A153B9BDCBCB732FE30E5F4A8615;
+			remoteInfo = "Pods-vk1";
+		};
+		16E08B74236F924400340F09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E23C076BA70925415F490FEDB215DA92;
+			remoteInfo = SwiftyJSON;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		16040600234E390A0083F3C3 /* RotatedPopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPopAnimator.swift; sourceTree = "<group>"; };
@@ -204,8 +234,6 @@
 		166667672347E2C700FD2B86 /* Wall_CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_CellProtocol.swift; sourceTree = "<group>"; };
 		166667D92348994100FD2B86 /* UIControl+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
 		166667DD2348F50A00FD2B86 /* UIControlThemeMgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlThemeMgt.swift; sourceTree = "<group>"; };
-		166667DF2348FA9B00FD2B86 /* FriendWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWall.swift; sourceTree = "<group>"; };
-		166667E2234901B800FD2B86 /* FriendWall_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWall_Controller.swift; sourceTree = "<group>"; };
 		166667F92349062E00FD2B86 /* WallProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallProtocol.swift; sourceTree = "<group>"; };
 		166667FB234912B800FD2B86 /* FriendWallPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWallPresenter.swift; sourceTree = "<group>"; };
 		166D1B04234EFF0F00C552E4 /* ZoomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAnimator.swift; sourceTree = "<group>"; };
@@ -260,6 +288,8 @@
 		16E08B5E236E34B200340F09 /* PushPlainViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushPlainViewProtocol.swift; sourceTree = "<group>"; };
 		16E08B61236EC64700340F09 /* SynchronizedPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedPresenterProtocol.swift; sourceTree = "<group>"; };
 		16E08B63236ED9FF00340F09 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
+		16E08B65236F80B800340F09 /* FriendWall_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWall_ViewController.swift; sourceTree = "<group>"; };
+		16E08B67236F924400340F09 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPushAnimator.swift; sourceTree = "<group>"; };
 		16FF6FD22351FDCD001C33CF /* PostImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		16FF6FD523522E41001C33CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -555,7 +585,7 @@
 		166667E12349018000FD2B86 /* 2.friend wall */ = {
 			isa = PBXGroup;
 			children = (
-				166667E2234901B800FD2B86 /* FriendWall_Controller.swift */,
+				16E08B65236F80B800340F09 /* FriendWall_ViewController.swift */,
 			);
 			path = "2.friend wall";
 			sourceTree = "<group>";
@@ -583,7 +613,6 @@
 		16AB0B85232F7B6C00E21B7F /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
-				166667DF2348FA9B00FD2B86 /* FriendWall.swift */,
 				16200D1623389C9600F02440 /* Wall.swift */,
 				16AB0B86232F7BF000E21B7F /* Friend.swift */,
 				16AB0B88232F7C7800E21B7F /* MyGroup.swift */,
@@ -734,6 +763,7 @@
 			isa = PBXGroup;
 			children = (
 				16200CFE233371FD00F02440 /* FriendPresenter.swift */,
+				166667FB234912B800FD2B86 /* FriendWallPresenter.swift */,
 				16200D002333731D00F02440 /* DetailFriendPresenter.swift */,
 			);
 			path = friend;
@@ -743,7 +773,6 @@
 			isa = PBXGroup;
 			children = (
 				16200D1823389CCE00F02440 /* WallPresenter.swift */,
-				166667FB234912B800FD2B86 /* FriendWallPresenter.swift */,
 			);
 			path = wall;
 			sourceTree = "<group>";
@@ -778,6 +807,17 @@
 				16E08B54236DDBAE00340F09 /* SyncLogin.swift */,
 			);
 			path = "sync module";
+			sourceTree = "<group>";
+		};
+		16E08B68236F924400340F09 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16E08B6F236F924400340F09 /* Alamofire.framework */,
+				16E08B71236F924400340F09 /* Kingfisher.framework */,
+				16E08B73236F924400340F09 /* Pods_vk1.framework */,
+				16E08B75236F924400340F09 /* SwiftyJSON.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		16FF6FCC2351F1ED001C33CF /* navigation controller */ = {
@@ -877,6 +917,7 @@
 		F0038105E341CE9E3EAFED49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16E08B67236F924400340F09 /* Pods.xcodeproj */,
 				168AC57C236ABDB800A1B2A6 /* RAMAnimatedTabBarController.framework */,
 				830F3652B00CE8DB38397368 /* Pods_vk1.framework */,
 			);
@@ -931,12 +972,49 @@
 			mainGroup = D4001F2C2327B7B50070829F;
 			productRefGroup = D4001F362327B7B50070829F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 16E08B68236F924400340F09 /* Products */;
+					ProjectRef = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D4001F342327B7B50070829F /* vk1 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		16E08B6F236F924400340F09 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 16E08B6E236F924400340F09 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16E08B71236F924400340F09 /* Kingfisher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Kingfisher.framework;
+			remoteRef = 16E08B70236F924400340F09 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16E08B73236F924400340F09 /* Pods_vk1.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_vk1.framework;
+			remoteRef = 16E08B72236F924400340F09 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16E08B75236F924400340F09 /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 16E08B74236F924400340F09 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D4001F332327B7B50070829F /* Resources */ = {
@@ -1016,11 +1094,11 @@
 			files = (
 				161C11392347226100A2EC9D /* WaitIndicator.swift in Sources */,
 				16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */,
+				16E08B66236F80B800340F09 /* FriendWall_ViewController.swift in Sources */,
 				1666674E2347CA0B00FD2B86 /* Wall_Cell_tp6.swift in Sources */,
 				16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */,
 				16D58BE02366BABD00735296 /* DecodableProtocol.swift in Sources */,
 				168AC5B2236AC33700A1B2A6 /* RAMAnimatedTabBarController.swift in Sources */,
-				166667E02348FA9B00FD2B86 /* FriendWall.swift in Sources */,
 				163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */,
 				16040619234E74FE0083F3C3 /* MyGroups_ViewController.swift in Sources */,
 				161C11402347401800A2EC9D /* CarouselFlowLayout.swift in Sources */,
@@ -1080,7 +1158,6 @@
 				16AB0BA9232F985D00E21B7F /* Group.swift in Sources */,
 				1647649C2365E031007D1B19 /* Session.swift in Sources */,
 				16200D0623388E5D00F02440 /* RoundedImage.swift in Sources */,
-				166667E3234901B800FD2B86 /* FriendWall_Controller.swift in Sources */,
 				16200D0E233893B500F02440 /* ProfilePresenter.swift in Sources */,
 				161B0EA9234A27780081008B /* Profile_TableViewController.swift in Sources */,
 				164764BD23664DE0007D1B19 /* GroupSectionHeader.swift in Sources */,
