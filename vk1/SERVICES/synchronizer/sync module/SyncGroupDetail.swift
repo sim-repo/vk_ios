@@ -5,18 +5,24 @@ class SyncGroupDetail {
     static let shared = SyncGroupDetail()
     private init() {}
     
-    func sync(_ presenter: MyGroupDetailPresenter,
-              _ completion: (()-> Void)? = nil ) {
+    func sync(_ presenter: SynchronizedPresenterProtocol) {
         
-        let onSuccessCompletion = presenter.didSuccessNetworkResponse(completion: {
-            completion?()
+        // run when all networks have done
+        let onFinish_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
+        
+        let onSuccess_PresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
+            onFinish_SyncCompletion(presenter)
         })
-        guard let id = presenter.getGroup()?.getId()
+        
+        let p = presenter as! MyGroupDetailPresenter
+        guard let id = p.getGroup()?.getId()
         else {
             catchError(msg: "SynchronizerManager: viewDidLoad(): MyGroupDetailPresenter.getId() is nil")
             return
         }
-        ApiVK.detailGroupRequest(group_id: id, onSuccess: onSuccessCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())
+        ApiVK.detailGroupRequest(group_id: id,
+                                 onSuccess: onSuccess_PresenterCompletion,
+                                 onError: SynchronizerManager.shared.getOnErrorCompletion())
     }
 }
     

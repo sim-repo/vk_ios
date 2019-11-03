@@ -2,5 +2,5 @@ import Foundation
 
 // presenters have own model
 protocol ModelOwnerPresenterProtocol {
-      var modelClass: AnyClass { get }
+    var modelClass: AnyClass { get }
 }

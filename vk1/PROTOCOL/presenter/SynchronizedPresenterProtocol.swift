@@ -4,10 +4,11 @@ import Foundation
 protocol SynchronizedPresenterProtocol: class {
     init()
     //failable init
-    init?(vc: PushViewProtocol, completion: (()->Void)?)
-    func setView(vc: PushViewProtocol, completion: (()->Void)?)
+    init?(vc: PushViewProtocol)
+    func setView(vc: PushViewProtocol)
     func dataSourceIsEmpty()->Bool
     func getDataSource() -> [ModelProtocol]
     func clearDataSource()
     func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion?) -> onSuccess_PresenterCompletion
+    func didSuccessNetworkFinish()
 }

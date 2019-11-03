@@ -25,7 +25,7 @@ class SyncWall {
             
             
             // create or get exists presenter
-            let friendPresenter: FriendPresenter = PresenterFactory.shared.getInstance()
+            let friendPresenter = PresenterFactory.shared.getInstance(clazz: FriendPresenter.self)
             
             // start syncing
             if force || friendPresenter.dataSourceIsEmpty() {
@@ -39,8 +39,10 @@ class SyncWall {
             
             
             // create or get exists presenter
-            let groupPresenter: MyGroupPresenter = PresenterFactory.shared.getInstance()
+            //let groupPresenter: MyGroupPresenter = PresenterFactory.shared.getInstance()
             
+            let groupPresenter = PresenterFactory.shared.getInstance(clazz: MyGroupPresenter.self)
+          
             // start syncing
             if force || groupPresenter.dataSourceIsEmpty() {
                 friendPresenter.clearDataSource()
@@ -126,7 +128,7 @@ class SyncWall {
                 // sort all data when all requests has done
                 self.dispatchGroup?.notify(queue: DispatchQueue.main) {
                     console(msg: "SynchronizerManager: syncWall: sync completed!")
-                    wallPresenter.sort()
+                    wallPresenter.didSuccessNetworkFinish()
                     self.wallSyncing = false
                 }
             }

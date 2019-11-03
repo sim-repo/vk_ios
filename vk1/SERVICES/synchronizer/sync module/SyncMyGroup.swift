@@ -5,13 +5,18 @@ class SyncMyGroup {
     static let shared = SyncMyGroup()
     private init() {}
     
-    func sync(_ presenter: MyGroupPresenter,
-              _ completion: (()-> Void)? = nil ) {
+    func sync(_ presenter: SynchronizedPresenterProtocol,
+              _ completion: (()->Void)? = nil ) {
         
-        let onSuccessPresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
+        // run when all networks have done
+        let onFinish_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
+        
+        let onSuccess_PresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
+            onFinish_SyncCompletion(presenter)
             completion?()
         })
-        ApiVK.myGroupRequest(onSuccess: onSuccessPresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())
+        
+        ApiVK.myGroupRequest(onSuccess: onSuccess_PresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())
     }
 }
     

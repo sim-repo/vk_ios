@@ -14,59 +14,68 @@ class SynchronizerManager {
     private init() {}
     
     // called from PresenterFactory
-    public func viewDidLoad(presenterEnum: ModuleEnum, _ completion: (()->Void)? = nil){
+    public func viewDidLoad(presenterEnum: ModuleEnum){
         
         switch presenterEnum {
         
         case .friend:
-            let p: FriendPresenter = PresenterFactory.shared.getInstance()
+            let p = PresenterFactory.shared.getInstance(clazz: FriendPresenter.self)
             if p.dataSourceIsEmpty() {
-                SyncFriend.shared.sync(p, completion)
+                SyncFriend.shared.sync(p)
             }
             
         case .detail_friend:
-            let p: DetailFriendPresenter = PresenterFactory.shared.getInstance()
+            let p = PresenterFactory.shared.getInstance(clazz: DetailFriendPresenter.self)
             if p.dataSourceIsEmpty() {
-                SyncDetailFriend.shared.sync(p, completion)
+                SyncDetailFriend.shared.sync(p)
             }
             
         case .my_group:
-            let p: MyGroupPresenter = PresenterFactory.shared.getInstance()
+            let p = PresenterFactory.shared.getInstance(clazz: MyGroupPresenter.self)
             if p.dataSourceIsEmpty() {
-                SyncMyGroup.shared.sync(p, completion)
+                SyncMyGroup.shared.sync(p)
             }
             
         case .my_group_detail:
-            let p: MyGroupDetailPresenter = PresenterFactory.shared.getInstance()
+            let p = PresenterFactory.shared.getInstance(clazz: MyGroupDetailPresenter.self)
             if p.dataSourceIsEmpty() {
-                SyncGroupDetail.shared.sync(p, completion)
+                SyncGroupDetail.shared.sync(p)
             }
             
         case .group:
-            let p: GroupPresenter = PresenterFactory.shared.getInstance()
+            let p = PresenterFactory.shared.getInstance(clazz: GroupPresenter.self)
             if p.dataSourceIsEmpty() {
-                SyncGroup.shared.sync(p, completion)
+                SyncGroup.shared.sync(p)
             }
         
         case .wall:
-            let p: WallPresenter = PresenterFactory.shared.getInstance()
+            let p = PresenterFactory.shared.getInstance(clazz: WallPresenter.self)
             if p.dataSourceIsEmpty() {
                 SyncWall.shared.sync(force: false)
             }
 
         case .friend_wall:
-            let p: FriendWallPresenter =  PresenterFactory.shared.getInstance()
+            let p = PresenterFactory.shared.getInstance(clazz: FriendWallPresenter.self)
             if p.dataSourceIsEmpty() {
-                SyncFriendWall.shared.sync(p, completion)
+                SyncFriendWall.shared.sync(p)
             }
             
         case .profile:
-            let p: ProfilePresenter = PresenterFactory.shared.getInstance()
-            SyncProfile.shared.sync(p, completion)
+            let p = PresenterFactory.shared.getInstance(clazz: ProfilePresenter.self)
+            SyncProfile.shared.sync(p)
             
         case .login:
             SyncLogin.shared.sync(force: true)
         }
+    }
+    
+    
+    
+    func getFinishNetworkCompletion(_ completion: (()-> Void)? = nil ) -> onNetworkFinish_SyncCompletion {
+        let onFinish: onNetworkFinish_SyncCompletion = { synchronizedPresenterProtocol in
+            synchronizedPresenterProtocol.didSuccessNetworkFinish()
+        }
+        return onFinish
     }
     
     

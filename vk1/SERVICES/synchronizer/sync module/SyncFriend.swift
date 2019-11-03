@@ -6,13 +6,18 @@ class SyncFriend {
     private init() {}
     
     
-    func sync(_ presenter: FriendPresenter,
-              _ completion: (()-> Void)? = nil ) {
+    func sync(_ presenter: SynchronizedPresenterProtocol,
+              _ completion: (()->Void)? = nil ) {
         
-        let onSuccessCompletion = presenter.didSuccessNetworkResponse(completion: {
+        // run when all networks have done
+        let finish_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
+        
+        let onSuccess_PresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
+            finish_SyncCompletion(presenter)
             completion?()
         })
-        ApiVK.friendRequest(onSuccess: onSuccessCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())
+        
+        ApiVK.friendRequest(onSuccess: onSuccess_PresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())
     }
 }
     

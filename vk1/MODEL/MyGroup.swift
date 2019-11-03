@@ -35,8 +35,8 @@ class MyGroup: SectionModelProtocol, DecodableProtocol {
         id
     }
     
-    func getSortBy() -> typeId {
-        id
+    func getSortBy() -> String {
+        "\(id)"
     }
     
     func getGroupBy() -> String {

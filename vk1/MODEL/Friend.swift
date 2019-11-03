@@ -28,16 +28,21 @@ class Friend: SectionModelProtocol, DecodableProtocol {
         return id
     }
     
-    func getSortBy() -> typeId {
-        return id
+    func getSortBy() -> String {
+        switch groupBy {
+            case .firstName:
+                return firstName
+            case .lastName:
+                return lastName
+        }
     }
     
     func getGroupBy() -> String {
         switch groupBy {
-        case .firstName:
-            return firstName
-        case .lastName:
-            return lastName
+            case .firstName:
+                return firstName
+            case .lastName:
+                return lastName
         }
     }
 }

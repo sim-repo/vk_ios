@@ -69,8 +69,8 @@ class FriendWall : WallProtocol, DecodableProtocol, PlainModelProtocol {
        return id
     }
     
-    func getSortBy() -> typeId {
-        origPostDate
+    func getSortBy() -> String {
+        "\(origPostDate)"
     }
     
     // header block

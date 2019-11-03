@@ -4,7 +4,6 @@ import SwiftyJSON
 
 class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
 
-    
     var id: typeId!
     var postTypeCode: String!
     
@@ -57,8 +56,8 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
         return id
     }
     
-    func getSortBy() -> typeId {
-        return origPostDate
+    func getSortBy() -> String {
+        return "\(origPostDate)"
     }
     
     // wall header block >>

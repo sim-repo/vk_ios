@@ -21,7 +21,7 @@ public class PlainBasePresenter {
     required init() {}
     
     // init presenter and view simultaneously
-    required convenience init?(vc: PushViewProtocol, completion: (()->Void)?) {
+    required convenience init?(vc: PushViewProtocol) {
         self.init()
         guard let _view = vc as? PushPlainViewProtocol
         else {
@@ -92,9 +92,15 @@ public class PlainBasePresenter {
         didSave()
     }
     
-    func didSave(){
+    func didSave() {
         UI_THREAD { [weak self] in
             self?.view?.viewReloadData()
+        }
+    }
+    
+    func sort() {
+       dataSource = dataSource.sorted {
+               $0.getSortBy() > $1.getSortBy()
         }
     }
     
@@ -126,7 +132,6 @@ public class PlainBasePresenter {
         
         return IndexPath(row: idx, section: 0)
     }
-    
 }
 
 
@@ -161,7 +166,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
         dataSource.removeAll()
     }
     
-    final func setView(vc: PushViewProtocol, completion: (()->Void)?) {
+    final func setView(vc: PushViewProtocol) {
         validateView(vc)
         self.view = vc as? PushPlainViewProtocol
         guard dataSource.count > 0
@@ -169,16 +174,22 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
         UI_THREAD { [weak self] in
             guard let self = self else { return }
             self.view?.viewReloadData()
-            completion?()
         }
     }
     
-    // when data loaded from network
+    // when response has got from network
     final func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion? = nil) -> onSuccess_PresenterCompletion {
         let outerCompletion: onSuccess_PresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
             self?.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
+            console(msg: "SectionedBasePresenter: \(self?.clazz): didSuccessNetworkResponse")
             completion?()
         }
         return outerCompletion
+    }
+    
+    // when all responses have got from network
+    final func didSuccessNetworkFinish() {
+        console(msg: "PlainBasePresenter: \(clazz): didSuccessNetworkFinish")
+        self.sort()
     }
 }

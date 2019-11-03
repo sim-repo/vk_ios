@@ -30,7 +30,7 @@ public class SectionedBasePresenter {
     required init(){}
     
     // init presenter and view simultaneously
-    required convenience init?(vc: PushViewProtocol, completion: (()->Void)?) {
+    required convenience init?(vc: PushViewProtocol) {
         self.init()
         validateView(vc)
         self.view = vc as? PushSectionedViewProtocol
@@ -59,10 +59,10 @@ public class SectionedBasePresenter {
                 return
         }
         
-        let sorted = sort(unsorted: validatedData)
-        for model in sorted {
+        for model in validatedData {
             sortedDataSource.append(model)
         }
+        
         switch didLoadedFrom {
             case .disk:
                 return // data stored already
@@ -99,11 +99,11 @@ public class SectionedBasePresenter {
     
     
     
-    private func sort(unsorted: [SectionModelProtocol]) -> [SectionModelProtocol]{
-        let sectioned = unsorted
-        return sectioned.sorted(by: { $0.getGroupBy() < $1.getGroupBy() })
+    private func sort() {
+        sortedDataSource = sortedDataSource.sorted(by: {
+            $0.getSortBy() < $1.getSortBy()
+        })
     }
-    
     
     
     func save(sorted: [SectionModelProtocol]) {
@@ -246,14 +246,13 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
 //MARK: called from synchronizer
 extension SectionedBasePresenter: SynchronizedPresenterProtocol {
    
-    final func setView(vc: PushViewProtocol, completion: (()->Void)?) {
+    final func setView(vc: PushViewProtocol) {
         validateView(vc)
         self.view = vc as? PushSectionedViewProtocol
         UI_THREAD { [weak self] in
             guard let self = self else { return }
             self.filterAndRegroupData()
             self.view?.viewReloadData(groupByIds: self.groupByIds)
-            completion?()
         }
     }
     
@@ -269,13 +268,21 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
         sortedDataSource.removeAll()
     }
     
-    // when data loaded from network
+    // when response has got from network
     final func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion? = nil) -> onSuccess_PresenterCompletion {
         let outerCompletion: onSuccess_PresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
             self?.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
+            console(msg: "SectionedBasePresenter: \(self?.clazz): didSuccessNetworkResponse")
             completion?()
         }
         return outerCompletion
+    }
+    
+    
+    // when all responses have got from network
+    final func didSuccessNetworkFinish() {
+        console(msg: "SectionedBasePresenter: \(clazz): didSuccessNetworkFinish")
+        self.sort()
     }
     
 }

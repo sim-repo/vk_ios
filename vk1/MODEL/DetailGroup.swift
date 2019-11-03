@@ -46,11 +46,11 @@ class DetailGroup: DecodableProtocol, PlainModelProtocol {
         isDeactivated = group.isDeactivated
     }
     
-    func getId() -> Double {
+    func getId() -> typeId{
         return id
     }
     
-    func getSortBy() -> Double {
-        return id
+    func getSortBy() -> String {
+        return "\(id)"
     }
 }
