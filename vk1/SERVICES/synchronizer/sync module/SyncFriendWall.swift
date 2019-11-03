@@ -8,7 +8,7 @@ class SyncFriendWall {
     func sync(_ presenter: FriendWallPresenter,
               _ completion: (()-> Void)? = nil ) {
         
-        let onSuccessPresenterCompletion = presenter.didLoadFromNetwork(completion: {
+        let onSuccessPresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
             completion?()
         })
      //   ApiVK.friendWallRequest(onSuccess: onSuccessPresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())

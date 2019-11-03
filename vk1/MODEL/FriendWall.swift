@@ -3,8 +3,8 @@ import SwiftyJSON
 
 
 class FriendWall : WallProtocol, DecodableProtocol, PlainModelProtocol {
-
-    var id: Int!
+    
+    var id: typeId!
     var postTypeCode: String!
     
     // header block
@@ -29,13 +29,11 @@ class FriendWall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     
     required init(){}
 
-    func getId()->Int{
-       return id
-    }
+
     
     func setup(json: JSON?) {
         if let json = json {
-            id = json["id"].intValue
+            id = json["id"].doubleValue
             print(json)
             //TODO:
             //myPostDate = "xxxxxx"
@@ -67,7 +65,14 @@ class FriendWall : WallProtocol, DecodableProtocol, PlainModelProtocol {
         }
     }
     
-
+    func getId() -> typeId {
+       return id
+    }
+    
+    func getSortBy() -> typeId {
+        origPostDate
+    }
+    
     // header block
     func getMyName() -> String? {
         return myName

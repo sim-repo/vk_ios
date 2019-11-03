@@ -4,7 +4,7 @@ import SwiftyJSON
 class DetailGroup: DecodableProtocol, PlainModelProtocol {
     
     // get from network >>
-    var id: Int = 0
+    var id: Double = 0
     var photosCounter: Int = 0
     var albumsCounter: Int = 0
     var topicsCounter: Int = 0
@@ -23,13 +23,9 @@ class DetailGroup: DecodableProtocol, PlainModelProtocol {
     
     required init(){}
     
-    func getId()->Int{
-        return id
-    }
-    
     func setup(json: JSON?){
         if let json = json {
-           id = json["id"].intValue
+           id = json["id"].doubleValue
            photosCounter = json["counters"]["photos"].intValue
            albumsCounter = json["counters"]["albums"].intValue
            topicsCounter = json["counters"]["topics"].intValue
@@ -48,5 +44,13 @@ class DetailGroup: DecodableProtocol, PlainModelProtocol {
         membersCount = group.membersCount
         isClosed = group.isClosed
         isDeactivated = group.isDeactivated
+    }
+    
+    func getId() -> Double {
+        return id
+    }
+    
+    func getSortBy() -> Double {
+        return id
     }
 }

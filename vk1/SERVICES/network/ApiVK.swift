@@ -4,7 +4,7 @@ import Alamofire
 class ApiVK {
     
     
-    static func friendRequest(onSuccess: @escaping onSuccessPresenterCompletion, onError: @escaping onErrSyncCompletion) {
+    static func friendRequest(onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
         
         let urlPath: String = "friends.get"
         
@@ -18,7 +18,7 @@ class ApiVK {
     }
     
     
-    static func myGroupRequest(onSuccess: @escaping onSuccessPresenterCompletion, onError: @escaping onErrSyncCompletion) {
+    static func myGroupRequest(onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
         
         let urlPath: String = "groups.get"
         
@@ -32,7 +32,7 @@ class ApiVK {
     }
     
     
-    static func detailGroupRequest(group_id: Int, onSuccess: @escaping onSuccessPresenterCompletion, onError: @escaping onErrSyncCompletion) {
+    static func detailGroupRequest(group_id: typeId, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
         
         let urlPath: String = "groups.getById"
         
@@ -48,7 +48,7 @@ class ApiVK {
     
     
     
-    static func wallRequest(ownerId: Int, onSuccess: @escaping onSuccessPresenterCompletion, onError: @escaping onErrSyncCompletion) {
+    static func wallRequest(ownerId: Double, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
 
         let urlPath: String = "wall.get"
         

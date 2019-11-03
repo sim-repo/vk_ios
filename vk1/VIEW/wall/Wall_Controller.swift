@@ -35,12 +35,12 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.numberOfRowsInSection
+        return presenter.numberOfRowsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell!
-        guard let wall = presenter.getData(indexPath) as? Wall
+        guard let wall = presenter.getData(indexPath: indexPath) as? Wall
             else { return UICollectionViewCell() }
         
         if let name = cellByCode[wall.postTypeCode] {

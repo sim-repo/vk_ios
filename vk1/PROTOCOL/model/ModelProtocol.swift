@@ -1,7 +1,8 @@
 import Foundation
 
 protocol ModelProtocol: class {
-    func getId()->Int
+    func getId() -> typeId
+    func getSortBy() -> typeId
 }
 
 

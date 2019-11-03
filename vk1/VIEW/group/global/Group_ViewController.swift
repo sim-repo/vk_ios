@@ -26,7 +26,7 @@ extension Group_ViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return presenter.numberOfSections
+        return presenter.numberOfSections()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

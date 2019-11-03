@@ -7,11 +7,6 @@ class MyGroupPresenter: SectionPresenterProtocols {
     var modelClass: AnyClass  {
         return MyGroup.self
     }
-
-    func getIndexPath() -> IndexPath {
-        let rowIndex = sortedDataSource.count - 1
-        return IndexPath(row: rowIndex, section: 0)
-    }
     
     func onPerfomSegue_Details(selected indexPath: IndexPath) {
         guard let group = getData(indexPath: indexPath) as? MyGroup
@@ -27,8 +22,7 @@ class MyGroupPresenter: SectionPresenterProtocols {
         let has = sortedDataSource.contains {$0.getId() == group.id}
         guard !has
             else { return false }
-        
-        //groups.append(MyGroup(group: group))
+        appendDataSource(dirtyData: [group], didLoadedFrom: .network)
         return true
     }
     

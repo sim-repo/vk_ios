@@ -41,8 +41,8 @@ class AlamofireNetworkManager{
     public static func requestItems2<T: DecodableProtocol>(clazz: T.Type ,
                                                              _ urlPath: String,
                                                              _ params: Parameters,
-                                                             _ onSuccess: @escaping onSuccessPresenterCompletion,
-                                                             _ onError: @escaping  onErrSyncCompletion ) {
+                                                             _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                                             _ onError: @escaping  onErrResponse_SyncCompletion ) {
         
            AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                switch response.result {
@@ -64,8 +64,8 @@ class AlamofireNetworkManager{
     public static func requestSingle<T: DecodableProtocol>(clazz: T.Type ,
                                                              _ urlPath: String,
                                                              _ params: Parameters,
-                                                             _ onSuccess: @escaping onSuccessPresenterCompletion,
-                                                             _ onError: @escaping  onErrSyncCompletion ) {
+                                                             _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                                             _ onError: @escaping  onErrResponse_SyncCompletion ) {
            console(msg: "AlamofireNetworkManager: requestSingle(): start..")
            AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                console(msg: "AlamofireNetworkManager: requestSingle(): response..")
@@ -94,8 +94,8 @@ class AlamofireNetworkManager{
     
     public static func wallRequest(_ urlPath: String,
                                    _ params: Parameters,
-                                   _ onSuccess: @escaping onSuccessPresenterCompletion,
-                                   _ onError: @escaping  onErrSyncCompletion ){
+                                   _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                   _ onError: @escaping  onErrResponse_SyncCompletion ){
 
         AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {

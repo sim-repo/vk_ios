@@ -9,7 +9,7 @@ class SyncFriend {
     func sync(_ presenter: FriendPresenter,
               _ completion: (()-> Void)? = nil ) {
         
-        let onSuccessCompletion = presenter.didLoadFromNetwork(completion: {
+        let onSuccessCompletion = presenter.didSuccessNetworkResponse(completion: {
             completion?()
         })
         ApiVK.friendRequest(onSuccess: onSuccessCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())

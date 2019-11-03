@@ -2,7 +2,7 @@ import Foundation
 
 // base class using for sectioned view controllers only: table view, collection view
 
-public class SectionedBasePresenter: PullSectionPresenterProtocol {
+public class SectionedBasePresenter {
 
     // view
     weak var view: PushSectionedViewProtocol?
@@ -18,12 +18,8 @@ public class SectionedBasePresenter: PullSectionPresenterProtocol {
     
     var filteredText: String?
     
-    var numberOfSections: Int {
-        return sectionsOffset.count > 0 ? sectionsOffset.count : 1
-    }
-    
     var clazz: String {
-        return String(describing: SectionedBasePresenter.self)
+        return String(describing: self)
     }
     
     
@@ -34,22 +30,13 @@ public class SectionedBasePresenter: PullSectionPresenterProtocol {
     required init(){}
     
     // init presenter and view simultaneously
-    required convenience init(vc: PushViewProtocol, completion: (()->Void)?) {
+    required convenience init?(vc: PushViewProtocol, completion: (()->Void)?) {
         self.init()
         validateView(vc)
         self.view = vc as? PushSectionedViewProtocol
     }
     
-    final func setView(vc: PushViewProtocol, completion: (()->Void)?) {
-        validateView(vc)
-        self.view = vc as? PushSectionedViewProtocol
-        UI_THREAD { [weak self] in
-            guard let self = self else { return }
-            self.filterAndRegroupData()
-            self.view?.viewReloadData(groupByIds: self.groupByIds)
-            completion?()
-        }
-    }
+
     
     private func validateView(_ vc: PushViewProtocol){
         guard let _ = vc as? PushSectionedViewProtocol
@@ -60,57 +47,33 @@ public class SectionedBasePresenter: PullSectionPresenterProtocol {
     }
     
     
-    
-    // MARK: data source
-    
-    func dataSourceIsEmpty() -> Bool {
-        return sortedDataSource.isEmpty
-    }
-    
-    func clearDataSource() {
-        sortedDataSource.removeAll()
-    }
-        
-    
-    //MARK: network events
-    
-    // when data loaded from network
-    // called from synchronizer
-    final func didLoadFromNetwork(completion: onSuccessSyncCompletion? = nil) -> onSuccessPresenterCompletion {
-        let outerCompletion: onSuccessPresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
-            self?.setModel(dirtyData: arr, didLoadedFrom: .network)
-            completion?()
-        }
-        return outerCompletion
-    }
-    
-    
-    
-    
     // MARK: incoming model flow
     // network -> synchronizer -> presenter:
-    // setModel() -> saveModel() -> didSaveModel() -> try view update
+    // setModel() -> validate() -> sort() -> save() -> didSave() -> try view update
     
-    private func setModel(dirtyData: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
+    func appendDataSource(dirtyData: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
         
-        guard let clearData = validate(dirtyData)
+        guard let validatedData = validate(dirtyData)
             else {
-                catchError(msg: "SectionBasePresenter: setModel(): no clear data")
+                catchError(msg: "SectionBasePresenter: setModel(): no valid data")
                 return
         }
         
-        self.sortedDataSource = sortModel(clearData)
+        let sorted = sort(unsorted: validatedData)
+        for model in sorted {
+            sortedDataSource.append(model)
+        }
         switch didLoadedFrom {
-        case .disk:
-        return // data stored already
-        case .network:
-            saveModel(ds: clearData)
+            case .disk:
+                return // data stored already
+            case .network:
+                save(sorted: sortedDataSource)
         }
     }
     
     
     
-    private func validate(_ dirtyData: [DecodableProtocol]) -> [DecodableProtocol]? {
+    private func validate(_ dirtyData: [DecodableProtocol]) -> [SectionModelProtocol]? {
         
         guard dirtyData.count > 0
             else {
@@ -131,26 +94,24 @@ public class SectionedBasePresenter: PullSectionPresenterProtocol {
                 catchError(msg: "SectionBasePresenter: \(clazz): validate(): returned datasource is incorrect")
                 return nil
         }
-        return dirtyData
+        return dirtyData as? [SectionModelProtocol]
     }
     
     
     
-    private func sortModel(_ ds: [DecodableProtocol]) -> [SectionModelProtocol]{
-        let sectioned = ds as! [SectionModelProtocol]
+    private func sort(unsorted: [SectionModelProtocol]) -> [SectionModelProtocol]{
+        let sectioned = unsorted
         return sectioned.sorted(by: { $0.getGroupBy() < $1.getGroupBy() })
     }
     
     
     
-    func saveModel(ds: [DecodableProtocol]) {
-        // TODO: implement
-        didSaveModel()
+    func save(sorted: [SectionModelProtocol]) {
+        didSave()
     }
     
     
-    
-    private func didSaveModel(){
+    private func didSave(){
         UI_THREAD { [weak self] in
             guard let self = self else { return }
             self.view?.viewReloadData(groupByIds: self.groupByIds)
@@ -158,16 +119,9 @@ public class SectionedBasePresenter: PullSectionPresenterProtocol {
     }
     
     
-    // called from view
-    func viewDidFilterInput(_ searchText: String) {
-        filteredText = !searchText.isEmpty ? searchText : nil
-        filterAndRegroupData()
-        self.view?.viewReloadData(groupByIds: self.groupByIds)
-    }
-    
-    
     // called when set new filter or viewDidLoad
     private func filterAndRegroupData() {
+        
         var filteredDataSource: [SectionModelProtocol]
 
         if let filteredText  = filteredText {
@@ -193,9 +147,16 @@ public class SectionedBasePresenter: PullSectionPresenterProtocol {
         groupByIds = groupBy
         (sectionsTitle, sectionsOffset)  = Alphabet.getOffsets(with: groupByIds)
     }
+}
+
+
+
+//MARK: called from view
+extension SectionedBasePresenter: PullSectionPresenterProtocol {
     
-    final func getGroupBy() -> [String] {
-        return groupByIds
+    
+    final func numberOfSections() -> Int {
+        return sectionsOffset.count > 0 ? sectionsOffset.count : 1
     }
     
     
@@ -206,7 +167,7 @@ public class SectionedBasePresenter: PullSectionPresenterProtocol {
         }
         let offset = sectionsOffset[section]
         
-        guard numberOfSections > section + 1
+        guard numberOfSections() > section + 1
             else {
                 return sortedDataSource.count - offset
         }
@@ -226,23 +187,33 @@ public class SectionedBasePresenter: PullSectionPresenterProtocol {
     }
     
     
-    final func getData(indexPath: IndexPath) -> SectionModelProtocol? {
+    final func getGroupBy() -> [String] {
+        return groupByIds
+    }
+    
+    
+    final func getData(indexPath: IndexPath? = nil) -> ModelProtocol? {
+        guard let idxPath = indexPath
+        else {
+            catchError(msg: "SectionedBasePresenter: \(clazz): getData(indexPath:) argument is nil")
+            return nil
+        }
         guard sectionsOffset.count > 0
             else {
-                return sortedDataSource[indexPath.row]
+                return sortedDataSource[idxPath.row]
         }
-        let offset = sectionsOffset[indexPath.section]
+        let offset = sectionsOffset[idxPath.section]
         
-        guard sortedDataSource.count > offset + indexPath.row
+        guard sortedDataSource.count > offset + idxPath.row
             else {
                 return nil
         }
         
-        return sortedDataSource[offset + indexPath.row]
+        return sortedDataSource[offset + idxPath.row]
     }
     
     
-    final func getIndexPath(model: SectionModelProtocol) -> IndexPath?{
+    final func getIndexPath(model: ModelProtocol) -> IndexPath?{
         
         guard let sortedIdx = sortedDataSource.firstIndex(where: { $0.getId() == model.getId() })
             else {return nil}
@@ -264,19 +235,47 @@ public class SectionedBasePresenter: PullSectionPresenterProtocol {
     }
     
     
-    final func getCode(indexPath: IndexPath) -> String {
-        return ""
+    final func viewDidFilterInput(_ searchText: String) {
+        filteredText = !searchText.isEmpty ? searchText : nil
+        filterAndRegroupData()
+        self.view?.viewReloadData(groupByIds: self.groupByIds)
     }
-    
-
-    
-
 }
 
 
+//MARK: called from synchronizer
 extension SectionedBasePresenter: SynchronizedPresenterProtocol {
    
-    func getDataSource() -> [ModelProtocol] {
+    final func setView(vc: PushViewProtocol, completion: (()->Void)?) {
+        validateView(vc)
+        self.view = vc as? PushSectionedViewProtocol
+        UI_THREAD { [weak self] in
+            guard let self = self else { return }
+            self.filterAndRegroupData()
+            self.view?.viewReloadData(groupByIds: self.groupByIds)
+            completion?()
+        }
+    }
+    
+    final func dataSourceIsEmpty() -> Bool {
+        return sortedDataSource.isEmpty
+    }
+    
+    final func getDataSource() -> [ModelProtocol] {
         return sortedDataSource
     }
+    
+    final func clearDataSource() {
+        sortedDataSource.removeAll()
+    }
+    
+    // when data loaded from network
+    final func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion? = nil) -> onSuccess_PresenterCompletion {
+        let outerCompletion: onSuccess_PresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
+            self?.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
+            completion?()
+        }
+        return outerCompletion
+    }
+    
 }

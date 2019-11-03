@@ -70,8 +70,8 @@ class SynchronizerManager {
     }
     
     
-    func getOnErrorCompletion(_ completion: (()-> Void)? = nil ) -> onErrSyncCompletion {
-        let onError: onErrSyncCompletion = { (error) in
+    func getOnErrorCompletion(_ completion: (()-> Void)? = nil ) -> onErrResponse_SyncCompletion {
+        let onError: onErrResponse_SyncCompletion = { (error) in
             completion?()
             catchError(msg: "\(error.domain)")
         }

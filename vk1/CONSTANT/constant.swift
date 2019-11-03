@@ -203,6 +203,9 @@ extension Notification.Name {
 
 
 
-typealias onSuccessSyncCompletion = ()->Void
-typealias onErrSyncCompletion = (NSError)->Void
-typealias onSuccessPresenterCompletion = ([DecodableProtocol]) -> Void
+typealias onSuccessResponse_SyncCompletion = ()->Void
+typealias onErrResponse_SyncCompletion = (NSError)->Void
+typealias onSuccess_PresenterCompletion = ([DecodableProtocol]) -> Void
+
+
+typealias typeId = Double

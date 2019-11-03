@@ -8,7 +8,7 @@ class SyncGroupDetail {
     func sync(_ presenter: MyGroupDetailPresenter,
               _ completion: (()-> Void)? = nil ) {
         
-        let onSuccessCompletion = presenter.didLoadFromNetwork(completion: {
+        let onSuccessCompletion = presenter.didSuccessNetworkResponse(completion: {
             completion?()
         })
         guard let id = presenter.getGroup()?.getId()

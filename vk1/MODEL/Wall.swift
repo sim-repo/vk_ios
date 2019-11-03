@@ -3,8 +3,9 @@ import SwiftyJSON
 
 
 class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
+
     
-    var id: Int!
+    var id: typeId!
     var postTypeCode: String!
     
     // wall header block
@@ -28,14 +29,11 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     var shareCount = 0
     
     required init(){}
-    
-    func getId()->Int{
-        return id
-    }
+
     
     func setup(json: JSON?){}
     
-    func setup(json: JSON?, profiles: [Int:Friend], groups: [Int:Group]) {
+    func setup(json: JSON?, profiles: [typeId:Friend], groups: [typeId:Group]) {
         
         if let json = json {
             
@@ -55,7 +53,13 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
         }
     }
     
+    func getId() -> typeId {
+        return id
+    }
     
+    func getSortBy() -> typeId {
+        return origPostDate
+    }
     
     // wall header block >>
     func getMyName() -> String? {

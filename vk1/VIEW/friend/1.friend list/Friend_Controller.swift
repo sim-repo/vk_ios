@@ -69,7 +69,7 @@ class Friend_Controller: UIViewController {
 extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter.numberOfSections
+        return presenter.numberOfSections()
     }
     
     

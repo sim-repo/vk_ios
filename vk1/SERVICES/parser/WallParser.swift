@@ -26,19 +26,19 @@ class WallParser {
     
     //MARK: called from model layer >>
 
-    public static func parseId(json: JSON) -> Int{
-           return json["id"].intValue
+    public static func parseId(json: JSON) -> typeId {
+           return json["id"].doubleValue
     }
     
     
-    public static func parseMyRepost(json: JSON, profiles: [Int:Friend]) -> (URL?, String, Double, String){
+    public static func parseMyRepost(json: JSON, profiles: [typeId:Friend]) -> (URL?, String, Double, String){
         var avaUrl: URL?
         var name: String = ""
         var unixTime: Double = 0
         var title: String = ""
 
             if isRepost(json) {
-                let myId = json["owner_id"].intValue
+                let myId = json["owner_id"].doubleValue
                 if let f = profiles[myId] {
                    if let url = f.avaURL100 {
                        avaUrl = URL(string: url)
@@ -52,7 +52,7 @@ class WallParser {
     }
     
     
-    public static func parseOrigPost(json: JSON, groups: [Int:Group], profiles: [Int:Friend]) -> (URL?, String, Double, String){
+    public static func parseOrigPost(json: JSON, groups: [typeId:Group], profiles: [typeId:Friend]) -> (URL?, String, Double, String){
         var avaUrl: URL?
         var name: String = ""
         var unixTime: Double = 0
@@ -142,8 +142,8 @@ class WallParser {
     }
     
     
-    private static func parseProfiles(_ profiles: [JSON]) -> [Int:Friend]{
-        var res: [Int:Friend] = [:]
+    private static func parseProfiles(_ profiles: [JSON]) -> [typeId:Friend]{
+        var res: [typeId:Friend] = [:]
         for json in profiles {
             let friend = Friend()
             friend.setup(json: json)
@@ -152,8 +152,8 @@ class WallParser {
         return res
     }
     
-    private static func parseGroup(_ groups: [JSON]) -> [Int:Group]{
-        var res: [Int:Group] = [:]
+    private static func parseGroup(_ groups: [JSON]) -> [typeId:Group]{
+        var res: [typeId:Group] = [:]
         for json in groups {
             let group = Group()
             group.setup(json: json)
@@ -188,15 +188,15 @@ class WallParser {
     
     
     
-    private static func getAuthorId(_ json: JSON, _ repost: Bool) -> Int {
+    private static func getAuthorId(_ json: JSON, _ repost: Bool) -> typeId {
         if repost {
             if let histories = json["copy_history"].array {
                 for history in histories {
-                    return history["owner_id"].intValue
+                    return history["owner_id"].doubleValue
                 }
             }
         } else {
-             return json["owner_id"].intValue
+             return json["owner_id"].doubleValue
         }
         return 0
     }

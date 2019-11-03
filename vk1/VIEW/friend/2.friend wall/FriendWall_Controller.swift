@@ -35,7 +35,7 @@ extension FriendWall_Controller {
 
        if segue.identifier == "FriendPostSegue",
         let dest = segue.destination as? FriendPost_ViewController {
-            if let data = presenter.getData(indexPath) as? FriendWall {
+        if let data = presenter.getData(indexPath: indexPath) as? FriendWall {
                 dest.friendWall = data
             }
        }
@@ -51,12 +51,12 @@ extension FriendWall_Controller: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.numberOfRowsInSection
+        return presenter.numberOfRowsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell!
-        guard let wall = presenter.getData(indexPath) as? FriendWall
+        guard let wall = presenter.getData(indexPath: indexPath) as? FriendWall
         else {
             return UICollectionViewCell()
         }

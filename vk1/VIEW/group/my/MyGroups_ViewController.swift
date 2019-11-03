@@ -64,7 +64,7 @@ extension MyGroups_ViewController: UICollectionViewDelegate, UICollectionViewDat
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return presenter.numberOfSections
+        return presenter.numberOfSections()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -126,22 +126,22 @@ extension MyGroups_ViewController {
     }
     
     @IBAction func addGroup(segue: UIStoryboardSegue) {
-        guard let presenter = presenter as? MyGroupPresenter
-                 else {
-                     //TODO: throw err
-                     return
-                 }
-        
-        guard segue.identifier == MyGroups_ViewController.addGroupSegueId,
-              let controller = segue.source as? Group_ViewController,
-              let indexPath = controller.collectionView.indexPathsForSelectedItems,
-              let selected = controller.getGroup(indexPath: indexPath[0])
-        else { return }  // TODO: throw err
-
-        if presenter.addGroup(group: selected) {
-           let indexPath = presenter.getIndexPath()
-           collectionView.insertItems(at: [indexPath])
-        }
+//        guard let presenter = presenter as? MyGroupPresenter
+//                 else {
+//                     //TODO: throw err
+//                     return
+//                 }
+//
+//        guard segue.identifier == MyGroups_ViewController.addGroupSegueId,
+//              let controller = segue.source as? Group_ViewController,
+//              let indexPath = controller.collectionView.indexPathsForSelectedItems,
+//              let selected = controller.getGroup(indexPath: indexPath[0])
+//        else { return }  // TODO: throw err
+//
+//        if presenter.addGroup(group: selected) {
+//           let indexPath = presenter.getIndexPath()
+//           collectionView.insertItems(at: [indexPath])
+//        }
     }
     
     private func prepareAddGroupSegue(){

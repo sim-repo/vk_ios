@@ -2,7 +2,8 @@ import Foundation
 import SwiftyJSON
 
 class MyGroup: SectionModelProtocol, DecodableProtocol {
-    var id: Int = 0
+    
+    var id: Double!
     var name: String = ""
     var desc: String = ""
     var avaURL50: URL?
@@ -16,13 +17,9 @@ class MyGroup: SectionModelProtocol, DecodableProtocol {
     
     required init(){}
     
-    func getId()->Int{
-        return id
-    }
-    
     func setup(json: JSON?){
         if let json = json {
-            id = json["id"].intValue
+            id = json["id"].doubleValue
             name = json["name"].stringValue
             desc = json["description"].stringValue
             avaURL50 = URL(string: json["photo_50"].stringValue)
@@ -34,7 +31,15 @@ class MyGroup: SectionModelProtocol, DecodableProtocol {
         }
     }
     
-    func getGroupBy()->String {
+    func getId() -> typeId {
+        id
+    }
+    
+    func getSortBy() -> typeId {
+        id
+    }
+    
+    func getGroupBy() -> String {
          switch groupBy {
            case .name:
                return name

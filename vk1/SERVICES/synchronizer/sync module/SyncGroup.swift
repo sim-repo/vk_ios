@@ -8,7 +8,7 @@ class SyncGroup {
     func sync(_ presenter: GroupPresenter,
                      _ completion: (()-> Void)? = nil ) {
         
-        let onSuccessPresenterCompletion = presenter.didLoadFromNetwork(completion: {
+        let onSuccessPresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
             completion?()
         })
         //ApiVK.groupRequest(onSuccess: onSuccessPresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())

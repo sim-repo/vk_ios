@@ -1,14 +1,10 @@
 import Foundation
 
 
-public class PlainBasePresenter: PullPlainPresenterProtocol {
+public class PlainBasePresenter {
 
     var modelType: AnyClass?  {
         return nil
-    }
-    
-    var numberOfRowsInSection: Int {
-        return dataSource.count 
     }
     
     weak var view: PushPlainViewProtocol?
@@ -16,7 +12,7 @@ public class PlainBasePresenter: PullPlainPresenterProtocol {
     
     
     var clazz: String {
-        return String(describing: PlainBasePresenter.self)
+        return String(describing: self)
     }
 
     //MARK: initial
@@ -34,18 +30,6 @@ public class PlainBasePresenter: PullPlainPresenterProtocol {
         }
         self.view = _view
     }
-
-    
-    //MARK: network events
-    
-    // when data loaded from network
-    final func didLoadFromNetwork(completion: onSuccessSyncCompletion? = nil) -> onSuccessPresenterCompletion {
-        let outerCompletion: onSuccessPresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
-            self?.setModel(ds: arr, didLoadedFrom: .network)
-            completion?()
-        }
-        return outerCompletion
-    }
     
     
     private func validateView(_ vc: PushViewProtocol){
@@ -57,59 +41,64 @@ public class PlainBasePresenter: PullPlainPresenterProtocol {
     }
 
 
-    func viewDidDisappear() {
-    }
     
-    func setModel(ds: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
-        guard ds.count > 0
-        else {
-            catchError(msg: "PlainBasePresenter: \(clazz): setModel: datasource is empty: ")
-             return
-        }
-        
-        validate(ds)
+    // MARK: incoming model flow
+    // network -> synchronizer -> presenter:
+    // setModel() -> validate() -> save() -> didSave() -> try view update
+
+    private func appendDataSource(dirtyData: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
+         
+        guard let validatedData = validate(dirtyData)
+            else {
+                   catchError(msg: "PlainBasePresenter: \(clazz): setModel(): no valid data")
+                   return
+           }
+    
         switch didLoadedFrom {
            case .disk:
                return // data stored already
            case .network:
-                let models = ds as! [PlainModelProtocol]
-                for model in models {
+                for model in validatedData {
                     dataSource.append(model)
                 }
-                saveModel(ds: ds)
+                save(validated: validatedData)
         }
     }
     
     // check if datasource is conformed to model expected
-    private func validate(_ ds: [DecodableProtocol]) {
-        guard ds.count > 0
+    private func validate(_ dirtyData: [DecodableProtocol]) -> [PlainModelProtocol]? {
+        guard dirtyData.count > 0
         else {
             catchError(msg: "PlainBasePresenter: \(clazz): validate(): datasource is empty ")
-           return
+            return nil
         }
-        guard let childPresenter = self as? ModelOwnerPresenterProtocol else {
-            return
+        guard let childPresenter = self as? ModelOwnerPresenterProtocol
+        else {
+            catchError(msg: "PlainBasePresenter: \(clazz): validate(): OwnModelProtocol is not implemented")
+            return nil
         }
         let required = "\(childPresenter.modelClass)"
-        let current = getRawClassName(object: type(of: ds[0]))
+        let current = getRawClassName(object: type(of: dirtyData[0]))
         guard required == current
         else {
             catchError(msg: "PlainBasePresenter: validate(): \(clazz): returned datasource incorrected")
-            return
+            return nil
         }
+        return dirtyData as? [PlainModelProtocol]
     }
     
-    func saveModel(ds: [DecodableProtocol]) {
-        didSaveModel()
+    
+    func save(validated: [PlainModelProtocol]) {
+        didSave()
     }
     
-    func didSaveModel(){
+    func didSave(){
         UI_THREAD { [weak self] in
             self?.view?.viewReloadData()
         }
     }
     
-    final func getData(_ indexPath: IndexPath? = nil) -> PlainModelProtocol? {
+    final func getData(indexPath: IndexPath? = nil) -> ModelProtocol? {
         // for non-list DS
         if indexPath == nil {
             guard dataSource.count == 1
@@ -131,7 +120,7 @@ public class PlainBasePresenter: PullPlainPresenterProtocol {
     }
     
     
-    final func getIndexPath(model: PlainModelProtocol) -> IndexPath?{
+    final func getIndexPath(model: ModelProtocol) -> IndexPath?{
         guard let idx = dataSource.firstIndex(where: { $0.getId() == model.getId() })
             else {return nil}
         
@@ -141,22 +130,38 @@ public class PlainBasePresenter: PullPlainPresenterProtocol {
 }
 
 
-// called from synchronizer & presenter factory
+
+
+//MARK: called from view
+extension PlainBasePresenter: PullPlainPresenterProtocol {
+    
+    final func numberOfRowsInSection() -> Int {
+        return dataSource.count
+    }
+    
+    @objc func viewDidDisappear() {
+        
+    }
+}
+
+
+
+//MARK: called from synchronizer & presenter factory
 extension PlainBasePresenter: SynchronizedPresenterProtocol {
     
-    func getDataSource() -> [ModelProtocol] {
+    final func getDataSource() -> [ModelProtocol] {
         return dataSource
     }
     
-    func dataSourceIsEmpty() -> Bool {
+    final func dataSourceIsEmpty() -> Bool {
         return dataSource.isEmpty
     }
     
-    func clearDataSource() {
+    final func clearDataSource() {
         dataSource.removeAll()
     }
     
-    func setView(vc: PushViewProtocol, completion: (()->Void)?) {
+    final func setView(vc: PushViewProtocol, completion: (()->Void)?) {
         validateView(vc)
         self.view = vc as? PushPlainViewProtocol
         guard dataSource.count > 0
@@ -166,5 +171,14 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
             self.view?.viewReloadData()
             completion?()
         }
+    }
+    
+    // when data loaded from network
+    final func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion? = nil) -> onSuccess_PresenterCompletion {
+        let outerCompletion: onSuccess_PresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
+            self?.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
+            completion?()
+        }
+        return outerCompletion
     }
 }

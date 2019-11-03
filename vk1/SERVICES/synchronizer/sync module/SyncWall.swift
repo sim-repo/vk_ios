@@ -78,7 +78,7 @@ class SyncWall {
                 
                 
                 // ids as parameters for wall-requests
-                var ids:[Int] = []
+                var ids:[Double] = []
                 
                 groupDS.forEach { model in
                     ids.append(-model.getId())
@@ -108,7 +108,7 @@ class SyncWall {
                         semaphore.wait()
                         // self.dispatchGroup?.enter()
                         print(id)
-                        let onSuccessCompletion = wallPresenter.didLoadFromNetwork(completion: { [weak self] in
+                        let onSuccessCompletion = wallPresenter.didSuccessNetworkResponse(completion: { [weak self] in
                             //release:
                             self?.dispatchGroup?.leave()
                             semaphore.signal()

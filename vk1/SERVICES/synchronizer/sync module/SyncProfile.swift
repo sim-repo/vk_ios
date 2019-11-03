@@ -8,7 +8,7 @@ class SyncProfile {
     func sync(_ presenter: ProfilePresenter,
                      _ completion: (()-> Void)? = nil ) {
         
-        let onSuccessPresenterCompletion = presenter.didLoadFromNetwork(completion: {
+        let onSuccessPresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
             completion?()
         })
         //ApiVK.groupRequest(onSuccess: onSuccessPresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())

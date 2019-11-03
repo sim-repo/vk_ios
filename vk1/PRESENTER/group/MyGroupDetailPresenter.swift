@@ -22,16 +22,15 @@ class MyGroupDetailPresenter: PlainPresenterProtocols {
     }
     
     
-    
     //MARK: override func
-    override func saveModel(ds: [DecodableProtocol]) {
-        let detailGroup = ds[0] as! DetailGroup
+    override func save(validated: [PlainModelProtocol]) {
+        let detailGroup = validated[0] as! DetailGroup
         guard let gr = group
         else {
             catchError(msg: "MyGroupDetailPresenter: saveModel(): group is nil")
             return
         }
         detailGroup.setup(group: gr)
-        super.saveModel(ds: ds)
+        super.didSave()
     }
 }
