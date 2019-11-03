@@ -47,7 +47,7 @@ extension FriendWall_Controller: UICollectionViewDelegate, UICollectionViewDataS
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return presenter.numberOfSections
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -75,7 +75,7 @@ extension FriendWall_Controller: UICollectionViewDelegate, UICollectionViewDataS
 }
 
 
-extension FriendWall_Controller: ViewInputProtocol {
-    func refreshDataSource() {
+extension FriendWall_Controller: PushPlainViewProtocol {
+    func viewReloadData() {
     }
 }

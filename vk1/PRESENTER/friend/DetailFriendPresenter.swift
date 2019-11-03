@@ -1,6 +1,6 @@
 import Foundation
 
-class DetailFriendPresenter: HybridSectionedPresenter {
+class DetailFriendPresenter: SectionPresenterProtocols {
     
     var modelClass: AnyClass  {
         return DetailFriendPresenter.self

@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-class FriendPresenter: HybridSectionedPresenter {
+class FriendPresenter: SectionPresenterProtocols {
     
     var modelClass: AnyClass  {
         return Friend.self

@@ -2,7 +2,7 @@ import Foundation
 import SwiftyJSON
 
 
-class Group: SectionedModelProtocol {
+class Group: SectionModelProtocol {
    
    var id: Int = 0
    var name: String = ""

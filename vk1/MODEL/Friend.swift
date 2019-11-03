@@ -1,7 +1,7 @@
 import Foundation
 import SwiftyJSON
 
-class Friend: SectionedModelProtocol, DecodableProtocol {
+class Friend: SectionModelProtocol, DecodableProtocol {
     
     var id: Int = 0
     var firstName: String = ""

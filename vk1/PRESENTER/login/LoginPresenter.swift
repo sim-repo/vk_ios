@@ -1,7 +1,7 @@
 import Foundation
 
 
-class LoginPresenter: HybridPlainPresenter {
+class LoginPresenter: PlainPresenterProtocols {
     
     var modelClass: AnyClass  {
         return Login.self

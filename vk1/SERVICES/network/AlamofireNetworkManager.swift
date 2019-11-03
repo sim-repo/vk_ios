@@ -4,7 +4,6 @@ import SwiftyJSON
 
 class AlamofireNetworkManager{
 
-    static let baseURL = "https://api.vk.com/method/"
 
     public static let sharedManager: SessionManager = {
         let config = URLSessionConfiguration.default

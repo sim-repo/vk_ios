@@ -1,21 +1,23 @@
 import Foundation
 
 
-public class PlainBasePresenter: PlainPresenterProtocol {
+public class PlainBasePresenter: PullPlainPresenterProtocol {
 
     var modelType: AnyClass?  {
         return nil
     }
     
-    var numberOfSections: Int = 1
-    
     var numberOfRowsInSection: Int {
         return dataSource.count 
     }
     
-    weak var view: PlainViewInputProtocol?
+    weak var view: PushPlainViewProtocol?
     var dataSource: [PlainModelProtocol] = []
     
+    
+    var clazz: String {
+        return String(describing: PlainBasePresenter.self)
+    }
 
     //MARK: initial
     
@@ -23,16 +25,16 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     required init() {}
     
     // init presenter and view simultaneously
-    required convenience init(vc: ViewInputProtocol, completion: (()->Void)?) {
+    required convenience init?(vc: PushViewProtocol, completion: (()->Void)?) {
         self.init()
-        guard let _view = vc as? PlainViewInputProtocol
+        guard let _view = vc as? PushPlainViewProtocol
         else {
             catchError(msg: "PlainBasePresenter: init(vc:completion) - incorrect passed vc")
             return
         }
         self.view = _view
     }
-    
+
     
     //MARK: network events
     
@@ -45,43 +47,15 @@ public class PlainBasePresenter: PlainPresenterProtocol {
         return outerCompletion
     }
     
-    func setView(vc: ViewInputProtocol, completion: (()->Void)?) {
-        validateView(vc)
-        self.view = vc as? PlainViewInputProtocol
-        guard dataSource.count > 0
-            else { return }
-        UI_THREAD { [weak self] in
-            guard let self = self else { return }
-            self.view?.viewReloadData()
-            completion?()
-        }
-    }
     
-    
-    private func validateView(_ vc: ViewInputProtocol){
-        guard let _ = vc as? SectionedViewInputProtocol
+    private func validateView(_ vc: PushViewProtocol){
+        guard let _ = vc as? PushSectionedViewProtocol
         else {
             catchError(msg: "SectionedBasePresenter: init(vc:completion) - incorrect passed vc")
             return
         }
     }
-    
-    
-    func dataSourceIsEmpty() -> Bool {
-        return dataSource.isEmpty
-    }
-    
-    func className() -> String {
-        return String(describing: self)
-    }
 
-    func getDataSource() -> [PlainModelProtocol] {
-        return dataSource
-    }
-    
-    func clearDataSource() {
-        dataSource.removeAll()
-    }
 
     func viewDidDisappear() {
     }
@@ -89,7 +63,7 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     func setModel(ds: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
         guard ds.count > 0
         else {
-            catchError(msg: "PlainBasePresenter: setModel: datasource is empty: " + self.className())
+            catchError(msg: "PlainBasePresenter: \(clazz): setModel: datasource is empty: ")
              return
         }
         
@@ -110,17 +84,17 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     private func validate(_ ds: [DecodableProtocol]) {
         guard ds.count > 0
         else {
-           catchError(msg: "PlainBasePresenter: validate(): datasource is empty "  + self.className())
+            catchError(msg: "PlainBasePresenter: \(clazz): validate(): datasource is empty ")
            return
         }
-        guard let childPresenter = self as? OwnModelProtocol else {
+        guard let childPresenter = self as? ModelOwnerPresenterProtocol else {
             return
         }
         let required = "\(childPresenter.modelClass)"
         let current = getRawClassName(object: type(of: ds[0]))
         guard required == current
         else {
-            catchError(msg: "PlainBasePresenter: validate(): returned datasource incorrected")
+            catchError(msg: "PlainBasePresenter: validate(): \(clazz): returned datasource incorrected")
             return
         }
     }
@@ -166,3 +140,31 @@ public class PlainBasePresenter: PlainPresenterProtocol {
     
 }
 
+
+// called from synchronizer & presenter factory
+extension PlainBasePresenter: SynchronizedPresenterProtocol {
+    
+    func getDataSource() -> [ModelProtocol] {
+        return dataSource
+    }
+    
+    func dataSourceIsEmpty() -> Bool {
+        return dataSource.isEmpty
+    }
+    
+    func clearDataSource() {
+        dataSource.removeAll()
+    }
+    
+    func setView(vc: PushViewProtocol, completion: (()->Void)?) {
+        validateView(vc)
+        self.view = vc as? PushPlainViewProtocol
+        guard dataSource.count > 0
+            else { return }
+        UI_THREAD { [weak self] in
+            guard let self = self else { return }
+            self.view?.viewReloadData()
+            completion?()
+        }
+    }
+}

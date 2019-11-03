@@ -8,7 +8,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var waitView: UIView!
     
-    var presenter: PlainPresenterProtocol!
+    var presenter: PullPlainPresenterProtocol!
     
     var waitLoadingContainer: UIView!
     
@@ -89,7 +89,7 @@ class LoginViewController: UIViewController {
 }
 
 
-extension LoginViewController: ViewInputProtocol{
-    func refreshDataSource() {
+extension LoginViewController: PushPlainViewProtocol{
+    func viewReloadData() {
     }
 }

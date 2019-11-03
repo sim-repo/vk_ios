@@ -1,7 +1,7 @@
 import Foundation
 import SwiftyJSON
 
-class MyGroup: SectionedModelProtocol, DecodableProtocol {
+class MyGroup: SectionModelProtocol, DecodableProtocol {
     var id: Int = 0
     var name: String = ""
     var desc: String = ""

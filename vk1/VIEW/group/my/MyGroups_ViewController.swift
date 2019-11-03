@@ -2,7 +2,7 @@ import UIKit
 
 class MyGroups_ViewController: UIViewController  {
     
-    var presenter: SectionedPresenterProtocol!
+    var presenter: PullSectionPresenterProtocol!
     
     static let cellId = "MyGroup_CollectionViewCell"
     static let detailSegueId = "MyGroupDetailSegue"
@@ -57,7 +57,7 @@ extension MyGroups_ViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
        // print("viewForSupplementaryElementOfKind")
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "myGroupSectionHeader", for: indexPath) as! GroupSectionHeader
-        view.title = presenter.sectionName(section: indexPath.section)
+        view.title = presenter.sectionTitle(section: indexPath.section)
         view.count = String(presenter.numberOfRowsInSection(section: indexPath.section))
         return view
     }
@@ -171,7 +171,7 @@ extension MyGroups_ViewController {
 
 
 
-extension MyGroups_ViewController: SectionedViewInputProtocol{
+extension MyGroups_ViewController: PushSectionedViewProtocol{
     func viewReloadData(groupByIds: [String]) {
         self.lettersSearchControl.updateControl(with: groupByIds)
         self.collectionView.reloadData()

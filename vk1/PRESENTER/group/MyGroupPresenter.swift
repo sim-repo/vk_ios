@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-class MyGroupPresenter: HybridSectionedPresenter {
+class MyGroupPresenter: SectionPresenterProtocols {
 
     // implements ModelOwnerProtocol
     var modelClass: AnyClass  {

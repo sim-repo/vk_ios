@@ -2,13 +2,13 @@ import Foundation
 
 // base class using for sectioned view controllers only: table view, collection view
 
-public class SectionedBasePresenter: SectionedPresenterProtocol {
+public class SectionedBasePresenter: PullSectionPresenterProtocol {
 
     // view
-    weak var view: SectionedViewInputProtocol?
+    weak var view: PushSectionedViewProtocol?
     
     // data source properties
-    var sortedDataSource: [SectionedModelProtocol] = []
+    var sortedDataSource: [SectionModelProtocol] = []
     
     private var sectionsOffset: [Int] = []
     
@@ -22,7 +22,9 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
         return sectionsOffset.count > 0 ? sectionsOffset.count : 1
     }
     
-    
+    var clazz: String {
+        return String(describing: SectionedBasePresenter.self)
+    }
     
     
     //MARK: initial
@@ -32,15 +34,15 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     required init(){}
     
     // init presenter and view simultaneously
-    required convenience init(vc: ViewInputProtocol, completion: (()->Void)?) {
+    required convenience init(vc: PushViewProtocol, completion: (()->Void)?) {
         self.init()
         validateView(vc)
-        self.view = vc as? SectionedViewInputProtocol
+        self.view = vc as? PushSectionedViewProtocol
     }
     
-    final func setView(vc: ViewInputProtocol, completion: (()->Void)?) {
+    final func setView(vc: PushViewProtocol, completion: (()->Void)?) {
         validateView(vc)
-        self.view = vc as? SectionedViewInputProtocol
+        self.view = vc as? PushSectionedViewProtocol
         UI_THREAD { [weak self] in
             guard let self = self else { return }
             self.filterAndRegroupData()
@@ -49,8 +51,8 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
         }
     }
     
-    private func validateView(_ vc: ViewInputProtocol){
-        guard let _ = vc as? SectionedViewInputProtocol
+    private func validateView(_ vc: PushViewProtocol){
+        guard let _ = vc as? PushSectionedViewProtocol
         else {
             catchError(msg: "SectionedBasePresenter: init(vc:completion) - incorrect passed vc")
             return
@@ -68,13 +70,7 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     func clearDataSource() {
         sortedDataSource.removeAll()
     }
-    
-    func getDataSource() -> [SectionedModelProtocol] {
-        return sortedDataSource
-    }
-    
-    
-    
+        
     
     //MARK: network events
     
@@ -92,6 +88,8 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     
     
     // MARK: incoming model flow
+    // network -> synchronizer -> presenter:
+    // setModel() -> saveModel() -> didSaveModel() -> try view update
     
     private func setModel(dirtyData: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
         
@@ -116,12 +114,12 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
         
         guard dirtyData.count > 0
             else {
-                catchError(msg: "SectionBasePresenter: validate(): datasource is empty "  + self.className())
+                catchError(msg: "SectionBasePresenter: \(clazz): validate(): datasource is empty")
                 return nil
         }
         
-        guard let childPresenter = self as? OwnModelProtocol else {
-            catchError(msg: "SectionBasePresenter: validate(): OwnModelProtocol is not implemented "  + self.className())
+        guard let childPresenter = self as? ModelOwnerPresenterProtocol else {
+            catchError(msg: "SectionBasePresenter: \(clazz): validate(): OwnModelProtocol is not implemented")
             return nil
         }
         
@@ -130,7 +128,7 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
         let currentClass = getRawClassName(object: type(of: dirtyData[0]))
         guard expectedClass == currentClass
             else {
-                catchError(msg: "SectionBasePresenter: validate(): returned datasource is incorrect")
+                catchError(msg: "SectionBasePresenter: \(clazz): validate(): returned datasource is incorrect")
                 return nil
         }
         return dirtyData
@@ -138,8 +136,8 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     
     
     
-    private func sortModel(_ ds: [DecodableProtocol]) -> [SectionedModelProtocol]{
-        let sectioned = ds as! [SectionedModelProtocol]
+    private func sortModel(_ ds: [DecodableProtocol]) -> [SectionModelProtocol]{
+        let sectioned = ds as! [SectionModelProtocol]
         return sectioned.sorted(by: { $0.getGroupBy() < $1.getGroupBy() })
     }
     
@@ -170,7 +168,7 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     
     // called when set new filter or viewDidLoad
     private func filterAndRegroupData() {
-        var filteredDataSource: [SectionedModelProtocol]
+        var filteredDataSource: [SectionModelProtocol]
 
         if let filteredText  = filteredText {
             filteredDataSource = sortedDataSource.filter({$0.getGroupBy().lowercased().contains(filteredText.lowercased())})
@@ -218,7 +216,7 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     }
     
     
-    final func sectionName(section: Int)->String {
+    final func sectionTitle(section: Int)->String {
         guard sectionsTitle.count > 0
             else {
                 return "A"
@@ -228,7 +226,7 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     }
     
     
-    final func getData(indexPath: IndexPath) -> SectionedModelProtocol? {
+    final func getData(indexPath: IndexPath) -> SectionModelProtocol? {
         guard sectionsOffset.count > 0
             else {
                 return sortedDataSource[indexPath.row]
@@ -244,7 +242,7 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     }
     
     
-    final func getIndexPath(model: SectionedModelProtocol) -> IndexPath?{
+    final func getIndexPath(model: SectionModelProtocol) -> IndexPath?{
         
         guard let sortedIdx = sortedDataSource.firstIndex(where: { $0.getId() == model.getId() })
             else {return nil}
@@ -272,7 +270,13 @@ public class SectionedBasePresenter: SectionedPresenterProtocol {
     
 
     
-    func className() -> String {
-        return String(describing: SectionedBasePresenter.self)
+
+}
+
+
+extension SectionedBasePresenter: SynchronizedPresenterProtocol {
+   
+    func getDataSource() -> [ModelProtocol] {
+        return sortedDataSource
     }
 }

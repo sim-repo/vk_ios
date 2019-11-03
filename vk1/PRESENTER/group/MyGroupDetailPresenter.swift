@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-class MyGroupDetailPresenter: HybridPlainPresenter {
+class MyGroupDetailPresenter: PlainPresenterProtocols {
     
     var modelClass: AnyClass  {
         return DetailGroup.self

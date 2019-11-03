@@ -2,7 +2,7 @@ import UIKit
 
 class Friend_Controller: UIViewController {
 
-    var presenter: SectionedPresenterProtocol!
+    var presenter: PullSectionPresenterProtocol!
     
     @IBOutlet weak var lettersSearchControl: LettersSearchControl!
     @IBOutlet weak var tableView: UITableView!
@@ -103,7 +103,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
        
         
         let label = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 20))
-        label.text = presenter.sectionName(section: section)
+        label.text = presenter.sectionTitle(section: section)
         hview.addSubview(label)
         UIControlThemeMgt.setupTableHeader(view: hview, title: label)
         return hview
@@ -111,7 +111,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return presenter.sectionName(section: section)
+        return presenter.sectionTitle(section: section)
     }
     
     
@@ -151,7 +151,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-extension Friend_Controller: SectionedViewInputProtocol{
+extension Friend_Controller: PushSectionedViewProtocol{
     func viewReloadData(groupByIds: [String]) {
         self.lettersSearchControl.updateControl(with: groupByIds)
         self.tableView.reloadData()

@@ -31,17 +31,8 @@ class Profile_TableViewController: UITableViewController {
 }
 
 
-extension Profile_TableViewController: ViewInputProtocol {
-    func refreshDataSource() {
-
+extension Profile_TableViewController: PushPlainViewProtocol {
+    func viewReloadData() {
+        tableView.reloadData()
     }
-    
-    func optimReloadCell(indexPath: IndexPath) {
-
-    }
-    
-    func className() -> String {
-        return String(describing: Profile_TableViewController.self)
-    }
-
 }

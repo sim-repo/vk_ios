@@ -48,7 +48,7 @@ extension Group_ViewController: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 
-extension Group_ViewController: PlainViewInputProtocol{
+extension Group_ViewController: PushPlainViewProtocol{
     func viewReloadData() {
         self.collectionView.reloadData()
     }

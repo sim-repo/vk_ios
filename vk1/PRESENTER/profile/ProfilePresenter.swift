@@ -1,7 +1,7 @@
 import Foundation
 
 
-public class ProfilePresenter: SectionedBasePresenter{
+public class ProfilePresenter: SectionedBasePresenter {
 
     var photos: [Photo]!
     

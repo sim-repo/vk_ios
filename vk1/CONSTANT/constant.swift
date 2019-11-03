@@ -1,7 +1,7 @@
 import UIKit
 
 
-
+let baseURL = "https://api.vk.com/method/"
 let versionAPI = "5.103"
 let clientAPI = "7192541"
 
@@ -26,7 +26,7 @@ enum ModuleEnum  {
     case profile
     case login
     
-    init(presenterType: PresenterProtocol.Type) {
+    init(presenterType: SynchronizedPresenterProtocol.Type) {
         switch presenterType {
         case is FriendPresenter.Type:
                    self = .friend
@@ -50,7 +50,7 @@ enum ModuleEnum  {
         }
     }
     
-    init(presenter: PresenterProtocol) {
+    init(presenter: SynchronizedPresenterProtocol) {
         switch presenter {
         case is FriendPresenter:
                    self = .friend
@@ -76,7 +76,7 @@ enum ModuleEnum  {
         }
     }
     
-    init(vc: ViewInputProtocol) {
+    init(vc: PushViewProtocol) {
         switch vc {
         case is Friend_Controller:
                    self = .friend
@@ -103,7 +103,7 @@ enum ModuleEnum  {
     }
     
     
-    var vc: ViewInputProtocol.Type {
+    var vc: PushViewProtocol.Type {
            switch self {
                case .friend:
                    return Friend_Controller.self
@@ -126,7 +126,7 @@ enum ModuleEnum  {
            }
        }
     
-    var presenter: PresenterProtocol.Type {
+    var presenter: SynchronizedPresenterProtocol.Type {
         switch self {
             case .friend:
                 return FriendPresenter.self

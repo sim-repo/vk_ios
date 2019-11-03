@@ -5,7 +5,7 @@ class Wall_Controller: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
     
-    var presenter: PlainPresenterProtocol!
+    var presenter: PullPlainPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return presenter.numberOfSections
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -68,13 +68,9 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
 }
 
 
-extension Wall_Controller: ViewInputProtocol{
+extension Wall_Controller: PushPlainViewProtocol{
     
-    func refreshDataSource() {
+    func viewReloadData() {
         collectionView.reloadData()
-    }
-    
-    func optimReloadCell(indexPath: IndexPath) {
-       collectionView.reloadItems(at: [indexPath])
     }
 }

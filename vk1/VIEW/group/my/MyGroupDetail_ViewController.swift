@@ -24,7 +24,7 @@ class MyGroupDetail_ViewController: UIViewController {
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var countersStackView: UIStackView!
     
-    var presenter: PlainPresenterProtocol!
+    var presenter: PullPlainPresenterProtocol!
     
     var waiter: SpinnerViewController?
     
@@ -87,7 +87,7 @@ extension MyGroupDetail_ViewController {
 }
 
 
-extension MyGroupDetail_ViewController: ViewInputProtocol{
+extension MyGroupDetail_ViewController: PushViewProtocol{
     func refreshDataSource() {
         
         waiter?.willMove(toParent: nil)
