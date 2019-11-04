@@ -9,9 +9,15 @@ let networkTimeout: TimeInterval = 1 // in sec
 let networkDelayBetweenRequests = 500 // in ms
 
 
-enum ModelLoadedFromEnum{
+enum ModelLoadedFromEnum {
     case network
     case disk
+}
+
+
+enum SegueIdEnum: String {
+    case detailFriend = "detailFriend"
+    case detailGroup = "detailGroup"
 }
 
 

@@ -126,6 +126,7 @@
 		16E08B62236EC64700340F09 /* SynchronizedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B61236EC64700340F09 /* SynchronizedPresenterProtocol.swift */; };
 		16E08B64236ED9FF00340F09 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B63236ED9FF00340F09 /* ModelProtocol.swift */; };
 		16E08B66236F80B800340F09 /* FriendWall_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B65236F80B800340F09 /* FriendWall_ViewController.swift */; };
+		16E08B78237010B200340F09 /* DetailPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B77237010B200340F09 /* DetailPresenterProtocol.swift */; };
 		16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */; };
 		16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD22351FDCD001C33CF /* PostImageView.swift */; };
 		16FF6FD623522E41001C33CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD523522E41001C33CF /* Extensions.swift */; };
@@ -290,6 +291,7 @@
 		16E08B63236ED9FF00340F09 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		16E08B65236F80B800340F09 /* FriendWall_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWall_ViewController.swift; sourceTree = "<group>"; };
 		16E08B67236F924400340F09 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		16E08B77237010B200340F09 /* DetailPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenterProtocol.swift; sourceTree = "<group>"; };
 		16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPushAnimator.swift; sourceTree = "<group>"; };
 		16FF6FD22351FDCD001C33CF /* PostImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		16FF6FD523522E41001C33CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				16E08B3F236CECE800340F09 /* SectionPresenterProtocols.swift */,
 				16E08B58236DF13700340F09 /* PlainPresenterProtocols.swift */,
 				16E08B61236EC64700340F09 /* SynchronizedPresenterProtocol.swift */,
+				16E08B77237010B200340F09 /* DetailPresenterProtocol.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -1107,6 +1110,7 @@
 				16D58BED236725DC00735296 /* PullPresenterProtocol.swift in Sources */,
 				164764A32365E1E5007D1B19 /* SectionModelProtocol.swift in Sources */,
 				163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */,
+				16E08B78237010B200340F09 /* DetailPresenterProtocol.swift in Sources */,
 				16E08B57236DDEB700340F09 /* SyncGroup.swift in Sources */,
 				161C1136234718B000A2EC9D /* WallCellConfigurator.swift in Sources */,
 				16200CFD233360FF00F02440 /* GroupPresenter.swift in Sources */,

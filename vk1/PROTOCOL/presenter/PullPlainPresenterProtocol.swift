@@ -4,5 +4,4 @@ import Foundation
 protocol PullPlainPresenterProtocol: PullPresenterProtocol {
 
     func numberOfRowsInSection() -> Int
-    func viewDidDisappear()
 }

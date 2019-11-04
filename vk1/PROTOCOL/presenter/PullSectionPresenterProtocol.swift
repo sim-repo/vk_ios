@@ -10,7 +10,6 @@ protocol PullSectionPresenterProtocol: PullPresenterProtocol {
     
     // alphabet searching
     func getGroupBy() -> [String]
-    func viewDidFilterInput(_ filterText: String)
 }
 
 

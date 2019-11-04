@@ -14,10 +14,15 @@ class SyncFriendWall {
             onFinish_SyncCompletion(presenter)
         })
         
-        let p = presenter as! FriendWallPresenter
-        guard let id = p.getFriend()?.getId()
+        guard let p = presenter as? DetailPresenterProtocol
         else {
-            catchError(msg: "SynchronizerManager: viewDidLoad(): MyGroupDetailPresenter.getId() is nil")
+            catchError(msg: "SyncFriendWall: sync(): presenter is not conformed DetailPresenterProtocol")
+            return
+        }
+
+        guard let id = p.getId()
+        else {
+            catchError(msg: "SyncFriendWall: sync(): no id")
             return
         }
         

@@ -154,7 +154,6 @@ public class SectionedBasePresenter {
 //MARK: called from view
 extension SectionedBasePresenter: PullSectionPresenterProtocol {
     
-    
     final func numberOfSections() -> Int {
         return sectionsOffset.count > 0 ? sectionsOffset.count : 1
     }
@@ -239,6 +238,12 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
         filteredText = !searchText.isEmpty ? searchText : nil
         filterAndRegroupData()
         self.view?.viewReloadData(groupByIds: self.groupByIds)
+    }
+    
+    func viewDidDisappear() {
+    }
+    
+    @objc func viewDidSeguePrepare(segueId: String, indexPath: IndexPath) {
     }
 }
 

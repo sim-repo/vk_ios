@@ -116,20 +116,14 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        guard let presenter = presenter as? FriendPresenter
-               else {
-                   catchError(msg: "Friend_Controller: prepare(for segue:)")
-                   return
-               }
-        
+
         if segue.identifier == "FriendDetailSegue" {
             guard let indexPath = sender as? IndexPath
             else {
                 catchError(msg: "Friend_Controller: prepare(for segue:)")
                 return
             }
-            presenter.onPerfomSegue_Details(selected: indexPath)
+            presenter.viewDidSeguePrepare(segueId: SegueIdEnum.detailFriend.rawValue, indexPath: indexPath)
         }
     }
     

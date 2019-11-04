@@ -7,14 +7,26 @@ class FriendPresenter: SectionPresenterProtocols {
         return Friend.self
     }
     
-    
-    func onPerfomSegue_Details(selected indexPath: IndexPath) {
-         guard let friend = getData(indexPath: indexPath) as? Friend
-             else {
-                 catchError(msg: "FriendPresenter: onPerfomSegue_Details")
-                 return
-             }
-         let friendWallPresenter: FriendWallPresenter? = PresenterFactory.shared.getInstance()
-         friendWallPresenter?.setFriend(friend: friend)
-     }
+
+    override func viewDidSeguePrepare(segueId: String, indexPath: IndexPath) {
+        guard let segue = SegueIdEnum(rawValue: segueId),
+                  segue == .detailFriend
+            else {
+                catchError(msg: "FriendPresenter: viewDidSeguePrepare(): segueId is incorrected: \(segueId)")
+                return
+            }
+        
+        guard let friend = getData(indexPath: indexPath) as? Friend
+                    else {
+                        catchError(msg: "FriendPresenter: viewDidSeguePrepare(): no data with indexPath: \(indexPath)")
+                        return
+                    }
+        
+        guard let detailPresenter = PresenterFactory.shared.getInstance(clazz: FriendWallPresenter.self) as? DetailPresenterProtocol
+        else {
+            catchError(msg: "FriendPresenter: viewDidSeguePrepare(): detailPresenter is not conformed DetailPresenterProtocol")
+            return
+        }
+        detailPresenter.setDetailModel(model: friend)
+    }
 }

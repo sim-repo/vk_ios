@@ -145,7 +145,12 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
     }
     
     @objc func viewDidDisappear() {
-        
+    }
+    
+    func viewDidFilterInput(_ filterText: String) {
+    }
+    
+    @objc func viewDidSeguePrepare(segueId: String, indexPath: IndexPath) {
     }
 }
 
