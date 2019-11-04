@@ -7,5 +7,5 @@ protocol PullPresenterProtocol: class {
     
     func viewDidDisappear()
     func viewDidFilterInput(_ filterText: String)
-    func viewDidSeguePrepare(segueId: String, indexPath: IndexPath)
+    func viewDidSeguePrepare(segueId: SegueIdEnum, indexPath: IndexPath)
 }

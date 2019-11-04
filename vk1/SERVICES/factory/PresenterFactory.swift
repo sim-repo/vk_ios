@@ -18,8 +18,8 @@ class PresenterFactory {
         }
         
         let presenter: T = T()
-        let presenterEnum = ModuleEnum(presenter: presenter)
-        presenters[presenterEnum] = presenter
+        let moduleEnum = ModuleEnum(presenter: presenter)
+        presenters[moduleEnum] = presenter
         return presenter
     }
     
@@ -31,11 +31,22 @@ class PresenterFactory {
         }
         
         let presenter: T = T()
-        let presenterEnum = ModuleEnum(presenter: presenter)
-        presenters[presenterEnum] = presenter
+        let moduleEnum = ModuleEnum(presenter: presenter)
+        presenters[moduleEnum] = presenter
         return presenter
     }
     
+    
+    //MARK: called from Synchronizer:
+    public func getInstance(segueId: SegueIdEnum) -> SynchronizedPresenterProtocol {
+        let moduleEnum = ModuleEnum(segueId: segueId)
+        var presenter = presenters[moduleEnum]
+        if presenter == nil {
+            presenter = moduleEnum.presenter.init()
+            presenters[moduleEnum] = presenter
+        }
+        return presenter!
+    }
     
     
     public func getPresenter<T: SynchronizedPresenterProtocol>() -> T? {
@@ -60,24 +71,24 @@ class PresenterFactory {
     
     private func getPresenter(viewDidLoad vc: PushViewProtocol) -> SynchronizedPresenterProtocol? {
         
-        let presenterEnum = ModuleEnum(vc: vc)
+        let moduleEnum = ModuleEnum(vc: vc)
         
-        var presenter = presenters[presenterEnum]
+        var presenter = presenters[moduleEnum]
         
         if presenter == nil {
-            presenter = createPresenter(clazz: presenterEnum.presenter, vc)
+            presenter = createPresenter(clazz: moduleEnum.presenter, vc)
         } else {
             presenter?.setView(vc: vc)
         }
-        SynchronizerManager.shared.viewDidLoad(presenterEnum: presenterEnum)
+        SynchronizerManager.shared.viewDidLoad(presenterEnum: moduleEnum)
         return presenter
     }
     
     
     private func createPresenter(clazz: SynchronizedPresenterProtocol.Type, _ vc: PushViewProtocol) -> SynchronizedPresenterProtocol? {
         if let presenter = clazz.init(vc: vc) {
-            let presenterEnum = ModuleEnum(presenter: presenter)
-            presenters[presenterEnum] = presenter
+            let moduleEnum = ModuleEnum(presenter: presenter)
+            presenters[moduleEnum] = presenter
             return presenter
         }
         return nil

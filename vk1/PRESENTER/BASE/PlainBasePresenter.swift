@@ -150,7 +150,20 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
     func viewDidFilterInput(_ filterText: String) {
     }
     
-    @objc func viewDidSeguePrepare(segueId: String, indexPath: IndexPath) {
+    func viewDidSeguePrepare(segueId: SegueIdEnum, indexPath: IndexPath) {
+      
+        guard let model = getData(indexPath: indexPath)
+                    else {
+                        catchError(msg: "PlainBasePresenter: \(clazz): viewDidSeguePrepare(): no data with indexPath: \(indexPath)")
+                        return
+                    }
+        
+        guard let detailPresenter = PresenterFactory.shared.getInstance(segueId: segueId) as? DetailPresenterProtocol
+            else {
+                catchError(msg: "PlainBasePresenter: \(clazz): viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue) ")
+                return
+            }
+        detailPresenter.setDetailModel(model: model)
     }
 }
 

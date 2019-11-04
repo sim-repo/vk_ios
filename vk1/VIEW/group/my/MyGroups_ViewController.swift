@@ -106,9 +106,9 @@ extension MyGroups_ViewController {
                 else {
                     catchError(msg: "MyGroups_ViewController: prepare(for segue:)")
                     return
-                } 
+                }
                 dest.modalPresentationStyle = .custom
-                presenter.viewDidSeguePrepare(segueId: SegueIdEnum.detailGroup.rawValue, indexPath: indexPath)
+                presenter.viewDidSeguePrepare(segueId: SegueIdEnum.detailGroup, indexPath: indexPath)
             default:
                 return
         }

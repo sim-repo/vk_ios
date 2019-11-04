@@ -123,7 +123,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
                 catchError(msg: "Friend_Controller: prepare(for segue:)")
                 return
             }
-            presenter.viewDidSeguePrepare(segueId: SegueIdEnum.detailFriend.rawValue, indexPath: indexPath)
+            presenter.viewDidSeguePrepare(segueId: SegueIdEnum.detailFriend, indexPath: indexPath)
         }
     }
     
