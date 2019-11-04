@@ -87,14 +87,16 @@ extension MyGroupDetail_ViewController {
 }
 
 
-extension MyGroupDetail_ViewController: PushViewProtocol{
-    func refreshDataSource() {
+extension MyGroupDetail_ViewController: PushPlainViewProtocol{
+    
+    func viewReloadData() {
+        console(msg: "MyGroupDetail_ViewController: refreshDataSource()")
         
         waiter?.willMove(toParent: nil)
         waiter?.view.removeFromSuperview()
         waiter?.removeFromParent()
         
-        console(msg: "MyGroupDetail_ViewController: refreshDataSource()")
+        
         guard let group = presenter.getData(indexPath: nil) as? DetailGroup
                       else { catchError(msg: "MyGroupDetail_ViewController: setup(): datasource is null" )
                              return

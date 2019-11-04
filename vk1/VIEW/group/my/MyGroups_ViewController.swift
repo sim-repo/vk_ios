@@ -99,13 +99,6 @@ extension MyGroups_ViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        guard let presenter = presenter as? MyGroupPresenter
-          else {
-              catchError(msg: "MyGroups_ViewController: prepare(for segue:)")
-              return
-          }
-            
         switch segue.identifier {
             case MyGroups_ViewController.detailSegueId:
                 guard let indexPath = sender as? IndexPath,
@@ -113,9 +106,9 @@ extension MyGroups_ViewController {
                 else {
                     catchError(msg: "MyGroups_ViewController: prepare(for segue:)")
                     return
-                } // TODO: throw err
+                } 
                 dest.modalPresentationStyle = .custom
-                presenter.onPerfomSegue_Details(selected: indexPath)
+                presenter.viewDidSeguePrepare(segueId: SegueIdEnum.detailGroup.rawValue, indexPath: indexPath)
             default:
                 return
         }

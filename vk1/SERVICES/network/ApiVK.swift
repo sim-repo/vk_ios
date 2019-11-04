@@ -77,7 +77,7 @@ class ApiVK {
                  "extended": "1",
                  "fields":["photo_50","photo_100", "photo_200"],
                  "filter": "all",
-                 "count": "1",
+                 "count": "20",
                  "v": versionAPI
         ]
         AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError)

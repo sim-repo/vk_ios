@@ -14,10 +14,15 @@ class SyncGroupDetail {
             onFinish_SyncCompletion(presenter)
         })
         
-        let p = presenter as! MyGroupDetailPresenter
-        guard let id = p.getGroup()?.getId()
+        guard let p = presenter as? DetailPresenterProtocol
         else {
-            catchError(msg: "SynchronizerManager: viewDidLoad(): MyGroupDetailPresenter.getId() is nil")
+            catchError(msg: "SyncDetailGroup: sync(): presenter is not conformed DetailPresenterProtocol")
+            return
+        }
+
+        guard let id = p.getId()
+        else {
+            catchError(msg: "SyncDetailGroup: sync(): no id")
             return
         }
         

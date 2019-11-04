@@ -7,15 +7,8 @@ class MyGroupDetailPresenter: PlainPresenterProtocols {
         return DetailGroup.self
     }
        
-    var group: MyGroup?
-
-    func setGroup(group: MyGroup) {
-        self.group = group
-    }
+    var detailModel: ModelProtocol?
     
-    func getGroup() -> MyGroup? {
-        return group
-    }
     
     override func viewDidDisappear() {
         clearDataSource()
@@ -25,12 +18,29 @@ class MyGroupDetailPresenter: PlainPresenterProtocols {
     //MARK: override func
     override func save(validated: [PlainModelProtocol]) {
         let detailGroup = validated[0] as! DetailGroup
-        guard let gr = group
+        guard let group = detailModel as? MyGroup
         else {
-            catchError(msg: "MyGroupDetailPresenter: saveModel(): group is nil")
+            catchError(msg: "MyGroupDetailPresenter: save(): detailModel is incorrect")
             return
         }
-        detailGroup.setup(group: gr)
+        detailGroup.setup(group: group)
         super.didSave()
+    }
+}
+
+
+extension MyGroupDetailPresenter: DetailPresenterProtocol {
+    
+    func setDetailModel(model: ModelProtocol) {
+        self.detailModel = model
+    }
+    
+    func getId() -> typeId? {
+        guard let passed = detailModel
+        else {
+            catchError(msg: "MyGroupDetailPresenter: getId(): modelPassedThrowSegue is null")
+            return nil
+        }
+        return passed.getId()
     }
 }

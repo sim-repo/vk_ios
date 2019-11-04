@@ -309,7 +309,6 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="7PH-P7-0fz" secondAttribute="trailing" id="0GX-fm-aZg"/>
                                             <constraint firstItem="ojo-tb-ghI" firstAttribute="leading" secondItem="wkF-4k-dYW" secondAttribute="leading" constant="8" id="3sF-kE-9ge"/>

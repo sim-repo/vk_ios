@@ -67,7 +67,7 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
 }
 
 
-extension FriendWall_ViewController: PushPlainViewProtocol{
+extension FriendWall_ViewController: PushPlainViewProtocol {
     
     func viewReloadData() {
         collectionView.reloadData()

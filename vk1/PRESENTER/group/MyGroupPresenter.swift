@@ -8,15 +8,29 @@ class MyGroupPresenter: SectionPresenterProtocols {
         return MyGroup.self
     }
     
-    func onPerfomSegue_Details(selected indexPath: IndexPath) {
-        guard let group = getData(indexPath: indexPath) as? MyGroup
+    
+    override func viewDidSeguePrepare(segueId: String, indexPath: IndexPath) {
+        guard let segue = SegueIdEnum(rawValue: segueId),
+            segue == .detailGroup
             else {
-                catchError(msg: "MyGroupPresenter: onPerfomSegue_Details")
+                catchError(msg: "MyGroupPresenter: viewDidSeguePrepare(): segueId is incorrected: \(segueId)")
                 return
             }
-        let groupDetailPresenter: MyGroupDetailPresenter? = PresenterFactory.shared.getInstance()
-        groupDetailPresenter?.setGroup(group: group)
+        
+        guard let group = getData(indexPath: indexPath) as? MyGroup
+                    else {
+                        catchError(msg: "MyGroupPresenter: viewDidSeguePrepare(): no data with indexPath: \(indexPath)")
+                        return
+                    }
+        
+        guard let detailPresenter = PresenterFactory.shared.getInstance(clazz: MyGroupDetailPresenter.self) as? DetailPresenterProtocol
+        else {
+            catchError(msg: "MyGroupPresenter: viewDidSeguePrepare(): detailPresenter is not conformed DetailPresenterProtocol")
+            return
+        }
+        detailPresenter.setDetailModel(model: group)
     }
+
     
     func addGroup(group: Group) -> Bool {
         let has = sortedDataSource.contains {$0.getId() == group.id}

@@ -8,8 +8,6 @@ class FriendWallPresenter: PlainPresenterProtocols {
     }
     
     var detailModel: ModelProtocol?
-    
-    var friend: Friend?
 }
 
 
