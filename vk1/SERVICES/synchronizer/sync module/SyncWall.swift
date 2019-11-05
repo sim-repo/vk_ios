@@ -90,7 +90,9 @@ class SyncWall {
                 friendDS.forEach { model in
                     ids.append(model.getId())
                 }
-                                
+                   
+                ids = []
+                
                 self.dispatchGroup = DispatchGroup()
                 
                 wallPresenter.clearDataSource()

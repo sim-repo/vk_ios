@@ -75,7 +75,9 @@ class AlamofireNetworkManager{
                         if let t: T = parseJson(json) {
                            var arr: [T] = []
                            arr.append(t)
-                           onSuccess(arr)
+                            DELAY_THREAD {
+                                onSuccess(arr)
+                            }
                         }
                         else {
                             let err = NSError(domain: "AlamofireNetworkManager: requestSingle(): response data is null : \(json)", code: 123, userInfo: nil)
@@ -109,7 +111,7 @@ class AlamofireNetworkManager{
                             let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null", code: 123, userInfo: nil)
                             onError(err)
                         } else {
-                            DELAY_THREAD {
+                            LDELAY_THREAD {
                                 onSuccess(arr)
                             }
                         }

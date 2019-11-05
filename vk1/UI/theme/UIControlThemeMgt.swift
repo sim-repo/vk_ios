@@ -62,7 +62,7 @@ class UIControlThemeMgt {
     
     static func setupNavigationBarColor(navigationController: UINavigationController?){
         
-        let font = UIFont.systemFont(ofSize: 25)
+        let font = UIFont.systemFont(ofSize: 18)
         let shadow = NSShadow()
         shadow.shadowColor = ColorSystemHelper.background
         shadow.shadowBlurRadius = 15

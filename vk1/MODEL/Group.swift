@@ -17,7 +17,6 @@ class Group: SectionModelProtocol, DecodableProtocol {
     required init(){}
    
 
-   
     func setup(json: JSON?){
        if let json = json {
            id = json["id"].doubleValue
@@ -27,8 +26,6 @@ class Group: SectionModelProtocol, DecodableProtocol {
            avaURL200 = json["photo_200"].stringValue
        }
     }
-    
-    
     
     
     func getId() -> typeId {

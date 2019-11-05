@@ -106,12 +106,24 @@ class WallParser {
                    }
                }
         }
-        if photos.isEmpty {
-            if let photo = getPhoto(json) {
-                if let url = URL(string: photo["url"].stringValue) {
+        if imageURLs.isEmpty {
+            var photo: JSON?
+            let sizes = ["l", "q", "p", "o", "m"]
+            for size in sizes {
+                photo = getPhoto(json, size:size)
+                if photo != nil {
+                    break
+                }
+            }
+            if photo != nil {
+                if let url = URL(string: photo!["url"].stringValue) {
                     imageURLs.append(url)
                 }
             }
+        }
+       
+        if imageURLs.isEmpty {
+            print("bag")
         }
         return imageURLs
     }
@@ -222,14 +234,14 @@ class WallParser {
     }
     
     
-    private static func getPhoto(_ json: JSON) -> JSON? {
+    private static func getPhoto(_ json: JSON, size: String) -> JSON? {
         
         let links = json["attachments"].arrayValue.filter({ (json) -> Bool in
                 json["type"].stringValue == "link" })
             
 
         for link in links  {
-            return link["link"]["photo"]["sizes"].arrayValue.first(where: { $0["type"].stringValue == "l"})
+            return link["link"]["photo"]["sizes"].arrayValue.first(where: { $0["type"].stringValue == size})
         }
         return nil
     }

@@ -22,6 +22,8 @@ public class SectionedBasePresenter {
         return String(describing: self)
     }
     
+    var sectionChild: PullSectionPresenterProtocol?
+    var plainChild: PullPlainPresenterProtocol?
     
     //MARK: initial
     
@@ -176,6 +178,14 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
     }
     
     
+    func getSectionChild() -> PullSectionPresenterProtocol? {
+        return sectionChild
+    }
+    
+    func getPlainChild() -> PullPlainPresenterProtocol? {
+        return plainChild
+    }
+    
     final func sectionTitle(section: Int)->String {
         guard sectionsTitle.count > 0
             else {
@@ -241,6 +251,7 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
     }
     
     func viewDidDisappear() {
+        SynchronizerManager.shared.viewDidDisappear(presenter: self)
     }
     
     func viewDidSeguePrepare(segueId: SegueIdEnum, indexPath: IndexPath) {

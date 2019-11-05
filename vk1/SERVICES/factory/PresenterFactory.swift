@@ -93,4 +93,12 @@ class PresenterFactory {
         }
         return nil
     }
+    
+    
+    
+    //MARK: called from Synchronizer:
+    func removePresenter(moduleEnum: ModuleEnum){
+        presenters[moduleEnum] = nil
+    }
+    
 }

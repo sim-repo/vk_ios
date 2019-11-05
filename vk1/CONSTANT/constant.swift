@@ -3,11 +3,11 @@ import UIKit
 
 let baseURL = "https://api.vk.com/method/"
 let versionAPI = "5.103"
-let clientAPI = "7192541"
+let clientAPI = "7197054"
 
-let networkTimeout: TimeInterval = 1 // in sec
-let networkDelayBetweenRequests = 500 // in ms
-
+let networkTimeout: TimeInterval = 10 // in sec
+let networkDelayBetweenRequests = 500 //500 // in ms
+let networkLongDelayBetweenRequests = 5500 //500 // in ms
 
 enum ModelLoadedFromEnum {
     case network

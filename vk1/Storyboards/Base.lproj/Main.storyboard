@@ -182,10 +182,10 @@
             </objects>
             <point key="canvasLocation" x="449.27536231884062" y="19.419642857142858"/>
         </scene>
-        <!--Animated Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="Kiz-Zk-0bN">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="28x-hE-Guy" customClass="RAMAnimatedTabBarController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController modalPresentationStyle="fullScreen" id="28x-hE-Guy" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="GLj-Oe-nqk"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cib-LK-b5H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -195,10 +195,10 @@
                         <color key="barTintColor" red="0.14902859930000001" green="0.1489804387" blue="0.15293663739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
-                        <segue destination="kaq-6Y-c8i" kind="relationship" relationship="viewControllers" id="ORL-tw-1C3"/>
-                        <segue destination="Lub-WP-b7P" kind="relationship" relationship="viewControllers" id="rGt-k7-1qQ"/>
-                        <segue destination="ZE7-ss-eDI" kind="relationship" relationship="viewControllers" id="P7i-5N-E1E"/>
-                        <segue destination="mr1-WV-Hq0" kind="relationship" relationship="viewControllers" id="fJS-1b-E96"/>
+                        <segue destination="mmv-Hu-ZKX" kind="relationship" relationship="viewControllers" id="JUf-9N-eKg"/>
+                        <segue destination="T4N-o8-76M" kind="relationship" relationship="viewControllers" id="Pwu-U0-5lw"/>
+                        <segue destination="CbB-R1-usN" kind="relationship" relationship="viewControllers" id="25n-mc-RTP"/>
+                        <segue destination="03v-MC-DcY" kind="relationship" relationship="viewControllers" id="Y8L-Wt-nsi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUA-Hh-8za" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -206,143 +206,48 @@
             <point key="canvasLocation" x="1526" y="19"/>
         </scene>
         <!--Friend-->
-        <scene sceneID="WdP-pQ-GWm">
-            <objects>
-                <navigationController title="Friend" modalPresentationStyle="fullScreen" id="kaq-6Y-c8i" customClass="RotatedNavigationController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" image="icon_user" id="Ce2-k1-AdO" customClass="RAMAnimatedTabBarItem" customModule="vk1" customModuleProvider="target">
-                        <connections>
-                            <outlet property="animation" destination="IkR-eF-C98" id="ZRC-8d-FOM"/>
-                        </connections>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="Sfi-yq-ga6"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Xu-ud-PWa">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="mmv-Hu-ZKX" kind="relationship" relationship="rootViewController" id="2fs-qa-9lV"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DZ6-B4-QG8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <customObject id="IkR-eF-C98" customClass="RAMBounceAnimation" customModule="vk1" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="372" y="806"/>
-        </scene>
-        <!--Friend-->
         <scene sceneID="Y2u-wb-zb4">
             <objects>
                 <viewControllerPlaceholder storyboardName="Friend" id="mmv-Hu-ZKX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="sin-xd-MyB"/>
                     <navigationItem key="navigationItem" id="lh7-xl-ZFq"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CDv-DY-D9H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="372" y="1181"/>
+            <point key="canvasLocation" x="808" y="433"/>
         </scene>
         <!--MyGroup-->
         <scene sceneID="QiZ-f3-v4Q">
             <objects>
                 <viewControllerPlaceholder storyboardName="MyGroup" id="T4N-o8-76M" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="bJx-4b-JJx"/>
                     <navigationItem key="navigationItem" id="klv-CG-0FA"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HqH-4T-Bib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1222" y="1181"/>
-        </scene>
-        <!--My GROUP-->
-        <scene sceneID="3CM-nZ-XbE">
-            <objects>
-                <navigationController title="My GROUP" modalPresentationStyle="fullScreen" id="Lub-WP-b7P" customClass="CustomNavigationController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" image="g.circle.fill" catalog="system" id="SpF-DC-kSX" customClass="RAMAnimatedTabBarItem" customModule="vk1" customModuleProvider="target">
-                        <connections>
-                            <outlet property="animation" destination="dvf-ew-qfT" id="ZyB-SD-XdU"/>
-                        </connections>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="C21-mq-acq"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6fz-1L-x9F">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="T4N-o8-76M" kind="relationship" relationship="rootViewController" id="xJj-pm-ORb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fh4-2F-Uww" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <customObject id="dvf-ew-qfT" customClass="RAMBounceAnimation" customModule="vk1" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="1223" y="806"/>
-        </scene>
-        <!--Profile-->
-        <scene sceneID="A8J-c4-h8N">
-            <objects>
-                <navigationController title="Profile" modalPresentationStyle="fullScreen" id="ZE7-ss-eDI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="icon_settins" id="rCM-UE-KLe" customClass="RAMAnimatedTabBarItem" customModule="vk1" customModuleProvider="target">
-                        <connections>
-                            <outlet property="animation" destination="yww-GS-bXU" id="Jwh-NL-wRp"/>
-                        </connections>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="bey-UG-xtH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Ca-JZ-LqG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="CbB-R1-usN" kind="relationship" relationship="rootViewController" id="TkF-J3-Njp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Byb-zC-4uR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <customObject id="yww-GS-bXU" customClass="RAMBounceAnimation" customModule="vk1" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="2177" y="798"/>
+            <point key="canvasLocation" x="1359" y="433"/>
         </scene>
         <!--Profile-->
         <scene sceneID="TYd-2s-PQV">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="CbB-R1-usN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="jhW-6C-Way"/>
                     <navigationItem key="navigationItem" id="TzZ-5n-TmY"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOY-5B-883" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="1199"/>
-        </scene>
-        <!--Wall-->
-        <scene sceneID="mQQ-d7-tpB">
-            <objects>
-                <navigationController title="Wall" modalPresentationStyle="fullScreen" id="mr1-WV-Hq0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wall" image="rectangle.stack" catalog="system" id="kSt-XP-f7Z" customClass="RAMAnimatedTabBarItem" customModule="vk1" customModuleProvider="target">
-                        <connections>
-                            <outlet property="animation" destination="RIe-zB-JZt" id="Ml0-19-INn"/>
-                        </connections>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="iGa-Yv-ufx"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qbr-d4-qDp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="03v-MC-DcY" kind="relationship" relationship="rootViewController" id="Vhx-3f-eVm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KkO-ik-zkG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <customObject id="RIe-zB-JZt" customClass="RAMBounceAnimation" customModule="vk1" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="3125" y="798"/>
+            <point key="canvasLocation" x="1951" y="445"/>
         </scene>
         <!--Wall-->
         <scene sceneID="Rue-WZ-vm7">
             <objects>
                 <viewControllerPlaceholder storyboardName="Wall" id="03v-MC-DcY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="EEx-4M-5Mq"/>
                     <navigationItem key="navigationItem" id="Zwn-az-FM2"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHH-bu-Gsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3125" y="1181"/>
+            <point key="canvasLocation" x="2430" y="425"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="g.circle.fill" catalog="system" width="64" height="62"/>
-        <image name="icon_settins" width="30" height="30"/>
-        <image name="icon_user" width="30" height="30"/>
-        <image name="rectangle.stack" catalog="system" width="64" height="60"/>
-    </resources>
 </document>

@@ -126,6 +126,13 @@ class MyTextView_OnPrimary : UITextView {
     }
 }
 
+class MyTextView_Secondary : UITextView {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        textColor = ColorSystemHelper.secondary
+    }
+}
+
 
 
 class MyImageView_Primary : UIImageView {

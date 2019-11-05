@@ -8,4 +8,6 @@ protocol PullPresenterProtocol: class {
     func viewDidDisappear()
     func viewDidFilterInput(_ filterText: String)
     func viewDidSeguePrepare(segueId: SegueIdEnum, indexPath: IndexPath)
+    func getSectionChild() -> PullSectionPresenterProtocol?
+    func getPlainChild() -> PullPlainPresenterProtocol?
 }

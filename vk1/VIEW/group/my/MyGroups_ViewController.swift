@@ -94,9 +94,9 @@ extension MyGroups_ViewController: UICollectionViewDelegate, UICollectionViewDat
 extension MyGroups_ViewController {
     
     
-    private func getNavigationController() -> CustomNavigationController {
-        return navigationController as! CustomNavigationController
-    }
+//    private func getNavigationController() -> CustomNavigationController {
+//        return navigationController as! CustomNavigationController
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -141,26 +141,26 @@ extension MyGroups_ViewController {
     }
     
     private func prepareAddGroupSegue(){
-        getNavigationController().setup(pushAnimator: RotatedPushAnimator(), popAnimator: RotatedPopAnimator())
+       // getNavigationController().setup(pushAnimator: RotatedPushAnimator(), popAnimator: RotatedPopAnimator())
     }
     
     
     // MARK: segue: detailed group
     private func prepareDetailedSegue(){
         
-        let navigationController = getNavigationController()
+       // let navigationController = getNavigationController()
         let animator = ZoomAnimator()
-        navigationController.setup(pushAnimator: animator, popAnimator: animator)
+        //navigationController.setup(pushAnimator: animator, popAnimator: animator)
         
         guard
           let indexPath = collectionView.indexPathsForSelectedItems,
           let selectedCell = collectionView.cellForItem(at: indexPath[0])
           else { return }  // TODO: throw err
         
-        guard let pushAnimator = navigationController.pushAnimator as? ZoomAnimator
-            else { return } // TODO: throw err
+        //guard let pushAnimator = navigationController.pushAnimator as? ZoomAnimator
+          //  else { return } // TODO: throw err
         
-        pushAnimator.prepareForPush(cell: selectedCell)
+        //pushAnimator.prepareForPush(cell: selectedCell)
     }
 }
 

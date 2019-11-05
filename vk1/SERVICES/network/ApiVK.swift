@@ -66,7 +66,6 @@ class ApiVK {
     }
     
     
-    
     static func wallRequest(ownerId: Double, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
 
         let urlPath: String = "wall.get"

@@ -1,6 +1,6 @@
 import Foundation
 
-class FriendWallPresenter: PlainPresenterProtocols {
+class MyGroupWallPresenter: PlainPresenterProtocols {
     
     var modelClass: AnyClass  {
         return Wall.self
@@ -11,7 +11,7 @@ class FriendWallPresenter: PlainPresenterProtocols {
 
 
 
-extension FriendWallPresenter: DetailPresenterProtocol {
+extension MyGroupWallPresenter: DetailPresenterProtocol {
     
     func setDetailModel(model: ModelProtocol) {
         self.detailModel = model
@@ -20,7 +20,7 @@ extension FriendWallPresenter: DetailPresenterProtocol {
     func getId() -> typeId? {
         guard let passed = detailModel
         else {
-            catchError(msg: "FriendWallPresenter: getId(): modelPassedThrowSegue is null")
+            catchError(msg: "MyGroupWallPresenter: getId(): modelPassedThrowSegue is null")
             return nil
         }
         return passed.getId()

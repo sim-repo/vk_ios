@@ -49,7 +49,7 @@ extension Group_ViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 
 extension Group_ViewController: PushPlainViewProtocol{
-    func viewReloadData() {
+    func viewReloadData(moduleEnum: ModuleEnum) {
         self.collectionView.reloadData()
     }
 }

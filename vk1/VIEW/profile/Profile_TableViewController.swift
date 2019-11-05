@@ -32,7 +32,7 @@ class Profile_TableViewController: UITableViewController {
 
 
 extension Profile_TableViewController: PushPlainViewProtocol {
-    func viewReloadData() {
+    func viewReloadData(moduleEnum: ModuleEnum) {
         tableView.reloadData()
     }
 }

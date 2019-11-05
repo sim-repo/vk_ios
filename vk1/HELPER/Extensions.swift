@@ -63,6 +63,12 @@ func DELAY_THREAD(_ block: @escaping (() -> Void)) {
     }
 }
 
+func LDELAY_THREAD(_ block: @escaping (() -> Void)) {
+    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(networkLongDelayBetweenRequests), qos: .background){
+        block()
+    }
+}
+
 
 func isRowPresentInTableView(indexPath: IndexPath, tableView: UITableView) -> Bool{
     if indexPath.section < tableView.numberOfSections{
@@ -76,7 +82,9 @@ func isRowPresentInTableView(indexPath: IndexPath, tableView: UITableView) -> Bo
 
 func catchError(msg: String){
     #if DEBUG
-        print("error occurred: " + msg)
+        print("----------------------")
+        print("ERROR: " + msg)
+        print("----------------------")
         //fatalError()
     #else
         sendCrashlytics(msg)
@@ -100,12 +108,7 @@ func convertUnixTime(unixTime: Double) -> String {
 
 func console(msg: String) {
     #if DEBUG
-        print()
-        print()
-        print("----------------------------------------------------------------------")
         print(msg)
-        print("----------------------------------------------------------------------")
-        print()
         print()
     #else
            logInf(msg)
@@ -134,3 +137,14 @@ func getRawClassName(object: AnyClass) -> String {
     let components = name.components(separatedBy: ".")
     return components.last ?? "Unknown"
 }
+
+
+extension UITextView {
+    func actualSize() -> CGSize {
+        let fixedWidth = frame.size.width
+        let newSize = sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        return frame.size
+    }
+}
+

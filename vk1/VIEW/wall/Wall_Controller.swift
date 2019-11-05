@@ -10,6 +10,12 @@ class Wall_Controller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPresenter()
+        setupCells()
+        UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
+    }
+    
+    
+    private func setupCells(){
         for i in 1...cellByCode.count {
             collectionView.register(UINib(nibName: cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: cellByCode["tp\(i)"]!)
         }
@@ -18,7 +24,6 @@ class Wall_Controller: UIViewController {
         let height = view.frame.size.height*0.3
         layout.minimumLineSpacing = 50
         layout.itemSize = CGSize(width: width, height: height)
-        UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
     }
     
     private func setupPresenter(){
@@ -39,9 +44,12 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell: UICollectionViewCell!
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellByCode["tp1"]!, for: indexPath) // !
+        
         guard let wall = presenter.getData(indexPath: indexPath) as? Wall
-            else { return UICollectionViewCell() }
+            else {
+                return cell
+            }
         
         if let name = cellByCode[wall.postTypeCode] {
             cell = cellConfigure(name, indexPath, wall)
@@ -56,13 +64,7 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      //  guard let wall = presenter.getData(indexPath) as? Wall
-        //    else { return CGSize(width: 100.0, height: 300.0) }
-        
-        
         let width = view.frame.size.width - constraintSpaceX.constant * 40
-        //let height = view.frame.size.height*0.6
-    
         return CGSize(width: width, height: cellHeaderHeight + cellImageHeight + cellBottomHeight)
     }
 }
@@ -70,7 +72,7 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
 
 extension Wall_Controller: PushPlainViewProtocol{
     
-    func viewReloadData() {
+    func viewReloadData(moduleEnum: ModuleEnum) {
         collectionView.reloadData()
     }
 }

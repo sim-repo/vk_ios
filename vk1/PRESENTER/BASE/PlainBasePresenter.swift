@@ -7,7 +7,12 @@ public class PlainBasePresenter {
         return nil
     }
     
-    weak var view: PushPlainViewProtocol?
+    weak var view: PushPlainViewProtocol? {
+        willSet(newValue) {
+            didSetViewCompletion?(newValue)
+        }
+    }
+    
     var dataSource: [PlainModelProtocol] = []
     
     
@@ -15,6 +20,13 @@ public class PlainBasePresenter {
         return String(describing: self)
     }
 
+    //for subscribing by child presenters
+    var didSetViewCompletion: ((PushPlainViewProtocol?)->Void)?
+    
+    var sectionChildPresenter: PullSectionPresenterProtocol?
+    var plainChildPresenter: PullPlainPresenterProtocol?
+    
+    
     //MARK: initial
     
     // when view is not exists
@@ -94,9 +106,12 @@ public class PlainBasePresenter {
     
     func didSave() {
         UI_THREAD { [weak self] in
-            self?.view?.viewReloadData()
+            guard let self = self else { return }
+            let moduleEnum = ModuleEnum(presenter: self)
+            self.view?.viewReloadData(moduleEnum: moduleEnum)
         }
     }
+    
     
     func sort() {
        dataSource = dataSource.sorted {
@@ -145,9 +160,18 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
     }
     
     @objc func viewDidDisappear() {
+        SynchronizerManager.shared.viewDidDisappear(presenter: self)
     }
     
     func viewDidFilterInput(_ filterText: String) {
+    }
+    
+    func getSectionChild() -> PullSectionPresenterProtocol? {
+        return sectionChildPresenter
+    }
+    
+    func getPlainChild() -> PullPlainPresenterProtocol? {
+        return plainChildPresenter
     }
     
     func viewDidSeguePrepare(segueId: SegueIdEnum, indexPath: IndexPath) {
@@ -191,7 +215,8 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
             else { return }
         UI_THREAD { [weak self] in
             guard let self = self else { return }
-            self.view?.viewReloadData()
+            let moduleEnum = ModuleEnum(presenter: self)
+            self.view?.viewReloadData(moduleEnum: moduleEnum)
         }
     }
     

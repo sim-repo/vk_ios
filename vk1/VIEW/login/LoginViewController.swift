@@ -90,6 +90,6 @@ class LoginViewController: UIViewController {
 
 
 extension LoginViewController: PushPlainViewProtocol{
-    func viewReloadData() {
+    func viewReloadData(moduleEnum: ModuleEnum) {
     }
 }

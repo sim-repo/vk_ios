@@ -32,7 +32,6 @@
 		16200D012333731D00F02440 /* DetailFriendPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D002333731D00F02440 /* DetailFriendPresenter.swift */; };
 		16200D0323388A9500F02440 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16200D0223388A9500F02440 /* Profile.storyboard */; };
 		16200D0623388E5D00F02440 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D0523388E5D00F02440 /* RoundedImage.swift */; };
-		16200D0C2338934A00F02440 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D0B2338934A00F02440 /* Photo.swift */; };
 		16200D0E233893B500F02440 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D0D233893B500F02440 /* ProfilePresenter.swift */; };
 		16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D0F233895EF00F02440 /* Profile_TableCell.swift */; };
 		16200D1323389A1B00F02440 /* Wall.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16200D1223389A1B00F02440 /* Wall.storyboard */; };
@@ -40,6 +39,7 @@
 		16200D1923389CCE00F02440 /* WallPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D1823389CCE00F02440 /* WallPresenter.swift */; };
 		16200D1F2338AB3300F02440 /* LettersSearchControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D1E2338AB3300F02440 /* LettersSearchControl.swift */; };
 		16200D212338ACCA00F02440 /* Friend_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D202338ACCA00F02440 /* Friend_Controller.swift */; };
+		162BEFB32371C7CF00D765FB /* Typing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162BEFB22371C7CF00D765FB /* Typing.swift */; };
 		163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */; };
 		163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */; };
 		1647649C2365E031007D1B19 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649B2365E031007D1B19 /* Session.swift */; };
@@ -128,6 +128,8 @@
 		16E08B66236F80B800340F09 /* FriendWall_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B65236F80B800340F09 /* FriendWall_ViewController.swift */; };
 		16E08B78237010B200340F09 /* DetailPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B77237010B200340F09 /* DetailPresenterProtocol.swift */; };
 		16E08B7E2370338000340F09 /* ModuleEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B7D2370338000340F09 /* ModuleEnum.swift */; };
+		16E08B86237065F100340F09 /* MyGroupWallPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B85237065F100340F09 /* MyGroupWallPresenter.swift */; };
+		16E08B8A23707EEE00340F09 /* SyncMyGroupWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B8923707EEE00340F09 /* SyncMyGroupWall.swift */; };
 		16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */; };
 		16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD22351FDCD001C33CF /* PostImageView.swift */; };
 		16FF6FD623522E41001C33CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6FD523522E41001C33CF /* Extensions.swift */; };
@@ -196,7 +198,6 @@
 		16200D002333731D00F02440 /* DetailFriendPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFriendPresenter.swift; sourceTree = "<group>"; };
 		16200D0223388A9500F02440 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		16200D0523388E5D00F02440 /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
-		16200D0B2338934A00F02440 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		16200D0D233893B500F02440 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		16200D0F233895EF00F02440 /* Profile_TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_TableCell.swift; sourceTree = "<group>"; };
 		16200D1223389A1B00F02440 /* Wall.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wall.storyboard; sourceTree = "<group>"; };
@@ -204,6 +205,7 @@
 		16200D1823389CCE00F02440 /* WallPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallPresenter.swift; sourceTree = "<group>"; };
 		16200D1E2338AB3300F02440 /* LettersSearchControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LettersSearchControl.swift; sourceTree = "<group>"; };
 		16200D202338ACCA00F02440 /* Friend_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend_Controller.swift; sourceTree = "<group>"; };
+		162BEFB22371C7CF00D765FB /* Typing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typing.swift; sourceTree = "<group>"; };
 		163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupPresenter.swift; sourceTree = "<group>"; };
 		163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedBasePresenter.swift; sourceTree = "<group>"; };
 		1647649B2365E031007D1B19 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -294,6 +296,8 @@
 		16E08B67236F924400340F09 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		16E08B77237010B200340F09 /* DetailPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenterProtocol.swift; sourceTree = "<group>"; };
 		16E08B7D2370338000340F09 /* ModuleEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleEnum.swift; sourceTree = "<group>"; };
+		16E08B85237065F100340F09 /* MyGroupWallPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupWallPresenter.swift; sourceTree = "<group>"; };
+		16E08B8923707EEE00340F09 /* SyncMyGroupWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMyGroupWall.swift; sourceTree = "<group>"; };
 		16FF6FCA2351F0DA001C33CF /* RotatedPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPushAnimator.swift; sourceTree = "<group>"; };
 		16FF6FD22351FDCD001C33CF /* PostImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		16FF6FD523522E41001C33CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -459,12 +463,21 @@
 			path = wall;
 			sourceTree = "<group>";
 		};
+		162BEFAD2371C77500D765FB /* typing */ = {
+			isa = PBXGroup;
+			children = (
+				162BEFB22371C7CF00D765FB /* Typing.swift */,
+			);
+			path = typing;
+			sourceTree = "<group>";
+		};
 		163CF9A823334D9B0087C6E2 /* PRESENTER */ = {
 			isa = PBXGroup;
 			children = (
 				16D58BE9236706B800735296 /* BASE */,
 				16E08B3A236C6C7F00340F09 /* login */,
 				16E08B2E236B3BED00340F09 /* friend */,
+				16E08B84237065D100340F09 /* mygroup */,
 				16E08B2D236B3BDA00340F09 /* group */,
 				16E08B2F236B3BFE00340F09 /* wall */,
 				16E08B30236B3C1000340F09 /* profile */,
@@ -525,8 +538,8 @@
 				16E08B3D236CEBB800340F09 /* ModelOwnerPresenterProtocol.swift */,
 				16E08B3F236CECE800340F09 /* SectionPresenterProtocols.swift */,
 				16E08B58236DF13700340F09 /* PlainPresenterProtocols.swift */,
-				16E08B61236EC64700340F09 /* SynchronizedPresenterProtocol.swift */,
 				16E08B77237010B200340F09 /* DetailPresenterProtocol.swift */,
+				16E08B61236EC64700340F09 /* SynchronizedPresenterProtocol.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -624,7 +637,6 @@
 				16AB0B88232F7C7800E21B7F /* MyGroup.swift */,
 				16AB0BA8232F985D00E21B7F /* Group.swift */,
 				16E08B36236B62FD00340F09 /* DetailGroup.swift */,
-				16200D0B2338934A00F02440 /* Photo.swift */,
 				16E08B5A236DF1B900340F09 /* Login.swift */,
 			);
 			path = MODEL;
@@ -758,8 +770,6 @@
 		16E08B2D236B3BDA00340F09 /* group */ = {
 			isa = PBXGroup;
 			children = (
-				163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */,
-				16E08B32236B3C5F00340F09 /* MyGroupDetailPresenter.swift */,
 				16200CFC233360FF00F02440 /* GroupPresenter.swift */,
 			);
 			path = group;
@@ -807,6 +817,7 @@
 				16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */,
 				16E08B46236DD6E300340F09 /* SyncWall.swift */,
 				16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */,
+				16E08B8923707EEE00340F09 /* SyncMyGroupWall.swift */,
 				16E08B56236DDEB700340F09 /* SyncGroup.swift */,
 				16E08B4C236DD7DB00340F09 /* SyncGroupDetail.swift */,
 				16E08B4E236DD80800340F09 /* SyncProfile.swift */,
@@ -824,6 +835,16 @@
 				16E08B75236F924400340F09 /* SwiftyJSON.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		16E08B84237065D100340F09 /* mygroup */ = {
+			isa = PBXGroup;
+			children = (
+				163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */,
+				16E08B32236B3C5F00340F09 /* MyGroupDetailPresenter.swift */,
+				16E08B85237065F100340F09 /* MyGroupWallPresenter.swift */,
+			);
+			path = mygroup;
 			sourceTree = "<group>";
 		};
 		16FF6FCC2351F1ED001C33CF /* navigation controller */ = {
@@ -858,6 +879,7 @@
 		16FF6FCF2351F3C0001C33CF /* control */ = {
 			isa = PBXGroup;
 			children = (
+				162BEFAD2371C77500D765FB /* typing */,
 				164F8D5F236AD958003C50E3 /* waiter */,
 				168AC579236ABCEA00A1B2A6 /* tabbar */,
 			);
@@ -1132,6 +1154,7 @@
 				16200D212338ACCA00F02440 /* Friend_Controller.swift in Sources */,
 				166667522347CA1A00FD2B86 /* Wall_Cell_tp8.swift in Sources */,
 				168AC5B0236AC32D00A1B2A6 /* RAMItemAnimationProtocol.swift in Sources */,
+				162BEFB32371C7CF00D765FB /* Typing.swift in Sources */,
 				16112740234B45E50080FD54 /* DataGeneratorHelper.swift in Sources */,
 				16E08B4F236DD80800340F09 /* SyncProfile.swift in Sources */,
 				161C11422347426100A2EC9D /* StickyFlowLayout.swift in Sources */,
@@ -1152,7 +1175,6 @@
 				16E08B2A236ADAEA00340F09 /* RAMBounceAnimation.swift in Sources */,
 				16D58BE82366C6BE00735296 /* PlainModelProtocol.swift in Sources */,
 				166D1B05234EFF0F00C552E4 /* ZoomAnimator.swift in Sources */,
-				16200D0C2338934A00F02440 /* Photo.swift in Sources */,
 				16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */,
 				16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */,
 				1604060D234E5A250083F3C3 /* MyGroupDetail_ViewController.swift in Sources */,
@@ -1163,6 +1185,7 @@
 				16200D1923389CCE00F02440 /* WallPresenter.swift in Sources */,
 				16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */,
 				164764B32365FB86007D1B19 /* PushViewProtocol.swift in Sources */,
+				16E08B8A23707EEE00340F09 /* SyncMyGroupWall.swift in Sources */,
 				16AB0BA9232F985D00E21B7F /* Group.swift in Sources */,
 				1647649C2365E031007D1B19 /* Session.swift in Sources */,
 				16200D0623388E5D00F02440 /* RoundedImage.swift in Sources */,
@@ -1175,6 +1198,7 @@
 				166667DA2348994100FD2B86 /* UIControl+Extensions.swift in Sources */,
 				16200D012333731D00F02440 /* DetailFriendPresenter.swift in Sources */,
 				164764AA2365EFDA007D1B19 /* PullSectionPresenterProtocol.swift in Sources */,
+				16E08B86237065F100340F09 /* MyGroupWallPresenter.swift in Sources */,
 				16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */,
 				1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */,
 				166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */,
