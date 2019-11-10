@@ -32,11 +32,15 @@ class MyGroup: SectionModelProtocol, DecodableProtocol {
     }
     
     func getId() -> typeId {
-        id
+        return id
     }
     
     func getSortBy() -> String {
-        "\(id)"
+        if let id_ = id {
+            return "\(id_)"
+        }
+        catchError(msg: "MyGroup: getSortBy(): return is nil")
+        return ""
     }
     
     func getGroupBy() -> String {

@@ -300,8 +300,9 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     // when response has got from network
     final func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion? = nil) -> onSuccess_PresenterCompletion {
         let outerCompletion: onSuccess_PresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
-            self?.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
-            console(msg: "SectionedBasePresenter: \(self?.clazz): didSuccessNetworkResponse")
+            guard let self = self else { return }
+            self.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
+            console(msg: "SectionedBasePresenter: \(self.clazz): didSuccessNetworkResponse")
             completion?()
         }
         return outerCompletion
