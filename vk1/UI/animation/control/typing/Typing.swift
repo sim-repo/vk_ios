@@ -6,9 +6,15 @@ extension UILabel {
         text = ""
         var writingTask: DispatchWorkItem?
         writingTask = DispatchWorkItem { [weak weakSelf = self] in
-            for character in typedText {
+            for (idx, character) in typedText.enumerated() {
                 DispatchQueue.main.async {
+                    if idx > 0 {
+                        weakSelf?.text!.removeLast()
+                    }
                     weakSelf?.text!.append(character)
+                    if idx < typedText.count-1 {
+                        weakSelf?.text!.append("_")
+                    }
                 }
                 Thread.sleep(forTimeInterval: characterDelay/100)
             }

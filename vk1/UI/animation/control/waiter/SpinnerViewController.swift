@@ -9,7 +9,6 @@ class SpinnerViewController: UIViewController {
         self.init()
         self.vc = vc
         self.vc?.addChild(self)
-       // view.frame = vc.view.frame
         self.vc?.view.addSubview(self.view)
         didMove(toParent: vc)
     }

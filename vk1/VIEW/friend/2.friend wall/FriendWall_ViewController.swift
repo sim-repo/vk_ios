@@ -7,9 +7,16 @@ class FriendWall_ViewController: UIViewController {
     
     var presenter: PullPlainPresenterProtocol!
     
+    var waiter: SpinnerViewController?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPresenter()
+        
+        waiter = SpinnerViewController(vc: self)
+        waiter?.add(vcView: view)
+        
         for i in 1...cellByCode.count {
             collectionView.register(UINib(nibName: cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: cellByCode["tp\(i)"]!)
         }
@@ -55,13 +62,7 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      //  guard let wall = presenter.getData(indexPath) as? Wall
-        //    else { return CGSize(width: 100.0, height: 300.0) }
-        
-        
         let width = view.frame.size.width - constraintSpaceX.constant * 40
-        //let height = view.frame.size.height*0.6
-    
         return CGSize(width: width, height: cellHeaderHeight + cellImageHeight + cellBottomHeight)
     }
 }
@@ -71,5 +72,6 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
     
     func viewReloadData(moduleEnum: ModuleEnum) {
         collectionView.reloadData()
+        waiter?.stop(vcView: view)
     }
 }

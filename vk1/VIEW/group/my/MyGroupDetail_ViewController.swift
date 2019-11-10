@@ -34,6 +34,7 @@ class MyGroupDetail_ViewController: UIViewController {
         super.viewDidLoad()
         setupPresenter()
         setupCells()
+        navigationItem.title = "Waiting for networking.."
         headerViewOriginalHeight = conHeightHeader.constant
         logoOriginalHeight = constraintLogoHeight.constant
         descOriginalHeight = constraintDescHeight.constant
@@ -61,11 +62,6 @@ class MyGroupDetail_ViewController: UIViewController {
         layout.minimumLineSpacing = 50
         layout.itemSize = CGSize(width: 100, height: 300)
     }
-    
-    private func getNavigationController() -> CustomNavigationController {
-        return navigationController as! CustomNavigationController
-    }
-    
 }
 
 // MARK: segue handlers
@@ -138,14 +134,14 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
                     return
             }
             navigationItem.title = group.name
-          if group.coverURL400 == nil {
-              coverImageView.kf.setImage(with: group.avaURL200)
-          } else {
-              logoImageView.kf.setImage(with: group.avaURL200)
-              coverImageView.kf.setImage(with: group.coverURL400)
-          }
+            if group.coverURL400 == nil {
+                coverImageView.kf.setImage(with: group.avaURL200)
+            } else {
+                logoImageView.kf.setImage(with: group.avaURL200)
+                coverImageView.kf.setImage(with: group.coverURL400)
+            }
             
-
+            
             descTextView?.text = group.desc
             //resize UITEXTVIEW:
             descOriginalHeight = descTextView.actualSize().height
@@ -153,13 +149,13 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
             
             
             let str = "[members]: " + group.membersCount.toString() +
-                     "\n[photos]: " + group.photosCounter.toString() +
-                     "\n[albums]: " + group.albumsCounter.toString() +
-                     "\n[topics]: " + group.topicsCounter.toString() +
-                     "\n[videos]: " + group.videosCounter.toString() +
-                     "\n[market]: " + group.marketCounter.toString() +
-                     "\n[closed]: " + group.isClosed.toString() +
-                     "\n[deactivated]: " + group.isDeactivated.toString()
+                "\n[photos]: " + group.photosCounter.toString() +
+                "\n[albums]: " + group.albumsCounter.toString() +
+                "\n[topics]: " + group.topicsCounter.toString() +
+                "\n[videos]: " + group.videosCounter.toString() +
+                "\n[market]: " + group.marketCounter.toString() +
+                "\n[closed]: " + group.isClosed.toString() +
+                "\n[deactivated]: " + group.isDeactivated.toString()
             
             
             //resize UILABEL:
@@ -168,7 +164,7 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
             constraintCounterHeight.constant = counterLabel.frame.size.height
             counterLabel.text = "" // reset
             counterLabel.setTextWithTypeAnimation(typedText: str, characterDelay: 10)
-           
+            
             //resize UIVIEW:
             headerViewOriginalHeight = self.constraintDescHeight.constant + constraintCounterHeight.constant + constraintCoverHeight.constant + 16
             conHeightHeader.constant = headerViewOriginalHeight

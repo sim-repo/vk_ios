@@ -713,13 +713,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diego" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x35-5s-SNp" customClass="MyLabel_OnBackground" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="12" width="326" height="20"/>
+                                                    <rect key="frame" x="48" y="12" width="350" height="20"/>
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLK-dX-UDb" customClass="RoundedImage" customModule="vk1" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="10" width="24" height="24"/>
+                                                    <rect key="frame" x="8" y="10" width="24" height="24"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="VO6-39-jjE"/>

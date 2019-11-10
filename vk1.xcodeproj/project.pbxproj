@@ -40,6 +40,8 @@
 		16200D1F2338AB3300F02440 /* LettersSearchControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D1E2338AB3300F02440 /* LettersSearchControl.swift */; };
 		16200D212338ACCA00F02440 /* Friend_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D202338ACCA00F02440 /* Friend_Controller.swift */; };
 		162BEFB32371C7CF00D765FB /* Typing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162BEFB22371C7CF00D765FB /* Typing.swift */; };
+		162BEFBE2372465E00D765FB /* subway-ticker_[allfont.ru].ttf in Resources */ = {isa = PBXBuildFile; fileRef = 162BEFBD2372464B00D765FB /* subway-ticker_[allfont.ru].ttf */; };
+		162BEFC0237247CB00D765FB /* arcade.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 162BEFBF237247B800D765FB /* arcade.ttf */; };
 		163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */; };
 		163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */; };
 		1647649C2365E031007D1B19 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649B2365E031007D1B19 /* Session.swift */; };
@@ -206,6 +208,8 @@
 		16200D1E2338AB3300F02440 /* LettersSearchControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LettersSearchControl.swift; sourceTree = "<group>"; };
 		16200D202338ACCA00F02440 /* Friend_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend_Controller.swift; sourceTree = "<group>"; };
 		162BEFB22371C7CF00D765FB /* Typing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typing.swift; sourceTree = "<group>"; };
+		162BEFBD2372464B00D765FB /* subway-ticker_[allfont.ru].ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "subway-ticker_[allfont.ru].ttf"; sourceTree = "<group>"; };
+		162BEFBF237247B800D765FB /* arcade.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arcade.ttf; sourceTree = "<group>"; };
 		163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupPresenter.swift; sourceTree = "<group>"; };
 		163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedBasePresenter.swift; sourceTree = "<group>"; };
 		1647649B2365E031007D1B19 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -469,6 +473,23 @@
 				162BEFB22371C7CF00D765FB /* Typing.swift */,
 			);
 			path = typing;
+			sourceTree = "<group>";
+		};
+		162BEFB72372462100D765FB /* RESOURCES */ = {
+			isa = PBXGroup;
+			children = (
+				162BEFBC2372463E00D765FB /* font */,
+			);
+			path = RESOURCES;
+			sourceTree = "<group>";
+		};
+		162BEFBC2372463E00D765FB /* font */ = {
+			isa = PBXGroup;
+			children = (
+				162BEFBF237247B800D765FB /* arcade.ttf */,
+				162BEFBD2372464B00D765FB /* subway-ticker_[allfont.ru].ttf */,
+			);
+			path = font;
 			sourceTree = "<group>";
 		};
 		163CF9A823334D9B0087C6E2 /* PRESENTER */ = {
@@ -934,6 +955,7 @@
 				16AB0B8A232F7D0D00E21B7F /* VIEW */,
 				16AB0B85232F7B6C00E21B7F /* MODEL */,
 				164764A02365E1C2007D1B19 /* PROTOCOL */,
+				162BEFB72372462100D765FB /* RESOURCES */,
 				16AB0B9A232F7E9F00E21B7F /* storyboards */,
 				D4001F382327B7B50070829F /* AppDelegate.swift */,
 				D4001F442327B7B60070829F /* Info.plist */,
@@ -1053,6 +1075,7 @@
 				1666675C2347CB6700FD2B86 /* Wall_Cell_tp4.xib in Resources */,
 				16200D1323389A1B00F02440 /* Wall.storyboard in Resources */,
 				161B0E612349D1DA0081008B /* WallLike_View.xib in Resources */,
+				162BEFBE2372465E00D765FB /* subway-ticker_[allfont.ru].ttf in Resources */,
 				16AB0BA0232F7EE100E21B7F /* Friend.storyboard in Resources */,
 				16AB0B9E232F7ED600E21B7F /* MyGroup.storyboard in Resources */,
 				1666673B2347B75F00FD2B86 /* Wall_Cell_tp1.xib in Resources */,
@@ -1067,6 +1090,7 @@
 				166667642347CB9600FD2B86 /* Wall_Cell_tp8.xib in Resources */,
 				D4001F3E2327B7B50070829F /* Main.storyboard in Resources */,
 				161C11462347592400A2EC9D /* Assets.xcassets in Resources */,
+				162BEFC0237247CB00D765FB /* arcade.ttf in Resources */,
 				16200D0323388A9500F02440 /* Profile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

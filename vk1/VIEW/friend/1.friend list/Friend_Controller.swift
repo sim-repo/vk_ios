@@ -26,6 +26,7 @@ class Friend_Controller: UIViewController {
     
     var lastContentOffset: CGFloat = 0
 
+    var waiter: SpinnerViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,9 @@ class Friend_Controller: UIViewController {
         setupAlphabetSearchControl()
         setupSearchTextField()
         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
+        
+        waiter = SpinnerViewController(vc: self)
+        waiter?.add(vcView: view)
     }
     
     private func setupPresenter(){
@@ -151,6 +155,7 @@ extension Friend_Controller: PushSectionedViewProtocol{
     func viewReloadData(groupByIds: [String]) {
         self.lettersSearchControl.updateControl(with: groupByIds)
         self.tableView.reloadData()
+        waiter?.stop(vcView: view)
     }
 }
 

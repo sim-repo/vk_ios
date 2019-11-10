@@ -1,5 +1,4 @@
 import Foundation
-import Alamofire
 
 // complex presenter
 // has child presenter: #child

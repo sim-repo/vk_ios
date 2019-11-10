@@ -6,9 +6,12 @@ class Wall_Controller: UIViewController {
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
     
     var presenter: PullPlainPresenterProtocol!
+    var waiter: SpinnerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        waiter = SpinnerViewController(vc: self)
+        waiter?.add(vcView: view)
         setupPresenter()
         setupCells()
         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
@@ -73,6 +76,8 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
 extension Wall_Controller: PushPlainViewProtocol{
     
     func viewReloadData(moduleEnum: ModuleEnum) {
+        console(msg: "Wall_Controller: viewReloadData()")
         collectionView.reloadData()
+        waiter?.stop(vcView: view)
     }
 }

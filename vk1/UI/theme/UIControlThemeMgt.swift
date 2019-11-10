@@ -62,7 +62,17 @@ class UIControlThemeMgt {
     
     static func setupNavigationBarColor(navigationController: UINavigationController?){
         
-        let font = UIFont.systemFont(ofSize: 18)
+        
+        guard let font = UIFont(name: "Arcade", size: 30) else {
+            fatalError("""
+                Failed to load the "CustomFont-Light" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+     
+        
+        //let font = UIFont.systemFont(ofSize: 18)
         let shadow = NSShadow()
         shadow.shadowColor = ColorSystemHelper.background
         shadow.shadowBlurRadius = 15

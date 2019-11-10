@@ -91,7 +91,7 @@ class SyncWall {
                     ids.append(model.getId())
                 }
                    
-                ids = []
+               // ids = []
                 
                 self.dispatchGroup = DispatchGroup()
                 
