@@ -4,5 +4,5 @@ target 'vk1' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'Kingfisher', '~> 5.0'
-
+  pod 'RealmSwift'	
 end

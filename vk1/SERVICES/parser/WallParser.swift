@@ -40,9 +40,7 @@ class WallParser {
             if isRepost(json) {
                 let myId = json["owner_id"].doubleValue
                 if let f = profiles[myId] {
-                   if let url = f.avaURL100 {
-                       avaUrl = URL(string: url)
-                   }
+                   avaUrl = f.avaURL100
                    name = f.firstName + " "+f.lastName
                    title = getTitle(json, false)
                    unixTime = getDate(json, false)
@@ -61,18 +59,14 @@ class WallParser {
         let repost = isRepost(json)
         let authorId = abs(getAuthorId(json, repost))
         if let g = groups[authorId] {
-            if let url = g.avaURL200 {
-                avaUrl = URL(string: url)
-            }
+            avaUrl = g.avaURL200 
             name = g.name
             title = getTitle(json, repost)
             unixTime = getDate(json, repost)
         }
         
         if let f = profiles[authorId] {
-           if let url = f.avaURL100 {
-               avaUrl = URL(string: url)
-           }
+           avaUrl = f.avaURL100
            name = f.firstName + " "+f.lastName
            title = getTitle(json, true)
            unixTime = getDate(json, true)

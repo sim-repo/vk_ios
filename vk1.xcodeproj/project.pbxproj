@@ -16,6 +16,13 @@
 		1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611273D234B3E940080FD54 /* WaitIndicator2.swift */; };
 		16112740234B45E50080FD54 /* DataGeneratorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611273F234B45E50080FD54 /* DataGeneratorHelper.swift */; };
 		16112742234B4D600080FD54 /* ColorSystemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16112741234B4D600080FD54 /* ColorSystemHelper.swift */; };
+		1611F28F23787437002FCE3C /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F28E23787437002FCE3C /* RealmService.swift */; };
+		1611F29323788308002FCE3C /* RealmWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F29223788308002FCE3C /* RealmWall.swift */; };
+		1611F29523788319002FCE3C /* RealmFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F29423788319002FCE3C /* RealmFriend.swift */; };
+		1611F29723788326002FCE3C /* RealmMyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F29623788326002FCE3C /* RealmMyGroup.swift */; };
+		1611F29923788333002FCE3C /* RealmGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F29823788333002FCE3C /* RealmGroup.swift */; };
+		1611F29B23788346002FCE3C /* RealmDetailGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F29A23788346002FCE3C /* RealmDetailGroup.swift */; };
+		1611F29D23788422002FCE3C /* RealmURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F29C23788422002FCE3C /* RealmURL.swift */; };
 		161B0E612349D1DA0081008B /* WallLike_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 161B0E602349D1DA0081008B /* WallLike_View.xib */; };
 		161B0E632349D27F0081008B /* WallLike_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B0E622349D27F0081008B /* WallLike_View.swift */; };
 		161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B0E9E2349F8850081008B /* MyGroup_CollectionViewCell.swift */; };
@@ -138,6 +145,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1611F28A2378741C002FCE3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 921BE4A82C4A7A5C72A0C6F8B8FEF200;
+			remoteInfo = Realm;
+		};
+		1611F28C2378741C002FCE3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 437919EE08EC6BFCCBAC3BD346309742;
+			remoteInfo = RealmSwift;
+		};
 		16E08B6E236F924400340F09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
@@ -178,6 +199,13 @@
 		1611273D234B3E940080FD54 /* WaitIndicator2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitIndicator2.swift; sourceTree = "<group>"; };
 		1611273F234B45E50080FD54 /* DataGeneratorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGeneratorHelper.swift; sourceTree = "<group>"; };
 		16112741234B4D600080FD54 /* ColorSystemHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSystemHelper.swift; sourceTree = "<group>"; };
+		1611F28E23787437002FCE3C /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		1611F29223788308002FCE3C /* RealmWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWall.swift; sourceTree = "<group>"; };
+		1611F29423788319002FCE3C /* RealmFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFriend.swift; sourceTree = "<group>"; };
+		1611F29623788326002FCE3C /* RealmMyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMyGroup.swift; sourceTree = "<group>"; };
+		1611F29823788333002FCE3C /* RealmGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmGroup.swift; sourceTree = "<group>"; };
+		1611F29A23788346002FCE3C /* RealmDetailGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDetailGroup.swift; sourceTree = "<group>"; };
+		1611F29C23788422002FCE3C /* RealmURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmURL.swift; sourceTree = "<group>"; };
 		161B0E602349D1DA0081008B /* WallLike_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallLike_View.xib; sourceTree = "<group>"; };
 		161B0E622349D27F0081008B /* WallLike_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallLike_View.swift; sourceTree = "<group>"; };
 		161B0E9E2349F8850081008B /* MyGroup_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroup_CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -380,6 +408,40 @@
 			path = "3.friend post";
 			sourceTree = "<group>";
 		};
+		1611F2832378741C002FCE3C /* realm */ = {
+			isa = PBXGroup;
+			children = (
+				1611F28E23787437002FCE3C /* RealmService.swift */,
+			);
+			path = realm;
+			sourceTree = "<group>";
+		};
+		1611F29023788269002FCE3C /* non-persistent */ = {
+			isa = PBXGroup;
+			children = (
+				16200D1623389C9600F02440 /* Wall.swift */,
+				16AB0B86232F7BF000E21B7F /* Friend.swift */,
+				16AB0B88232F7C7800E21B7F /* MyGroup.swift */,
+				16AB0BA8232F985D00E21B7F /* Group.swift */,
+				16E08B36236B62FD00340F09 /* DetailGroup.swift */,
+				16E08B5A236DF1B900340F09 /* Login.swift */,
+			);
+			path = "non-persistent";
+			sourceTree = "<group>";
+		};
+		1611F29123788285002FCE3C /* persistent */ = {
+			isa = PBXGroup;
+			children = (
+				1611F29223788308002FCE3C /* RealmWall.swift */,
+				1611F29423788319002FCE3C /* RealmFriend.swift */,
+				1611F29623788326002FCE3C /* RealmMyGroup.swift */,
+				1611F29823788333002FCE3C /* RealmGroup.swift */,
+				1611F29A23788346002FCE3C /* RealmDetailGroup.swift */,
+				1611F29C23788422002FCE3C /* RealmURL.swift */,
+			);
+			path = persistent;
+			sourceTree = "<group>";
+		};
 		16172B5E234CE55500D5A748 /* theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +559,7 @@
 		164764992365DF8A007D1B19 /* SERVICES */ = {
 			isa = PBXGroup;
 			children = (
+				1611F2832378741C002FCE3C /* realm */,
 				16D58C032369D61000735296 /* parser */,
 				164764AE2365FAEC007D1B19 /* factory */,
 				16D58BFC236986A600735296 /* synchronizer */,
@@ -629,12 +692,8 @@
 		16AB0B85232F7B6C00E21B7F /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
-				16200D1623389C9600F02440 /* Wall.swift */,
-				16AB0B86232F7BF000E21B7F /* Friend.swift */,
-				16AB0B88232F7C7800E21B7F /* MyGroup.swift */,
-				16AB0BA8232F985D00E21B7F /* Group.swift */,
-				16E08B36236B62FD00340F09 /* DetailGroup.swift */,
-				16E08B5A236DF1B900340F09 /* Login.swift */,
+				1611F29123788285002FCE3C /* persistent */,
+				1611F29023788269002FCE3C /* non-persistent */,
 			);
 			path = MODEL;
 			sourceTree = "<group>";
@@ -820,6 +879,8 @@
 				16E08B6F236F924400340F09 /* Alamofire.framework */,
 				16E08B71236F924400340F09 /* Kingfisher.framework */,
 				16E08B73236F924400340F09 /* Pods_vk1.framework */,
+				1611F28B2378741C002FCE3C /* Realm.framework */,
+				1611F28D2378741C002FCE3C /* RealmSwift.framework */,
 				16E08B75236F924400340F09 /* SwiftyJSON.framework */,
 			);
 			name = Products;
@@ -1002,6 +1063,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		1611F28B2378741C002FCE3C /* Realm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Realm.framework;
+			remoteRef = 1611F28A2378741C002FCE3C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1611F28D2378741C002FCE3C /* RealmSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RealmSwift.framework;
+			remoteRef = 1611F28C2378741C002FCE3C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		16E08B6F236F924400340F09 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1112,6 +1187,7 @@
 			files = (
 				161C11392347226100A2EC9D /* WaitIndicator.swift in Sources */,
 				16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */,
+				1611F29B23788346002FCE3C /* RealmDetailGroup.swift in Sources */,
 				16E08B66236F80B800340F09 /* FriendWall_ViewController.swift in Sources */,
 				1666674E2347CA0B00FD2B86 /* Wall_Cell_tp6.swift in Sources */,
 				16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */,
@@ -1149,6 +1225,7 @@
 				1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */,
 				161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */,
 				16E08B5D236E34A200340F09 /* PushSectionedViewProtocol.swift in Sources */,
+				1611F29323788308002FCE3C /* RealmWall.swift in Sources */,
 				16E08B64236ED9FF00340F09 /* ModelProtocol.swift in Sources */,
 				16D58C052369D65100735296 /* WallParser.swift in Sources */,
 				16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */,
@@ -1161,6 +1238,7 @@
 				164764BB23662209007D1B19 /* VKLogin_ViewController.swift in Sources */,
 				16D58BE82366C6BE00735296 /* PlainModelProtocol.swift in Sources */,
 				166D1B05234EFF0F00C552E4 /* ZoomAnimator.swift in Sources */,
+				1611F29D23788422002FCE3C /* RealmURL.swift in Sources */,
 				16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */,
 				16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */,
 				1604060D234E5A250083F3C3 /* MyGroupDetail_ViewController.swift in Sources */,
@@ -1172,6 +1250,7 @@
 				16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */,
 				164764B32365FB86007D1B19 /* PushViewProtocol.swift in Sources */,
 				16E08B8A23707EEE00340F09 /* SyncMyGroupWall.swift in Sources */,
+				1611F29923788333002FCE3C /* RealmGroup.swift in Sources */,
 				16AB0BA9232F985D00E21B7F /* Group.swift in Sources */,
 				1647649C2365E031007D1B19 /* Session.swift in Sources */,
 				16200D0623388E5D00F02440 /* RoundedImage.swift in Sources */,
@@ -1188,6 +1267,7 @@
 				16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */,
 				1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */,
 				166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */,
+				1611F28F23787437002FCE3C /* RealmService.swift in Sources */,
 				16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */,
 				16E08B51236DD82100340F09 /* SyncFriendWall.swift in Sources */,
 				161B0EA5234A046C0081008B /* Group_ViewController.swift in Sources */,
@@ -1203,6 +1283,8 @@
 				16D58BFE236986EB00735296 /* SynchronizerManager.swift in Sources */,
 				166667482347C9ED00FD2B86 /* Wall_Cell_tp3.swift in Sources */,
 				16E08B49236DD7B900340F09 /* SyncFriend.swift in Sources */,
+				1611F29723788326002FCE3C /* RealmMyGroup.swift in Sources */,
+				1611F29523788319002FCE3C /* RealmFriend.swift in Sources */,
 				161B0E632349D27F0081008B /* WallLike_View.swift in Sources */,
 				16E08B42236DBBF000340F09 /* PresenterFactory.swift in Sources */,
 				16040601234E390A0083F3C3 /* RotatedPopAnimator.swift in Sources */,

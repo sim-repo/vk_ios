@@ -8,11 +8,15 @@ class Group: SectionModelProtocol, DecodableProtocol {
     var name: String = ""
     var desc: String = ""
     var icon: String = ""
-    var avaURL50: String?
-    var avaURL200: String?
+    var avaURL50: URL?
+    var avaURL200: URL?
     var image50: UIImage?
     var image200: UIImage?
+    var coverURL400: URL?
     var groupBy: MyGroupByEnum = .name
+    var membersCount: Int = 0
+    var isClosed: Int = 0
+    var isDeactivated: Int = 0
 
     required init(){}
    
@@ -22,8 +26,8 @@ class Group: SectionModelProtocol, DecodableProtocol {
            id = json["id"].doubleValue
            name = json["name"].stringValue
            desc = json["description"].stringValue
-           avaURL50 = json["photo_50"].stringValue
-           avaURL200 = json["photo_200"].stringValue
+           avaURL50 = URL(string: json["photo_50"].stringValue)
+           avaURL200 = URL(string: json["photo_200"].stringValue)
        }
     }
     
