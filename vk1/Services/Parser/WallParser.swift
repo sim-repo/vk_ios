@@ -3,7 +3,7 @@ import SwiftyJSON
 class WallParser {
     
     
-    //MARK: called from networking service >>
+    //MARK:- called from networking service >>
     public static func parseWallJson(_ val: Any)->[Wall]?{
         let json = JSON(val)
         var res: [Wall] = []
@@ -24,7 +24,7 @@ class WallParser {
     
     
     
-    //MARK: called from model layer >>
+    //MARK:- called from model layer >>
 
     public static func parseId(json: JSON) -> typeId {
            return json["id"].doubleValue
@@ -140,7 +140,7 @@ class WallParser {
     }
     
     
-    //MARK: private functions
+    //MARK:- private functions >>
     
     private static func isRepost(_ json: JSON) -> Bool {
         let arr = json["copy_history"].arrayValue

@@ -8,8 +8,7 @@ class RealmService {
     }
     
     
-    
-    
+
     public static func save<T: ModelProtocol>(models: [T], update: Bool) {
         var objects: [Object] = []
         for model in models {
@@ -17,27 +16,27 @@ class RealmService {
                 
             case is Wall:
                 let m = model as! Wall
-                let obj = wall2Realm(m)
+                let obj = wallToRealm(m)
                 objects.append(obj)
                 
             case is Friend:
                 let m = model as! Friend
-                let obj = friend2Realm(m)
+                let obj = friendToRealm(m)
                 objects.append(obj)
                 
             case is MyGroup:
                 let m = model as! MyGroup
-                let obj = myGroup2Realm(m)
+                let obj = myGroupToRealm(m)
                 objects.append(obj)
                 
             case is Group:
                 let m = model as! Group
-                let obj = group2Realm(m)
+                let obj = groupToRealm(m)
                 objects.append(obj)
                 
             case is DetailGroup:
                 let m = model as! DetailGroup
-                let obj = detailGroup2Realm(m)
+                let obj = detailGroupToRealm(m)
                 objects.append(obj)
                 
             default:
@@ -129,7 +128,7 @@ class RealmService {
             } else {
                 results = realm.objects(RealmWall.self)
             }
-            let walls = realm2Wall(results: results)
+            let walls = realmToWall(results: results)
             return walls
         } catch {
             print(error.localizedDescription)
@@ -149,7 +148,7 @@ class RealmService {
             } else {
                 results = realm.objects(RealmFriend.self)
             }
-            let friends = realm2Friend(results: results)
+            let friends = realmToFriend(results: results)
             return friends
         } catch {
             print(error.localizedDescription)
@@ -168,7 +167,7 @@ class RealmService {
             } else {
                 results = realm.objects(RealmGroup.self)
             }
-            let groups = realm2Group(results: results)
+            let groups = realmToGroup(results: results)
             return groups
         } catch {
             print(error.localizedDescription)
@@ -187,7 +186,7 @@ class RealmService {
             } else {
                 results = realm.objects(RealmMyGroup.self)
             }
-            let groups = realm2MyGroup(results: results)
+            let groups = realmToMyGroup(results: results)
             return groups
         } catch {
             print(error.localizedDescription)
@@ -206,7 +205,7 @@ class RealmService {
             } else {
                 results = realm.objects(RealmDetailGroup.self)
             }
-            let groups = realm2DetailGroup(results: results)
+            let groups = realmToDetailGroup(results: results)
             return groups
         } catch {
             print(error.localizedDescription)
@@ -218,7 +217,7 @@ class RealmService {
     
     //MARK:- transofm: model into realm
     
-    private static func wall2Realm(_ wall: Wall) -> RealmWall {
+    private static func wallToRealm(_ wall: Wall) -> RealmWall {
         let realmWall = RealmWall()
         realmWall.id = wall.id
         realmWall.myName = wall.myName
@@ -246,7 +245,7 @@ class RealmService {
     }
     
     
-    private static func friend2Realm(_ friend: Friend) -> RealmFriend {
+    private static func friendToRealm(_ friend: Friend) -> RealmFriend {
         let realmFriend = RealmFriend()
         realmFriend.id = friend.id
         realmFriend.firstName = friend.firstName
@@ -258,7 +257,7 @@ class RealmService {
         return realmFriend
     }
     
-    private static func myGroup2Realm(_ myGroup: MyGroup) -> RealmMyGroup {
+    private static func myGroupToRealm(_ myGroup: MyGroup) -> RealmMyGroup {
         let realmMyGroup = RealmMyGroup()
         
         realmMyGroup.id = myGroup.id
@@ -275,7 +274,7 @@ class RealmService {
         return realmMyGroup
     }
     
-    private static func group2Realm(_ group: Group) -> RealmGroup {
+    private static func groupToRealm(_ group: Group) -> RealmGroup {
         let realmGroup = RealmGroup()
         
         realmGroup.id = group.id
@@ -292,7 +291,7 @@ class RealmService {
         return realmGroup
     }
     
-    private static func detailGroup2Realm(_ detailGroup: DetailGroup) -> RealmDetailGroup {
+    private static func detailGroupToRealm(_ detailGroup: DetailGroup) -> RealmDetailGroup {
         let realmGroup = RealmDetailGroup()
         
         realmGroup.id = detailGroup.id
@@ -317,7 +316,7 @@ class RealmService {
     
     //MARK:- transofm: realm to model
     
-    private static func realm2Wall(results: Results<RealmWall>) -> [Wall] {
+    private static func realmToWall(results: Results<RealmWall>) -> [Wall] {
         var walls = [Wall]()
         for result in results {
             let wall = Wall()
@@ -350,7 +349,7 @@ class RealmService {
     
     
     
-    private static func realm2Friend(results: Results<RealmFriend>) -> [Friend] {
+    private static func realmToFriend(results: Results<RealmFriend>) -> [Friend] {
         var friends = [Friend]()
         
         for result in results {
@@ -371,7 +370,7 @@ class RealmService {
     
     
     
-    private static func realm2Group(results: Results<RealmGroup>) -> [Group] {
+    private static func realmToGroup(results: Results<RealmGroup>) -> [Group] {
         var groups = [Group]()
         
         for result in results {
@@ -395,7 +394,7 @@ class RealmService {
     }
     
     
-    private static func realm2MyGroup(results: Results<RealmMyGroup>) -> [MyGroup] {
+    private static func realmToMyGroup(results: Results<RealmMyGroup>) -> [MyGroup] {
         var groups = [MyGroup]()
         
         for result in results {
@@ -420,7 +419,7 @@ class RealmService {
     
     
     
-    private static func realm2DetailGroup(results: Results<RealmDetailGroup>) -> [DetailGroup] {
+    private static func realmToDetailGroup(results: Results<RealmDetailGroup>) -> [DetailGroup] {
         var detailGroups = [DetailGroup]()
         
         for result in results {

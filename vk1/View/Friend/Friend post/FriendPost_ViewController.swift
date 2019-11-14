@@ -19,7 +19,7 @@ class FriendPost_ViewController: UIViewController{
 
     
     override func viewDidLoad() {
-         let swipeRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
+           let swipeRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
            imageContainerView.addGestureRecognizer(swipeRecognizer)
            
            for (idx, url) in wall.imageURLs.enumerated() {
