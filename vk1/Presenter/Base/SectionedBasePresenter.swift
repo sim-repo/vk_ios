@@ -25,7 +25,7 @@ public class SectionedBasePresenter {
     var sectionChild: PullSectionPresenterProtocol?
     var plainChild: PullPlainPresenterProtocol?
     
-    //MARK: initial
+    //MARK:- initial
     
     
     // when view is not exists
@@ -49,7 +49,7 @@ public class SectionedBasePresenter {
     }
     
     
-    // MARK: incoming model flow
+    // MARK:- incoming model flow
     // network -> synchronizer -> presenter:
     // setModel() -> validate() -> sort() -> save() -> didSave() -> try view update
     
@@ -153,7 +153,7 @@ public class SectionedBasePresenter {
 
 
 
-//MARK: called from view
+//MARK:- called from view
 extension SectionedBasePresenter: PullSectionPresenterProtocol {
     
     final func numberOfSections() -> Int {
@@ -272,7 +272,7 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
 }
 
 
-//MARK: called from synchronizer
+//MARK:- called from synchronizer
 extension SectionedBasePresenter: SynchronizedPresenterProtocol {
    
     final func setView(vc: PushViewProtocol) {

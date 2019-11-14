@@ -30,12 +30,6 @@ class LoginViewController: UIViewController {
                                                             y: view.frame.height/3, width: wScreen, height: 100))
         waitLoadingContainer.backgroundColor = UIColor.clear
         view.addSubview(waitLoadingContainer)
-        
-        
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
     }
 
     

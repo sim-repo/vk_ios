@@ -3,24 +3,8 @@ import UIKit
 
 
 
-class MyView_GradiendBackground : UIView {
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        let topColor: UIColor = ColorSystemHelper.topBackground
-        let bottomColor: UIColor = ColorSystemHelper.bottomBackground
-        let layer = self.layer as! CAGradientLayer
-        layer.colors = [topColor, bottomColor].map{$0.cgColor}
-        layer.startPoint = CGPoint(x: 0.5, y: isDark ? 0.6: 0.7)
-        layer.endPoint = CGPoint (x: 0.5, y: 1)
-    }
-    
-    override class var layerClass: AnyClass {
-       get {
-           return CAGradientLayer.self
-       }
-   }
-}
 
+//MARK:- UIButton
 
 class MyButton_Secondary : UIButton {
     required init?(coder: NSCoder) {
@@ -28,6 +12,7 @@ class MyButton_Secondary : UIButton {
         setTitleColor(ColorSystemHelper.secondary, for: .normal)
     }
 }
+
 
 class MyButton_Adaptive : UIButton {
     required init?(coder: NSCoder) {
@@ -46,6 +31,10 @@ class MyButton_Adaptive : UIButton {
     }
 }
 
+
+
+
+//MARK:- UILabel
 
 class MyTitle_OnPrimary : UILabel {
     required init?(coder: NSCoder) {
@@ -111,6 +100,9 @@ class MyLabel_Secondary_Contrast_120 : UILabel {
 }
 
 
+//MARK:- UITextView
+
+
 class MyTextView_OnBackground : UITextView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -134,6 +126,7 @@ class MyTextView_Secondary : UITextView {
 }
 
 
+//MARK:- Image View
 
 class MyImageView_Primary : UIImageView {
     required init?(coder: NSCoder) {
@@ -154,12 +147,25 @@ class MyImageView_Secondary : UIImageView {
 }
 
 
+
 class MyImageView_DarkPrimary : UIImageView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         backgroundColor = ColorSystemHelper.bottomBackground
     }
 }
+
+
+class MyImageView_Circled : UIImageView {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.layer.cornerRadius = self.frame.size.width/2
+        self.clipsToBounds = true
+        self.layer.borderColor = ColorSystemHelper.primary.cgColor
+        self.layer.borderWidth = 1.0
+    }
+}
+
 
 class MyTextField_Secondary : UITextField {
     required init?(coder: NSCoder) {
@@ -169,6 +175,7 @@ class MyTextField_Secondary : UITextField {
 }
 
 
+//MARK:- UIView
 
 class MyView_Primary : UIView {
     required init?(coder: NSCoder) {
@@ -208,6 +215,27 @@ class MyView_DarkBackground : UIView {
 }
 
 
+class MyView_GradiendBackground : UIView {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        let topColor: UIColor = ColorSystemHelper.topBackground
+        let bottomColor: UIColor = ColorSystemHelper.bottomBackground
+        let layer = self.layer as! CAGradientLayer
+        layer.colors = [topColor, bottomColor].map{$0.cgColor}
+        layer.startPoint = CGPoint(x: 0.5, y: isDark ? 0.6: 0.7)
+        layer.endPoint = CGPoint (x: 0.5, y: 1)
+    }
+    
+    override class var layerClass: AnyClass {
+       get {
+           return CAGradientLayer.self
+       }
+   }
+}
+
+
+//MARK:- UINavigationBar
+
 extension UINavigationBar {
     func setGradientBackground(colors: [UIColor]) {
         bounds.size.height += self.frame.origin.y
@@ -217,6 +245,8 @@ extension UINavigationBar {
 }
 
 
+
+//MARK:- CAGradientLayer
 extension CAGradientLayer {
     
     convenience init(frame: CGRect, colors: [UIColor]) {

@@ -27,7 +27,7 @@ public class PlainBasePresenter {
     var plainChildPresenter: PullPlainPresenterProtocol?
     
     
-    //MARK: initial
+    //MARK:- initial
     
     // when view is not exists
     required init() {}
@@ -54,7 +54,7 @@ public class PlainBasePresenter {
 
 
     
-    // MARK: incoming model flow
+    // MARK:- incoming model flow
     // network -> synchronizer -> presenter:
     // setModel() -> validate() -> save() -> didSave() -> try view update
 
@@ -152,7 +152,7 @@ public class PlainBasePresenter {
 
 
 
-//MARK: called from view
+//MARK:- called from view
 extension PlainBasePresenter: PullPlainPresenterProtocol {
     
     final func numberOfRowsInSection() -> Int {
@@ -193,7 +193,7 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
 
 
 
-//MARK: called from synchronizer & presenter factory
+//MARK:- called from synchronizer & presenter factory
 extension PlainBasePresenter: SynchronizedPresenterProtocol {
     
     final func getDataSource() -> [ModelProtocol] {

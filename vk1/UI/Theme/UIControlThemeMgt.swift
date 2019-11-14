@@ -65,7 +65,7 @@ class UIControlThemeMgt {
         
         guard let font = UIFont(name: "Arcade", size: 30) else {
             fatalError("""
-                Failed to load the "CustomFont-Light" font.
+                Failed to load the "Arcade" font.
                 Make sure the font file is included in the project and the font name is spelled correctly.
                 """
             )

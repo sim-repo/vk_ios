@@ -40,10 +40,9 @@ import UIKit
     @IBInspectable var cornerRadius: CGFloat = 0 {
         willSet{
             if newValue != 0  {
-                self.layer.cornerRadius = self.layer.bounds.height/2
+                self.layer.cornerRadius = self.layer.bounds.height/newValue
             } else {
                 self.layer.cornerRadius = self.layer.bounds.height/2
-                
             }
         }
     }
@@ -121,13 +120,17 @@ import UIKit
     private func setImage() {
         imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
         imageView.image = self.image
-        if (cornerRadius != 0) {
+       // if (cornerRadius != 0) {
             let roundMask = CAShapeLayer()
             let round = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
             roundMask.path = round.cgPath
             imageView.layer.mask = roundMask
             imageView.contentMode = .scaleAspectFill
-        }
+            imageView.layer.cornerRadius = imageView.frame.size.width/2
+            imageView.clipsToBounds = true
+            imageView.layer.borderColor = ColorSystemHelper.primary.cgColor
+            imageView.layer.borderWidth = 1.0
+       // }
         self.addSubview(imageView)
     }
 }
