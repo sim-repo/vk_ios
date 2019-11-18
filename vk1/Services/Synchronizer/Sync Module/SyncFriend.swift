@@ -9,6 +9,15 @@ class SyncFriend {
     func sync(_ presenter: SynchronizedPresenterProtocol,
               _ completion: (()->Void)? = nil ) {
         
+        
+        //load from disk
+        if let friends = RealmService.loadFriend(),
+            !friends.isEmpty {
+            presenter.setFromPersistent(models: friends)
+            completion?()
+            return
+        }
+        
         // run when all networks have done
         let finish_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
         

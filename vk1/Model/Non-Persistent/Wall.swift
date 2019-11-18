@@ -4,8 +4,9 @@ import SwiftyJSON
 
 class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
 
-    var id: typeId!
+    var id: typeId = 0
     var postTypeCode: String!
+    var ownerId = 0
     
     // wall header block
     var myAvaURL: URL?
@@ -35,8 +36,10 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     func setup(json: JSON?, profiles: [typeId:Friend], groups: [typeId:Group]) {
         
         if let json = json {
-            
+
             id = WallParser.parseId(json: json)
+            
+            ownerId = json["owner_id"].intValue
             
             // wall header block
             (myAvaURL, myName, myPostDate, title) = WallParser.parseMyRepost(json: json, profiles: profiles)

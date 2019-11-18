@@ -30,15 +30,16 @@ class MyGroupDetailPresenter: PlainPresenterProtocols {
 
     
     //MARK: override func
-    override func save(validated: [PlainModelProtocol]) {
+    override func enrichData(validated: [PlainModelProtocol]) -> [PlainModelProtocol]? {
         let detailGroup = validated[0] as! DetailGroup
         guard let group = detailModel as? MyGroup
         else {
-            catchError(msg: "\(clazz): save(): detailModel is incorrect")
-            return
+            catchError(msg: "\(clazz): enrichData(): detailModel is incorrect")
+            return nil
         }
+        //enrich
         detailGroup.setup(group: group)
-        super.didSave()
+        return [detailGroup]
     }
 }
 

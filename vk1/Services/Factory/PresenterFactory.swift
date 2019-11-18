@@ -100,5 +100,4 @@ class PresenterFactory {
     func removePresenter(moduleEnum: ModuleEnum){
         presenters[moduleEnum] = nil
     }
-    
 }

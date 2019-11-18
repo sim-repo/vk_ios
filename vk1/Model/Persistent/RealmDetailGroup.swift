@@ -1,10 +1,10 @@
 import Foundation
-import RealmSwift
+//import RealmSwift
 
-class RealmDetailGroup: Object {
+class RealmDetailGroup: RealmBase {
     
     // get from network >>
-    @objc dynamic var id: Double = 0
+    //@objc dynamic var id: Double = 0
     @objc dynamic var photosCounter: Int = 0
     @objc dynamic var albumsCounter: Int = 0
     @objc dynamic var topicsCounter: Int = 0

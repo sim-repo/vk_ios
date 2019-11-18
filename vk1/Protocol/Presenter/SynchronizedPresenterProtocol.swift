@@ -11,4 +11,5 @@ protocol SynchronizedPresenterProtocol: class {
     func clearDataSource()
     func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion?) -> onSuccess_PresenterCompletion
     func didSuccessNetworkFinish()
+    func setFromPersistent(models: [DecodableProtocol])
 }

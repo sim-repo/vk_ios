@@ -7,7 +7,7 @@ let clientAPI = "7197054"
 
 let networkTimeout: TimeInterval = 10 // in sec
 let networkDelayBetweenRequests = 500 //500 // in ms
-let networkLongDelayBetweenRequests = 5500 //500 // in ms
+let networkLongDelayBetweenRequests = 500 //500 // in ms
 
 enum ModelLoadedFromEnum {
     case network
@@ -79,4 +79,4 @@ typealias onErrResponse_SyncCompletion = (NSError) -> Void
 typealias onSuccess_PresenterCompletion = ([DecodableProtocol]) -> Void
 
 
-typealias typeId = Double
+typealias typeId = Int

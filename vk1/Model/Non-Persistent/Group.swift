@@ -23,7 +23,7 @@ class Group: SectionModelProtocol, DecodableProtocol {
 
     func setup(json: JSON?){
        if let json = json {
-           id = json["id"].doubleValue
+           id = json["id"].intValue
            name = json["name"].stringValue
            desc = json["description"].stringValue
            avaURL50 = URL(string: json["photo_50"].stringValue)

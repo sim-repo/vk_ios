@@ -1,11 +1,11 @@
 import Foundation
 import RealmSwift
 
-class RealmWall: Object {
+class RealmWall: RealmBase {
     
-    @objc dynamic var id = 0.0
+    //@objc dynamic var id = 0.0
     @objc dynamic var postTypeCode = ""
-    
+    @objc dynamic var ownerId = 0
     
     // wall header block
     @objc dynamic var myAvaURL = ""

@@ -3,7 +3,7 @@ import SwiftyJSON
 
 class MyGroup: SectionModelProtocol, DecodableProtocol {
     
-    var id: Double!
+    var id: typeId = 0
     var name: String = ""
     var desc: String = ""
     var avaURL50: URL?
@@ -19,7 +19,7 @@ class MyGroup: SectionModelProtocol, DecodableProtocol {
     
     func setup(json: JSON?){
         if let json = json {
-            id = json["id"].doubleValue
+            id = json["id"].intValue
             name = json["name"].stringValue
             desc = json["description"].stringValue
             avaURL50 = URL(string: json["photo_50"].stringValue)
@@ -36,11 +36,7 @@ class MyGroup: SectionModelProtocol, DecodableProtocol {
     }
     
     func getSortBy() -> String {
-        if let id_ = id {
-            return "\(id_)"
-        }
-        catchError(msg: "MyGroup: getSortBy(): return is nil")
-        return ""
+        return "\(id)"
     }
     
     func getGroupBy() -> String {

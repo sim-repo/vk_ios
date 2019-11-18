@@ -9,8 +9,9 @@ class RealmService {
     
     
 
-    public static func save<T: ModelProtocol>(models: [T], update: Bool) {
+    public static func save(models: [ModelProtocol], update: Bool) {
         var objects: [Object] = []
+        
         for model in models {
             switch model {
                 
@@ -108,6 +109,7 @@ class RealmService {
     private static func getInstance() -> Realm? {
         do {
             let realm = try Realm(configuration: RealmService.configuration)
+            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
             return realm
         } catch(let err) {
             catchError(msg: err.localizedDescription)
@@ -220,6 +222,7 @@ class RealmService {
     private static func wallToRealm(_ wall: Wall) -> RealmWall {
         let realmWall = RealmWall()
         realmWall.id = wall.id
+        realmWall.ownerId = wall.ownerId
         realmWall.myName = wall.myName
         realmWall.origName = wall.origName
         realmWall.myPostDate = wall.myPostDate
@@ -234,8 +237,11 @@ class RealmService {
         realmWall.messageCount = wall.messageCount
         
         let realmImagesURL = List<RealmURL>()
+        var count = 0
         for url in wall.imageURLs {
             let realmURL = RealmURL()
+            realmURL.id = wall.id + count
+            count += 1
             realmURL.url = url.absoluteString
             realmImagesURL.append(realmURL)
         }
@@ -320,7 +326,8 @@ class RealmService {
         var walls = [Wall]()
         for result in results {
             let wall = Wall()
-            wall.id = result.id
+            wall.id = typeId(result.id)
+            wall.ownerId = result.ownerId
             wall.myName = result.myName
             wall.origName = result.myName
             wall.origName = result.origName
@@ -354,7 +361,7 @@ class RealmService {
         
         for result in results {
             let friend = Friend()
-            friend.id = result.id
+            friend.id = typeId(result.id)
             friend.firstName = result.firstName
             friend.lastName = result.lastName
             friend.avaURL50 = URL(string: result.avaURL50)
@@ -399,7 +406,7 @@ class RealmService {
         
         for result in results {
             let group = MyGroup()
-            group.id = result.id
+            group.id = typeId(result.id)
             group.name = result.name
             group.desc = result.desc
             group.avaURL50 = URL(string: result.avaURL50)

@@ -55,6 +55,7 @@ class SyncWall {
             
             
             // all sync has finished
+            
             self.dispatchGroup?.notify(queue: DispatchQueue.main) { [weak self] in
                 guard let self = self else { return }
                 
@@ -81,7 +82,7 @@ class SyncWall {
                 
                 
                 // ids as parameters for wall-requests
-                var ids:[Double] = []
+                var ids:[typeId] = []
                 
                 groupDS.forEach { model in
                     ids.append(-model.getId())
@@ -91,7 +92,17 @@ class SyncWall {
                     ids.append(model.getId())
                 }
                    
-               // ids = []
+               
+                // ids = [] // test
+                
+                
+                //load from disk
+                if let walls = RealmService.loadWall(),
+                    !walls.isEmpty {
+                    wallPresenter.setFromPersistent(models: walls)
+                    return
+                }
+                
                 
                 self.dispatchGroup = DispatchGroup()
                 
@@ -110,8 +121,8 @@ class SyncWall {
                         
                         // lock
                         semaphore.wait()
-                        // self.dispatchGroup?.enter()
-                        print(id)
+
+                        console(msg: "\(id)")
                         let onSuccessCompletion = wallPresenter.didSuccessNetworkResponse(completion: { [weak self] in
                             //release:
                             self?.dispatchGroup?.leave()

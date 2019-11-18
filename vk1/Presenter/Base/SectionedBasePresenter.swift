@@ -51,7 +51,7 @@ public class SectionedBasePresenter {
     
     // MARK:- incoming model flow
     // network -> synchronizer -> presenter:
-    // setModel() -> validate() -> sort() -> save() -> didSave() -> try view update
+    // appendDataSource() -> validate() -> sort() -> save() -> didSave() -> try view update
     
     func appendDataSource(dirtyData: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
         
@@ -66,10 +66,16 @@ public class SectionedBasePresenter {
         }
         
         switch didLoadedFrom {
-            case .disk:
-                return // data stored already
-            case .network:
-                save(sorted: sortedDataSource)
+          case .disk:
+              viewReloadData()
+              return // data stored already
+          case .network:
+               if let enriched = enrichData(validated: sortedDataSource) {
+                   viewReloadData()
+                   save(enriched: enriched)
+               } else {
+                   catchError(msg: "PlainBasePresenter: \(clazz): enriched data is empty ")
+               }
         }
     }
     
@@ -108,17 +114,24 @@ public class SectionedBasePresenter {
     }
     
     
-    func save(sorted: [SectionModelProtocol]) {
-        didSave()
+    func enrichData(validated: [SectionModelProtocol]) -> [SectionModelProtocol]? {
+           // override if needed
+           return validated
+       }
+       
+    func viewReloadData(){
+       UI_THREAD { [weak self] in
+           guard let self = self else { return }
+           self.view?.viewReloadData(groupByIds: self.groupByIds)
+       }
+    }
+
+    func save(enriched: [SectionModelProtocol]) {
+       RealmService.save(models: enriched, update: true)
     }
     
     
-    private func didSave(){
-        UI_THREAD { [weak self] in
-            guard let self = self else { return }
-            self.view?.viewReloadData(groupByIds: self.groupByIds)
-        }
-    }
+    
     
     
     // called when set new filter or viewDidLoad
@@ -312,7 +325,12 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     // when all responses have got from network
     final func didSuccessNetworkFinish() {
         console(msg: "SectionedBasePresenter: \(clazz): didSuccessNetworkFinish")
-        self.sort()
+        sort()
     }
     
+    final func setFromPersistent(models: [DecodableProtocol]) {
+        console(msg: "SectionedBasePresenter: \(clazz): setFromPersistent")
+        appendDataSource(dirtyData: models, didLoadedFrom: .disk)
+        sort()
+    }
 }

@@ -27,7 +27,7 @@ class WallParser {
     //MARK:- called from model layer >>
 
     public static func parseId(json: JSON) -> typeId {
-           return json["id"].doubleValue
+           return json["id"].intValue
     }
     
     
@@ -38,7 +38,7 @@ class WallParser {
         var title: String = ""
 
             if isRepost(json) {
-                let myId = json["owner_id"].doubleValue
+                let myId = json["owner_id"].intValue
                 if let f = profiles[myId] {
                    avaUrl = f.avaURL100
                    name = f.firstName + " "+f.lastName
@@ -198,11 +198,11 @@ class WallParser {
         if repost {
             if let histories = json["copy_history"].array {
                 for history in histories {
-                    return history["owner_id"].doubleValue
+                    return history["owner_id"].intValue
                 }
             }
         } else {
-             return json["owner_id"].doubleValue
+             return json["owner_id"].intValue
         }
         return 0
     }

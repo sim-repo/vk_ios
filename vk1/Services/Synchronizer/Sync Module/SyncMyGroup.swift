@@ -8,6 +8,16 @@ class SyncMyGroup {
     func sync(_ presenter: SynchronizedPresenterProtocol,
               _ completion: (()->Void)? = nil ) {
         
+        
+        
+        //load from disk
+        if let groups = RealmService.loadMyGroup(),
+            !groups.isEmpty {
+            presenter.setFromPersistent(models: groups)
+            completion?()
+            return
+        }
+        
         // run when all networks have done
         let onFinish_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
         

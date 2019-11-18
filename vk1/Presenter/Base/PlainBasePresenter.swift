@@ -56,7 +56,7 @@ public class PlainBasePresenter {
     
     // MARK:- incoming model flow
     // network -> synchronizer -> presenter:
-    // setModel() -> validate() -> save() -> didSave() -> try view update
+    // appendDataSource() -> validate() -> enrichData() -> viewReloadData() -> save()
 
     private func appendDataSource(dirtyData: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
          
@@ -66,14 +66,21 @@ public class PlainBasePresenter {
                    return
            }
     
+        for model in validatedData {
+            dataSource.append(model)
+        }
+        
         switch didLoadedFrom {
            case .disk:
+               viewReloadData()
                return // data stored already
            case .network:
-                for model in validatedData {
-                    dataSource.append(model)
+                if let enriched = enrichData(validated: validatedData) {
+                    viewReloadData()
+                    save(enriched: enriched)
+                } else {
+                    catchError(msg: "PlainBasePresenter: \(clazz): enriched data is empty ")
                 }
-                save(validated: validatedData)
         }
     }
     
@@ -100,11 +107,12 @@ public class PlainBasePresenter {
     }
     
     
-    func save(validated: [PlainModelProtocol]) {
-        didSave()
+    func enrichData(validated: [PlainModelProtocol]) -> [PlainModelProtocol]? {
+        // override if needed
+        return validated
     }
     
-    func didSave() {
+    func viewReloadData(){
         UI_THREAD { [weak self] in
             guard let self = self else { return }
             let moduleEnum = ModuleEnum(presenter: self)
@@ -112,6 +120,9 @@ public class PlainBasePresenter {
         }
     }
     
+    func save(enriched: [PlainModelProtocol]) {
+        RealmService.save(models: enriched, update: true)
+    }
     
     func sort() {
        dataSource = dataSource.sorted {
@@ -124,7 +135,7 @@ public class PlainBasePresenter {
         if indexPath == nil {
             guard dataSource.count == 1
                 else {
-                    catchError(msg: "PlainBasePresenter: getData(): datasource must be 1")
+                    catchError(msg: "PlainBasePresenter: \(clazz): getData(): datasource must be 1")
                     return nil
                 }
             return dataSource[0]
@@ -235,5 +246,10 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     final func didSuccessNetworkFinish() {
         console(msg: "PlainBasePresenter: \(clazz): didSuccessNetworkFinish")
         self.sort()
+    }
+    
+    final func setFromPersistent(models: [DecodableProtocol]) {
+        console(msg: "PlainBasePresenter: \(clazz): setFromPersistent")
+        appendDataSource(dirtyData: models, didLoadedFrom: .disk)
     }
 }

@@ -83,6 +83,7 @@
 		166667DE2348F50A00FD2B86 /* UIControlThemeMgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667DD2348F50A00FD2B86 /* UIControlThemeMgt.swift */; };
 		166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667F92349062E00FD2B86 /* WallProtocol.swift */; };
 		166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667FB234912B800FD2B86 /* FriendWallPresenter.swift */; };
+		166CB8DB238291CC009DA806 /* RealmBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CB8DA238291CC009DA806 /* RealmBase.swift */; };
 		166D1B05234EFF0F00C552E4 /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D1B04234EFF0F00C552E4 /* ZoomAnimator.swift */; };
 		166D1B07234EFF5000C552E4 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D1B06234EFF5000C552E4 /* CustomNavigationController.swift */; };
 		166D1B09234F6C7100C552E4 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166D1B08234F6C7100C552E4 /* Video.storyboard */; };
@@ -266,6 +267,7 @@
 		166667DD2348F50A00FD2B86 /* UIControlThemeMgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlThemeMgt.swift; sourceTree = "<group>"; };
 		166667F92349062E00FD2B86 /* WallProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallProtocol.swift; sourceTree = "<group>"; };
 		166667FB234912B800FD2B86 /* FriendWallPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWallPresenter.swift; sourceTree = "<group>"; };
+		166CB8DA238291CC009DA806 /* RealmBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBase.swift; sourceTree = "<group>"; };
 		166D1B04234EFF0F00C552E4 /* ZoomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAnimator.swift; sourceTree = "<group>"; };
 		166D1B06234EFF5000C552E4 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		166D1B08234F6C7100C552E4 /* Video.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Video.storyboard; path = vk1/Storyboards/Video.storyboard; sourceTree = SOURCE_ROOT; };
@@ -432,6 +434,7 @@
 		1611F29123788285002FCE3C /* Persistent */ = {
 			isa = PBXGroup;
 			children = (
+				166CB8DA238291CC009DA806 /* RealmBase.swift */,
 				1611F29223788308002FCE3C /* RealmWall.swift */,
 				1611F29423788319002FCE3C /* RealmFriend.swift */,
 				1611F29623788326002FCE3C /* RealmMyGroup.swift */,
@@ -799,7 +802,7 @@
 		16D58BFC236986A600735296 /* Synchronizer */ = {
 			isa = PBXGroup;
 			children = (
-				16E08B45236DD67D00340F09 /* sync module */,
+				16E08B45236DD67D00340F09 /* Sync Module */,
 				16D58BFD236986EB00735296 /* SynchronizerManager.swift */,
 			);
 			path = Synchronizer;
@@ -856,7 +859,7 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		16E08B45236DD67D00340F09 /* sync module */ = {
+		16E08B45236DD67D00340F09 /* Sync Module */ = {
 			isa = PBXGroup;
 			children = (
 				16E08B48236DD7B900340F09 /* SyncFriend.swift */,
@@ -870,7 +873,7 @@
 				16E08B4E236DD80800340F09 /* SyncProfile.swift */,
 				16E08B54236DDBAE00340F09 /* SyncLogin.swift */,
 			);
-			path = "sync module";
+			path = "Sync Module";
 			sourceTree = "<group>";
 		};
 		16E08B68236F924400340F09 /* Products */ = {
@@ -1227,6 +1230,7 @@
 				16E08B5D236E34A200340F09 /* PushSectionedViewProtocol.swift in Sources */,
 				1611F29323788308002FCE3C /* RealmWall.swift in Sources */,
 				16E08B64236ED9FF00340F09 /* ModelProtocol.swift in Sources */,
+				166CB8DB238291CC009DA806 /* RealmBase.swift in Sources */,
 				16D58C052369D65100735296 /* WallParser.swift in Sources */,
 				16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */,
 				166667452347BFE100FD2B86 /* Wall_Cell_tp2.swift in Sources */,

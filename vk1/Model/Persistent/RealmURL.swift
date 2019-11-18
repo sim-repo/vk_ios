@@ -1,6 +1,6 @@
 import Foundation
-import RealmSwift
+//import RealmSwift
 
-class RealmURL: Object {
+class RealmURL: RealmBase {
     @objc dynamic var url = ""
 }

@@ -1,9 +1,9 @@
 import Foundation
-import RealmSwift
+//import RealmSwift
 
-class RealmGroup: Object {
+class RealmGroup: RealmBase {
     
-    @objc dynamic var id: Double = 0.0
+   // @objc dynamic var id: Double = 0.0
     @objc dynamic var name: String = ""
     @objc dynamic var desc: String = ""
     @objc dynamic var avaURL50: String = ""

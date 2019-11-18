@@ -14,11 +14,11 @@ class ApiVK {
                   "fields":["bdate","sex","photo_50","photo_200_orig"],
             "v": versionAPI
         ]
-        AlamofireNetworkManager.requestItems2(clazz: Friend.self, urlPath, params, onSuccess, onError)
+        AlamofireNetworkManager.requestItems(clazz: Friend.self, urlPath, params, onSuccess, onError)
     }
     
     
-    static func friendWallRequest(ownerId: Double, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
+    static func friendWallRequest(ownerId: typeId, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
 
         let urlPath: String = "wall.get"
         
@@ -47,7 +47,7 @@ class ApiVK {
                   "fields":["description","members_count","photo_50","photo_200","cover"],
             "v": versionAPI
         ]
-        AlamofireNetworkManager.requestItems2(clazz: MyGroup.self, urlPath, params, onSuccess, onError)
+        AlamofireNetworkManager.requestItems(clazz: MyGroup.self, urlPath, params, onSuccess, onError)
     }
     
     
@@ -66,7 +66,7 @@ class ApiVK {
     }
     
     
-    static func wallRequest(ownerId: Double, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
+    static func wallRequest(ownerId: typeId, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
 
         let urlPath: String = "wall.get"
         

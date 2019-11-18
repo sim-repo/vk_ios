@@ -13,32 +13,9 @@ class AlamofireNetworkManager{
         let manager = Alamofire.SessionManager(configuration: config)
         return manager
     }()
-
-
+    
+    
     public static func requestItems<T: DecodableProtocol>(clazz: T.Type ,
-                                                          urlPath: String,
-                                                          params: Parameters,
-                                                          completion: (([T])->Void)? = nil
-                                                         ){
-
-        AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
-            switch response.result {
-            case .success(let val):
-                BKG_THREAD {
-                    let arr:[T]? = parseJsonItems(val)
-                    if let arr = arr {
-                        completion?(arr)
-                    }
-                }
-            case .failure(let err):
-                print(err)
-            }
-        }
-    }
-    
-    
-    
-    public static func requestItems2<T: DecodableProtocol>(clazz: T.Type ,
                                                              _ urlPath: String,
                                                              _ params: Parameters,
                                                              _ onSuccess: @escaping onSuccess_PresenterCompletion,
