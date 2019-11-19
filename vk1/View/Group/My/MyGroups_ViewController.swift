@@ -15,6 +15,8 @@ class MyGroups_ViewController: UIViewController  {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
     
+    var waiter: SpinnerViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPresenter()
@@ -171,5 +173,14 @@ extension MyGroups_ViewController: PushSectionedViewProtocol{
     func viewReloadData(groupByIds: [String]) {
         self.lettersSearchControl.updateControl(with: groupByIds)
         self.collectionView.reloadData()
+    }
+    
+    func startWaitIndicator(_ moduleEnum: ModuleEnum?){
+        waiter = SpinnerViewController(vc: self)
+        waiter?.add(vcView: view)
+    }
+          
+    func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
+        waiter?.stop(vcView: view)
     }
 }

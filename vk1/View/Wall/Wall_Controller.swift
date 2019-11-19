@@ -10,8 +10,6 @@ class Wall_Controller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        waiter = SpinnerViewController(vc: self)
-        waiter?.add(vcView: view)
         setupPresenter()
         setupCells()
         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
@@ -78,6 +76,15 @@ extension Wall_Controller: PushPlainViewProtocol{
     func viewReloadData(moduleEnum: ModuleEnum) {
         console(msg: "Wall_Controller: viewReloadData()")
         collectionView.reloadData()
+    }
+    
+    func startWaitIndicator(_ moduleEnum: ModuleEnum?){
+        waiter = SpinnerViewController(vc: self)
+        waiter?.add(vcView: view)
+    }
+          
+    func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
         waiter?.stop(vcView: view)
     }
+    
 }

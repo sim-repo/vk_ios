@@ -12,6 +12,8 @@ class LoginViewController: UIViewController {
     
     var waitLoadingContainer: UIView!
     
+    var waiter: SpinnerViewController?
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -91,5 +93,14 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: PushPlainViewProtocol{
     func viewReloadData(moduleEnum: ModuleEnum) {
+    }
+    
+    func startWaitIndicator(_ moduleEnum: ModuleEnum?){
+        waiter = SpinnerViewController(vc: self)
+        waiter?.add(vcView: view)
+    }
+          
+    func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
+        waiter?.stop(vcView: view)
     }
 }

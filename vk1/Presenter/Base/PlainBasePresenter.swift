@@ -15,9 +15,9 @@ public class PlainBasePresenter {
     
     var dataSource: [PlainModelProtocol] = [] {
         willSet {
-            PRESENTER_UI_THREAD { // to avoid UnsafeMutablePointer.deinitialize fatal error
+           // THREAD_SAFETY { // to avoid UnsafeMutablePointer.deinitialize fatal error
                 self.dataSource = newValue
-            }
+            //}
         }
     }
     
@@ -50,7 +50,7 @@ public class PlainBasePresenter {
     }
     
     
-    private func validateView(_ vc: PushViewProtocol){
+    final func validateView(_ vc: PushViewProtocol){
         guard let _ = vc as? PushPlainViewProtocol
         else {
             catchError(msg: "PlainBasePresenter: validateView(vc:) - incorrect passed vc")
@@ -60,11 +60,13 @@ public class PlainBasePresenter {
 
 
     
-    // MARK:- incoming model flow
-    // network -> synchronizer -> presenter:
-    // appendDataSource() -> validate() -> enrichData() -> viewReloadData() -> save()
 
-    private func appendDataSource(dirtyData: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
+// MARK:- incoming model flow
+// network -> synchronizer -> presenter:
+// appendDataSource() -> validate() -> enrichData() -> viewReloadData() -> save()
+
+    
+    final func appendDataSource(dirtyData: [DecodableProtocol], didLoadedFrom: ModelLoadedFromEnum) {
          
         guard let validatedData = validate(dirtyData)
             else {
@@ -77,8 +79,7 @@ public class PlainBasePresenter {
         }
         
         switch didLoadedFrom {
-           case .disk:
-                
+            case .disk:
                 return // data stored already
            case .network:
                 if let enriched = enrichData(validated: validatedData) {
@@ -91,7 +92,7 @@ public class PlainBasePresenter {
     }
     
     // check if datasource is conformed to model expected
-    private func validate(_ dirtyData: [DecodableProtocol]) -> [PlainModelProtocol]? {
+    final func validate(_ dirtyData: [DecodableProtocol]) -> [PlainModelProtocol]? {
         guard dirtyData.count > 0
         else {
             catchError(msg: "PlainBasePresenter: \(clazz): validate(): datasource is empty ")
@@ -118,149 +119,25 @@ public class PlainBasePresenter {
         return validated
     }
     
-    func viewReloadData(){
+    final func viewReloadData(){
         PRESENTER_UI_THREAD { [weak self] in
             guard let self = self else { return }
             let moduleEnum = ModuleEnum(presenter: self)
             self.view?.viewReloadData(moduleEnum: moduleEnum)
+            self.view?.stopWaitIndicator(moduleEnum)
         }
     }
     
-    func save(enriched: [PlainModelProtocol]) {
+    final func save(enriched: [PlainModelProtocol]) {
         RealmService.save(models: enriched, update: true)
     }
     
-    func sort() {
+    final func sort() {
        dataSource = dataSource.sorted {
                $0.getSortBy() > $1.getSortBy()
         }
     }
-    
-    final func getData(indexPath: IndexPath? = nil) -> ModelProtocol? {
-        // for non-list DS
-        if indexPath == nil {
-            guard dataSource.count == 1
-                else {
-                    catchError(msg: "PlainBasePresenter: \(clazz): getData(): datasource must be 1")
-                    return nil
-                }
-            return dataSource[0]
-        }
-        
-        // else for list DS
-        guard let idx = indexPath
-            else { return nil }
-        guard dataSource.count > idx.row
-            else {
-                return nil
-        }
-        return dataSource[idx.row]
-    }
-    
-    
-    final func getIndexPath(model: ModelProtocol) -> IndexPath?{
-        guard let idx = dataSource.firstIndex(where: { $0.getId() == model.getId() })
-            else {return nil}
-        
-        return IndexPath(row: idx, section: 0)
-    }
 }
 
 
 
-
-//MARK:- called from view
-extension PlainBasePresenter: PullPlainPresenterProtocol {
-    
-    final func numberOfRowsInSection() -> Int {
-        return dataSource.count
-    }
-    
-    @objc func viewDidDisappear() {
-        SynchronizerManager.shared.viewDidDisappear(presenter: self)
-    }
-    
-    func viewDidFilterInput(_ filterText: String) {
-    }
-    
-    func getSectionChild() -> PullSectionPresenterProtocol? {
-        return sectionChildPresenter
-    }
-    
-    func getPlainChild() -> PullPlainPresenterProtocol? {
-        return plainChildPresenter
-    }
-    
-    func viewDidSeguePrepare(segueId: SegueIdEnum, indexPath: IndexPath) {
-      
-        guard let model = getData(indexPath: indexPath)
-                    else {
-                        catchError(msg: "PlainBasePresenter: \(clazz): viewDidSeguePrepare(): no data with indexPath: \(indexPath)")
-                        return
-                    }
-        
-        guard let detailPresenter = PresenterFactory.shared.getInstance(segueId: segueId) as? DetailPresenterProtocol
-            else {
-                catchError(msg: "PlainBasePresenter: \(clazz): viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue) ")
-                return
-            }
-        detailPresenter.setDetailModel(model: model)
-    }
-}
-
-
-
-//MARK:- called from synchronizer & presenter factory
-extension PlainBasePresenter: SynchronizedPresenterProtocol {
-    
-    final func getDataSource() -> [ModelProtocol] {
-        return dataSource
-    }
-    
-    final func dataSourceIsEmpty() -> Bool {
-        return dataSource.isEmpty
-    }
-    
-    final func clearDataSource() {
-       dataSource.removeAll()
-    }
-    
-    final func setView(vc: PushViewProtocol) {
-        validateView(vc)
-        view = vc as? PushPlainViewProtocol
-        guard dataSource.count > 0
-            else { return }
-        let moduleEnum = ModuleEnum(presenter: self)
-        view?.viewReloadData(moduleEnum: moduleEnum)
-         
-    }
-    
-    // when response has got from network
-    final func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion? = nil) -> onSuccess_PresenterCompletion {
-        let outerCompletion: onSuccess_PresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
-            guard let self = self else { return }
-            self.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
-            console(msg: "PlainBasePresenter: \(self.clazz): didSuccessNetworkResponse")
-            completion?()
-        }
-        return outerCompletion
-    }
-    
-    // when all responses have got from network
-    final func didSuccessNetworkFinish() {
-        console(msg: "PlainBasePresenter: \(self.clazz): didSuccessNetworkFinish")
-        sort()
-        viewReloadData()
-    }
-    
-    final func setFromPersistent(models: [DecodableProtocol]) {
-        console(msg: "PlainBasePresenter: \(self.clazz): setFromPersistent")
-        appendDataSource(dirtyData: models, didLoadedFrom: .disk)
-        sort()
-        viewReloadData()
-    }
-    
-    func setSyncProgress(curr: Int, sum: Int) {
-        console(msg: "progress: \(curr) of \(sum)")
-    }
-}

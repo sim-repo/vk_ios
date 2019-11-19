@@ -11,6 +11,7 @@ class Group_ViewController: UIViewController {
     
     var presenter = GroupPresenter()
     
+    var waiter: SpinnerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,17 @@ extension Group_ViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 
 extension Group_ViewController: PushPlainViewProtocol{
+    
     func viewReloadData(moduleEnum: ModuleEnum) {
         self.collectionView.reloadData()
+    }
+    
+    func startWaitIndicator(_ moduleEnum: ModuleEnum?){
+        waiter = SpinnerViewController(vc: self)
+        waiter?.add(vcView: view)
+    }
+          
+    func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
+        waiter?.stop(vcView: view)
     }
 }

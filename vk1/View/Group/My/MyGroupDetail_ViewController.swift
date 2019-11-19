@@ -39,10 +39,6 @@ class MyGroupDetail_ViewController: UIViewController {
         logoOriginalHeight = constraintLogoHeight.constant
         descOriginalHeight = constraintDescHeight.constant
         coverOriginalHeight = constraintCoverHeight.constant
-        
-        waiter = SpinnerViewController(vc: self)
-        waiter?.add(vcView: headerView)
-        waiter?.add(vcView: collectionView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -121,6 +117,23 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
 
 extension MyGroupDetail_ViewController: PushPlainViewProtocol{
     
+    func startWaitIndicator(_ moduleEnum: ModuleEnum?) {
+       waiter = SpinnerViewController(vc: self)
+       waiter?.add(vcView: headerView)
+       waiter?.add(vcView: collectionView)
+    }
+    
+    func stopWaitIndicator(_ moduleEnum: ModuleEnum?) {
+        if moduleEnum == .my_group_wall {
+            waiter?.stop(vcView: collectionView)
+        }
+        
+        if moduleEnum == .my_group_detail {
+            waiter?.stop(vcView: headerView)
+        }
+    }
+    
+    
     func viewReloadData(moduleEnum: ModuleEnum) {
         
         console(msg: "MyGroupDetail_ViewController: refreshDataSource()")
@@ -169,13 +182,13 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
             headerViewOriginalHeight = self.constraintDescHeight.constant + constraintCounterHeight.constant + constraintCoverHeight.constant + 16
             conHeightHeader.constant = headerViewOriginalHeight
             
-            waiter?.stop(vcView: headerView)
+            stopWaitIndicator(moduleEnum)
         }
         
         // MyGroup Wall:
         if moduleEnum == .my_group_wall {
             if presenter.getPlainChild()!.numberOfRowsInSection() > 0 {
-                waiter?.stop(vcView: collectionView)
+                stopWaitIndicator(moduleEnum)
                 collectionView.reloadData()
             }
         }
@@ -202,6 +215,7 @@ extension MyGroupDetail_ViewController: UIScrollViewDelegate {
             headerViewAppearence(hide: true)
         }
     }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
     }
     

@@ -126,7 +126,7 @@ class SyncWall: SyncBaseProtocol {
                         count += 1
                         wallPresenter.setSyncProgress(curr:count, sum: sum)
                         
-                        //console(msg: "\(id)")
+                       // console(msg: "\(id)")
                         let onSuccessCompletion = wallPresenter.didSuccessNetworkResponse(completion: { [weak self] in
                             //release:
                             self?.dispatchGroup?.leave()

@@ -73,13 +73,13 @@ func NET_THREAD(_ block: @escaping (() -> Void)) {
 }
 
 func NET_DELAY_THREAD(_ block: @escaping (() -> Void)) {
-    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(networkDelayBetweenRequests), qos: .background){
+    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(Network.delayBetweenRequests), qos: .background){
         block()
     }
 }
 
 func NET_LDELAY_THREAD(_ block: @escaping (() -> Void)) {
-    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(networkLongDelayBetweenRequests), qos: .background){
+    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(Network.longDelayBetweenRequests), qos: .background){
         block()
     }
 }

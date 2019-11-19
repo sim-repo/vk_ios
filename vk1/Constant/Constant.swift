@@ -5,9 +5,14 @@ let baseURL = "https://api.vk.com/method/"
 let versionAPI = "5.103"
 let clientAPI = "7197054"
 
-let networkTimeout: TimeInterval = 10 // in sec
-let networkDelayBetweenRequests = 500 //500 // in ms
-let networkLongDelayBetweenRequests = 500 //500 // in ms
+
+struct Network {
+    static let timeout: TimeInterval = 10 // in sec
+    static let delayBetweenRequests = 500 //500 // in ms
+    static let longDelayBetweenRequests = 1000 //500 // in ms
+    static let intervalViewReload = 5 // in percent
+}
+
 
 
 

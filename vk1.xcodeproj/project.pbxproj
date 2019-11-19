@@ -59,6 +59,10 @@
 		164764B62365FC2E007D1B19 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B52365FC2E007D1B19 /* Constant.swift */; };
 		164764BB23662209007D1B19 /* VKLogin_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764BA23662209007D1B19 /* VKLogin_ViewController.swift */; };
 		164764BD23664DE0007D1B19 /* GroupSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764BC23664DE0007D1B19 /* GroupSectionHeader.swift */; };
+		164F80AF2384744E000F95E7 /* SectionBasePresenter+CalledByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80AE2384744E000F95E7 /* SectionBasePresenter+CalledByView.swift */; };
+		164F80B72384754D000F95E7 /* SectionedBasePresenter+CalledBySync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80B62384754D000F95E7 /* SectionedBasePresenter+CalledBySync.swift */; };
+		164F80B92384777B000F95E7 /* PlainBasePresenter+CalledByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80B82384777B000F95E7 /* PlainBasePresenter+CalledByView.swift */; };
+		164F80BB238477AB000F95E7 /* PlainBasePresenter+CalledBySync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80BA238477AB000F95E7 /* PlainBasePresenter+CalledBySync.swift */; };
 		1666673B2347B75F00FD2B86 /* Wall_Cell_tp1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */; };
 		1666673D2347B8E900FD2B86 /* Wall_Cell_tp1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */; };
 		166667412347BB9900FD2B86 /* Wall_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667402347BB9900FD2B86 /* Wall_Controller.swift */; };
@@ -246,6 +250,10 @@
 		164764B52365FC2E007D1B19 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		164764BA23662209007D1B19 /* VKLogin_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLogin_ViewController.swift; sourceTree = "<group>"; };
 		164764BC23664DE0007D1B19 /* GroupSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSectionHeader.swift; sourceTree = "<group>"; };
+		164F80AE2384744E000F95E7 /* SectionBasePresenter+CalledByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SectionBasePresenter+CalledByView.swift"; sourceTree = "<group>"; };
+		164F80B62384754D000F95E7 /* SectionedBasePresenter+CalledBySync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SectionedBasePresenter+CalledBySync.swift"; sourceTree = "<group>"; };
+		164F80B82384777B000F95E7 /* PlainBasePresenter+CalledByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlainBasePresenter+CalledByView.swift"; sourceTree = "<group>"; };
+		164F80BA238477AB000F95E7 /* PlainBasePresenter+CalledBySync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlainBasePresenter+CalledBySync.swift"; sourceTree = "<group>"; };
 		1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Wall_Cell_tp1.xib; sourceTree = "<group>"; };
 		1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_Cell_tp1.swift; sourceTree = "<group>"; };
 		166667402347BB9900FD2B86 /* Wall_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_Controller.swift; sourceTree = "<group>"; };
@@ -784,7 +792,11 @@
 			isa = PBXGroup;
 			children = (
 				16D58BE12366BE2900735296 /* PlainBasePresenter.swift */,
+				164F80B82384777B000F95E7 /* PlainBasePresenter+CalledByView.swift */,
+				164F80BA238477AB000F95E7 /* PlainBasePresenter+CalledBySync.swift */,
 				163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */,
+				164F80AE2384744E000F95E7 /* SectionBasePresenter+CalledByView.swift */,
+				164F80B62384754D000F95E7 /* SectionedBasePresenter+CalledBySync.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1208,6 +1220,7 @@
 				161C11392347226100A2EC9D /* WaitIndicator.swift in Sources */,
 				16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */,
 				1611F29B23788346002FCE3C /* RealmDetailGroup.swift in Sources */,
+				164F80BB238477AB000F95E7 /* PlainBasePresenter+CalledBySync.swift in Sources */,
 				16E08B66236F80B800340F09 /* FriendWall_ViewController.swift in Sources */,
 				1666674E2347CA0B00FD2B86 /* Wall_Cell_tp6.swift in Sources */,
 				16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */,
@@ -1217,6 +1230,7 @@
 				161C11402347401800A2EC9D /* CarouselFlowLayout.swift in Sources */,
 				16E08B40236CECE800340F09 /* SectionPresenterProtocols.swift in Sources */,
 				16D58BED236725DC00735296 /* PullPresenterProtocol.swift in Sources */,
+				164F80B72384754D000F95E7 /* SectionedBasePresenter+CalledBySync.swift in Sources */,
 				164764A32365E1E5007D1B19 /* SectionModelProtocol.swift in Sources */,
 				163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */,
 				16E08B78237010B200340F09 /* DetailPresenterProtocol.swift in Sources */,
@@ -1226,6 +1240,7 @@
 				16E08B4D236DD7DB00340F09 /* SyncGroupDetail.swift in Sources */,
 				166CB8ED2382F8CA009DA806 /* DefaultSyncConfiguration.swift in Sources */,
 				16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */,
+				164F80AF2384744E000F95E7 /* SectionBasePresenter+CalledByView.swift in Sources */,
 				16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */,
 				16E08B5B236DF1B900340F09 /* Login.swift in Sources */,
 				1611273C234B2C8E0080FD54 /* FriendPost_ViewController.swift in Sources */,
@@ -1264,6 +1279,7 @@
 				1611F29D23788422002FCE3C /* RealmURL.swift in Sources */,
 				16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */,
 				16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */,
+				164F80B92384777B000F95E7 /* PlainBasePresenter+CalledByView.swift in Sources */,
 				1604060D234E5A250083F3C3 /* MyGroupDetail_ViewController.swift in Sources */,
 				16E08B59236DF13700340F09 /* PlainPresenterProtocols.swift in Sources */,
 				16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */,

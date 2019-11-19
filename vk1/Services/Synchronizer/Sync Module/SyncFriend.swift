@@ -14,7 +14,7 @@ class SyncFriend: SyncBaseProtocol {
     func sync(force: Bool = false,
               _ dispatchCompletion: (()->Void)? = nil) {
         
-        queue.sync {
+       // queue.sync {
             let presenter = PresenterFactory.shared.getInstance(clazz: FriendPresenter.self)
             
             if force {
@@ -36,7 +36,7 @@ class SyncFriend: SyncBaseProtocol {
                     return
             }
             syncFromNetwork(presenter, dispatchCompletion)
-        }
+       // }
     }
     
     

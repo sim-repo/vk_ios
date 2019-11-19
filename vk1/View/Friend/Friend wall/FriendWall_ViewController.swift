@@ -14,9 +14,6 @@ class FriendWall_ViewController: UIViewController {
         super.viewDidLoad()
         setupPresenter()
         
-        waiter = SpinnerViewController(vc: self)
-        waiter?.add(vcView: view)
-        
         for i in 1...cellByCode.count {
             collectionView.register(UINib(nibName: cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: cellByCode["tp\(i)"]!)
         }
@@ -72,6 +69,14 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
     
     func viewReloadData(moduleEnum: ModuleEnum) {
         collectionView.reloadData()
+    }
+    
+    func startWaitIndicator(_ moduleEnum: ModuleEnum?){
+        waiter = SpinnerViewController(vc: self)
+        waiter?.add(vcView: view)
+    }
+          
+    func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
         waiter?.stop(vcView: view)
     }
 }

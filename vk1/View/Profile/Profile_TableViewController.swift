@@ -2,6 +2,9 @@ import UIKit
 
 class Profile_TableViewController: UITableViewController {
     
+    var waiter: SpinnerViewController?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
@@ -34,5 +37,14 @@ class Profile_TableViewController: UITableViewController {
 extension Profile_TableViewController: PushPlainViewProtocol {
     func viewReloadData(moduleEnum: ModuleEnum) {
         tableView.reloadData()
+    }
+    
+    func startWaitIndicator(_ moduleEnum: ModuleEnum?){
+        waiter = SpinnerViewController(vc: self)
+        waiter?.add(vcView: view)
+    }
+          
+    func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
+        waiter?.stop(vcView: view)
     }
 }

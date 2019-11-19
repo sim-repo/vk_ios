@@ -7,7 +7,6 @@ protocol PullSectionPresenterProtocol: PullPresenterProtocol {
     func numberOfRowsInSection (section: Int) -> Int
     func sectionTitle(section: Int)->String
     
-    
     // alphabet searching
     func getGroupBy() -> [String]
 }
