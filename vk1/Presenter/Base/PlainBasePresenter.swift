@@ -13,7 +13,13 @@ public class PlainBasePresenter {
         }
     }
     
-    var dataSource: [PlainModelProtocol] = []
+    var dataSource: [PlainModelProtocol] = [] {
+        willSet {
+            PRESENTER_UI_THREAD { // to avoid UnsafeMutablePointer.deinitialize fatal error
+                self.dataSource = newValue
+            }
+        }
+    }
     
     
     var clazz: String {
@@ -113,7 +119,7 @@ public class PlainBasePresenter {
     }
     
     func viewReloadData(){
-        UI_THREAD { [weak self] in
+        PRESENTER_UI_THREAD { [weak self] in
             guard let self = self else { return }
             let moduleEnum = ModuleEnum(presenter: self)
             self.view?.viewReloadData(moduleEnum: moduleEnum)
@@ -216,19 +222,17 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     }
     
     final func clearDataSource() {
-        dataSource.removeAll()
+       dataSource.removeAll()
     }
     
     final func setView(vc: PushViewProtocol) {
         validateView(vc)
-        self.view = vc as? PushPlainViewProtocol
+        view = vc as? PushPlainViewProtocol
         guard dataSource.count > 0
             else { return }
-        UI_THREAD { [weak self] in
-            guard let self = self else { return }
-            let moduleEnum = ModuleEnum(presenter: self)
-            self.view?.viewReloadData(moduleEnum: moduleEnum)
-        }
+        let moduleEnum = ModuleEnum(presenter: self)
+        view?.viewReloadData(moduleEnum: moduleEnum)
+         
     }
     
     // when response has got from network
@@ -244,13 +248,13 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     
     // when all responses have got from network
     final func didSuccessNetworkFinish() {
-        console(msg: "PlainBasePresenter: \(clazz): didSuccessNetworkFinish")
+        console(msg: "PlainBasePresenter: \(self.clazz): didSuccessNetworkFinish")
         sort()
         viewReloadData()
     }
     
     final func setFromPersistent(models: [DecodableProtocol]) {
-        console(msg: "PlainBasePresenter: \(clazz): setFromPersistent")
+        console(msg: "PlainBasePresenter: \(self.clazz): setFromPersistent")
         appendDataSource(dirtyData: models, didLoadedFrom: .disk)
         sort()
         viewReloadData()

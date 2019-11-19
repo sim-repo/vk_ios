@@ -24,7 +24,7 @@ class AlamofireNetworkManager{
            AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                switch response.result {
                case .success(let val):
-                   BKG_THREAD {
+                   NET_THREAD {
                        let arr:[T]? = parseJsonItems(val)
                        if let arr = arr {
                            onSuccess(arr)
@@ -48,11 +48,11 @@ class AlamofireNetworkManager{
                console(msg: "AlamofireNetworkManager: requestSingle(): response..")
                switch response.result {
                case .success(let json):
-                   BKG_THREAD {
+                   NET_THREAD {
                         if let t: T = parseJson(json) {
                            var arr: [T] = []
                            arr.append(t)
-                            DELAY_THREAD {
+                            NET_DELAY_THREAD {
                                 onSuccess(arr)
                             }
                         }
@@ -79,7 +79,7 @@ class AlamofireNetworkManager{
         AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let json):
-                BKG_THREAD {
+                NET_THREAD {
                     let arr:[Wall]? = WallParser.parseWallJson(json)
                    
                     if let arr = arr {
@@ -88,7 +88,7 @@ class AlamofireNetworkManager{
                             let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null", code: 123, userInfo: nil)
                             onError(err)
                         } else {
-                            LDELAY_THREAD {
+                            NET_LDELAY_THREAD {
                                 onSuccess(arr)
                             }
                         }

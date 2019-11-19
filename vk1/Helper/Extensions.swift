@@ -2,6 +2,8 @@ import UIKit
 
 
 
+//MARK: - UIPanGestureRecognizer
+
 internal enum Direction {
     case up
     case down
@@ -9,7 +11,7 @@ internal enum Direction {
     case right
 }
 
-//MARK: - UIPanGestureRecognizer
+
 internal extension UIPanGestureRecognizer {
     var direction: Direction? {
         let velocity = self.velocity(in: view)
@@ -25,6 +27,8 @@ internal extension UIPanGestureRecognizer {
     }
 }
 
+
+//MARK: - screen
 
 var wScreen: CGFloat {
     return UIScreen.main.bounds.size.width
@@ -42,45 +46,39 @@ var hHalfScreen: CGFloat {
     return UIScreen.main.bounds.size.height/2.0
 }
 
-func renderImage(imageView: UIImageView, color: UIColor) {
-   if let image = imageView.image {
-       let tintableImage = image.withRenderingMode(.alwaysTemplate)
-       imageView.image = tintableImage
-       imageView.tintColor = color
-   }
-}
 
-func UI_THREAD(_ block: @escaping (() -> Void)) {
+
+//MARK:- THREAD
+
+//PRESENTERS:
+
+func PRESENTER_UI_THREAD(_ block: @escaping (() -> Void)) {
     DispatchQueue.main.async(execute: block)
 }
 
 
-func BKG_THREAD(_ block: @escaping (() -> Void)) {
+
+//NETWORK LAYER:
+
+func NET_THREAD(_ block: @escaping (() -> Void)) {
     DispatchQueue.global(qos: .background).async(execute: block)
 }
 
-func DELAY_THREAD(_ block: @escaping (() -> Void)) {
+func NET_DELAY_THREAD(_ block: @escaping (() -> Void)) {
     DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(networkDelayBetweenRequests), qos: .background){
         block()
     }
 }
 
-func LDELAY_THREAD(_ block: @escaping (() -> Void)) {
+func NET_LDELAY_THREAD(_ block: @escaping (() -> Void)) {
     DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(networkLongDelayBetweenRequests), qos: .background){
         block()
     }
 }
 
 
-func isRowPresentInTableView(indexPath: IndexPath, tableView: UITableView) -> Bool{
-    if indexPath.section < tableView.numberOfSections{
-        if indexPath.row < tableView.numberOfRows(inSection: indexPath.section){
-            return true
-        }
-    }
 
-    return false
-}
+//MARK: - logger
 
 func catchError(msg: String){
     #if DEBUG
@@ -93,10 +91,38 @@ func catchError(msg: String){
     #endif
 }
 
+func console(msg: String) {
+    #if DEBUG
+        print(msg)
+        print()
+    #else
+        logInf(msg)
+    #endif
+}
+
+func logInf(msg: String) {
+    //TODO
+}
 
 func sendCrashlytics(_ msg: String) {
     //TODO
 }
+
+
+
+
+
+//MARK: - MISC
+
+func isRowPresentInTableView(indexPath: IndexPath, tableView: UITableView) -> Bool{
+    if indexPath.section < tableView.numberOfSections{
+        if indexPath.row < tableView.numberOfRows(inSection: indexPath.section){
+            return true
+        }
+    }
+    return false
+}
+
 
 func convertUnixTime(unixTime: Double) -> String {
     let date = Date(timeIntervalSince1970: unixTime)
@@ -108,31 +134,6 @@ func convertUnixTime(unixTime: Double) -> String {
 }
 
 
-func console(msg: String) {
-    #if DEBUG
-        print(msg)
-        print()
-    #else
-           logInf(msg)
-    #endif
-}
-
-func logInf(msg: String) {
-    //TODO
-}
-
-
-extension Int
-{
-    func toString() -> String
-    {
-        let myString = String(self)
-        return myString
-    }
-}
-
-
-
 func getRawClassName(object: AnyClass) -> String {
     
     let name = NSStringFromClass(object)
@@ -140,6 +141,18 @@ func getRawClassName(object: AnyClass) -> String {
     return components.last ?? "Unknown"
 }
 
+
+func renderImage(imageView: UIImageView, color: UIColor) {
+   if let image = imageView.image {
+       let tintableImage = image.withRenderingMode(.alwaysTemplate)
+       imageView.image = tintableImage
+       imageView.tintColor = color
+   }
+}
+
+
+
+//MARK:- Extensions
 
 extension UITextView {
     func actualSize() -> CGSize {
@@ -149,6 +162,17 @@ extension UITextView {
         return frame.size
     }
 }
+
+extension Int {
+    func toString() -> String
+    {
+        let myString = String(self)
+        return myString
+    }
+}
+
+
+//MARK: - DEBUG ONLY
 
 func printFonts() {
     for family in UIFont.familyNames.sorted() {

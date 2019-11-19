@@ -2,7 +2,7 @@ import UIKit
 
 class Friend_Controller: UIViewController {
 
-    var presenter: PullSectionPresenterProtocol!
+    var presenter: PullSectionPresenterProtocol?
     
     @IBOutlet weak var lettersSearchControl: LettersSearchControl!
     @IBOutlet weak var tableView: UITableView!
@@ -45,7 +45,7 @@ class Friend_Controller: UIViewController {
     
     private func setupAlphabetSearchControl(){
         lettersSearchControl.delegate = self
-        lettersSearchControl.updateControl(with: presenter.getGroupBy())
+        lettersSearchControl.updateControl(with: presenter?.getGroupBy())
     }
     
     private func setupSearchTextField(){
@@ -60,7 +60,7 @@ class Friend_Controller: UIViewController {
             searchTextReset()
             return
         }
-        presenter.viewDidFilterInput(searchTextField.text!)
+        presenter?.viewDidFilterInput(searchTextField.text!)
     }
     
     
@@ -73,19 +73,19 @@ class Friend_Controller: UIViewController {
 extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter.numberOfSections()
+        return presenter?.numberOfSections() ?? 1
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.numberOfRowsInSection(section: section)
+        return presenter?.numberOfRowsInSection(section: section) ?? 1
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! Friend_TableCell
         
-        guard let data = presenter.getData(indexPath: indexPath)
+        guard let data = presenter?.getData(indexPath: indexPath)
            else {
                return UITableViewCell()
            }
@@ -107,7 +107,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
        
         
         let label = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 20))
-        label.text = presenter.sectionTitle(section: section)
+        label.text = presenter?.sectionTitle(section: section)
         hview.addSubview(label)
         UIControlThemeMgt.setupTableHeader(view: hview, title: label)
         return hview
@@ -115,7 +115,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return presenter.sectionTitle(section: section)
+        return presenter?.sectionTitle(section: section)
     }
     
     
@@ -127,7 +127,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
                 catchError(msg: "Friend_Controller: prepare(for segue:)")
                 return
             }
-            presenter.viewDidSeguePrepare(segueId: SegueIdEnum.detailFriend, indexPath: indexPath)
+            presenter?.viewDidSeguePrepare(segueId: SegueIdEnum.detailFriend, indexPath: indexPath)
         }
     }
     
@@ -145,7 +145,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
             
             self.view.layoutIfNeeded()
         })
-        presenter.viewDidFilterInput("")
+        presenter?.viewDidFilterInput("")
     }
     
 }

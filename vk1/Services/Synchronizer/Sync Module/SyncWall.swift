@@ -100,7 +100,7 @@ class SyncWall: SyncBaseProtocol {
                 wallPresenter.clearDataSource()
                 
                 
-                let semaphore = DispatchSemaphore(value: 1)
+                let semaphore = DispatchSemaphore(value: 3)
                 let queue = DispatchQueue.global(qos: .background)
                 
                 for _ in ids {

@@ -8,7 +8,13 @@ public class SectionedBasePresenter {
     weak var view: PushSectionedViewProtocol?
     
     // data source properties
-    var sortedDataSource: [SectionModelProtocol] = []
+    var sortedDataSource: [SectionModelProtocol] = [] {
+        willSet {
+            PRESENTER_UI_THREAD { // to avoid UnsafeMutablePointer.deinitialize fatal error
+                self.sortedDataSource = newValue
+            }
+        }
+    }
     
     private var sectionsOffset: [Int] = []
     
@@ -119,7 +125,7 @@ public class SectionedBasePresenter {
        }
        
     func viewReloadData(){
-       UI_THREAD { [weak self] in
+       PRESENTER_UI_THREAD { [weak self] in
            guard let self = self else { return }
            self.view?.viewReloadData(groupByIds: self.groupByIds)
        }
@@ -289,12 +295,9 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
    
     final func setView(vc: PushViewProtocol) {
         validateView(vc)
-        self.view = vc as? PushSectionedViewProtocol
-        UI_THREAD { [weak self] in
-            guard let self = self else { return }
-            self.filterAndRegroupData()
-            self.view?.viewReloadData(groupByIds: self.groupByIds)
-        }
+        view = vc as? PushSectionedViewProtocol
+        filterAndRegroupData()
+        view?.viewReloadData(groupByIds: self.groupByIds)
     }
     
     final func dataSourceIsEmpty() -> Bool {
@@ -325,11 +328,15 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     final func didSuccessNetworkFinish() {
         console(msg: "SectionedBasePresenter: \(clazz): didSuccessNetworkFinish")
         sort()
+        filterAndRegroupData()
+        viewReloadData()
     }
     
     final func setFromPersistent(models: [DecodableProtocol]) {
         console(msg: "SectionedBasePresenter: \(clazz): setFromPersistent")
         appendDataSource(dirtyData: models, didLoadedFrom: .disk)
         sort()
+        filterAndRegroupData()
+        viewReloadData()
     }
 }

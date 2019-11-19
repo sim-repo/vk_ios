@@ -86,13 +86,13 @@ class SynchronizerManager {
              SyncGroup.shared.sync()
              
          case .wall:
-             SyncWall.shared.sync(force: false)
+             SyncWall.shared.sync()
              
          case .profile:
              SyncProfile.shared.sync()
              
          case .login:
-             SyncLogin.shared.sync(force: true)
+             SyncLogin.shared.sync()
              
          case .unknown:
              catchError(msg: "SynchronizerManager: startSync: no case")
@@ -121,11 +121,7 @@ class SynchronizerManager {
     
     @objc func startScheduledSync(applicationCompletion: ((_ newData: Bool) -> Void)? = nil){
         
-        guard !syncing
-        else {
-            applicationCompletion?(false)
-            return
-        }
+        
         
         var force = false
         if let _lastSyncDate = lastSyncDate {
@@ -141,6 +137,13 @@ class SynchronizerManager {
             }
         }
         
+        
+        guard !syncing
+        else {
+            applicationCompletion?(false)
+            return
+        }
+        
         // if current time is allowed for sync
         let isSyncAllowedTime = Date().isBetween(syncConfiguration.startTime, and: syncConfiguration.endTime)
         
@@ -153,6 +156,7 @@ class SynchronizerManager {
         self.backgroundTaskID = UIApplication.shared.beginBackgroundTask (withName: "com.vk_ios") {
             UIApplication.shared.endBackgroundTask(self.backgroundTaskID!)
             self.backgroundTaskID = UIBackgroundTaskIdentifier.invalid
+            self.dispatchGroup = nil
         }
         
         // Create synchronization dispatch group

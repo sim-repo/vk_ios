@@ -125,6 +125,7 @@ class RealmService {
         var results: Results<RealmWall>
         do {
             let realm = try Realm()
+            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
             if let _filter = filter {
                 results = realm.objects(RealmWall.self).filter(_filter)
             } else {
@@ -144,7 +145,7 @@ class RealmService {
          var results: Results<RealmFriend>
         do {
             let realm = try Realm()
-            
+            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
             if let _filter = filter {
                 results = realm.objects(RealmFriend.self).filter(_filter)
             } else {
@@ -163,7 +164,7 @@ class RealmService {
          var results: Results<RealmGroup>
         do {
             let realm = try Realm()
-            
+            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
             if let _filter = filter {
                 results = realm.objects(RealmGroup.self).filter(_filter)
             } else {
@@ -182,7 +183,7 @@ class RealmService {
          var results: Results<RealmMyGroup>
         do {
             let realm = try Realm()
-            
+            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
             if let _filter = filter {
                 results = realm.objects(RealmMyGroup.self).filter(_filter)
             } else {
@@ -201,7 +202,7 @@ class RealmService {
         var results: Results<RealmDetailGroup>
         do {
             let realm = try Realm()
-            
+            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
             if let _filter = filter {
                 results = realm.objects(RealmDetailGroup.self).filter(_filter)
             } else {
