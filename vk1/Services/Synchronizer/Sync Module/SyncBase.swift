@@ -35,14 +35,12 @@ class SyncBase {
     func getCompletions(presenter: SynchronizedPresenterProtocol, _ dispatchCompletion: (()->Void)? = nil) ->
         (onSuccess_PresenterCompletion, onErrResponse_SyncCompletion) {
         
-        let onSuccess_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion() {
-           dispatchCompletion?()
-        }
-
+        let onSuccess_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
+            
         let onSuccess_PresenterCompletion = presenter.didSuccessNetworkResponse { [weak self] in
-           onSuccess_SyncCompletion(presenter)
-           dispatchCompletion?()
-           self?.setLastSyncDate(date: Date())
+            onSuccess_SyncCompletion(presenter)
+            dispatchCompletion?()
+            self?.setLastSyncDate(date: Date())
         }
 
         let onError_SyncCompletion = SynchronizerManager.shared.getOnErrorCompletion() {

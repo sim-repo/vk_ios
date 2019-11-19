@@ -12,6 +12,6 @@ class SyncLogin: SyncBaseProtocol {
     func sync(force: Bool = false,
               _ dispatchCompletion: (()->Void)? = nil) {
         
-     //   SyncWall.shared.sync(force: force)
+        SyncWall.shared.sync(force: force)
     }
 }

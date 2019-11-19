@@ -12,4 +12,5 @@ protocol SynchronizedPresenterProtocol: class {
     func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion?) -> onSuccess_PresenterCompletion
     func didSuccessNetworkFinish()
     func setFromPersistent(models: [DecodableProtocol])
+    func setSyncProgress(curr: Int, sum: Int)
 }

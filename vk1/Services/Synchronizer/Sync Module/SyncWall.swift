@@ -82,8 +82,16 @@ class SyncWall: SyncBaseProtocol {
                 friendDS.forEach { model in
                     ids.append(model.getId())
                 }
-                   
-               
+                 
+                
+                console(msg: "groupDS: \(groupDS.count )")
+                if groupDS.count == 0 {
+                    catchError(msg: "groupDS is null")
+                }
+                console(msg: "friendDS: \(friendDS.count )")
+                if friendDS.count == 0 {
+                    catchError(msg: "friendDS is null")
+                }
                 // ids = [] // test
                 
                 
@@ -100,20 +108,25 @@ class SyncWall: SyncBaseProtocol {
                 wallPresenter.clearDataSource()
                 
                 
-                let semaphore = DispatchSemaphore(value: 3)
-                let queue = DispatchQueue.global(qos: .background)
+                let semaphore = DispatchSemaphore(value: 1)
+                let queue = DispatchQueue.global(qos: .userInteractive)
                 
                 for _ in ids {
                     self.dispatchGroup?.enter()
                 }
                 // send requests
+                var count = 0
+                let sum = ids.count
                 queue.async {
                     for id in ids {
                         
                         // lock
                         semaphore.wait()
-
-                        console(msg: "\(id)")
+                        
+                        count += 1
+                        wallPresenter.setSyncProgress(curr:count, sum: sum)
+                        
+                        //console(msg: "\(id)")
                         let onSuccessCompletion = wallPresenter.didSuccessNetworkResponse(completion: { [weak self] in
                             //release:
                             self?.dispatchGroup?.leave()
@@ -125,7 +138,6 @@ class SyncWall: SyncBaseProtocol {
                             semaphore.signal()
                         }
                         ApiVK.wallRequest(ownerId: id, onSuccess: onSuccessCompletion, onError: onErrorCompletion)
-                        
                     }
                 }
                 
@@ -138,5 +150,4 @@ class SyncWall: SyncBaseProtocol {
             }
         }
     }
-    
 }

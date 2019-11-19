@@ -24,11 +24,9 @@ class AlamofireNetworkManager{
            AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                switch response.result {
                case .success(let val):
-                   NET_THREAD {
-                       let arr:[T]? = parseJsonItems(val)
-                       if let arr = arr {
-                           onSuccess(arr)
-                       }
+                   let arr:[T]? = parseJsonItems(val)
+                   if let arr = arr {
+                       onSuccess(arr)
                    }
                case .failure(let err):
                     let error = err as NSError
@@ -48,8 +46,7 @@ class AlamofireNetworkManager{
                console(msg: "AlamofireNetworkManager: requestSingle(): response..")
                switch response.result {
                case .success(let json):
-                   NET_THREAD {
-                        if let t: T = parseJson(json) {
+                  if let t: T = parseJson(json) {
                            var arr: [T] = []
                            arr.append(t)
                             NET_DELAY_THREAD {
@@ -60,7 +57,6 @@ class AlamofireNetworkManager{
                             let err = NSError(domain: "AlamofireNetworkManager: requestSingle(): response data is null : \(json)", code: 123, userInfo: nil)
                             onError(err)
                         }
-                   }
                case .failure(let err):
                     let error = err as NSError
                     onError(error)
@@ -79,18 +75,16 @@ class AlamofireNetworkManager{
         AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let json):
-                NET_THREAD {
-                    let arr:[Wall]? = WallParser.parseWallJson(json)
+                let arr:[Wall]? = WallParser.parseWallJson(json)
                    
-                    if let arr = arr {
-                        if arr.isEmpty {
-                            //let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null : \(json)", code: 123, userInfo: nil)
-                            let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null", code: 123, userInfo: nil)
-                            onError(err)
-                        } else {
-                            NET_LDELAY_THREAD {
-                                onSuccess(arr)
-                            }
+                if let arr = arr {
+                    if arr.isEmpty {
+                        //let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null : \(json)", code: 123, userInfo: nil)
+                        let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null", code: 123, userInfo: nil)
+                        onError(err)
+                    } else {
+                        NET_LDELAY_THREAD {
+                            onSuccess(arr)
                         }
                     }
                 }

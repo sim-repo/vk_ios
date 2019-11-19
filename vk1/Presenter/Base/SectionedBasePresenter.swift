@@ -339,4 +339,8 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
         filterAndRegroupData()
         viewReloadData()
     }
+    
+    func setSyncProgress(curr: Int, sum: Int) {
+        console(msg: "progress: \(curr) of \(sum)")
+    }
 }

@@ -102,10 +102,7 @@ class SynchronizerManager {
     
     
     
-    
-    
-    
-    
+
 
     // MARK: - called by scheduler
     
@@ -120,8 +117,6 @@ class SynchronizerManager {
     
     
     @objc func startScheduledSync(applicationCompletion: ((_ newData: Bool) -> Void)? = nil){
-        
-        
         
         var force = false
         if let _lastSyncDate = lastSyncDate {
