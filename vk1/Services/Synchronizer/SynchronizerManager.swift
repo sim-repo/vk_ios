@@ -11,8 +11,34 @@ import UIKit
 class SynchronizerManager {
     
     static let shared = SynchronizerManager()
-    private init() {}
+    private init() {
+        self.synchronizers = [
+            SyncWall.shared,
+            SyncDetailFriend.shared,
+            SyncGroupDetail.shared
+        ]
+    }
     
+    private var syncConfiguration = DefaultSyncConfiguration()
+    
+    private var lastSyncDate: Date? {
+        return synchronizers
+            .filter{ $0.getLastSyncDate() != nil }
+            .sorted{ $0.getLastSyncDate()! > $1.getLastSyncDate()! }
+            .first?.getLastSyncDate()
+    }
+    
+    private var syncing: Bool {
+        return self.dispatchGroup != nil
+    }
+    
+    private var dispatchGroup: DispatchGroup?
+    private var backgroundTaskID: UIBackgroundTaskIdentifier?
+    private var synchronizers: [SyncBaseProtocol]!
+    
+    
+    
+// MARK: - called during user's actions perform
     
     // called from Presenter
     public func callSyncFromPresenter(moduleEnum: ModuleEnum){
@@ -39,63 +65,132 @@ class SynchronizerManager {
     
     
     func startSync(_ moduleEnum: ModuleEnum){
-        switch moduleEnum {
-            
-        case .friend:
-            let p = PresenterFactory.shared.getInstance(clazz: FriendPresenter.self)
-            
-            if p.dataSourceIsEmpty() {
-                SyncFriend.shared.sync(p)
-            }
+         switch moduleEnum {
+             
+         case .friend:
+             SyncFriend.shared.sync()
+             
+         case .friend_wall:
+             SyncFriendWall.shared.sync()
+             
+         case .my_group:
+             SyncMyGroup.shared.sync()
+             
+         case .my_group_detail:
+             SyncGroupDetail.shared.sync()
+             
+         case .my_group_wall:
+             SyncMyGroupWall.shared.sync()
+             
+         case .group:
+             SyncGroup.shared.sync()
+             
+         case .wall:
+             SyncWall.shared.sync(force: false)
+             
+         case .profile:
+             SyncProfile.shared.sync()
+             
+         case .login:
+             SyncLogin.shared.sync(force: true)
+             
+         case .unknown:
+             catchError(msg: "SynchronizerManager: startSync: no case")
+         }
+     }
+    
+    
+    
+    
+    
+    
+    
+    
 
-        case .my_group:
-            let p = PresenterFactory.shared.getInstance(clazz: MyGroupPresenter.self)
-            if p.dataSourceIsEmpty() {
-                SyncMyGroup.shared.sync(p)
-            }
-            
-        case .my_group_detail:
-            let p = PresenterFactory.shared.getInstance(clazz: MyGroupDetailPresenter.self)
-            if p.dataSourceIsEmpty() {
-                SyncGroupDetail.shared.sync(p)
-            }
-            
-        case .my_group_wall:
-            let p = PresenterFactory.shared.getInstance(clazz: MyGroupWallPresenter.self)
-            if p.dataSourceIsEmpty() {
-                SyncMyGroupWall.shared.sync(p)
-            }
-            
-        case .group:
-            let p = PresenterFactory.shared.getInstance(clazz: GroupPresenter.self)
-            if p.dataSourceIsEmpty() {
-                SyncGroup.shared.sync(p)
-            }
-            
-        case .wall:
-            let p = PresenterFactory.shared.getInstance(clazz: WallPresenter.self)
-            if p.dataSourceIsEmpty() {
-                SyncWall.shared.sync(force: false)
-            }
-            
-        case .friend_wall:
-            let p = PresenterFactory.shared.getInstance(clazz: FriendWallPresenter.self)
-            if p.dataSourceIsEmpty() {
-                SyncFriendWall.shared.sync(p)
-            }
-            
-        case .profile:
-            let p = PresenterFactory.shared.getInstance(clazz: ProfilePresenter.self)
-            SyncProfile.shared.sync(p)
-            
-        case .login:
-            SyncLogin.shared.sync(force: true)
-            
-        case .unknown:
-            catchError(msg: "SynchronizerManager: startSync: no case")
+    // MARK: - called by scheduler
+    
+    
+    private func scheduleNextSync() {
+        if let lastSyncDate = lastSyncDate {
+            let date = lastSyncDate.addingTimeInterval(syncConfiguration.interval)
+            let timer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(startScheduledSync), userInfo: nil, repeats: false)
+            RunLoop.main.add(timer, forMode: .common)
+        }
+    }
+    
+    
+    @objc func startScheduledSync(applicationCompletion: ((_ newData: Bool) -> Void)? = nil){
+        
+        guard !syncing
+        else {
+            applicationCompletion?(false)
+            return
         }
         
+        var force = false
+        if let _lastSyncDate = lastSyncDate {
+            // if synced less than an sync interval
+            if Date().timeIntervalSince(_lastSyncDate) < syncConfiguration.interval {
+                applicationCompletion?(true)
+                return
+            }
+            
+            // if tomorrow morning
+            if Date().noon != _lastSyncDate.noon && Date.hoursBetween(start: _lastSyncDate, end: Date()) > 6 {
+                force = true
+            }
+        }
+        
+        // if current time is allowed for sync
+        let isSyncAllowedTime = Date().isBetween(syncConfiguration.startTime, and: syncConfiguration.endTime)
+        
+        if !force && !isSyncAllowedTime {
+            applicationCompletion?(true)
+            return
+        }
+        
+        // Setup background task so syncronization will continue if app goes to background state
+        self.backgroundTaskID = UIApplication.shared.beginBackgroundTask (withName: "com.vk_ios") {
+            UIApplication.shared.endBackgroundTask(self.backgroundTaskID!)
+            self.backgroundTaskID = UIBackgroundTaskIdentifier.invalid
+        }
+        
+        // Create synchronization dispatch group
+        self.dispatchGroup = DispatchGroup()
+        let startSyncTime = Date() // just for debug test
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let self = self else { return }
+            
+            // Start every synchronizer
+            for synchronizer in self.synchronizers {
+                self.dispatchGroup?.enter()
+                synchronizer.sync(force: force){ [weak self] in
+                    self?.dispatchGroup?.leave()
+                }
+            }
+            
+            // Perform when sync will be finished
+            self.dispatchGroup?.notify(queue: DispatchQueue.main) {  [weak self] in
+                guard let self = self else { return }
+                self.dispatchGroup = nil
+                
+                let duration = Date().timeIntervalSince(startSyncTime)
+                console(msg: "Sync finished. Sync duration: \(Int(duration)) seconds.")
+                
+                self.scheduleNextSync()
+                
+                // If app in background state then update system that we are done!
+                UIApplication.shared.endBackgroundTask(self.backgroundTaskID!)
+                self.backgroundTaskID = UIBackgroundTaskIdentifier.invalid
+            }
+        }
     }
+    
+    
+ 
+    
+
+// MARK: - synchronizer's completions
     
     func getFinishNetworkCompletion(_ completion: (()-> Void)? = nil ) -> onNetworkFinish_SyncCompletion {
         let onFinish: onNetworkFinish_SyncCompletion = { synchronizedPresenterProtocol in
@@ -112,5 +207,4 @@ class SynchronizerManager {
         }
         return onError
     }
-    
 }

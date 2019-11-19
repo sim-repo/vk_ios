@@ -1,32 +1,72 @@
 import UIKit
 
-class SyncFriendWall {
+class SyncFriendWall: SyncBaseProtocol {
     
     static let shared = SyncFriendWall()
-    private init() {}
+    private override init() {}
     
-    func sync(_ presenter: SynchronizedPresenterProtocol) {
-        
-        // run when all networks have done
-        let onFinish_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
-        
-        let onSuccess_PresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
-            onFinish_SyncCompletion(presenter)
-        })
-        
-        guard let p = presenter as? DetailPresenterProtocol
-        else {
-            catchError(msg: "SyncFriendWall: sync(): presenter is not conformed DetailPresenterProtocol")
-            return
-        }
-
-        guard let id = p.getId()
-        else {
-            catchError(msg: "SyncFriendWall: sync(): no id")
-            return
-        }
-        
-        ApiVK.friendWallRequest(ownerId: id, onSuccess: onSuccess_PresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())
+    let queue = DispatchQueue.global(qos: .background)
+    
+    var module: ModuleEnum {
+        return ModuleEnum.friend_wall
     }
+    
+    
+    func sync(force: Bool = false,
+              _ dispatchCompletion: (()->Void)? = nil) {
+        
+        queue.sync {
+            let presenter = PresenterFactory.shared.getInstance(clazz: FriendWallPresenter.self)
+            
+            guard let p = presenter as? DetailPresenterProtocol
+            else {
+               catchError(msg: "SyncFriendWall: sync(): presenter is not conformed DetailPresenterProtocol")
+               return
+            }
+            
+            guard let id = p.getId()
+            else {
+                catchError(msg: "SyncFriendWall: sync(): no id")
+                return
+            }
+            
+            
+            if force {
+                syncFromNetwork(presenter, id: id, dispatchCompletion)
+                return
+            }
+
+            
+            if !presenter.dataSourceIsEmpty() {
+               dispatchCompletion?()
+               return
+            }
+            
+
+            //load from disk
+            if let walls = RealmService.loadWall(filter: "ownerId = \(id)"),
+              !walls.isEmpty {
+                   presenter.setFromPersistent(models: walls)
+                   dispatchCompletion?()
+                   return
+            }
+            
+            syncFromNetwork(presenter, id: id, dispatchCompletion)
+        }
+    }
+    
+    
+    
+    private func syncFromNetwork(_ presenter: SynchronizedPresenterProtocol,
+                                 id: typeId,
+                                 _ dispatchCompletion: (()->Void)? = nil){
+         
+         // clear all
+         syncStart = Date()
+        
+         let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
+         
+         ApiVK.friendWallRequest(ownerId: id, onSuccess: onSuccess, onError: onError)
+     }
 }
 

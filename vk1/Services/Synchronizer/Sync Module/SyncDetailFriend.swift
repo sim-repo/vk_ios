@@ -1,21 +1,16 @@
 import UIKit
 
-class SyncDetailFriend {
-
+class SyncDetailFriend: SyncBaseProtocol {
+    
     static let shared = SyncDetailFriend()
-    private init() {}
+    private override init() {}
     
+    var module: ModuleEnum {
+        return ModuleEnum.friend_wall
+    }
     
-    func sync(_ presenter: SynchronizedPresenterProtocol,
-              _ completion: (()-> Void)? = nil ) {
-        
-               // run when all networks have done
-        let onFinish_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
-        
-        let onSuccess_PresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
-            onFinish_SyncCompletion(presenter)
-        })
-        //ApiVK.friendDetailRequest(onSuccess: onSuccessPresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())
+    func sync(force: Bool, _ dispatchCompletion: (() -> Void)?) {
+        //TODO:
     }
 }
     

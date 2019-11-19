@@ -1,23 +1,17 @@
 import UIKit
 
-class SyncGroup {
+class SyncGroup: SyncBaseProtocol {
     
     static let shared = SyncGroup()
-    private init() {}
+    private override init() {}
+       
+    var module: ModuleEnum {
+        return ModuleEnum.group
+    }
     
-    func sync(_ presenter: SynchronizedPresenterProtocol,
-              _ completion: (()->Void)? = nil ) {
-        
-        
-        // run when all networks have done
-        let onFinish_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
-        
-        let onSuccess_PresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
-            onFinish_SyncCompletion(presenter)
-            completion?()
-        })
-        
-        //ApiVK.groupRequest(onSuccess: onSuccessPresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())
+    func sync(force: Bool = false,
+              _ dispatchCompletion: (()->Void)? = nil) {
+        //TODO:
     }
 }
     

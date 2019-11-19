@@ -1,32 +1,54 @@
 import UIKit
 
-class SyncFriend {
-    
+class SyncFriend: SyncBaseProtocol {
+
     static let shared = SyncFriend()
-    private init() {}
+    private override init() {}
     
+    let queue = DispatchQueue.global(qos: .background)
     
-    func sync(_ presenter: SynchronizedPresenterProtocol,
-              _ completion: (()->Void)? = nil ) {
+    var module: ModuleEnum {
+        return ModuleEnum.friend
+    }
+    
+    func sync(force: Bool = false,
+              _ dispatchCompletion: (()->Void)? = nil) {
         
+        queue.sync {
+            let presenter = PresenterFactory.shared.getInstance(clazz: FriendPresenter.self)
+            
+            if force {
+                syncFromNetwork(presenter, dispatchCompletion)
+                return
+            }
+            
         
-        //load from disk
-        if let friends = RealmService.loadFriend(),
-            !friends.isEmpty {
-            presenter.setFromPersistent(models: friends)
-            completion?()
-            return
+            if !presenter.dataSourceIsEmpty() {
+                dispatchCompletion?()
+                return
+            }
+            
+            //load from disk
+            if let friends = RealmService.loadFriend(),
+               !friends.isEmpty {
+                    presenter.setFromPersistent(models: friends)
+                    dispatchCompletion?()
+                    return
+            }
+            syncFromNetwork(presenter, dispatchCompletion)
         }
+    }
+    
+    
+    
+    private func syncFromNetwork(_ presenter: SynchronizedPresenterProtocol, _ dispatchCompletion: (()->Void)? = nil){
         
-        // run when all networks have done
-        let finish_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
+        // clear all
+        syncStart = Date()
         
-        let onSuccess_PresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
-            finish_SyncCompletion(presenter)
-            completion?()
-        })
-        
-        ApiVK.friendRequest(onSuccess: onSuccess_PresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())
+        let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
+
+        ApiVK.friendRequest(onSuccess: onSuccess, onError: onError)
     }
 }
     

@@ -34,8 +34,7 @@ public class SectionedBasePresenter {
     // init presenter and view simultaneously
     required convenience init?(vc: PushViewProtocol) {
         self.init()
-        validateView(vc)
-        self.view = vc as? PushSectionedViewProtocol
+        setView(vc: vc)
     }
     
 

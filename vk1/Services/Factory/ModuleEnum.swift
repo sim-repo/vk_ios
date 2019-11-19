@@ -1,18 +1,18 @@
 import Foundation
 
 
-enum ModuleEnum  {
+enum ModuleEnum: String {
     
-    case friend
-    case friend_wall
-    case my_group
-    case my_group_detail
-    case my_group_wall
-    case group
-    case wall
-    case profile
-    case login
-    case unknown
+    case friend = "friend"
+    case friend_wall = "friend_wall"
+    case my_group = "my_group"
+    case my_group_detail = "my_group_detail"
+    case my_group_wall = "my_group_wall"
+    case group = "group"
+    case wall = "wall"
+    case profile = "profile"
+    case login = "login"
+    case unknown = "unknown"
     
     init(presenterType: SynchronizedPresenterProtocol.Type) {
         switch presenterType {

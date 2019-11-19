@@ -1,20 +1,25 @@
 import UIKit
 
-class SyncWall {
+class SyncWall: SyncBaseProtocol {
     
-    var wallSyncing = false
+    var syncing = false
     var dispatchGroup: DispatchGroup?
     
     static let shared = SyncWall()
-    private init() {}
+    private override init() {}
     
+    var module: ModuleEnum {
+        return ModuleEnum.wall
+    }
     
-    func sync(force: Bool) {
+
+    func sync(force: Bool = false,
+              _ dispatchCompletion: (()->Void)? = nil) {
         
-        if wallSyncing {
+        if syncing {
             return
         }
-        wallSyncing = true
+        syncing = true
         
         
         dispatchGroup = DispatchGroup()
@@ -23,34 +28,18 @@ class SyncWall {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
             
-            
-            // create or get exists presenter
-            let friendPresenter = PresenterFactory.shared.getInstance(clazz: FriendPresenter.self)
-            
             // start syncing
-            if force || friendPresenter.dataSourceIsEmpty() {
-                friendPresenter.clearDataSource()
-                self.dispatchGroup?.enter()
-                SyncFriend.shared.sync(friendPresenter) { [weak self] in
-                    console(msg: "SynchronizerManager: syncWall: FriendPresenter - sync completed" )
-                    self?.dispatchGroup?.leave()
-                }
+            self.dispatchGroup?.enter()
+            SyncFriend.shared.sync() { [weak self] in
+                console(msg: "SynchronizerManager: syncWall: FriendPresenter - sync completed" )
+                self?.dispatchGroup?.leave()
             }
             
             
-            // create or get exists presenter
-            //let groupPresenter: MyGroupPresenter = PresenterFactory.shared.getInstance()
-            
-            let groupPresenter = PresenterFactory.shared.getInstance(clazz: MyGroupPresenter.self)
-          
-            // start syncing
-            if force || groupPresenter.dataSourceIsEmpty() {
-                friendPresenter.clearDataSource()
-                self.dispatchGroup?.enter()
-                SyncMyGroup.shared.sync(groupPresenter) { [weak self] in
-                    console(msg: "SynchronizerManager: syncWall: GroupPresenter - sync completed" )
-                    self?.dispatchGroup?.leave()
-                }
+            self.dispatchGroup?.enter()
+            SyncMyGroup.shared.sync() { [weak self] in
+                console(msg: "SynchronizerManager: syncWall: GroupPresenter - sync completed" )
+                self?.dispatchGroup?.leave()
             }
             
             
@@ -61,7 +50,9 @@ class SyncWall {
                 
                 self.dispatchGroup = nil
                 
+                let friendPresenter = PresenterFactory.shared.getInstance(clazz: FriendPresenter.self)
                 let friendDS = friendPresenter.getDataSource()
+                let groupPresenter = PresenterFactory.shared.getInstance(clazz: MyGroupPresenter.self)
                 let groupDS = groupPresenter.getDataSource()
                 
                 
@@ -142,7 +133,7 @@ class SyncWall {
                 self.dispatchGroup?.notify(queue: DispatchQueue.main) {
                     console(msg: "SynchronizerManager: syncWall: sync completed!")
                     wallPresenter.didSuccessNetworkFinish()
-                    self.wallSyncing = false
+                    self.syncing = false
                 }
             }
         }

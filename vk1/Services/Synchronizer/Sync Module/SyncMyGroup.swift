@@ -1,32 +1,55 @@
 import UIKit
 
-class SyncMyGroup {
+class SyncMyGroup: SyncBaseProtocol {
 
     static let shared = SyncMyGroup()
-    private init() {}
+    private override init() {}
     
-    func sync(_ presenter: SynchronizedPresenterProtocol,
-              _ completion: (()->Void)? = nil ) {
+    let queue = DispatchQueue.global(qos: .background)
+    
+    var module: ModuleEnum {
+        return ModuleEnum.my_group
+    }
+    
+    
+    func sync(force: Bool = false,
+              _ dispatchCompletion: (()->Void)? = nil) {
         
-        
-        
-        //load from disk
-        if let groups = RealmService.loadMyGroup(),
-            !groups.isEmpty {
-            presenter.setFromPersistent(models: groups)
-            completion?()
-            return
+        queue.sync {
+             
+            let presenter = PresenterFactory.shared.getInstance(clazz: MyGroupPresenter.self)
+            
+            if force {
+                syncFromNetwork(presenter, dispatchCompletion)
+                return
+            }
+            
+            
+            if !presenter.dataSourceIsEmpty() {
+                dispatchCompletion?()
+                return
+            }
+            
+            //load from disk
+            if let groups = RealmService.loadMyGroup(),
+               !groups.isEmpty {
+                    presenter.setFromPersistent(models: groups)
+                    dispatchCompletion?()
+                    return
+            }
+            syncFromNetwork(presenter, dispatchCompletion)
         }
+    }
+    
+    
+    private func syncFromNetwork(_ presenter: SynchronizedPresenterProtocol, _ dispatchCompletion: (()->Void)? = nil){
         
-        // run when all networks have done
-        let onFinish_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
+        // clear all
+        syncStart = Date()
+         
+        let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
         
-        let onSuccess_PresenterCompletion = presenter.didSuccessNetworkResponse(completion: {
-            onFinish_SyncCompletion(presenter)
-            completion?()
-        })
-        
-        ApiVK.myGroupRequest(onSuccess: onSuccess_PresenterCompletion, onError: SynchronizerManager.shared.getOnErrorCompletion())
+        ApiVK.myGroupRequest(onSuccess: onSuccess, onError: onError)
     }
 }
     

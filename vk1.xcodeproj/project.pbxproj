@@ -84,6 +84,9 @@
 		166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667F92349062E00FD2B86 /* WallProtocol.swift */; };
 		166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667FB234912B800FD2B86 /* FriendWallPresenter.swift */; };
 		166CB8DB238291CC009DA806 /* RealmBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CB8DA238291CC009DA806 /* RealmBase.swift */; };
+		166CB8E42382E690009DA806 /* SyncBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CB8E32382E690009DA806 /* SyncBase.swift */; };
+		166CB8ED2382F8CA009DA806 /* DefaultSyncConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CB8EC2382F8CA009DA806 /* DefaultSyncConfiguration.swift */; };
+		166CB8EF2382F93E009DA806 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CB8EE2382F93E009DA806 /* Date+Extensions.swift */; };
 		166D1B05234EFF0F00C552E4 /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D1B04234EFF0F00C552E4 /* ZoomAnimator.swift */; };
 		166D1B07234EFF5000C552E4 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D1B06234EFF5000C552E4 /* CustomNavigationController.swift */; };
 		166D1B09234F6C7100C552E4 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166D1B08234F6C7100C552E4 /* Video.storyboard */; };
@@ -268,6 +271,9 @@
 		166667F92349062E00FD2B86 /* WallProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallProtocol.swift; sourceTree = "<group>"; };
 		166667FB234912B800FD2B86 /* FriendWallPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWallPresenter.swift; sourceTree = "<group>"; };
 		166CB8DA238291CC009DA806 /* RealmBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBase.swift; sourceTree = "<group>"; };
+		166CB8E32382E690009DA806 /* SyncBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncBase.swift; sourceTree = "<group>"; };
+		166CB8EC2382F8CA009DA806 /* DefaultSyncConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSyncConfiguration.swift; sourceTree = "<group>"; };
+		166CB8EE2382F93E009DA806 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		166D1B04234EFF0F00C552E4 /* ZoomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAnimator.swift; sourceTree = "<group>"; };
 		166D1B06234EFF5000C552E4 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		166D1B08234F6C7100C552E4 /* Video.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Video.storyboard; path = vk1/Storyboards/Video.storyboard; sourceTree = SOURCE_ROOT; };
@@ -470,6 +476,7 @@
 				1611273F234B45E50080FD54 /* DataGeneratorHelper.swift */,
 				16FF6FD523522E41001C33CF /* Extensions.swift */,
 				16D58BEF236847C300735296 /* CellImagesHelper.swift */,
+				166CB8EE2382F93E009DA806 /* Date+Extensions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -684,6 +691,14 @@
 			path = "Friend wall";
 			sourceTree = "<group>";
 		};
+		166CB8EB2382F8B7009DA806 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				166CB8EC2382F8CA009DA806 /* DefaultSyncConfiguration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		166D1B0A234F6E2900C552E4 /* Video */ = {
 			isa = PBXGroup;
 			children = (
@@ -802,6 +817,7 @@
 		16D58BFC236986A600735296 /* Synchronizer */ = {
 			isa = PBXGroup;
 			children = (
+				166CB8EB2382F8B7009DA806 /* Configuration */,
 				16E08B45236DD67D00340F09 /* Sync Module */,
 				16D58BFD236986EB00735296 /* SynchronizerManager.swift */,
 			);
@@ -862,6 +878,7 @@
 		16E08B45236DD67D00340F09 /* Sync Module */ = {
 			isa = PBXGroup;
 			children = (
+				166CB8E32382E690009DA806 /* SyncBase.swift */,
 				16E08B48236DD7B900340F09 /* SyncFriend.swift */,
 				16E08B50236DD82100340F09 /* SyncFriendWall.swift */,
 				16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */,
@@ -1207,6 +1224,7 @@
 				161C1136234718B000A2EC9D /* WallCellConfigurator.swift in Sources */,
 				16200CFD233360FF00F02440 /* GroupPresenter.swift in Sources */,
 				16E08B4D236DD7DB00340F09 /* SyncGroupDetail.swift in Sources */,
+				166CB8ED2382F8CA009DA806 /* DefaultSyncConfiguration.swift in Sources */,
 				16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */,
 				16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */,
 				16E08B5B236DF1B900340F09 /* Login.swift in Sources */,
@@ -1216,6 +1234,7 @@
 				16E08B7E2370338000340F09 /* ModuleEnum.swift in Sources */,
 				16E08B35236B499B00340F09 /* ApiVK.swift in Sources */,
 				16E08B2C236B34AF00340F09 /* GroupParser.swift in Sources */,
+				166CB8EF2382F93E009DA806 /* Date+Extensions.swift in Sources */,
 				166D1B07234EFF5000C552E4 /* CustomNavigationController.swift in Sources */,
 				166667502347CA1300FD2B86 /* Wall_Cell_tp7.swift in Sources */,
 				16200D212338ACCA00F02440 /* Friend_Controller.swift in Sources */,
@@ -1256,6 +1275,7 @@
 				16E08B8A23707EEE00340F09 /* SyncMyGroupWall.swift in Sources */,
 				1611F29923788333002FCE3C /* RealmGroup.swift in Sources */,
 				16AB0BA9232F985D00E21B7F /* Group.swift in Sources */,
+				166CB8E42382E690009DA806 /* SyncBase.swift in Sources */,
 				1647649C2365E031007D1B19 /* Session.swift in Sources */,
 				16200D0623388E5D00F02440 /* RoundedImage.swift in Sources */,
 				16200D0E233893B500F02440 /* ProfilePresenter.swift in Sources */,

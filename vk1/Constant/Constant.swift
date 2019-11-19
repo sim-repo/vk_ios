@@ -9,6 +9,12 @@ let networkTimeout: TimeInterval = 10 // in sec
 let networkDelayBetweenRequests = 500 //500 // in ms
 let networkLongDelayBetweenRequests = 500 //500 // in ms
 
+
+
+enum UserDefaultsEnum: String {
+    case lastSyncDate = "lastSyncDate"
+}
+
 enum ModelLoadedFromEnum {
     case network
     case disk

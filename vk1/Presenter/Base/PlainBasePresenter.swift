@@ -72,8 +72,8 @@ public class PlainBasePresenter {
         
         switch didLoadedFrom {
            case .disk:
-               viewReloadData()
-               return // data stored already
+                
+                return // data stored already
            case .network:
                 if let enriched = enrichData(validated: validatedData) {
                     viewReloadData()
@@ -245,11 +245,14 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     // when all responses have got from network
     final func didSuccessNetworkFinish() {
         console(msg: "PlainBasePresenter: \(clazz): didSuccessNetworkFinish")
-        self.sort()
+        sort()
+        viewReloadData()
     }
     
     final func setFromPersistent(models: [DecodableProtocol]) {
         console(msg: "PlainBasePresenter: \(clazz): setFromPersistent")
         appendDataSource(dirtyData: models, didLoadedFrom: .disk)
+        sort()
+        viewReloadData()
     }
 }
