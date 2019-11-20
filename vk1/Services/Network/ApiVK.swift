@@ -18,7 +18,11 @@ class ApiVK {
     }
     
     
-    static func friendWallRequest(ownerId: typeId, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
+    static func friendWallRequest(ownerId: typeId,
+                                  offset: Int,
+                                  count: Int,
+                                  onSuccess: @escaping onSuccess_PresenterCompletion,
+                                  onError: @escaping onErrResponse_SyncCompletion) {
 
         let urlPath: String = "wall.get"
         
@@ -28,11 +32,11 @@ class ApiVK {
                  "extended": "1",
                  "fields":["photo_50","photo_100", "photo_200"],
                  "filter": "all",
-                 "count": "10",
+                 "count": "\(count)",
+                 "offset": "\(offset)",
                  "v": versionAPI
         ]
         AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError)
-        
     }
       
     
@@ -66,7 +70,9 @@ class ApiVK {
     }
     
     
-    static func wallRequest(ownerId: typeId, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
+    static func wallRequest(ownerId: typeId,
+                            onSuccess: @escaping onSuccess_PresenterCompletion,
+                            onError: @escaping onErrResponse_SyncCompletion) {
 
         let urlPath: String = "wall.get"
         
@@ -76,11 +82,36 @@ class ApiVK {
                  "extended": "1",
                  "fields":["photo_50","photo_100", "photo_200"],
                  "filter": "all",
-                 "count": "5",
+                 "count": "1",
                  "v": versionAPI
         ]
         AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError)
         
+    }
+    
+    
+    static func newsRequest(_ offset: String,
+                            _ count: Int,
+                            onSuccess: @escaping onSuccess_PresenterCompletion,
+                            onError: @escaping onErrResponse_SyncCompletion,
+                            setNextOffsetCompletion: ((String)->Void)?
+                            ) {
+        
+        let urlPath: String = "newsfeed.get"
+        
+        let params: Parameters = [
+               // "start_time": getUnixTime(date: Date().dayBefore),
+               // "end_time": getUnixTime(date: Date()),
+                "access_token": Session.shared.token,
+                "extended": "1",
+               // "fields":["photo_50","photo_100", "photo_200"],
+                "filter": "photo, wall_photo",
+                "count": count,
+                "start_from": offset,
+                "v": versionAPI
+        ]
+        
+        AlamofireNetworkManager.newsRequest(urlPath, params, onSuccess, onError, setNextOffsetCompletion)
     }
       
 }

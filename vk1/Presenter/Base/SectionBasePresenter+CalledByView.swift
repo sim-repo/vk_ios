@@ -121,4 +121,12 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
             }
         detailPresenter.setDetailModel(model: model)
     }
+    
+    
+    func didEndScroll(){
+        guard let _ = self as? PaginationPresenterProtocol
+            else { return }
+        let moduleEnum = ModuleEnum(presenter: self)
+        SynchronizerManager.shared.callSyncFromPresenter(moduleEnum: moduleEnum)
+    }
 }

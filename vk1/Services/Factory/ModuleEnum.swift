@@ -12,6 +12,7 @@ enum ModuleEnum: String {
     case wall = "wall"
     case profile = "profile"
     case login = "login"
+    case news = "news"
     case unknown = "unknown"
     
     init(presenterType: SynchronizedPresenterProtocol.Type) {
@@ -32,6 +33,8 @@ enum ModuleEnum: String {
             self = .wall
         case is ProfilePresenter.Type:
             self = .profile
+        case is NewsPresenter.Type:
+            self = .news
         default:
             self = .unknown
             catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol.Type): no case: \(presenterType)")
@@ -58,6 +61,8 @@ enum ModuleEnum: String {
             self = .profile
         case is LoginPresenter:
             self = .login
+        case is NewsPresenter:
+            self = .news
         default:
             self = .unknown
             catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol): no case: \(presenter)")
@@ -77,7 +82,7 @@ enum ModuleEnum: String {
         case is Group_ViewController:
             self = .group
         case is Wall_Controller:
-            self = .wall
+            self = .news
         case is Profile_TableViewController:
             self = .profile
         case is LoginViewController:
@@ -118,6 +123,8 @@ enum ModuleEnum: String {
             return Profile_TableViewController.self
         case .login:
             return LoginViewController.self
+        case .news:
+            return Wall_Controller.self
         case .unknown:
             return Friend_Controller.self //TODO
         }
@@ -143,6 +150,8 @@ enum ModuleEnum: String {
             return ProfilePresenter.self
         case .login:
             return LoginPresenter.self
+        case .news:
+            return NewsPresenter.self
         case .unknown:
             return FriendPresenter.self //TODO
         }

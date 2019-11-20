@@ -12,6 +12,7 @@ class VKLogin_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let scope = ["wall","friends"]
         var urlComponents = URLComponents()
                urlComponents.scheme = "https"
                urlComponents.host = "oauth.vk.com"
@@ -20,13 +21,14 @@ class VKLogin_ViewController: UIViewController {
                    URLQueryItem(name: "client_id", value: clientAPI),
                    URLQueryItem(name: "display", value: "mobile"),
                    URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-                   URLQueryItem(name: "scope", value: "262150"),
+                   URLQueryItem(name: "scope", value: "wall,friends"),
                    URLQueryItem(name: "response_type", value: "token"),
                    URLQueryItem(name: "v", value: "5.87")
+                   
                ]
                
         let request = URLRequest(url: urlComponents.url!)
-               
+        print(urlComponents.url!)
         webview.load(request)
     }
 }

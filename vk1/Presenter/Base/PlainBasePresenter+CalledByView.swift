@@ -69,4 +69,11 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
         
         return IndexPath(row: idx, section: 0)
     }
+    
+    func didEndScroll(){
+        guard let _ = self as? PaginationPresenterProtocol
+            else { return }
+        let moduleEnum = ModuleEnum(presenter: self)
+        SynchronizerManager.shared.callSyncFromPresenter(moduleEnum: moduleEnum)
+    }
 }

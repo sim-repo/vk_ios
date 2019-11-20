@@ -3,7 +3,7 @@ import UIKit
 
 let baseURL = "https://api.vk.com/method/"
 let versionAPI = "5.103"
-let clientAPI = "7197054"
+let clientAPI = "7216321"
 
 
 struct Network {

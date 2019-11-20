@@ -1,33 +1,38 @@
 import SwiftyJSON
 
-class WallParser {
+class NewsParser {
     
     
     //MARK:- called from networking service >>
-    public static func parseWallJson(_ val: Any)->[Wall]?{
+    public static func parseNewsJson(_ val: Any)->[News]?{
         let json = JSON(val)
-        var res: [Wall] = []
+        var res: [News] = []
         let items = json["response"]["items"].arrayValue
         let jsonProfiles = json["response"]["profiles"].arrayValue
         let jsonGroups = json["response"]["groups"].arrayValue
         let dicGroups = parseGroup(jsonGroups)
         let dicProfile = parseProfiles(jsonProfiles)
         for j in items {
-            let w = Wall()
-            if WallParser.hasImages(json: j) {
-                w.setup(json: j, profiles: dicProfile, groups: dicGroups)
-                res.append(w)
+            let n = News()
+            if NewsParser.hasImages(json: j) {
+                n.setup(json: j, profiles: dicProfile, groups: dicGroups)
+                res.append(n)
             }
         }
         return res
     }
     
+    public static func parseNextOffset(_ val: Any) -> String? {
+        let json = JSON(val)
+        let offset = json["response"]["next_from"].stringValue
+        return offset
+    }
     
     
     //MARK:- called from model layer >>
 
     public static func parseId(json: JSON) -> typeId {
-           return json["id"].intValue
+           return json["post_id"].intValue
     }
     
     
@@ -59,7 +64,7 @@ class WallParser {
         let repost = isRepost(json)
         let authorId = abs(getAuthorId(json, repost))
         if let g = groups[authorId] {
-            avaUrl = g.avaURL200 
+            avaUrl = g.avaURL200
             name = g.name
             title = getTitle(json, repost)
             unixTime = getDate(json, repost)
@@ -117,7 +122,7 @@ class WallParser {
         }
        
         if imageURLs.isEmpty {
-            catchError(msg: "WallParser() : parseImages(): is Empty")
+            catchError(msg: "NewsParser(): parseImages() is Empty")
         }
         return imageURLs
     }
@@ -198,11 +203,11 @@ class WallParser {
         if repost {
             if let histories = json["copy_history"].array {
                 for history in histories {
-                    return history["source_id"].intValue
+                    return history["owner_id"].intValue
                 }
             }
         } else {
-             return json["source_id"].intValue
+             return json["owner_id"].intValue
         }
         return 0
     }

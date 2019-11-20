@@ -2,7 +2,7 @@ import Foundation
 import SwiftyJSON
 
 
-class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
+class News : WallProtocol, DecodableProtocol, PlainModelProtocol {
 
     var id: typeId = 0
     var postTypeCode: String!
@@ -37,10 +37,9 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     func setup(json: JSON?, profiles: [typeId:Friend], groups: [typeId:Group]) {
         
         if let json = json {
-
-            id = WallParser.parseId(json: json)
+            id = NewsParser.parseId(json: json)
             
-            ownerId = json["owner_id"].intValue
+            ownerId = json["source_id"].intValue
             
             // wall header block
             (myAvaURL, myName, myPostDate, title) = WallParser.parseMyRepost(json: json, profiles: profiles)

@@ -8,3 +8,6 @@ class WallPresenter: PlainPresenterProtocols {
 }
 
 
+extension WallPresenter: PaginationPresenterProtocol {
+    
+}

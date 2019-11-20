@@ -45,10 +45,10 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
         var cell: UICollectionViewCell!
         guard let wall = presenter.getData(indexPath: indexPath) as? Wall
             else { return UICollectionViewCell() }
-        
         if let name = cellByCode[wall.postTypeCode] {
             cell = cellConfigure(name, indexPath, wall)
         }
+        didScrollEnd(indexPath)
         return cell
     }
     
@@ -61,6 +61,13 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.size.width - constraintSpaceX.constant * 40
         return CGSize(width: width, height: cellHeaderHeight + cellImageHeight + cellBottomHeight)
+    }
+    
+    
+    private func didScrollEnd(_ indexPath: IndexPath) {
+        if indexPath.row == presenter.numberOfRowsInSection() - 1 {
+            presenter.didEndScroll()
+        }
     }
 }
 
@@ -79,4 +86,18 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
         waiter?.stop(vcView: view)
     }
+    
+     func insertItems(startIdx: Int, endIdx: Int) {
+           var indexes = [IndexPath]()
+           for idx in startIdx...endIdx {
+               let idx = IndexPath(row: idx, section: 0)
+               indexes.append(idx)
+           }
+           
+        collectionView.performBatchUpdates({ () -> Void in
+            collectionView.insertItems(at: indexes)
+        }, completion: nil)
+    }
 }
+
+

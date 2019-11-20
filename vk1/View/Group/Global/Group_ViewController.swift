@@ -63,4 +63,7 @@ extension Group_ViewController: PushPlainViewProtocol{
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
         waiter?.stop(vcView: view)
     }
+    
+    func insertItems(startIdx: Int, endIdx: Int) {}
+           
 }

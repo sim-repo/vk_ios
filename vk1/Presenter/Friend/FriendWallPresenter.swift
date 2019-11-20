@@ -14,7 +14,8 @@ class FriendWallPresenter: PlainPresenterProtocols {
 extension FriendWallPresenter: DetailPresenterProtocol {
     
     func setDetailModel(model: ModelProtocol) {
-        self.detailModel = model
+        detailModel = model
+        clearDataSource()
     }
     
     func getId() -> typeId? {
@@ -25,4 +26,9 @@ extension FriendWallPresenter: DetailPresenterProtocol {
         }
         return passed.getId()
     }
+}
+
+
+extension FriendWallPresenter: PaginationPresenterProtocol {
+    
 }

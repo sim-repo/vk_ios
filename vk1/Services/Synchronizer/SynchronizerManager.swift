@@ -71,7 +71,7 @@ class SynchronizerManager {
              SyncFriend.shared.sync()
              
          case .friend_wall:
-             SyncFriendWall.shared.sync()
+            SyncFriendWall.shared.sync(force: true)
              
          case .my_group:
              SyncMyGroup.shared.sync()
@@ -85,9 +85,13 @@ class SynchronizerManager {
          case .group:
              SyncGroup.shared.sync()
              
-         case .wall:
-             SyncWall.shared.sync()
-             
+         case .wall: break
+            // SyncWall.shared.sync()
+           // SyncNews.shared.sync(force: true)
+        
+         case .news:
+            SyncNews.shared.sync(force: true)
+            
          case .profile:
              SyncProfile.shared.sync()
              

@@ -5,10 +5,22 @@ class SyncFriendWall: SyncBaseProtocol {
     static let shared = SyncFriendWall()
     private override init() {}
     
+    var offsetByFriendId = [typeId:Int]()
+    
     let queue = DispatchQueue.global(qos: .background)
     
     var module: ModuleEnum {
         return ModuleEnum.friend_wall
+    }
+    
+    let count = 2
+    
+    private func incrementOffset(id: Int) {
+        if offsetByFriendId[id] == nil {
+            offsetByFriendId[id] = count
+        } else {
+            offsetByFriendId[id]! += count
+        }
     }
     
     
@@ -30,9 +42,12 @@ class SyncFriendWall: SyncBaseProtocol {
                 return
             }
             
+            let offset = offsetByFriendId[id] ?? 0
+            incrementOffset(id: id)
+            
             
             if force {
-                syncFromNetwork(presenter, id: id, dispatchCompletion)
+                syncFromNetwork(presenter, id, offset, dispatchCompletion)
                 return
             }
 
@@ -51,14 +66,15 @@ class SyncFriendWall: SyncBaseProtocol {
                    return
             }
             
-            syncFromNetwork(presenter, id: id, dispatchCompletion)
+            syncFromNetwork(presenter, id, offset, dispatchCompletion)
         }
     }
     
     
     
     private func syncFromNetwork(_ presenter: SynchronizedPresenterProtocol,
-                                 id: typeId,
+                                 _ id: typeId,
+                                 _ offset: Int,
                                  _ dispatchCompletion: (()->Void)? = nil){
          
          // clear all
@@ -66,7 +82,7 @@ class SyncFriendWall: SyncBaseProtocol {
         
          let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
          
-         ApiVK.friendWallRequest(ownerId: id, onSuccess: onSuccess, onError: onError)
+        ApiVK.friendWallRequest(ownerId: id, offset: offset, count: count, onSuccess: onSuccess, onError: onError)
      }
 }
 

@@ -118,9 +118,15 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
 extension MyGroupDetail_ViewController: PushPlainViewProtocol{
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?) {
-       waiter = SpinnerViewController(vc: self)
-       waiter?.add(vcView: headerView)
-       waiter?.add(vcView: collectionView)
+    
+        waiter = SpinnerViewController(vc: self)
+        
+        if moduleEnum == .my_group_detail {
+            waiter?.add(vcView: headerView)
+        }
+        if moduleEnum == .my_group_wall {
+            waiter?.add(vcView: collectionView)
+        }
     }
     
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?) {
@@ -193,6 +199,9 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
             }
         }
     }
+    
+     func insertItems(startIdx: Int, endIdx: Int) {}
+           
 }
 
 

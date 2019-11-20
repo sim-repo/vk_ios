@@ -7,11 +7,13 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     final func setView(vc: PushViewProtocol) {
         validateView(vc)
         view = vc as? PushSectionedViewProtocol
+        let moduleEnum = ModuleEnum(presenter: self)
         if self.dataSourceIsEmpty() {
-            view?.startWaitIndicator(nil)
+            view?.startWaitIndicator(moduleEnum)
+        } else {
+            filterAndRegroupData()
+            view?.viewReloadData(groupByIds: self.groupByIds)
         }
-        filterAndRegroupData()
-        view?.viewReloadData(groupByIds: self.groupByIds)
     }
     
     final func dataSourceIsEmpty() -> Bool {
@@ -62,10 +64,12 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     }
     
     func setSyncProgress(curr: Int, sum: Int) {
-        console(msg: "progress: \(curr) of \(sum)")
-        if curr/sum * 100 % Network.intervalViewReload == 0 {
-            self.sort()
-            self.viewReloadData()
+        PRESENTER_UI_THREAD {
+            console(msg: "progress: \(curr) of \(sum)")
+            if curr/sum * 100 % Network.intervalViewReload == 0 {
+                self.sort()
+                self.viewReloadData()
+            }
         }
     }
 }

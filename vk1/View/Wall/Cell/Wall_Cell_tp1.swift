@@ -7,6 +7,10 @@ class Wall_Cell_tp1: UICollectionViewCell {
     @IBOutlet weak var hConHeaderView: NSLayoutConstraint!
     
     var indexRow: Int = 0
+    
+    override func prepareForReuse() {
+        imageView.image = UIImage(named: "placeholder")
+    }
 }
 
 extension Wall_Cell_tp1: Wall_CellProtocol {

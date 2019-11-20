@@ -141,6 +141,11 @@ func convertUnixTime(unixTime: Double) -> String {
     return dateFormatter.string(from: date)
 }
 
+func getUnixTime(date: Date) -> Int {
+    return Int(date.timeIntervalSince1970)
+}
+
+
 
 func getRawClassName(object: AnyClass) -> String {
     

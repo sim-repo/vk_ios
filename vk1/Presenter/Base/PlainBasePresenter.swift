@@ -83,7 +83,6 @@ public class PlainBasePresenter {
                 return // data stored already
            case .network:
                 if let enriched = enrichData(validated: validatedData) {
-                    viewReloadData()
                     save(enriched: enriched)
                 } else {
                     catchError(msg: "PlainBasePresenter: \(clazz): enriched data is empty ")
@@ -120,12 +119,9 @@ public class PlainBasePresenter {
     }
     
     final func viewReloadData(){
-        PRESENTER_UI_THREAD { [weak self] in
-            guard let self = self else { return }
-            let moduleEnum = ModuleEnum(presenter: self)
-            self.view?.viewReloadData(moduleEnum: moduleEnum)
-            self.view?.stopWaitIndicator(moduleEnum)
-        }
+        let moduleEnum = ModuleEnum(presenter: self)
+        self.view?.viewReloadData(moduleEnum: moduleEnum)
+        self.view?.stopWaitIndicator(moduleEnum)
     }
     
     final func save(enriched: [PlainModelProtocol]) {

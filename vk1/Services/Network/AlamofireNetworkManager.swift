@@ -96,6 +96,41 @@ class AlamofireNetworkManager{
     }
     
     
+    
+    public static func newsRequest(_ urlPath: String,
+                                   _ params: Parameters,
+                                   _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                   _ onError: @escaping  onErrResponse_SyncCompletion,
+                                   _ nextOffset: ((String)->Void)?
+                                   ){
+
+        AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+            switch response.result {
+            case .success(let json):
+                let arr:[News]? = NewsParser.parseNewsJson(json)
+                   
+                if let arr = arr {
+                    if arr.isEmpty {
+                        let err = NSError(domain: "AlamofireNetworkManager: newsRequest(): response data is null", code: 123, userInfo: nil)
+                        onError(err)
+                    } else {
+                        if let offset = NewsParser.parseNextOffset(json) {
+                            nextOffset?(offset)
+                        }
+                        NET_LDELAY_THREAD {
+                            onSuccess(arr)
+                        }
+                    }
+                }
+            case .failure(let err):
+                let error = err as NSError
+                onError(error)
+            }
+        }
+    }
+    
+    
+    
 
     private static func parseJsonItems<T: DecodableProtocol>(_ val: Any)->[T]?{
         let json = JSON(val)

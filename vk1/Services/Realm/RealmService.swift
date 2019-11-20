@@ -40,6 +40,11 @@ class RealmService {
                 let obj = detailGroupToRealm(m)
                 objects.append(obj)
                 
+            case is News:
+                let m = model as! News
+                let obj = newsToRealm(m)
+                objects.append(obj)
+                
             default:
                 catchError(msg: "RealmService: save(models:): no case for \(model)")
                 
@@ -249,6 +254,37 @@ class RealmService {
         realmWall.imageURLs = realmImagesURL
         
         return realmWall
+    }
+    
+    private static func newsToRealm(_ news: News) -> RealmNews {
+        let realmNews = RealmNews()
+        realmNews.id = news.id
+        realmNews.ownerId = news.ownerId
+        realmNews.myName = news.myName
+        realmNews.origName = news.origName
+        realmNews.myPostDate = news.myPostDate
+        realmNews.origPostDate = news.origPostDate
+        realmNews.myAvaURL = news.myAvaURL?.absoluteString ?? ""
+        realmNews.origAvaURL = news.origAvaURL?.absoluteString ?? ""
+        realmNews.title = news.title
+        realmNews.origTitle = news.origTitle
+        realmNews.postTypeCode = news.postTypeCode
+        realmNews.viewCount = news.viewCount
+        realmNews.likeCount = news.likeCount
+        realmNews.messageCount = news.messageCount
+        
+        let realmImagesURL = List<RealmURL>()
+        var count = 0
+        for url in news.imageURLs {
+            let realmURL = RealmURL()
+            realmURL.id = news.id + count
+            count += 1
+            realmURL.url = url.absoluteString
+            realmImagesURL.append(realmURL)
+        }
+        realmNews.imageURLs = realmImagesURL
+        
+        return realmNews
     }
     
     

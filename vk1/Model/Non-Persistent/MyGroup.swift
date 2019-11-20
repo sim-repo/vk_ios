@@ -14,7 +14,6 @@ class MyGroup: SectionModelProtocol, DecodableProtocol {
     var isClosed: Int = 0
     var isDeactivated: Int = 0
     
-    
     required init(){}
     
     func setup(json: JSON?){

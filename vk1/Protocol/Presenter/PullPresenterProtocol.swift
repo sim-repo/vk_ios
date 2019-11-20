@@ -10,4 +10,5 @@ protocol PullPresenterProtocol: class {
     func viewDidSeguePrepare(segueId: SegueIdEnum, indexPath: IndexPath)
     func getSectionChild() -> PullSectionPresenterProtocol?
     func getPlainChild() -> PullPlainPresenterProtocol?
+    func didEndScroll()
 }

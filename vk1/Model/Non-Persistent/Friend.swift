@@ -10,7 +10,7 @@ class Friend: SectionModelProtocol, DecodableProtocol {
     var avaURL100: URL?
     var avaURL200: URL?
     var groupBy: FriendGroupByEnum = .firstName
-    
+
     required init(){}
     
     func setup(json: JSON?) {
