@@ -1,6 +1,6 @@
 import UIKit
 
-class Friend_Controller: UIViewController {
+class Friend_ViewController: UIViewController {
 
     var presenter: PullSectionPresenterProtocol?
     
@@ -67,7 +67,7 @@ class Friend_Controller: UIViewController {
     
 }
 
-extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
+extension Friend_ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return presenter?.numberOfSections() ?? 1
@@ -148,7 +148,7 @@ extension Friend_Controller: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-extension Friend_Controller: PushSectionedViewProtocol{
+extension Friend_ViewController: PushSectionedViewProtocol{
     
     func viewReloadData(groupByIds: [String]) {
         self.lettersSearchControl.updateControl(with: groupByIds)
@@ -167,7 +167,7 @@ extension Friend_Controller: PushSectionedViewProtocol{
 
 
 
-extension Friend_Controller: AlphabetSearchViewControlProtocol {
+extension Friend_ViewController: AlphabetSearchViewControlProtocol {
     func didEndTouch() {
         // TODO
     }
@@ -182,7 +182,7 @@ extension Friend_Controller: AlphabetSearchViewControlProtocol {
 }
 
 
-extension Friend_Controller: UITextFieldDelegate {
+extension Friend_ViewController: UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         searchTextField.resignFirstResponder()
         return true
@@ -219,7 +219,7 @@ extension Friend_Controller: UITextFieldDelegate {
 }
 
 
-extension Friend_Controller: UIScrollViewDelegate {
+extension Friend_ViewController: UIScrollViewDelegate {
     
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

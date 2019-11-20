@@ -3,8 +3,42 @@ import RealmSwift
 
 class RealmService {
     
-    static var configuration: Realm.Configuration {
-        return Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+    
+    enum RealmConfigEnum {
+        
+        case unsafe
+        case safe
+        
+        private static let safeConfig = Realm.Configuration (
+            fileURL: getRealmURL(dbName: "safe"),
+            encryptionKey: getKey() as Data
+        )
+        
+        private static let mainConfig = Realm.Configuration (
+            fileURL:  getRealmURL(dbName: "main")
+        )
+        
+        var config: Realm.Configuration {
+            switch self {
+            case .safe:
+                return RealmConfigEnum.safeConfig
+            default:
+                return RealmConfigEnum.mainConfig
+            }
+        }
+    }
+    
+    
+    
+    private static func getInstance(_ confEnum: RealmConfigEnum) -> Realm? {
+        do {
+            let realm = try Realm(configuration: confEnum.config)
+            console(msg: "Realm DB Path: \(realm.configuration.fileURL?.absoluteString ?? "")")
+            return realm
+        } catch(let err) {
+            catchError(msg: err.localizedDescription)
+        }
+        return nil
     }
     
     
@@ -55,7 +89,7 @@ class RealmService {
     
     
     public static func save<T: Object>(items: [T], update: Bool) {
-        let realm = getInstance()
+        let realm = getInstance(.unsafe)
         do {
             try realm?.write {
                 if update {
@@ -70,8 +104,8 @@ class RealmService {
     }
     
     
-    public static func delete(clazz: Object.Type, id: typeId? = nil) {
-        let realm = getInstance()
+    public static func delete(confEnum: RealmConfigEnum, clazz: Object.Type, id: typeId? = nil) {
+        let realm = getInstance(confEnum)
         do {
             try realm?.write {
                 // by id
@@ -97,8 +131,8 @@ class RealmService {
     
     
     
-    public static func clearAll(clazz: Object.Type) {
-        let realm = getInstance()
+    public static func clearAll(confEnum: RealmConfigEnum) {
+        let realm = getInstance(confEnum)
         do {
             try realm?.write {
                 realm?.deleteAll()
@@ -111,114 +145,107 @@ class RealmService {
     
 
     
-    private static func getInstance() -> Realm? {
+    public static func save(token: String, userId: Int) {
+        let realm = getInstance(.safe)
         do {
-            let realm = try Realm(configuration: RealmService.configuration)
-            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
-            return realm
+            try realm?.write {
+                let obj = RealmToken()
+                obj.token = token
+                obj.userId = userId
+                realm?.add(obj, update: .all)
+            }
         } catch(let err) {
             catchError(msg: err.localizedDescription)
         }
-        return nil
     }
-    
     
     
     //MARK:- load models
     
-    public static func loadWall(filter: String? = nil) -> [Wall]? {
-        var results: Results<RealmWall>
-        do {
-            let realm = try Realm()
-            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
-            if let _filter = filter {
-                results = realm.objects(RealmWall.self).filter(_filter)
-            } else {
-                results = realm.objects(RealmWall.self)
-            }
-            let walls = realmToWall(results: results)
-            return walls
-        } catch {
-            print(error.localizedDescription)
+    public static func loadToken() -> (String?, Int?)? {
+
+        guard let realm = getInstance(.safe)
+        else {
+            return nil
         }
-        return nil
+        let token: String? = realm.objects(RealmToken.self).first?.token
+        let userId: Int? = realm.objects(RealmToken.self).first?.userId
+        
+        return (token, userId)
+    }
+    
+    
+    
+    public static func loadWall(filter: String? = nil) -> [Wall]? {
+        
+        var results: Results<RealmWall>
+        guard let realm = getInstance(.unsafe) else { return nil }
+        
+        if let _filter = filter {
+            results = realm.objects(RealmWall.self).filter(_filter)
+        } else {
+            results = realm.objects(RealmWall.self)
+        }
+        let walls = realmToWall(results: results)
+        return walls
     }
     
     
     
     public static func loadFriend(filter: String? = nil) -> [Friend]? {
-         var results: Results<RealmFriend>
-        do {
-            let realm = try Realm()
-            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
-            if let _filter = filter {
-                results = realm.objects(RealmFriend.self).filter(_filter)
-            } else {
-                results = realm.objects(RealmFriend.self)
-            }
-            let friends = realmToFriend(results: results)
-            return friends
-        } catch {
-            print(error.localizedDescription)
+        
+        var results: Results<RealmFriend>
+        guard let realm = getInstance(.unsafe) else { return nil }
+            
+        if let _filter = filter {
+            results = realm.objects(RealmFriend.self).filter(_filter)
+        } else {
+            results = realm.objects(RealmFriend.self)
         }
-        return nil
+        let friends = realmToFriend(results: results)
+        return friends
     }
     
     
     public static func loadGroup(filter: String? = nil) -> [Group]? {
-         var results: Results<RealmGroup>
-        do {
-            let realm = try Realm()
-            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
-            if let _filter = filter {
-                results = realm.objects(RealmGroup.self).filter(_filter)
-            } else {
-                results = realm.objects(RealmGroup.self)
-            }
-            let groups = realmToGroup(results: results)
-            return groups
-        } catch {
-            print(error.localizedDescription)
+        
+        var results: Results<RealmGroup>
+        guard let realm = getInstance(.unsafe) else { return nil }
+        if let _filter = filter {
+            results = realm.objects(RealmGroup.self).filter(_filter)
+        } else {
+            results = realm.objects(RealmGroup.self)
         }
-        return nil
+        let groups = realmToGroup(results: results)
+        return groups
     }
     
     
     public static func loadMyGroup(filter: String? = nil) -> [MyGroup]? {
-         var results: Results<RealmMyGroup>
-        do {
-            let realm = try Realm()
-            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
-            if let _filter = filter {
-                results = realm.objects(RealmMyGroup.self).filter(_filter)
-            } else {
-                results = realm.objects(RealmMyGroup.self)
-            }
-            let groups = realmToMyGroup(results: results)
-            return groups
-        } catch {
-            print(error.localizedDescription)
+        
+        var results: Results<RealmMyGroup>
+        guard let realm = getInstance(.unsafe) else { return nil }
+        if let _filter = filter {
+            results = realm.objects(RealmMyGroup.self).filter(_filter)
+        } else {
+            results = realm.objects(RealmMyGroup.self)
         }
-        return nil
+        let groups = realmToMyGroup(results: results)
+        return groups
     }
     
     
     public static func loadDetailGroup(filter: String? = nil) -> [DetailGroup]? {
         var results: Results<RealmDetailGroup>
-        do {
-            let realm = try Realm()
-            console(msg: "Realm DB Path: \(realm.configuration.fileURL)")
-            if let _filter = filter {
-                results = realm.objects(RealmDetailGroup.self).filter(_filter)
-            } else {
-                results = realm.objects(RealmDetailGroup.self)
-            }
-            let groups = realmToDetailGroup(results: results)
-            return groups
-        } catch {
-            print(error.localizedDescription)
+        
+        guard let realm = getInstance(.unsafe) else { return nil }
+        if let _filter = filter {
+            results = realm.objects(RealmDetailGroup.self).filter(_filter)
+        } else {
+            results = realm.objects(RealmDetailGroup.self)
         }
-        return nil
+        let groups = realmToDetailGroup(results: results)
+        return groups
     }
     
     
@@ -487,5 +514,47 @@ class RealmService {
             detailGroups.append(detailGroup)
         }
         return detailGroups
+    }
+    
+    
+    
+    private static func getKey() -> NSData {
+        // Identifier for our keychain entry - should be unique for your application
+        let keychainIdentifier = "io.Realm.EncryptionExampleKey"
+        let keychainIdentifierData = keychainIdentifier.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+
+        // First check in the keychain for an existing key
+        var query: [NSString: AnyObject] = [
+            kSecClass: kSecClassKey,
+            kSecAttrApplicationTag: keychainIdentifierData as AnyObject,
+            kSecAttrKeySizeInBits: 512 as AnyObject,
+            kSecReturnData: true as AnyObject
+        ]
+
+        // To avoid Swift optimization bug, should use withUnsafeMutablePointer() function to retrieve the keychain item
+        // See also: http://stackoverflow.com/questions/24145838/querying-ios-keychain-using-swift/27721328#27721328
+        var dataTypeRef: AnyObject?
+        var status = withUnsafeMutablePointer(to: &dataTypeRef) { SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0)) }
+        if status == errSecSuccess {
+            return dataTypeRef as! NSData
+        }
+
+        // No pre-existing key from this application, so generate a new one
+        let keyData = NSMutableData(length: 64)!
+        let result = SecRandomCopyBytes(kSecRandomDefault, 64, keyData.mutableBytes.bindMemory(to: UInt8.self, capacity: 64))
+        assert(result == 0, "Failed to get random bytes")
+
+        // Store the key in the keychain
+        query = [
+            kSecClass: kSecClassKey,
+            kSecAttrApplicationTag: keychainIdentifierData as AnyObject,
+            kSecAttrKeySizeInBits: 512 as AnyObject,
+            kSecValueData: keyData
+        ]
+
+        status = SecItemAdd(query as CFDictionary, nil)
+        assert(status == errSecSuccess, "Failed to insert the new key in the keychain")
+
+        return keyData
     }
 }

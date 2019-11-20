@@ -71,7 +71,7 @@ enum ModuleEnum: String {
     
     init(vc: PushViewProtocol) {
         switch vc {
-        case is Friend_Controller:
+        case is Friend_ViewController:
             self = .friend
         case is FriendWall_ViewController:
             self = .friend_wall
@@ -81,7 +81,7 @@ enum ModuleEnum: String {
             self = .my_group_detail
         case is Group_ViewController:
             self = .group
-        case is Wall_Controller:
+        case is News_ViewController:
             self = .news
         case is Profile_TableViewController:
             self = .profile
@@ -106,7 +106,7 @@ enum ModuleEnum: String {
     var vc: PushViewProtocol.Type {
         switch self {
         case .friend:
-            return Friend_Controller.self
+            return Friend_ViewController.self
         case .friend_wall:
             return FriendWall_ViewController.self
         case .my_group:
@@ -118,15 +118,15 @@ enum ModuleEnum: String {
         case .group:
             return Group_ViewController.self
         case .wall:
-            return Wall_Controller.self
+            return News_ViewController.self
         case .profile:
             return Profile_TableViewController.self
         case .login:
             return LoginViewController.self
         case .news:
-            return Wall_Controller.self
+            return News_ViewController.self
         case .unknown:
-            return Friend_Controller.self //TODO
+            return Friend_ViewController.self //TODO
         }
     }
     

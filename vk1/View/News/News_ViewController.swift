@@ -1,6 +1,6 @@
 import UIKit
 
-class Wall_Controller: UIViewController {
+class News_ViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
@@ -33,7 +33,7 @@ class Wall_Controller: UIViewController {
 }
 
 
-extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -79,7 +79,7 @@ extension Wall_Controller: UICollectionViewDelegate, UICollectionViewDataSource,
 }
 
 
-extension Wall_Controller: PushPlainViewProtocol{
+extension News_ViewController: PushPlainViewProtocol{
     
     func viewReloadData(moduleEnum: ModuleEnum) {
         console(msg: "Wall_Controller: viewReloadData()")

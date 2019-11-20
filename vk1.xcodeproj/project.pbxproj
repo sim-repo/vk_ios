@@ -45,7 +45,7 @@
 		16200D1723389C9600F02440 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D1623389C9600F02440 /* Wall.swift */; };
 		16200D1923389CCE00F02440 /* WallPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D1823389CCE00F02440 /* WallPresenter.swift */; };
 		16200D1F2338AB3300F02440 /* LettersSearchControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D1E2338AB3300F02440 /* LettersSearchControl.swift */; };
-		16200D212338ACCA00F02440 /* Friend_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D202338ACCA00F02440 /* Friend_Controller.swift */; };
+		16200D212338ACCA00F02440 /* Friend_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200D202338ACCA00F02440 /* Friend_ViewController.swift */; };
 		162BEFB32371C7CF00D765FB /* Typing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162BEFB22371C7CF00D765FB /* Typing.swift */; };
 		162BEFBE2372465E00D765FB /* subway-ticker_[allfont.ru].ttf in Resources */ = {isa = PBXBuildFile; fileRef = 162BEFBD2372464B00D765FB /* subway-ticker_[allfont.ru].ttf */; };
 		162BEFC0237247CB00D765FB /* arcade.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 162BEFBF237247B800D765FB /* arcade.ttf */; };
@@ -69,9 +69,11 @@
 		164F80D623858044000F95E7 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80D523858044000F95E7 /* News.swift */; };
 		164F80D923858891000F95E7 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80D823858891000F95E7 /* NewsPresenter.swift */; };
 		164F80DB23859CBF000F95E7 /* RealmNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80DA23859CBF000F95E7 /* RealmNews.swift */; };
+		164F80EC2385B4A0000F95E7 /* RealmToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80EB2385B4A0000F95E7 /* RealmToken.swift */; };
+		164F80EE2385C623000F95E7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80ED2385C623000F95E7 /* StartViewController.swift */; };
 		1666673B2347B75F00FD2B86 /* Wall_Cell_tp1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */; };
 		1666673D2347B8E900FD2B86 /* Wall_Cell_tp1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */; };
-		166667412347BB9900FD2B86 /* Wall_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667402347BB9900FD2B86 /* Wall_Controller.swift */; };
+		166667412347BB9900FD2B86 /* News_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667402347BB9900FD2B86 /* News_ViewController.swift */; };
 		166667452347BFE100FD2B86 /* Wall_Cell_tp2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667442347BFE100FD2B86 /* Wall_Cell_tp2.swift */; };
 		166667482347C9ED00FD2B86 /* Wall_Cell_tp3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667472347C9ED00FD2B86 /* Wall_Cell_tp3.swift */; };
 		1666674A2347C9FA00FD2B86 /* Wall_Cell_tp4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667492347C9FA00FD2B86 /* Wall_Cell_tp4.swift */; };
@@ -242,7 +244,7 @@
 		16200D1623389C9600F02440 /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		16200D1823389CCE00F02440 /* WallPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallPresenter.swift; sourceTree = "<group>"; };
 		16200D1E2338AB3300F02440 /* LettersSearchControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LettersSearchControl.swift; sourceTree = "<group>"; };
-		16200D202338ACCA00F02440 /* Friend_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend_Controller.swift; sourceTree = "<group>"; };
+		16200D202338ACCA00F02440 /* Friend_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend_ViewController.swift; sourceTree = "<group>"; };
 		162BEFB22371C7CF00D765FB /* Typing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typing.swift; sourceTree = "<group>"; };
 		162BEFBD2372464B00D765FB /* subway-ticker_[allfont.ru].ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "subway-ticker_[allfont.ru].ttf"; sourceTree = "<group>"; };
 		162BEFBF237247B800D765FB /* arcade.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arcade.ttf; sourceTree = "<group>"; };
@@ -266,9 +268,11 @@
 		164F80D523858044000F95E7 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		164F80D823858891000F95E7 /* NewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
 		164F80DA23859CBF000F95E7 /* RealmNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmNews.swift; sourceTree = "<group>"; };
+		164F80EB2385B4A0000F95E7 /* RealmToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmToken.swift; sourceTree = "<group>"; };
+		164F80ED2385C623000F95E7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Wall_Cell_tp1.xib; sourceTree = "<group>"; };
 		1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_Cell_tp1.swift; sourceTree = "<group>"; };
-		166667402347BB9900FD2B86 /* Wall_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_Controller.swift; sourceTree = "<group>"; };
+		166667402347BB9900FD2B86 /* News_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News_ViewController.swift; sourceTree = "<group>"; };
 		166667442347BFE100FD2B86 /* Wall_Cell_tp2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_Cell_tp2.swift; sourceTree = "<group>"; };
 		166667472347C9ED00FD2B86 /* Wall_Cell_tp3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_Cell_tp3.swift; sourceTree = "<group>"; };
 		166667492347C9FA00FD2B86 /* Wall_Cell_tp4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_Cell_tp4.swift; sourceTree = "<group>"; };
@@ -422,7 +426,7 @@
 		16112739234B2C1D0080FD54 /* Friend list */ = {
 			isa = PBXGroup;
 			children = (
-				16200D202338ACCA00F02440 /* Friend_Controller.swift */,
+				16200D202338ACCA00F02440 /* Friend_ViewController.swift */,
 				16AB0B91232F7DAC00E21B7F /* Friend_TableCell.swift */,
 			);
 			path = "Friend list";
@@ -469,6 +473,7 @@
 				1611F29A23788346002FCE3C /* RealmDetailGroup.swift */,
 				1611F29C23788422002FCE3C /* RealmURL.swift */,
 				164F80DA23859CBF000F95E7 /* RealmNews.swift */,
+				164F80EB2385B4A0000F95E7 /* RealmToken.swift */,
 			);
 			path = Persistent;
 			sourceTree = "<group>";
@@ -527,6 +532,7 @@
 			children = (
 				D4001F4A2327B7DE0070829F /* LoginViewController.swift */,
 				164764BA23662209007D1B19 /* VKLogin_ViewController.swift */,
+				164F80ED2385C623000F95E7 /* StartViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -544,7 +550,6 @@
 			isa = PBXGroup;
 			children = (
 				166667462347C9D200FD2B86 /* Cell */,
-				166667402347BB9900FD2B86 /* Wall_Controller.swift */,
 			);
 			path = Wall;
 			sourceTree = "<group>";
@@ -685,6 +690,14 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		164F80E42385AB09000F95E7 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				166667402347BB9900FD2B86 /* News_ViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		164F8D5F236AD958003C50E3 /* waiter */ = {
 			isa = PBXGroup;
 			children = (
@@ -751,8 +764,9 @@
 		16AB0B8A232F7D0D00E21B7F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				166D1B0A234F6E2900C552E4 /* Video */,
 				16200D11233899F700F02440 /* Wall */,
+				164F80E42385AB09000F95E7 /* News */,
+				166D1B0A234F6E2900C552E4 /* Video */,
 				16200D0823388F6D00F02440 /* Profile */,
 				16AB0B90232F7D8000E21B7F /* Friend */,
 				16200D0723388E8D00F02440 /* Login */,
@@ -1245,6 +1259,7 @@
 			files = (
 				161C11392347226100A2EC9D /* WaitIndicator.swift in Sources */,
 				16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */,
+				164F80EE2385C623000F95E7 /* StartViewController.swift in Sources */,
 				1611F29B23788346002FCE3C /* RealmDetailGroup.swift in Sources */,
 				164F80BB238477AB000F95E7 /* PlainBasePresenter+CalledBySync.swift in Sources */,
 				16E08B66236F80B800340F09 /* FriendWall_ViewController.swift in Sources */,
@@ -1278,7 +1293,7 @@
 				166CB8EF2382F93E009DA806 /* Date+Extensions.swift in Sources */,
 				166D1B07234EFF5000C552E4 /* CustomNavigationController.swift in Sources */,
 				166667502347CA1300FD2B86 /* Wall_Cell_tp7.swift in Sources */,
-				16200D212338ACCA00F02440 /* Friend_Controller.swift in Sources */,
+				16200D212338ACCA00F02440 /* Friend_ViewController.swift in Sources */,
 				166667522347CA1A00FD2B86 /* Wall_Cell_tp8.swift in Sources */,
 				162BEFB32371C7CF00D765FB /* Typing.swift in Sources */,
 				16112740234B45E50080FD54 /* DataGeneratorHelper.swift in Sources */,
@@ -1311,7 +1326,7 @@
 				1604060D234E5A250083F3C3 /* MyGroupDetail_ViewController.swift in Sources */,
 				16E08B59236DF13700340F09 /* PlainPresenterProtocols.swift in Sources */,
 				16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */,
-				166667412347BB9900FD2B86 /* Wall_Controller.swift in Sources */,
+				166667412347BB9900FD2B86 /* News_ViewController.swift in Sources */,
 				1666674A2347C9FA00FD2B86 /* Wall_Cell_tp4.swift in Sources */,
 				16200D1923389CCE00F02440 /* WallPresenter.swift in Sources */,
 				16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */,
@@ -1336,6 +1351,7 @@
 				16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */,
 				1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */,
 				166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */,
+				164F80EC2385B4A0000F95E7 /* RealmToken.swift in Sources */,
 				1611F28F23787437002FCE3C /* RealmService.swift in Sources */,
 				164F80D623858044000F95E7 /* News.swift in Sources */,
 				16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */,

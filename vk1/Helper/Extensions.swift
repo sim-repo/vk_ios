@@ -163,7 +163,11 @@ func renderImage(imageView: UIImageView, color: UIColor) {
    }
 }
 
-
+func getRealmURL(dbName: String) -> URL {
+   let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
+                                                        appropriateFor: nil, create: false)
+   return documentDirectory.appendingPathComponent("\(dbName).realm")
+}
 
 //MARK:- Extensions
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TNb-uQ-DfB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y3I-L6-0ja">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,10 +13,29 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Start View Controller-->
+        <scene sceneID="nXL-0p-LvS">
+            <objects>
+                <viewController id="Y3I-L6-0ja" customClass="StartViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9rP-th-KcI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.023462253629999999" green="0.055644976649999997" blue="0.1178220178" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="VvE-jb-g0X"/>
+                    </view>
+                    <connections>
+                        <segue destination="TNb-uQ-DfB" kind="show" identifier="ShowAuthSegue" id="xXV-cc-42T"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowAppSegue" id="lUv-8u-y8u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UJq-2m-qkv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-872" y="-190"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="y3B-x4-ZRY">
             <objects>
-                <viewController id="TNb-uQ-DfB" customClass="VKLogin_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="TNb-uQ-DfB" customClass="VKLogin_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7KR-Db-yjo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,14 +58,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z72-dz-Lu7"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Xwd-Bl-h7R"/>
                     <connections>
                         <outlet property="webview" destination="15l-Dg-o8k" id="BeA-cc-v9r"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowMainSegue" id="fUj-8w-TG4"/>
+                        <segue destination="28x-hE-Guy" kind="show" identifier="ShowMainSegue2" id="aNX-r5-DZU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVr-vP-Ydk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-401.44927536231887" y="16.741071428571427"/>
+            <point key="canvasLocation" x="419" y="-552"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -116,7 +136,7 @@
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                         <connections>
-                                                                            <segue destination="28x-hE-Guy" kind="show" id="EeX-PK-VzP"/>
+                                                                            <segue destination="28x-hE-Guy" kind="show" identifier="ShowMainSegue" id="EeX-PK-VzP"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -185,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="449.27536231884062" y="19.419642857142858"/>
+            <point key="canvasLocation" x="420" y="155"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Kiz-Zk-0bN">
@@ -255,4 +275,7 @@
             <point key="canvasLocation" x="2430" y="425"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="aNX-r5-DZU"/>
+    </inferredMetricsTieBreakers>
 </document>
