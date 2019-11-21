@@ -80,11 +80,11 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?){
         waiter = SpinnerViewController(vc: self)
-        waiter?.add(vcView: view)
+        waiter?.add(vcView: view, id: 0)
     }
           
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
-        waiter?.stop(vcView: view)
+        waiter?.stop(vcView: view, id: 0)
     }
     
      func insertItems(startIdx: Int, endIdx: Int) {

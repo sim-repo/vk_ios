@@ -22,14 +22,13 @@ class MyGroupDetail_ViewController: UIViewController {
     var presenter: PullPlainPresenterProtocol!
     var scrollViewLastContentOffset: CGFloat = 0
     var headerViewIsHide = false
-    var waiter1: SpinnerViewController?
-    var waiter2: SpinnerViewController?
+    lazy var waiter: SpinnerViewController = SpinnerViewController(vc: self)
+   // var waiter2: SpinnerViewController?
     
     var headerViewOriginalHeight: CGFloat = 0
     var logoOriginalHeight: CGFloat = 0
     var descOriginalHeight: CGFloat = 0
     var coverOriginalHeight: CGFloat = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,30 +118,26 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
 extension MyGroupDetail_ViewController: PushPlainViewProtocol{
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?) {
-    
-        
-        
+
         if moduleEnum == .my_group_detail {
-            waiter1 = SpinnerViewController(vc: self)
-            waiter1?.add(vcView: headerView)
+            
+            waiter.add(vcView: headerView, id: 1)
         }
         if moduleEnum == .my_group_wall {
-            waiter2 = SpinnerViewController(vc: self)
-            waiter2?.add(vcView: collectionView)
+            waiter.add(vcView: collectionView, id: 2)
         }
     }
     
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?) {
         
         if moduleEnum == .my_group_detail {
-            waiter1?.stop(vcView: headerView)
+            waiter.stop(vcView: headerView, id: 1)
         }
         
         if moduleEnum == .my_group_wall {
-            waiter2?.stop(vcView: collectionView)
+            waiter.stop(vcView: collectionView, id: 2)
         }
     }
-    
     
     func viewReloadData(moduleEnum: ModuleEnum) {
         
@@ -209,7 +204,6 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
 }
 
 
-
 extension MyGroupDetail_ViewController: UIScrollViewDelegate {
     
     @IBAction func didPressHamburger(_ sender: Any) {
@@ -231,7 +225,6 @@ extension MyGroupDetail_ViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
     }
-    
     
     private func headerViewAppearence(hide: Bool) {
         UIView.animate(withDuration: 0.4, animations: { [weak self] in

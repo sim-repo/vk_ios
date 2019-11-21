@@ -13,7 +13,7 @@ class SyncFriendWall: SyncBaseProtocol {
         return ModuleEnum.friend_wall
     }
     
-    let count = 2
+    let count = Network.friendWallResponseItemsPerRequest
     
     private func incrementOffset(id: Int) {
         if offsetByFriendId[id] == nil {
