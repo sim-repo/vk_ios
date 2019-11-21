@@ -23,8 +23,6 @@ class SpinnerViewController: UIViewController {
         start(childView: childView) { childView in
             childView.removeFromSuperview()
         }
-        
-        print("ADD: \(dictChildByParent.count) : \(vcView)")
     }
     
     
@@ -43,7 +41,6 @@ class SpinnerViewController: UIViewController {
         if dictChildByParent.isEmpty {
             finish()
         }
-        print("STOP: \(dictChildByParent.count) : \(vcView)")
     }
     
     override func loadView() {
