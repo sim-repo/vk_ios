@@ -23,6 +23,8 @@ class SpinnerViewController: UIViewController {
         start(childView: childView) { childView in
             childView.removeFromSuperview()
         }
+        
+        print("ADD: \(dictChildByParent.count) : \(vcView)")
     }
     
     
@@ -33,6 +35,7 @@ class SpinnerViewController: UIViewController {
     }
     
     func stop(vcView: UIView) {
+        
         if let childView = dictChildByParent[vcView] {
             childView.removeFromSuperview()
             dictChildByParent[vcView] = nil
@@ -40,6 +43,7 @@ class SpinnerViewController: UIViewController {
         if dictChildByParent.isEmpty {
             finish()
         }
+        print("STOP: \(dictChildByParent.count) : \(vcView)")
     }
     
     override func loadView() {
@@ -49,13 +53,24 @@ class SpinnerViewController: UIViewController {
     
     
     func start(childView: UIView, completion: ((UIView)->Void)? = nil ){
-        let spinner = UIActivityIndicatorView(style: .whiteLarge)
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.startAnimating()
-        childView.addSubview(spinner)
-
-        spinner.centerXAnchor.constraint(equalTo: childView.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: childView.centerYAnchor).isActive = true
+        let ani = WaitIndicator(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        ani.translatesAutoresizingMaskIntoConstraints = false
+        ani.startAnimating()
+        childView.addSubview(ani)
+        ani.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        ani.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        ani.centerXAnchor.constraint(equalTo: childView.centerXAnchor).isActive = true
+        ani.centerYAnchor.constraint(equalTo: childView.centerYAnchor).isActive = true
+        
+        
+//        comment out if need standard:
+//        let spinner = UIActivityIndicatorView(style: .whiteLarge)
+//        spinner.translatesAutoresizingMaskIntoConstraints = false
+//        spinner.startAnimating()
+//        childView.addSubview(spinner)
+//
+//        spinner.centerXAnchor.constraint(equalTo: childView.centerXAnchor).isActive = true
+//        spinner.centerYAnchor.constraint(equalTo: childView.centerYAnchor).isActive = true
     
         DispatchQueue.main.asyncAfter(deadline: .now() + Network.timeout) { [weak self] in
             guard let self = self else { return }

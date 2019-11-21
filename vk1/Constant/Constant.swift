@@ -11,6 +11,7 @@ struct Network {
     static let delayBetweenRequests = 500 //500 // in ms
     static let longDelayBetweenRequests = 1000 //500 // in ms
     static let intervalViewReload = 5 // in percent
+    static let newsResponseItemsPerRequest = 20
 }
 
 

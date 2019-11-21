@@ -6,6 +6,7 @@ class NewsParser {
     //MARK:- called from networking service >>
     public static func parseNewsJson(_ val: Any)->[News]?{
         let json = JSON(val)
+
         var res: [News] = []
         let items = json["response"]["items"].arrayValue
         let jsonProfiles = json["response"]["profiles"].arrayValue
@@ -193,6 +194,11 @@ class NewsParser {
                 let h = j["link"]["photo"].dictionaryValue
                 return h["sizes"] != nil
             }
+            
+            let j = json["type"].stringValue
+            if j == "wall_photo" {
+                return true
+            }
         }
          return false
     }
@@ -228,6 +234,11 @@ class NewsParser {
         if photos.isEmpty {
             photos = json["attachments"].arrayValue.filter({ (json) -> Bool in
             json["type"].stringValue == "photo" })
+        }
+        
+        
+        if photos.isEmpty {
+            photos = json["photos"].arrayValue
         }
         return photos
     }

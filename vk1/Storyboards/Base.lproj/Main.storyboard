@@ -20,17 +20,34 @@
                     <view key="view" contentMode="scaleToFill" id="9rP-th-KcI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend Space" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S28-cu-abd" customClass="MyLabel_Secondary" customModule="vk1" customModuleProvider="target">
+                                <rect key="frame" x="4" y="373" width="406" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="9a6-R8-M9z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arcade" family="Arcade" pointSize="57"/>
+                                <color key="textColor" red="1" green="0.73246201749999995" blue="0.20110687320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.023462253629999999" green="0.055644976649999997" blue="0.1178220178" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="VvE-jb-g0X" firstAttribute="trailing" secondItem="S28-cu-abd" secondAttribute="trailing" constant="4" id="0it-8P-MO2"/>
+                            <constraint firstItem="S28-cu-abd" firstAttribute="centerX" secondItem="9rP-th-KcI" secondAttribute="centerX" id="5xV-Qz-lzJ"/>
+                            <constraint firstItem="S28-cu-abd" firstAttribute="leading" secondItem="VvE-jb-g0X" secondAttribute="leading" constant="4" id="aOq-v8-QJx"/>
+                            <constraint firstItem="S28-cu-abd" firstAttribute="centerY" secondItem="9rP-th-KcI" secondAttribute="centerY" id="sMy-gf-z3g"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VvE-jb-g0X"/>
                     </view>
                     <connections>
                         <segue destination="TNb-uQ-DfB" kind="show" identifier="ShowAuthSegue" id="xXV-cc-42T"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowAppSegue" id="lUv-8u-y8u"/>
+                        <segue destination="28x-hE-Guy" kind="show" identifier="ShowAppSegue" id="9md-VM-d8s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJq-2m-qkv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-872" y="-190"/>
+            <point key="canvasLocation" x="-578" y="33"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="y3B-x4-ZRY">
@@ -135,9 +152,6 @@
                                                                         <state key="normal" title="sign in">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
-                                                                        <connections>
-                                                                            <segue destination="28x-hE-Guy" kind="show" identifier="ShowMainSegue" id="EeX-PK-VzP"/>
-                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -205,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="155"/>
+            <point key="canvasLocation" x="-578" y="767"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Kiz-Zk-0bN">
@@ -276,6 +290,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aNX-r5-DZU"/>
+        <segue reference="9md-VM-d8s"/>
     </inferredMetricsTieBreakers>
 </document>

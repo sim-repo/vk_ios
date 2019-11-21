@@ -5,6 +5,7 @@ class SyncNews: SyncBaseProtocol {
     static let shared = SyncNews()
     private override init() {}
     
+    var syncing = false
     var offset = ""
     
     let queue = DispatchQueue.global(qos: .background)
@@ -13,19 +14,22 @@ class SyncNews: SyncBaseProtocol {
         return ModuleEnum.news
     }
     
-    let count = 10
+    let count = Network.newsResponseItemsPerRequest
     
     lazy var setNextOffsetCompletion: (String) -> Void = {[weak self] offset1 in
         self?.offset = offset1
+        self?.syncing = false
     }
     
     func sync(force: Bool = false,
               _ dispatchCompletion: (()->Void)? = nil) {
+        guard !syncing else { return }
         
         queue.sync {
             let presenter = PresenterFactory.shared.getInstance(clazz: NewsPresenter.self)
             
             if force {
+                syncing = true
                 syncFromNetwork(presenter, dispatchCompletion)
                 return
             }

@@ -71,8 +71,11 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
     }
     
     func didEndScroll(){
+        guard !paginatingInProgess else { return }
+        paginatingInProgess = true
         guard let _ = self as? PaginationPresenterProtocol
             else { return }
+        console(msg: "DidENdScroll")
         let moduleEnum = ModuleEnum(presenter: self)
         SynchronizerManager.shared.callSyncFromPresenter(moduleEnum: moduleEnum)
     }

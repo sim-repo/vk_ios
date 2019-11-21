@@ -42,16 +42,16 @@ class News : WallProtocol, DecodableProtocol, PlainModelProtocol {
             ownerId = json["source_id"].intValue
             
             // wall header block
-            (myAvaURL, myName, myPostDate, title) = WallParser.parseMyRepost(json: json, profiles: profiles)
+            (myAvaURL, myName, myPostDate, title) = NewsParser.parseMyRepost(json: json, profiles: profiles)
             
-            (origAvaURL, origName, origPostDate, origTitle) = WallParser.parseOrigPost(json: json, groups: groups, profiles: profiles)
+            (origAvaURL, origName, origPostDate, origTitle) = NewsParser.parseOrigPost(json: json, groups: groups, profiles: profiles)
             
             // wall image block
-            imageURLs = WallParser.parseImages(json: json)
+            imageURLs = NewsParser.parseImages(json: json)
             postTypeCode = getImagePlanCode(imageCount: imageURLs.count)
             
             // wall bottom block
-            (viewCount, likeCount, messageCount, shareCount) = WallParser.parseBottomBlock(json: json)
+            (viewCount, likeCount, messageCount, shareCount) = NewsParser.parseBottomBlock(json: json)
         }
     }
     

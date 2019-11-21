@@ -52,7 +52,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 catchError(msg: "Wall_Controller(): cellForItemAt(): presenter.getData is incorrected ")
                 return cell
         }
-        
+        print("idx: \(indexPath.row) : \(news.getId())")
         if let name = cellByCode[news.postTypeCode] {
             cell = cellConfigure(name, indexPath, news)
         }
@@ -72,7 +72,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     private func didScrollEnd(_ indexPath: IndexPath) {
-        if indexPath.row == presenter.numberOfRowsInSection() - 1 {
+        if indexPath.row >= presenter.numberOfRowsInSection() - 5 {
             presenter.didEndScroll()
         }
     }
@@ -82,7 +82,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
 extension News_ViewController: PushPlainViewProtocol{
     
     func viewReloadData(moduleEnum: ModuleEnum) {
-        console(msg: "Wall_Controller: viewReloadData()")
+        console(msg: "News_ViewController: viewReloadData()")
         collectionView.reloadData()
     }
     

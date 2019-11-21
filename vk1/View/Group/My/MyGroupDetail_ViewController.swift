@@ -22,7 +22,8 @@ class MyGroupDetail_ViewController: UIViewController {
     var presenter: PullPlainPresenterProtocol!
     var scrollViewLastContentOffset: CGFloat = 0
     var headerViewIsHide = false
-    var waiter: SpinnerViewController?
+    var waiter1: SpinnerViewController?
+    var waiter2: SpinnerViewController?
     
     var headerViewOriginalHeight: CGFloat = 0
     var logoOriginalHeight: CGFloat = 0
@@ -119,23 +120,26 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?) {
     
-        waiter = SpinnerViewController(vc: self)
+        
         
         if moduleEnum == .my_group_detail {
-            waiter?.add(vcView: headerView)
+            waiter1 = SpinnerViewController(vc: self)
+            waiter1?.add(vcView: headerView)
         }
         if moduleEnum == .my_group_wall {
-            waiter?.add(vcView: collectionView)
+            waiter2 = SpinnerViewController(vc: self)
+            waiter2?.add(vcView: collectionView)
         }
     }
     
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?) {
-        if moduleEnum == .my_group_wall {
-            waiter?.stop(vcView: collectionView)
-        }
         
         if moduleEnum == .my_group_detail {
-            waiter?.stop(vcView: headerView)
+            waiter1?.stop(vcView: headerView)
+        }
+        
+        if moduleEnum == .my_group_wall {
+            waiter2?.stop(vcView: collectionView)
         }
     }
     

@@ -21,6 +21,7 @@ public class PlainBasePresenter {
         }
     }
     
+    var paginatingInProgess = false
     
     var clazz: String {
         return String(describing: self)
@@ -75,7 +76,9 @@ public class PlainBasePresenter {
            }
     
         for model in validatedData {
-            dataSource.append(model)
+            if !dataSource.contains(where: {$0.getId() == model.getId()}){
+                dataSource.append(model)
+            }
         }
         
         switch didLoadedFrom {
@@ -120,8 +123,9 @@ public class PlainBasePresenter {
     
     final func viewReloadData(){
         let moduleEnum = ModuleEnum(presenter: self)
-        self.view?.viewReloadData(moduleEnum: moduleEnum)
-        self.view?.stopWaitIndicator(moduleEnum)
+        view?.viewReloadData(moduleEnum: moduleEnum)
+        waitIndicator(start: false)
+        paginatingInProgess = false
     }
     
     final func save(enriched: [PlainModelProtocol]) {
@@ -131,6 +135,15 @@ public class PlainBasePresenter {
     final func sort() {
        dataSource = dataSource.sorted {
                $0.getSortBy() > $1.getSortBy()
+       }
+    }
+    
+    final func waitIndicator(start: Bool) {
+        let moduleEnum = ModuleEnum(presenter: self)
+        if start {
+            view?.startWaitIndicator(moduleEnum)
+        } else {
+            view?.stopWaitIndicator(moduleEnum)
         }
     }
 }

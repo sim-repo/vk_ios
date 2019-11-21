@@ -19,11 +19,10 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
         PRESENTER_UI_THREAD {
             self.validateView(vc)
             self.view = vc as? PushPlainViewProtocol
-            let moduleEnum = ModuleEnum(presenter: self)
             if self.dataSourceIsEmpty() {
-                self.view?.startWaitIndicator(moduleEnum)
+                self.waitIndicator(start: true)
             } else {
-                self.view?.viewReloadData(moduleEnum: moduleEnum)
+                self.viewReloadData()
             }
         }
     }
@@ -39,6 +38,9 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                 console(msg: "PlainBasePresenter: \(self.clazz): didSuccessNetworkResponse")
                 completion?()
                 
+                self.waitIndicator(start: false)
+                
+                //pagination:
                 guard let _ = self as? PaginationPresenterProtocol
                       else { return }
                 
@@ -53,7 +55,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     // when all responses have got from network
     final func didSuccessNetworkFinish() {
         PRESENTER_UI_THREAD {
-            console(msg: "PlainBasePresenter: \(self.clazz): didSuccessNetworkFinish")
+           // console(msg: "PlainBasePresenter: \(self.clazz): didSuccessNetworkFinish")
             self.sort()
             self.viewReloadData()
         }
@@ -61,7 +63,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     
     final func setFromPersistent(models: [DecodableProtocol]) {
         PRESENTER_UI_THREAD {
-            console(msg: "PlainBasePresenter: \(self.clazz): setFromPersistent")
+            //console(msg: "PlainBasePresenter: \(self.clazz): setFromPersistent")
             self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
             self.sort()
             self.viewReloadData()

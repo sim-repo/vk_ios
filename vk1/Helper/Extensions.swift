@@ -85,6 +85,13 @@ func NET_LDELAY_THREAD(_ block: @escaping (() -> Void)) {
 }
 
 
+//SOME:
+func DELAY_THREAD(sec: Int, _ block: @escaping (() -> Void)) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(sec), qos: .userInteractive){
+        block()
+    }
+}
+
 
 //MARK: - logger
 
