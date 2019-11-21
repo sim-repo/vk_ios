@@ -930,13 +930,13 @@
 			isa = PBXGroup;
 			children = (
 				166CB8E32382E690009DA806 /* SyncBase.swift */,
-				16E08B48236DD7B900340F09 /* SyncFriend.swift */,
-				16E08B50236DD82100340F09 /* SyncFriendWall.swift */,
-				16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */,
 				164F80CA238565CD000F95E7 /* SyncNews.swift */,
 				16E08B46236DD6E300340F09 /* SyncWall.swift */,
-				16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */,
+				16E08B50236DD82100340F09 /* SyncFriendWall.swift */,
 				16E08B8923707EEE00340F09 /* SyncMyGroupWall.swift */,
+				16E08B48236DD7B900340F09 /* SyncFriend.swift */,
+				16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */,
+				16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */,
 				16E08B56236DDEB700340F09 /* SyncGroup.swift */,
 				16E08B4C236DD7DB00340F09 /* SyncGroupDetail.swift */,
 				16E08B4E236DD80800340F09 /* SyncProfile.swift */,

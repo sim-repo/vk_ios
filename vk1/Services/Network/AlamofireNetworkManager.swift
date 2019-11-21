@@ -14,6 +14,27 @@ class AlamofireNetworkManager{
         return manager
     }()
     
+    typealias Completion = (() -> Void)?
+       
+    private static var task1: Completion?
+   
+    private static func runRequest(task: Completion = nil){
+        task?()
+    }
+    
+    private static var count = 0
+    static func tryAgain(task: Completion){
+        
+        let period = 300
+        count += 1
+        DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(period), qos: .userInteractive) {
+            task?()
+        }
+    }
+    
+    
+    
+    
     public static func log(_ msg: String) {
         console(msg: msg, printEnum: .alamofire)
     }
@@ -74,29 +95,42 @@ class AlamofireNetworkManager{
     public static func wallRequest(_ urlPath: String,
                                    _ params: Parameters,
                                    _ onSuccess: @escaping onSuccess_PresenterCompletion,
-                                   _ onError: @escaping  onErrResponse_SyncCompletion ){
-
-        AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
-            switch response.result {
-            case .success(let json):
-                let arr:[Wall]? = WallParser.parseWallJson(json)
-                   
-                if let arr = arr {
-                    if arr.isEmpty {
-                        //let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null : \(json)", code: 123, userInfo: nil)
-                        let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null", code: 123, userInfo: nil)
-                        onError(err)
-                    } else {
-                        NET_LDELAY_THREAD {
-                            onSuccess(arr)
+                                   _ onError: @escaping  onErrResponse_SyncCompletion,
+                                   _ offsetCompletion: (()->Void)?
+                                   ){
+        task1 = {
+            AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+                switch response.result {
+                case .success(let json):
+                    let arr:[Wall]? = WallParser.parseWallJson(json)
+                       
+                    if let arr = arr {
+                        if arr.isEmpty {
+                            if count < 4 {
+                                tryAgain(task: task1!)
+                                return
+                            }
+                            count = 0
+                           // let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null : \(json)", code: 123, userInfo: nil)
+                            let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null", code: 123, userInfo: nil)
+                            offsetCompletion?()
+                            onError(err)
+                        } else {
+                            count = 0
+                            NET_LDELAY_THREAD {
+                                offsetCompletion?()
+                                onSuccess(arr)
+                            }
                         }
                     }
+                case .failure(let err):
+                    count = 0
+                    let error = err as NSError
+                    onError(error)
                 }
-            case .failure(let err):
-                let error = err as NSError
-                onError(error)
             }
         }
+        runRequest(task: task1!)
     }
     
     

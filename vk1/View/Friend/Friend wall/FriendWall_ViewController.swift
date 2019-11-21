@@ -10,6 +10,10 @@ class FriendWall_ViewController: UIViewController {
     var waiter: SpinnerViewController?
     
     
+    private func log(_ msg: String) {
+        console(msg: msg, printEnum: .viewReloadData)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPresenter()
@@ -23,7 +27,7 @@ class FriendWall_ViewController: UIViewController {
         layout.minimumLineSpacing = 50
         layout.itemSize = CGSize(width: width, height: height)
     }
- 
+    
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
     }
@@ -65,7 +69,8 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
     
     
     private func didScrollEnd(_ indexPath: IndexPath) {
-        if indexPath.row == presenter.numberOfRowsInSection() - 1 {
+        print("\(indexPath.row) : \(presenter.numberOfRowsInSection() - 5)")
+        if indexPath.row >= presenter.numberOfRowsInSection() - 5 {
             presenter.didEndScroll()
         }
     }
@@ -82,18 +87,19 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
         waiter = SpinnerViewController(vc: self)
         waiter?.add(vcView: view)
     }
-          
+    
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
         waiter?.stop(vcView: view)
     }
     
     func insertItems(startIdx: Int, endIdx: Int) {
-           var indexes = [IndexPath]()
-           for idx in startIdx...endIdx {
-               let idx = IndexPath(row: idx, section: 0)
-               indexes.append(idx)
-           }
-           
+        log("FriendWall_ViewController(): insertItems()")
+        var indexes = [IndexPath]()
+        for idx in startIdx...endIdx {
+            let idx = IndexPath(row: idx, section: 0)
+            indexes.append(idx)
+        }
+        
         collectionView.performBatchUpdates({ () -> Void in
             collectionView.insertItems(at: indexes)
         }, completion: nil)

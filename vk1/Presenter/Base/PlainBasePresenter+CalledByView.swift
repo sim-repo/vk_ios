@@ -42,7 +42,7 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
                 catchError(msg: "PlainBasePresenter: \(clazz): viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue) ")
                 return
         }
-        detailPresenter.setDetailModel(model: model)
+        detailPresenter.setParentModel(model: model)
     }
     
     

@@ -67,7 +67,6 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
         }
     }
     
-    
     final func setFromPersistent(models: [DecodableProtocol]) {
         PRESENTER_UI_THREAD {
             self.log("PlainBasePresenter: \(self.clazz): setFromPersistent")

@@ -3,26 +3,26 @@ import Foundation
 class FriendWallPresenter: PlainPresenterProtocols {
     
     
-    var netFinishViewReload: Bool = true
+    var netFinishViewReload: Bool = false
     
     var modelClass: AnyClass  {
         return Wall.self
     }
     
-    var detailModel: ModelProtocol?
+    var parentModel: ModelProtocol?
 }
 
 
 
 extension FriendWallPresenter: DetailPresenterProtocol {
     
-    func setDetailModel(model: ModelProtocol) {
-        detailModel = model
+    func setParentModel(model: ModelProtocol) {
+        parentModel = model
         clearDataSource()
     }
     
     func getId() -> typeId? {
-        guard let passed = detailModel
+        guard let passed = parentModel
         else {
             catchError(msg: "FriendWallPresenter: getId(): modelPassedThrowSegue is null")
             return nil

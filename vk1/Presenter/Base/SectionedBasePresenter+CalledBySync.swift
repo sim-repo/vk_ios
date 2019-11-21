@@ -57,7 +57,6 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
         }
     }
     
-    
     final func setFromPersistent(models: [DecodableProtocol]) {
         PRESENTER_UI_THREAD {
             self.log("SectionedBasePresenter: \(self.clazz): setFromPersistent")

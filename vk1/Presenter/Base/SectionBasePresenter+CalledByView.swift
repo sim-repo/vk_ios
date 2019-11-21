@@ -119,7 +119,7 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
                 catchError(msg: "SectionedBasePresenter: \(clazz): viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue) ")
                 return
             }
-        detailPresenter.setDetailModel(model: model)
+        detailPresenter.setParentModel(model: model)
     }
     
     

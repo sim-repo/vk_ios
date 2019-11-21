@@ -212,4 +212,10 @@ class SynchronizerManager {
         }
         return onError
     }
+
+    func getTryAgainCompletion() -> (()->Void)? {
+        return {
+            
+        }
+    }
 }

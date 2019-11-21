@@ -1,9 +1,9 @@
 import Foundation
 
 
-// for detail presenters which getting model throw segue
+// for detailed presenters
 protocol DetailPresenterProtocol {
-    var detailModel: ModelProtocol? { get set }
+    var parentModel: ModelProtocol? { get set }
     func getId() -> typeId?
-    func setDetailModel(model: ModelProtocol)
+    func setParentModel(model: ModelProtocol)
 }

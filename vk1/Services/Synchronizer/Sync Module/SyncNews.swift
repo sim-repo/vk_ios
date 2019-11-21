@@ -5,7 +5,6 @@ class SyncNews: SyncBaseProtocol {
     static let shared = SyncNews()
     private override init() {}
     
-    var syncing = false
     var offset = ""
     
     let queue = DispatchQueue.global(qos: .background)
@@ -14,11 +13,8 @@ class SyncNews: SyncBaseProtocol {
         return ModuleEnum.news
     }
     
-    let count = Network.newsResponseItemsPerRequest
-    
     lazy var setNextOffsetCompletion: (String) -> Void = {[weak self] offset1 in
         self?.offset = offset1
-        self?.syncing = false
     }
     
     func sync(force: Bool = false,
@@ -45,7 +41,11 @@ class SyncNews: SyncBaseProtocol {
         
          let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
          
-        ApiVK.newsRequest(offset, count, onSuccess: onSuccess, onError: onError, setNextOffsetCompletion: setNextOffsetCompletion)
+        ApiVK.newsRequest(offset,
+                          Network.newsResponseItemsPerRequest,
+                          onSuccess: onSuccess,
+                          onError: onError,
+                          setNextOffsetCompletion: setNextOffsetCompletion)
      }
 }
 

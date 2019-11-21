@@ -11,6 +11,8 @@ protocol SyncUserDefaultsProtocol {
 class SyncBase {
         
     var syncStart: Date!
+    var syncing = false
+    var tryCount = 0
     
     func getLastSyncDate() -> Date? {
         guard let child = self as? SyncBaseProtocol
@@ -41,10 +43,21 @@ class SyncBase {
             onSuccess_SyncCompletion(presenter)
             dispatchCompletion?()
             self?.setLastSyncDate(date: Date())
+            self?.syncing = false
         }
 
-        let onError_SyncCompletion = SynchronizerManager.shared.getOnErrorCompletion() {
+        
+        let onError_SyncCompletion = SynchronizerManager.shared.getOnErrorCompletion() { [weak self] in
            dispatchCompletion?()
+           self?.syncing = false
+            if self!.tryCount < 3 {
+               if let child = self as? SyncBaseProtocol {
+                  child.sync(force: true, dispatchCompletion)
+               }
+                self!.tryCount+=1
+            } else {
+                self!.tryCount = 0
+            }
         }
             
         return (onSuccess_PresenterCompletion, onError_SyncCompletion)

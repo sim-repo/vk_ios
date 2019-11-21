@@ -22,7 +22,8 @@ class ApiVK {
                                   offset: Int,
                                   count: Int,
                                   onSuccess: @escaping onSuccess_PresenterCompletion,
-                                  onError: @escaping onErrResponse_SyncCompletion) {
+                                  onError: @escaping onErrResponse_SyncCompletion,
+                                  offsetCompletion: (()->Void)?) {
 
         let urlPath: String = "wall.get"
         
@@ -36,7 +37,7 @@ class ApiVK {
                  "offset": "\(offset)",
                  "v": versionAPI
         ]
-        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError)
+        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion)
     }
       
     
@@ -72,7 +73,8 @@ class ApiVK {
     
     static func wallRequest(ownerId: typeId,
                             onSuccess: @escaping onSuccess_PresenterCompletion,
-                            onError: @escaping onErrResponse_SyncCompletion) {
+                            onError: @escaping onErrResponse_SyncCompletion,
+                            offsetCompletion: (()->Void)?) {
 
         let urlPath: String = "wall.get"
         
@@ -85,7 +87,7 @@ class ApiVK {
                  "count": "1",
                  "v": versionAPI
         ]
-        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError)
+        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion)
         
     }
     
@@ -94,8 +96,7 @@ class ApiVK {
                             _ count: Int,
                             onSuccess: @escaping onSuccess_PresenterCompletion,
                             onError: @escaping onErrResponse_SyncCompletion,
-                            setNextOffsetCompletion: ((String)->Void)?
-                            ) {
+                            setNextOffsetCompletion: ((String)->Void)?) {
         
         let urlPath: String = "newsfeed.get"
         

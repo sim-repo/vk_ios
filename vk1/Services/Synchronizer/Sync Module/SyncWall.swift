@@ -2,7 +2,7 @@ import UIKit
 
 class SyncWall: SyncBaseProtocol {
     
-    var syncing = false
+
     var dispatchGroup: DispatchGroup?
     
     static let shared = SyncWall()
@@ -18,7 +18,7 @@ class SyncWall: SyncBaseProtocol {
     
     func sync(force: Bool = false,
               _ dispatchCompletion: (()->Void)? = nil) {
-        
+        /*
         if syncing {
             return
         }
@@ -152,5 +152,6 @@ class SyncWall: SyncBaseProtocol {
                 }
             }
         }
+    */
     }
 }

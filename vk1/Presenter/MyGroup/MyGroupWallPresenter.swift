@@ -2,30 +2,34 @@ import Foundation
 
 class MyGroupWallPresenter: PlainPresenterProtocols {
     
-    
     var netFinishViewReload: Bool = true
     
     var modelClass: AnyClass  {
         return Wall.self
     }
     
-    var detailModel: ModelProtocol?
+    var parentModel: ModelProtocol?
 }
 
 
 
 extension MyGroupWallPresenter: DetailPresenterProtocol {
     
-    func setDetailModel(model: ModelProtocol) {
-        self.detailModel = model
+    func setParentModel(model: ModelProtocol) {
+        self.parentModel = model
     }
     
     func getId() -> typeId? {
-        guard let passed = detailModel
-        else {
-            catchError(msg: "MyGroupWallPresenter: getId(): modelPassedThrowSegue is null")
-            return nil
+        guard let passed = parentModel
+            else {
+                catchError(msg: "MyGroupWallPresenter: getId(): modelPassedThrowSegue is null")
+                return nil
         }
         return passed.getId()
     }
+}
+
+
+extension MyGroupWallPresenter: PaginationPresenterProtocol {
+    
 }

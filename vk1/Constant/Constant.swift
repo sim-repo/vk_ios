@@ -12,7 +12,7 @@ struct Network {
     static let longDelayBetweenRequests = 1000 //500 // in ms
     static let intervalViewReload = 5 // in percent
     static let newsResponseItemsPerRequest = 20
-    static let friendWallResponseItemsPerRequest = 2
+    static let friendWallResponseItemsPerRequest = 20
 }
 
 

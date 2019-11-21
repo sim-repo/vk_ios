@@ -5,29 +5,35 @@ class SyncFriendWall: SyncBaseProtocol {
     static let shared = SyncFriendWall()
     private override init() {}
     
-    var offsetByFriendId = [typeId:Int]()
-    
-    let queue = DispatchQueue.global(qos: .background)
-    
     var module: ModuleEnum {
         return ModuleEnum.friend_wall
     }
     
     let count = Network.friendWallResponseItemsPerRequest
+    var offsetById = [typeId:Int]()
+    
+    private func getOffsetCompletion(id: typeId) -> (()->Void) {
+        let offsetCompletion: () -> Void = {[weak self]  in
+            self?.incrementOffset(id: id)
+        }
+        return offsetCompletion
+    }
+    
     
     private func incrementOffset(id: Int) {
-        if offsetByFriendId[id] == nil {
-            offsetByFriendId[id] = count
+        if offsetById[id] == nil {
+            offsetById[id] = count
         } else {
-            offsetByFriendId[id]! += count
+            offsetById[id]! += count
         }
     }
     
     
     func sync(force: Bool = false,
-              _ dispatchCompletion: (()->Void)? = nil) {
+            _ dispatchCompletion: (()->Void)? = nil) {
         
-        queue.sync {
+            guard !syncing else { return }
+        
             let presenter = PresenterFactory.shared.getInstance(clazz: FriendWallPresenter.self)
             
             guard let p = presenter as? DetailPresenterProtocol
@@ -42,16 +48,20 @@ class SyncFriendWall: SyncBaseProtocol {
                 return
             }
             
-            let offset = offsetByFriendId[id] ?? 0
-            incrementOffset(id: id)
+        
+            //prepare for network
+            let offset = offsetById[id] ?? 0
+            let offsetCompletion = getOffsetCompletion(id: id)
             
             
+            //load from network
             if force {
-                syncFromNetwork(presenter, id, offset, dispatchCompletion)
+                syncing = true
+                syncFromNetwork(presenter, id, offset, offsetCompletion, dispatchCompletion)
                 return
             }
 
-            
+            //exit
             if !presenter.dataSourceIsEmpty() {
                dispatchCompletion?()
                return
@@ -65,9 +75,10 @@ class SyncFriendWall: SyncBaseProtocol {
                    dispatchCompletion?()
                    return
             }
-            
-            syncFromNetwork(presenter, id, offset, dispatchCompletion)
-        }
+        
+            //load from network
+            syncing = true
+            syncFromNetwork(presenter, id, offset, offsetCompletion, dispatchCompletion)
     }
     
     
@@ -75,6 +86,7 @@ class SyncFriendWall: SyncBaseProtocol {
     private func syncFromNetwork(_ presenter: SynchronizedPresenterProtocol,
                                  _ id: typeId,
                                  _ offset: Int,
+                                 _ offsetCompletion: (() -> Void)?,
                                  _ dispatchCompletion: (()->Void)? = nil){
          
          // clear all
@@ -82,7 +94,12 @@ class SyncFriendWall: SyncBaseProtocol {
         
          let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
          
-        ApiVK.friendWallRequest(ownerId: id, offset: offset, count: count, onSuccess: onSuccess, onError: onError)
+        ApiVK.friendWallRequest(ownerId: id,
+                                offset: offset,
+                                count: count,
+                                onSuccess: onSuccess,
+                                onError: onError,
+                                offsetCompletion: offsetCompletion)
      }
 }
 

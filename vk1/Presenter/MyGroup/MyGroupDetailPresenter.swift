@@ -12,7 +12,7 @@ class MyGroupDetailPresenter: PlainPresenterProtocols {
         return DetailGroup.self
     }
        
-    var detailModel: ModelProtocol?
+    var parentModel: ModelProtocol?
     
     
     // #child begin
@@ -36,7 +36,7 @@ class MyGroupDetailPresenter: PlainPresenterProtocols {
     //MARK: override func
     override func enrichData(validated: [PlainModelProtocol]) -> [PlainModelProtocol]? {
         let detailGroup = validated[0] as! DetailGroup
-        guard let group = detailModel as? MyGroup
+        guard let group = parentModel as? MyGroup
         else {
             catchError(msg: "\(clazz): enrichData(): detailModel is incorrect")
             return nil
@@ -50,24 +50,24 @@ class MyGroupDetailPresenter: PlainPresenterProtocols {
 
 extension MyGroupDetailPresenter: DetailPresenterProtocol {
     
-    func setDetailModel(model: ModelProtocol) {
-        self.detailModel = model
+    func setParentModel(model: ModelProtocol) {
+        self.parentModel = model
         
         //setup child presenter
         guard let detailPresenter = myGroupWallPresenter,
-              let detail = detailModel
+              let detail = parentModel
         else {
             catchError(msg: "\(clazz): setDetailModel(): myGroupWallPresenter or detailModel is nil")
             return
         }
         // #child begin
-        detailPresenter.setDetailModel(model: detail)
+        detailPresenter.setParentModel(model: detail)
         SynchronizerManager.shared.callSyncFromPresenter(moduleEnum: .my_group_wall)
         // #child end
     }
     
     func getId() -> typeId? {
-        guard let passed = detailModel
+        guard let passed = parentModel
         else {
             catchError(msg: "\(clazz): getId(): modelPassedThrowSegue is nil")
             return nil
