@@ -12,7 +12,10 @@ class SyncWall: SyncBaseProtocol {
         return ModuleEnum.wall
     }
     
-
+    private func log(_ msg: String) {
+        console(msg: msg, printEnum: .sync)
+    }
+    
     func sync(force: Bool = false,
               _ dispatchCompletion: (()->Void)? = nil) {
         
@@ -23,7 +26,7 @@ class SyncWall: SyncBaseProtocol {
         
         
         dispatchGroup = DispatchGroup()
-        console(msg: "SynchronizerManager: syncWall..")
+        console(msg: "SynchronizerManager: syncWall..", printEnum: .sync)
         
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
@@ -31,14 +34,14 @@ class SyncWall: SyncBaseProtocol {
             // start syncing
             self.dispatchGroup?.enter()
             SyncFriend.shared.sync() { [weak self] in
-                console(msg: "SynchronizerManager: syncWall: FriendPresenter - sync completed" )
+                self?.log("SynchronizerManager: syncWall: FriendPresenter - sync completed")
                 self?.dispatchGroup?.leave()
             }
             
             
             self.dispatchGroup?.enter()
             SyncMyGroup.shared.sync() { [weak self] in
-                console(msg: "SynchronizerManager: syncWall: GroupPresenter - sync completed" )
+                self?.log("SynchronizerManager: syncWall: GroupPresenter - sync completed")
                 self?.dispatchGroup?.leave()
             }
             
@@ -84,11 +87,11 @@ class SyncWall: SyncBaseProtocol {
                 }
                  
                 
-                console(msg: "groupDS: \(groupDS.count )")
+                self.log("groupDS: \(groupDS.count )")
                 if groupDS.count == 0 {
                     catchError(msg: "groupDS is null")
                 }
-                console(msg: "friendDS: \(friendDS.count )")
+                self.log("friendDS: \(friendDS.count )")
                 if friendDS.count == 0 {
                     catchError(msg: "friendDS is null")
                 }
@@ -143,7 +146,7 @@ class SyncWall: SyncBaseProtocol {
                 
                 // sort all data when all requests has done
                 self.dispatchGroup?.notify(queue: DispatchQueue.main) {
-                    console(msg: "SynchronizerManager: syncWall: sync completed!")
+                    self.log("SynchronizerManager: syncWall: sync completed!")
                     wallPresenter.didSuccessNetworkFinish()
                     self.syncing = false
                 }

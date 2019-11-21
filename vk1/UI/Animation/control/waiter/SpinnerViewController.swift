@@ -2,7 +2,7 @@ import UIKit
 
 class SpinnerViewController: UIViewController {
     
-    var dictChildByParent: [Int:UIView] = [:]
+    var dictChildByParent: [UIView:UIView] = [:]
     
     var vc: UIViewController?
     
@@ -15,12 +15,12 @@ class SpinnerViewController: UIViewController {
     }
     
     
-    func add(vcView: UIView, id: Int = 0) {
+    func add(vcView: UIView) {
         let childView = UIView()
         childView.frame = vcView.frame
         childView.backgroundColor = UIColor(white: 0, alpha: 0.9)
         self.view.addSubview(childView)
-        self.dictChildByParent[id] = childView
+        self.dictChildByParent[vcView] = childView
         self.start(childView: childView) { childView in
             childView.removeFromSuperview()
         }
@@ -32,11 +32,11 @@ class SpinnerViewController: UIViewController {
         self.removeFromParent()
     }
     
-    func stop(vcView: UIView, id: Int = 0) {
+    func stop(vcView: UIView) {
         
-        if let childView = dictChildByParent[id] {
+        if let childView = dictChildByParent[vcView] {
             childView.removeFromSuperview()
-            dictChildByParent[id] = nil
+            dictChildByParent[vcView] = nil
         }
         if dictChildByParent.isEmpty {
             finish()

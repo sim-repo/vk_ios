@@ -106,10 +106,12 @@ func catchError(msg: String){
     #endif
 }
 
-func console(msg: String) {
+func console(msg: String, printEnum: PrintLogEnum) {
     #if DEBUG
-        print(msg)
-        print()
+        if printEnum.print {
+            print(msg)
+            print()
+        }
     #else
         logInf(msg)
     #endif

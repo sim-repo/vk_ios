@@ -120,29 +120,25 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
     func startWaitIndicator(_ moduleEnum: ModuleEnum?) {
 
         if moduleEnum == .my_group_detail {
-            
-            waiter.add(vcView: headerView, id: 1)
+            waiter.add(vcView: headerView)
         }
         if moduleEnum == .my_group_wall {
-            waiter.add(vcView: collectionView, id: 2)
+            waiter.add(vcView: collectionView)
         }
     }
     
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?) {
         
         if moduleEnum == .my_group_detail {
-            waiter.stop(vcView: headerView, id: 1)
+            waiter.stop(vcView: headerView)
         }
         
         if moduleEnum == .my_group_wall {
-            waiter.stop(vcView: collectionView, id: 2)
+            waiter.stop(vcView: collectionView)
         }
     }
     
     func viewReloadData(moduleEnum: ModuleEnum) {
-        
-        console(msg: "MyGroupDetail_ViewController: refreshDataSource()")
-        
         
         // MyGroup Detail:
         if moduleEnum == .my_group_detail {
@@ -199,7 +195,7 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
         }
     }
     
-     func insertItems(startIdx: Int, endIdx: Int) {}
+    func insertItems(startIdx: Int, endIdx: Int) {}
            
 }
 

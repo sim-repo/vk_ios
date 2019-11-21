@@ -2,6 +2,9 @@ import Foundation
 
 class FriendWallPresenter: PlainPresenterProtocols {
     
+    
+    var netFinishViewReload: Bool = true
+    
     var modelClass: AnyClass  {
         return Wall.self
     }

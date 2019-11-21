@@ -21,7 +21,9 @@ public class PlainBasePresenter {
         }
     }
     
+    lazy var child = self as! ModelOwnerPresenterProtocol
     var paginatingInProgess = false
+    lazy var moduleEnum = ModuleEnum(presenter: self)
     
     var clazz: String {
         return String(describing: self)
@@ -32,7 +34,6 @@ public class PlainBasePresenter {
     
     var sectionChildPresenter: PullSectionPresenterProtocol?
     var plainChildPresenter: PullPlainPresenterProtocol?
-    
     
     //MARK:- initial
     
@@ -58,8 +59,6 @@ public class PlainBasePresenter {
             return
         }
     }
-
-
     
 
 // MARK:- incoming model flow
@@ -100,12 +99,8 @@ public class PlainBasePresenter {
             catchError(msg: "PlainBasePresenter: \(clazz): validate(): datasource is empty ")
             return nil
         }
-        guard let childPresenter = self as? ModelOwnerPresenterProtocol
-        else {
-            catchError(msg: "PlainBasePresenter: \(clazz): validate(): OwnModelProtocol is not implemented")
-            return nil
-        }
-        let required = "\(childPresenter.modelClass)"
+    
+        let required = "\(child.modelClass)"
         let current = getRawClassName(object: type(of: dirtyData[0]))
         guard required == current
         else {
@@ -122,14 +117,9 @@ public class PlainBasePresenter {
     }
     
     final func viewReloadData(){
-        let moduleEnum = ModuleEnum(presenter: self)
+        sort()
         view?.viewReloadData(moduleEnum: moduleEnum)
         waitIndicator(start: false)
-        paginatingInProgess = false
-    }
-    
-    final func save(enriched: [PlainModelProtocol]) {
-        RealmService.save(models: enriched, update: true)
     }
     
     final func sort() {
@@ -138,8 +128,12 @@ public class PlainBasePresenter {
        }
     }
     
+    
+    final func save(enriched: [PlainModelProtocol]) {
+        RealmService.save(models: enriched, update: true)
+    }
+    
     final func waitIndicator(start: Bool) {
-        let moduleEnum = ModuleEnum(presenter: self)
         if start {
             view?.startWaitIndicator(moduleEnum)
         } else {

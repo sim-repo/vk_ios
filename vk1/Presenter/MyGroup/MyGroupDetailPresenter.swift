@@ -4,6 +4,10 @@ import Foundation
 // has child presenter: #child
 class MyGroupDetailPresenter: PlainPresenterProtocols {
     
+    
+    var netFinishViewReload: Bool = true
+    
+    
     var modelClass: AnyClass  {
         return DetailGroup.self
     }

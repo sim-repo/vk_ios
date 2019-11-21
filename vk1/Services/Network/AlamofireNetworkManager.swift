@@ -14,6 +14,10 @@ class AlamofireNetworkManager{
         return manager
     }()
     
+    public static func log(_ msg: String) {
+        console(msg: msg, printEnum: .alamofire)
+    }
+    
     
     public static func requestItems<T: DecodableProtocol>(clazz: T.Type ,
                                                              _ urlPath: String,
@@ -41,9 +45,9 @@ class AlamofireNetworkManager{
                                                              _ params: Parameters,
                                                              _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                                              _ onError: @escaping  onErrResponse_SyncCompletion ) {
-           console(msg: "AlamofireNetworkManager: requestSingle(): start..")
+           log("AlamofireNetworkManager: requestSingle(): start..")
            AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
-               console(msg: "AlamofireNetworkManager: requestSingle(): response..")
+               log("AlamofireNetworkManager: requestSingle(): response..")
                switch response.result {
                case .success(let json):
                   if let t: T = parseJson(json) {

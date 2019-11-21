@@ -27,13 +27,12 @@ class RealmService {
             }
         }
     }
-    
-    
+
     
     private static func getInstance(_ confEnum: RealmConfigEnum) -> Realm? {
         do {
             let realm = try Realm(configuration: confEnum.config)
-            console(msg: "Realm DB Path: \(realm.configuration.fileURL?.absoluteString ?? "")")
+            console(msg: "Realm DB Path: \(realm.configuration.fileURL?.absoluteString ?? "")", printEnum: .realm)
             return realm
         } catch(let err) {
             catchError(msg: err.localizedDescription)

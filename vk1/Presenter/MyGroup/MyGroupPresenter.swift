@@ -2,6 +2,8 @@ import Foundation
 
 class MyGroupPresenter: SectionPresenterProtocols {
 
+    var netFinishViewReload: Bool = true
+    
     // implements ModelOwnerProtocol
     var modelClass: AnyClass  {
         return MyGroup.self

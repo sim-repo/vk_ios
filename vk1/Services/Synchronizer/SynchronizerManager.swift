@@ -36,7 +36,9 @@ class SynchronizerManager {
     private var backgroundTaskID: UIBackgroundTaskIdentifier?
     private var synchronizers: [SyncBaseProtocol]!
     
-    
+    private func log(_ msg: String) {
+        console(msg: msg, printEnum: .sync)
+    }
     
 // MARK: - called during user's actions perform
     
@@ -54,7 +56,7 @@ class SynchronizerManager {
                 let groupWall: ModuleEnum = .my_group_wall
                 PresenterFactory.shared.removePresenter(moduleEnum: groupWall)
             default:
-                console(msg: "SynchronizerManager: viewDidDisappear: no case \(presenter)")
+                log("SynchronizerManager: viewDidDisappear: no case \(presenter)")
         }
     }
     
@@ -178,7 +180,7 @@ class SynchronizerManager {
                 self.dispatchGroup = nil
                 
                 let duration = Date().timeIntervalSince(startSyncTime)
-                console(msg: "Sync finished. Sync duration: \(Int(duration)) seconds.")
+                self.log("Sync finished. Sync duration: \(Int(duration)) seconds.")
                 
                 self.scheduleNextSync()
                 

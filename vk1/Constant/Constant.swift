@@ -16,6 +16,26 @@ struct Network {
 }
 
 
+enum PrintLogEnum {
+    case realm, presenterCallsFromSync, presenterCallsFromView, sync, alamofire, viewReloadData
+    
+    var print: Bool {
+        switch self {
+        case .realm:
+            return false
+        case .presenterCallsFromSync:
+            return true
+        case .presenterCallsFromView:
+            return true
+        case .sync:
+            return false
+        case .alamofire:
+            return false
+        case .viewReloadData:
+            return true
+        }
+    }
+}
 
 
 enum UserDefaultsEnum: String {

@@ -41,11 +41,11 @@ extension Profile_TableViewController: PushPlainViewProtocol {
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?){
         waiter = SpinnerViewController(vc: self)
-        waiter?.add(vcView: view, id: 0)
+        waiter?.add(vcView: view)
     }
           
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
-        waiter?.stop(vcView: view, id: 0)
+        waiter?.stop(vcView: view)
     }
     
     func insertItems(startIdx: Int, endIdx: Int) {

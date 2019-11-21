@@ -5,6 +5,11 @@ import UIKit
 //MARK:- called from view
 extension PlainBasePresenter: PullPlainPresenterProtocol {
     
+    
+    private func log(_ msg: String) {
+        console(msg: msg, printEnum: .presenterCallsFromView)
+    }
+    
     final func numberOfRowsInSection() -> Int {
         return dataSource.count
     }
@@ -75,8 +80,7 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
         paginatingInProgess = true
         guard let _ = self as? PaginationPresenterProtocol
             else { return }
-        console(msg: "DidENdScroll")
-        let moduleEnum = ModuleEnum(presenter: self)
+        log("PlainBasePresenter(): \(clazz): didEndScroll()")
         SynchronizerManager.shared.callSyncFromPresenter(moduleEnum: moduleEnum)
     }
 }

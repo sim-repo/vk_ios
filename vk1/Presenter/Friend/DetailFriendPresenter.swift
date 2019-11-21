@@ -2,6 +2,8 @@ import Foundation
 
 class DetailFriendPresenter: SectionPresenterProtocols {
     
+    var netFinishViewReload: Bool = true
+    
     var modelClass: AnyClass  {
         return DetailFriendPresenter.self
     }

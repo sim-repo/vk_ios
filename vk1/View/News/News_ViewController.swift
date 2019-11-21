@@ -30,6 +30,10 @@ class News_ViewController: UIViewController {
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
     }
+    
+    private func log(_ msg: String) {
+        console(msg: msg, printEnum: .viewReloadData)
+    }
 }
 
 
@@ -52,7 +56,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 catchError(msg: "Wall_Controller(): cellForItemAt(): presenter.getData is incorrected ")
                 return cell
         }
-        print("idx: \(indexPath.row) : \(news.getId())")
+        log("idx: \(indexPath.row) : \(news.getId())")
         if let name = cellByCode[news.postTypeCode] {
             cell = cellConfigure(name, indexPath, news)
         }
@@ -82,20 +86,21 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
 extension News_ViewController: PushPlainViewProtocol{
     
     func viewReloadData(moduleEnum: ModuleEnum) {
-        console(msg: "News_ViewController: viewReloadData()")
+        log("News_ViewController(): reloadData()")
         collectionView.reloadData()
     }
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?){
         waiter = SpinnerViewController(vc: self)
-        waiter?.add(vcView: view, id: 0)
+        waiter?.add(vcView: view)
     }
     
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
-        waiter?.stop(vcView: view, id: 0)
+        waiter?.stop(vcView: view)
     }
     
     func insertItems(startIdx: Int, endIdx: Int) {
+        log("News_ViewController(): insertItems()")
         var indexes = [IndexPath]()
         for idx in startIdx...endIdx {
             let idx = IndexPath(row: idx, section: 0)

@@ -15,6 +15,10 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
        dataSource.removeAll()
     }
     
+    private func log(_ msg: String) {
+        console(msg: msg, printEnum: .presenterCallsFromSync)
+    }
+    
     final func setView(vc: PushViewProtocol) {
         PRESENTER_UI_THREAD {
             self.validateView(vc)
@@ -35,7 +39,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                 let last = self.numberOfRowsInSection()
                 
                 self.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
-                console(msg: "PlainBasePresenter: \(self.clazz): didSuccessNetworkResponse")
+                self.log("PlainBasePresenter: \(self.clazz): didSuccessNetworkResponse")
                 completion?()
                 
                 self.waitIndicator(start: false)
@@ -45,7 +49,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                       else { return }
                 
                 let z = self.dataSource[last...]
-                var endIndex = z.endIndex-1 < 0 ? 0: z.endIndex-1
+                let endIndex = z.endIndex-1 < 0 ? 0: z.endIndex-1
                 self.view?.insertItems(startIdx: z.startIndex, endIdx: endIndex)
             }
         }
@@ -55,26 +59,26 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     // when all responses have got from network
     final func didSuccessNetworkFinish() {
         PRESENTER_UI_THREAD {
-           // console(msg: "PlainBasePresenter: \(self.clazz): didSuccessNetworkFinish")
-            self.sort()
-            self.viewReloadData()
+            self.log("PlainBasePresenter: \(self.clazz): didSuccessNetworkFinish")
+            if self.child.netFinishViewReload {
+                self.viewReloadData()
+            }
+            self.paginatingInProgess = false
         }
     }
     
+    
     final func setFromPersistent(models: [DecodableProtocol]) {
         PRESENTER_UI_THREAD {
-            //console(msg: "PlainBasePresenter: \(self.clazz): setFromPersistent")
+            self.log("PlainBasePresenter: \(self.clazz): setFromPersistent")
             self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
-            self.sort()
             self.viewReloadData()
         }
     }
     
     func setSyncProgress(curr: Int, sum: Int) {
         PRESENTER_UI_THREAD {
-            console(msg: "progress: \(curr) of \(sum)")
             if curr/sum * 100 % Network.intervalViewReload == 0 {
-                self.sort()
                 self.viewReloadData()
             }
         }
