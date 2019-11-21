@@ -37,7 +37,7 @@ class ApiVK {
                  "offset": "\(offset)",
                  "v": versionAPI
         ]
-        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion)
+        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
     }
       
     
@@ -74,7 +74,9 @@ class ApiVK {
     static func wallRequest(ownerId: typeId,
                             onSuccess: @escaping onSuccess_PresenterCompletion,
                             onError: @escaping onErrResponse_SyncCompletion,
-                            offsetCompletion: (()->Void)?) {
+                            offsetCompletion: (()->Void)?,
+                            offset: Int
+                            ) {
 
         let urlPath: String = "wall.get"
         
@@ -84,10 +86,11 @@ class ApiVK {
                  "extended": "1",
                  "fields":["photo_50","photo_100", "photo_200"],
                  "filter": "all",
+                 "offset": "\(offset)",
                  "count": "1",
                  "v": versionAPI
         ]
-        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion)
+        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
         
     }
     

@@ -13,6 +13,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     
     final func clearDataSource() {
        dataSource.removeAll()
+       SynchronizerManager.shared.didClearDataSource(moduleEnum: moduleEnum)
     }
     
     private func log(_ msg: String) {
@@ -63,15 +64,25 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
             if self.child.netFinishViewReload {
                 self.viewReloadData()
             }
-            self.paginatingInProgess = false
+            self.pageInProgess = false
         }
     }
     
     final func setFromPersistent(models: [DecodableProtocol]) {
-        PRESENTER_UI_THREAD {
+        PRESENTER_UI_THREAD { [weak self] in
+            guard let self = self else { return }
+            let last = self.numberOfRowsInSection()
             self.log("PlainBasePresenter: \(self.clazz): setFromPersistent")
             self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
-            self.viewReloadData()
+            self.waitIndicator(start: false)
+            //pagination:
+            guard let _ = self as? PaginationPresenterProtocol
+                  else { return }
+            
+            let z = self.dataSource[last...]
+            let endIndex = z.endIndex-1 < 0 ? 0: z.endIndex-1
+            self.view?.insertItems(startIdx: z.startIndex, endIdx: endIndex)
+            self.pageInProgess = false
         }
     }
     

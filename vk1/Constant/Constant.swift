@@ -11,8 +11,8 @@ struct Network {
     static let delayBetweenRequests = 500 //500 // in ms
     static let longDelayBetweenRequests = 1000 //500 // in ms
     static let intervalViewReload = 5 // in percent
-    static let newsResponseItemsPerRequest = 20
-    static let friendWallResponseItemsPerRequest = 20
+    static let newsResponseItemsPerRequest = 20 // in number
+    static let wallResponseItemsPerRequest = 20 // in number
 }
 
 
@@ -22,7 +22,7 @@ enum PrintLogEnum {
     var print: Bool {
         switch self {
         case .realm:
-            return false
+            return true
         case .presenterCallsFromSync:
             return true
         case .presenterCallsFromView:

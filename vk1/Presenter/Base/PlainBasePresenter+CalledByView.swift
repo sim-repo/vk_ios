@@ -76,8 +76,8 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
     }
     
     func didEndScroll(){
-        guard !paginatingInProgess else { return }
-        paginatingInProgess = true
+        guard !pageInProgess else { return }
+        pageInProgess = true
         guard let _ = self as? PaginationPresenterProtocol
             else { return }
         log("PlainBasePresenter(): \(clazz): didEndScroll()")

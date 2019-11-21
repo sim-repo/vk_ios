@@ -28,13 +28,14 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
     var messageCount = 0
     var shareCount = 0
     
+    var offset = 0
     
     required init(){}
 
     
     func setup(json: JSON?){}
     
-    func setup(json: JSON?, profiles: [typeId:Friend], groups: [typeId:Group]) {
+    func setup(json: JSON?, profiles: [typeId:Friend], groups: [typeId:Group], offset: Int) {
         
         if let json = json {
 
@@ -53,6 +54,8 @@ class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
             
             // wall bottom block
             (viewCount, likeCount, messageCount, shareCount) = WallParser.parseBottomBlock(json: json)
+            
+            self.offset = offset
         }
     }
     

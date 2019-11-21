@@ -27,4 +27,6 @@ class RealmWall: RealmBase {
     @objc dynamic var messageCount = 0
     @objc dynamic var shareCount = 0
 
+    
+    @objc dynamic var offset = 0
 }

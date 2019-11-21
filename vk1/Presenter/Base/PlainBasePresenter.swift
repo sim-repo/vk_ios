@@ -22,7 +22,7 @@ public class PlainBasePresenter {
     }
     
     lazy var child = self as! ModelOwnerPresenterProtocol
-    var paginatingInProgess = false
+    var pageInProgess = false
     lazy var moduleEnum = ModuleEnum(presenter: self)
     
     var clazz: String {

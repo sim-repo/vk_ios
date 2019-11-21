@@ -96,13 +96,14 @@ class AlamofireNetworkManager{
                                    _ params: Parameters,
                                    _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                    _ onError: @escaping  onErrResponse_SyncCompletion,
-                                   _ offsetCompletion: (()->Void)?
+                                   _ offsetCompletion: (()->Void)?,
+                                   _ offset: Int
                                    ){
         task1 = {
             AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                 switch response.result {
                 case .success(let json):
-                    let arr:[Wall]? = WallParser.parseWallJson(json)
+                    let arr:[Wall]? = WallParser.parseWallJson(json, offset: offset)
                        
                     if let arr = arr {
                         if arr.isEmpty {

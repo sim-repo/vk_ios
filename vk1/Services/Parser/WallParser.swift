@@ -4,7 +4,7 @@ class WallParser {
     
     
     //MARK:- called from networking service >>
-    public static func parseWallJson(_ val: Any)->[Wall]?{
+    public static func parseWallJson(_ val: Any, offset: Int)->[Wall]?{
         let json = JSON(val)
         var res: [Wall] = []
         let items = json["response"]["items"].arrayValue
@@ -15,7 +15,7 @@ class WallParser {
         for j in items {
             let w = Wall()
             if WallParser.hasImages(json: j) {
-                w.setup(json: j, profiles: dicProfile, groups: dicGroups)
+                w.setup(json: j, profiles: dicProfile, groups: dicGroups, offset: offset)
                 res.append(w)
             }
         }

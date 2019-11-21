@@ -11,7 +11,7 @@ class SyncMyGroupWall: SyncBaseProtocol {
     
     var offsetById = [typeId:Int]()
     
-    let count = Network.friendWallResponseItemsPerRequest
+    let count = Network.wallResponseItemsPerRequest
     
     private func getOffsetCompletion(id: typeId) -> (()->Void) {
         let offsetCompletion: () -> Void = {[weak self]  in
@@ -90,7 +90,9 @@ class SyncMyGroupWall: SyncBaseProtocol {
         ApiVK.wallRequest(ownerId: -abs(id),
                           onSuccess: onSuccess,
                           onError: onError,
-                          offsetCompletion: offsetCompletion)
+                          offsetCompletion: offsetCompletion,
+                          offset: offset
+                          )
     }
 }
 

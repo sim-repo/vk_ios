@@ -60,6 +60,16 @@ class SynchronizerManager {
         }
     }
     
+    
+    public func didClearDataSource(moduleEnum: ModuleEnum){
+        switch moduleEnum {
+            case .friend_wall:
+                SyncFriendWall.shared.resetOffset()
+            default:
+                log("SynchronizerManager: clearPresenterData: no case \(moduleEnum)")
+        }
+    }
+    
     // called from PresenterFactory
     public func viewDidLoad(presenterEnum: ModuleEnum){
         startSync(presenterEnum)
@@ -73,7 +83,7 @@ class SynchronizerManager {
              SyncFriend.shared.sync()
              
          case .friend_wall:
-            SyncFriendWall.shared.sync(force: true)
+            SyncFriendWall.shared.sync()
              
          case .my_group:
              SyncMyGroup.shared.sync()

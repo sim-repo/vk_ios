@@ -9,7 +9,7 @@ class SyncFriendWall: SyncBaseProtocol {
         return ModuleEnum.friend_wall
     }
     
-    let count = Network.friendWallResponseItemsPerRequest
+    let count = Network.wallResponseItemsPerRequest
     var offsetById = [typeId:Int]()
     
     private func getOffsetCompletion(id: typeId) -> (()->Void) {
@@ -28,6 +28,9 @@ class SyncFriendWall: SyncBaseProtocol {
         }
     }
     
+    public func resetOffset(){
+        offsetById = [:]
+    }
     
     func sync(force: Bool = false,
             _ dispatchCompletion: (()->Void)? = nil) {
@@ -61,17 +64,11 @@ class SyncFriendWall: SyncBaseProtocol {
                 return
             }
 
-            //exit
-            if !presenter.dataSourceIsEmpty() {
-               dispatchCompletion?()
-               return
-            }
-            
-
             //load from disk
-            if let walls = RealmService.loadWall(filter: "ownerId = \(id)"),
+            if let walls = RealmService.loadWall(filter: "ownerId = \(id) AND offset = \(offset)"),
               !walls.isEmpty {
                    presenter.setFromPersistent(models: walls)
+                   incrementOffset(id: id)
                    dispatchCompletion?()
                    return
             }

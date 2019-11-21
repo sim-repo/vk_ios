@@ -11,11 +11,13 @@ class RealmService {
         
         private static let safeConfig = Realm.Configuration (
             fileURL: getRealmURL(dbName: "safe"),
-            encryptionKey: getKey() as Data
+            encryptionKey: getKey() as Data,
+            deleteRealmIfMigrationNeeded: true
         )
         
         private static let mainConfig = Realm.Configuration (
-            fileURL:  getRealmURL(dbName: "main")
+            fileURL:  getRealmURL(dbName: "main"),
+            deleteRealmIfMigrationNeeded: true
         )
         
         var config: Realm.Configuration {
@@ -267,6 +269,7 @@ class RealmService {
         realmWall.viewCount = wall.viewCount
         realmWall.likeCount = wall.likeCount
         realmWall.messageCount = wall.messageCount
+        realmWall.offset = wall.offset
         
         let realmImagesURL = List<RealmURL>()
         var count = 0
