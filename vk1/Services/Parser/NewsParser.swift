@@ -64,6 +64,10 @@ class NewsParser {
 
         let repost = isRepost(json)
         let authorId = abs(getAuthorId(json, repost))
+        unixTime = getDate(json, repost)
+        title = getTitle(json, repost)
+        
+        
         if let g = groups[authorId] {
             avaUrl = g.avaURL200
             name = g.name
@@ -209,11 +213,11 @@ class NewsParser {
         if repost {
             if let histories = json["copy_history"].array {
                 for history in histories {
-                    return history["owner_id"].intValue
+                    return history["source_id"].intValue
                 }
             }
         } else {
-             return json["owner_id"].intValue
+             return json["source_id"].intValue
         }
         return 0
     }

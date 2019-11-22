@@ -38,6 +38,7 @@ class SyncNews: SyncBaseProtocol {
             return
         }
         
+        
         //load from disk
         if let news = RealmService.loadNews(filter: "ownOffset = \(ownOffset)"),
             !news.isEmpty {

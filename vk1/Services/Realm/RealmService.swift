@@ -302,6 +302,11 @@ class RealmService {
     private static func newsToRealm(_ news: News) -> RealmNews {
         let realmNews = RealmNews()
         realmNews.id = news.id
+        // service fields:
+        realmNews.createDate = news.createDate
+        realmNews.ownOffset = news.ownOffset
+        realmNews.vkOffset = news.vkOffset
+        // others:
         realmNews.ownerId = news.ownerId
         realmNews.myName = news.myName
         realmNews.origName = news.origName
@@ -315,8 +320,7 @@ class RealmService {
         realmNews.viewCount = news.viewCount
         realmNews.likeCount = news.likeCount
         realmNews.messageCount = news.messageCount
-        realmNews.ownOffset = news.ownOffset
-        realmNews.vkOffset = news.vkOffset
+        
         let realmImagesURL = List<RealmURL>()
         var count = 0
         for url in news.imageURLs {
