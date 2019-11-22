@@ -35,26 +35,7 @@ class NewsParser {
     public static func parseId(json: JSON) -> typeId {
            return json["post_id"].intValue
     }
-    
-    
-    public static func parseMyRepost(json: JSON, profiles: [typeId:Friend]) -> (URL?, String, Double, String){
-        var avaUrl: URL?
-        var name: String = ""
-        var unixTime: Double = 0
-        var title: String = ""
 
-            if isRepost(json) {
-                let myId = json["owner_id"].intValue
-                if let f = profiles[myId] {
-                   avaUrl = f.avaURL100
-                   name = f.firstName + " "+f.lastName
-                   title = getTitle(json, false)
-                   unixTime = getDate(json, false)
-                }
-        }
-        return (avaUrl, name, unixTime, title)
-    }
-    
     
     public static func parseOrigPost(json: JSON, groups: [typeId:Group], profiles: [typeId:Friend]) -> (URL?, String, Double, String){
         var avaUrl: URL?
@@ -62,24 +43,23 @@ class NewsParser {
         var unixTime: Double = 0
         var title: String = ""
 
-        let repost = isRepost(json)
-        let authorId = abs(getAuthorId(json, repost))
-        unixTime = getDate(json, repost)
-        title = getTitle(json, repost)
+        let authorId = abs(getAuthorId(json))
+        unixTime = getDate(json)
+        title = getTitle(json)
         
         
         if let g = groups[authorId] {
             avaUrl = g.avaURL200
             name = g.name
-            title = getTitle(json, repost)
-            unixTime = getDate(json, repost)
+            title = getTitle(json)
+            unixTime = getDate(json)
         }
         
         if let f = profiles[authorId] {
            avaUrl = f.avaURL100
            name = f.firstName + " "+f.lastName
-           title = getTitle(json, repost)
-           unixTime = getDate(json, repost)
+           title = getTitle(json)
+           unixTime = getDate(json)
         }
         return (avaUrl, name, unixTime, title)
     }
@@ -145,18 +125,12 @@ class NewsParser {
     
     // validator:
     public static func hasImages(json: JSON) -> Bool {
-        let repost = isRepost(json)
-        return hasPhotos(json, repost)
+        return hasPhotos(json)
     }
     
     
     //MARK:- private functions >>
-    
-    private static func isRepost(_ json: JSON) -> Bool {
-        let arr = json["copy_history"].arrayValue
-        return arr.count > 0
-    }
-    
+
     
     private static func parseProfiles(_ profiles: [JSON]) -> [typeId:Friend]{
         var res: [typeId:Friend] = [:]
@@ -179,18 +153,8 @@ class NewsParser {
     }
     
     
-    private static func hasPhotos(_ json: JSON, _ repost: Bool) -> Bool {
-        if repost {
-            if let histories = json["copy_history"].array {
-                           for history in histories {
-                                if let _ = history["attachments"].arrayValue.first(where: { $0["type"].stringValue == "photo" }) {
-                                    return true
-                                }
-                            }
-            }
-            
-        } else {
-            if let _ = json["attachments"].arrayValue.first(where: { $0["type"].stringValue == "photo" }) {
+    private static func hasPhotos(_ json: JSON) -> Bool {
+        if let _ = json["attachments"].arrayValue.first(where: { $0["type"].stringValue == "photo" }) {
                 return true
             }
             
@@ -203,23 +167,13 @@ class NewsParser {
             if j == "wall_photo" {
                 return true
             }
-        }
          return false
     }
     
     
     
-    private static func getAuthorId(_ json: JSON, _ repost: Bool) -> typeId {
-        if repost {
-            if let histories = json["copy_history"].array {
-                for history in histories {
-                    return history["source_id"].intValue
-                }
-            }
-        } else {
-             return json["source_id"].intValue
-        }
-        return 0
+    private static func getAuthorId(_ json: JSON) -> typeId {
+        return json["source_id"].intValue
     }
     
     
@@ -227,19 +181,10 @@ class NewsParser {
     private static func getPhotos(_ json: JSON) -> [JSON] {
         var photos: [JSON] = []
         
-        if let histories = json["copy_history"].array {
-                           for history in histories {
-                               photos = history["attachments"].arrayValue.filter({ (json) -> Bool in
-                                               json["type"].stringValue == "photo"
-                                           })
-                           }
-                       }
-            
         if photos.isEmpty {
             photos = json["attachments"].arrayValue.filter({ (json) -> Bool in
             json["type"].stringValue == "photo" })
         }
-        
         
         if photos.isEmpty {
             photos = json["photos"].arrayValue
@@ -261,31 +206,12 @@ class NewsParser {
     }
     
     
-    private static func getTitle(_ json: JSON, _ repost: Bool) -> String {
-        if repost {
-            if let histories = json["copy_history"].array {
-                for history in histories {
-                    return history["text"].stringValue
-                }
-            }
-        } else {
-             return json["text"].stringValue
-        }
-        return ""
+    private static func getTitle(_ json: JSON) -> String {
+        return json["text"].stringValue
     }
     
     
-    
-    private static func getDate(_ json: JSON, _ repost: Bool) -> Double {
-        if repost {
-            if let histories = json["copy_history"].array {
-                for history in histories {
-                    return history["date"].doubleValue
-                }
-            }
-        } else {
-             return json["date"].doubleValue
-        }
-        return 0
+    private static func getDate(_ json: JSON) -> Double {
+        return json["date"].doubleValue
     }
 }

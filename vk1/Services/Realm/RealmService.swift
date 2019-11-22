@@ -303,19 +303,14 @@ class RealmService {
         let realmNews = RealmNews()
         realmNews.id = news.id
         // service fields:
-        realmNews.createDate = news.createDate
         realmNews.ownOffset = news.ownOffset
         realmNews.vkOffset = news.vkOffset
         // others:
         realmNews.ownerId = news.ownerId
-        realmNews.myName = news.myName
-        realmNews.origName = news.origName
-        realmNews.myPostDate = news.myPostDate
-        realmNews.origPostDate = news.origPostDate
-        realmNews.myAvaURL = news.myAvaURL?.absoluteString ?? ""
-        realmNews.origAvaURL = news.origAvaURL?.absoluteString ?? ""
+        realmNews.name = news.name
+        realmNews.postDate = news.postDate
+        realmNews.avaURL = news.avaURL?.absoluteString ?? ""
         realmNews.title = news.title
-        realmNews.origTitle = news.origTitle
         realmNews.postTypeCode = news.postTypeCode
         realmNews.viewCount = news.viewCount
         realmNews.likeCount = news.likeCount
@@ -447,15 +442,10 @@ class RealmService {
             let news = News()
             news.id = typeId(result.id)
             news.ownerId = result.ownerId
-            news.myName = result.myName
-            news.origName = result.myName
-            news.origName = result.origName
-            news.myPostDate = result.myPostDate
-            news.origPostDate = result.origPostDate
-            news.myAvaURL = URL(string: result.myAvaURL)
-            news.origAvaURL = URL(string: result.origAvaURL)
+            news.name = result.name
+            news.postDate = result.postDate
+            news.avaURL = URL(string: result.avaURL)
             news.title = result.title
-            news.origTitle = result.origTitle
             news.postTypeCode = result.postTypeCode
             news.viewCount = result.viewCount
             news.likeCount = result.likeCount

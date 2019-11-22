@@ -23,7 +23,7 @@ class WallCellConfigurator {
             negativeHCon += cellQuarterHeight
         }
         
-        if wall.getTitle()?.count == 0 {
+        if wall.getTitle() == nil || wall.getTitle()?.count == 0 {
                 cell.getHeaderView().hConRepostTitleTextView.constant = 0
                 negativeHCon += cellQuarterHeight
         }
@@ -33,7 +33,7 @@ class WallCellConfigurator {
             negativeHCon += cellQuarterHeight
         }
         
-        if wall.getOrigTitle()?.count == 0 {
+        if wall.getOrigTitle() == nil || wall.getOrigTitle()?.count == 0 {
             cell.getHeaderView().hConOrigTitleTextView.constant = 0
             negativeHCon += cellQuarterHeight
         }
