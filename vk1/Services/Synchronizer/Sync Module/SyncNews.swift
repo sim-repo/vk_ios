@@ -40,6 +40,11 @@ class SyncNews: SyncBaseProtocol {
         
         
         //load from disk
+        if let lastDate = RealmService.newsLastPostDate() {
+           print("last date: \(lastDate)")
+        }
+        
+        //load from disk
         if let news = RealmService.loadNews(filter: "ownOffset = \(ownOffset)"),
             !news.isEmpty {
                 vkOffset = news.last?.vkOffset ?? "" //remember for next networking request

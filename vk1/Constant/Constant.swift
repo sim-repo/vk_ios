@@ -40,7 +40,7 @@ enum PrintLogEnum {
         case .alamofire:
             return false
         case .viewReloadData:
-            return false
+            return true
         }
     }
 }

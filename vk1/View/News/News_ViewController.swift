@@ -76,11 +76,29 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     private func didScrollEnd(_ indexPath: IndexPath) {
+        log("News_ViewController, didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - 5)")
         if indexPath.row >= presenter.numberOfRowsInSection() - 5 {
             presenter.didEndScroll()
         }
     }
 }
+
+
+
+extension News_ViewController: UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        let location = scrollView.panGestureRecognizer.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: location)
+            else {
+                print("could not specify an indexpath")
+            return
+        }
+        didScrollEnd(indexPath)
+    }
+}
+
+
 
 
 extension News_ViewController: PushPlainViewProtocol{

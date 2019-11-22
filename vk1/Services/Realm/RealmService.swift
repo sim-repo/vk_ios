@@ -190,6 +190,17 @@ class RealmService {
         return news
     }
     
+    public static func newsLastPostDate() -> Int? {
+        var results: Results<RealmNews>
+        guard let realm = getInstance(.unsafe) else { return nil }
+        results = realm.objects(RealmNews.self)
+        let sorted = results.sorted(byKeyPath: "postDate", ascending: false)
+        let n = sorted.first
+        return n?.postDate
+    }
+    
+    
+    
     
     public static func loadWall(filter: String? = nil) -> [Wall]? {
         
@@ -308,7 +319,7 @@ class RealmService {
         // others:
         realmNews.ownerId = news.ownerId
         realmNews.name = news.name
-        realmNews.postDate = news.postDate
+        realmNews.postDate = Int(news.postDate)
         realmNews.avaURL = news.avaURL?.absoluteString ?? ""
         realmNews.title = news.title
         realmNews.postTypeCode = news.postTypeCode
@@ -443,7 +454,7 @@ class RealmService {
             news.id = typeId(result.id)
             news.ownerId = result.ownerId
             news.name = result.name
-            news.postDate = result.postDate
+            news.postDate = Double(result.postDate)
             news.avaURL = URL(string: result.avaURL)
             news.title = result.title
             news.postTypeCode = result.postTypeCode
