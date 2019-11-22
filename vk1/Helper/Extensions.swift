@@ -150,6 +150,10 @@ func convertUnixTime(unixTime: Double) -> String {
     return dateFormatter.string(from: date)
 }
 
+func timestampToDate(timestamp: Double) -> Date {
+    return Date(timeIntervalSince1970: timestamp)
+}
+
 func getUnixTime(date: Date) -> Int {
     return Int(date.timeIntervalSince1970)
 }

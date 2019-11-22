@@ -12,6 +12,8 @@ struct Network {
     static let intervalViewReload = 5 // in percent
     static let newsResponseItemsPerRequest = 20 // in number
     static let wallResponseItemsPerRequest = 20 // in number
+    static let newsMaxIntervalBeforeCleanupDataSource = 60.0*5 //5 min
+    static let newsMinIntervalBeforeSendRequest = 30.0 //sec
 }
 
 
@@ -19,8 +21,6 @@ typealias onNetworkFinish_SyncCompletion = (SynchronizedPresenterProtocol) -> Vo
 typealias onSuccessResponse_SyncCompletion = () -> Void
 typealias onErrResponse_SyncCompletion = (NSError) -> Void
 typealias onSuccess_PresenterCompletion = ([DecodableProtocol]) -> Void
-
-
 
 
 // for debug: fast way to enable console logging by area
@@ -40,7 +40,7 @@ enum PrintLogEnum {
         case .alamofire:
             return false
         case .viewReloadData:
-            return true
+            return false
         }
     }
 }

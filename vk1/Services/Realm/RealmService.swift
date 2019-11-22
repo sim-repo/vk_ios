@@ -29,139 +29,9 @@ class RealmService {
             }
         }
     }
-
-    
-    private static func getInstance(_ confEnum: RealmConfigEnum) -> Realm? {
-        do {
-            let realm = try Realm(configuration: confEnum.config)
-            console(msg: "Realm DB Path: \(realm.configuration.fileURL?.absoluteString ?? "")", printEnum: .realm)
-            return realm
-        } catch(let err) {
-            catchError(msg: err.localizedDescription)
-        }
-        return nil
-    }
-    
     
 
-    public static func save(models: [ModelProtocol], update: Bool) {
-        var objects: [Object] = []
-        
-        for model in models {
-            switch model {
-                
-            case is Wall:
-                let m = model as! Wall
-                let obj = wallToRealm(m)
-                objects.append(obj)
-                
-            case is Friend:
-                let m = model as! Friend
-                let obj = friendToRealm(m)
-                objects.append(obj)
-                
-            case is MyGroup:
-                let m = model as! MyGroup
-                let obj = myGroupToRealm(m)
-                objects.append(obj)
-                
-            case is Group:
-                let m = model as! Group
-                let obj = groupToRealm(m)
-                objects.append(obj)
-                
-            case is DetailGroup:
-                let m = model as! DetailGroup
-                let obj = detailGroupToRealm(m)
-                objects.append(obj)
-                
-            case is News:
-                let m = model as! News
-                let obj = newsToRealm(m)
-                objects.append(obj)
-                
-            default:
-                catchError(msg: "RealmService: save(models:): no case for \(model)")
-                
-            }
-        }
-        save(items: objects, update: update)
-    }
-    
-    
-    public static func save<T: Object>(items: [T], update: Bool) {
-        let realm = getInstance(.unsafe)
-        do {
-            try realm?.write {
-                if update {
-                    realm?.add(items, update: .all)
-                } else {
-                    realm?.add(items)
-                }
-            }
-        } catch(let err) {
-            catchError(msg: err.localizedDescription)
-        }
-    }
-    
-    
-    public static func delete(confEnum: RealmConfigEnum, clazz: Object.Type, id: typeId? = nil) {
-        let realm = getInstance(confEnum)
-        do {
-            try realm?.write {
-                // by id
-                if let _id = id {
-                    let predicate = NSPredicate(format: "id = %@", _id)
-                    if let results = realm?.objects(clazz.self).filter(predicate) {
-                        for result in results {
-                            realm?.delete(result)
-                        }
-                    }
-                } else {
-                    if let results = realm?.objects(clazz.self) {
-                        for result in results {
-                            realm?.delete(result)
-                        }
-                    }
-                }
-            }
-        } catch(let err) {
-            catchError(msg: err.localizedDescription)
-        }
-    }
-    
-    
-    
-    public static func clearAll(confEnum: RealmConfigEnum) {
-        let realm = getInstance(confEnum)
-        do {
-            try realm?.write {
-                realm?.deleteAll()
-            }
-        } catch(let err) {
-            catchError(msg: err.localizedDescription)
-        }
-    }
-    
-    
-
-    
-    public static func save(token: String, userId: Int) {
-        let realm = getInstance(.safe)
-        do {
-            try realm?.write {
-                let obj = RealmToken()
-                obj.token = token
-                obj.userId = userId
-                realm?.add(obj, update: .all)
-            }
-        } catch(let err) {
-            catchError(msg: err.localizedDescription)
-        }
-    }
-    
-    
-    //MARK:- load models
+    //MARK:- public
     
     public static func loadToken() -> (String?, Int?)? {
 
@@ -190,6 +60,7 @@ class RealmService {
         return news
     }
     
+    
     public static func newsLastPostDate() -> Int? {
         var results: Results<RealmNews>
         guard let realm = getInstance(.unsafe) else { return nil }
@@ -198,7 +69,6 @@ class RealmService {
         let n = sorted.first
         return n?.postDate
     }
-    
     
     
     
@@ -215,8 +85,7 @@ class RealmService {
         let walls = realmToWall(results: results)
         return walls
     }
-    
-    
+
     
     public static func loadFriend(filter: String? = nil) -> [Friend]? {
         
@@ -275,6 +144,168 @@ class RealmService {
     }
     
     
+    public static func delete(moduleEnum: ModuleEnum) {
+        switch moduleEnum {
+        case .news: delete(confEnum: .unsafe, clazz: RealmNews.self)
+        case .friend: delete(confEnum: .unsafe, clazz: RealmFriend.self)
+        case .friend_wall, .my_group_wall: delete(confEnum: .unsafe, clazz: RealmWall.self)
+        default:
+            catchError(msg: "RealmService(): delete(): no case is found")
+        }
+    }
+    
+    
+    public static func save(models: [ModelProtocol], update: Bool) {
+        var objects: [Object] = []
+        
+        for model in models {
+            switch model {
+                
+            case is Wall:
+                let m = model as! Wall
+                let obj = wallToRealm(m)
+                objects.append(obj)
+                break
+                
+            case is Friend:
+                let m = model as! Friend
+                let obj = friendToRealm(m)
+                objects.append(obj)
+                break
+                
+            case is MyGroup:
+                let m = model as! MyGroup
+                let obj = myGroupToRealm(m)
+                objects.append(obj)
+                break
+                
+            case is Group:
+                let m = model as! Group
+                let obj = groupToRealm(m)
+                objects.append(obj)
+                break
+                
+            case is DetailGroup:
+                let m = model as! DetailGroup
+                let obj = detailGroupToRealm(m)
+                objects.append(obj)
+                break
+                
+            case is News:
+                let m = model as! News
+                let obj = newsToRealm(m)
+                objects.append(obj)
+                break
+                
+            default:
+                catchError(msg: "RealmService: save(models:): no case for \(model)")
+                
+            }
+        }
+        save(items: objects, update: update)
+    }
+    
+    
+    
+    public static func save(token: String, userId: Int) {
+        let realm = getInstance(.safe)
+        do {
+            try realm?.write {
+                let obj = RealmToken()
+                obj.token = token
+                obj.userId = userId
+                realm?.add(obj, update: .all)
+            }
+        } catch(let err) {
+            catchError(msg: err.localizedDescription)
+        }
+    }
+    
+    
+    
+    
+    //MARK:- private:
+    
+    private static func getInstance(_ confEnum: RealmConfigEnum) -> Realm? {
+        do {
+            let realm = try Realm(configuration: confEnum.config)
+            console(msg: "Realm DB Path: \(realm.configuration.fileURL?.absoluteString ?? "")", printEnum: .realm)
+            return realm
+        } catch(let err) {
+            catchError(msg: err.localizedDescription)
+        }
+        return nil
+    }
+    
+    
+
+    
+    
+    private static func save<T: Object>(items: [T], update: Bool) {
+        let realm = getInstance(.unsafe)
+        do {
+            try realm?.write {
+                if update {
+                    realm?.add(items, update: .all)
+                } else {
+                    realm?.add(items)
+                }
+            }
+        } catch(let err) {
+            catchError(msg: err.localizedDescription)
+        }
+    }
+    
+    
+    
+    
+    private static func delete(confEnum: RealmConfigEnum, clazz: Object.Type, id: typeId? = nil) {
+        let realm = getInstance(confEnum)
+        do {
+            try realm?.write {
+                // by id
+                if let _id = id {
+                    let predicate = NSPredicate(format: "id = %@", _id)
+                    if let results = realm?.objects(clazz.self).filter(predicate) {
+                        for result in results {
+                            realm?.delete(result)
+                        }
+                    }
+                } else {
+                    if let results = realm?.objects(clazz.self) {
+                        for result in results {
+                            realm?.delete(result)
+                        }
+                    }
+                }
+            }
+        } catch(let err) {
+            catchError(msg: err.localizedDescription)
+        }
+    }
+    
+    
+    
+    private static func clearAll(confEnum: RealmConfigEnum) {
+        let realm = getInstance(confEnum)
+        do {
+            try realm?.write {
+                realm?.deleteAll()
+            }
+        } catch(let err) {
+            catchError(msg: err.localizedDescription)
+        }
+    }
+    
+    
+
+
+    
+    
+    //MARK:- load models
+    
+
+    
     
     //MARK:- transofm: model into realm
     
@@ -326,6 +357,7 @@ class RealmService {
         realmNews.viewCount = news.viewCount
         realmNews.likeCount = news.likeCount
         realmNews.messageCount = news.messageCount
+        realmNews.createDate = news.createDate
         
         let realmImagesURL = List<RealmURL>()
         var count = 0

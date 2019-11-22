@@ -48,18 +48,21 @@ class SyncBase {
 
         
         let onError_SyncCompletion = SynchronizerManager.shared.getOnErrorCompletion() { [weak self] in
-           dispatchCompletion?()
-           self?.syncing = false
+            dispatchCompletion?()
+            self?.syncing = false
             if self!.tryCount < 3 {
                if let child = self as? SyncBaseProtocol {
                   child.sync(force: true, dispatchCompletion)
                }
-                self!.tryCount+=1
+               self!.tryCount+=1
             } else {
+                catchError(msg: "SyncBase(): network request")
+                
                 self!.tryCount = 0
+                presenter.didErrorNetworkFinish()
             }
         }
-            
+    
         return (onSuccess_PresenterCompletion, onError_SyncCompletion)
     }
 }

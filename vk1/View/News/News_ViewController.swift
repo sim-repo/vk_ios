@@ -32,7 +32,7 @@ class News_ViewController: UIViewController {
     }
     
     private func log(_ msg: String) {
-        console(msg: msg, printEnum: .viewReloadData)
+        console(msg: "News_ViewController: "+msg, printEnum: .viewReloadData)
     }
 }
 
@@ -53,10 +53,10 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         guard let news = presenter.getData(indexPath: indexPath) as? News
             else {
-                catchError(msg: "Wall_Controller(): cellForItemAt(): presenter.getData is incorrected ")
+                catchError(msg: "News_ViewController(): cellForItemAt(): presenter.getData is incorrected ")
                 return cell
         }
-        log("idx: \(indexPath.row) : \(news.getId())")
+        log("cellForItemAt(): idx: \(indexPath.row) - news.id: \(news.getId())")
         if let name = cellByCode[news.postTypeCode] {
             cell = cellConfigure(name, indexPath, news)
         }
@@ -76,7 +76,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     private func didScrollEnd(_ indexPath: IndexPath) {
-        log("News_ViewController, didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - 5)")
+        log("didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - 5)")
         if indexPath.row >= presenter.numberOfRowsInSection() - 5 {
             presenter.didEndScroll()
         }
@@ -91,7 +91,7 @@ extension News_ViewController: UIScrollViewDelegate {
         let location = scrollView.panGestureRecognizer.location(in: collectionView)
         guard let indexPath = collectionView.indexPathForItem(at: location)
             else {
-                print("could not specify an indexpath")
+                catchError(msg: "News_ViewController(): scrollViewWillBeginDragging(): could not specify an indexpath")
             return
         }
         didScrollEnd(indexPath)
@@ -104,7 +104,7 @@ extension News_ViewController: UIScrollViewDelegate {
 extension News_ViewController: PushPlainViewProtocol{
     
     func viewReloadData(moduleEnum: ModuleEnum) {
-        log("News_ViewController(): reloadData()")
+        log("viewReloadData()")
         collectionView.reloadData()
     }
     
@@ -118,7 +118,7 @@ extension News_ViewController: PushPlainViewProtocol{
     }
     
     func insertItems(startIdx: Int, endIdx: Int) {
-        log("News_ViewController(): insertItems()")
+        log("insertItems()")
         var indexes = [IndexPath]()
         for idx in startIdx...endIdx {
             let idx = IndexPath(row: idx, section: 0)

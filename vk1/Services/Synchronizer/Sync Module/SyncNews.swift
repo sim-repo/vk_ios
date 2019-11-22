@@ -17,7 +17,8 @@ class SyncNews: SyncBaseProtocol {
         self?.incrementOffset()
     }
     
-    public func resetOffset(){
+    public func resetOffset() {
+        vkOffset = ""
         ownOffset = 0
     }
     
@@ -34,14 +35,29 @@ class SyncNews: SyncBaseProtocol {
         
         if force {
             syncing = true
-            syncFromNetwork(presenter, dispatchCompletion)
+            //cleanup
+            syncFromNetwork(presenter, Network.newsResponseItemsPerRequest, dispatchCompletion)
             return
         }
         
         
-        //load from disk
-        if let lastDate = RealmService.newsLastPostDate() {
-           print("last date: \(lastDate)")
+        
+        if ownOffset == 0,
+            let lastTimestamp = RealmService.newsLastPostDate(),
+            lastTimestamp != 0 {
+    
+            let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
+                
+            if interval > Network.newsMaxIntervalBeforeCleanupDataSource {
+                presenter.clearDataSource()
+                syncing = true
+                syncFromNetwork(presenter, Network.newsResponseItemsPerRequest, dispatchCompletion)
+                return
+            } else if interval > Network.newsMinIntervalBeforeSendRequest {
+                syncing = true
+                syncFromNetwork(presenter, 100, dispatchCompletion, Double(lastTimestamp))
+                return
+            }
         }
         
         //load from disk
@@ -56,12 +72,15 @@ class SyncNews: SyncBaseProtocol {
         
         //load from network
         syncing = true
-        syncFromNetwork(presenter, dispatchCompletion)
+        syncFromNetwork(presenter, Network.newsResponseItemsPerRequest, dispatchCompletion)
     }
     
     
     private func syncFromNetwork(_ presenter: SynchronizedPresenterProtocol,
-                                 _ dispatchCompletion: (()->Void)? = nil) {
+                                 _ count: Int,
+                                 _ dispatchCompletion: (()->Void)? = nil,
+                                 _ sinceTime: Double? = nil
+                                 ) {
         
         syncStart = Date()
         
@@ -72,7 +91,9 @@ class SyncNews: SyncBaseProtocol {
                           Network.newsResponseItemsPerRequest,
                           onSuccess,
                           onError,
-                          offsetCompletion)
+                          offsetCompletion,
+                          sinceTime
+                          )
     }
 }
 

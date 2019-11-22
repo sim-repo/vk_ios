@@ -65,6 +65,8 @@ class SynchronizerManager {
         switch moduleEnum {
             case .friend_wall:
                 SyncFriendWall.shared.resetOffset()
+            case .news:
+                SyncNews.shared.resetOffset()
             default:
                 log("SynchronizerManager: clearPresenterData: no case \(moduleEnum)")
         }

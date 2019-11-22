@@ -13,6 +13,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     
     final func clearDataSource() {
        dataSource.removeAll()
+       RealmService.delete(moduleEnum: moduleEnum)
        SynchronizerManager.shared.didClearDataSource(moduleEnum: moduleEnum)
     }
     
@@ -70,6 +71,10 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
         }
     }
     
+    final func didErrorNetworkFinish() {
+        self.pageInProgess = false
+    }
+    
     final func setFromPersistent(models: [DecodableProtocol]) {
         PRESENTER_UI_THREAD { [weak self] in
             guard let self = self else { return }
@@ -77,14 +82,18 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
             self.log("PlainBasePresenter: \(self.clazz): setFromPersistent")
             self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
             self.waitIndicator(start: false)
+            
+            self.pageInProgess = false
             //pagination:
             guard let _ = self as? PaginationPresenterProtocol
                   else { return }
             
-            let z = self.dataSource[last...]
-            let endIndex = z.endIndex-1 < 0 ? 0: z.endIndex-1
-            self.view?.insertItems(startIdx: z.startIndex, endIdx: endIndex)
-            self.pageInProgess = false
+            let slice = self.dataSource[last...]
+            let endIndex = slice.endIndex-1 < 0 ? 0: slice.endIndex-1
+            //no guarantee new data has appended:
+            guard endIndex > slice.startIndex else { return }
+            self.view?.insertItems(startIdx: slice.startIndex, endIdx: endIndex)
+            
         }
     }
     

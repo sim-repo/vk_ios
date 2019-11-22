@@ -100,21 +100,23 @@ class ApiVK {
                             _ count: Int,
                             _ onSuccess: @escaping onSuccess_PresenterCompletion,
                             _ onError: @escaping onErrResponse_SyncCompletion,
-                            _ offsetCompletion: ((String)->Void)?) {
+                            _ offsetCompletion: ((String)->Void)?,
+                            _ sinceTime: Double? = nil
+                            ) {
         
         let urlPath: String = "newsfeed.get"
         
-        let params: Parameters = [
-               // "start_time": getUnixTime(date: Date().dayBefore),
-               // "end_time": getUnixTime(date: Date()),
+        var params: Parameters = [
                 "access_token": Session.shared.token,
                 "extended": "1",
-               // "fields":["photo_50","photo_100", "photo_200"],
                 "filter": "photo, wall_photo",
                 "count": count,
                 "start_from": vkOffset,
                 "v": Network.versionAPI
         ]
+        if sinceTime != nil &&  sinceTime != 0 {
+            params["start_time"] = sinceTime
+        }
         
         AlamofireNetworkManager.newsRequest(urlPath,
                                             params,
