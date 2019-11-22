@@ -46,7 +46,7 @@ class AlamofireNetworkManager{
                                                              _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                                              _ onError: @escaping  onErrResponse_SyncCompletion ) {
         
-           AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+           AlamofireNetworkManager.sharedManager.request(Network.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                switch response.result {
                case .success(let val):
                    let arr:[T]? = parseJsonItems(val)
@@ -67,7 +67,7 @@ class AlamofireNetworkManager{
                                                              _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                                              _ onError: @escaping  onErrResponse_SyncCompletion ) {
            log("AlamofireNetworkManager: requestSingle(): start..")
-           AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+           AlamofireNetworkManager.sharedManager.request(Network.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                log("AlamofireNetworkManager: requestSingle(): response..")
                switch response.result {
                case .success(let json):
@@ -100,7 +100,7 @@ class AlamofireNetworkManager{
                                    _ offset: Int
                                    ){
         task1 = {
-            AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+            AlamofireNetworkManager.sharedManager.request(Network.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                 switch response.result {
                 case .success(let json):
                     let arr:[Wall]? = WallParser.parseWallJson(json, offset: offset)
@@ -138,15 +138,17 @@ class AlamofireNetworkManager{
     
     public static func newsRequest(_ urlPath: String,
                                    _ params: Parameters,
+                                   _ ownOffset: Int,
+                                   _ vkOffset: String,
                                    _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                    _ onError: @escaping  onErrResponse_SyncCompletion,
-                                   _ nextOffset: ((String)->Void)?
+                                   _ offsetCompletion: ((String)->Void)?
                                    ){
 
-        AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+        AlamofireNetworkManager.sharedManager.request(Network.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let json):
-                let arr:[News]? = NewsParser.parseNewsJson(json)
+                let arr:[News]? = NewsParser.parseNewsJson(json, ownOffset, vkOffset)
                    
                 if let arr = arr {
                     if arr.isEmpty {
@@ -154,7 +156,7 @@ class AlamofireNetworkManager{
                         onError(err)
                     } else {
                         if let offset = NewsParser.parseNextOffset(json) {
-                            nextOffset?(offset)
+                            offsetCompletion?(offset)
                         }
                         NET_LDELAY_THREAD {
                             onSuccess(arr)

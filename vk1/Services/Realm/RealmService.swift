@@ -176,6 +176,20 @@ class RealmService {
     }
     
     
+    public static func loadNews(filter: String? = nil) -> [News]? {
+        
+        var results: Results<RealmNews>
+        guard let realm = getInstance(.unsafe) else { return nil }
+        
+        if let _filter = filter {
+            results = realm.objects(RealmNews.self).filter(_filter)
+        } else {
+            results = realm.objects(RealmNews.self)
+        }
+        let news = realmToNews(results: results)
+        return news
+    }
+    
     
     public static func loadWall(filter: String? = nil) -> [Wall]? {
         
@@ -301,7 +315,8 @@ class RealmService {
         realmNews.viewCount = news.viewCount
         realmNews.likeCount = news.likeCount
         realmNews.messageCount = news.messageCount
-        
+        realmNews.ownOffset = news.ownOffset
+        realmNews.vkOffset = news.vkOffset
         let realmImagesURL = List<RealmURL>()
         var count = 0
         for url in news.imageURLs {
@@ -418,6 +433,40 @@ class RealmService {
             walls.append(wall)
         }
         return walls
+    }
+    
+    
+    
+    private static func realmToNews(results: Results<RealmNews>) -> [News] {
+        var newsArr = [News]()
+        for result in results {
+            let news = News()
+            news.id = typeId(result.id)
+            news.ownerId = result.ownerId
+            news.myName = result.myName
+            news.origName = result.myName
+            news.origName = result.origName
+            news.myPostDate = result.myPostDate
+            news.origPostDate = result.origPostDate
+            news.myAvaURL = URL(string: result.myAvaURL)
+            news.origAvaURL = URL(string: result.origAvaURL)
+            news.title = result.title
+            news.origTitle = result.origTitle
+            news.postTypeCode = result.postTypeCode
+            news.viewCount = result.viewCount
+            news.likeCount = result.likeCount
+            news.messageCount = result.messageCount
+            news.vkOffset = result.vkOffset
+            var imagesURL = [URL]()
+            for url in result.imageURLs {
+                if let sURL = URL(string: url.url) {
+                    imagesURL.append(sURL)
+                }
+            }
+            news.imageURLs = imagesURL
+            newsArr.append(news)
+        }
+        return newsArr
     }
     
     

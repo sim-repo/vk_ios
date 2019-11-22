@@ -13,10 +13,9 @@ class SyncFriendWall: SyncBaseProtocol {
     var offsetById = [typeId:Int]()
     
     private func getOffsetCompletion(id: typeId) -> (()->Void) {
-        let offsetCompletion: () -> Void = {[weak self]  in
+        return { [weak self]  in
             self?.incrementOffset(id: id)
         }
-        return offsetCompletion
     }
     
     
@@ -31,6 +30,7 @@ class SyncFriendWall: SyncBaseProtocol {
     public func resetOffset(){
         offsetById = [:]
     }
+    
     
     func sync(force: Bool = false,
             _ dispatchCompletion: (()->Void)? = nil) {
@@ -86,17 +86,16 @@ class SyncFriendWall: SyncBaseProtocol {
                                  _ offsetCompletion: (() -> Void)?,
                                  _ dispatchCompletion: (()->Void)? = nil){
          
-         // clear all
-         syncStart = Date()
+        syncStart = Date()
         
-         let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
+        let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
          
-        ApiVK.friendWallRequest(ownerId: id,
-                                offset: offset,
-                                count: count,
-                                onSuccess: onSuccess,
-                                onError: onError,
-                                offsetCompletion: offsetCompletion)
+        ApiVK.friendWallRequest(id,
+                                offset,
+                                count,
+                                onSuccess,
+                                onError,
+                                offsetCompletion)
      }
 }
 

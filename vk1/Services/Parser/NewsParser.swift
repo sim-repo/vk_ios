@@ -4,7 +4,7 @@ class NewsParser {
     
     
     //MARK:- called from networking service >>
-    public static func parseNewsJson(_ val: Any)->[News]?{
+    public static func parseNewsJson(_ val: Any, _ ownOffset: Int, _ vkOffset: String) -> [News]? {
         let json = JSON(val)
 
         var res: [News] = []
@@ -16,7 +16,7 @@ class NewsParser {
         for j in items {
             let n = News()
             if NewsParser.hasImages(json: j) {
-                n.setup(json: j, profiles: dicProfile, groups: dicGroups)
+                n.setup(json: j, profiles: dicProfile, groups: dicGroups, ownOffset: ownOffset, vkOffset: vkOffset)
                 res.append(n)
             }
         }

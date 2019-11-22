@@ -49,9 +49,11 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                 guard let _ = self as? PaginationPresenterProtocol
                       else { return }
                 
-                let z = self.dataSource[last...]
-                let endIndex = z.endIndex-1 < 0 ? 0: z.endIndex-1
-                self.view?.insertItems(startIdx: z.startIndex, endIdx: endIndex)
+                let slice = self.dataSource[last...]
+                let endIndex = slice.endIndex-1 < 0 ? 0: slice.endIndex-1
+                //no guarantee new data has appended:
+                guard endIndex > slice.startIndex else { return }
+                self.view?.insertItems(startIdx: slice.startIndex, endIdx: endIndex)
             }
         }
         return outerCompletion

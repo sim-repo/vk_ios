@@ -14,11 +14,10 @@ class SyncMyGroupWall: SyncBaseProtocol {
     let count = Network.wallResponseItemsPerRequest
     
     private func getOffsetCompletion(id: typeId) -> (()->Void) {
-        let offsetCompletion: () -> Void = {[weak self]  in
+        return { [weak self]  in
             self?.incrementOffset(id: id)
             self?.syncing = false
         }
-        return offsetCompletion
     }
     
     
@@ -81,17 +80,16 @@ class SyncMyGroupWall: SyncBaseProtocol {
                                  _ offset: Int,
                                  _ offsetCompletion: (()->Void)?,
                                  _ dispatchCompletion: (()->Void)? = nil){
-            
-        // clear all
+
         syncStart = Date()
 
         let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
 
-        ApiVK.wallRequest(ownerId: -abs(id),
-                          onSuccess: onSuccess,
-                          onError: onError,
-                          offsetCompletion: offsetCompletion,
-                          offset: offset
+        ApiVK.wallRequest(-abs(id),
+                          onSuccess,
+                          onError,
+                          offsetCompletion,
+                          offset
                           )
     }
 }

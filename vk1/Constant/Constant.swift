@@ -1,12 +1,11 @@
 import UIKit
 
 
-let baseURL = "https://api.vk.com/method/"
-let versionAPI = "5.103"
-let clientAPI = "7216321"
-
 
 struct Network {
+    static let baseURL = "https://api.vk.com/method/"
+    static let versionAPI = "5.103"
+    static let clientAPI = "7216321"
     static let timeout: TimeInterval = 10 // in sec
     static let delayBetweenRequests = 500 //500 // in ms
     static let longDelayBetweenRequests = 1000 //500 // in ms
@@ -16,6 +15,15 @@ struct Network {
 }
 
 
+typealias onNetworkFinish_SyncCompletion = (SynchronizedPresenterProtocol) -> Void
+typealias onSuccessResponse_SyncCompletion = () -> Void
+typealias onErrResponse_SyncCompletion = (NSError) -> Void
+typealias onSuccess_PresenterCompletion = ([DecodableProtocol]) -> Void
+
+
+
+
+// for debug: fast way to enable console logging by area
 enum PrintLogEnum {
     case realm, presenterCallsFromSync, presenterCallsFromView, sync, alamofire, viewReloadData
     
@@ -32,27 +40,26 @@ enum PrintLogEnum {
         case .alamofire:
             return false
         case .viewReloadData:
-            return true
+            return false
         }
     }
 }
 
-
+// for bkg perform fetching
 enum UserDefaultsEnum: String {
     case lastSyncDate = "lastSyncDate"
 }
+
 
 enum ModelLoadedFromEnum {
     case network
     case disk
 }
 
-
 enum SegueIdEnum: String {
     case detailFriend = "detailFriend"
     case detailGroup = "detailGroup"
 }
-
 
 
 enum FriendGroupByEnum: String {
@@ -98,18 +105,6 @@ var cellQuarterHeight: CGFloat = 240 / 4
 var cellImageHeight: CGFloat = 180
 var cellBottomHeight: CGFloat = 30
 
-
-extension Notification.Name {
-    static let friendInserted = Notification.Name("friendInserted")
-    static let groupInserted = Notification.Name("groupInserted")
-}
-
-
-
-typealias onNetworkFinish_SyncCompletion = (SynchronizedPresenterProtocol) -> Void
-typealias onSuccessResponse_SyncCompletion = () -> Void
-typealias onErrResponse_SyncCompletion = (NSError) -> Void
-typealias onSuccess_PresenterCompletion = ([DecodableProtocol]) -> Void
 
 
 typealias typeId = Int

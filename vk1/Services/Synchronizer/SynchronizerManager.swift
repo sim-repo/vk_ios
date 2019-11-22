@@ -102,7 +102,7 @@ class SynchronizerManager {
            // SyncNews.shared.sync(force: true)
         
          case .news:
-            SyncNews.shared.sync(force: true)
+            SyncNews.shared.sync()
             
          case .profile:
              SyncProfile.shared.sync()
