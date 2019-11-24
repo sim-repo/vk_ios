@@ -48,10 +48,15 @@ class AlamofireNetworkManager{
         
            AlamofireNetworkManager.sharedManager.request(Network.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                switch response.result {
-               case .success(let val):
-                   let arr:[T]? = parseJsonItems(val)
+               case .success(let json):
+                   let arr:[T]? = parseJsonItems(json)
                    if let arr = arr {
-                       onSuccess(arr)
+                        if arr.isEmpty {
+                            let err = NSError(domain: "AlamofireNetworkManager: requestItems(): response data is null \(json)", code: 123, userInfo: nil)
+                            onError(err)
+                        } else {
+                            onSuccess(arr)
+                        }
                    }
                case .failure(let err):
                     let error = err as NSError

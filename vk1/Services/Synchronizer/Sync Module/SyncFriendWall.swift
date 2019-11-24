@@ -5,12 +5,14 @@ class SyncFriendWall: SyncBaseProtocol {
     static let shared = SyncFriendWall()
     private override init() {}
     
-    var module: ModuleEnum {
-        return ModuleEnum.friend_wall
-    }
-    
     let count = Network.wallResponseItemsPerRequest
     var offsetById = [typeId:Int]()
+    
+    var id: typeId = 0
+    
+    public func getId() -> String {
+        return ModuleEnum.friend_wall.rawValue + "\(id)"
+    }
     
     private func getOffsetCompletion(id: typeId) -> (()->Void) {
         return { [weak self]  in
@@ -27,41 +29,55 @@ class SyncFriendWall: SyncBaseProtocol {
         }
     }
     
+    private func getOffset(_ id: Int) -> Int? {
+        return offsetById[id]
+    }
+    
     public func resetOffset(){
         offsetById = [:]
     }
     
     
-    func sync(force: Bool = false,
-            _ dispatchCompletion: (()->Void)? = nil) {
+    var presenter: SynchronizedPresenterProtocol {
+        return PresenterFactory.shared.getInstance(clazz: FriendWallPresenter.self)
+    }
+    
+    
+    func sync(_ dispatchCompletion: (()->Void)? = nil) {
         
             guard !syncing else { return }
         
-            let presenter = PresenterFactory.shared.getInstance(clazz: FriendWallPresenter.self)
-            
             guard let p = presenter as? DetailPresenterProtocol
             else {
                catchError(msg: "SyncFriendWall: sync(): presenter is not conformed DetailPresenterProtocol")
                return
             }
             
-            guard let id = p.getId()
+            guard let id_ = p.getId()
             else {
                 catchError(msg: "SyncFriendWall: sync(): no id")
                 return
             }
             
+            id = id_
         
             //prepare for network
-            let offset = offsetById[id] ?? 0
+            let offset = getOffset(id) ?? 0
             let offsetCompletion = getOffsetCompletion(id: id)
             
-            
-            //load from network
-            if force {
-                syncing = true
-                syncFromNetwork(presenter, id, offset, offsetCompletion, dispatchCompletion)
-                return
+            //check update schedule
+            if offset == 0 {
+                let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
+                if interval > Network.maxIntervalBeforeCleanupDataSource {
+                     presenter.clearDataSource(id: id)
+                     syncing = true
+                     syncFromNetwork(presenter, id, offset, offsetCompletion, dispatchCompletion)
+                     return
+                 } else if interval > Network.minIntervalBeforeSendRequest {
+                     syncing = true
+                     syncFromNetwork(presenter, id, 0, offsetCompletion, dispatchCompletion)
+                     return
+                 }
             }
 
             //load from disk

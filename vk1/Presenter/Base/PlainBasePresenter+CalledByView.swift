@@ -6,52 +6,18 @@ import UIKit
 extension PlainBasePresenter: PullPlainPresenterProtocol {
     
     
-    private func log(_ msg: String) {
-        console(msg: msg, printEnum: .presenterCallsFromView)
-    }
+    //MARK:- getters:
     
     final func numberOfRowsInSection() -> Int {
         return dataSource.count
     }
-    
-    @objc func viewDidDisappear() {
-        SynchronizerManager.shared.viewDidDisappear(presenter: self)
-    }
-    
-    func viewDidFilterInput(_ filterText: String) {
-    }
-    
-    func getSectionChild() -> PullSectionPresenterProtocol? {
-        return sectionChildPresenter
-    }
-    
-    func getPlainChild() -> PullPlainPresenterProtocol? {
-        return plainChildPresenter
-    }
-    
-    func viewDidSeguePrepare(segueId: SegueIdEnum, indexPath: IndexPath) {
-        
-        guard let model = getData(indexPath: indexPath)
-            else {
-                catchError(msg: "PlainBasePresenter: \(clazz): viewDidSeguePrepare(): no data with indexPath: \(indexPath)")
-                return
-        }
-        
-        guard let detailPresenter = PresenterFactory.shared.getInstance(segueId: segueId) as? DetailPresenterProtocol
-            else {
-                catchError(msg: "PlainBasePresenter: \(clazz): viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue) ")
-                return
-        }
-        detailPresenter.setParentModel(model: model)
-    }
-    
     
     final func getData(indexPath: IndexPath? = nil) -> ModelProtocol? {
         // for non-list DS
         if indexPath == nil {
             guard dataSource.count == 1
                 else {
-                    catchError(msg: "PlainBasePresenter: \(clazz): getData(): datasource must be 1")
+                    log("getData(): datasource must be 1", isErr: true)
                     return nil
             }
             return dataSource[0]
@@ -75,12 +41,60 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
         return IndexPath(row: idx, section: 0)
     }
     
-    func didEndScroll(){
-        guard !pageInProgess else { return }
+    //complex:
+    func getSubSectionPresenter() -> PullSectionPresenterProtocol? {
+        return subSectionPresenter
+    }
+    
+    func getSubPlainPresenter() -> PullPlainPresenterProtocol? {
+        return subPlainPresenter
+    }
+    
+    
+    
+    //MARK:- did events:
+    
+    func viewDidSeguePrepare(segueId: ModuleEnum.SegueIdEnum, indexPath: IndexPath) {
+        
+        guard let model = getData(indexPath: indexPath)
+            else {
+                log("viewDidSeguePrepare(): no data with indexPath: \(indexPath)", isErr: true)
+                return
+        }
+        
+        guard let detailPresenter = PresenterFactory.shared.getInstance(segueId: segueId) as? DetailPresenterProtocol
+            else {
+                log("viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue)", isErr: true)
+                return
+        }
+        detailPresenter.setParentModel(model: model)
+    }
+    
+    
+    @objc func viewDidDisappear() {
+        SynchronizerManager.shared.viewDidDisappear(presenter: self)
+    }
+    
+    func viewDidFilterInput(_ filterText: String) {
+    }
+    
+    
+    final func didEndScroll(){
+        guard !pageInProgess else {
+            log("didEndScroll(): pageInProgress == false", isErr: false)
+            return
+        }
         pageInProgess = true
-        guard let _ = self as? PaginationPresenterProtocol
-            else { return }
-        log("PlainBasePresenter(): \(clazz): didEndScroll()")
+        guard let _ = self as? PaginationPresenterProtocol else { return }
+        log("didEndScroll(): started", isErr: false)
         SynchronizerManager.shared.callSyncFromPresenter(moduleEnum: moduleEnum)
+    }
+    
+    private func log(_ msg: String, isErr: Bool) {
+        if isErr {
+            catchError(msg: "PlainBasePresenter: \(self.clazz): " + msg)
+        } else {
+            console(msg: "PlainBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromView)
+        }
     }
 }

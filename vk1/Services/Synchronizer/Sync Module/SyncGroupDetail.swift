@@ -5,13 +5,12 @@ class SyncGroupDetail: SyncBaseProtocol {
     static let shared = SyncGroupDetail()
     private override init() {}
     
-    var module: ModuleEnum {
-        return ModuleEnum.my_group_detail
+    public func getId() -> String {
+         return ModuleEnum.my_group_detail.rawValue
     }
     
     
-    func sync(force: Bool = false,
-              _ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil) {
         
         
         let presenter = PresenterFactory.shared.getInstance(clazz: MyGroupDetailPresenter.self)
@@ -27,19 +26,16 @@ class SyncGroupDetail: SyncBaseProtocol {
                 catchError(msg: "SyncFriendWall: sync(): no id")
                 return
         }
+    
         
-        
-        if force {
-            syncFromNetwork(presenter, id: id, dispatchCompletion)
-            return
+        //check update schedule
+        let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
+        if interval > Network.maxIntervalBeforeCleanupDataSource {
+             presenter.clearDataSource(id: id)
+             syncing = true
+             syncFromNetwork(presenter, id: id, dispatchCompletion)
+             return
         }
-        
-        
-        if !presenter.dataSourceIsEmpty() {
-            dispatchCompletion?()
-            return
-        }
-        
         
         
         //load from disk

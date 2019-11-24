@@ -8,8 +8,8 @@ class SyncNews: SyncBaseProtocol {
     var vkOffset = "" // returned by vk
     var ownOffset = 0 // generated here
     
-    var module: ModuleEnum {
-        return ModuleEnum.news
+    public func getId() -> String {
+        return ModuleEnum.news.rawValue
     }
     
     lazy var offsetCompletion: (String) -> Void = {[weak self] offset in
@@ -26,34 +26,26 @@ class SyncNews: SyncBaseProtocol {
         ownOffset += 1
     }
     
-    func sync(force: Bool = false,
-              _ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil) {
         
         guard !syncing else { return }
         
         let presenter = PresenterFactory.shared.getInstance(clazz: NewsPresenter.self)
         
-        if force {
-            syncing = true
-            //cleanup
-            syncFromNetwork(presenter, Network.newsResponseItemsPerRequest, dispatchCompletion)
-            return
-        }
         
-        
-        
+        //check update schedule
         if ownOffset == 0,
             let lastTimestamp = RealmService.newsLastPostDate(),
             lastTimestamp != 0 {
     
             let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
                 
-            if interval > Network.newsMaxIntervalBeforeCleanupDataSource {
-                presenter.clearDataSource()
+            if interval > Network.maxIntervalBeforeCleanupDataSource {
+                presenter.clearDataSource(id: nil)
                 syncing = true
                 syncFromNetwork(presenter, Network.newsResponseItemsPerRequest, dispatchCompletion)
                 return
-            } else if interval > Network.newsMinIntervalBeforeSendRequest {
+            } else if interval > Network.minIntervalBeforeSendRequest {
                 syncing = true
                 syncFromNetwork(presenter, 100, dispatchCompletion, Double(lastTimestamp))
                 return

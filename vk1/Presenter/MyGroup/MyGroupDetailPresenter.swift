@@ -20,7 +20,7 @@ class MyGroupDetailPresenter: PlainPresenterProtocols {
     
     required init() {
         super.init()
-        plainChildPresenter = myGroupWallPresenter
+        subPlainPresenter = myGroupWallPresenter
         didSetViewCompletion = { [weak self] (view) in
             guard let self = self else { return }
             guard let v = view else {

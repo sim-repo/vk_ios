@@ -5,13 +5,16 @@ class SyncMyGroupWall: SyncBaseProtocol {
     static let shared = SyncMyGroupWall()
     private override init() {}
 
-    var module: ModuleEnum {
-        return ModuleEnum.my_group_wall
+    var id: typeId = 0
+    
+    public func getId() -> String {
+        return ModuleEnum.my_group_wall.rawValue + "\(id)"
     }
     
     var offsetById = [typeId:Int]()
     
     let count = Network.wallResponseItemsPerRequest
+    
     
     private func getOffsetCompletion(id: typeId) -> (()->Void) {
         return { [weak self]  in
@@ -29,37 +32,49 @@ class SyncMyGroupWall: SyncBaseProtocol {
         }
     }
     
-    func sync(force: Bool = false,
-              _ dispatchCompletion: (()->Void)? = nil) {
+    public func resetOffset(){
+        offsetById = [:]
+    }
+    
+    var presenter: SynchronizedPresenterProtocol {
+        return PresenterFactory.shared.getInstance(clazz: MyGroupWallPresenter.self)
+    }
+    
+    func sync(_ dispatchCompletion: (()->Void)? = nil) {
         
             guard !syncing else { return }
             
-            let presenter = PresenterFactory.shared.getInstance(clazz: MyGroupWallPresenter.self)
-
             guard let p = presenter as? DetailPresenterProtocol
             else {
                catchError(msg: "SyncMyGroupWall: sync(): presenter is not conformed DetailPresenterProtocol")
                return
             }
             
-            guard let id = p.getId()
+            guard let id_ = p.getId()
             else {
                 catchError(msg: "SyncMyGroupWall: sync(): no id")
                 return
             }
+        
+            id = id_
             
             let offset = offsetById[id] ?? 0
             let offsetCompletion = getOffsetCompletion(id: id)
             
-            if force {
-                syncing = true
-                syncFromNetwork(presenter, id, offset, offsetCompletion, dispatchCompletion)
-                return
-            }
-
-            if !presenter.dataSourceIsEmpty() {
-                dispatchCompletion?()
-                return
+        
+            //check update schedule
+            if offset == 0 {
+                let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
+                if interval > Network.maxIntervalBeforeCleanupDataSource {
+                     presenter.clearDataSource(id: id)
+                     syncing = true
+                     syncFromNetwork(presenter, id, offset, offsetCompletion, dispatchCompletion)
+                     return
+                 } else if interval > Network.minIntervalBeforeSendRequest {
+                     syncing = true
+                     syncFromNetwork(presenter, id, 10, offsetCompletion, dispatchCompletion)
+                     return
+                 }
             }
 
             //load from disk

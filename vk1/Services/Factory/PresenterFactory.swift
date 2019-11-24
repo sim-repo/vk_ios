@@ -38,7 +38,7 @@ class PresenterFactory {
     
     
     //MARK: called from Synchronizer:
-    public func getInstance(segueId: SegueIdEnum) -> SynchronizedPresenterProtocol {
+    public func getInstance(segueId: ModuleEnum.SegueIdEnum) -> SynchronizedPresenterProtocol {
         let moduleEnum = ModuleEnum(segueId: segueId)
         var presenter = presenters[moduleEnum]
         if presenter == nil {

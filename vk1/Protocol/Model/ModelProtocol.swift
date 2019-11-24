@@ -6,3 +6,9 @@ protocol ModelProtocol: class {
 }
 
 
+protocol SectionModelProtocol: ModelProtocol {
+    func getGroupBy()->String
+}
+
+protocol PlainModelProtocol: ModelProtocol {
+}

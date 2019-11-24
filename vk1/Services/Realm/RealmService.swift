@@ -144,11 +144,11 @@ class RealmService {
     }
     
     
-    public static func delete(moduleEnum: ModuleEnum) {
+    public static func delete(moduleEnum: ModuleEnum, id: typeId? = nil) {
         switch moduleEnum {
-        case .news: delete(confEnum: .unsafe, clazz: RealmNews.self)
-        case .friend: delete(confEnum: .unsafe, clazz: RealmFriend.self)
-        case .friend_wall, .my_group_wall: delete(confEnum: .unsafe, clazz: RealmWall.self)
+            case .news: delete(confEnum: .unsafe, clazz: RealmNews.self)
+            case .friend: delete(confEnum: .unsafe, clazz: RealmFriend.self)
+            case .friend_wall, .my_group_wall: delete(confEnum: .unsafe, clazz: RealmWall.self, id: id)
         default:
             catchError(msg: "RealmService(): delete(): no case is found")
         }
@@ -265,8 +265,7 @@ class RealmService {
             try realm?.write {
                 // by id
                 if let _id = id {
-                    let predicate = NSPredicate(format: "id = %@", _id)
-                    if let results = realm?.objects(clazz.self).filter(predicate) {
+                    if let results = realm?.objects(clazz.self).filter("id == %@", _id) {
                         for result in results {
                             realm?.delete(result)
                         }

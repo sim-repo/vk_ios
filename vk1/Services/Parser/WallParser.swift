@@ -198,11 +198,11 @@ class WallParser {
         if repost {
             if let histories = json["copy_history"].array {
                 for history in histories {
-                    return history["source_id"].intValue
+                    return history["from_id"].intValue
                 }
             }
         } else {
-             return json["source_id"].intValue
+             return json["from_id"].intValue
         }
         return 0
     }

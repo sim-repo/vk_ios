@@ -8,16 +8,15 @@ class SyncWall: SyncBaseProtocol {
     static let shared = SyncWall()
     private override init() {}
     
-    var module: ModuleEnum {
-        return ModuleEnum.wall
-    }
-    
     private func log(_ msg: String) {
         console(msg: msg, printEnum: .sync)
     }
     
-    func sync(force: Bool = false,
-              _ dispatchCompletion: (()->Void)? = nil) {
+    public func getId() -> String {
+        return ModuleEnum.wall.rawValue
+    }
+    
+    func sync(_ dispatchCompletion: (()->Void)? = nil) {
         /*
         if syncing {
             return

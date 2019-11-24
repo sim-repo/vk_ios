@@ -7,33 +7,30 @@ public class PlainBasePresenter {
         return nil
     }
     
+    lazy var moduleEnum = ModuleEnum(presenter: self)
+    
+    
     weak var view: PushPlainViewProtocol? {
         willSet(newValue) {
             didSetViewCompletion?(newValue)
         }
     }
     
-    var dataSource: [PlainModelProtocol] = [] {
-        willSet {
-           // THREAD_SAFETY { // to avoid UnsafeMutablePointer.deinitialize fatal error
-                self.dataSource = newValue
-            //}
-        }
-    }
-    
-    lazy var child = self as! ModelOwnerPresenterProtocol
-    var pageInProgess = false
-    lazy var moduleEnum = ModuleEnum(presenter: self)
-    
+    var dataSource: [PlainModelProtocol] = []
+
     var clazz: String {
         return String(describing: self)
     }
 
-    //for subscribing by child presenters
     var didSetViewCompletion: ((PushPlainViewProtocol?)->Void)?
+
+    var pageInProgess = false
     
-    var sectionChildPresenter: PullSectionPresenterProtocol?
-    var plainChildPresenter: PullPlainPresenterProtocol?
+    
+    //MARK:- complex
+    var subSectionPresenter: PullSectionPresenterProtocol?
+    var subPlainPresenter: PullPlainPresenterProtocol?
+    
     
     //MARK:- initial
     
@@ -45,7 +42,7 @@ public class PlainBasePresenter {
         self.init()
         guard let _view = vc as? PushPlainViewProtocol
         else {
-            catchError(msg: "PlainBasePresenter: init(vc:) - incorrect passed vc")
+            log("init(vc:) - incorrect passed vc", isErr: true)
             return
         }
         self.view = _view
@@ -55,7 +52,7 @@ public class PlainBasePresenter {
     final func validateView(_ vc: PushViewProtocol){
         guard let _ = vc as? PushPlainViewProtocol
         else {
-            catchError(msg: "PlainBasePresenter: validateView(vc:) - incorrect passed vc")
+            log("validateView(vc:) - incorrect passed vc", isErr: true)
             return
         }
     }
@@ -70,7 +67,7 @@ public class PlainBasePresenter {
          
         guard let validatedData = validate(dirtyData)
             else {
-                   catchError(msg: "PlainBasePresenter: \(clazz): setModel(): no valid data")
+                   log("setModel(): no valid data", isErr: true)
                    return
            }
     
@@ -87,8 +84,21 @@ public class PlainBasePresenter {
                 if let enriched = enrichData(validated: validatedData) {
                     save(enriched: enriched)
                 } else {
-                    catchError(msg: "PlainBasePresenter: \(clazz): enriched data is empty ")
+                    log("enriched data is empty", isErr: true)
                 }
+        }
+    }
+    
+    final func clearCache(id: typeId?, predicateEnum: LogicPredicateEnum?){
+        if let id_ = id, let predicate = predicateEnum {
+            switch predicate {
+                case .equal:
+                    dataSource.removeAll(where: {$0.getId() == id_})
+                case .notEqual:
+                    dataSource.removeAll(where: {$0.getId() != id_})
+            }
+        } else {
+             dataSource.removeAll()
         }
     }
     
@@ -96,15 +106,20 @@ public class PlainBasePresenter {
     final func validate(_ dirtyData: [DecodableProtocol]) -> [PlainModelProtocol]? {
         guard dirtyData.count > 0
         else {
-            catchError(msg: "PlainBasePresenter: \(clazz): validate(): datasource is empty ")
+            log("validate(): datasource is empty", isErr: true)
             return nil
         }
     
-        let required = "\(child.modelClass)"
+        guard let implement = self as? ModelOwnerPresenterProtocol
+            else {
+                log("validate(): downcasting error", isErr: true)
+                return nil
+            }
+        let required = "\(implement.modelClass)"
         let current = getRawClassName(object: type(of: dirtyData[0]))
         guard required == current
         else {
-            catchError(msg: "PlainBasePresenter: validate(): \(clazz): returned datasource incorrected")
+            log("validate(): returned datasource incorrected", isErr: true)
             return nil
         }
         return dirtyData as? [PlainModelProtocol]
@@ -133,12 +148,22 @@ public class PlainBasePresenter {
         RealmService.save(models: enriched, update: true)
     }
     
+    
     final func waitIndicator(start: Bool) {
         if start {
             view?.startWaitIndicator(moduleEnum)
         } else {
             view?.stopWaitIndicator(moduleEnum)
         }
+    }
+    
+    
+    private func log(_ msg: String, isErr: Bool) {
+      if isErr {
+          catchError(msg: "PlainBasePresenter: \(self.clazz): " + msg)
+      } else {
+          console(msg: "PlainBasePresenter: \(self.clazz): " + msg, printEnum: .presenter)
+      }
     }
 }
 

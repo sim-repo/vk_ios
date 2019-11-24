@@ -14,7 +14,6 @@ class SynchronizerManager {
     private init() {
         self.synchronizers = [
             SyncWall.shared,
-            SyncDetailFriend.shared,
             SyncGroupDetail.shared
         ]
     }
@@ -52,9 +51,13 @@ class SynchronizerManager {
         let moduleEnum = ModuleEnum(presenter: presenter)
         switch moduleEnum {
             case .my_group_detail:
-                PresenterFactory.shared.removePresenter(moduleEnum: moduleEnum)
-                let groupWall: ModuleEnum = .my_group_wall
-                PresenterFactory.shared.removePresenter(moduleEnum: groupWall)
+                //TODO: refactor:
+                PresenterFactory.shared.removePresenter(moduleEnum: .my_group_detail)
+                PresenterFactory.shared.removePresenter(moduleEnum: .my_group_wall)
+                
+                SyncMyGroupWall.shared.resetOffset()
+            case .friend_wall:
+                SyncFriendWall.shared.resetOffset()
             default:
                 log("SynchronizerManager: viewDidDisappear: no case \(presenter)")
         }
@@ -71,6 +74,8 @@ class SynchronizerManager {
                 log("SynchronizerManager: clearPresenterData: no case \(moduleEnum)")
         }
     }
+    
+    
     
     // called from PresenterFactory
     public func viewDidLoad(presenterEnum: ModuleEnum){
@@ -95,24 +100,11 @@ class SynchronizerManager {
              
          case .my_group_wall:
              SyncMyGroupWall.shared.sync()
-             
-         case .group:
-             SyncGroup.shared.sync()
-             
-         case .wall: break
-            // SyncWall.shared.sync()
-           // SyncNews.shared.sync(force: true)
-        
+
          case .news:
             SyncNews.shared.sync()
             
-         case .profile:
-             SyncProfile.shared.sync()
-             
-         case .login:
-             SyncLogin.shared.sync()
-             
-         case .unknown:
+         default:
              catchError(msg: "SynchronizerManager: startSync: no case")
          }
      }
@@ -181,7 +173,7 @@ class SynchronizerManager {
             // Start every synchronizer
             for synchronizer in self.synchronizers {
                 self.dispatchGroup?.enter()
-                synchronizer.sync(force: force){ [weak self] in
+                synchronizer.sync(){ [weak self] in
                     self?.dispatchGroup?.leave()
                 }
             }

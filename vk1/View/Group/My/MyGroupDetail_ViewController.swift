@@ -70,8 +70,8 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let child = presenter.getPlainChild() {
-            return child.numberOfRowsInSection()
+        if let subPresenter = presenter.getSubPlainPresenter() {
+            return subPresenter.numberOfRowsInSection()
         } else {
             catchError(msg: "MyGroupDetail_ViewController: numberOfItemsInSection: child presenter in not initialized")
         }
@@ -82,13 +82,13 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellByCode["tp1"]!, for: indexPath) // !
         
-        guard let child = presenter.getPlainChild()
+        guard let subPresenter = presenter.getSubPlainPresenter()
             else {
                 catchError(msg: "MyGroupDetail_ViewController: cellForItemAt: child presenter in not initialized")
                 return cell
         }
         
-        guard let wall = child.getData(indexPath: indexPath) as? Wall
+        guard let wall = subPresenter.getData(indexPath: indexPath) as? Wall
             else {
                 catchError(msg: "MyGroupDetail_ViewController: cellForItemAt: no data")
                 return cell
@@ -188,7 +188,7 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
         
         // MyGroup Wall:
         if moduleEnum == .my_group_wall {
-            if presenter.getPlainChild()!.numberOfRowsInSection() > 0 {
+            if presenter.getSubPlainPresenter()!.numberOfRowsInSection() > 0 {
                 stopWaitIndicator(moduleEnum)
                 collectionView.reloadData()
             }

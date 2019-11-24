@@ -104,7 +104,7 @@ extension Friend_ViewController: UITableViewDataSource, UITableViewDelegate {
        
         
         let label = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 20))
-        label.text = presenter?.sectionTitle(section: section)
+        label.text = presenter?.getSectionTitle(section: section)
         hview.addSubview(label)
         UIControlThemeMgt.setupTableHeader(view: hview, title: label)
         return hview
@@ -112,7 +112,7 @@ extension Friend_ViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return presenter?.sectionTitle(section: section)
+        return presenter?.getSectionTitle(section: section)
     }
     
     
@@ -124,7 +124,7 @@ extension Friend_ViewController: UITableViewDataSource, UITableViewDelegate {
                 catchError(msg: "Friend_Controller: prepare(for segue:)")
                 return
             }
-            presenter?.viewDidSeguePrepare(segueId: SegueIdEnum.detailFriend, indexPath: indexPath)
+            presenter?.viewDidSeguePrepare(segueId: ModuleEnum.SegueIdEnum.detailFriend, indexPath: indexPath)
         }
     }
     

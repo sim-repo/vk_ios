@@ -12,8 +12,8 @@ struct Network {
     static let intervalViewReload = 5 // in percent
     static let newsResponseItemsPerRequest = 20 // in number
     static let wallResponseItemsPerRequest = 20 // in number
-    static let newsMaxIntervalBeforeCleanupDataSource = 60.0*5 //5 min
-    static let newsMinIntervalBeforeSendRequest = 30.0 //sec
+    static let maxIntervalBeforeCleanupDataSource = 60.0*5 //5 min
+    static let minIntervalBeforeSendRequest = 30.0 //sec
 }
 
 
@@ -25,11 +25,13 @@ typealias onSuccess_PresenterCompletion = ([DecodableProtocol]) -> Void
 
 // for debug: fast way to enable console logging by area
 enum PrintLogEnum {
-    case realm, presenterCallsFromSync, presenterCallsFromView, sync, alamofire, viewReloadData
+    case realm, presenter, presenterCallsFromSync, presenterCallsFromView, sync, alamofire, viewReloadData
     
     var print: Bool {
         switch self {
         case .realm:
+            return true
+        case .presenter:
             return true
         case .presenterCallsFromSync:
             return true
@@ -56,11 +58,6 @@ enum ModelLoadedFromEnum {
     case disk
 }
 
-enum SegueIdEnum: String {
-    case detailFriend = "detailFriend"
-    case detailGroup = "detailGroup"
-}
-
 
 enum FriendGroupByEnum: String {
     case firstName = "By Name"
@@ -70,6 +67,10 @@ enum FriendGroupByEnum: String {
 
 enum MyGroupByEnum: String {
     case name = "By Name"
+}
+
+enum LogicPredicateEnum {
+    case equal, notEqual
 }
 
 

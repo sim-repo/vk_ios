@@ -3,35 +3,44 @@ import UIKit
 
 //MARK:- called from synchronizer
 extension SectionedBasePresenter: SynchronizedPresenterProtocol {
-   
+
     
-    private func log(_ msg: String) {
-        console(msg: msg, printEnum: .presenterCallsFromSync)
-    }
+    //MARK:- getters:
     
-    final func setView(vc: PushViewProtocol) {
-        validateView(vc)
-        view = vc as? PushSectionedViewProtocol
-        let moduleEnum = ModuleEnum(presenter: self)
-        if self.dataSourceIsEmpty() {
-            view?.startWaitIndicator(moduleEnum)
-        } else {
-            filterAndRegroupData()
-            view?.viewReloadData(groupByIds: self.groupByIds)
-        }
+    final func getDataSource() -> [ModelProtocol] {
+        return sortedDataSource
     }
     
     final func dataSourceIsEmpty() -> Bool {
         return sortedDataSource.isEmpty
     }
     
-    final func getDataSource() -> [ModelProtocol] {
-        return sortedDataSource
+    
+    //MARK:- setters:
+    
+    final func clearDataSource(id: typeId? = nil) {
+        clearCache(id: id, predicateEnum: .equal)
+        RealmService.delete(moduleEnum: moduleEnum, id: id)
+        SynchronizerManager.shared.didClearDataSource(moduleEnum: moduleEnum)
     }
     
-    final func clearDataSource() {
-        sortedDataSource.removeAll()
+    final func setView(vc: PushViewProtocol) {
+        PRESENTER_UI_THREAD { [weak self] in
+            guard let self = self else { return }
+            self.validateView(vc)
+            self.view = vc as? PushSectionedViewProtocol
+            if self.dataSourceIsEmpty() {
+                self.waitIndicator(start: true)
+            } else {
+                self.filterAndRegroupData()
+                self.view?.viewReloadData(groupByIds: self.groupByIds)
+            }
+        }
     }
+    
+
+    
+    //MARK:- did events:
     
     // when response has got from network
     final func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion? = nil) -> onSuccess_PresenterCompletion {
@@ -39,8 +48,10 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
             PRESENTER_UI_THREAD {
                 guard let self = self else { return }
                 self.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
-                self.log("SectionedBasePresenter: \(self.clazz): didSuccessNetworkResponse")
+                self.log("didSuccessNetworkResponse()", isErr: false)
                 completion?()
+                
+                self.waitIndicator(start: false)
             }
         }
         return outerCompletion
@@ -49,21 +60,24 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     
     // when all responses have got from network
     final func didSuccessNetworkFinish() {
-        PRESENTER_UI_THREAD {
-            self.log("SectionedBasePresenter: \(self.clazz): didSuccessNetworkFinish")
+        PRESENTER_UI_THREAD {[weak self] in
+            guard let self = self else { return }
+            self.log("didSuccessNetworkFinish()", isErr: false)
             self.sort()
             self.filterAndRegroupData()
             self.viewReloadData()
+            self.pageInProgess = false
         }
     }
     
     final  func didErrorNetworkFinish() {
-        
+        self.pageInProgess = false
     }
     
     final func setFromPersistent(models: [DecodableProtocol]) {
-        PRESENTER_UI_THREAD {
-            self.log("SectionedBasePresenter: \(self.clazz): setFromPersistent")
+        PRESENTER_UI_THREAD {[weak self] in
+            guard let self = self else { return }
+            self.log("setFromPersistent()", isErr: false)
             self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
             self.sort()
             self.filterAndRegroupData()
@@ -72,12 +86,20 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     }
     
     func setSyncProgress(curr: Int, sum: Int) {
-        PRESENTER_UI_THREAD {
-            self.log("progress: \(curr) of \(sum)")
+        PRESENTER_UI_THREAD { [weak self] in
             if curr/sum * 100 % Network.intervalViewReload == 0 {
-                self.sort()
-                self.viewReloadData()
+                self?.sort()
+                self?.viewReloadData()
             }
         }
     }
+    
+    
+    private func log(_ msg: String, isErr: Bool) {
+         if isErr {
+             catchError(msg: "SectionBasePresenter: \(self.clazz): " + msg)
+         } else {
+             console(msg: "SectionBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromSync)
+         }
+     }
 }

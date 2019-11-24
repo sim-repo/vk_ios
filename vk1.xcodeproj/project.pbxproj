@@ -53,8 +53,6 @@
 		163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */; };
 		1647649C2365E031007D1B19 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649B2365E031007D1B19 /* Session.swift */; };
 		1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */; };
-		164764A32365E1E5007D1B19 /* SectionModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764A22365E1E5007D1B19 /* SectionModelProtocol.swift */; };
-		164764AA2365EFDA007D1B19 /* PullSectionPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764A92365EFDA007D1B19 /* PullSectionPresenterProtocol.swift */; };
 		164764B32365FB86007D1B19 /* PushViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B22365FB86007D1B19 /* PushViewProtocol.swift */; };
 		164764B62365FC2E007D1B19 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B52365FC2E007D1B19 /* Constant.swift */; };
 		164764BB23662209007D1B19 /* VKLogin_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764BA23662209007D1B19 /* VKLogin_ViewController.swift */; };
@@ -111,8 +109,6 @@
 		16AB0BA9232F985D00E21B7F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0BA8232F985D00E21B7F /* Group.swift */; };
 		16D58BE02366BABD00735296 /* DecodableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BDF2366BABD00735296 /* DecodableProtocol.swift */; };
 		16D58BE22366BE2900735296 /* PlainBasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BE12366BE2900735296 /* PlainBasePresenter.swift */; };
-		16D58BE42366BEB100735296 /* PullPlainPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BE32366BEB100735296 /* PullPlainPresenterProtocol.swift */; };
-		16D58BE82366C6BE00735296 /* PlainModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BE72366C6BE00735296 /* PlainModelProtocol.swift */; };
 		16D58BED236725DC00735296 /* PullPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEC236725DC00735296 /* PullPresenterProtocol.swift */; };
 		16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEF236847C300735296 /* CellImagesHelper.swift */; };
 		16D58BF52368516800735296 /* WallHeader_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D58BF42368516800735296 /* WallHeader_View.xib */; };
@@ -127,21 +123,13 @@
 		16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B38236C45E500340F09 /* SpinnerViewController.swift */; };
 		16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3B236C6C9800340F09 /* LoginPresenter.swift */; };
 		16E08B3E236CEBB800340F09 /* ModelOwnerPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3D236CEBB800340F09 /* ModelOwnerPresenterProtocol.swift */; };
-		16E08B40236CECE800340F09 /* SectionPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3F236CECE800340F09 /* SectionPresenterProtocols.swift */; };
 		16E08B42236DBBF000340F09 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B41236DBBF000340F09 /* PresenterFactory.swift */; };
 		16E08B47236DD6E300340F09 /* SyncWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B46236DD6E300340F09 /* SyncWall.swift */; };
 		16E08B49236DD7B900340F09 /* SyncFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B48236DD7B900340F09 /* SyncFriend.swift */; };
 		16E08B4B236DD7C800340F09 /* SyncMyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */; };
 		16E08B4D236DD7DB00340F09 /* SyncGroupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B4C236DD7DB00340F09 /* SyncGroupDetail.swift */; };
-		16E08B4F236DD80800340F09 /* SyncProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B4E236DD80800340F09 /* SyncProfile.swift */; };
 		16E08B51236DD82100340F09 /* SyncFriendWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B50236DD82100340F09 /* SyncFriendWall.swift */; };
-		16E08B53236DDB1B00340F09 /* SyncDetailFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */; };
-		16E08B55236DDBAE00340F09 /* SyncLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B54236DDBAE00340F09 /* SyncLogin.swift */; };
-		16E08B57236DDEB700340F09 /* SyncGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B56236DDEB700340F09 /* SyncGroup.swift */; };
-		16E08B59236DF13700340F09 /* PlainPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B58236DF13700340F09 /* PlainPresenterProtocols.swift */; };
 		16E08B5B236DF1B900340F09 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B5A236DF1B900340F09 /* Login.swift */; };
-		16E08B5D236E34A200340F09 /* PushSectionedViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B5C236E34A200340F09 /* PushSectionedViewProtocol.swift */; };
-		16E08B5F236E34B200340F09 /* PushPlainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B5E236E34B200340F09 /* PushPlainViewProtocol.swift */; };
 		16E08B62236EC64700340F09 /* SynchronizedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B61236EC64700340F09 /* SynchronizedPresenterProtocol.swift */; };
 		16E08B64236ED9FF00340F09 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B63236ED9FF00340F09 /* ModelProtocol.swift */; };
 		16E08B66236F80B800340F09 /* FriendWall_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B65236F80B800340F09 /* FriendWall_ViewController.swift */; };
@@ -252,8 +240,6 @@
 		163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedBasePresenter.swift; sourceTree = "<group>"; };
 		1647649B2365E031007D1B19 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkManager.swift; sourceTree = "<group>"; };
-		164764A22365E1E5007D1B19 /* SectionModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModelProtocol.swift; sourceTree = "<group>"; };
-		164764A92365EFDA007D1B19 /* PullSectionPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullSectionPresenterProtocol.swift; sourceTree = "<group>"; };
 		164764B22365FB86007D1B19 /* PushViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushViewProtocol.swift; sourceTree = "<group>"; };
 		164764B52365FC2E007D1B19 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		164764BA23662209007D1B19 /* VKLogin_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLogin_ViewController.swift; sourceTree = "<group>"; };
@@ -311,8 +297,6 @@
 		16AB0BA8232F985D00E21B7F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		16D58BDF2366BABD00735296 /* DecodableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableProtocol.swift; sourceTree = "<group>"; };
 		16D58BE12366BE2900735296 /* PlainBasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainBasePresenter.swift; sourceTree = "<group>"; };
-		16D58BE32366BEB100735296 /* PullPlainPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullPlainPresenterProtocol.swift; sourceTree = "<group>"; };
-		16D58BE72366C6BE00735296 /* PlainModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainModelProtocol.swift; sourceTree = "<group>"; };
 		16D58BEC236725DC00735296 /* PullPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullPresenterProtocol.swift; sourceTree = "<group>"; };
 		16D58BEF236847C300735296 /* CellImagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImagesHelper.swift; sourceTree = "<group>"; };
 		16D58BF42368516800735296 /* WallHeader_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallHeader_View.xib; sourceTree = "<group>"; };
@@ -327,21 +311,13 @@
 		16E08B38236C45E500340F09 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		16E08B3B236C6C9800340F09 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		16E08B3D236CEBB800340F09 /* ModelOwnerPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOwnerPresenterProtocol.swift; sourceTree = "<group>"; };
-		16E08B3F236CECE800340F09 /* SectionPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPresenterProtocols.swift; sourceTree = "<group>"; };
 		16E08B41236DBBF000340F09 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
 		16E08B46236DD6E300340F09 /* SyncWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncWall.swift; sourceTree = "<group>"; };
 		16E08B48236DD7B900340F09 /* SyncFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFriend.swift; sourceTree = "<group>"; };
 		16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMyGroup.swift; sourceTree = "<group>"; };
 		16E08B4C236DD7DB00340F09 /* SyncGroupDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncGroupDetail.swift; sourceTree = "<group>"; };
-		16E08B4E236DD80800340F09 /* SyncProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncProfile.swift; sourceTree = "<group>"; };
 		16E08B50236DD82100340F09 /* SyncFriendWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFriendWall.swift; sourceTree = "<group>"; };
-		16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDetailFriend.swift; sourceTree = "<group>"; };
-		16E08B54236DDBAE00340F09 /* SyncLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogin.swift; sourceTree = "<group>"; };
-		16E08B56236DDEB700340F09 /* SyncGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncGroup.swift; sourceTree = "<group>"; };
-		16E08B58236DF13700340F09 /* PlainPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainPresenterProtocols.swift; sourceTree = "<group>"; };
 		16E08B5A236DF1B900340F09 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		16E08B5C236E34A200340F09 /* PushSectionedViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSectionedViewProtocol.swift; sourceTree = "<group>"; };
-		16E08B5E236E34B200340F09 /* PushPlainViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushPlainViewProtocol.swift; sourceTree = "<group>"; };
 		16E08B61236EC64700340F09 /* SynchronizedPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedPresenterProtocol.swift; sourceTree = "<group>"; };
 		16E08B63236ED9FF00340F09 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		16E08B65236F80B800340F09 /* FriendWall_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWall_ViewController.swift; sourceTree = "<group>"; };
@@ -630,10 +606,8 @@
 		164764A12365E1C9007D1B19 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				16D58BFB2369669C00735296 /* Wall */,
+				166667F92349062E00FD2B86 /* WallProtocol.swift */,
 				16E08B63236ED9FF00340F09 /* ModelProtocol.swift */,
-				164764A22365E1E5007D1B19 /* SectionModelProtocol.swift */,
-				16D58BE72366C6BE00735296 /* PlainModelProtocol.swift */,
 				16D58BDF2366BABD00735296 /* DecodableProtocol.swift */,
 			);
 			path = Model;
@@ -643,11 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				16D58BEC236725DC00735296 /* PullPresenterProtocol.swift */,
-				164764A92365EFDA007D1B19 /* PullSectionPresenterProtocol.swift */,
-				16D58BE32366BEB100735296 /* PullPlainPresenterProtocol.swift */,
 				16E08B3D236CEBB800340F09 /* ModelOwnerPresenterProtocol.swift */,
-				16E08B3F236CECE800340F09 /* SectionPresenterProtocols.swift */,
-				16E08B58236DF13700340F09 /* PlainPresenterProtocols.swift */,
 				16E08B77237010B200340F09 /* DetailPresenterProtocol.swift */,
 				16E08B61236EC64700340F09 /* SynchronizedPresenterProtocol.swift */,
 				164F80BE2384C033000F95E7 /* PaginationPresenterProtocol.swift */,
@@ -668,8 +638,6 @@
 			isa = PBXGroup;
 			children = (
 				164764B22365FB86007D1B19 /* PushViewProtocol.swift */,
-				16E08B5C236E34A200340F09 /* PushSectionedViewProtocol.swift */,
-				16E08B5E236E34B200340F09 /* PushPlainViewProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -856,14 +824,6 @@
 			path = Configurator;
 			sourceTree = "<group>";
 		};
-		16D58BFB2369669C00735296 /* Wall */ = {
-			isa = PBXGroup;
-			children = (
-				166667F92349062E00FD2B86 /* WallProtocol.swift */,
-			);
-			path = Wall;
-			sourceTree = "<group>";
-		};
 		16D58BFC236986A600735296 /* Synchronizer */ = {
 			isa = PBXGroup;
 			children = (
@@ -935,12 +895,8 @@
 				16E08B50236DD82100340F09 /* SyncFriendWall.swift */,
 				16E08B8923707EEE00340F09 /* SyncMyGroupWall.swift */,
 				16E08B48236DD7B900340F09 /* SyncFriend.swift */,
-				16E08B52236DDB1B00340F09 /* SyncDetailFriend.swift */,
 				16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */,
-				16E08B56236DDEB700340F09 /* SyncGroup.swift */,
 				16E08B4C236DD7DB00340F09 /* SyncGroupDetail.swift */,
-				16E08B4E236DD80800340F09 /* SyncProfile.swift */,
-				16E08B54236DDBAE00340F09 /* SyncLogin.swift */,
 			);
 			path = "Sync Module";
 			sourceTree = "<group>";
@@ -1269,13 +1225,10 @@
 				163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */,
 				16040619234E74FE0083F3C3 /* MyGroups_ViewController.swift in Sources */,
 				161C11402347401800A2EC9D /* CarouselFlowLayout.swift in Sources */,
-				16E08B40236CECE800340F09 /* SectionPresenterProtocols.swift in Sources */,
 				16D58BED236725DC00735296 /* PullPresenterProtocol.swift in Sources */,
 				164F80B72384754D000F95E7 /* SectionedBasePresenter+CalledBySync.swift in Sources */,
-				164764A32365E1E5007D1B19 /* SectionModelProtocol.swift in Sources */,
 				163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */,
 				16E08B78237010B200340F09 /* DetailPresenterProtocol.swift in Sources */,
-				16E08B57236DDEB700340F09 /* SyncGroup.swift in Sources */,
 				161C1136234718B000A2EC9D /* WallCellConfigurator.swift in Sources */,
 				16200CFD233360FF00F02440 /* GroupPresenter.swift in Sources */,
 				16E08B4D236DD7DB00340F09 /* SyncGroupDetail.swift in Sources */,
@@ -1297,13 +1250,11 @@
 				166667522347CA1A00FD2B86 /* Wall_Cell_tp8.swift in Sources */,
 				162BEFB32371C7CF00D765FB /* Typing.swift in Sources */,
 				16112740234B45E50080FD54 /* DataGeneratorHelper.swift in Sources */,
-				16E08B4F236DD80800340F09 /* SyncProfile.swift in Sources */,
 				161C11422347426100A2EC9D /* StickyFlowLayout.swift in Sources */,
 				1666674C2347CA0300FD2B86 /* Wall_Cell_tp5.swift in Sources */,
 				164F80BF2384C033000F95E7 /* PaginationPresenterProtocol.swift in Sources */,
 				1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */,
 				161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */,
-				16E08B5D236E34A200340F09 /* PushSectionedViewProtocol.swift in Sources */,
 				1611F29323788308002FCE3C /* RealmWall.swift in Sources */,
 				16E08B64236ED9FF00340F09 /* ModelProtocol.swift in Sources */,
 				166CB8DB238291CC009DA806 /* RealmBase.swift in Sources */,
@@ -1311,20 +1262,16 @@
 				16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */,
 				164F80D923858891000F95E7 /* NewsPresenter.swift in Sources */,
 				166667452347BFE100FD2B86 /* Wall_Cell_tp2.swift in Sources */,
-				16D58BE42366BEB100735296 /* PullPlainPresenterProtocol.swift in Sources */,
 				16FF6FD623522E41001C33CF /* Extensions.swift in Sources */,
 				166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */,
-				16E08B5F236E34B200340F09 /* PushPlainViewProtocol.swift in Sources */,
 				16E08B3E236CEBB800340F09 /* ModelOwnerPresenterProtocol.swift in Sources */,
 				164764BB23662209007D1B19 /* VKLogin_ViewController.swift in Sources */,
-				16D58BE82366C6BE00735296 /* PlainModelProtocol.swift in Sources */,
 				166D1B05234EFF0F00C552E4 /* ZoomAnimator.swift in Sources */,
 				1611F29D23788422002FCE3C /* RealmURL.swift in Sources */,
 				16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */,
 				16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */,
 				164F80B92384777B000F95E7 /* PlainBasePresenter+CalledByView.swift in Sources */,
 				1604060D234E5A250083F3C3 /* MyGroupDetail_ViewController.swift in Sources */,
-				16E08B59236DF13700340F09 /* PlainPresenterProtocols.swift in Sources */,
 				16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */,
 				166667412347BB9900FD2B86 /* News_ViewController.swift in Sources */,
 				1666674A2347C9FA00FD2B86 /* Wall_Cell_tp4.swift in Sources */,
@@ -1341,12 +1288,10 @@
 				161B0EA9234A27780081008B /* Profile_TableViewController.swift in Sources */,
 				164764BD23664DE0007D1B19 /* GroupSectionHeader.swift in Sources */,
 				164F80CE23858012000F95E7 /* NewsParser.swift in Sources */,
-				16E08B55236DDBAE00340F09 /* SyncLogin.swift in Sources */,
 				1666673D2347B8E900FD2B86 /* Wall_Cell_tp1.swift in Sources */,
 				16112742234B4D600080FD54 /* ColorSystemHelper.swift in Sources */,
 				166667DA2348994100FD2B86 /* UIControl+Extensions.swift in Sources */,
 				16200D012333731D00F02440 /* DetailFriendPresenter.swift in Sources */,
-				164764AA2365EFDA007D1B19 /* PullSectionPresenterProtocol.swift in Sources */,
 				16E08B86237065F100340F09 /* MyGroupWallPresenter.swift in Sources */,
 				16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */,
 				1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */,
@@ -1383,7 +1328,6 @@
 				161B0EA7234A05860081008B /* Group_CollectionViewCell.swift in Sources */,
 				16AB0B89232F7C7800E21B7F /* MyGroup.swift in Sources */,
 				16FF6FD823526DFF001C33CF /* LinesEffect.swift in Sources */,
-				16E08B53236DDB1B00340F09 /* SyncDetailFriend.swift in Sources */,
 				16E08B33236B3C5F00340F09 /* MyGroupDetailPresenter.swift in Sources */,
 				166667562347CA2A00FD2B86 /* Wall_Cell_tp9.swift in Sources */,
 			);

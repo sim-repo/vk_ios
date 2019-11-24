@@ -57,9 +57,8 @@ extension MyGroups_ViewController: AlphabetSearchViewControlProtocol {
 extension MyGroups_ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-       // print("viewForSupplementaryElementOfKind")
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "myGroupSectionHeader", for: indexPath) as! GroupSectionHeader
-        view.title = presenter.sectionTitle(section: indexPath.section)
+        view.title = presenter.getSectionTitle(section: indexPath.section)
         view.count = String(presenter.numberOfRowsInSection(section: indexPath.section))
         return view
     }
@@ -110,7 +109,7 @@ extension MyGroups_ViewController {
                     return
                 }
                 dest.modalPresentationStyle = .custom
-                presenter.viewDidSeguePrepare(segueId: SegueIdEnum.detailGroup, indexPath: indexPath)
+                presenter.viewDidSeguePrepare(segueId: ModuleEnum.SegueIdEnum.detailGroup, indexPath: indexPath)
             default:
                 return
         }

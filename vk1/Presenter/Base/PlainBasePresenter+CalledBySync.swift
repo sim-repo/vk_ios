@@ -3,6 +3,9 @@ import UIKit
 //MARK:- called from synchronizer & presenter factory
 extension PlainBasePresenter: SynchronizedPresenterProtocol {
     
+    
+    //MARK:- getters:
+    
     final func getDataSource() -> [ModelProtocol] {
         return dataSource
     }
@@ -11,18 +14,18 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
         return dataSource.isEmpty
     }
     
-    final func clearDataSource() {
-       dataSource.removeAll()
-       RealmService.delete(moduleEnum: moduleEnum)
+    
+    //MARK:- setters:
+    
+    final func clearDataSource(id: typeId? = nil) {
+       clearCache(id: id, predicateEnum: .equal)
+       RealmService.delete(moduleEnum: moduleEnum, id: id)
        SynchronizerManager.shared.didClearDataSource(moduleEnum: moduleEnum)
     }
     
-    private func log(_ msg: String) {
-        console(msg: msg, printEnum: .presenterCallsFromSync)
-    }
-    
     final func setView(vc: PushViewProtocol) {
-        PRESENTER_UI_THREAD {
+        PRESENTER_UI_THREAD { [weak self] in
+            guard let self = self else { return }
             self.validateView(vc)
             self.view = vc as? PushPlainViewProtocol
             if self.dataSourceIsEmpty() {
@@ -33,6 +36,9 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
         }
     }
     
+    
+    //MARK:- did events:
+    
     // when response has got from network
     final func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion? = nil) -> onSuccess_PresenterCompletion {
         let outerCompletion: onSuccess_PresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
@@ -41,7 +47,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                 let last = self.numberOfRowsInSection()
                 
                 self.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
-                self.log("PlainBasePresenter: \(self.clazz): didSuccessNetworkResponse")
+                self.log("didSuccessNetworkResponse", isErr: false)
                 completion?()
                 
                 self.waitIndicator(start: false)
@@ -62,9 +68,15 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     
     // when all responses have got from network
     final func didSuccessNetworkFinish() {
-        PRESENTER_UI_THREAD {
-            self.log("PlainBasePresenter: \(self.clazz): didSuccessNetworkFinish")
-            if self.child.netFinishViewReload {
+        PRESENTER_UI_THREAD { [weak self] in
+            guard let self = self else { return }
+            self.log("didSuccessNetworkFinish()", isErr: false)
+            guard let child = self as? ModelOwnerPresenterProtocol
+                       else {
+                            self.log("didSuccessNetworkFinish(): downcasting error", isErr: true)
+                            return
+                       }
+            if child.netFinishViewReload {
                 self.viewReloadData()
             }
             self.pageInProgess = false
@@ -79,7 +91,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
         PRESENTER_UI_THREAD { [weak self] in
             guard let self = self else { return }
             let last = self.numberOfRowsInSection()
-            self.log("PlainBasePresenter: \(self.clazz): setFromPersistent")
+            self.log("setFromPersistent()", isErr: false)
             self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
             self.waitIndicator(start: false)
             
@@ -98,10 +110,18 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     }
     
     func setSyncProgress(curr: Int, sum: Int) {
-        PRESENTER_UI_THREAD {
+        PRESENTER_UI_THREAD { [weak self] in
             if curr/sum * 100 % Network.intervalViewReload == 0 {
-                self.viewReloadData()
+                self?.viewReloadData()
             }
+        }
+    }
+    
+    private func log(_ msg: String, isErr: Bool) {
+        if isErr {
+            catchError(msg: "PlainBasePresenter: \(self.clazz): " + msg)
+        } else {
+            console(msg: "PlainBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromSync)
         }
     }
 }

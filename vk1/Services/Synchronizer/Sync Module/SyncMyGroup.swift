@@ -5,25 +5,22 @@ class SyncMyGroup: SyncBaseProtocol {
     static let shared = SyncMyGroup()
     private override init() {}
     
-    var module: ModuleEnum {
-        return ModuleEnum.my_group
+    public func getId() -> String {
+        return ModuleEnum.my_group.rawValue
     }
     
-    
-    func sync(force: Bool = false,
-              _ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil) {
         
         let presenter = PresenterFactory.shared.getInstance(clazz: MyGroupPresenter.self)
         
-        if force {
-            syncFromNetwork(presenter, dispatchCompletion)
-            return
-        }
         
-        
-        if !presenter.dataSourceIsEmpty() {
-            dispatchCompletion?()
-            return
+        //check update schedule
+        let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
+        if interval > Network.maxIntervalBeforeCleanupDataSource {
+             presenter.clearDataSource(id: nil)
+             syncing = true
+             syncFromNetwork(presenter, dispatchCompletion)
+             return
         }
         
         //load from disk

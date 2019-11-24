@@ -28,6 +28,10 @@ class FriendWall_ViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: height)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        presenter.viewDidDisappear()
+    }
+    
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
     }
@@ -69,7 +73,6 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
     
     
     private func didScrollEnd(_ indexPath: IndexPath) {
-        print("\(indexPath.row) : \(presenter.numberOfRowsInSection() - 5)")
         if indexPath.row >= presenter.numberOfRowsInSection() - 5 {
             presenter.didEndScroll()
         }

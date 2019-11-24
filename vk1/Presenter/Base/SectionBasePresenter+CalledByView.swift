@@ -4,6 +4,9 @@ import UIKit
 //MARK:- called from view
 extension SectionedBasePresenter: PullSectionPresenterProtocol {
     
+    
+    //MARK:- getters:
+    
     final func numberOfSections() -> Int {
         return sectionsOffset.count > 0 ? sectionsOffset.count : 1
     }
@@ -24,19 +27,9 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
         let next = sectionsOffset[section+1]
         return next - offset
     }
+
     
-    
-    final func getSectionChild() -> PullSectionPresenterProtocol? {
-        return sectionChild
-    }
-    
-    
-    final func getPlainChild() -> PullPlainPresenterProtocol? {
-        return plainChild
-    }
-    
-    
-    final func sectionTitle(section: Int)->String {
+    final func getSectionTitle(section: Int)->String {
         guard sectionsTitle.count > 0
             else {
                 return "A"
@@ -54,7 +47,7 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
     final func getData(indexPath: IndexPath? = nil) -> ModelProtocol? {
         guard let idxPath = indexPath
         else {
-            catchError(msg: "SectionedBasePresenter: \(clazz): getData(indexPath:) argument is nil")
+            log("getData(indexPath:) argument is nil", isErr: true)
             return nil
         }
         guard sectionsOffset.count > 0
@@ -93,6 +86,16 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
         return IndexPath(row: row, section: sectionIdx-1)
     }
     
+    //complex:
+    final func getSubSectionPresenter() -> PullSectionPresenterProtocol? {
+        return subSectionPresenter
+    }
+    
+    final func getSubPlainPresenter() -> PullPlainPresenterProtocol? {
+        return subPlainPresenter
+    }
+    
+    //MARK:- did events:
     
     final func viewDidFilterInput(_ searchText: String) {
         filteredText = !searchText.isEmpty ? searchText : nil
@@ -106,27 +109,39 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
     }
     
     
-    final func viewDidSeguePrepare(segueId: SegueIdEnum, indexPath: IndexPath) {
+    final func viewDidSeguePrepare(segueId: ModuleEnum.SegueIdEnum, indexPath: IndexPath) {
       
         guard let model = getData(indexPath: indexPath)
                     else {
-                        catchError(msg: "SectionedBasePresenter: \(clazz): viewDidSeguePrepare(): no data with indexPath: \(indexPath)")
+                        log("viewDidSeguePrepare(): no data with indexPath: \(indexPath)", isErr: true)
                         return
                     }
         
         guard let detailPresenter = PresenterFactory.shared.getInstance(segueId: segueId) as? DetailPresenterProtocol
             else {
-                catchError(msg: "SectionedBasePresenter: \(clazz): viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue) ")
+                log("viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue)", isErr: true)
                 return
             }
         detailPresenter.setParentModel(model: model)
     }
     
     
-    func didEndScroll(){
-        guard let _ = self as? PaginationPresenterProtocol
-            else { return }
-        let moduleEnum = ModuleEnum(presenter: self)
+    final func didEndScroll(){
+        guard !pageInProgess else {
+            log("didEndScroll(): pageInProgress == false", isErr: false)
+            return
+        }
+        pageInProgess = true
+        guard let _ = self as? PaginationPresenterProtocol else { return }
+        log("didEndScroll(): started", isErr: false)
         SynchronizerManager.shared.callSyncFromPresenter(moduleEnum: moduleEnum)
     }
+    
+    private func log(_ msg: String, isErr: Bool) {
+       if isErr {
+           catchError(msg: "SectionBasePresenter: \(self.clazz): " + msg)
+       } else {
+           console(msg: "SectionBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromView)
+       }
+     }
 }

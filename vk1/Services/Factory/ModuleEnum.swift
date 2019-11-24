@@ -1,6 +1,8 @@
 import Foundation
 
 
+
+
 enum ModuleEnum: String {
     
     case friend = "friend"
@@ -95,10 +97,12 @@ enum ModuleEnum: String {
     
     init(segueId: SegueIdEnum) {
         switch segueId {
-        case .detailFriend:
-            self = .friend_wall
-        case .detailGroup:
-            self = .my_group_detail
+            case .detailFriend:
+                self = .friend_wall
+            case .detailGroup:
+                self = .my_group_detail
+            default:
+                catchError(msg: "ModuleEnum: init(:segueId): no case: \(segueId)")
         }
     }
     
@@ -157,5 +161,10 @@ enum ModuleEnum: String {
         }
     }
     
+    
+    enum SegueIdEnum: String {
+        case detailFriend = "detailFriend"
+        case detailGroup = "detailGroup"
+    }
 }
 

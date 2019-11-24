@@ -8,7 +8,7 @@ protocol SynchronizedPresenterProtocol: class {
     func setView(vc: PushViewProtocol)
     func dataSourceIsEmpty()->Bool
     func getDataSource() -> [ModelProtocol]
-    func clearDataSource()
+    func clearDataSource(id: typeId?)
     func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion?) -> onSuccess_PresenterCompletion
     func didSuccessNetworkFinish()
     func didErrorNetworkFinish()

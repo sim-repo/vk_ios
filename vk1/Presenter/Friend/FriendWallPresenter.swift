@@ -18,7 +18,7 @@ extension FriendWallPresenter: DetailPresenterProtocol {
     
     func setParentModel(model: ModelProtocol) {
         parentModel = model
-        clearDataSource()
+        clearCache(id: getId(), predicateEnum: .notEqual)
     }
     
     func getId() -> typeId? {

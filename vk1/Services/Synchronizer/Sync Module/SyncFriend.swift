@@ -5,24 +5,23 @@ class SyncFriend: SyncBaseProtocol {
     static let shared = SyncFriend()
     private override init() {}
     
-    var module: ModuleEnum {
-        return ModuleEnum.friend
+    public func getId() -> String {
+        return ModuleEnum.friend.rawValue
     }
     
-    func sync(force: Bool = false,
-              _ dispatchCompletion: (()->Void)? = nil) {
+    
+    func sync(_ dispatchCompletion: (()->Void)? = nil) {
         
         let presenter = PresenterFactory.shared.getInstance(clazz: FriendPresenter.self)
         
-        if force {
-            syncFromNetwork(presenter, dispatchCompletion)
-            return
-        }
         
-        
-        if !presenter.dataSourceIsEmpty() {
-            dispatchCompletion?()
-            return
+        //check update schedule
+        let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
+        if interval > Network.maxIntervalBeforeCleanupDataSource {
+            presenter.clearDataSource(id: nil)
+             syncing = true
+             syncFromNetwork(presenter, dispatchCompletion)
+             return
         }
         
         //load from disk
