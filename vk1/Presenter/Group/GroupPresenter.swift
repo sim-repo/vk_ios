@@ -1,30 +1,20 @@
 import Foundation
+import Firebase
 
-public class GroupPresenter: SectionedBasePresenter {
+class GroupPresenter: PlainPresenterProtocols {
     
-    let urlPath: String = "groups.search"
+    var netFinishViewReload: Bool = true
     
-    var groups: [Group]!
-    
-    func numberOfRowsInSection() -> Int {
-        return groups.count
+    var modelClass: AnyClass  {
+        return Group.self
     }
     
-    func getName(_ indexPath: IndexPath) -> String {
-        return groups?[indexPath.row].name ?? ""
+    func joinGroup(groupId: String) {
+        SynchronizerManager.shared.doJoin(groupId: groupId)
+        fibAdd(groupId: groupId)
     }
     
-    func getDesc(_ indexPath: IndexPath) -> String {
-        return groups?[indexPath.row].desc ?? ""
-    }
-    
-    func getIcon(_ indexPath: IndexPath) -> String {
-        return groups?[indexPath.row].icon ?? ""
-    }
-    
-    func getGroup(_ indexPath: IndexPath?) -> Group? {
-        guard let idxPath = indexPath
-            else {return nil}
-        return groups[idxPath.row]
+    private func fibAdd(groupId: String){
+        FirebaseService.shared.addGroup(groupId: groupId)
     }
 }

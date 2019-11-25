@@ -134,7 +134,7 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
         pageInProgess = true
         guard let _ = self as? PaginationPresenterProtocol else { return }
         log("didEndScroll(): started", isErr: false)
-        SynchronizerManager.shared.callSyncFromPresenter(moduleEnum: moduleEnum)
+        SynchronizerManager.shared.doSync(moduleEnum: moduleEnum)
     }
     
     private func log(_ msg: String, isErr: Bool) {

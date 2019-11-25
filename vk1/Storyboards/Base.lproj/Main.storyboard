@@ -43,11 +43,12 @@
                     <connections>
                         <segue destination="TNb-uQ-DfB" kind="show" identifier="ShowAuthSegue" id="xXV-cc-42T"/>
                         <segue destination="28x-hE-Guy" kind="show" identifier="ShowAppSegue" id="9md-VM-d8s"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowFibAuth" id="WRz-Kd-z7A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJq-2m-qkv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-596" y="22"/>
+            <point key="canvasLocation" x="-1275" y="-5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="y3B-x4-ZRY">
@@ -83,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVr-vP-Ydk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="419" y="-552"/>
+            <point key="canvasLocation" x="154" y="-550"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -125,7 +126,7 @@
                                                         <rect key="frame" x="57" y="439" width="300" height="200"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2AR-9J-EuO">
-                                                                <rect key="frame" x="60" y="39" width="180" height="122"/>
+                                                                <rect key="frame" x="60" y="16" width="180" height="168"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41V-ch-HUb" userLabel="Login Input">
                                                                         <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
@@ -152,6 +153,25 @@
                                                                         <state key="normal" title="sign in">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="doPressLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G3M-w3-Cxr"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaF-Jn-JOi" userLabel="Enter">
+                                                                        <rect key="frame" x="0.0" y="138" width="180" height="30"/>
+                                                                        <color key="backgroundColor" red="0.117655836" green="0.1176081672" blue="0.121564351" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="CV3-jh-sRx"/>
+                                                                            <constraint firstAttribute="height" constant="30" id="aTG-XO-srG"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
+                                                                        <state key="normal" title="register">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="doPressRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XH0-kL-uIN"/>
+                                                                            <segue destination="7u9-ze-ezx" kind="show" identifier="ShowRegisterSegue" id="Lxh-sk-2dA"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -215,16 +235,17 @@
                         <outlet property="passwordInput" destination="0cH-pw-7y2" id="ral-nk-o69"/>
                         <outlet property="scrollView" destination="RPH-4g-lK7" id="bQU-PQ-WKF"/>
                         <outlet property="waitView" destination="B0a-3p-APi" id="EUw-Eh-DS6"/>
+                        <segue destination="28x-hE-Guy" kind="show" identifier="ShowMainSegue1" id="hci-Wa-Zv2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-578" y="767"/>
+            <point key="canvasLocation" x="154" y="516"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Kiz-Zk-0bN">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="28x-hE-Guy" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainController" modalPresentationStyle="fullScreen" id="28x-hE-Guy" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="GLj-Oe-nqk"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cib-LK-b5H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -242,7 +263,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUA-Hh-8za" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1522" y="8"/>
+            <point key="canvasLocation" x="2525" y="-15"/>
         </scene>
         <!--Friend-->
         <scene sceneID="Y2u-wb-zb4">
@@ -253,7 +274,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CDv-DY-D9H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="696" y="431"/>
+            <point key="canvasLocation" x="1940" y="433"/>
         </scene>
         <!--MyGroup-->
         <scene sceneID="QiZ-f3-v4Q">
@@ -264,7 +285,74 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HqH-4T-Bib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1214" y="440"/>
+            <point key="canvasLocation" x="2271" y="433"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="gjP-kA-Inv">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="7u9-ze-ezx" customClass="Register_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oDX-j0-JlF" customClass="MyView_Background" customModule="vk1" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PnR-Vx-wJ1">
+                                <rect key="frame" x="8" y="430.66666666666669" width="398" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="JIX-0W-BD1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZsD-Ib-qBm">
+                                <rect key="frame" x="8" y="481.66666666666669" width="398" height="34.000000000000057"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPx-ZQ-fMC">
+                                <rect key="frame" x="180" y="566" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="doPressSignUp:" destination="7u9-ze-ezx" eventType="touchUpInside" id="qJy-gL-rM8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzg-db-F8c">
+                                <rect key="frame" x="8" y="204" width="398" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ODf-uc-LRO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.92695114209999996" green="0.92695114209999996" blue="0.92695114209999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eEf-Wt-6y6" firstAttribute="trailing" secondItem="PnR-Vx-wJ1" secondAttribute="trailing" constant="8" id="IK3-Kl-NpR"/>
+                            <constraint firstItem="eEf-Wt-6y6" firstAttribute="trailing" secondItem="zzg-db-F8c" secondAttribute="trailing" constant="8" id="MZm-9j-JGN"/>
+                            <constraint firstItem="ZsD-Ib-qBm" firstAttribute="top" secondItem="PnR-Vx-wJ1" secondAttribute="bottom" constant="16" id="Mwc-oC-4c8"/>
+                            <constraint firstItem="ZsD-Ib-qBm" firstAttribute="leading" secondItem="eEf-Wt-6y6" secondAttribute="leading" constant="8" id="cWl-0Z-QtU"/>
+                            <constraint firstItem="zzg-db-F8c" firstAttribute="top" secondItem="eEf-Wt-6y6" secondAttribute="top" constant="160" id="hGz-tO-XoV"/>
+                            <constraint firstItem="ZsD-Ib-qBm" firstAttribute="height" secondItem="PnR-Vx-wJ1" secondAttribute="height" multiplier="0.971429" id="hVx-a3-c2g"/>
+                            <constraint firstItem="PnR-Vx-wJ1" firstAttribute="centerY" secondItem="oDX-j0-JlF" secondAttribute="centerY" id="nRp-2O-gkM"/>
+                            <constraint firstItem="zzg-db-F8c" firstAttribute="leading" secondItem="eEf-Wt-6y6" secondAttribute="leading" constant="8" id="nvH-0Q-OKK"/>
+                            <constraint firstItem="eEf-Wt-6y6" firstAttribute="trailing" secondItem="ZsD-Ib-qBm" secondAttribute="trailing" constant="8" id="o7M-Mn-DNv"/>
+                            <constraint firstItem="PnR-Vx-wJ1" firstAttribute="leading" secondItem="eEf-Wt-6y6" secondAttribute="leading" constant="8" id="ulr-mg-FSQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eEf-Wt-6y6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oGO-IJ-sJ2"/>
+                    <connections>
+                        <outlet property="loginTextField" destination="PnR-Vx-wJ1" id="5PH-qn-yvh"/>
+                        <outlet property="pswTextField" destination="ZsD-Ib-qBm" id="fQf-di-mqh"/>
+                        <segue destination="28x-hE-Guy" kind="show" identifier="ShowMainSegue3" id="1R7-Mq-uHK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XbJ-uq-7wi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1274" y="1002"/>
         </scene>
         <!--Profile-->
         <scene sceneID="TYd-2s-PQV">
@@ -275,7 +363,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOY-5B-883" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="445"/>
+            <point key="canvasLocation" x="2813" y="433"/>
         </scene>
         <!--Wall-->
         <scene sceneID="Rue-WZ-vm7">
@@ -286,10 +374,10 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHH-bu-Gsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2430" y="425"/>
+            <point key="canvasLocation" x="3212" y="433"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9md-VM-d8s"/>
+        <segue reference="1R7-Mq-uHK"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -71,6 +71,34 @@ class ApiVK {
     }
     
     
+    static func groupRequest(txtSearch: String, onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
+        
+        let urlPath: String = "groups.search"
+        
+        let params: Parameters = [
+            "access_token": Session.shared.token,
+            "q": txtSearch,
+            "count": 10,
+            "v": Network.versionAPI
+        ]
+        AlamofireNetworkManager.requestItems(clazz: Group.self, urlPath, params, onSuccess, onError)
+    }
+    
+    static func groupJoinRequest(groupId: String) {
+        
+        let urlPath: String = "groups.join"
+        
+        let params: Parameters = [
+            "access_token": Session.shared.token,
+            "group_id": groupId,
+            "v": Network.versionAPI
+        ]
+        AlamofireNetworkManager.requestJoin(clazz: Group.self, urlPath, params)
+    }
+        
+        
+    
+    
     static func wallRequest(_ ownerId: typeId,
                             _ onSuccess: @escaping onSuccess_PresenterCompletion,
                             _ onError: @escaping onErrResponse_SyncCompletion,
@@ -127,5 +155,5 @@ class ApiVK {
                                             offsetCompletion
                                             )
     }
-      
+    
 }

@@ -8,4 +8,6 @@ class Session {
     
     var token = ""
     var userId = Int()
+
 }
+

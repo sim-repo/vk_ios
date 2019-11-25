@@ -21,7 +21,7 @@ class VKLogin_ViewController: UIViewController {
             URLQueryItem(name: "client_id", value: Network.clientAPI),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "wall,friends"),
+            URLQueryItem(name: "scope", value: "wall,friends,groups"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "v", value: "5.87")
         ]
@@ -59,7 +59,7 @@ extension VKLogin_ViewController: WKNavigationDelegate {
         }
         
         
-        RealmService.save(token: token, userId: userId)
+        RealmService.saveVKCredentials(token: token, userId: userId)
         print(token, userId)
         Session.shared.token = token
         Session.shared.userId = userId

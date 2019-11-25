@@ -26,7 +26,7 @@ class MyGroups_ViewController: UIViewController  {
         layout.itemSize = CGSize(width: width, height: MyGroups_ViewController.itemHeight)
         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
     }
-    
+
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getSectioned(viewDidLoad: self)
     }

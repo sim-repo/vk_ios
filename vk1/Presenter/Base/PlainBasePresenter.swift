@@ -89,7 +89,7 @@ public class PlainBasePresenter {
         }
     }
     
-    final func clearCache(id: typeId?, predicateEnum: LogicPredicateEnum?){
+    final func clearCache(id: typeId? = nil, predicateEnum: LogicPredicateEnum? = nil){
         if let id_ = id, let predicate = predicateEnum {
             switch predicate {
                 case .equal:

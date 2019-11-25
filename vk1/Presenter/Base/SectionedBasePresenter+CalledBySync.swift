@@ -38,6 +38,25 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
         }
     }
     
+    final func setFromPersistent(models: [DecodableProtocol]) {
+        PRESENTER_UI_THREAD {[weak self] in
+            guard let self = self else { return }
+            self.log("setFromPersistent()", isErr: false)
+            self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
+            self.sort()
+            self.filterAndRegroupData()
+            self.viewReloadData()
+        }
+    }
+    
+    func setSyncProgress(curr: Int, sum: Int) {
+        PRESENTER_UI_THREAD { [weak self] in
+            if curr/sum * 100 % Network.intervalViewReload == 0 {
+                self?.sort()
+                self?.viewReloadData()
+            }
+        }
+    }
 
     
     //MARK:- did events:
@@ -70,31 +89,11 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
         }
     }
     
-    final  func didErrorNetworkFinish() {
+    final func didErrorNetworkFinish() {
         self.pageInProgess = false
     }
     
-    final func setFromPersistent(models: [DecodableProtocol]) {
-        PRESENTER_UI_THREAD {[weak self] in
-            guard let self = self else { return }
-            self.log("setFromPersistent()", isErr: false)
-            self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
-            self.sort()
-            self.filterAndRegroupData()
-            self.viewReloadData()
-        }
-    }
-    
-    func setSyncProgress(curr: Int, sum: Int) {
-        PRESENTER_UI_THREAD { [weak self] in
-            if curr/sum * 100 % Network.intervalViewReload == 0 {
-                self?.sort()
-                self?.viewReloadData()
-            }
-        }
-    }
-    
-    
+
     private func log(_ msg: String, isErr: Bool) {
          if isErr {
              catchError(msg: "SectionBasePresenter: \(self.clazz): " + msg)

@@ -5,7 +5,7 @@ import UIKit
 struct Network {
     static let baseURL = "https://api.vk.com/method/"
     static let versionAPI = "5.103"
-    static let clientAPI = "7216321"
+    static let clientAPI = "7221362"
     static let timeout: TimeInterval = 10 // in sec
     static let delayBetweenRequests = 500 //500 // in ms
     static let longDelayBetweenRequests = 1000 //500 // in ms
@@ -109,3 +109,5 @@ var cellBottomHeight: CGFloat = 30
 
 
 typealias typeId = Int
+
+var isDark = true

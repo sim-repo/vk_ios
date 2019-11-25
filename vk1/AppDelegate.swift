@@ -1,6 +1,7 @@
 import UIKit
+import Firebase
 
-var isDark = true
+
 
 
 @UIApplicationMain
@@ -10,10 +11,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // color themes:
         ColorSystemHelper.setupDark()
         UIControlThemeMgt.setupTabBarColor()
+        // bkg update config:
         let syncConfiguration = DefaultSyncConfiguration()
         UIApplication.shared.setMinimumBackgroundFetchInterval(syncConfiguration.interval)
+        //firebase:
+        FirebaseApp.configure()
         return true
     }
 

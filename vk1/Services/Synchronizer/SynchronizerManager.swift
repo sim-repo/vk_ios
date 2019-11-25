@@ -35,18 +35,26 @@ class SynchronizerManager {
     private var backgroundTaskID: UIBackgroundTaskIdentifier?
     private var synchronizers: [SyncBaseProtocol]!
     
-    private func log(_ msg: String) {
-        console(msg: msg, printEnum: .sync)
+    
+// MARK: - called from presenter:
+    
+    public func doSync(moduleEnum: ModuleEnum){
+        sync(moduleEnum)
     }
     
-// MARK: - called during user's actions perform
-    
-    // called from Presenter
-    public func callSyncFromPresenter(moduleEnum: ModuleEnum){
-        startSync(moduleEnum)
+    public func doFilter(filter: String, moduleEnum: ModuleEnum){
+        switch moduleEnum {
+        case .group:
+            SyncGroup.shared.search(filter: filter)
+        default:
+            log("doFilter(): no case \(moduleEnum)", isErr: true)
+        }
     }
     
-    // called from Presenter
+    public func doJoin(groupId: String) {
+        SyncGroup.shared.join(groupId: groupId)
+    }
+    
     public func viewDidDisappear(presenter: SynchronizedPresenterProtocol){
         let moduleEnum = ModuleEnum(presenter: presenter)
         switch moduleEnum {
@@ -59,10 +67,9 @@ class SynchronizerManager {
             case .friend_wall:
                 SyncFriendWall.shared.resetOffset()
             default:
-                log("SynchronizerManager: viewDidDisappear: no case \(presenter)")
+                log("viewDidDisappear(): no case \(presenter)", isErr: true)
         }
     }
-    
     
     public func didClearDataSource(moduleEnum: ModuleEnum){
         switch moduleEnum {
@@ -71,19 +78,21 @@ class SynchronizerManager {
             case .news:
                 SyncNews.shared.resetOffset()
             default:
-                log("SynchronizerManager: clearPresenterData: no case \(moduleEnum)")
+                log("clearPresenterData(): no case \(moduleEnum)", isErr: true)
         }
     }
     
     
-    
-    // called from PresenterFactory
+// MARK: - Called From PresenterFactory:
+
     public func viewDidLoad(presenterEnum: ModuleEnum){
-        startSync(presenterEnum)
+        sync(presenterEnum)
     }
     
     
-    func startSync(_ moduleEnum: ModuleEnum){
+    
+    
+    func sync(_ moduleEnum: ModuleEnum){
          switch moduleEnum {
              
          case .friend:
@@ -184,7 +193,7 @@ class SynchronizerManager {
                 self.dispatchGroup = nil
                 
                 let duration = Date().timeIntervalSince(startSyncTime)
-                self.log("Sync finished. Sync duration: \(Int(duration)) seconds.")
+                self.log("Sync finished. Sync duration: \(Int(duration)) seconds.", isErr: false)
                 
                 self.scheduleNextSync()
                 
@@ -220,6 +229,16 @@ class SynchronizerManager {
     func getTryAgainCompletion() -> (()->Void)? {
         return {
             
+        }
+    }
+    
+    
+    
+    private func log(_ msg: String, isErr: Bool) {
+        if isErr {
+            catchError(msg: "SynchronizerManager(): " + msg)
+        } else {
+            console(msg: "SynchronizerManager(): " + msg, printEnum: .sync)
         }
     }
 }

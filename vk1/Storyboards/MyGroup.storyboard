@@ -393,6 +393,14 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgh-Ny-zHh">
+                                                    <rect key="frame" x="181" y="60" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="joinGroup:" destination="Da3-3Z-Rae" eventType="touchUpInside" id="yEw-Dm-5ej"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Wjc-np-ljN" firstAttribute="leading" secondItem="RSn-jL-0zJ" secondAttribute="leading" constant="8" id="cfs-K5-FVt"/>

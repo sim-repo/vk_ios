@@ -61,8 +61,6 @@ class UIControlThemeMgt {
     
     
     static func setupNavigationBarColor(navigationController: UINavigationController?){
-        
-        
         guard let font = UIFont(name: "Arcade", size: 30) else {
             fatalError("""
                 Failed to load the "Arcade" font.
@@ -70,8 +68,6 @@ class UIControlThemeMgt {
                 """
             )
         }
-     
-        
         //let font = UIFont.systemFont(ofSize: 18)
         let shadow = NSShadow()
         shadow.shadowColor = ColorSystemHelper.background
@@ -84,7 +80,6 @@ class UIControlThemeMgt {
         ]
         
         navigationController?.navigationBar.titleTextAttributes = attributes
-        
         var colors = [UIColor]()
         if (isDark) {
             colors.append(ColorSystemHelper.background)
@@ -144,6 +139,47 @@ class UIControlThemeMgt {
     
     private static func headerColor() -> UIColor {
            return ColorSystemHelper.primary
+    }
+    
+    
+    static func setupSearchControl(vc: UIViewController, searchController: UISearchController){
+        
+        guard let barDelegate = vc as? UISearchBarDelegate
+            else { return }
+        
+        guard let searchDelegate = vc as? UISearchControllerDelegate
+        else { return }
+        
+        guard let navigationController = vc.navigationController
+            else { return }
+        
+     
+        vc.navigationController!.navigationItem.searchController = searchController
+        navigationController.navigationItem.searchController?.searchBar.delegate = barDelegate
+        
+        searchController.delegate = searchDelegate
+        // cancel-button text color:
+        searchController.searchBar.tintColor = isDark ? .white : ColorSystemHelper.primary
+        
+        // white color input text:
+        searchController.searchBar.barStyle = .default
+        
+        // handle press cancel-button
+        vc.definesPresentationContext = true
+        searchController.obscuresBackgroundDuringPresentation = false
+       //  searchController.dimsBackgroundDuringPresentation = false
+        // searchController.searchBar.searchBarStyle = .default
+        navigationController.navigationItem.hidesSearchBarWhenScrolling = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            if let backgroundview = textfield.subviews.first {
+                backgroundview.backgroundColor = ColorSystemHelper.background
+                backgroundview.layer.cornerRadius = 0;
+                backgroundview.clipsToBounds = true;
+                textfield.textColor = ColorSystemHelper.onBackground
+            }
+        }
     }
 }
 

@@ -76,6 +76,14 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
     }
     
     func viewDidFilterInput(_ filterText: String) {
+        
+        if let implement = self as? DetailPresenterProtocol,
+           let id = implement.getId() {
+            clearCache(id: id, predicateEnum: .equal)
+        } else {
+            clearCache()
+        }
+        SynchronizerManager.shared.doFilter(filter: filterText, moduleEnum: moduleEnum)
     }
     
     
@@ -87,7 +95,7 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
         pageInProgess = true
         guard let _ = self as? PaginationPresenterProtocol else { return }
         log("didEndScroll(): started", isErr: false)
-        SynchronizerManager.shared.callSyncFromPresenter(moduleEnum: moduleEnum)
+        SynchronizerManager.shared.doSync(moduleEnum: moduleEnum)
     }
     
     private func log(_ msg: String, isErr: Bool) {

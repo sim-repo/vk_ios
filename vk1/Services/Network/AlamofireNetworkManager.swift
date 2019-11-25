@@ -97,6 +97,27 @@ class AlamofireNetworkManager{
     
     
     
+    public static func requestJoin<T: DecodableProtocol>(clazz: T.Type ,
+                                                             _ urlPath: String,
+                                                             _ params: Parameters) {
+           AlamofireNetworkManager.sharedManager.request(Network.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
+               log("requestJoin: requestSingle(): response..")
+            print(response.result)
+               switch response.result {
+                
+               case .success(let json):
+                 print("SUCCESS")
+               case .failure(let err):
+                    let error = err as NSError
+                
+               }
+           }
+    }
+    
+    
+    
+    
+    
     public static func wallRequest(_ urlPath: String,
                                    _ params: Parameters,
                                    _ onSuccess: @escaping onSuccess_PresenterCompletion,

@@ -69,6 +69,12 @@
 		164F80DB23859CBF000F95E7 /* RealmNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80DA23859CBF000F95E7 /* RealmNews.swift */; };
 		164F80EC2385B4A0000F95E7 /* RealmToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80EB2385B4A0000F95E7 /* RealmToken.swift */; };
 		164F80EE2385C623000F95E7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F80ED2385C623000F95E7 /* StartViewController.swift */; };
+		164F8144238B0F23000F95E7 /* SyncGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F8143238B0F23000F95E7 /* SyncGroup.swift */; };
+		164F8153238BBFFA000F95E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 164F814C238BBFFA000F95E7 /* GoogleService-Info.plist */; };
+		164F8183238BD15E000F95E7 /* Register_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F8182238BD15E000F95E7 /* Register_ViewController.swift */; };
+		164F819C238BE256000F95E7 /* FIBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F819B238BE256000F95E7 /* FIBUser.swift */; };
+		164F819F238BE44E000F95E7 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F819E238BE44E000F95E7 /* FirebaseService.swift */; };
+		164F81A1238BE6EA000F95E7 /* RealmFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F81A0238BE6EA000F95E7 /* RealmFirebase.swift */; };
 		1666673B2347B75F00FD2B86 /* Wall_Cell_tp1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */; };
 		1666673D2347B8E900FD2B86 /* Wall_Cell_tp1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */; };
 		166667412347BB9900FD2B86 /* News_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667402347BB9900FD2B86 /* News_ViewController.swift */; };
@@ -163,6 +169,83 @@
 			remoteGlobalIDString = 437919EE08EC6BFCCBAC3BD346309742;
 			remoteInfo = RealmSwift;
 		};
+		164F816B238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 43B1E4CD7B30B9FD278100133C2AC788;
+			remoteInfo = FirebaseAuth;
+		};
+		164F816D238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E2B63D462DB7F827C4B11FD51E4F8E2D;
+			remoteInfo = FirebaseCore;
+		};
+		164F816F238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CC9178C366942FD6FF6A115604EAD58;
+			remoteInfo = FirebaseCoreDiagnostics;
+		};
+		164F8171238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 51671C73F008B5C0C3751B3855999213;
+			remoteInfo = FirebaseDatabase;
+		};
+		164F8173238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2DA0D814DFCB860D31D7BCD63D795858;
+			remoteInfo = FirebaseInstanceID;
+		};
+		164F8175238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 856B5CD56F194FAD26EA91620B66D614;
+			remoteInfo = GoogleDataTransport;
+		};
+		164F8177238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6942351307BC1F54575D9853307EAE0E;
+			remoteInfo = GoogleDataTransportCCTSupport;
+		};
+		164F8179238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B43874C6CBB50E7134FBEC24BABFE14F;
+			remoteInfo = GoogleUtilities;
+		};
+		164F817B238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C1998E0D8085221AD87F89B614C10E52;
+			remoteInfo = GTMSessionFetcher;
+		};
+		164F817D238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A9F46A999C47653013D3AD854352507;
+			remoteInfo = "leveldb-library";
+		};
+		164F817F238BC180000F95E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06FC5C9CF96D60C50FCD47D339C91951;
+			remoteInfo = nanopb;
+		};
 		16E08B6E236F924400340F09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
@@ -256,6 +339,12 @@
 		164F80DA23859CBF000F95E7 /* RealmNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmNews.swift; sourceTree = "<group>"; };
 		164F80EB2385B4A0000F95E7 /* RealmToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmToken.swift; sourceTree = "<group>"; };
 		164F80ED2385C623000F95E7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		164F8143238B0F23000F95E7 /* SyncGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncGroup.swift; sourceTree = "<group>"; };
+		164F814C238BBFFA000F95E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		164F8182238BD15E000F95E7 /* Register_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register_ViewController.swift; sourceTree = "<group>"; };
+		164F819B238BE256000F95E7 /* FIBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIBUser.swift; sourceTree = "<group>"; };
+		164F819E238BE44E000F95E7 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		164F81A0238BE6EA000F95E7 /* RealmFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFirebase.swift; sourceTree = "<group>"; };
 		1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Wall_Cell_tp1.xib; sourceTree = "<group>"; };
 		1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_Cell_tp1.swift; sourceTree = "<group>"; };
 		166667402347BB9900FD2B86 /* News_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News_ViewController.swift; sourceTree = "<group>"; };
@@ -450,6 +539,7 @@
 				1611F29C23788422002FCE3C /* RealmURL.swift */,
 				164F80DA23859CBF000F95E7 /* RealmNews.swift */,
 				164F80EB2385B4A0000F95E7 /* RealmToken.swift */,
+				164F81A0238BE6EA000F95E7 /* RealmFirebase.swift */,
 			);
 			path = Persistent;
 			sourceTree = "<group>";
@@ -509,6 +599,7 @@
 				D4001F4A2327B7DE0070829F /* LoginViewController.swift */,
 				164764BA23662209007D1B19 /* VKLogin_ViewController.swift */,
 				164F80ED2385C623000F95E7 /* StartViewController.swift */,
+				164F8182238BD15E000F95E7 /* Register_ViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -573,6 +664,7 @@
 		164764992365DF8A007D1B19 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				164F819D238BE42A000F95E7 /* Firebase */,
 				1611F2832378741C002FCE3C /* Realm */,
 				16D58C032369D61000735296 /* Parser */,
 				164764AE2365FAEC007D1B19 /* Factory */,
@@ -666,6 +758,22 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		164F819A238BE23F000F95E7 /* FIB */ = {
+			isa = PBXGroup;
+			children = (
+				164F819B238BE256000F95E7 /* FIBUser.swift */,
+			);
+			path = FIB;
+			sourceTree = "<group>";
+		};
+		164F819D238BE42A000F95E7 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				164F819E238BE44E000F95E7 /* FirebaseService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		164F8D5F236AD958003C50E3 /* waiter */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,6 +831,7 @@
 		16AB0B85232F7B6C00E21B7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				164F819A238BE23F000F95E7 /* FIB */,
 				1611F29123788285002FCE3C /* Persistent */,
 				1611F29023788269002FCE3C /* Non-Persistent */,
 			);
@@ -897,6 +1006,7 @@
 				16E08B48236DD7B900340F09 /* SyncFriend.swift */,
 				16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */,
 				16E08B4C236DD7DB00340F09 /* SyncGroupDetail.swift */,
+				164F8143238B0F23000F95E7 /* SyncGroup.swift */,
 			);
 			path = "Sync Module";
 			sourceTree = "<group>";
@@ -905,7 +1015,18 @@
 			isa = PBXGroup;
 			children = (
 				16E08B6F236F924400340F09 /* Alamofire.framework */,
+				164F816C238BC180000F95E7 /* FirebaseAuth.framework */,
+				164F816E238BC180000F95E7 /* FirebaseCore.framework */,
+				164F8170238BC180000F95E7 /* FirebaseCoreDiagnostics.framework */,
+				164F8172238BC180000F95E7 /* FirebaseDatabase.framework */,
+				164F8174238BC180000F95E7 /* FirebaseInstanceID.framework */,
+				164F8176238BC180000F95E7 /* GoogleDataTransport.framework */,
+				164F8178238BC180000F95E7 /* GoogleDataTransportCCTSupport.framework */,
+				164F817A238BC180000F95E7 /* GoogleUtilities.framework */,
+				164F817C238BC180000F95E7 /* GTMSessionFetcher.framework */,
 				16E08B71236F924400340F09 /* Kingfisher.framework */,
+				164F817E238BC180000F95E7 /* leveldb.framework */,
+				164F8180238BC180000F95E7 /* nanopb.framework */,
 				16E08B73236F924400340F09 /* Pods_vk1.framework */,
 				1611F28B2378741C002FCE3C /* Realm.framework */,
 				1611F28D2378741C002FCE3C /* RealmSwift.framework */,
@@ -1014,6 +1135,7 @@
 				16AB0B9A232F7E9F00E21B7F /* Storyboards */,
 				D4001F382327B7B50070829F /* AppDelegate.swift */,
 				D4001F442327B7B60070829F /* Info.plist */,
+				164F814C238BBFFA000F95E7 /* GoogleService-Info.plist */,
 				161C11452347592300A2EC9D /* Assets.xcassets */,
 			);
 			path = vk1;
@@ -1105,6 +1227,83 @@
 			remoteRef = 1611F28C2378741C002FCE3C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		164F816C238BC180000F95E7 /* FirebaseAuth.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FirebaseAuth.framework;
+			remoteRef = 164F816B238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164F816E238BC180000F95E7 /* FirebaseCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FirebaseCore.framework;
+			remoteRef = 164F816D238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164F8170238BC180000F95E7 /* FirebaseCoreDiagnostics.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FirebaseCoreDiagnostics.framework;
+			remoteRef = 164F816F238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164F8172238BC180000F95E7 /* FirebaseDatabase.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FirebaseDatabase.framework;
+			remoteRef = 164F8171238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164F8174238BC180000F95E7 /* FirebaseInstanceID.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FirebaseInstanceID.framework;
+			remoteRef = 164F8173238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164F8176238BC180000F95E7 /* GoogleDataTransport.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GoogleDataTransport.framework;
+			remoteRef = 164F8175238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164F8178238BC180000F95E7 /* GoogleDataTransportCCTSupport.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GoogleDataTransportCCTSupport.framework;
+			remoteRef = 164F8177238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164F817A238BC180000F95E7 /* GoogleUtilities.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GoogleUtilities.framework;
+			remoteRef = 164F8179238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164F817C238BC180000F95E7 /* GTMSessionFetcher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTMSessionFetcher.framework;
+			remoteRef = 164F817B238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164F817E238BC180000F95E7 /* leveldb.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = leveldb.framework;
+			remoteRef = 164F817D238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164F8180238BC180000F95E7 /* nanopb.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = nanopb.framework;
+			remoteRef = 164F817F238BC180000F95E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		16E08B6F236F924400340F09 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1146,6 +1345,7 @@
 				161B0E612349D1DA0081008B /* WallLike_View.xib in Resources */,
 				162BEFBE2372465E00D765FB /* subway-ticker_[allfont.ru].ttf in Resources */,
 				16AB0BA0232F7EE100E21B7F /* Friend.storyboard in Resources */,
+				164F8153238BBFFA000F95E7 /* GoogleService-Info.plist in Resources */,
 				16AB0B9E232F7ED600E21B7F /* MyGroup.storyboard in Resources */,
 				1666673B2347B75F00FD2B86 /* Wall_Cell_tp1.xib in Resources */,
 				166667622347CB8A00FD2B86 /* Wall_Cell_tp7.xib in Resources */,
@@ -1215,10 +1415,12 @@
 			files = (
 				161C11392347226100A2EC9D /* WaitIndicator.swift in Sources */,
 				16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */,
+				164F819F238BE44E000F95E7 /* FirebaseService.swift in Sources */,
 				164F80EE2385C623000F95E7 /* StartViewController.swift in Sources */,
 				1611F29B23788346002FCE3C /* RealmDetailGroup.swift in Sources */,
 				164F80BB238477AB000F95E7 /* PlainBasePresenter+CalledBySync.swift in Sources */,
 				16E08B66236F80B800340F09 /* FriendWall_ViewController.swift in Sources */,
+				164F8144238B0F23000F95E7 /* SyncGroup.swift in Sources */,
 				1666674E2347CA0B00FD2B86 /* Wall_Cell_tp6.swift in Sources */,
 				16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */,
 				16D58BE02366BABD00735296 /* DecodableProtocol.swift in Sources */,
@@ -1226,7 +1428,9 @@
 				16040619234E74FE0083F3C3 /* MyGroups_ViewController.swift in Sources */,
 				161C11402347401800A2EC9D /* CarouselFlowLayout.swift in Sources */,
 				16D58BED236725DC00735296 /* PullPresenterProtocol.swift in Sources */,
+				164F8183238BD15E000F95E7 /* Register_ViewController.swift in Sources */,
 				164F80B72384754D000F95E7 /* SectionedBasePresenter+CalledBySync.swift in Sources */,
+				164F819C238BE256000F95E7 /* FIBUser.swift in Sources */,
 				163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */,
 				16E08B78237010B200340F09 /* DetailPresenterProtocol.swift in Sources */,
 				161C1136234718B000A2EC9D /* WallCellConfigurator.swift in Sources */,
@@ -1235,6 +1439,7 @@
 				166CB8ED2382F8CA009DA806 /* DefaultSyncConfiguration.swift in Sources */,
 				16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */,
 				164F80AF2384744E000F95E7 /* SectionBasePresenter+CalledByView.swift in Sources */,
+				164F81A1238BE6EA000F95E7 /* RealmFirebase.swift in Sources */,
 				16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */,
 				16E08B5B236DF1B900340F09 /* Login.swift in Sources */,
 				1611273C234B2C8E0080FD54 /* FriendPost_ViewController.swift in Sources */,

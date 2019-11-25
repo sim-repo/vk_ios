@@ -17,6 +17,8 @@ class StartViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         runLogo()
         
+        self.performSegue(withIdentifier: "ShowFibAuth", sender: nil)
+        return
         DELAY_THREAD(sec: 3000) {[weak self] in
             if let (t,u) = RealmService.loadToken(),
             let token = t,

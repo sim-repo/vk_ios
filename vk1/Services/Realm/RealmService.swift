@@ -46,6 +46,20 @@ class RealmService {
     }
     
     
+    public static func loadFirebaseCredentials() -> (String?, String?)? {
+
+        guard let realm = getInstance(.safe)
+        else {
+            return nil
+        }
+        let login: String? = realm.objects(RealmFirebase.self).first?.login
+        let psw: String? = realm.objects(RealmFirebase.self).first?.psw
+        
+        return (login, psw)
+    }
+    
+    
+    
     public static func loadNews(filter: String? = nil) -> [News]? {
         
         var results: Results<RealmNews>
@@ -207,13 +221,28 @@ class RealmService {
     
     
     
-    public static func save(token: String, userId: Int) {
+    public static func saveVKCredentials(token: String, userId: Int) {
         let realm = getInstance(.safe)
         do {
             try realm?.write {
                 let obj = RealmToken()
                 obj.token = token
                 obj.userId = userId
+                realm?.add(obj, update: .all)
+            }
+        } catch(let err) {
+            catchError(msg: err.localizedDescription)
+        }
+    }
+    
+    
+    public static func saveFirebaseCredentials(login: String, psw: String) {
+        let realm = getInstance(.safe)
+        do {
+            try realm?.write {
+                let obj = RealmFirebase()
+                obj.login = login
+                obj.psw = psw
                 realm?.add(obj, update: .all)
             }
         } catch(let err) {

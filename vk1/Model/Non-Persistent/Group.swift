@@ -2,7 +2,7 @@ import Foundation
 import SwiftyJSON
 
 
-class Group: SectionModelProtocol, DecodableProtocol {
+class Group: PlainModelProtocol, DecodableProtocol {
    
     var id: typeId = 0
     var name: String = ""

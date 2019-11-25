@@ -1,7 +1,9 @@
 import UIKit
+import FirebaseAuth
+
 
 class LoginViewController: UIViewController {
-
+    
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loginInput: UITextField!
@@ -10,7 +12,7 @@ class LoginViewController: UIViewController {
     
     var presenter: PullPlainPresenterProtocol!
     
-    var waitLoadingContainer: UIView!
+    
     
     var waiter: SpinnerViewController?
     
@@ -23,17 +25,15 @@ class LoginViewController: UIViewController {
         
         setupPresenter()
         
+        if let (login, psw) = RealmService.loadFirebaseCredentials() {
+            loginInput.text = login
+            passwordInput.text = psw
+        }
+        
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView.addGestureRecognizer(hideKeyboardGesture)
-       
-        
-        let w: CGFloat = 232.0
-        waitLoadingContainer = WaitIndicator2(frame: CGRect(x: wHalfScreen - w/2.0,
-                                                            y: view.frame.height/3, width: wScreen, height: 100))
-        waitLoadingContainer.backgroundColor = UIColor.clear
-        view.addSubview(waitLoadingContainer)
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,6 +61,13 @@ class LoginViewController: UIViewController {
         self.scrollView.scrollIndicatorInsets = contentInsets
     }
     
+    @IBAction func doPressLogin(_ sender: Any) {
+        signIn()
+    }
+    
+    @IBAction func doPressRegister(_ sender: Any) {
+        performSegue(withIdentifier: "ShowRegisterSegue", sender: nil)
+    }
     
     @objc func keyboardWasHidden(){
         self.scrollView.contentInset = UIEdgeInsets.zero
@@ -70,24 +77,6 @@ class LoginViewController: UIViewController {
     @objc func hideKeyboard() {
         self.scrollView?.endEditing(true)
     }
-    
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return true
-        let login = loginInput.text!
-        let password = passwordInput.text!
-        if login == "admin" && password == "123456" {
-            return true
-        } else {
-            let alert = UIAlertController(title: "Ошибка входа", message: "Неверный логин или пароль. Повторите попытку снова.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-            
-            return false
-        }
-    }
-    
 }
 
 
@@ -99,11 +88,37 @@ extension LoginViewController: PushPlainViewProtocol{
         waiter = SpinnerViewController(vc: self)
         waiter?.add(vcView: view)
     }
-          
+    
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
         waiter?.stop(vcView: view)
     }
     
-     func insertItems(startIdx: Int, endIdx: Int) {}
-           
+    func insertItems(startIdx: Int, endIdx: Int) {}
+}
+
+
+// firebase:
+extension LoginViewController {
+
+    func signIn() {
+        let login = loginInput.text!
+        let password = passwordInput.text!
+        
+        Auth.auth().signIn(withEmail: login, password: password) {[weak self] (success, err) in
+            if let success_ = success {
+                self?.performSegue(withIdentifier: "ShowMainSegue1", sender: nil)
+            } else {
+                self?.showAlert(err: err?.localizedDescription ?? "")
+            }
+        }
+    }
+    
+    func showAlert(err: String) {
+          let alert = UIAlertController(title: "Wrong registration",
+                                               message: err,
+                                               preferredStyle: UIAlertController.Style.alert)
+                 
+          alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default))
+          self.present(alert, animated: true, completion: nil)
+      }
 }
