@@ -335,7 +335,7 @@ class RealmService {
 
     
     
-    //MARK:- transofm: model into realm
+    //MARK:- transfom: model into realm
     
     private static func wallToRealm(_ wall: Wall) -> RealmWall {
         let realmWall = RealmWall()

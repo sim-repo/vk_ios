@@ -32,6 +32,45 @@ class MyButton_Adaptive : UIButton {
 }
 
 
+class MyButton_AdaptiveRotated: UIButton {
+    
+    var isPressed = false
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        if (isDark) {
+            if currentImage != nil {
+              tintColor = ColorSystemHelper.secondary
+            }
+            setTitleColor(ColorSystemHelper.secondary, for: .normal)
+        } else {
+            if currentImage != nil {
+              tintColor = ColorSystemHelper.primary
+            }
+            setTitleColor(ColorSystemHelper.primary, for: .normal)
+        }
+    }
+    
+    func rotateButton(){
+        isPressed = !isPressed
+        UIView.animate(
+            withDuration: 1.0,
+            delay: 0.0,
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 10.0,
+            options: [],
+            animations: {
+                let angle: CGFloat =
+                    self.isPressed
+                        ? .pi / 4
+                        : 0.0
+                self.transform = CGAffineTransform(rotationAngle: angle)
+                self.layoutIfNeeded()},
+            completion: nil)
+    }
+}
+
+
 
 
 //MARK:- UILabel

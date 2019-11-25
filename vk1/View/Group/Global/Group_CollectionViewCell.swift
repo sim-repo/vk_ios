@@ -5,7 +5,6 @@ import Kingfisher
 class Group_CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var nameLabel: UILabel!
     
     var groupId: String?
@@ -15,11 +14,13 @@ class Group_CollectionViewCell: UICollectionViewCell {
         self.presenter = presenter
         imageView?.kf.setImage(with: group.avaURL200)
         nameLabel.text = group.name
-        descTextView.text = group.desc
         groupId = String(group.id)
     }
     
-    @IBAction func joinGroup(_ sender: Any) {
+    
+    @IBAction func doPressJoinGroup(_ sender: MyButton_AdaptiveRotated) {
+        sender.rotateButton()
         (presenter as? GroupPresenter)?.joinGroup(groupId: groupId!)
     }
+
 }
