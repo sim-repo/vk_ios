@@ -5,6 +5,7 @@ protocol PullPresenterProtocol: class {
     func getData(indexPath: IndexPath?) -> ModelProtocol?
     func getIndexPath(model: ModelProtocol) -> IndexPath?
     
+    func viewDidLoad()
     func viewDidDisappear()
     func viewDidFilterInput(_ filterText: String)
     func viewDidSeguePrepare(segueId: ModuleEnum.SegueIdEnum, indexPath: IndexPath)

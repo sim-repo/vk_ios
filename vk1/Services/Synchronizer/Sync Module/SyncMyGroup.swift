@@ -42,7 +42,7 @@ class SyncMyGroup: SyncBaseProtocol {
         
         let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
         
-        ApiVK.myGroupRequest(onSuccess: onSuccess, onError: onError)
+        ApiVKService.myGroupRequest(onSuccess: onSuccess, onError: onError)
     }
 }
 

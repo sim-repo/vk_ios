@@ -21,7 +21,7 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     final func clearDataSource(id: typeId? = nil) {
         clearCache(id: id, predicateEnum: .equal)
         RealmService.delete(moduleEnum: moduleEnum, id: id)
-        SynchronizerManager.shared.didClearDataSource(moduleEnum: moduleEnum)
+        SyncMgt.shared.didClearDataSource(moduleEnum: moduleEnum)
     }
     
     final func setView(vc: PushViewProtocol) {

@@ -8,9 +8,9 @@ import UIKit
 
 // well knows about presenters
 
-class SynchronizerManager {
+class SyncMgt {
     
-    static let shared = SynchronizerManager()
+    static let shared = SyncMgt()
     private init() {
         self.synchronizers = [
             SyncWall.shared,
@@ -42,19 +42,7 @@ class SynchronizerManager {
         sync(moduleEnum)
     }
     
-    public func doFilter(filter: String, moduleEnum: ModuleEnum){
-        switch moduleEnum {
-        case .group:
-            SyncGroup.shared.search(filter: filter)
-        default:
-            log("doFilter(): no case \(moduleEnum)", isErr: true)
-        }
-    }
-    
-    public func doJoin(groupId: String) {
-        SyncGroup.shared.join(groupId: groupId)
-    }
-    
+   
     public func viewDidDisappear(presenter: SynchronizedPresenterProtocol){
         let moduleEnum = ModuleEnum(presenter: presenter)
         switch moduleEnum {
@@ -90,11 +78,9 @@ class SynchronizerManager {
     }
     
     
-    
-    
     func sync(_ moduleEnum: ModuleEnum){
          switch moduleEnum {
-             
+        
          case .friend:
              SyncFriend.shared.sync()
              
@@ -232,9 +218,7 @@ class SynchronizerManager {
         }
     }
     
-    
-    
-    private func log(_ msg: String, isErr: Bool) {
+    internal func log(_ msg: String, isErr: Bool) {
         if isErr {
             catchError(msg: "SynchronizerManager(): " + msg)
         } else {

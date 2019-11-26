@@ -1,7 +1,8 @@
 import UIKit
 import Alamofire
+import WebKit
 
-class ApiVK {
+class ApiVKService {
     
     
     static func friendRequest(onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
@@ -14,7 +15,7 @@ class ApiVK {
                   "fields":["bdate","sex","photo_50","photo_200_orig"],
                   "v": Network.versionAPI
         ]
-        AlamofireNetworkManager.requestItems(clazz: Friend.self, urlPath, params, onSuccess, onError)
+        AlamofireService.requestItems(clazz: Friend.self, urlPath, params, onSuccess, onError)
     }
     
     
@@ -37,7 +38,7 @@ class ApiVK {
                  "offset": "\(offset)",
                  "v": Network.versionAPI
         ]
-        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
+        AlamofireService.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
     }
       
     
@@ -52,7 +53,7 @@ class ApiVK {
                   "fields":["description","members_count","photo_50","photo_200","cover"],
             "v": Network.versionAPI
         ]
-        AlamofireNetworkManager.requestItems(clazz: MyGroup.self, urlPath, params, onSuccess, onError)
+        AlamofireService.requestItems(clazz: MyGroup.self, urlPath, params, onSuccess, onError)
     }
     
     
@@ -67,7 +68,7 @@ class ApiVK {
             "fields":["counters","cover"],
             "v": Network.versionAPI
         ]
-        AlamofireNetworkManager.requestSingle(clazz: DetailGroup.self, urlPath, params, onSuccess, onError)
+        AlamofireService.requestSingle(clazz: DetailGroup.self, urlPath, params, onSuccess, onError)
     }
     
     
@@ -81,7 +82,7 @@ class ApiVK {
             "count": 10,
             "v": Network.versionAPI
         ]
-        AlamofireNetworkManager.requestItems(clazz: Group.self, urlPath, params, onSuccess, onError)
+        AlamofireService.requestItems(clazz: Group.self, urlPath, params, onSuccess, onError)
     }
     
     static func groupJoinRequest(groupId: String) {
@@ -93,7 +94,7 @@ class ApiVK {
             "group_id": groupId,
             "v": Network.versionAPI
         ]
-        AlamofireNetworkManager.requestJoin(clazz: Group.self, urlPath, params)
+        AlamofireService.requestJoin(clazz: Group.self, urlPath, params)
     }
         
         
@@ -118,7 +119,7 @@ class ApiVK {
                  "count": "1",
                  "v": Network.versionAPI
         ]
-        AlamofireNetworkManager.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
+        AlamofireService.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
         
     }
     
@@ -146,7 +147,7 @@ class ApiVK {
             params["start_time"] = sinceTime
         }
         
-        AlamofireNetworkManager.newsRequest(urlPath,
+        AlamofireService.newsRequest(urlPath,
                                             params,
                                             ownOffset,
                                             vkOffset,
@@ -154,6 +155,23 @@ class ApiVK {
                                             onError,
                                             offsetCompletion
                                             )
+    }
+    
+    static func authVkRequest(webview: WKWebView) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "oauth.vk.com"
+        urlComponents.path = "/authorize"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "client_id", value: Network.clientAPI),
+            URLQueryItem(name: "display", value: "mobile"),
+            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+            URLQueryItem(name: "scope", value: "wall,friends,groups"),
+            URLQueryItem(name: "response_type", value: "token"),
+            URLQueryItem(name: "v", value: "5.87")
+        ]
+        let request = URLRequest(url: urlComponents.url!)
+        webview.load(request)
     }
     
 }

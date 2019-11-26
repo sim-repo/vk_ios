@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04ABED41238D38EF0077AB59 /* Login_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABED40238D38EF0077AB59 /* Login_ViewController.swift */; };
+		04ABED59238D5AC00077AB59 /* SyncVkLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABED58238D5AC00077AB59 /* SyncVkLogin.swift */; };
+		04ABED5B238D5D220077AB59 /* SyncMgt+Specific.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABED5A238D5D220077AB59 /* SyncMgt+Specific.swift */; };
+		04ABEDA3238D760C0077AB59 /* FirSignin_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04ABEDA2238D760C0077AB59 /* FirSignin_View.xib */; };
+		04ABEDA5238D76D90077AB59 /* FirSignin_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABEDA4238D76D90077AB59 /* FirSignin_View.swift */; };
+		04ABEDA7238D7B8A0077AB59 /* FirSignup_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABEDA6238D7B8A0077AB59 /* FirSignup_View.swift */; };
+		04ABEDA9238D7BA20077AB59 /* FirSignup_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04ABEDA8238D7BA20077AB59 /* FirSignup_View.xib */; };
 		16040601234E390A0083F3C3 /* RotatedPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16040600234E390A0083F3C3 /* RotatedPopAnimator.swift */; };
 		16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16040602234E39130083F3C3 /* CustomInteractiveTransition.swift */; };
 		16040605234E39170083F3C3 /* RotatedNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16040604234E39170083F3C3 /* RotatedNavigationController.swift */; };
@@ -52,7 +59,7 @@
 		163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */; };
 		163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */; };
 		1647649C2365E031007D1B19 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649B2365E031007D1B19 /* Session.swift */; };
-		1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */; };
+		1647649E2365E04C007D1B19 /* AlamofireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649D2365E04C007D1B19 /* AlamofireService.swift */; };
 		164764B32365FB86007D1B19 /* PushViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B22365FB86007D1B19 /* PushViewProtocol.swift */; };
 		164764B62365FC2E007D1B19 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764B52365FC2E007D1B19 /* Constant.swift */; };
 		164764BB23662209007D1B19 /* VKLogin_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164764BA23662209007D1B19 /* VKLogin_ViewController.swift */; };
@@ -119,12 +126,12 @@
 		16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEF236847C300735296 /* CellImagesHelper.swift */; };
 		16D58BF52368516800735296 /* WallHeader_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D58BF42368516800735296 /* WallHeader_View.xib */; };
 		16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BF623685F0900735296 /* WallHeader_View.swift */; };
-		16D58BFE236986EB00735296 /* SynchronizerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFD236986EB00735296 /* SynchronizerManager.swift */; };
+		16D58BFE236986EB00735296 /* SyncMgt+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFD236986EB00735296 /* SyncMgt+Common.swift */; };
 		16D58C052369D65100735296 /* WallParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C042369D65100735296 /* WallParser.swift */; };
 		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
 		16E08B2C236B34AF00340F09 /* GroupParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B2B236B34AF00340F09 /* GroupParser.swift */; };
 		16E08B33236B3C5F00340F09 /* MyGroupDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B32236B3C5F00340F09 /* MyGroupDetailPresenter.swift */; };
-		16E08B35236B499B00340F09 /* ApiVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B34236B499B00340F09 /* ApiVK.swift */; };
+		16E08B35236B499B00340F09 /* ApiVKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B34236B499B00340F09 /* ApiVKService.swift */; };
 		16E08B37236B62FD00340F09 /* DetailGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B36236B62FD00340F09 /* DetailGroup.swift */; };
 		16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B38236C45E500340F09 /* SpinnerViewController.swift */; };
 		16E08B3C236C6C9800340F09 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B3B236C6C9800340F09 /* LoginPresenter.swift */; };
@@ -277,6 +284,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04ABED40238D38EF0077AB59 /* Login_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_ViewController.swift; sourceTree = "<group>"; };
+		04ABED58238D5AC00077AB59 /* SyncVkLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncVkLogin.swift; sourceTree = "<group>"; };
+		04ABED5A238D5D220077AB59 /* SyncMgt+Specific.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SyncMgt+Specific.swift"; sourceTree = "<group>"; };
+		04ABEDA2238D760C0077AB59 /* FirSignin_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirSignin_View.xib; sourceTree = "<group>"; };
+		04ABEDA4238D76D90077AB59 /* FirSignin_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirSignin_View.swift; sourceTree = "<group>"; };
+		04ABEDA6238D7B8A0077AB59 /* FirSignup_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirSignup_View.swift; sourceTree = "<group>"; };
+		04ABEDA8238D7BA20077AB59 /* FirSignup_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirSignup_View.xib; sourceTree = "<group>"; };
 		16040600234E390A0083F3C3 /* RotatedPopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPopAnimator.swift; sourceTree = "<group>"; };
 		16040602234E39130083F3C3 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		16040604234E39170083F3C3 /* RotatedNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedNavigationController.swift; sourceTree = "<group>"; };
@@ -322,7 +336,7 @@
 		163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupPresenter.swift; sourceTree = "<group>"; };
 		163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedBasePresenter.swift; sourceTree = "<group>"; };
 		1647649B2365E031007D1B19 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkManager.swift; sourceTree = "<group>"; };
+		1647649D2365E04C007D1B19 /* AlamofireService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireService.swift; sourceTree = "<group>"; };
 		164764B22365FB86007D1B19 /* PushViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushViewProtocol.swift; sourceTree = "<group>"; };
 		164764B52365FC2E007D1B19 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		164764BA23662209007D1B19 /* VKLogin_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLogin_ViewController.swift; sourceTree = "<group>"; };
@@ -390,12 +404,12 @@
 		16D58BEF236847C300735296 /* CellImagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImagesHelper.swift; sourceTree = "<group>"; };
 		16D58BF42368516800735296 /* WallHeader_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallHeader_View.xib; sourceTree = "<group>"; };
 		16D58BF623685F0900735296 /* WallHeader_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallHeader_View.swift; sourceTree = "<group>"; };
-		16D58BFD236986EB00735296 /* SynchronizerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizerManager.swift; sourceTree = "<group>"; };
+		16D58BFD236986EB00735296 /* SyncMgt+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SyncMgt+Common.swift"; sourceTree = "<group>"; };
 		16D58C042369D65100735296 /* WallParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallParser.swift; sourceTree = "<group>"; };
 		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
 		16E08B2B236B34AF00340F09 /* GroupParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupParser.swift; sourceTree = "<group>"; };
 		16E08B32236B3C5F00340F09 /* MyGroupDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupDetailPresenter.swift; sourceTree = "<group>"; };
-		16E08B34236B499B00340F09 /* ApiVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVK.swift; sourceTree = "<group>"; };
+		16E08B34236B499B00340F09 /* ApiVKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVKService.swift; sourceTree = "<group>"; };
 		16E08B36236B62FD00340F09 /* DetailGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGroup.swift; sourceTree = "<group>"; };
 		16E08B38236C45E500340F09 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		16E08B3B236C6C9800340F09 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -442,6 +456,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04ABED8B238D75D90077AB59 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				04ABEDA4238D76D90077AB59 /* FirSignin_View.swift */,
+				04ABEDA2238D760C0077AB59 /* FirSignin_View.xib */,
+				04ABEDA6238D7B8A0077AB59 /* FirSignup_View.swift */,
+				04ABEDA8238D7BA20077AB59 /* FirSignup_View.xib */,
+			);
+			path = xib;
+			sourceTree = "<group>";
+		};
 		160405FD234E38BB0083F3C3 /* transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,6 +621,8 @@
 		16200D0723388E8D00F02440 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				04ABED8B238D75D90077AB59 /* xib */,
+				04ABED40238D38EF0077AB59 /* Login_ViewController.swift */,
 				D4001F4A2327B7DE0070829F /* LoginViewController.swift */,
 				164764BA23662209007D1B19 /* VKLogin_ViewController.swift */,
 				164F80ED2385C623000F95E7 /* StartViewController.swift */,
@@ -679,8 +706,8 @@
 			isa = PBXGroup;
 			children = (
 				1647649B2365E031007D1B19 /* Session.swift */,
-				1647649D2365E04C007D1B19 /* AlamofireNetworkManager.swift */,
-				16E08B34236B499B00340F09 /* ApiVK.swift */,
+				1647649D2365E04C007D1B19 /* AlamofireService.swift */,
+				16E08B34236B499B00340F09 /* ApiVKService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -938,7 +965,8 @@
 			children = (
 				166CB8EB2382F8B7009DA806 /* Configuration */,
 				16E08B45236DD67D00340F09 /* Sync Module */,
-				16D58BFD236986EB00735296 /* SynchronizerManager.swift */,
+				16D58BFD236986EB00735296 /* SyncMgt+Common.swift */,
+				04ABED5A238D5D220077AB59 /* SyncMgt+Specific.swift */,
 			);
 			path = Synchronizer;
 			sourceTree = "<group>";
@@ -1007,6 +1035,7 @@
 				16E08B4A236DD7C800340F09 /* SyncMyGroup.swift */,
 				16E08B4C236DD7DB00340F09 /* SyncGroupDetail.swift */,
 				164F8143238B0F23000F95E7 /* SyncGroup.swift */,
+				04ABED58238D5AC00077AB59 /* SyncVkLogin.swift */,
 			);
 			path = "Sync Module";
 			sourceTree = "<group>";
@@ -1343,6 +1372,8 @@
 				1666675C2347CB6700FD2B86 /* Wall_Cell_tp4.xib in Resources */,
 				16200D1323389A1B00F02440 /* Wall.storyboard in Resources */,
 				161B0E612349D1DA0081008B /* WallLike_View.xib in Resources */,
+				04ABEDA9238D7BA20077AB59 /* FirSignup_View.xib in Resources */,
+				04ABEDA3238D760C0077AB59 /* FirSignin_View.xib in Resources */,
 				162BEFBE2372465E00D765FB /* subway-ticker_[allfont.ru].ttf in Resources */,
 				16AB0BA0232F7EE100E21B7F /* Friend.storyboard in Resources */,
 				164F8153238BBFFA000F95E7 /* GoogleService-Info.plist in Resources */,
@@ -1425,6 +1456,7 @@
 				16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */,
 				16D58BE02366BABD00735296 /* DecodableProtocol.swift in Sources */,
 				163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */,
+				04ABEDA5238D76D90077AB59 /* FirSignin_View.swift in Sources */,
 				16040619234E74FE0083F3C3 /* MyGroups_ViewController.swift in Sources */,
 				161C11402347401800A2EC9D /* CarouselFlowLayout.swift in Sources */,
 				16D58BED236725DC00735296 /* PullPresenterProtocol.swift in Sources */,
@@ -1444,9 +1476,10 @@
 				16E08B5B236DF1B900340F09 /* Login.swift in Sources */,
 				1611273C234B2C8E0080FD54 /* FriendPost_ViewController.swift in Sources */,
 				164764B62365FC2E007D1B19 /* Constant.swift in Sources */,
+				04ABED41238D38EF0077AB59 /* Login_ViewController.swift in Sources */,
 				D4001F4B2327B7DE0070829F /* LoginViewController.swift in Sources */,
 				16E08B7E2370338000340F09 /* ModuleEnum.swift in Sources */,
-				16E08B35236B499B00340F09 /* ApiVK.swift in Sources */,
+				16E08B35236B499B00340F09 /* ApiVKService.swift in Sources */,
 				16E08B2C236B34AF00340F09 /* GroupParser.swift in Sources */,
 				166CB8EF2382F93E009DA806 /* Date+Extensions.swift in Sources */,
 				166D1B07234EFF5000C552E4 /* CustomNavigationController.swift in Sources */,
@@ -1487,6 +1520,7 @@
 				1611F29923788333002FCE3C /* RealmGroup.swift in Sources */,
 				16AB0BA9232F985D00E21B7F /* Group.swift in Sources */,
 				166CB8E42382E690009DA806 /* SyncBase.swift in Sources */,
+				04ABED59238D5AC00077AB59 /* SyncVkLogin.swift in Sources */,
 				1647649C2365E031007D1B19 /* Session.swift in Sources */,
 				16200D0623388E5D00F02440 /* RoundedImage.swift in Sources */,
 				16200D0E233893B500F02440 /* ProfilePresenter.swift in Sources */,
@@ -1499,7 +1533,7 @@
 				16200D012333731D00F02440 /* DetailFriendPresenter.swift in Sources */,
 				16E08B86237065F100340F09 /* MyGroupWallPresenter.swift in Sources */,
 				16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */,
-				1647649E2365E04C007D1B19 /* AlamofireNetworkManager.swift in Sources */,
+				1647649E2365E04C007D1B19 /* AlamofireService.swift in Sources */,
 				166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */,
 				164F80EC2385B4A0000F95E7 /* RealmToken.swift in Sources */,
 				1611F28F23787437002FCE3C /* RealmService.swift in Sources */,
@@ -1516,10 +1550,11 @@
 				16FF6FD32351FDCD001C33CF /* PostImageView.swift in Sources */,
 				16040605234E39170083F3C3 /* RotatedNavigationController.swift in Sources */,
 				16200D1F2338AB3300F02440 /* LettersSearchControl.swift in Sources */,
-				16D58BFE236986EB00735296 /* SynchronizerManager.swift in Sources */,
+				16D58BFE236986EB00735296 /* SyncMgt+Common.swift in Sources */,
 				166667482347C9ED00FD2B86 /* Wall_Cell_tp3.swift in Sources */,
 				16E08B49236DD7B900340F09 /* SyncFriend.swift in Sources */,
 				1611F29723788326002FCE3C /* RealmMyGroup.swift in Sources */,
+				04ABED5B238D5D220077AB59 /* SyncMgt+Specific.swift in Sources */,
 				1611F29523788319002FCE3C /* RealmFriend.swift in Sources */,
 				164F80CB238565CD000F95E7 /* SyncNews.swift in Sources */,
 				161B0E632349D27F0081008B /* WallLike_View.swift in Sources */,
@@ -1534,6 +1569,7 @@
 				16AB0B89232F7C7800E21B7F /* MyGroup.swift in Sources */,
 				16FF6FD823526DFF001C33CF /* LinesEffect.swift in Sources */,
 				16E08B33236B3C5F00340F09 /* MyGroupDetailPresenter.swift in Sources */,
+				04ABEDA7238D7B8A0077AB59 /* FirSignup_View.swift in Sources */,
 				166667562347CA2A00FD2B86 /* Wall_Cell_tp9.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

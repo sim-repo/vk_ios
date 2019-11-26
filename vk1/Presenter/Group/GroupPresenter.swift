@@ -10,7 +10,7 @@ class GroupPresenter: PlainPresenterProtocols {
     }
     
     func joinGroup(groupId: String) {
-        SynchronizerManager.shared.doJoin(groupId: groupId)
+        SyncMgt.shared.doJoin(groupId: groupId)
         fibAdd(groupId: groupId)
     }
     

@@ -104,8 +104,12 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
     }
     
     
+    @objc func viewDidLoad() {
+    
+    }
+    
     final func viewDidDisappear() {
-        SynchronizerManager.shared.viewDidDisappear(presenter: self)
+        SyncMgt.shared.viewDidDisappear(presenter: self)
     }
     
     
@@ -134,7 +138,7 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
         pageInProgess = true
         guard let _ = self as? PaginationPresenterProtocol else { return }
         log("didEndScroll(): started", isErr: false)
-        SynchronizerManager.shared.doSync(moduleEnum: moduleEnum)
+        SyncMgt.shared.doSync(moduleEnum: moduleEnum)
     }
     
     private func log(_ msg: String, isErr: Bool) {

@@ -18,7 +18,7 @@ class SyncGroup: SyncBaseProtocol {
     
     
     public func join(groupId: String) {
-         ApiVK.groupJoinRequest(groupId: groupId)
+         ApiVKService.groupJoinRequest(groupId: groupId)
     }
     
     
@@ -28,7 +28,7 @@ class SyncGroup: SyncBaseProtocol {
         
         let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
         
-        ApiVK.groupRequest(txtSearch: filter, onSuccess: onSuccess, onError: onError)
+        ApiVKService.groupRequest(txtSearch: filter, onSuccess: onSuccess, onError: onError)
         
     }
 }

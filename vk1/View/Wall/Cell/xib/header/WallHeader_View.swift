@@ -34,7 +34,7 @@ class WallHeader_View : UIView{
     }
 
     private func commonInit(){
-       Bundle.main.loadNibNamed("WallHeader_View", owner: self, options: nil)
+       let view = Bundle.main.loadNibNamed("WallHeader_View", owner: self, options: nil)
        addSubview(contentView)
        contentView.frame = self.bounds
        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

@@ -43,7 +43,7 @@ class SyncFriend: SyncBaseProtocol {
         
         let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
         
-        ApiVK.friendRequest(onSuccess: onSuccess, onError: onError)
+        ApiVKService.friendRequest(onSuccess: onSuccess, onError: onError)
     }
 }
 

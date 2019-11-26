@@ -58,7 +58,7 @@ class SyncGroupDetail: SyncBaseProtocol {
         
         let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
         
-        ApiVK.detailGroupRequest(group_id: id, onSuccess: onSuccess, onError: onError)
+        ApiVKService.detailGroupRequest(group_id: id, onSuccess: onSuccess, onError: onError)
     }
 }
 

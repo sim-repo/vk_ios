@@ -62,7 +62,7 @@ extension MyGroupDetailPresenter: DetailPresenterProtocol {
         }
         // #child begin
         detailPresenter.setParentModel(model: detail)
-        SynchronizerManager.shared.doSync(moduleEnum: .my_group_wall)
+        SyncMgt.shared.doSync(moduleEnum: .my_group_wall)
         // #child end
     }
     

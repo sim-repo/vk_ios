@@ -100,7 +100,7 @@ class SyncMyGroupWall: SyncBaseProtocol {
 
         let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
 
-        ApiVK.wallRequest(-abs(id),
+        ApiVKService.wallRequest(-abs(id),
                           onSuccess,
                           onError,
                           offsetCompletion,

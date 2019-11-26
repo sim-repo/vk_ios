@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
          // Start background fetch
-         SynchronizerManager.shared.startScheduledSync { (hasNewData) in
+         SyncMgt.shared.startScheduledSync { (hasNewData) in
              completionHandler(hasNewData ? .newData : .noData)
          }
      }

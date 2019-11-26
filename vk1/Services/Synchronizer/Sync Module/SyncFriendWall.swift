@@ -106,7 +106,7 @@ class SyncFriendWall: SyncBaseProtocol {
         
         let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
          
-        ApiVK.friendWallRequest(id,
+        ApiVKService.friendWallRequest(id,
                                 offset,
                                 count,
                                 onSuccess,

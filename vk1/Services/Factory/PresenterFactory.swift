@@ -80,7 +80,7 @@ class PresenterFactory {
         } else {
             presenter?.setView(vc: vc)
         }
-        SynchronizerManager.shared.viewDidLoad(presenterEnum: moduleEnum)
+        SyncMgt.shared.viewDidLoad(presenterEnum: moduleEnum)
         return presenter
     }
     

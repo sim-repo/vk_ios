@@ -78,7 +78,7 @@ class SyncNews: SyncBaseProtocol {
         
         let (onSuccess, onError) = getCompletions(presenter: presenter, dispatchCompletion)
         
-        ApiVK.newsRequest(ownOffset,
+        ApiVKService.newsRequest(ownOffset,
                           vkOffset,
                           Network.newsResponseItemsPerRequest,
                           onSuccess,

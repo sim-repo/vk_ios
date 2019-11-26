@@ -37,7 +37,7 @@ class SyncBase {
     func getCompletions(presenter: SynchronizedPresenterProtocol, _ dispatchCompletion: (()->Void)? = nil) ->
         (onSuccess_PresenterCompletion, onErrResponse_SyncCompletion) {
         
-        let onSuccess_SyncCompletion = SynchronizerManager.shared.getFinishNetworkCompletion()
+        let onSuccess_SyncCompletion = SyncMgt.shared.getFinishNetworkCompletion()
             
         let onSuccess_PresenterCompletion = presenter.didSuccessNetworkResponse { [weak self] in
             onSuccess_SyncCompletion(presenter)
@@ -47,7 +47,7 @@ class SyncBase {
         }
 
         
-        let onError_SyncCompletion = SynchronizerManager.shared.getOnErrorCompletion() { [weak self] in
+        let onError_SyncCompletion = SyncMgt.shared.getOnErrorCompletion() { [weak self] in
             dispatchCompletion?()
             self?.syncing = false
             if self!.tryCount < 3 {

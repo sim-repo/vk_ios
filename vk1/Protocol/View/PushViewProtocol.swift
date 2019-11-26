@@ -17,3 +17,11 @@ protocol PushPlainViewProtocol : PushViewProtocol {
     func viewReloadData(moduleEnum: ModuleEnum)
     func insertItems(startIdx: Int, endIdx: Int)
 }
+
+
+//MARK: - Specific Protocols
+
+protocol PushLoginViewProtocol {
+    func showVkAuthentication(completion: (()->Void)?)
+    func showFibAuthentication(login: String, psw: String, completion: (()->Void)?)
+}
