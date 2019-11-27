@@ -82,6 +82,7 @@
 		164F819C238BE256000F95E7 /* FIBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F819B238BE256000F95E7 /* FIBUser.swift */; };
 		164F819F238BE44E000F95E7 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F819E238BE44E000F95E7 /* FirebaseService.swift */; };
 		164F81A1238BE6EA000F95E7 /* RealmFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F81A0238BE6EA000F95E7 /* RealmFirebase.swift */; };
+		164F81FB238E72AF000F95E7 /* VkTokenParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F81FA238E72AE000F95E7 /* VkTokenParser.swift */; };
 		1666673B2347B75F00FD2B86 /* Wall_Cell_tp1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */; };
 		1666673D2347B8E900FD2B86 /* Wall_Cell_tp1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */; };
 		166667412347BB9900FD2B86 /* News_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667402347BB9900FD2B86 /* News_ViewController.swift */; };
@@ -359,6 +360,7 @@
 		164F819B238BE256000F95E7 /* FIBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIBUser.swift; sourceTree = "<group>"; };
 		164F819E238BE44E000F95E7 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		164F81A0238BE6EA000F95E7 /* RealmFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFirebase.swift; sourceTree = "<group>"; };
+		164F81FA238E72AE000F95E7 /* VkTokenParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkTokenParser.swift; sourceTree = "<group>"; };
 		1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Wall_Cell_tp1.xib; sourceTree = "<group>"; };
 		1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_Cell_tp1.swift; sourceTree = "<group>"; };
 		166667402347BB9900FD2B86 /* News_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News_ViewController.swift; sourceTree = "<group>"; };
@@ -706,8 +708,8 @@
 			isa = PBXGroup;
 			children = (
 				1647649B2365E031007D1B19 /* Session.swift */,
-				1647649D2365E04C007D1B19 /* AlamofireService.swift */,
 				16E08B34236B499B00340F09 /* ApiVKService.swift */,
+				1647649D2365E04C007D1B19 /* AlamofireService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -977,6 +979,7 @@
 				16D58C042369D65100735296 /* WallParser.swift */,
 				16E08B2B236B34AF00340F09 /* GroupParser.swift */,
 				164F80CD23858012000F95E7 /* NewsParser.swift */,
+				164F81FA238E72AE000F95E7 /* VkTokenParser.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -1473,6 +1476,7 @@
 				164F80AF2384744E000F95E7 /* SectionBasePresenter+CalledByView.swift in Sources */,
 				164F81A1238BE6EA000F95E7 /* RealmFirebase.swift in Sources */,
 				16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */,
+				164F81FB238E72AF000F95E7 /* VkTokenParser.swift in Sources */,
 				16E08B5B236DF1B900340F09 /* Login.swift in Sources */,
 				1611273C234B2C8E0080FD54 /* FriendPost_ViewController.swift in Sources */,
 				164764B62365FC2E007D1B19 /* Constant.swift in Sources */,

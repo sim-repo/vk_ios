@@ -14,6 +14,12 @@ class SyncVkLogin: SyncBaseProtocol {
         ApiVKService.authVkRequest(webview: webview)
     }
     
+    func checkToken(token: String, _ onChecked: ((Bool)->Void)?) {
+        let presenter = PresenterFactory.shared.getInstance(clazz: LoginPresenter.self)
+        let (onSuccess, onError) = getCompletions(presenter: presenter, nil)
+        ApiVKService.checkVkTokenRequest(token: token, onSuccess, onError, onChecked)
+    }
+    
     func sync(_ dispatchCompletion: (()->Void)? = nil) {
     }
 }

@@ -17,10 +17,11 @@ class FirebaseService {
     }
     
     
-    func signIn(login: String, psw: String, onSuccess: ((String, String)->Void)?, onError: ((String)->Void)? ) {
+    func signIn(login: MyAuth.login, psw: MyAuth.psw, onSuccess: (()->Void)?, onError: ((String)->Void)? ) {
+ 
         Auth.auth().signIn(withEmail: login, password: psw) { (success, err) in
             if let _ = success {
-                onSuccess?(login, psw)
+                onSuccess?()
                 return
             }
             if let error = err {
@@ -30,10 +31,10 @@ class FirebaseService {
     }
     
     
-    func signUp(login: String, psw: String, onSuccess: ((String, String)->Void)?, onError: ((String)->Void)? ) {
+    func signUp(login: MyAuth.login, psw: MyAuth.psw, onSuccess: ((MyAuth.login, MyAuth.psw)->Void)?, onError: ((String)->Void)? ) {
         Auth.auth().createUser(withEmail: login, password: psw) { (success, err) in
             if let _ = success {
-                RealmService.saveFirebaseCredentials(login: login, psw: psw)
+                RealmService.saveFirebaseCredentials(login, psw)
                 onSuccess?(login, psw)
                 return
             }

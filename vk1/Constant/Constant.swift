@@ -5,7 +5,8 @@ import UIKit
 struct Network {
     static let baseURL = "https://api.vk.com/method/"
     static let versionAPI = "5.103"
-    static let clientAPI = "7221362"
+    static let clientId = "7224883"
+    static let clientSecret = "BIcFShJNvaiQXtgnFSbj"
     static let timeout: TimeInterval = 10 // in sec
     static let delayBetweenRequests = 500 //500 // in ms
     static let longDelayBetweenRequests = 1000 //500 // in ms
@@ -17,32 +18,42 @@ struct Network {
 }
 
 
+struct MyAuth {
+    typealias login = String
+    typealias psw = String
+    typealias token = String
+    typealias userId = String
+}
+
 typealias onNetworkFinish_SyncCompletion = (SynchronizedPresenterProtocol) -> Void
 typealias onSuccessResponse_SyncCompletion = () -> Void
 typealias onErrResponse_SyncCompletion = (NSError) -> Void
 typealias onSuccess_PresenterCompletion = ([DecodableProtocol]) -> Void
 
 
-// for debug: fast way to enable console logging by area
+
+// for debug purpose only: fast way to enable console logging by area
 enum PrintLogEnum {
-    case realm, presenter, presenterCallsFromSync, presenterCallsFromView, sync, alamofire, viewReloadData
+    case realm, presenter, presenterCallsFromSync, presenterCallsFromView, sync, alamofire, viewReloadData, login
     
     var print: Bool {
         switch self {
         case .realm:
             return true
         case .presenter:
-            return true
+            return false
         case .presenterCallsFromSync:
-            return true
+            return false
         case .presenterCallsFromView:
-            return true
+            return false
         case .sync:
             return false
         case .alamofire:
             return false
         case .viewReloadData:
             return false
+        case .login:
+            return true
         }
     }
 }
@@ -111,3 +122,4 @@ var cellBottomHeight: CGFloat = 30
 typealias typeId = Int
 
 var isDark = true
+

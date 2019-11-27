@@ -94,7 +94,7 @@ class ApiVKService {
             "group_id": groupId,
             "v": Network.versionAPI
         ]
-        AlamofireService.requestJoin(clazz: Group.self, urlPath, params)
+        AlamofireService.requestJoinGroup(clazz: Group.self, urlPath, params)
     }
         
         
@@ -157,13 +157,14 @@ class ApiVKService {
                                             )
     }
     
+    
     static func authVkRequest(webview: WKWebView) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Network.clientAPI),
+            URLQueryItem(name: "client_id", value: Network.clientId),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "wall,friends,groups"),
@@ -172,6 +173,26 @@ class ApiVKService {
         ]
         let request = URLRequest(url: urlComponents.url!)
         webview.load(request)
+    }
+    
+    
+    
+    static func checkVkTokenRequest(token: String,
+                                    _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                    _ onError: @escaping onErrResponse_SyncCompletion,
+                                    _ onChecked: ((Bool)->Void)?
+                                    ) {
+       
+        let urlPath: String = "secure.checkToken"
+        
+        let params: Parameters = [
+                "token": token,
+                "client_id": Network.clientId,
+                "client_secret": Network.clientSecret,
+                "v": Network.versionAPI
+        ]
+        
+        AlamofireService.checkVkTokenRequest(urlPath, params, onSuccess, onError, onChecked)
     }
     
 }

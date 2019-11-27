@@ -1,4 +1,5 @@
 import Foundation
+import WebKit
 
 // presenters get access to views
 protocol PushViewProtocol: class {
@@ -22,6 +23,19 @@ protocol PushPlainViewProtocol : PushViewProtocol {
 //MARK: - Specific Protocols
 
 protocol PushLoginViewProtocol {
-    func showVkAuthentication(completion: (()->Void)?)
-    func showFibAuthentication(login: String, psw: String, completion: (()->Void)?)
+    
+    func showVkFormAuthentication(completion: ((WKWebView)->Void)?)
+    func showFirebaseFormAuthentication(login: MyAuth.login,
+                                        psw: MyAuth.psw,
+                                        onSignIn: ((MyAuth.login, MyAuth.psw) -> Void)?,
+                                        onRegister: (()->Void)?)
+    
+    
+    func showFirebaseFormRegister(onRegister: ((MyAuth.login, MyAuth.psw) -> Void)?,
+                                  onCancel: (()->Void)? )
+    
+    func back()
+    func runPerformSegue(segueId: String)
+    
+    func setRunAfterVkAuthentication(onVkAuthCompletion: ((MyAuth.token, MyAuth.userId)->Void)?)
 }

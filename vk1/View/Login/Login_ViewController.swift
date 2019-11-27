@@ -5,21 +5,34 @@ class Login_ViewController: UIViewController {
     
     var webview: WKWebView?
     
+    @IBOutlet weak var containterView: UIView!
+    
+    var presenter: PullPlainPresenterProtocol!
+    
     enum SegueEnum: String {
         case segueFibSignUp = "segueFibSignUp"
         case segueFibSignIn = "segueFibSignIn"
         case segueMainApp = "segueMainApp"
     }
     
+    enum ViewEnum: Int {
+        case vk = 1000
+        case signIn = 2000
+        case register = 3000
+    }
+    
+    var onSignIn: ((String, String) -> Void)?
+    var onRegister: (() -> Void)?
+    var onVkAuthCompletion: ((MyAuth.token, MyAuth.userId) -> Void)?
+    
     override func viewDidLoad() {
-        if !loadVKCredentials() {
-            runVkAuth() { [weak self] in
-                guard let self = self else { return }
-                if !self.loadFibCredentials() {
-                    self.runFibAuth()
-                }
-            }
-        }
+       setupPresenter()
+       presenter.viewDidLoad()
+    }
+    
+    
+    private func setupPresenter(){
+        presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
     }
     
     private func loadVKCredentials() -> Bool {
@@ -33,33 +46,66 @@ class Login_ViewController: UIViewController {
         return false
     }
     
-    private func showVkAuth(completion: (()->Void)? = nil ){
+    private func showVkAuth(completion: ((WKWebView) -> Void)?){
+        
         webview = WKWebView()
         guard let webview_ = webview else { return}
         
         webview_.navigationDelegate = self
+        containterView.addSubview(webview_)
         webview_.translatesAutoresizingMaskIntoConstraints = false
-        webview_.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        webview_.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        webview_.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        webview_.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        view.addSubview(webview_)
-        completion?()
+        webview_.topAnchor.constraint(equalTo: containterView.topAnchor).isActive = true
+        webview_.bottomAnchor.constraint(equalTo: containterView.bottomAnchor).isActive = true
+        webview_.leadingAnchor.constraint(equalTo: containterView.leadingAnchor).isActive = true
+        webview_.trailingAnchor.constraint(equalTo: containterView.trailingAnchor).isActive = true
+        webview_.tag = ViewEnum.vk.rawValue
+       
+        completion?(webview_)
     }
     
-    private func showFirSignIn(login: String, psw: String, completion: (()->Void)? = nil ){
-        webview?.removeFromSuperview()
+    private func showFirebaseSignIn(login: String, psw: String, signInCompletion: ((String, String) -> Void)?, signUpCompletion: (() -> Void)?){
+        removeSubview(by: .vk)
+        removeSubview(by: .register)
         let subview = Bundle.main.loadNibNamed("FirSignin_View", owner: self, options: nil)!.first as! FirSignin_View
-        subview.frame = view.bounds
-        subview.setup(login: login, psw: psw, completion: completion)
-        view.addSubview(subview)
-        subview.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    }
-    
-    private func showFirSignUp(completion: completion: (()->Void)? = nil ){
+        subview.frame = containterView.bounds
+        subview.setup(login: login, psw: psw, signInCompletion: signInCompletion, signUpCompletion: signUpCompletion)
+        containterView.addSubview(subview)
         
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        subview.topAnchor.constraint(equalTo: containterView.topAnchor).isActive = true
+        subview.bottomAnchor.constraint(equalTo: containterView.bottomAnchor).isActive = true
+        subview.leadingAnchor.constraint(equalTo: containterView.leadingAnchor).isActive = true
+        subview.trailingAnchor.constraint(equalTo: containterView.trailingAnchor).isActive = true
+        subview.tag = ViewEnum.signIn.rawValue
     }
     
+    private func showFirebaseRegister(onRegister: ((String, String) -> Void)?,
+                                      onCancel: (()->Void)? ){
+        removeSubview(by: .signIn)
+        let subview = Bundle.main.loadNibNamed("FirSignup_View", owner: self, options: nil)!.first as! FirSignup_View
+        subview.frame = containterView.bounds
+        subview.setup(onRegister: onRegister, onCancel: onCancel)
+        containterView.addSubview(subview)
+        
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        subview.topAnchor.constraint(equalTo: containterView.topAnchor).isActive = true
+        subview.bottomAnchor.constraint(equalTo: containterView.bottomAnchor).isActive = true
+        subview.leadingAnchor.constraint(equalTo: containterView.leadingAnchor).isActive = true
+        subview.trailingAnchor.constraint(equalTo: containterView.trailingAnchor).isActive = true
+        subview.tag = ViewEnum.register.rawValue
+    }
+    
+    private func removeSubview(by tag: ViewEnum) {
+        let subviews = containterView.subviews
+        for subview in subviews {
+            if subview.tag == tag.rawValue {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    
+
     private func loadFibCredentials() -> Bool {
         return false
     }
@@ -80,6 +126,7 @@ extension Login_ViewController: WKNavigationDelegate {
             let fragment = url.fragment
             else {
                 decisionHandler(.allow)
+               // onVkAuthCompletion?("","")
                 return
             }
         
@@ -95,33 +142,72 @@ extension Login_ViewController: WKNavigationDelegate {
         }
         
         guard let token = params["access_token"],
-            let userId = Int(params["user_id"]!)
+            let userId = params["user_id"]
             else {
                 decisionHandler(.cancel)
+                onVkAuthCompletion?("","")
                 return
         }
-        
-        
-        RealmService.saveVKCredentials(token: token, userId: userId)
-        print(token, userId)
-        Session.shared.token = token
-        Session.shared.userId = userId
-        performSegue(withIdentifier: "ShowMainSegue2", sender: nil)
         decisionHandler(.cancel)
+        onVkAuthCompletion?(token, "\(userId)")
     }
 }
 
+extension Login_ViewController: PushPlainViewProtocol {
+    
+    func viewReloadData(moduleEnum: ModuleEnum) {
+    }
+    
+    func insertItems(startIdx: Int, endIdx: Int) {
+    }
+    
+    func startWaitIndicator(_ moduleEnum: ModuleEnum?) {
+    }
+    
+    func stopWaitIndicator(_ moduleEnum: ModuleEnum?) {
+    }
+}
 
 extension Login_ViewController: PushLoginViewProtocol {
     
     
-    func showVkAuthentication(completion: (() -> Void)?) {
+    func showVkFormAuthentication(completion: ((WKWebView) -> Void)?) {
         showVkAuth(completion: completion)
     }
     
     
-    func showFibAuthentication(login: String, psw: String, completion: (()->Void)?) {
-        showFirSignIn(login: login, psw: psw, completion: completion)
+    
+    func showFirebaseFormAuthentication(login: MyAuth.login,
+                                        psw: MyAuth.psw,
+                                        onSignIn: ((MyAuth.login, MyAuth.psw) -> Void)?,
+                                        onRegister: (() -> Void)?) {
+        
+        //remember for reuse ability
+        self.onSignIn = onSignIn
+        self.onRegister = onRegister
+        showFirebaseSignIn(login: login, psw: psw, signInCompletion: onSignIn, signUpCompletion: onRegister)
     }
     
+    
+    
+    func showFirebaseFormRegister(onRegister: ((MyAuth.login, MyAuth.psw) -> Void)?,
+                                  onCancel: (()->Void)? ) {
+        
+        showFirebaseRegister(onRegister: onRegister, onCancel: onCancel)
+    }
+    
+    
+    func runPerformSegue(segueId: String) {
+        performSegue(withIdentifier: segueId, sender: nil)
+    }
+    
+    
+    func back() {
+        //reuse:
+        showFirebaseSignIn(login: "", psw: "", signInCompletion: onSignIn, signUpCompletion: onRegister)
+    }
+    
+    func setRunAfterVkAuthentication(onVkAuthCompletion: ((MyAuth.token, MyAuth.userId)->Void)?){
+        self.onVkAuthCompletion = onVkAuthCompletion
+    }
 }

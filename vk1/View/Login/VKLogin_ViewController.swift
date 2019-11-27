@@ -18,7 +18,7 @@ class VKLogin_ViewController: UIViewController {
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Network.clientAPI),
+            URLQueryItem(name: "client_id", value: Network.clientId),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "wall,friends,groups"),
@@ -52,15 +52,15 @@ extension VKLogin_ViewController: WKNavigationDelegate {
         }
         
         guard let token = params["access_token"],
-            let userId = Int(params["user_id"]!)
+            let userId = params["user_id"]
             else {
                 decisionHandler(.cancel)
                 return
         }
         
         
-        RealmService.saveVKCredentials(token: token, userId: userId)
-        print(token, userId)
+//        RealmService.saveVKCredentials(token: token, userId: userId)
+//        print(token, userId)
         Session.shared.token = token
         Session.shared.userId = userId
         performSegue(withIdentifier: "ShowMainSegue2", sender: nil)

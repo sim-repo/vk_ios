@@ -7,7 +7,8 @@ class FirSignin_View: UIView {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var pswTextField: UITextField!
     
-    var completion: (()->Void)?
+    var signInCompletion: ((String, String)->Void)?
+    var signUpCompletion: (()->Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,12 +18,20 @@ class FirSignin_View: UIView {
         super.init(coder: aDecoder)
     }
     @IBAction func doPressSignIn(_ sender: Any) {
-        completion?()
+        guard let login = loginTextField.text,
+            let psw = pswTextField.text
+            else { return }
+        signInCompletion?(login, psw)
     }
     
-    func setup(login: String, psw: String, completion: (()->Void)? = nil ) {
+    @IBAction func doPressRegister(_ sender: Any) {
+        signUpCompletion?()
+    }
+    
+    func setup(login: String, psw: String, signInCompletion: ((String, String)->Void)?, signUpCompletion: (()->Void)?) {
         loginTextField.text = login
         pswTextField.text = psw
-        self.completion = completion
+        self.signInCompletion = signInCompletion
+        self.signUpCompletion = signUpCompletion
     }
 }

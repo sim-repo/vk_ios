@@ -20,4 +20,8 @@ extension SyncMgt {
     public func doVkAuth(webview: WKWebView) {
         SyncVkLogin.shared.auth(webview: webview)
     }
+    
+    public func doCheckVkToken(token: String, _ onChecked: ((Bool)->Void)? ) {
+        SyncVkLogin.shared.checkToken(token: token, onChecked )
+    }
 }

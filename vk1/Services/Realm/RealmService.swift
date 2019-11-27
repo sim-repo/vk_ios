@@ -33,14 +33,14 @@ class RealmService {
 
     //MARK:- public
     
-    public static func loadToken() -> (String?, Int?)? {
+    public static func loadToken() -> (String?, String?)? {
 
         guard let realm = getInstance(.safe)
         else {
             return nil
         }
         let token: String? = realm.objects(RealmToken.self).first?.token
-        let userId: Int? = realm.objects(RealmToken.self).first?.userId
+        let userId: String? = realm.objects(RealmToken.self).first?.userId
         
         return (token, userId)
     }
@@ -221,7 +221,7 @@ class RealmService {
     
     
     
-    public static func saveVKCredentials(token: String, userId: Int) {
+    public static func saveVKCredentials(_ token: String, _ userId: String) {
         let realm = getInstance(.safe)
         do {
             try realm?.write {
@@ -229,6 +229,7 @@ class RealmService {
                 obj.token = token
                 obj.userId = userId
                 realm?.add(obj, update: .all)
+                log("saveVKCredentials(): success", printEnum: .login)
             }
         } catch(let err) {
             catchError(msg: err.localizedDescription)
@@ -236,7 +237,7 @@ class RealmService {
     }
     
     
-    public static func saveFirebaseCredentials(login: String, psw: String) {
+    public static func saveFirebaseCredentials(_ login: String, _ psw: String) {
         let realm = getInstance(.safe)
         do {
             try realm?.write {
@@ -672,5 +673,13 @@ class RealmService {
         assert(status == errSecSuccess, "Failed to insert the new key in the keychain")
 
         return keyData
+    }
+    
+    private static func log(_ msg: String, printEnum: PrintLogEnum, isErr:Bool = false) {
+         if isErr {
+             catchError(msg: "RealmService(): " + msg)
+         } else {
+             console(msg: "RealmService(): " + msg, printEnum: printEnum)
+         }
     }
 }

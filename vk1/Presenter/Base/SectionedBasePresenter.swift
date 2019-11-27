@@ -50,7 +50,7 @@ public class SectionedBasePresenter {
         self.init()
         guard let _view = vc as? PushSectionedViewProtocol
         else {
-            log("init(vc:) - incorrect passed vc", isErr: true)
+            log("init(vc:) - vc \(vc) doesn't conform protocol PushSectionViewProtocol", isErr: true)
             return
         }
         self.view = _view

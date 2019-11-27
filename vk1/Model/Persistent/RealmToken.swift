@@ -3,5 +3,5 @@ import RealmSwift
 
 class RealmToken: RealmBase {
     @objc dynamic var token = ""
-    @objc dynamic var userId = 0
+    @objc dynamic var userId = ""
 }

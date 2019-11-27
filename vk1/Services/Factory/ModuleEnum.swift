@@ -37,6 +37,8 @@ enum ModuleEnum: String {
             self = .profile
         case is NewsPresenter.Type:
             self = .news
+        case is LoginPresenter.Type:
+            self = .login
         default:
             self = .unknown
             catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol.Type): no case: \(presenterType)")
@@ -87,7 +89,7 @@ enum ModuleEnum: String {
             self = .news
         case is Profile_TableViewController:
             self = .profile
-        case is LoginViewController:
+        case is Login_ViewController:
             self = .login
         default:
             self = .unknown
@@ -126,7 +128,7 @@ enum ModuleEnum: String {
         case .profile:
             return Profile_TableViewController.self
         case .login:
-            return LoginViewController.self
+            return Login_ViewController.self
         case .news:
             return News_ViewController.self
         case .unknown:

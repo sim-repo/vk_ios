@@ -92,7 +92,7 @@ class AlamofireService {
     
     
     
-    public static func requestJoin<T: DecodableProtocol>(clazz: T.Type ,
+    public static func requestJoinGroup<T: DecodableProtocol>(clazz: T.Type ,
                                                          _ urlPath: String,
                                                          _ params: Parameters) {
            AlamofireService.sharedManager.request(Network.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
@@ -187,6 +187,33 @@ class AlamofireService {
     }
     
     
+    
+    public static func checkVkTokenRequest(_ urlPath: String,
+                                    _ params: Parameters,
+                                    _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                    _ onError: @escaping onErrResponse_SyncCompletion,
+                                    _ onChecked: ((Bool)->Void)?) {
+    
+        AlamofireService.sharedManager.request(Network.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
+            switch response.result {
+            case .success(let val):
+                 let json = JSON(val)
+                 let (success,error) = VkTokenParser.parseCheckTokenJson(json)
+                 if success != "" {
+                    onChecked?(true)
+                    return
+                 } else {
+                    onChecked?(false)
+                }
+                 
+                
+            case .failure(let err):
+                onChecked?(false)
+                let error = err as NSError
+                onError(error)
+            }
+        }
+    }
     
 
     private static func parseJsonItems<T: DecodableProtocol>(_ val: Any)->[T]?{

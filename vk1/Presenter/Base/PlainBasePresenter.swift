@@ -42,7 +42,7 @@ public class PlainBasePresenter {
         self.init()
         guard let _view = vc as? PushPlainViewProtocol
         else {
-            log("init(vc:) - incorrect passed vc", isErr: true)
+            log("init(vc:) - vc \(vc) doesn't conform protocol PushPlainViewProtocol", isErr: true)
             return
         }
         self.view = _view

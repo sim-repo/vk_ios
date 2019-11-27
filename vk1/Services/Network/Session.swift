@@ -7,7 +7,11 @@ class Session {
     private init(){}
     
     var token = ""
-    var userId = Int()
+    var userId = ""
 
+    func set(_ token: String, _ userId: String) {
+        self.token = token
+        self.userId = userId
+    }
 }
 

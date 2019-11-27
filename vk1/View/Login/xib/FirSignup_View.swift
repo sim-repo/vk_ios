@@ -6,7 +6,20 @@ class FirSignup_View: UIView {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var pswTextField: UITextField!
     
-    var completion: (()->Void)?
+    var onRegister: ((String, String)->Void)?
+    var onCancel: (()->Void)?
+    
+    
+    @IBAction func doPressSignUp(_ sender: Any) {
+        guard let login = loginTextField.text,
+            let psw = pswTextField.text
+            else { return }
+        onRegister?(login, psw)
+    }
+    
+    @IBAction func doPressCancel(_ sender: Any) {
+        onCancel?()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,9 +29,9 @@ class FirSignup_View: UIView {
         super.init(coder: aDecoder)
     }
   
-    func setup(login: String, psw: String, completion: (()->Void)? = nil ) {
-        loginTextField.text = login
-        pswTextField.text = psw
-        self.completion = completion
+    func setup(onRegister: ((String, String) -> Void)?,
+               onCancel: (()->Void)? ) {
+        self.onRegister = onRegister
+        self.onCancel = onCancel
     }
 }

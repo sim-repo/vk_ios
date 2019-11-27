@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y3I-L6-0ja">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ll8-rN-5Bi">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -40,15 +40,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VvE-jb-g0X"/>
                     </view>
-                    <connections>
-                        <segue destination="TNb-uQ-DfB" kind="show" identifier="ShowAuthSegue" id="xXV-cc-42T"/>
-                        <segue destination="28x-hE-Guy" kind="show" identifier="ShowAppSegue" id="9md-VM-d8s"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowFibAuth" id="WRz-Kd-z7A"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJq-2m-qkv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1275" y="-5"/>
+            <point key="canvasLocation" x="-2910" y="-31"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="y3B-x4-ZRY">
@@ -79,12 +74,42 @@
                     <navigationItem key="navigationItem" id="Xwd-Bl-h7R"/>
                     <connections>
                         <outlet property="webview" destination="15l-Dg-o8k" id="BeA-cc-v9r"/>
-                        <segue destination="28x-hE-Guy" kind="show" identifier="ShowMainSegue2" id="aNX-r5-DZU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVr-vP-Ydk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="154" y="-550"/>
+            <point key="canvasLocation" x="-1583" y="-473"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="8DU-UU-Pg3">
+            <objects>
+                <viewController id="Ll8-rN-5Bi" customClass="Login_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xhr-4o-Tl6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwq-DU-KiC">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xwq-DU-KiC" firstAttribute="leading" secondItem="8Be-oK-srT" secondAttribute="leading" id="Mo3-AO-wlJ"/>
+                            <constraint firstItem="xwq-DU-KiC" firstAttribute="top" secondItem="8Be-oK-srT" secondAttribute="top" id="geS-UO-jPM"/>
+                            <constraint firstItem="8Be-oK-srT" firstAttribute="trailing" secondItem="xwq-DU-KiC" secondAttribute="trailing" id="gwC-U4-WT8"/>
+                            <constraint firstAttribute="bottom" secondItem="xwq-DU-KiC" secondAttribute="bottom" id="nUl-22-e5b"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Be-oK-srT"/>
+                    </view>
+                    <connections>
+                        <outlet property="containterView" destination="xwq-DU-KiC" id="8wT-59-Ffj"/>
+                        <segue destination="28x-hE-Guy" kind="show" identifier="showAppSegue" id="pMu-Z4-3Tu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZZs-2z-9ug" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1139" y="-15"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -170,7 +195,6 @@
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="doPressRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XH0-kL-uIN"/>
-                                                                            <segue destination="7u9-ze-ezx" kind="show" identifier="ShowRegisterSegue" id="Lxh-sk-2dA"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -235,12 +259,11 @@
                         <outlet property="passwordInput" destination="0cH-pw-7y2" id="ral-nk-o69"/>
                         <outlet property="scrollView" destination="RPH-4g-lK7" id="bQU-PQ-WKF"/>
                         <outlet property="waitView" destination="B0a-3p-APi" id="EUw-Eh-DS6"/>
-                        <segue destination="28x-hE-Guy" kind="show" identifier="ShowMainSegue1" id="hci-Wa-Zv2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="154" y="516"/>
+            <point key="canvasLocation" x="-1584" y="433"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Kiz-Zk-0bN">
@@ -347,12 +370,11 @@
                     <connections>
                         <outlet property="loginTextField" destination="PnR-Vx-wJ1" id="5PH-qn-yvh"/>
                         <outlet property="pswTextField" destination="ZsD-Ib-qBm" id="fQf-di-mqh"/>
-                        <segue destination="28x-hE-Guy" kind="show" identifier="ShowMainSegue3" id="1R7-Mq-uHK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XbJ-uq-7wi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1274" y="1002"/>
+            <point key="canvasLocation" x="-691" y="433"/>
         </scene>
         <!--Profile-->
         <scene sceneID="TYd-2s-PQV">
@@ -377,7 +399,4 @@
             <point key="canvasLocation" x="3212" y="433"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="1R7-Mq-uHK"/>
-    </inferredMetricsTieBreakers>
 </document>
