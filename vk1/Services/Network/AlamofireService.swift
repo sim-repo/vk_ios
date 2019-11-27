@@ -40,7 +40,7 @@ class AlamofireService {
                                                              _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                                              _ onError: @escaping  onErrResponse_SyncCompletion ) {
         
-           AlamofireService.sharedManager.request(Network.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+           AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                switch response.result {
                case .success(let json):
                    let arr:[T]? = parseJsonItems(json)
@@ -67,7 +67,7 @@ class AlamofireService {
                                                              _ onError: @escaping  onErrResponse_SyncCompletion ) {
             
            log(msg: "requestSingle(): start..")
-           AlamofireService.sharedManager.request(Network.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+           AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                log(msg: "requestSingle(): response..")
                switch response.result {
                case .success(let json):
@@ -95,10 +95,10 @@ class AlamofireService {
     public static func requestJoinGroup<T: DecodableProtocol>(clazz: T.Type ,
                                                          _ urlPath: String,
                                                          _ params: Parameters) {
-           AlamofireService.sharedManager.request(Network.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
+           AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
             log(msg: "requestJoin: requestSingle(): response..")
                switch response.result {
-                   case .success(let json):
+                   case .success(let _):
                      print("SUCCESS")
                    case .failure(let err):
                         let error = err as NSError
@@ -116,7 +116,7 @@ class AlamofireService {
                                    _ offsetCompletion: (()->Void)?,
                                    _ offset: Int ){
         wallRequestTask = {
-            AlamofireService.sharedManager.request(Network.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+            AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                 switch response.result {
                 case .success(let json):
                     let arr:[Wall]? = WallParser.parseWallJson(json, offset: offset)
@@ -161,7 +161,7 @@ class AlamofireService {
                                    _ offsetCompletion: ((String)->Void)?
                                    ){
 
-        AlamofireService.sharedManager.request(Network.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+        AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let json):
                 let arr:[News]? = NewsParser.parseNewsJson(json, ownOffset, vkOffset)
@@ -194,11 +194,12 @@ class AlamofireService {
                                     _ onError: @escaping onErrResponse_SyncCompletion,
                                     _ onChecked: ((Bool)->Void)?) {
     
-        AlamofireService.sharedManager.request(Network.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
+
+        AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let val):
                  let json = JSON(val)
-                 let (success,error) = VkTokenParser.parseCheckTokenJson(json)
+                 let (success,_) = VkTokenParser.parseCheckTokenJson(json)
                  if success != "" {
                     onChecked?(true)
                     return

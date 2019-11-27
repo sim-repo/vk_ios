@@ -2,34 +2,6 @@ import UIKit
 
 
 
-struct Network {
-    static let baseURL = "https://api.vk.com/method/"
-    static let versionAPI = "5.103"
-    static let clientId = "7225214"
-    static let clientSecret = "iAlDcWkImx4qDGZWgRTy"
-    static let timeout: TimeInterval = 10 // in sec
-    static let delayBetweenRequests = 500 //500 // in ms
-    static let longDelayBetweenRequests = 1000 //500 // in ms
-    static let intervalViewReload = 5 // in percent
-    static let newsResponseItemsPerRequest = 20 // in number
-    static let wallResponseItemsPerRequest = 20 // in number
-    static let maxIntervalBeforeCleanupDataSource = 60.0*5 //5 min
-    static let minIntervalBeforeSendRequest = 30.0 //sec
-}
-
-
-struct MyAuth {
-    typealias login = String
-    typealias psw = String
-    typealias token = String
-    typealias userId = String
-}
-
-typealias onNetworkFinish_SyncCompletion = (SynchronizedPresenterProtocol) -> Void
-typealias onSuccessResponse_SyncCompletion = () -> Void
-typealias onErrResponse_SyncCompletion = (NSError) -> Void
-typealias onSuccess_PresenterCompletion = ([DecodableProtocol]) -> Void
-
 
 
 // for debug purpose only: fast way to enable console logging by area

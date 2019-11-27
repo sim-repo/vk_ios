@@ -13,7 +13,7 @@ class ApiVKService {
               "access_token": Session.shared.token,
                   "extended": "1",
                   "fields":["bdate","sex","photo_50","photo_200_orig"],
-                  "v": Network.versionAPI
+                  "v": Network.shared.versionAPI
         ]
         AlamofireService.requestItems(clazz: Friend.self, urlPath, params, onSuccess, onError)
     }
@@ -36,7 +36,7 @@ class ApiVKService {
                  "filter": "all",
                  "count": "\(count)",
                  "offset": "\(offset)",
-                 "v": Network.versionAPI
+                 "v": Network.shared.versionAPI
         ]
         AlamofireService.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
     }
@@ -51,7 +51,7 @@ class ApiVKService {
               "access_token": Session.shared.token,
                   "extended": "1",
                   "fields":["description","members_count","photo_50","photo_200","cover"],
-            "v": Network.versionAPI
+            "v": Network.shared.versionAPI
         ]
         AlamofireService.requestItems(clazz: MyGroup.self, urlPath, params, onSuccess, onError)
     }
@@ -66,7 +66,7 @@ class ApiVKService {
             "access_token": Session.shared.token,
             "extended": "1",
             "fields":["counters","cover"],
-            "v": Network.versionAPI
+            "v": Network.shared.versionAPI
         ]
         AlamofireService.requestSingle(clazz: DetailGroup.self, urlPath, params, onSuccess, onError)
     }
@@ -80,7 +80,7 @@ class ApiVKService {
             "access_token": Session.shared.token,
             "q": txtSearch,
             "count": 10,
-            "v": Network.versionAPI
+            "v": Network.shared.versionAPI
         ]
         AlamofireService.requestItems(clazz: Group.self, urlPath, params, onSuccess, onError)
     }
@@ -92,7 +92,7 @@ class ApiVKService {
         let params: Parameters = [
             "access_token": Session.shared.token,
             "group_id": groupId,
-            "v": Network.versionAPI
+            "v": Network.shared.versionAPI
         ]
         AlamofireService.requestJoinGroup(clazz: Group.self, urlPath, params)
     }
@@ -117,7 +117,7 @@ class ApiVKService {
                  "filter": "all",
                  "offset": "\(offset)",
                  "count": "1",
-                 "v": Network.versionAPI
+                 "v": Network.shared.versionAPI
         ]
         AlamofireService.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
         
@@ -141,7 +141,7 @@ class ApiVKService {
                 "filter": "photo, wall_photo",
                 "count": count,
                 "start_from": vkOffset,
-                "v": Network.versionAPI
+                "v": Network.shared.versionAPI
         ]
         if sinceTime != nil &&  sinceTime != 0 {
             params["start_time"] = sinceTime
@@ -164,7 +164,7 @@ class ApiVKService {
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Network.clientId),
+            URLQueryItem(name: "client_id", value: Network.shared.clientId),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "wall,friends,groups"),
@@ -187,9 +187,9 @@ class ApiVKService {
         
         let params: Parameters = [
                 "token": token,
-                "client_id": Network.clientId,
-                "client_secret": Network.clientSecret,
-                "v": Network.versionAPI
+                "client_id": Network.shared.clientId,
+                "client_secret": Network.shared.clientSecret,
+                "v": Network.shared.versionAPI
         ]
         
         AlamofireService.checkVkTokenRequest(urlPath, params, onSuccess, onError, onChecked)
