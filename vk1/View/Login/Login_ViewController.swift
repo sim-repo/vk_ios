@@ -6,6 +6,7 @@ class Login_ViewController: UIViewController {
     var webview: WKWebView?
     
     @IBOutlet weak var containterView: UIView!
+    @IBOutlet weak var logoView: UIView!
     
     var presenter: PullPlainPresenterProtocol!
     
@@ -26,13 +27,26 @@ class Login_ViewController: UIViewController {
     var onVkAuthCompletion: ((MyAuth.token, MyAuth.userId) -> Void)?
     
     override func viewDidLoad() {
-       setupPresenter()
-       presenter.viewDidLoad()
+        containterView.backgroundColor = .clear
+        setupPresenter()
+        presenter.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        runLogo()
+    }
     
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
+    }
+    
+    private func runLogo() {
+        let w: CGFloat = 232.0
+        let logoAnimation = WaitIndicator2(frame: CGRect(x: wHalfScreen - w/2.0,
+                                                         y: logoView.frame.height/3, width: wScreen, height: 100))
+        logoAnimation.backgroundColor = .clear
+        logoView.backgroundColor = .clear
+        logoView.addSubview(logoAnimation)
     }
     
     private func loadVKCredentials() -> Bool {
@@ -52,40 +66,51 @@ class Login_ViewController: UIViewController {
         guard let webview_ = webview else { return}
         
         webview_.navigationDelegate = self
+        webview_.alpha = 0
         containterView.addSubview(webview_)
+        removeSubview(by: .register, appeared: webview_)
         webview_.translatesAutoresizingMaskIntoConstraints = false
         webview_.topAnchor.constraint(equalTo: containterView.topAnchor).isActive = true
         webview_.bottomAnchor.constraint(equalTo: containterView.bottomAnchor).isActive = true
         webview_.leadingAnchor.constraint(equalTo: containterView.leadingAnchor).isActive = true
         webview_.trailingAnchor.constraint(equalTo: containterView.trailingAnchor).isActive = true
+        webview_.scrollView.isScrollEnabled = false
         webview_.tag = ViewEnum.vk.rawValue
-       
+    
         completion?(webview_)
     }
     
     private func showFirebaseSignIn(login: String, psw: String, signInCompletion: ((String, String) -> Void)?, signUpCompletion: (() -> Void)?){
-        removeSubview(by: .vk)
-        removeSubview(by: .register)
+      
         let subview = Bundle.main.loadNibNamed("FirSignin_View", owner: self, options: nil)!.first as! FirSignin_View
         subview.frame = containterView.bounds
         subview.setup(login: login, psw: psw, signInCompletion: signInCompletion, signUpCompletion: signUpCompletion)
+        
+        subview.alpha = 0
         containterView.addSubview(subview)
+        
         
         subview.translatesAutoresizingMaskIntoConstraints = false
         subview.topAnchor.constraint(equalTo: containterView.topAnchor).isActive = true
         subview.bottomAnchor.constraint(equalTo: containterView.bottomAnchor).isActive = true
         subview.leadingAnchor.constraint(equalTo: containterView.leadingAnchor).isActive = true
         subview.trailingAnchor.constraint(equalTo: containterView.trailingAnchor).isActive = true
+        view.layoutIfNeeded()
         subview.tag = ViewEnum.signIn.rawValue
+        removeSubview(by: .vk)
+        removeSubview(by: .register, appeared: subview)
     }
     
     private func showFirebaseRegister(onRegister: ((String, String) -> Void)?,
                                       onCancel: (()->Void)? ){
-        removeSubview(by: .signIn)
+        
         let subview = Bundle.main.loadNibNamed("FirSignup_View", owner: self, options: nil)!.first as! FirSignup_View
         subview.frame = containterView.bounds
         subview.setup(onRegister: onRegister, onCancel: onCancel)
+        subview.alpha = 0
         containterView.addSubview(subview)
+        
+        removeSubview(by: .signIn, appeared: subview)
         
         subview.translatesAutoresizingMaskIntoConstraints = false
         subview.topAnchor.constraint(equalTo: containterView.topAnchor).isActive = true
@@ -95,17 +120,29 @@ class Login_ViewController: UIViewController {
         subview.tag = ViewEnum.register.rawValue
     }
     
-    private func removeSubview(by tag: ViewEnum) {
+    private func removeSubview(by tag: ViewEnum, appeared: UIView? = nil) {
         let subviews = containterView.subviews
-        for subview in subviews {
-            if subview.tag == tag.rawValue {
-                subview.removeFromSuperview()
-            }
+        if let subview = subviews.first(where: {$0.tag == tag.rawValue}) {
+            UIView.animate(withDuration: 0.8,
+                                          animations: { [weak self] in
+                                             subview.alpha = 0.0
+                                             self?.containterView.layoutIfNeeded()
+                                          },
+                                          completion: {_ in
+                                            subview.removeFromSuperview()
+                                            appeared?.alpha = 1.0
+                                          })
+        } else {
+            UIView.animate(withDuration: 0.8,
+                          animations: { [weak self] in
+                               appeared?.alpha = 1
+                               self?.containterView.layoutIfNeeded()
+            })
         }
     }
     
     
-
+    
     private func loadFibCredentials() -> Bool {
         return false
     }
@@ -126,9 +163,9 @@ extension Login_ViewController: WKNavigationDelegate {
             let fragment = url.fragment
             else {
                 decisionHandler(.allow)
-               // onVkAuthCompletion?("","")
+                // onVkAuthCompletion?("","")
                 return
-            }
+        }
         
         let params = fragment
             .components(separatedBy: "&")

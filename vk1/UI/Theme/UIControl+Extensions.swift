@@ -1,7 +1,7 @@
 import UIKit
 
 
-
+let buttonFontName = "Courier New"
 
 
 //MARK:- UIButton
@@ -17,11 +17,13 @@ class MyButton_Secondary : UIButton {
 class MyButton_Adaptive : UIButton {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        titleLabel?.font =  UIFont(name: buttonFontName, size: 13)
         if (isDark) {
             if currentImage != nil {
               tintColor = ColorSystemHelper.secondary
             }
-            setTitleColor(ColorSystemHelper.secondary, for: .normal)
+            setTitleColor(.white, for: .normal)
+            backgroundColor = ColorSystemHelper.bottomBackground
         } else {
             if currentImage != nil {
               tintColor = ColorSystemHelper.primary
@@ -253,6 +255,13 @@ class MyView_DarkBackground : UIView {
     }
 }
 
+
+class MyView_LogoBackground: UIView {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.backgroundColor = ColorSystemHelper.logoBackground
+    }
+}
 
 class MyView_GradiendBackground : UIView {
     required init?(coder: NSCoder) {

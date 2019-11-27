@@ -5,8 +5,8 @@ import UIKit
 struct Network {
     static let baseURL = "https://api.vk.com/method/"
     static let versionAPI = "5.103"
-    static let clientId = "7224883"
-    static let clientSecret = "BIcFShJNvaiQXtgnFSbj"
+    static let clientId = "7225214"
+    static let clientSecret = "iAlDcWkImx4qDGZWgRTy"
     static let timeout: TimeInterval = 10 // in sec
     static let delayBetweenRequests = 500 //500 // in ms
     static let longDelayBetweenRequests = 1000 //500 // in ms

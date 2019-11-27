@@ -15,31 +15,34 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="baJ-kw-7B1">
-                    <rect key="frame" x="8" y="194" width="733" height="30"/>
+                    <rect key="frame" x="274.5" y="194" width="200" height="30"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="200" id="URF-UX-PAW"/>
                         <constraint firstAttribute="height" constant="30" id="xg4-na-oCa"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9OJ-F2-2d4">
-                    <rect key="frame" x="8" y="232" width="733" height="30"/>
+                    <rect key="frame" x="274.5" y="232" width="200" height="30"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="200" id="Pkd-ep-QII"/>
                         <constraint firstAttribute="height" constant="30" id="rFS-3X-Lpo"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
                 </textField>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ldH-U7-zoe">
-                    <rect key="frame" x="306.5" y="278" width="136" height="30"/>
+                    <rect key="frame" x="286.5" y="278" width="176" height="30"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXl-92-OTC">
-                            <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXl-92-OTC" customClass="MyButton_Adaptive" customModule="vk1" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="5FP-Bq-0vF"/>
-                                <constraint firstAttribute="width" constant="60" id="KiB-3A-AhG"/>
+                                <constraint firstAttribute="width" constant="80" id="KiB-3A-AhG"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="13"/>
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -47,13 +50,14 @@
                                 <action selector="doPressCancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="7HE-zm-7iB"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTZ-K9-UEg">
-                            <rect key="frame" x="76" y="0.0" width="60" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTZ-K9-UEg" customClass="MyButton_Adaptive" customModule="vk1" customModuleProvider="target">
+                            <rect key="frame" x="96" y="0.0" width="80" height="30"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="1J7-qs-zn4"/>
-                                <constraint firstAttribute="width" constant="60" id="2ti-OR-mXo"/>
+                                <constraint firstAttribute="width" constant="80" id="2ti-OR-mXo"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="13"/>
                             <state key="normal" title="Sign Up">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -64,16 +68,14 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="ldH-U7-zoe" firstAttribute="top" secondItem="9OJ-F2-2d4" secondAttribute="bottom" constant="16" id="Cnf-j8-PPR"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9OJ-F2-2d4" secondAttribute="trailing" constant="8" id="Dr0-OZ-8Kj"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="baJ-kw-7B1" secondAttribute="trailing" constant="8" id="auT-zH-S3d"/>
-                <constraint firstItem="9OJ-F2-2d4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="fDR-FR-c28"/>
+                <constraint firstItem="baJ-kw-7B1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XoX-Qi-GW4"/>
                 <constraint firstItem="9OJ-F2-2d4" firstAttribute="top" secondItem="baJ-kw-7B1" secondAttribute="bottom" constant="8" id="hRX-Rz-cFN"/>
-                <constraint firstItem="baJ-kw-7B1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="jcf-pS-SbB"/>
                 <constraint firstItem="ldH-U7-zoe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lfa-lh-4xh"/>
                 <constraint firstItem="baJ-kw-7B1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="p9F-Nk-0LI"/>
+                <constraint firstItem="9OJ-F2-2d4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pz6-Zx-msh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

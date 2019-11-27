@@ -5,7 +5,7 @@ class UIControlThemeMgt {
     
     static let likeControlAlpha: CGFloat = 1
     
-
+    
     
     
     static func setupTableHeader(view: UIView, title: UILabel) {

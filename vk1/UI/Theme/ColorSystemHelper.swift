@@ -108,6 +108,9 @@ class ColorSystemHelper {
     static var midBottomBackground = UIColor.white
     static var bottomBackground = UIColor.white
     static var onBackground = UIColor.black
+    static var logoBackground = #colorLiteral(red: 0.006316497922, green: 0.05537363142, blue: 0.1266883016, alpha: 1)
+    
+    
     
     static var shadow = UIColor.white
     static var primary_r: CGFloat  = 0
