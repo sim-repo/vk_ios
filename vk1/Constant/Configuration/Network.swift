@@ -29,6 +29,7 @@ public struct Network {
     static let wallResponseItemsPerRequest = 20 // in number
     static let maxIntervalBeforeCleanupDataSource = 60.0*5 //5 min
     static let minIntervalBeforeSendRequest = 30.0 //sec
+    static let remItemsToStartFetch = 5 //in items
     
     func infoForKey(_ key: String) -> String? {
            return (Bundle.main.infoDictionary?[key] as? String)?

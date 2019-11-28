@@ -6,7 +6,7 @@ import UIKit
 
 // for debug purpose only: fast way to enable console logging by area
 enum PrintLogEnum {
-    case realm, presenter, presenterCallsFromSync, presenterCallsFromView, sync, alamofire, viewReloadData, login
+    case realm, presenter, presenterCallsFromSync, presenterCallsFromView, sync, alamofire, viewReloadData, login, pagination
     
     var print: Bool {
         switch self {
@@ -25,6 +25,8 @@ enum PrintLogEnum {
         case .viewReloadData:
             return false
         case .login:
+            return true
+        case .pagination:
             return true
         }
     }

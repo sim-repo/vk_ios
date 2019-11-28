@@ -128,6 +128,7 @@
 		16D58BFE236986EB00735296 /* SyncMgt+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFD236986EB00735296 /* SyncMgt+Common.swift */; };
 		16D58C052369D65100735296 /* WallParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C042369D65100735296 /* WallParser.swift */; };
 		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
+		16D669A7239061070086C55C /* SelfSized+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D669A6239061070086C55C /* SelfSized+Extensions.swift */; };
 		16E08B2C236B34AF00340F09 /* GroupParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B2B236B34AF00340F09 /* GroupParser.swift */; };
 		16E08B33236B3C5F00340F09 /* MyGroupDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B32236B3C5F00340F09 /* MyGroupDetailPresenter.swift */; };
 		16E08B35236B499B00340F09 /* ApiVKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B34236B499B00340F09 /* ApiVKService.swift */; };
@@ -408,6 +409,7 @@
 		16D58BFD236986EB00735296 /* SyncMgt+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SyncMgt+Common.swift"; sourceTree = "<group>"; };
 		16D58C042369D65100735296 /* WallParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallParser.swift; sourceTree = "<group>"; };
 		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
+		16D669A6239061070086C55C /* SelfSized+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfSized+Extensions.swift"; sourceTree = "<group>"; };
 		16E08B2B236B34AF00340F09 /* GroupParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupParser.swift; sourceTree = "<group>"; };
 		16E08B32236B3C5F00340F09 /* MyGroupDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupDetailPresenter.swift; sourceTree = "<group>"; };
 		16E08B34236B499B00340F09 /* ApiVKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVKService.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 				16FF6FD523522E41001C33CF /* Extensions.swift */,
 				16D58BEF236847C300735296 /* CellImagesHelper.swift */,
 				166CB8EE2382F93E009DA806 /* Date+Extensions.swift */,
+				16D669A6239061070086C55C /* SelfSized+Extensions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1507,6 +1510,7 @@
 				161C11422347426100A2EC9D /* StickyFlowLayout.swift in Sources */,
 				1666674C2347CA0300FD2B86 /* Wall_Cell_tp5.swift in Sources */,
 				164F80BF2384C033000F95E7 /* PaginationPresenterProtocol.swift in Sources */,
+				16D669A7239061070086C55C /* SelfSized+Extensions.swift in Sources */,
 				1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */,
 				161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */,
 				1611F29323788308002FCE3C /* RealmWall.swift in Sources */,

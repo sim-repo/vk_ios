@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZu-bz-lQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1297.1014492753625" y="152.67857142857142"/>
+            <point key="canvasLocation" x="1296" y="147"/>
         </scene>
         <!--Wall-->
         <scene sceneID="Ir4-rL-LAt">
@@ -236,13 +236,30 @@
                                 <rect key="frame" x="20" y="1" width="374" height="894"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r6g-7A-cgt">
-                                        <rect key="frame" x="-19" y="0.0" width="412" height="893"/>
+                                        <rect key="frame" x="1.5" y="111" width="371" height="350"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="371" id="cjv-0h-rFz"/>
+                                            <constraint firstAttribute="height" constant="350" id="ybJ-N0-s4x"/>
+                                        </constraints>
                                     </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Us3-tO-EUE" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="469" width="374" height="335"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="r6g-7A-cgt" secondAttribute="bottom" constant="1" id="MRD-vq-1TV"/>
-                                    <constraint firstItem="r6g-7A-cgt" firstAttribute="top" secondItem="6xS-Lr-ONF" secondAttribute="top" id="ke8-G9-gNr"/>
+                                    <constraint firstAttribute="trailing" secondItem="Us3-tO-EUE" secondAttribute="trailing" id="SHp-PJ-6SF"/>
+                                    <constraint firstItem="r6g-7A-cgt" firstAttribute="top" secondItem="6xS-Lr-ONF" secondAttribute="topMargin" constant="16" id="aO3-4d-8u2"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="Us3-tO-EUE" secondAttribute="bottom" id="aab-vz-pkf"/>
+                                    <constraint firstItem="Us3-tO-EUE" firstAttribute="top" secondItem="r6g-7A-cgt" secondAttribute="bottom" constant="8" id="lG8-mJ-elv"/>
+                                    <constraint firstItem="Us3-tO-EUE" firstAttribute="leading" secondItem="6xS-Lr-ONF" secondAttribute="leading" id="nVz-mg-geJ"/>
+                                    <constraint firstItem="r6g-7A-cgt" firstAttribute="centerX" secondItem="6xS-Lr-ONF" secondAttribute="centerX" id="vWD-rX-XhA"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -250,13 +267,11 @@
                         <constraints>
                             <constraint firstItem="xPi-ex-CYf" firstAttribute="leading" secondItem="wMW-5d-LzZ" secondAttribute="leading" constant="1" id="4IT-2l-0mI"/>
                             <constraint firstAttribute="bottom" secondItem="xPi-ex-CYf" secondAttribute="bottom" constant="1" id="JAp-a1-dKW"/>
-                            <constraint firstItem="r6g-7A-cgt" firstAttribute="trailing" secondItem="xPi-ex-CYf" secondAttribute="trailing" id="LCn-A2-Hkv"/>
                             <constraint firstItem="6xS-Lr-ONF" firstAttribute="leading" secondItem="wMW-5d-LzZ" secondAttribute="leading" constant="20" id="UYY-e8-U6S"/>
                             <constraint firstItem="6xS-Lr-ONF" firstAttribute="top" secondItem="wMW-5d-LzZ" secondAttribute="top" constant="1" id="dg6-cB-OIG"/>
                             <constraint firstAttribute="bottom" secondItem="6xS-Lr-ONF" secondAttribute="bottom" constant="1" id="met-Bg-Ev9"/>
                             <constraint firstItem="xPi-ex-CYf" firstAttribute="top" secondItem="wMW-5d-LzZ" secondAttribute="top" constant="1" id="qIw-W7-3Bp"/>
                             <constraint firstAttribute="trailing" secondItem="xPi-ex-CYf" secondAttribute="trailing" constant="1" id="qvN-ex-949"/>
-                            <constraint firstItem="r6g-7A-cgt" firstAttribute="leading" secondItem="xPi-ex-CYf" secondAttribute="leading" id="vY2-X1-dRL"/>
                             <constraint firstAttribute="trailing" secondItem="6xS-Lr-ONF" secondAttribute="trailing" constant="20" id="zFy-X3-Kwe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pmb-Xe-xLi"/>
@@ -264,12 +279,13 @@
                     <navigationItem key="navigationItem" title="Photos" id="BFd-SJ-7zb"/>
                     <connections>
                         <outlet property="imageContainerView" destination="6xS-Lr-ONF" id="S3v-yB-vj5"/>
+                        <outlet property="postTextView" destination="Us3-tO-EUE" id="XCj-XM-9BD"/>
                         <outlet property="prototypeImageView" destination="r6g-7A-cgt" id="tej-6N-ENX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="smF-jT-WCF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3248" y="147"/>
+            <point key="canvasLocation" x="3247.826086956522" y="146.65178571428569"/>
         </scene>
         <!--Friend-->
         <scene sceneID="S9l-EZ-Bmv">
@@ -289,7 +305,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J7Z-H1-DHd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="386.95652173913044" y="152.67857142857142"/>
+            <point key="canvasLocation" x="384" y="147"/>
         </scene>
     </scenes>
     <resources>

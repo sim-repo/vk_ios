@@ -22,15 +22,15 @@ class Wall_Cell_tp5: UICollectionViewCell {
     }
     
     @IBAction func doPressImage3(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 1)
+        presenter.selectImage(indexPath: indexPath, imageIdx: 2)
     }
     
     @IBAction func doPressImage4(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 1)
+        presenter.selectImage(indexPath: indexPath, imageIdx: 3)
     }
     
     @IBAction func doPressImage5(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 1)
+        presenter.selectImage(indexPath: indexPath, imageIdx: 4)
     }
 }
 

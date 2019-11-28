@@ -37,3 +37,7 @@ protocol PushLoginViewProtocol {
 }
 
 
+protocol PushWallViewProtocol {
+    func runPerformSegue(segueId: String, wall: WallModelProtocol, selectedImageIdx: Int)
+}
+

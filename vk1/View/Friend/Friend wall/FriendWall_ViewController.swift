@@ -9,6 +9,7 @@ class FriendWall_ViewController: UIViewController {
     
     var waiter: SpinnerViewController?
 
+    var selectedImageIdx: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class FriendWall_ViewController: UIViewController {
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
         guard  let _ = presenter as? PullWallPresenterProtocol
             else {
-                log("setupPresenter(): conform exception", isErr: true)
+                log("setupPresenter(): conform exception", printEnum: nil, isErr: true)
                 return
             }
     }
@@ -42,17 +43,23 @@ class FriendWall_ViewController: UIViewController {
         guard let wall = sender as? Wall
             else { return }
         if let destinationView = segue.destination as? FriendPost_ViewController {
+            if let idx = selectedImageIdx {
+                destinationView.selectedImageIdx = idx
+            }
             destinationView.wall = wall
         }
     }
     
-    private func log(_ msg: String, isErr: Bool = false) {
+    private func log(_ msg: String, printEnum: PrintLogEnum?, isErr: Bool = false) {
         if isErr {
             catchError(msg: "FriendWall_ViewController(): "+msg)
         } else {
-            console(msg: msg, printEnum: .viewReloadData)
+            if let printEnum_ = printEnum {
+                console(msg: msg, printEnum: printEnum_)
+            }
         }
     }
+
 }
 
 
@@ -97,9 +104,23 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
     
     
     private func didScrollEnd(_ indexPath: IndexPath) {
-        if indexPath.row >= presenter.numberOfRowsInSection() - 5 {
+        if indexPath.row >= presenter.numberOfRowsInSection() - Network.remItemsToStartFetch {
             presenter.didEndScroll()
         }
+    }
+}
+
+
+extension FriendWall_ViewController: UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        let location = scrollView.panGestureRecognizer.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: location)
+            else {
+                log("scrollViewWillBeginDragging(): could not specify an indexpath", printEnum: nil, isErr: true)
+            return
+        }
+        didScrollEnd(indexPath)
     }
 }
 
@@ -110,7 +131,6 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
         guard let model_ = model else { return }
         performSegue(withIdentifier: segueId, sender: model_)
     }
-    
     
     func viewReloadData(moduleEnum: ModuleEnum) {
         collectionView.reloadData()
@@ -126,7 +146,7 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
     }
     
     func insertItems(startIdx: Int, endIdx: Int) {
-        log("FriendWall_ViewController(): insertItems()")
+        log("insertItems()", printEnum: .viewReloadData)
         var indexes = [IndexPath]()
         for idx in startIdx...endIdx {
             let idx = IndexPath(row: idx, section: 0)
@@ -139,4 +159,12 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
     }
 }
 
+
+extension FriendWall_ViewController: PushWallViewProtocol {
+    
+    func runPerformSegue(segueId: String, wall: WallModelProtocol, selectedImageIdx: Int) {
+        self.selectedImageIdx = selectedImageIdx
+        performSegue(withIdentifier: segueId, sender: wall)
+    }
+}
 

@@ -20,7 +20,7 @@ class Wall_Cell_tp3: UICollectionViewCell {
     }
     
     @IBAction func doPressImage3(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 1)
+        presenter.selectImage(indexPath: indexPath, imageIdx: 2)
     }
 }
 

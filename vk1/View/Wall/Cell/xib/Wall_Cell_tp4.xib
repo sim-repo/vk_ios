@@ -41,52 +41,64 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QO6-F6-Py1" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="264" y="258.5" width="256" height="250.5"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bu-fj-FnW" userLabel="ImageButton1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bu-fj-FnW" userLabel="ImageButton1">
                                         <rect key="frame" x="0.0" y="0.0" width="256" height="251"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="doPressImage1:" destination="3uy-pk-ldC" eventType="touchUpInside" id="Vbc-2f-hye"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42g-gz-pCR" userLabel="ImageButton2">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42g-gz-pCR" userLabel="ImageButton2">
                                         <rect key="frame" x="264" y="0.0" width="256" height="251"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="doPressImage2:" destination="3uy-pk-ldC" eventType="touchUpInside" id="PMg-fP-Npt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6un-Ev-ldc" userLabel="ImageButton3">
-                                        <rect key="frame" x="0.0" y="259" width="256" height="250"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6un-Ev-ldc" userLabel="ImageButton3">
+                                        <rect key="frame" x="0.0" y="258.5" width="256" height="250"/>
                                         <connections>
                                             <action selector="doPressImage3:" destination="3uy-pk-ldC" eventType="touchUpInside" id="BWy-qh-eKR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAH-Gc-FKc" userLabel="ImageButton4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAH-Gc-FKc" userLabel="ImageButton4">
                                         <rect key="frame" x="264" y="259" width="256" height="250"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="doPressImage4:" destination="3uy-pk-ldC" eventType="touchUpInside" id="1IH-ML-Jcx"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="wAH-Gc-FKc" firstAttribute="leading" secondItem="QO6-F6-Py1" secondAttribute="leading" id="2zi-wg-CSc"/>
                                     <constraint firstItem="Hnm-wo-EIR" firstAttribute="height" secondItem="Mvh-Du-ABL" secondAttribute="height" id="3JP-8h-Nnb"/>
                                     <constraint firstItem="QO6-F6-Py1" firstAttribute="leading" secondItem="Mvh-Du-ABL" secondAttribute="trailing" constant="8" id="4Gy-jy-GVc"/>
                                     <constraint firstAttribute="bottom" secondItem="QO6-F6-Py1" secondAttribute="bottom" id="5HY-PD-gG7"/>
+                                    <constraint firstItem="8bu-fj-FnW" firstAttribute="height" secondItem="Hnm-wo-EIR" secondAttribute="height" multiplier="1.002" id="6UL-rt-PpV"/>
+                                    <constraint firstItem="42g-gz-pCR" firstAttribute="width" secondItem="vlP-dO-VXv" secondAttribute="width" id="AQ9-P6-Qff"/>
                                     <constraint firstItem="vlP-dO-VXv" firstAttribute="top" secondItem="WLs-YX-nTH" secondAttribute="top" id="B6s-o8-Fhi"/>
+                                    <constraint firstItem="6un-Ev-ldc" firstAttribute="top" secondItem="Mvh-Du-ABL" secondAttribute="top" id="CIQ-u7-dHA"/>
                                     <constraint firstItem="Hnm-wo-EIR" firstAttribute="top" secondItem="WLs-YX-nTH" secondAttribute="top" id="DgJ-U0-avX"/>
                                     <constraint firstItem="QO6-F6-Py1" firstAttribute="height" secondItem="vlP-dO-VXv" secondAttribute="height" id="Fcy-xZ-OFb"/>
+                                    <constraint firstItem="42g-gz-pCR" firstAttribute="leading" secondItem="vlP-dO-VXv" secondAttribute="leading" id="Ga5-JC-e5I"/>
+                                    <constraint firstItem="42g-gz-pCR" firstAttribute="top" secondItem="vlP-dO-VXv" secondAttribute="top" id="IGK-Yb-Hen"/>
                                     <constraint firstItem="Mvh-Du-ABL" firstAttribute="leading" secondItem="WLs-YX-nTH" secondAttribute="leading" id="Jh4-Ps-hkF"/>
+                                    <constraint firstItem="wAH-Gc-FKc" firstAttribute="top" secondItem="QO6-F6-Py1" secondAttribute="top" id="Kux-gh-k6b"/>
                                     <constraint firstItem="vlP-dO-VXv" firstAttribute="leading" secondItem="Hnm-wo-EIR" secondAttribute="trailing" constant="8" id="Pbd-rI-eUn"/>
                                     <constraint firstItem="Mvh-Du-ABL" firstAttribute="width" secondItem="QO6-F6-Py1" secondAttribute="width" id="VCt-Z2-r04"/>
+                                    <constraint firstItem="8bu-fj-FnW" firstAttribute="top" secondItem="Hnm-wo-EIR" secondAttribute="top" id="arT-or-nOF"/>
+                                    <constraint firstItem="6un-Ev-ldc" firstAttribute="height" secondItem="Mvh-Du-ABL" secondAttribute="height" multiplier="0.998004" id="cm0-cJ-9Ck"/>
                                     <constraint firstItem="Hnm-wo-EIR" firstAttribute="leading" secondItem="WLs-YX-nTH" secondAttribute="leading" id="d35-QP-oiY"/>
+                                    <constraint firstItem="6un-Ev-ldc" firstAttribute="width" secondItem="Mvh-Du-ABL" secondAttribute="width" id="d8W-MO-TYW"/>
                                     <constraint firstAttribute="bottom" secondItem="Mvh-Du-ABL" secondAttribute="bottom" id="dcZ-nG-Jfx"/>
                                     <constraint firstItem="QO6-F6-Py1" firstAttribute="top" secondItem="vlP-dO-VXv" secondAttribute="bottom" constant="8" id="e38-JY-Xl5"/>
                                     <constraint firstItem="Mvh-Du-ABL" firstAttribute="top" secondItem="Hnm-wo-EIR" secondAttribute="bottom" constant="8" id="iH3-CO-ali"/>
+                                    <constraint firstItem="wAH-Gc-FKc" firstAttribute="height" secondItem="QO6-F6-Py1" secondAttribute="height" multiplier="0.998004" id="oIk-9e-Fd0"/>
                                     <constraint firstAttribute="trailing" secondItem="vlP-dO-VXv" secondAttribute="trailing" id="rTI-KQ-skK"/>
+                                    <constraint firstItem="8bu-fj-FnW" firstAttribute="width" secondItem="Hnm-wo-EIR" secondAttribute="width" id="uIB-St-P2g"/>
+                                    <constraint firstItem="42g-gz-pCR" firstAttribute="height" secondItem="vlP-dO-VXv" secondAttribute="height" multiplier="1.002" id="vXb-3B-qhT"/>
                                     <constraint firstItem="vlP-dO-VXv" firstAttribute="width" secondItem="Hnm-wo-EIR" secondAttribute="width" id="vrm-KT-YJH"/>
                                     <constraint firstAttribute="trailing" secondItem="QO6-F6-Py1" secondAttribute="trailing" id="wS8-4H-tcJ"/>
+                                    <constraint firstItem="6un-Ev-ldc" firstAttribute="leading" secondItem="Mvh-Du-ABL" secondAttribute="leading" id="xOt-Da-mOR"/>
+                                    <constraint firstItem="wAH-Gc-FKc" firstAttribute="width" secondItem="QO6-F6-Py1" secondAttribute="width" id="yKO-1i-yAR"/>
+                                    <constraint firstItem="8bu-fj-FnW" firstAttribute="leading" secondItem="Hnm-wo-EIR" secondAttribute="leading" id="z7n-NC-Vop"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ta-9E-1Pg" userLabel="LikeView" customClass="WallLike_View" customModule="vk1" customModuleProvider="target">

@@ -41,8 +41,20 @@ extension FriendWallPresenter: PaginationPresenterProtocol {
 extension FriendWallPresenter: PullWallPresenterProtocol {
     
     func selectImage(indexPath: IndexPath, imageIdx: Int) {
-        let wall = getData(indexPath: indexPath) as? Wall
-        let url = wall?.getImageURLs()[imageIdx]
-        view?.runPerformSegue(segueId: "FriendPostSegue", wall!)
+        
+        guard let wall = getData(indexPath: indexPath) as? Wall
+            else {
+                catchError(msg: "FriendWallPresenter(): PullWallPresenterProtocol(): selectImage: getData exception ")
+                return
+            }
+        
+       // let url = wall.getImageURLs()[imageIdx]
+     
+        guard let view_ = view as? PushWallViewProtocol
+            else {
+                catchError(msg: "FriendWallPresenter(): PullWallPresenterProtocol(): selectImage: protocol conform exception")
+                return
+            }
+        view_.runPerformSegue(segueId: "FriendPostSegue", wall: wall, selectedImageIdx: imageIdx)
     }
 }

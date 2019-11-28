@@ -31,17 +31,19 @@ class News_ViewController: UIViewController {
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
         guard  let _ = presenter as? PullWallPresenterProtocol
             else {
-                log("setupPresenter(): conform exception", isErr: true)
+                log("setupPresenter(): conform exception", printEnum: nil, isErr: true)
                 return
             }
     }
     
     
-    private func log(_ msg: String, isErr: Bool = false) {
+    private func log(_ msg: String, printEnum: PrintLogEnum?, isErr: Bool = false) {
         if isErr {
             catchError(msg: "News_ViewController(): "+msg)
         } else {
-            console(msg: msg, printEnum: .viewReloadData)
+            if let printEnum_ = printEnum {
+                console(msg: msg, printEnum: printEnum_)
+            }
         }
     }
 }
@@ -66,7 +68,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 catchError(msg: "News_ViewController(): cellForItemAt(): presenter.getData is incorrected ")
                 return cell
         }
-        log("cellForItemAt(): idx: \(indexPath.row) - news.id: \(news.getId())")
+        log("cellForItemAt(): idx: \(indexPath.row) - news.id: \(news.getId())", printEnum: .pagination)
         if let name = cellByCode[news.postTypeCode] {
             cell = cellConfigure(name, indexPath, news)
         }
@@ -92,8 +94,8 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     private func didScrollEnd(_ indexPath: IndexPath) {
-        log("didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - 5)")
-        if indexPath.row >= presenter.numberOfRowsInSection() - 5 {
+        log("didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - Network.remItemsToStartFetch)", printEnum: .pagination)
+        if indexPath.row >= presenter.numberOfRowsInSection() - Network.remItemsToStartFetch {
             presenter.didEndScroll()
         }
     }
@@ -107,7 +109,7 @@ extension News_ViewController: UIScrollViewDelegate {
         let location = scrollView.panGestureRecognizer.location(in: collectionView)
         guard let indexPath = collectionView.indexPathForItem(at: location)
             else {
-                catchError(msg: "News_ViewController(): scrollViewWillBeginDragging(): could not specify an indexpath")
+                log("scrollViewWillBeginDragging(): could not specify an indexpath", printEnum: nil, isErr: true)
             return
         }
         didScrollEnd(indexPath)
@@ -124,7 +126,7 @@ extension News_ViewController: PushPlainViewProtocol{
     
     
     func viewReloadData(moduleEnum: ModuleEnum) {
-        log("viewReloadData()")
+        log("viewReloadData()", printEnum: .viewReloadData)
         collectionView.reloadData()
     }
     
@@ -138,7 +140,7 @@ extension News_ViewController: PushPlainViewProtocol{
     }
     
     func insertItems(startIdx: Int, endIdx: Int) {
-        log("insertItems()")
+        log("insertItems()", printEnum: .viewReloadData)
         var indexes = [IndexPath]()
         for idx in startIdx...endIdx {
             let idx = IndexPath(row: idx, section: 0)

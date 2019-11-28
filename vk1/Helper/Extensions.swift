@@ -184,15 +184,6 @@ func getRealmURL(dbName: String) -> URL {
 
 //MARK:- Extensions
 
-extension UITextView {
-    func actualSize() -> CGSize {
-        let fixedWidth = frame.size.width
-        let newSize = sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-        return frame.size
-    }
-}
-
 extension Int {
     func toString() -> String
     {
