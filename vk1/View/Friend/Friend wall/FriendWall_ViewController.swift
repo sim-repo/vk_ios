@@ -6,15 +6,22 @@ class FriendWall_ViewController: UIViewController {
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
     
     var presenter: PullPlainPresenterProtocol!
-    
     var waiter: SpinnerViewController?
-
     var selectedImageIdx: Int?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPresenter()
-        
+        setupCells()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        presenter.viewDidDisappear()
+    }
+    
+    
+    private func setupCells() {
         for i in 1...cellByCode.count {
             collectionView.register(UINib(nibName: cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: cellByCode["tp\(i)"]!)
         }
@@ -25,21 +32,17 @@ class FriendWall_ViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: height)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        presenter.viewDidDisappear()
-    }
-    
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
         guard  let _ = presenter as? PullWallPresenterProtocol
             else {
                 log("setupPresenter(): conform exception", printEnum: nil, isErr: true)
                 return
-            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
+        
         guard let wall = sender as? Wall
             else { return }
         if let destinationView = segue.destination as? FriendPost_ViewController {
@@ -59,9 +62,10 @@ class FriendWall_ViewController: UIViewController {
             }
         }
     }
-
+    
 }
 
+//MARK: - UICollectionViewDelegate
 
 extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -111,6 +115,8 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
 }
 
 
+//MARK: - UIScrollViewDelegate
+
 extension FriendWall_ViewController: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -118,12 +124,15 @@ extension FriendWall_ViewController: UIScrollViewDelegate {
         guard let indexPath = collectionView.indexPathForItem(at: location)
             else {
                 log("scrollViewWillBeginDragging(): could not specify an indexpath", printEnum: nil, isErr: true)
-            return
+                return
         }
         didScrollEnd(indexPath)
     }
 }
 
+
+
+//MARK: - PushPlainViewProtocol
 
 extension FriendWall_ViewController: PushPlainViewProtocol {
     
@@ -159,6 +168,8 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
     }
 }
 
+
+//MARK: - PushWallViewProtocol
 
 extension FriendWall_ViewController: PushWallViewProtocol {
     

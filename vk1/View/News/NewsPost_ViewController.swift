@@ -1,7 +1,7 @@
 import UIKit
 import Kingfisher
 
-class FriendPost_ViewController: UIViewController{
+class NewsPost_ViewController: UIViewController {
     
     @IBOutlet weak var prototypeImageView: UIImageView!
     @IBOutlet weak var imageContainerView: UIView!
@@ -12,7 +12,7 @@ class FriendPost_ViewController: UIViewController{
     var swipeAnimator: UIViewPropertyAnimator?
     var constainerContentSize: CGFloat!
     
-    var wall: Wall!
+    var news: News!
     var images: [UIImageView] = []
     var currNumTouch = 0
     var maxTouches = 0
@@ -25,7 +25,7 @@ class FriendPost_ViewController: UIViewController{
         let swipeRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
         imageContainerView.addGestureRecognizer(swipeRecognizer)
         prepareForViewAnimator()
-        postTextView.text = wall.getOrigTitle()
+        postTextView.text = news.getOrigTitle()
     }
     
     
@@ -35,18 +35,17 @@ class FriendPost_ViewController: UIViewController{
     }
     
     
-    
     private func prepareForViewAnimator(){
         
         var imageURLs = [URL]()
-        guard wall.imageURLs.count >= selectedImageIdx + 1
-        else {
-            catchError(msg: "FriendPost_ViewController(): prepareForViewAnimator(): index out of range: \(selectedImageIdx)")
-            return
+        guard news.imageURLs.count >= selectedImageIdx + 1
+            else {
+                catchError(msg: "FriendPost_ViewController(): prepareForViewAnimator(): index out of range: \(selectedImageIdx)")
+                return
         }
-        imageURLs.append(wall.imageURLs[selectedImageIdx])
-
-        for (idx, url) in wall.imageURLs.enumerated() {
+        imageURLs.append(news.imageURLs[selectedImageIdx])
+        
+        for (idx, url) in news.imageURLs.enumerated() {
             if idx != selectedImageIdx {
                 imageURLs.append(url)
             }
@@ -63,7 +62,7 @@ class FriendPost_ViewController: UIViewController{
             images.append(imageView)
             prototypeImageView.addSubview(imageView)
         }
-        maxTouches = wall.imageURLs.count
+        maxTouches = news.imageURLs.count
         constainerContentSize = prototypeImageView.frame.width
     }
     

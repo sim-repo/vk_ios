@@ -7,6 +7,8 @@ class News_ViewController: UIViewController {
     
     var presenter: PullPlainPresenterProtocol!
     var waiter: SpinnerViewController?
+    var selectedImageIdx: Int?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,18 @@ class News_ViewController: UIViewController {
             }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let news = sender as? News
+            else { return }
+        if let destinationView = segue.destination as? NewsPost_ViewController {
+            if let idx = selectedImageIdx {
+                destinationView.selectedImageIdx = idx
+            }
+            destinationView.news = news
+        }
+    }
+    
     
     private func log(_ msg: String, printEnum: PrintLogEnum?, isErr: Bool = false) {
         if isErr {
@@ -48,6 +62,8 @@ class News_ViewController: UIViewController {
     }
 }
 
+
+//MARK: - UICollectionViewDelegate
 
 extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -102,6 +118,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 
+//MARK: - UIScrollViewDelegate
 
 extension News_ViewController: UIScrollViewDelegate {
     
@@ -117,7 +134,7 @@ extension News_ViewController: UIScrollViewDelegate {
 }
 
 
-
+//MARK: - PushPlainViewProtocol
 
 extension News_ViewController: PushPlainViewProtocol{
     
@@ -152,3 +169,15 @@ extension News_ViewController: PushPlainViewProtocol{
         }, completion: nil)
     }
 }
+
+
+//MARK: - PushWallViewProtocol
+
+extension News_ViewController: PushWallViewProtocol {
+    
+    func runPerformSegue(segueId: String, wall: WallModelProtocol, selectedImageIdx: Int) {
+        self.selectedImageIdx = selectedImageIdx
+        performSegue(withIdentifier: segueId, sender: wall)
+    }
+}
+

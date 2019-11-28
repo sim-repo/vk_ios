@@ -129,6 +129,7 @@
 		16D58C052369D65100735296 /* WallParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C042369D65100735296 /* WallParser.swift */; };
 		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
 		16D669A7239061070086C55C /* SelfSized+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D669A6239061070086C55C /* SelfSized+Extensions.swift */; };
+		16D669D62390842C0086C55C /* NewsPost_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D669D52390842C0086C55C /* NewsPost_ViewController.swift */; };
 		16E08B2C236B34AF00340F09 /* GroupParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B2B236B34AF00340F09 /* GroupParser.swift */; };
 		16E08B33236B3C5F00340F09 /* MyGroupDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B32236B3C5F00340F09 /* MyGroupDetailPresenter.swift */; };
 		16E08B35236B499B00340F09 /* ApiVKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E08B34236B499B00340F09 /* ApiVKService.swift */; };
@@ -410,6 +411,7 @@
 		16D58C042369D65100735296 /* WallParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallParser.swift; sourceTree = "<group>"; };
 		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
 		16D669A6239061070086C55C /* SelfSized+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfSized+Extensions.swift"; sourceTree = "<group>"; };
+		16D669D52390842C0086C55C /* NewsPost_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPost_ViewController.swift; sourceTree = "<group>"; };
 		16E08B2B236B34AF00340F09 /* GroupParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupParser.swift; sourceTree = "<group>"; };
 		16E08B32236B3C5F00340F09 /* MyGroupDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupDetailPresenter.swift; sourceTree = "<group>"; };
 		16E08B34236B499B00340F09 /* ApiVKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVKService.swift; sourceTree = "<group>"; };
@@ -782,6 +784,7 @@
 			isa = PBXGroup;
 			children = (
 				166667402347BB9900FD2B86 /* News_ViewController.swift */,
+				16D669D52390842C0086C55C /* NewsPost_ViewController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -1088,8 +1091,8 @@
 			isa = PBXGroup;
 			children = (
 				163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */,
-				16E08B32236B3C5F00340F09 /* MyGroupDetailPresenter.swift */,
 				16E08B85237065F100340F09 /* MyGroupWallPresenter.swift */,
+				16E08B32236B3C5F00340F09 /* MyGroupDetailPresenter.swift */,
 			);
 			path = MyGroup;
 			sourceTree = "<group>";
@@ -1488,6 +1491,7 @@
 				16200CFD233360FF00F02440 /* GroupPresenter.swift in Sources */,
 				16E08B4D236DD7DB00340F09 /* SyncGroupDetail.swift in Sources */,
 				166CB8ED2382F8CA009DA806 /* DefaultSyncConfiguration.swift in Sources */,
+				16D669D62390842C0086C55C /* NewsPost_ViewController.swift in Sources */,
 				16FF6FCB2351F0DA001C33CF /* RotatedPushAnimator.swift in Sources */,
 				164F80AF2384744E000F95E7 /* SectionBasePresenter+CalledByView.swift in Sources */,
 				164F81A1238BE6EA000F95E7 /* RealmFirebase.swift in Sources */,
