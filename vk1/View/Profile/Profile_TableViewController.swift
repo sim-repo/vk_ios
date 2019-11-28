@@ -35,6 +35,10 @@ class Profile_TableViewController: UITableViewController {
 
 
 extension Profile_TableViewController: PushPlainViewProtocol {
+    
+    
+    func runPerformSegue(segueId: String, _ model: ModelProtocol?){}
+    
     func viewReloadData(moduleEnum: ModuleEnum) {
         tableView.reloadData()
     }

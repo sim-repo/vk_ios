@@ -23,7 +23,6 @@ class MyGroupDetail_ViewController: UIViewController {
     var scrollViewLastContentOffset: CGFloat = 0
     var headerViewIsHide = false
     lazy var waiter: SpinnerViewController = SpinnerViewController(vc: self)
-   // var waiter2: SpinnerViewController?
     
     var headerViewOriginalHeight: CGFloat = 0
     var logoOriginalHeight: CGFloat = 0
@@ -48,6 +47,11 @@ class MyGroupDetail_ViewController: UIViewController {
     
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
+        guard  let _ = presenter as? PullWallPresenterProtocol
+            else {
+                log("setupPresenter(): conform exception", isErr: true)
+                return
+        }
     }
     
     private func setupCells(){
@@ -58,9 +62,17 @@ class MyGroupDetail_ViewController: UIViewController {
         layout.minimumLineSpacing = 50
         layout.itemSize = CGSize(width: 100, height: 300)
     }
+    
+    private func log(_ msg: String, isErr: Bool = false) {
+        if isErr {
+            catchError(msg: "MyGroupDetail_ViewController(): "+msg)
+        } else {
+            console(msg: msg, printEnum: .viewReloadData)
+        }
+    }
 }
 
-// MARK: segue handlers
+// MARK: collection delegate
 extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
@@ -100,10 +112,15 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
         return cell
     }
     
+    private func getPullWallPresenterProtocol() -> PullWallPresenterProtocol? {
+        return presenter as? PullWallPresenterProtocol
+    }
     
     func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ wall: Wall) -> UICollectionViewCell{
         let c = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as! Wall_CellProtocol
-        c.setup(wall, indexRow: indexPath.row)
+        if let p = getPullWallPresenterProtocol() {
+            c.setup(wall, indexPath, p)
+        }
         return c
     }
     
@@ -117,8 +134,11 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
 
 extension MyGroupDetail_ViewController: PushPlainViewProtocol{
     
+    func runPerformSegue(segueId: String, _ model: ModelProtocol?) {
+    }
+    
     func startWaitIndicator(_ moduleEnum: ModuleEnum?) {
-
+        
         if moduleEnum == .my_group_detail {
             waiter.add(vcView: headerView)
         }
@@ -196,7 +216,7 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
     }
     
     func insertItems(startIdx: Int, endIdx: Int) {}
-           
+    
 }
 
 

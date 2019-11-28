@@ -60,7 +60,7 @@ class News : DecodableProtocol, PlainModelProtocol {
 
 
 
-extension News: WallProtocol {
+extension News: WallModelProtocol {
     
     func getId() -> typeId {
         return id

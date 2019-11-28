@@ -4,7 +4,7 @@ import Kingfisher
 class WallCellConfigurator {
     
     
-    static func setupCell(cell: Wall_CellProtocol, wall: WallProtocol) {
+    static func setupCell(cell: Wall_CellProtocol, wall: WallModelProtocol) {
         
         // wall header block >>
         

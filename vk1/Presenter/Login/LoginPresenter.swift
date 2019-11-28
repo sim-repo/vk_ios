@@ -28,9 +28,9 @@ extension LoginPresenter {
     
     override func viewDidLoad() {
         
-        guard let view_ = view as? PushLoginViewProtocol
+        guard let view_ = view as? (PushLoginViewProtocol & PushViewProtocol)
         else {
-            log("viewDidLoad(): downcasting: PushLoginViewProtocol", isErr: true)
+            log("viewDidLoad(): conform protocol exception", isErr: true)
             return
         }
         
@@ -78,7 +78,7 @@ extension LoginPresenter {
     }
     
 
-    private func checkFirebaseCredentials(view: PushLoginViewProtocol) {
+    private func checkFirebaseCredentials(view: PushLoginViewProtocol&PushViewProtocol) {
         let (login, psw) = self.loadFirebaseCredentials()
         view.showFirebaseFormAuthentication(login: login,
                                             psw: psw,
@@ -110,26 +110,26 @@ extension LoginPresenter {
     }
     
     
-    private func firebaseRegister(_ view: PushLoginViewProtocol, _ login: MyAuth.login, _ psw: MyAuth.psw){
+    private func firebaseRegister(_ view: PushViewProtocol, _ login: MyAuth.login, _ psw: MyAuth.psw){
         FirebaseService.shared.signUp(login: login,
                                         psw: psw,
                                         onSuccess: { [weak self] (login, psw) in
                                           self?.log("FirebaseService(): register(): onSuccess()")
                                           RealmService.saveFirebaseCredentials(login, psw)
-                                          view.runPerformSegue(segueId: "showAppSegue")
+                                            view.runPerformSegue(segueId: "showAppSegue", nil)
                                         },
                                         onError: { [weak self] (err) in
                                           self?.log("FirebaseService(): register(): onError(): \(err)", isErr: true)
                                         })
     }
     
-    private func firebaseSignIn(_ view: PushLoginViewProtocol, _ login: MyAuth.login, _ psw: MyAuth.psw) {
+    private func firebaseSignIn(_ view: PushViewProtocol, _ login: MyAuth.login, _ psw: MyAuth.psw) {
         FirebaseService.shared.signIn(login: login,
                                         psw: psw,
                                         onSuccess: { [weak self] in
                                             self?.log("FirebaseService(): signIn(): onSuccess()")
                                             RealmService.saveFirebaseCredentials(login, psw)
-                                            view.runPerformSegue(segueId: "showAppSegue")
+                                            view.runPerformSegue(segueId: "showAppSegue", nil)
                                         },
                                         onError: { [weak self] (err) in
                                           self?.log("FirebaseService(): signIn(): onError(): \(err)", isErr: true)

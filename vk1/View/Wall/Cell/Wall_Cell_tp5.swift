@@ -9,14 +9,37 @@ class Wall_Cell_tp5: UICollectionViewCell {
     @IBOutlet weak var likeView: WallLike_View!
     @IBOutlet weak var headerView: WallHeader_View!
     @IBOutlet weak var hConHeaderView: NSLayoutConstraint!
-    var indexRow: Int = 0
+    var indexPath: IndexPath!
+    var presenter: PullWallPresenterProtocol!
+    
+    
+    @IBAction func doPressImage1(_ sender: Any) {
+       presenter.selectImage(indexPath: indexPath, imageIdx: 0)
+    }
+    
+    @IBAction func doPressImage2(_ sender: Any) {
+        presenter.selectImage(indexPath: indexPath, imageIdx: 1)
+    }
+    
+    @IBAction func doPressImage3(_ sender: Any) {
+        presenter.selectImage(indexPath: indexPath, imageIdx: 1)
+    }
+    
+    @IBAction func doPressImage4(_ sender: Any) {
+        presenter.selectImage(indexPath: indexPath, imageIdx: 1)
+    }
+    
+    @IBAction func doPressImage5(_ sender: Any) {
+        presenter.selectImage(indexPath: indexPath, imageIdx: 1)
+    }
 }
 
 extension Wall_Cell_tp5: Wall_CellProtocol {
     
     
-    func setup(_ wall: WallProtocol, indexRow: Int) {
-        self.indexRow = indexRow
+    func setup(_ wall: WallModelProtocol, _ indexPath: IndexPath, _ presenter: PullWallPresenterProtocol) {
+        self.indexPath = indexPath
+        self.presenter = presenter
         WallCellConfigurator.setupCell(cell: self, wall: wall)
         layoutIfNeeded()
     }
@@ -30,7 +53,7 @@ extension Wall_Cell_tp5: Wall_CellProtocol {
     }
 
     func getIndexRow() -> Int {
-       return indexRow
+       return indexPath.row
     }
     
     func getHeaderView() -> WallHeader_View {

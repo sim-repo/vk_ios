@@ -1,6 +1,6 @@
 import UIKit
 
-protocol WallProtocol{
+protocol WallModelProtocol{
     
     // wall header block
     func getMyName() -> String?

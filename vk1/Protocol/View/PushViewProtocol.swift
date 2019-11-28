@@ -6,6 +6,7 @@ protocol PushViewProtocol: class {
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?)
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?)
+    func runPerformSegue(segueId: String, _ model: ModelProtocol?)
 }
 
 
@@ -29,13 +30,10 @@ protocol PushLoginViewProtocol {
                                         psw: MyAuth.psw,
                                         onSignIn: ((MyAuth.login, MyAuth.psw) -> Void)?,
                                         onRegister: (()->Void)?)
-    
-    
     func showFirebaseFormRegister(onRegister: ((MyAuth.login, MyAuth.psw) -> Void)?,
                                   onCancel: (()->Void)? )
-    
     func back()
-    func runPerformSegue(segueId: String)
-    
     func setRunAfterVkAuthentication(onVkAuthCompletion: ((MyAuth.token, MyAuth.userId)->Void)?)
 }
+
+

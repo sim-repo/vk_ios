@@ -32,3 +32,11 @@ protocol PullSectionPresenterProtocol: PullPresenterProtocol {
 protocol PullPlainPresenterProtocol: PullPresenterProtocol {
     func numberOfRowsInSection() -> Int
 }
+
+
+//MARK: - Specific Protocols
+
+
+protocol PullWallPresenterProtocol {
+    func selectImage(indexPath: IndexPath, imageIdx: Int)
+}

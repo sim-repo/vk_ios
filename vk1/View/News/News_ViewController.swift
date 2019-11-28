@@ -29,10 +29,20 @@ class News_ViewController: UIViewController {
     
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
+        guard  let _ = presenter as? PullWallPresenterProtocol
+            else {
+                log("setupPresenter(): conform exception", isErr: true)
+                return
+            }
     }
     
-    private func log(_ msg: String) {
-        console(msg: "News_ViewController: "+msg, printEnum: .viewReloadData)
+    
+    private func log(_ msg: String, isErr: Bool = false) {
+        if isErr {
+            catchError(msg: "News_ViewController(): "+msg)
+        } else {
+            console(msg: msg, printEnum: .viewReloadData)
+        }
     }
 }
 
@@ -64,9 +74,15 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return cell
     }
     
+    private func getPullWallPresenterProtocol() -> PullWallPresenterProtocol? {
+        return presenter as? PullWallPresenterProtocol
+    }
+    
     func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ news: News) -> UICollectionViewCell{
         let c = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as! Wall_CellProtocol
-        c.setup(news, indexRow: indexPath.row)
+        if let p = getPullWallPresenterProtocol() {
+            c.setup(news, indexPath, p)
+        }
         return c
     }
     
@@ -102,6 +118,10 @@ extension News_ViewController: UIScrollViewDelegate {
 
 
 extension News_ViewController: PushPlainViewProtocol{
+    
+    
+    func runPerformSegue(segueId: String, _ model: ModelProtocol?){}
+    
     
     func viewReloadData(moduleEnum: ModuleEnum) {
         log("viewReloadData()")

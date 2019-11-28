@@ -2,7 +2,7 @@ import Foundation
 import SwiftyJSON
 
 
-class Wall : WallProtocol, DecodableProtocol, PlainModelProtocol {
+class Wall : WallModelProtocol, DecodableProtocol, PlainModelProtocol {
 
     var id: typeId = 0
     var postTypeCode: String!

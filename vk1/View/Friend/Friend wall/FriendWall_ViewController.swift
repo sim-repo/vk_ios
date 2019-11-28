@@ -8,11 +8,7 @@ class FriendWall_ViewController: UIViewController {
     var presenter: PullPlainPresenterProtocol!
     
     var waiter: SpinnerViewController?
-    
-    
-    private func log(_ msg: String) {
-        console(msg: msg, printEnum: .viewReloadData)
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +30,28 @@ class FriendWall_ViewController: UIViewController {
     
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
+        guard  let _ = presenter as? PullWallPresenterProtocol
+            else {
+                log("setupPresenter(): conform exception", isErr: true)
+                return
+            }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        guard let wall = sender as? Wall
+            else { return }
+        if let destinationView = segue.destination as? FriendPost_ViewController {
+            destinationView.wall = wall
+        }
+    }
+    
+    private func log(_ msg: String, isErr: Bool = false) {
+        if isErr {
+            catchError(msg: "FriendWall_ViewController(): "+msg)
+        } else {
+            console(msg: msg, printEnum: .viewReloadData)
+        }
     }
 }
 
@@ -60,9 +78,15 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     
-    func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ wall: Wall) -> UICollectionViewCell{
+    private func getPullWallPresenterProtocol() -> PullWallPresenterProtocol? {
+        return presenter as? PullWallPresenterProtocol
+    }
+    
+    private func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ wall: Wall) -> UICollectionViewCell{
         let c = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as! Wall_CellProtocol
-        c.setup(wall, indexRow: indexPath.row)
+        if let p = getPullWallPresenterProtocol() {
+            c.setup(wall, indexPath, p)
+        }
         return c
     }
     
@@ -81,6 +105,12 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
 
 
 extension FriendWall_ViewController: PushPlainViewProtocol {
+    
+    func runPerformSegue(segueId: String, _ model: ModelProtocol? = nil) {
+        guard let model_ = model else { return }
+        performSegue(withIdentifier: segueId, sender: model_)
+    }
+    
     
     func viewReloadData(moduleEnum: ModuleEnum) {
         collectionView.reloadData()

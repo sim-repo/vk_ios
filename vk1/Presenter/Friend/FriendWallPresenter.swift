@@ -35,3 +35,14 @@ extension FriendWallPresenter: DetailPresenterProtocol {
 extension FriendWallPresenter: PaginationPresenterProtocol {
     
 }
+
+
+
+extension FriendWallPresenter: PullWallPresenterProtocol {
+    
+    func selectImage(indexPath: IndexPath, imageIdx: Int) {
+        let wall = getData(indexPath: indexPath) as? Wall
+        let url = wall?.getImageURLs()[imageIdx]
+        view?.runPerformSegue(segueId: "FriendPostSegue", wall!)
+    }
+}

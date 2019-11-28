@@ -229,6 +229,10 @@ extension Login_ViewController: WKNavigationDelegate {
 
 extension Login_ViewController: PushPlainViewProtocol {
     
+    func runPerformSegue(segueId: String, _ model: ModelProtocol? = nil) {
+        performSegue(withIdentifier: segueId, sender: nil)
+    }
+    
     func viewReloadData(moduleEnum: ModuleEnum) {
     }
     
@@ -270,12 +274,6 @@ extension Login_ViewController: PushLoginViewProtocol {
         
         showFirebaseRegister(onRegister: onRegister, onCancel: onCancel)
     }
-    
-    
-    func runPerformSegue(segueId: String) {
-        performSegue(withIdentifier: segueId, sender: nil)
-    }
-    
     
     func back() {
         //reuse:

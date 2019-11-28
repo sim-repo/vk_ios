@@ -103,7 +103,7 @@
 		166667682347E2C700FD2B86 /* Wall_CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667672347E2C700FD2B86 /* Wall_CellProtocol.swift */; };
 		166667DA2348994100FD2B86 /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667D92348994100FD2B86 /* UIControl+Extensions.swift */; };
 		166667DE2348F50A00FD2B86 /* UIControlThemeMgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667DD2348F50A00FD2B86 /* UIControlThemeMgt.swift */; };
-		166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667F92349062E00FD2B86 /* WallProtocol.swift */; };
+		166667FA2349062E00FD2B86 /* WallModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667F92349062E00FD2B86 /* WallModelProtocol.swift */; };
 		166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667FB234912B800FD2B86 /* FriendWallPresenter.swift */; };
 		166CB8DB238291CC009DA806 /* RealmBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CB8DA238291CC009DA806 /* RealmBase.swift */; };
 		166CB8E42382E690009DA806 /* SyncBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CB8E32382E690009DA806 /* SyncBase.swift */; };
@@ -382,7 +382,7 @@
 		166667672347E2C700FD2B86 /* Wall_CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_CellProtocol.swift; sourceTree = "<group>"; };
 		166667D92348994100FD2B86 /* UIControl+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
 		166667DD2348F50A00FD2B86 /* UIControlThemeMgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlThemeMgt.swift; sourceTree = "<group>"; };
-		166667F92349062E00FD2B86 /* WallProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallProtocol.swift; sourceTree = "<group>"; };
+		166667F92349062E00FD2B86 /* WallModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallModelProtocol.swift; sourceTree = "<group>"; };
 		166667FB234912B800FD2B86 /* FriendWallPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWallPresenter.swift; sourceTree = "<group>"; };
 		166CB8DA238291CC009DA806 /* RealmBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBase.swift; sourceTree = "<group>"; };
 		166CB8E32382E690009DA806 /* SyncBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncBase.swift; sourceTree = "<group>"; };
@@ -722,7 +722,7 @@
 		164764A12365E1C9007D1B19 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				166667F92349062E00FD2B86 /* WallProtocol.swift */,
+				166667F92349062E00FD2B86 /* WallModelProtocol.swift */,
 				16E08B63236ED9FF00340F09 /* ModelProtocol.swift */,
 				16D58BDF2366BABD00735296 /* DecodableProtocol.swift */,
 			);
@@ -1550,7 +1550,7 @@
 				16E08B86237065F100340F09 /* MyGroupWallPresenter.swift in Sources */,
 				16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */,
 				1647649E2365E04C007D1B19 /* AlamofireService.swift in Sources */,
-				166667FA2349062E00FD2B86 /* WallProtocol.swift in Sources */,
+				166667FA2349062E00FD2B86 /* WallModelProtocol.swift in Sources */,
 				164F80EC2385B4A0000F95E7 /* RealmToken.swift in Sources */,
 				1611F28F23787437002FCE3C /* RealmService.swift in Sources */,
 				164F80D623858044000F95E7 /* News.swift in Sources */,

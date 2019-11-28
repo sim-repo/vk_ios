@@ -111,6 +111,10 @@ extension Group_ViewController : UISearchControllerDelegate, UISearchBarDelegate
 
 extension Group_ViewController: PushPlainViewProtocol{
     
+    
+    func runPerformSegue(segueId: String, _ model: ModelProtocol?){}
+    
+    
     func viewReloadData(moduleEnum: ModuleEnum) {
         self.collectionView.reloadData()
     }
