@@ -7,14 +7,10 @@ class Login_ViewController: UIViewController {
     
     @IBOutlet weak var containterView: UIView!
     @IBOutlet weak var logoView: UIView!
+    @IBOutlet weak var bottomInsetView: UIView!
     
+    @IBOutlet weak var bottomHeightConstraint: NSLayoutConstraint!
     var presenter: PullPlainPresenterProtocol!
-    
-    enum SegueEnum: String {
-        case segueFibSignUp = "segueFibSignUp"
-        case segueFibSignIn = "segueFibSignIn"
-        case segueMainApp = "segueMainApp"
-    }
     
     enum ViewEnum: Int {
         case vk = 1000
@@ -22,6 +18,8 @@ class Login_ViewController: UIViewController {
         case register = 3000
     }
     
+    
+    var vkShownNow = false
     var onSignIn: ((String, String) -> Void)?
     var onRegister: (() -> Void)?
     var onVkAuthCompletion: ((MyAuth.token, MyAuth.userId) -> Void)?
@@ -32,13 +30,27 @@ class Login_ViewController: UIViewController {
         presenter.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasHidden), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         runLogo()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
     }
+    
     
     private func runLogo() {
         let w: CGFloat = 232.0
@@ -48,6 +60,12 @@ class Login_ViewController: UIViewController {
         logoView.backgroundColor = .clear
         logoView.addSubview(logoAnimation)
     }
+}
+
+
+
+//MARK: - Main Login:
+extension Login_ViewController {
     
     private func loadVKCredentials() -> Bool {
         if let (t,u) = RealmService.loadToken(),
@@ -61,7 +79,7 @@ class Login_ViewController: UIViewController {
     }
     
     private func showVkAuth(completion: ((WKWebView) -> Void)?){
-        
+        vkShownNow = true
         webview = WKWebView()
         guard let webview_ = webview else { return}
         
@@ -74,14 +92,14 @@ class Login_ViewController: UIViewController {
         webview_.bottomAnchor.constraint(equalTo: containterView.bottomAnchor).isActive = true
         webview_.leadingAnchor.constraint(equalTo: containterView.leadingAnchor).isActive = true
         webview_.trailingAnchor.constraint(equalTo: containterView.trailingAnchor).isActive = true
-        webview_.scrollView.isScrollEnabled = false
+        webview_.scrollView.isScrollEnabled = true
         webview_.tag = ViewEnum.vk.rawValue
-    
+        
         completion?(webview_)
     }
     
     private func showFirebaseSignIn(login: String, psw: String, signInCompletion: ((String, String) -> Void)?, signUpCompletion: (() -> Void)?){
-      
+        vkShownNow = false
         let subview = Bundle.main.loadNibNamed("FirSignin_View", owner: self, options: nil)!.first as! FirSignin_View
         subview.frame = containterView.bounds
         subview.setup(login: login, psw: psw, signInCompletion: signInCompletion, signUpCompletion: signUpCompletion)
@@ -124,34 +142,50 @@ class Login_ViewController: UIViewController {
         let subviews = containterView.subviews
         if let subview = subviews.first(where: {$0.tag == tag.rawValue}) {
             UIView.animate(withDuration: 0.8,
-                                          animations: { [weak self] in
-                                             subview.alpha = 0.0
-                                             self?.containterView.layoutIfNeeded()
-                                          },
-                                          completion: {_ in
-                                            subview.removeFromSuperview()
-                                            appeared?.alpha = 1.0
-                                          })
+                           animations: { [weak self] in
+                            subview.alpha = 0.0
+                            self?.containterView.layoutIfNeeded()
+                },
+                           completion: {_ in
+                            subview.removeFromSuperview()
+                            appeared?.alpha = 1.0
+            })
         } else {
             UIView.animate(withDuration: 0.8,
-                          animations: { [weak self] in
-                               appeared?.alpha = 1
-                               self?.containterView.layoutIfNeeded()
+                           animations: { [weak self] in
+                            appeared?.alpha = 1
+                            self?.containterView.layoutIfNeeded()
             })
         }
     }
-    
-    
-    
-    private func loadFibCredentials() -> Bool {
-        return false
-    }
-    
-    private func runFibAuth(completion: (()->Void)? = nil) {
-        print("run fib auth")
-    }
 }
 
+
+
+
+
+//MARK: - Keyboard Actions:
+extension Login_ViewController {
+    
+    @objc func keyboardWasShown(_ notification: NSNotification){
+        let info = notification.userInfo! as NSDictionary
+        let size = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
+        bottomHeightConstraint.constant = size.height-30
+        view.layoutIfNeeded()
+    }
+    
+    @objc func keyboardWasHidden(){
+        if vkShownNow {
+          bottomHeightConstraint.constant = 0
+          view.layoutIfNeeded()
+        }
+    }
+
+}
+
+
+
+//MARK: - WebView Delegate:
 
 extension Login_ViewController: WKNavigationDelegate {
     
@@ -190,6 +224,9 @@ extension Login_ViewController: WKNavigationDelegate {
     }
 }
 
+
+//MARK:- calls from presenter:
+
 extension Login_ViewController: PushPlainViewProtocol {
     
     func viewReloadData(moduleEnum: ModuleEnum) {
@@ -204,6 +241,7 @@ extension Login_ViewController: PushPlainViewProtocol {
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?) {
     }
 }
+
 
 extension Login_ViewController: PushLoginViewProtocol {
     

@@ -1,7 +1,7 @@
 import UIKit
 
 
-let buttonFontName = "Courier New"
+let buttonFontName = "Courier New-Negret"
 
 
 //MARK:- UIButton
@@ -17,13 +17,13 @@ class MyButton_Secondary : UIButton {
 class MyButton_Adaptive : UIButton {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        titleLabel?.font =  UIFont(name: buttonFontName, size: 13)
+        titleLabel?.font =  UIFont(name: buttonFontName, size: 12)
         if (isDark) {
             if currentImage != nil {
               tintColor = ColorSystemHelper.secondary
             }
             setTitleColor(.white, for: .normal)
-            backgroundColor = ColorSystemHelper.bottomBackground
+            backgroundColor = ColorSystemHelper.primary_soft_30
         } else {
             if currentImage != nil {
               tintColor = ColorSystemHelper.primary
@@ -207,6 +207,22 @@ class MyImageView_Circled : UIImageView {
     }
 }
 
+
+
+
+//MARK:- TextField
+
+class MyTextField_OnBackground : UITextField {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        textColor = ColorSystemHelper.background
+        backgroundColor = ColorSystemHelper.onBackground
+        if let placeholder = placeholder {
+            attributedPlaceholder = NSAttributedString(string:placeholder,
+                                                       attributes: [NSAttributedString.Key.foregroundColor: ColorSystemHelper.inactiveControls])
+        }
+    }
+}
 
 class MyTextField_Secondary : UITextField {
     required init?(coder: NSCoder) {

@@ -6,6 +6,7 @@ class FirSignin_View: UIView {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var pswTextField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var signInCompletion: ((String, String)->Void)?
     var signUpCompletion: (()->Void)?
@@ -16,6 +17,7 @@ class FirSignin_View: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
     }
     @IBAction func doPressSignIn(_ sender: Any) {
         guard let login = loginTextField.text,
@@ -29,6 +31,9 @@ class FirSignin_View: UIView {
     }
     
     func setup(login: String, psw: String, signInCompletion: ((String, String)->Void)?, signUpCompletion: (()->Void)?) {
+        let scrollSize = CGSize(width: 400,
+                                height: self.frame.size.height)
+        scrollView.contentSize = scrollSize
         loginTextField.text = login
         pswTextField.text = psw
         self.signInCompletion = signInCompletion

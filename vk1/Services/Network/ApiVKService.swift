@@ -167,7 +167,7 @@ class ApiVKService {
             URLQueryItem(name: "client_id", value: Network.shared.clientId),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "wall,friends,groups"),
+            URLQueryItem(name: "scope", value: "wall,friends,groups,offline"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "v", value: "5.87")
         ]
