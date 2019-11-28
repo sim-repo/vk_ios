@@ -54,6 +54,9 @@ public class SectionedBasePresenter {
             return
         }
         self.view = _view
+        if self.dataSourceIsEmpty() {
+            self.waitIndicator(start: true)
+        }
     }
     
     

@@ -39,7 +39,7 @@
                                         <rect key="frame" x="0.0" y="138" width="618" height="308"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QU0-JR-nhA" userLabel="ImageButton1">
-                                        <rect key="frame" x="0.0" y="0.0" width="307" height="133"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="307" height="134"/>
                                         <connections>
                                             <action selector="doPressImage1:" destination="i0G-fj-bVU" eventType="touchUpInside" id="ZcO-Az-Gur"/>
                                         </connections>
@@ -51,7 +51,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paa-06-JGA" userLabel="ImageButton3">
-                                        <rect key="frame" x="0.0" y="138" width="618" height="300"/>
+                                        <rect key="frame" x="0.0" y="138" width="618" height="308"/>
                                         <connections>
                                             <action selector="doPressImage3:" destination="i0G-fj-bVU" eventType="touchUpInside" id="ooo-mp-hS1"/>
                                         </connections>
@@ -75,13 +75,13 @@
                                     <constraint firstAttribute="bottom" secondItem="bqF-EM-a7K" secondAttribute="bottom" id="bmj-4V-GY8"/>
                                     <constraint firstItem="eNy-VO-Niw" firstAttribute="top" secondItem="klf-nZ-NfF" secondAttribute="top" id="eXT-CT-XJH"/>
                                     <constraint firstItem="QU0-JR-nhA" firstAttribute="leading" secondItem="eNy-VO-Niw" secondAttribute="leading" id="f7R-J3-wkT"/>
-                                    <constraint firstItem="QU0-JR-nhA" firstAttribute="height" secondItem="eNy-VO-Niw" secondAttribute="height" multiplier="0.992537" id="gq9-zZ-NOM"/>
+                                    <constraint firstItem="QU0-JR-nhA" firstAttribute="height" secondItem="eNy-VO-Niw" secondAttribute="height" id="gq9-zZ-NOM"/>
                                     <constraint firstItem="LyA-7P-oid" firstAttribute="top" secondItem="FcK-PF-ueO" secondAttribute="top" id="jqn-3z-xCK"/>
                                     <constraint firstItem="eNy-VO-Niw" firstAttribute="leading" secondItem="klf-nZ-NfF" secondAttribute="leading" id="kiW-8O-7Wc"/>
                                     <constraint firstItem="FcK-PF-ueO" firstAttribute="width" secondItem="eNy-VO-Niw" secondAttribute="width" id="q9Q-hD-ZRK"/>
                                     <constraint firstItem="LyA-7P-oid" firstAttribute="leading" secondItem="FcK-PF-ueO" secondAttribute="leading" id="qtk-tG-VxE"/>
                                     <constraint firstItem="bqF-EM-a7K" firstAttribute="width" secondItem="klf-nZ-NfF" secondAttribute="width" id="uHP-cd-7Yh"/>
-                                    <constraint firstItem="paa-06-JGA" firstAttribute="height" secondItem="bqF-EM-a7K" secondAttribute="height" multiplier="0.974026" id="wr2-Av-LPc"/>
+                                    <constraint firstItem="paa-06-JGA" firstAttribute="height" secondItem="bqF-EM-a7K" secondAttribute="height" id="wr2-Av-LPc"/>
                                     <constraint firstItem="FcK-PF-ueO" firstAttribute="top" secondItem="klf-nZ-NfF" secondAttribute="top" id="zqW-ZK-qx5"/>
                                 </constraints>
                             </view>

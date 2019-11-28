@@ -73,6 +73,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(presenter.numberOfRowsInSection())
         return presenter.numberOfRowsInSection()
     }
     
