@@ -4,8 +4,10 @@ struct WallCellConstant {
     
     static let headerHeight: CGFloat = 240
     static let quarterHeight: CGFloat = 240 / 4
-    static let imageHeight: CGFloat = 180
+    static let mediaBlockHeight: CGFloat = 180
     static let footerHeight: CGFloat = 30
+    
+    
     
     enum CellTypeEnum: String{
         case post = "post"

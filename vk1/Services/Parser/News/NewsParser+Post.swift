@@ -20,7 +20,7 @@ extension NewsParser {
     
     
     
-    public static func parsePost1(_ jsonItem: JSON, groups: [typeId:Group], profiles: [typeId:Friend], isRepost: Bool) -> News? {
+    public static func parsePost(_ jsonItem: JSON, groups: [typeId:Group], profiles: [typeId:Friend], isRepost: Bool) -> News? {
         
         let header = parsePostHeader(jsonItem, groups, profiles)
         let photoURLs = parseMediaBlock(jsonItem, isRepost)
@@ -32,12 +32,15 @@ extension NewsParser {
             news.id = getRandomInt()
         }
         news.ownerId = jsonItem["source_id"].intValue
-        
+       
+            
         // header block
         news.avaURL = header.avaURL
         news.name = header.name
         news.title = header.title
+        news.postDate = header.unixTime
         
+            
         // media block
         news.imageURLs = photoURLs
         news.imagesPlanCode = WallCellConstant.getImagePlanCode(imageCount: photoURLs.count)
@@ -234,19 +237,19 @@ extension NewsParser {
     
     private static func searchInImageItems(_ jsonItem: JSON, tag1: String, tag2: String) -> JSON? {
         let res = jsonItem[tag1][tag2].arrayValue.first(where: { (json) -> Bool in
-            json["height"].intValue >= 200 && json["height"].intValue <= 400})
+            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) && json["height"].intValue <= 400})
         return res
     }
     
     private static func searchInImageItems2(_ jsonItem: JSON, tag1: String) -> JSON? {
         let res = jsonItem[tag1].arrayValue.first(where: { (json) -> Bool in
-            json["height"].intValue >= 200 && json["height"].intValue <= 400})
+            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) && json["height"].intValue <= 400})
         return res
     }
     
     private static func searchInImageItems3(_ jsonItem: JSON, tag1: String, tag2: String, tag3: String) -> JSON? {
         let res = jsonItem[tag1][tag2][tag3].arrayValue.first(where: { (json) -> Bool in
-            json["height"].intValue >= 200 && json["height"].intValue <= 400})
+            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) && json["height"].intValue <= 400})
         return res
     }
     

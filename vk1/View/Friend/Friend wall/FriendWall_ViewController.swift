@@ -103,7 +103,7 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.size.width - constraintSpaceX.constant * 40
-        return CGSize(width: width, height: WallCellConstant.headerHeight + WallCellConstant.imageHeight + WallCellConstant.footerHeight)
+        return CGSize(width: width, height: WallCellConstant.headerHeight + WallCellConstant.mediaBlockHeight + WallCellConstant.footerHeight)
     }
     
     

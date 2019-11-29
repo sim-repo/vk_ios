@@ -49,7 +49,6 @@ class NewsParser {
         
       
         
-        
         for item in items {
             
             let repost = isRepost(item)
@@ -57,7 +56,7 @@ class NewsParser {
             var news: News?
             switch getNewsType(item){
                 case .post:
-                    news = parsePost1(item, groups: dicGroups, profiles: dicProfile, isRepost: repost)
+                    news = parsePost(item, groups: dicGroups, profiles: dicProfile, isRepost: repost)
                     break
                 
                 case .wall_photo:
@@ -68,8 +67,8 @@ class NewsParser {
                     news = parseVideo(item, groups: dicGroups, profiles: dicProfile)
                     break
                 
-            case .audio:
-                    break
+                case .audio:
+                        break
             }
             
             if let news_ = news {
@@ -78,14 +77,6 @@ class NewsParser {
                 news_.createDate = getUnixTime(date: Date())
                 res.append(news_)
             }
-            
-            
-//
-//            let n = News()
-//            if isExpected(jsonItem: item) {
-//                n.setup(jsonItem: item, profiles: dicProfile, groups: dicGroups, ownOffset: ownOffset, vkOffset: vkOffset)
-//                res.append(n)
-//            }
         }
         return res
     }
@@ -97,19 +88,6 @@ class NewsParser {
         return offset
     }
 
-
-    
-    
-    
-    
-    
-    
-    
- 
-    
-
-    
-    
 
     
     //MARK:- private functions >>
