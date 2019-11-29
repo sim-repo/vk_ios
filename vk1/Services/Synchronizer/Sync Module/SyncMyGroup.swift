@@ -16,7 +16,7 @@ class SyncMyGroup: SyncBaseProtocol {
         
         //check update schedule
         let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
-        if interval > Network.maxIntervalBeforeCleanupDataSource {
+        if interval > NetworkConstant.maxIntervalBeforeCleanupDataSource {
              presenter.clearDataSource(id: nil)
              syncing = true
              syncFromNetwork(presenter, dispatchCompletion)

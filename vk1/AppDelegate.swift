@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.setMinimumBackgroundFetchInterval(syncConfiguration.interval)
         //firebase:
         FirebaseApp.configure()
+        
         return true
     }
 

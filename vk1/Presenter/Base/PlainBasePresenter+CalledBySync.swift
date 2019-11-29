@@ -60,7 +60,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     
     func setSyncProgress(curr: Int, sum: Int) {
         PRESENTER_UI_THREAD { [weak self] in
-            if curr/sum * 100 % Network.intervalViewReload == 0 {
+            if curr/sum * 100 % NetworkConstant.intervalViewReload == 0 {
                 self?.viewReloadData()
             }
         }

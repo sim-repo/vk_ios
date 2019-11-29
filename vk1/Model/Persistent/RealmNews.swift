@@ -8,7 +8,7 @@ class RealmNews: RealmBase {
     @objc dynamic var createDate = 0
     
     //@objc dynamic var id = 0.0
-    @objc dynamic var postTypeCode = ""
+    @objc dynamic var imagesPlanCode = ""
     @objc dynamic var ownerId = 0
     
     // wall header block

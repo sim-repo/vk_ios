@@ -55,8 +55,8 @@ class MyGroupDetail_ViewController: UIViewController {
     }
     
     private func setupCells(){
-        for i in 1...cellByCode.count {
-            collectionView.register(UINib(nibName: cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: cellByCode["tp\(i)"]!)
+        for i in 1...WallCellConstant.cellByCode.count {
+            collectionView.register(UINib(nibName: WallCellConstant.cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: WallCellConstant.cellByCode["tp\(i)"]!)
         }
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = 50
@@ -92,7 +92,7 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellByCode["tp1"]!, for: indexPath) // !
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallCellConstant.cellByCode["tp1"]!, for: indexPath) // !
         
         guard let subPresenter = presenter.getSubPlainPresenter()
             else {
@@ -106,7 +106,7 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
                 return cell
         }
         
-        if let name = cellByCode[wall.postTypeCode] {
+        if let name = WallCellConstant.cellByCode[wall.postTypeCode] {
             cell = cellConfigure(name, indexPath, wall)
         }
         return cell
@@ -127,7 +127,7 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.size.width - constraintSpaceX.constant * 10
-        return CGSize(width: width, height: cellHeaderHeight + cellImageHeight + cellBottomHeight)
+        return CGSize(width: width, height: WallCellConstant.headerHeight + WallCellConstant.imageHeight + WallCellConstant.footerHeight)
     }
 }
 

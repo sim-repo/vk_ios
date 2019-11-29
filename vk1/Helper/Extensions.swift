@@ -73,13 +73,13 @@ func NET_THREAD(_ block: @escaping (() -> Void)) {
 }
 
 func NET_DELAY_THREAD(_ block: @escaping (() -> Void)) {
-    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(Network.delayBetweenRequests), qos: .background){
+    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(NetworkConstant.delayBetweenRequests), qos: .background){
         block()
     }
 }
 
 func NET_LDELAY_THREAD(_ block: @escaping (() -> Void)) {
-    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(Network.longDelayBetweenRequests), qos: .background){
+    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(NetworkConstant.longDelayBetweenRequests), qos: .background){
         block()
     }
 }
@@ -180,6 +180,10 @@ func getRealmURL(dbName: String) -> URL {
    let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
                                                         appropriateFor: nil, create: false)
    return documentDirectory.appendingPathComponent("\(dbName).realm")
+}
+
+func getRandomInt() -> Int {
+    return Int(arc4random_uniform(UInt32(Int.max)))
 }
 
 //MARK:- Extensions

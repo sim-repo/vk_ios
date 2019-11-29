@@ -2,24 +2,24 @@ import UIKit
 
 class WallHeader_View : UIView{
     
-    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet var hConRepostAuthorContentView: NSLayoutConstraint!
-    @IBOutlet var hConOrigAuthorContentView: NSLayoutConstraint!
+    @IBOutlet weak var hConRepostAuthorContentView: NSLayoutConstraint!
+    @IBOutlet weak var hConOrigAuthorContentView: NSLayoutConstraint!
     
-    @IBOutlet var hConRepostTitleTextView: NSLayoutConstraint!
-    @IBOutlet var hConOrigTitleTextView: NSLayoutConstraint!
+    @IBOutlet weak var hConRepostTitleTextView: NSLayoutConstraint!
+    @IBOutlet weak var hConOrigTitleTextView: NSLayoutConstraint!
     
-    @IBOutlet var myAvaImageView: UIImageView!
-    @IBOutlet var myNameLabel: UILabel!
-    @IBOutlet var myPostDateLabel: UILabel!
-    @IBOutlet var myTitleTextView: UITextView!
+    @IBOutlet weak var myAvaImageView: UIImageView!
+    @IBOutlet weak var myNameLabel: UILabel!
+    @IBOutlet weak var myPostDateLabel: UILabel!
+    @IBOutlet weak var myTitleTextView: UITextView!
     
     
-    @IBOutlet var origAvaImageView: UIImageView!
-    @IBOutlet var origNameLabel: UILabel!
-    @IBOutlet var origPostDateLabel: UILabel!
-    @IBOutlet var origTitleTextView: UITextView!
+    @IBOutlet weak var origAvaImageView: UIImageView!
+    @IBOutlet weak var origNameLabel: UILabel!
+    @IBOutlet weak var origPostDateLabel: UILabel!
+    @IBOutlet weak var origTitleTextView: UITextView!
     
     
     

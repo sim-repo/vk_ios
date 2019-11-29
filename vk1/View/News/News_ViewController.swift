@@ -19,8 +19,8 @@ class News_ViewController: UIViewController {
     
     
     private func setupCells(){
-        for i in 1...cellByCode.count {
-            collectionView.register(UINib(nibName: cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: cellByCode["tp\(i)"]!)
+        for i in 1...WallCellConstant.cellByCode.count {
+            collectionView.register(UINib(nibName: WallCellConstant.cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: WallCellConstant.cellByCode["tp\(i)"]!)
         }
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let width = view.frame.size.width - constraintSpaceX.constant * 40
@@ -78,15 +78,16 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellByCode["tp1"]!, for: indexPath) // !
-        
+        // if comment out - occured to memory leak:
+        //var cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallCellConstant.cellByCode["tp1"]!, for: indexPath) // !
+        var cell: UICollectionViewCell!
         guard let news = presenter.getData(indexPath: indexPath) as? News
             else {
                 catchError(msg: "News_ViewController(): cellForItemAt(): presenter.getData is incorrected ")
                 return cell
         }
         log("cellForItemAt(): idx: \(indexPath.row) - news.id: \(news.getId())", printEnum: .pagination)
-        if let name = cellByCode[news.postTypeCode] {
+        if let name = WallCellConstant.cellByCode[news.imagesPlanCode] {
             cell = cellConfigure(name, indexPath, news)
         }
         didScrollEnd(indexPath)
@@ -107,12 +108,12 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.size.width - constraintSpaceX.constant * 40
-        return CGSize(width: width, height: cellHeaderHeight + cellImageHeight + cellBottomHeight)
+        return CGSize(width: width, height: WallCellConstant.headerHeight + WallCellConstant.imageHeight + WallCellConstant.footerHeight)
     }
     
     private func didScrollEnd(_ indexPath: IndexPath) {
-        log("didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - Network.remItemsToStartFetch)", printEnum: .pagination)
-        if indexPath.row >= presenter.numberOfRowsInSection() - Network.remItemsToStartFetch {
+        log("didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch)", printEnum: .pagination)
+        if indexPath.row >= presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch {
             presenter.didEndScroll()
         }
     }

@@ -382,7 +382,7 @@ class RealmService {
         realmNews.postDate = Int(news.postDate)
         realmNews.avaURL = news.avaURL?.absoluteString ?? ""
         realmNews.title = news.title
-        realmNews.postTypeCode = news.postTypeCode
+        realmNews.imagesPlanCode = news.imagesPlanCode
         realmNews.viewCount = news.viewCount
         realmNews.likeCount = news.likeCount
         realmNews.messageCount = news.messageCount
@@ -518,7 +518,7 @@ class RealmService {
             news.postDate = Double(result.postDate)
             news.avaURL = URL(string: result.avaURL)
             news.title = result.title
-            news.postTypeCode = result.postTypeCode
+            news.imagesPlanCode = result.imagesPlanCode
             news.viewCount = result.viewCount
             news.likeCount = result.likeCount
             news.messageCount = result.messageCount

@@ -40,12 +40,12 @@ class SyncNews: SyncBaseProtocol {
     
             let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
                 
-            if interval > Network.maxIntervalBeforeCleanupDataSource {
+            if interval > NetworkConstant.maxIntervalBeforeCleanupDataSource {
                 presenter.clearDataSource(id: nil)
                 syncing = true
-                syncFromNetwork(presenter, Network.newsResponseItemsPerRequest, dispatchCompletion)
+                syncFromNetwork(presenter, NetworkConstant.newsResponseItemsPerRequest, dispatchCompletion)
                 return
-            } else if interval > Network.minIntervalBeforeSendRequest {
+            } else if interval > NetworkConstant.minIntervalBeforeSendRequest {
                 syncing = true
                 syncFromNetwork(presenter, 100, dispatchCompletion, Double(lastTimestamp))
                 return
@@ -64,7 +64,7 @@ class SyncNews: SyncBaseProtocol {
         
         //load from network
         syncing = true
-        syncFromNetwork(presenter, Network.newsResponseItemsPerRequest, dispatchCompletion)
+        syncFromNetwork(presenter, NetworkConstant.newsResponseItemsPerRequest, dispatchCompletion)
     }
     
     
@@ -80,7 +80,7 @@ class SyncNews: SyncBaseProtocol {
         
         ApiVKService.newsRequest(ownOffset,
                           vkOffset,
-                          Network.newsResponseItemsPerRequest,
+                          NetworkConstant.newsResponseItemsPerRequest,
                           onSuccess,
                           onError,
                           offsetCompletion,

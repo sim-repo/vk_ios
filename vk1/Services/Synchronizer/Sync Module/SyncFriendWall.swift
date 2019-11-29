@@ -5,7 +5,7 @@ class SyncFriendWall: SyncBaseProtocol {
     static let shared = SyncFriendWall()
     private override init() {}
     
-    let count = Network.wallResponseItemsPerRequest
+    let count = NetworkConstant.wallResponseItemsPerRequest
     var offsetById = [typeId:Int]()
     
     var id: typeId = 0
@@ -68,12 +68,12 @@ class SyncFriendWall: SyncBaseProtocol {
             //check update schedule
             if offset == 0 {
                 let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
-                if interval > Network.maxIntervalBeforeCleanupDataSource {
+                if interval > NetworkConstant.maxIntervalBeforeCleanupDataSource {
                      presenter.clearDataSource(id: id)
                      syncing = true
                      syncFromNetwork(presenter, id, offset, offsetCompletion, dispatchCompletion)
                      return
-                 } else if interval > Network.minIntervalBeforeSendRequest {
+                 } else if interval > NetworkConstant.minIntervalBeforeSendRequest {
                      syncing = true
                      syncFromNetwork(presenter, id, 0, offsetCompletion, dispatchCompletion)
                      return

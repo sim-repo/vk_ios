@@ -1,6 +1,8 @@
 import UIKit
 import Kingfisher
 
+
+
 class WallCellConfigurator {
     
     
@@ -9,33 +11,33 @@ class WallCellConfigurator {
         // wall header block >>
         
         // set initial height
-        cell.getHConHeaderView().constant = cellHeaderHeight
-        cell.getHeaderView().hConRepostAuthorContentView.constant = cellQuarterHeight
-        cell.getHeaderView().hConRepostTitleTextView.constant = cellQuarterHeight
-        cell.getHeaderView().hConOrigAuthorContentView.constant = cellQuarterHeight
-        cell.getHeaderView().hConOrigTitleTextView.constant = cellQuarterHeight
+        cell.getHConHeaderView().constant = WallCellConstant.headerHeight
+        cell.getHeaderView().hConRepostAuthorContentView.constant = WallCellConstant.quarterHeight
+        cell.getHeaderView().hConRepostTitleTextView.constant = WallCellConstant.quarterHeight
+        cell.getHeaderView().hConOrigAuthorContentView.constant = WallCellConstant.quarterHeight
+        cell.getHeaderView().hConOrigTitleTextView.constant = WallCellConstant.quarterHeight
         
         // search and hide empty
         var negativeHCon: CGFloat = 0
         
         if wall.getMyAvaURL() == nil {
             cell.getHeaderView().hConRepostAuthorContentView.constant = 0
-            negativeHCon += cellQuarterHeight
+            negativeHCon += WallCellConstant.quarterHeight
         }
         
         if wall.getTitle() == nil || wall.getTitle()?.count == 0 {
                 cell.getHeaderView().hConRepostTitleTextView.constant = 0
-                negativeHCon += cellQuarterHeight
+                negativeHCon += WallCellConstant.quarterHeight
         }
         
         if wall.getOrigAvaURL() == nil {
             cell.getHeaderView().hConOrigAuthorContentView.constant = 0
-            negativeHCon += cellQuarterHeight
+            negativeHCon += WallCellConstant.quarterHeight
         }
         
         if wall.getOrigTitle() == nil || wall.getOrigTitle()?.count == 0 {
             cell.getHeaderView().hConOrigTitleTextView.constant = 0
-            negativeHCon += cellQuarterHeight
+            negativeHCon += WallCellConstant.quarterHeight
         }
         
         // parent block: decrease height
@@ -66,7 +68,7 @@ class WallCellConfigurator {
             }
         }
         
-         // wall bottom block >>
+         // wall footer block >>
         cell.getLikeView().likeCount.text = "\(wall.getLikeCount())"
         cell.getLikeView().messageCount.text = "\(wall.getMessageCount())"
         cell.getLikeView().shareCount.text = "\(wall.getShareCount())"

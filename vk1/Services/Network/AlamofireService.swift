@@ -40,7 +40,7 @@ class AlamofireService {
                                                              _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                                              _ onError: @escaping  onErrResponse_SyncCompletion ) {
         
-           AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+           AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                switch response.result {
                case .success(let json):
                    let arr:[T]? = parseJsonItems(json)
@@ -67,7 +67,7 @@ class AlamofireService {
                                                              _ onError: @escaping  onErrResponse_SyncCompletion ) {
             
            log(msg: "requestSingle(): start..")
-           AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+           AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                log(msg: "requestSingle(): response..")
                switch response.result {
                case .success(let json):
@@ -95,7 +95,7 @@ class AlamofireService {
     public static func requestJoinGroup<T: DecodableProtocol>(clazz: T.Type ,
                                                          _ urlPath: String,
                                                          _ params: Parameters) {
-           AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
+           AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
             log(msg: "requestJoin: requestSingle(): response..")
                switch response.result {
                    case .success(let _):
@@ -116,7 +116,7 @@ class AlamofireService {
                                    _ offsetCompletion: (()->Void)?,
                                    _ offset: Int ){
         wallRequestTask = {
-            AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+            AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                 switch response.result {
                 case .success(let json):
                     let arr:[Wall]? = WallParser.parseWallJson(json, offset: offset)
@@ -161,10 +161,10 @@ class AlamofireService {
                                    _ offsetCompletion: ((String)->Void)?
                                    ){
 
-        AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+        AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let json):
-                let arr:[News]? = NewsParser.parseNewsJson(json, ownOffset, vkOffset)
+                let arr:[News]? = NewsParser.parseJson(json, ownOffset, vkOffset)
                    
                 if let arr = arr {
                     if arr.isEmpty {
@@ -195,7 +195,7 @@ class AlamofireService {
                                     _ onChecked: ((Bool)->Void)?) {
     
 
-        AlamofireService.sharedManager.request(Network.shared.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
+        AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let val):
                  let json = JSON(val)
@@ -215,6 +215,20 @@ class AlamofireService {
             }
         }
     }
+    
+    public static func videoRequest(_ urlPath: String, _ params: Parameters){
+        AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+                   switch response.result {
+                    case .success(let val):
+                    print(val)
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                        }
+                    }
+    }
+    
+    
+    
     
 
     private static func parseJsonItems<T: DecodableProtocol>(_ val: Any)->[T]?{

@@ -13,7 +13,7 @@ class ApiVKService {
               "access_token": Session.shared.token,
                   "extended": "1",
                   "fields":["bdate","sex","photo_50","photo_200_orig"],
-                  "v": Network.shared.versionAPI
+                  "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.requestItems(clazz: Friend.self, urlPath, params, onSuccess, onError)
     }
@@ -33,10 +33,10 @@ class ApiVKService {
                  "access_token": Session.shared.token,
                  "extended": "1",
                  "fields":["photo_50","photo_100", "photo_200"],
-                 "filter": "all",
+                 "filters": "all",
                  "count": "\(count)",
                  "offset": "\(offset)",
-                 "v": Network.shared.versionAPI
+                 "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
     }
@@ -51,7 +51,7 @@ class ApiVKService {
               "access_token": Session.shared.token,
                   "extended": "1",
                   "fields":["description","members_count","photo_50","photo_200","cover"],
-            "v": Network.shared.versionAPI
+            "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.requestItems(clazz: MyGroup.self, urlPath, params, onSuccess, onError)
     }
@@ -66,7 +66,7 @@ class ApiVKService {
             "access_token": Session.shared.token,
             "extended": "1",
             "fields":["counters","cover"],
-            "v": Network.shared.versionAPI
+            "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.requestSingle(clazz: DetailGroup.self, urlPath, params, onSuccess, onError)
     }
@@ -80,7 +80,7 @@ class ApiVKService {
             "access_token": Session.shared.token,
             "q": txtSearch,
             "count": 10,
-            "v": Network.shared.versionAPI
+            "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.requestItems(clazz: Group.self, urlPath, params, onSuccess, onError)
     }
@@ -92,7 +92,7 @@ class ApiVKService {
         let params: Parameters = [
             "access_token": Session.shared.token,
             "group_id": groupId,
-            "v": Network.shared.versionAPI
+            "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.requestJoinGroup(clazz: Group.self, urlPath, params)
     }
@@ -114,10 +114,10 @@ class ApiVKService {
                  "access_token": Session.shared.token,
                  "extended": "1",
                  "fields":["photo_50","photo_100", "photo_200"],
-                 "filter": "all",
+                 "filters": "all",
                  "offset": "\(offset)",
                  "count": "1",
-                 "v": Network.shared.versionAPI
+                 "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
         
@@ -138,10 +138,10 @@ class ApiVKService {
         var params: Parameters = [
                 "access_token": Session.shared.token,
                 "extended": "1",
-                "filter": "photo, wall_photo",
+                //"filters": "post,wall_photo,video",
                 "count": count,
                 "start_from": vkOffset,
-                "v": Network.shared.versionAPI
+                "v": NetworkConstant.shared.versionAPI
         ]
         if sinceTime != nil &&  sinceTime != 0 {
             params["start_time"] = sinceTime
@@ -158,16 +158,44 @@ class ApiVKService {
     }
     
     
+    
+    static func videoRequest() {
+           
+           let urlPath: String = "video.get"
+           
+        
+        if let base64Decoded = NSData(base64Encoded: "3997ecc0M7D7QqBYYHJQGVIYRwrt4BfdUs5lGFGXOh6hgaeuzWj6HNFxkGxQSg", options:   NSData.Base64DecodingOptions(rawValue: 0))
+            .map({ NSString(data: $0 as Data, encoding: String.Encoding.utf8.rawValue) })
+              {
+                  // Convert back to a string
+                  print("Decoded:  \(base64Decoded)")
+              }
+        
+           let params: Parameters = [
+               "owner_id": "-30408",
+               "videos":"3997ecc0M7D7QqBYYHJQGVIYRwrt4BfdUs5lGFGXOh6hgaeuzWj6HNFxkGxQSg",
+               "access_token": Session.shared.token,
+               "v": NetworkConstant.shared.versionAPI
+           ]
+        //"id": 932004,
+        //"access_key": "2dfe9c9f0e0c545126",
+        
+        ///456256292
+           AlamofireService.videoRequest(urlPath, params)
+       }
+    
+
+    
     static func authVkRequest(webview: WKWebView) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Network.shared.clientId),
+            URLQueryItem(name: "client_id", value: NetworkConstant.shared.clientId),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "wall,friends,groups,offline"),
+            URLQueryItem(name: "scope", value: "wall,friends,groups,video,offline"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "v", value: "5.87")
         ]
@@ -187,9 +215,9 @@ class ApiVKService {
         
         let params: Parameters = [
                 "token": token,
-                "client_id": Network.shared.clientId,
-                "client_secret": Network.shared.clientSecret,
-                "v": Network.shared.versionAPI
+                "client_id": NetworkConstant.shared.clientId,
+                "client_secret": NetworkConstant.shared.clientSecret,
+                "v": NetworkConstant.shared.versionAPI
         ]
         
         AlamofireService.checkVkTokenRequest(urlPath, params, onSuccess, onError, onChecked)

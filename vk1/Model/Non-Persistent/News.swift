@@ -5,7 +5,8 @@ import SwiftyJSON
 class News : DecodableProtocol, PlainModelProtocol {
 
     var id: typeId = 0
-    var postTypeCode: String!
+    var cellType: WallCellConstant.CellTypeEnum?
+    var imagesPlanCode: String!
     var ownerId = 0
     
     // wall header block
@@ -15,10 +16,11 @@ class News : DecodableProtocol, PlainModelProtocol {
     var postDate: Double = 0
     var title: String = ""
     
-    // wall image block
+    // wall media block
     var imageURLs: [URL] = []
+    var videos: [Video] = []
     
-    // wall bottom block
+    // wall footer block
     var likeCount = 0
     var viewCount = 0
     var messageCount = 0
@@ -28,35 +30,17 @@ class News : DecodableProtocol, PlainModelProtocol {
     var vkOffset = "" // returned by vk server
     var createDate = 0
     
+    
+    struct Video {
+        var id: Int = 0
+        var ownerId: Int = 0
+        var coverImageURL: URL?
+    }
+    
     required init(){}
 
-    
     func setup(json: JSON?){}
-    
-    func setup(json: JSON?, profiles: [typeId:Friend], groups: [typeId:Group], ownOffset: Int, vkOffset: String) {
-        
-        if let json = json {
-            id = NewsParser.parseId(json: json)
-            ownerId = json["source_id"].intValue
-            
-            // wall header block
-            
-            (avaURL, name, postDate, title) = NewsParser.parseOrigPost(json: json, groups: groups, profiles: profiles)
-            
-            // wall image block
-            imageURLs = NewsParser.parseImages(json: json)
-            postTypeCode = getImagePlanCode(imageCount: imageURLs.count)
-            
-            // wall bottom block
-            (viewCount, likeCount, messageCount, shareCount) = NewsParser.parseBottomBlock(json: json)
-            self.ownOffset = ownOffset
-            self.vkOffset = vkOffset
-            createDate = getUnixTime(date: Date())
-        }
-    }
 }
-
-
 
 
 
@@ -104,12 +88,12 @@ extension News: WallModelProtocol {
         return title
     }
     
-    // wall image block >>
+    // wall media block >>
     func getImageURLs() -> [URL] {
         return imageURLs
     }
 
-    // wall bottom block >>
+    // wall footer block >>
     
     func getLikeCount() -> Int {
            return likeCount

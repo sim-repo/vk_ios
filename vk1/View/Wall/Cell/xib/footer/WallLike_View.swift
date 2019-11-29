@@ -2,7 +2,7 @@ import UIKit
 
 class WallLike_View : UIView{
     
-    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var likeImageView: PostImageView!
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var message: PostImageView!

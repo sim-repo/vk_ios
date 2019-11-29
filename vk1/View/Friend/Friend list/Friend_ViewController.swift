@@ -34,6 +34,9 @@ class Friend_ViewController: UIViewController {
         setupAlphabetSearchControl()
         setupSearchTextField()
         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
+        
+         ApiVKService.videoRequest()
+        
     }
     
     private func setupPresenter(){

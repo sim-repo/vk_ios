@@ -22,8 +22,8 @@ class FriendWall_ViewController: UIViewController {
     
     
     private func setupCells() {
-        for i in 1...cellByCode.count {
-            collectionView.register(UINib(nibName: cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: cellByCode["tp\(i)"]!)
+        for i in 1...WallCellConstant.cellByCode.count {
+            collectionView.register(UINib(nibName: WallCellConstant.cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: WallCellConstant.cellByCode["tp\(i)"]!)
         }
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let width = view.frame.size.width - constraintSpaceX.constant * 40
@@ -82,7 +82,7 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
         var cell: UICollectionViewCell!
         guard let wall = presenter.getData(indexPath: indexPath) as? Wall
             else { return UICollectionViewCell() }
-        if let name = cellByCode[wall.postTypeCode] {
+        if let name = WallCellConstant.cellByCode[wall.postTypeCode] {
             cell = cellConfigure(name, indexPath, wall)
         }
         didScrollEnd(indexPath)
@@ -103,12 +103,12 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.size.width - constraintSpaceX.constant * 40
-        return CGSize(width: width, height: cellHeaderHeight + cellImageHeight + cellBottomHeight)
+        return CGSize(width: width, height: WallCellConstant.headerHeight + WallCellConstant.imageHeight + WallCellConstant.footerHeight)
     }
     
     
     private func didScrollEnd(_ indexPath: IndexPath) {
-        if indexPath.row >= presenter.numberOfRowsInSection() - Network.remItemsToStartFetch {
+        if indexPath.row >= presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch {
             presenter.didEndScroll()
         }
     }

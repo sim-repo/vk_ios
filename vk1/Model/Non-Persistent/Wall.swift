@@ -50,10 +50,10 @@ class Wall : WallModelProtocol, DecodableProtocol, PlainModelProtocol {
             
             // wall image block
             imageURLs = WallParser.parseImages(json: json)
-            postTypeCode = getImagePlanCode(imageCount: imageURLs.count)
+            postTypeCode = WallCellConstant.getImagePlanCode(imageCount: imageURLs.count)
             
-            // wall bottom block
-            (viewCount, likeCount, messageCount, shareCount) = WallParser.parseBottomBlock(json: json)
+            // wall footer block
+            (viewCount, likeCount, messageCount, shareCount) = WallParser.parseFooterBlock(json: json)
             
             self.offset = offset
         }
@@ -106,7 +106,7 @@ class Wall : WallModelProtocol, DecodableProtocol, PlainModelProtocol {
         return imageURLs
     }
 
-    // wall bottom block >>
+    // wall footer block >>
     
     func getLikeCount() -> Int {
            return likeCount

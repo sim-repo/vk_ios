@@ -26,8 +26,10 @@ class Group: PlainModelProtocol, DecodableProtocol {
            id = json["id"].intValue
            name = json["name"].stringValue
            desc = json["description"].stringValue
-           avaURL50 = URL(string: json["photo_50"].stringValue)
-           avaURL200 = URL(string: json["photo_200"].stringValue)
+           let sURL50 = json["photo_50"].stringValue
+           avaURL50 = URL(string: sURL50)
+           let sURL200 = json["photo_50"].stringValue
+           avaURL200 = URL(string: sURL200)
        }
     }
     

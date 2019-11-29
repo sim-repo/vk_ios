@@ -13,7 +13,7 @@ class SyncMyGroupWall: SyncBaseProtocol {
     
     var offsetById = [typeId:Int]()
     
-    let count = Network.wallResponseItemsPerRequest
+    let count = NetworkConstant.wallResponseItemsPerRequest
     
     
     private func getOffsetCompletion(id: typeId) -> (()->Void) {
@@ -65,12 +65,12 @@ class SyncMyGroupWall: SyncBaseProtocol {
             //check update schedule
             if offset == 0 {
                 let interval = Date().timeIntervalSince(getLastSyncDate() ?? Date.yesterday)
-                if interval > Network.maxIntervalBeforeCleanupDataSource {
+                if interval > NetworkConstant.maxIntervalBeforeCleanupDataSource {
                      presenter.clearDataSource(id: id)
                      syncing = true
                      syncFromNetwork(presenter, id, offset, offsetCompletion, dispatchCompletion)
                      return
-                 } else if interval > Network.minIntervalBeforeSendRequest {
+                 } else if interval > NetworkConstant.minIntervalBeforeSendRequest {
                      syncing = true
                      syncFromNetwork(presenter, id, 10, offsetCompletion, dispatchCompletion)
                      return

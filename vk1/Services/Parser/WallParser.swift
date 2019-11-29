@@ -123,7 +123,7 @@ class WallParser {
     }
 
     
-    public static func parseBottomBlock(json: JSON) -> (Int, Int, Int, Int){
+    public static func parseFooterBlock(json: JSON) -> (Int, Int, Int, Int){
         return (
             json["views"]["count"].intValue,
             json["likes"]["count"].intValue,

@@ -1,9 +1,9 @@
 import UIKit
 
 
-public struct Network {
+public struct NetworkConstant {
     private init(){}
-    public static let shared = Network()
+    public static let shared = NetworkConstant()
     
     var clientId: String {
         return infoForKey("MY_VK_CLIEND_ID") ?? ""
