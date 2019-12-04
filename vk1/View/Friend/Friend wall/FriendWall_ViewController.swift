@@ -173,6 +173,11 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
 
 extension FriendWall_ViewController: PushWallViewProtocol {
     
+    func playVideo(url: URL, platformEnum: WallCellConstant.VideoPlatform, indexPath: IndexPath) {
+        
+    }
+    
+    
     func runPerformSegue(segueId: String, wall: WallModelProtocol, selectedImageIdx: Int) {
         self.selectedImageIdx = selectedImageIdx
         performSegue(withIdentifier: segueId, sender: wall)

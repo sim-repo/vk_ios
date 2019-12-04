@@ -18,12 +18,22 @@ extension NewsParser {
         var reposts = 0
     }
     
-    
+    enum AttachmentEnum: String {
+        case photo = "photo"
+        case doc = "doc"
+        case poll = "poll"
+        case album = "album"
+        case video = "video"
+        case link = "link"
+    }
     
     public static func parsePost(_ jsonItem: JSON, groups: [typeId:Group], profiles: [typeId:Friend], isRepost: Bool) -> News? {
         
         let header = parsePostHeader(jsonItem, groups, profiles)
-        let photoURLs = parseMediaBlock(jsonItem, isRepost)
+        let photoURLs = parseImageBlock(jsonItem, isRepost)
+        let videos = parseVideoBlock(jsonItem, isRepost)
+        
+        
         let footer = parsePostFooter(jsonItem)
         let news = News()
         
@@ -44,71 +54,66 @@ extension NewsParser {
         // media block
         news.imageURLs = photoURLs
         news.imagesPlanCode = WallCellConstant.getImagePlanCode(imageCount: photoURLs.count)
-        let type = jsonItem["type"].stringValue
-        news.cellType = WallCellConstant.CellTypeEnum(rawValue: type)
+        news.videos = videos
         
+        
+        if news.videos.count > 0 {
+            news.cellType = .video
+        } else {
+          news.cellType = .post
+        }
+    
+
         // wall footer block
         news.viewCount = footer.views
         news.likeCount = footer.likes
         news.messageCount = footer.comments
         news.shareCount = footer.reposts
         
-        
         return news
     }
     
     
     //MARK:- header block:
-    private static func parsePostHeader(_ jsonItem: JSON, _ groups: [typeId:Group], _ profiles: [typeId:Friend]) -> NewsPostHeader {
+    internal static func parsePostHeader(_ jsonItem: JSON, _ groups: [typeId:Group], _ profiles: [typeId:Friend]) -> NewsPostHeader {
         
         var postHeader = NewsPostHeader()
         
-        let authorId = abs(getAuthorId(jsonItem))
-        postHeader.unixTime = getDate(jsonItem)
-        postHeader.title = getTitle(jsonItem)
+        let authorId = abs(jsonItem["source_id"].intValue)
+        postHeader.unixTime = jsonItem["date"].doubleValue
+        postHeader.title = jsonItem["text"].stringValue
         
         if let g = groups[authorId] {
             postHeader.avaURL = g.avaURL200
             postHeader.name = g.name
-            postHeader.title = getTitle(jsonItem)
-            postHeader.unixTime = getDate(jsonItem)
+            postHeader.title = jsonItem["text"].stringValue
+            postHeader.unixTime = jsonItem["date"].doubleValue
             return postHeader
         }
         
         if let f = profiles[authorId] {
             postHeader.avaURL = f.avaURL100
             postHeader.name = f.firstName + " "+f.lastName
-            postHeader.title = getTitle(jsonItem)
-            postHeader.unixTime = getDate(jsonItem)
+            postHeader.title = jsonItem["text"].stringValue
+            postHeader.unixTime = jsonItem["date"].doubleValue
             return postHeader
         }
         return postHeader
     }
-    
-    private static func getAuthorId(_ jsonItem: JSON) -> typeId {
-        return jsonItem["source_id"].intValue
-    }
-    
-    private static func getTitle(_ jsonItem: JSON) -> String {
-        return jsonItem["text"].stringValue
-    }
-    
-    private static func getDate(_ jsonItem: JSON) -> Double {
-        return jsonItem["date"].doubleValue
-    }
+
     
     
     //MARK:- media block:
     
-    public static func parseMediaBlock(_ jsonItem: JSON, _ isRepost: Bool) -> [URL] {
+    internal static func parseImageBlock(_ jsonItem: JSON, _ isRepost: Bool) -> [URL] {
         
         var imageURLs = [URL]()
         var jsonURLs = [JSON]()
         
         if isRepost {
-            jsonURLs = getJsonURLsFromRepost(jsonItem)
+           jsonURLs = getImageURLsFromRepost(jsonItem)
         } else {
-           jsonURLs = getJsonURLs(jsonItem)
+           jsonURLs = getImageURLs(jsonItem)
         }
         
         for j in jsonURLs {
@@ -121,34 +126,22 @@ extension NewsParser {
             }
         }
         
+        
         if imageURLs.isEmpty {
-            print(jsonItem)
             catchError(msg: "NewsParser(): parseImages() is Empty")
         }
         return imageURLs
     }
     
     
-    
-    enum AttachmentEnum: String {
-        case photo = "photo"
-        case doc = "doc"
-        case poll = "poll"
-        case album = "album"
-        case video = "video"
-        case link = "link"
-    }
-    
-    
-    
-    private static func getJsonURLsFromRepost(_ jsonItem: JSON) -> [JSON] {
+    private static func getImageURLsFromRepost(_ jsonItem: JSON) -> [JSON] {
         
         var jsonURLs = [JSON]()
         
         if let histories = jsonItem["copy_history"].array {
             
             for history in histories {
-                let urls = getJsonURLs(history)
+                let urls = getImageURLs(history)
                 for url in urls {
                     jsonURLs.append(url)
                 }
@@ -158,7 +151,7 @@ extension NewsParser {
     }
     
     
-    private static func getJsonURLs(_ jsonItem: JSON) -> [JSON] {
+    private static func getImageURLs(_ jsonItem: JSON) -> [JSON] {
         
         var photos = searchInAttachments(jsonItem, attachmentType: .photo)
         if photos.isEmpty {
@@ -254,6 +247,69 @@ extension NewsParser {
     }
     
     
+    
+    
+    
+    
+    
+    internal static func parseVideoBlock(_ jsonItem: JSON, _ isRepost: Bool) -> [News.Video] {
+        
+        var videos = [News.Video]()
+        
+        if isRepost {
+           videos = getVideosFromRepost(jsonItem)
+        } else {
+           videos = getVideos(jsonItem)
+        }
+        
+
+        if videos.isEmpty {
+            catchError(msg: "NewsParser(): parseVideoBlock() is Empty")
+        }
+        return videos
+    }
+    
+    
+    
+    private static func getVideosFromRepost(_ jsonItem: JSON) -> [News.Video] {
+       var res = [News.Video]()
+               
+       if let histories = jsonItem["copy_history"].array {
+           
+           for history in histories {
+               let videos = getVideos(history)
+               for video in videos {
+                   res.append(video)
+               }
+           }
+       }
+       return res
+    }
+    
+    private static func getVideos(_ jsonItem: JSON) -> [News.Video] {
+        let items = jsonItem["attachments"].arrayValue.filter({ (json) -> Bool in
+            json["type"].stringValue == "video" })
+        var videos = [News.Video]()
+        for item in items {
+            var video = News.Video()
+            video.id = item["video"]["id"].intValue
+            video.ownerId = item["video"]["owner_id"].intValue
+            video.platform = searchVideoPlatform(item)
+            videos.append(video)
+        }
+        return videos
+    }
+    
+       
+   private static func searchVideoPlatform(_ jsonItem: JSON) -> WallCellConstant.VideoPlatform {
+       let platform = jsonItem["video"]["platform"].stringValue
+       if platform != "" {
+           if let platformEnum = WallCellConstant.VideoPlatform.init(rawValue: platform) {
+               return platformEnum
+           }
+       }
+       return .other
+   }
     
     //MARK:- footer block:
     

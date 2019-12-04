@@ -7,19 +7,20 @@ class RealmNews: RealmBase {
     @objc dynamic var vkOffset = "" // returned by vk server
     @objc dynamic var createDate = 0
     
-    //@objc dynamic var id = 0.0
     @objc dynamic var imagesPlanCode = ""
+    @objc dynamic var cellType = ""
     @objc dynamic var ownerId = 0
     
     // wall header block
     @objc dynamic var avaURL = ""
-    @objc dynamic var name: String = ""
+    @objc dynamic var name = ""
     @objc dynamic var postDate = 0
-    @objc dynamic var title: String = ""
+    @objc dynamic var title = ""
 
-    // wall image block
+    // wall media block
     var imageURLs = List<RealmURL>()
-
+    var videoURLs = List<RealmVideoURL>()
+    
     // wall bottom block
     @objc dynamic var likeCount = 0
     @objc dynamic var viewCount = 0

@@ -197,7 +197,6 @@ extension Login_ViewController: WKNavigationDelegate {
             let fragment = url.fragment
             else {
                 decisionHandler(.allow)
-                // onVkAuthCompletion?("","")
                 return
         }
         

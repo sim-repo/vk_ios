@@ -216,17 +216,21 @@ class AlamofireService {
         }
     }
     
-    public static func videoRequest(_ urlPath: String, _ params: Parameters){
+    public static func videoRequest(_ urlPath: String, _ params: Parameters, _ completion: ((URL, WallCellConstant.VideoPlatform)->Void)? ){
         AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
                    switch response.result {
                     case .success(let val):
-                    print(val)
+                        if let (videoURL, platformEnum) = NewsParser.parseVideoURL(val),
+                           let videoURL_ = videoURL {
+                            completion?(videoURL_, platformEnum)
+                        } else {
+                            catchError(msg: "AlamofireService(): videoRequest(): parsing exception")
+                        }
                     case .failure(let err):
-                        print(err.localizedDescription)
+                            catchError(msg: err.localizedDescription)
                         }
                     }
     }
-    
     
     
     

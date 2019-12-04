@@ -10,10 +10,10 @@ class ApiVKService {
         let urlPath: String = "friends.get"
         
         let params: Parameters = [
-              "access_token": Session.shared.token,
-                  "extended": "1",
-                  "fields":["bdate","sex","photo_50","photo_200_orig"],
-                  "v": NetworkConstant.shared.versionAPI
+            "access_token": Session.shared.token,
+            "extended": "1",
+            "fields":["bdate","sex","photo_50","photo_200_orig"],
+            "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.requestItems(clazz: Friend.self, urlPath, params, onSuccess, onError)
     }
@@ -25,22 +25,22 @@ class ApiVKService {
                                   _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                   _ onError: @escaping onErrResponse_SyncCompletion,
                                   _ offsetCompletion: (()->Void)?) {
-
+        
         let urlPath: String = "wall.get"
         
         let params: Parameters = [
-                 "owner_id": ownerId,
-                 "access_token": Session.shared.token,
-                 "extended": "1",
-                 "fields":["photo_50","photo_100", "photo_200"],
-                 "filters": "all",
-                 "count": "\(count)",
-                 "offset": "\(offset)",
-                 "v": NetworkConstant.shared.versionAPI
+            "owner_id": ownerId,
+            "access_token": Session.shared.token,
+            "extended": "1",
+            "fields":["photo_50","photo_100", "photo_200"],
+            "filters": "all",
+            "count": "\(count)",
+            "offset": "\(offset)",
+            "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
     }
-      
+    
     
     
     static func myGroupRequest(onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
@@ -48,9 +48,9 @@ class ApiVKService {
         let urlPath: String = "groups.get"
         
         let params: Parameters = [
-              "access_token": Session.shared.token,
-                  "extended": "1",
-                  "fields":["description","members_count","photo_50","photo_200","cover"],
+            "access_token": Session.shared.token,
+            "extended": "1",
+            "fields":["description","members_count","photo_50","photo_200","cover"],
             "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.requestItems(clazz: MyGroup.self, urlPath, params, onSuccess, onError)
@@ -96,8 +96,8 @@ class ApiVKService {
         ]
         AlamofireService.requestJoinGroup(clazz: Group.self, urlPath, params)
     }
-        
-        
+    
+    
     
     
     static func wallRequest(_ ownerId: typeId,
@@ -105,19 +105,19 @@ class ApiVKService {
                             _ onError: @escaping onErrResponse_SyncCompletion,
                             _ offsetCompletion: (()->Void)?,
                             _ offset: Int
-                            ) {
-
+    ) {
+        
         let urlPath: String = "wall.get"
         
         let params: Parameters = [
-                 "owner_id": ownerId,
-                 "access_token": Session.shared.token,
-                 "extended": "1",
-                 "fields":["photo_50","photo_100", "photo_200"],
-                 "filters": "all",
-                 "offset": "\(offset)",
-                 "count": "1",
-                 "v": NetworkConstant.shared.versionAPI
+            "owner_id": ownerId,
+            "access_token": Session.shared.token,
+            "extended": "1",
+            "fields":["photo_50","photo_100", "photo_200"],
+            "filters": "all",
+            "offset": "\(offset)",
+            "count": "1",
+            "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.wallRequest(urlPath, params, onSuccess, onError, offsetCompletion, offset)
         
@@ -131,60 +131,61 @@ class ApiVKService {
                             _ onError: @escaping onErrResponse_SyncCompletion,
                             _ offsetCompletion: ((String)->Void)?,
                             _ sinceTime: Double? = nil
-                            ) {
+    ) {
         
         let urlPath: String = "newsfeed.get"
         
         var params: Parameters = [
-                "access_token": Session.shared.token,
-                "extended": "1",
-                //"filters": "post,wall_photo,video",
-                "count": count,
-                "start_from": vkOffset,
-                "v": NetworkConstant.shared.versionAPI
+            "access_token": Session.shared.token,
+            "extended": "1",
+            "filters": ["post"],
+            "count": count,
+            "start_from": vkOffset,
+            "v": NetworkConstant.shared.versionAPI
         ]
         if sinceTime != nil &&  sinceTime != 0 {
             params["start_time"] = sinceTime
         }
         
         AlamofireService.newsRequest(urlPath,
-                                            params,
-                                            ownOffset,
-                                            vkOffset,
-                                            onSuccess,
-                                            onError,
-                                            offsetCompletion
-                                            )
+                                     params,
+                                     ownOffset,
+                                     vkOffset,
+                                     onSuccess,
+                                     onError,
+                                     offsetCompletion
+        )
     }
     
     
+    static func videoRequest(postId: Int, ownerId: Int, completion: ((URL, WallCellConstant.VideoPlatform)->Void)? ) {
+        
+        let urlPath: String = "video.get"
+        
+        let videoId = "\(ownerId)_\(postId)"
+        let params: Parameters = [
+            "videos":videoId,
+            "count":"1",
+            "extended":"1",
+            "access_token": Session.shared.token,
+            "v": NetworkConstant.shared.versionAPI
+        ]
+        AlamofireService.videoRequest(urlPath, params, completion)
+    }
     
-    static func videoRequest() {
-           
-           let urlPath: String = "video.get"
-           
-        
-        if let base64Decoded = NSData(base64Encoded: "3997ecc0M7D7QqBYYHJQGVIYRwrt4BfdUs5lGFGXOh6hgaeuzWj6HNFxkGxQSg", options:   NSData.Base64DecodingOptions(rawValue: 0))
-            .map({ NSString(data: $0 as Data, encoding: String.Encoding.utf8.rawValue) })
-              {
-                  // Convert back to a string
-                  print("Decoded:  \(base64Decoded)")
-              }
-        
-           let params: Parameters = [
-               "owner_id": "-30408",
-               "videos":"3997ecc0M7D7QqBYYHJQGVIYRwrt4BfdUs5lGFGXOh6hgaeuzWj6HNFxkGxQSg",
-               "access_token": Session.shared.token,
-               "v": NetworkConstant.shared.versionAPI
-           ]
-        //"id": 932004,
-        //"access_key": "2dfe9c9f0e0c545126",
-        
-        ///456256292
-           AlamofireService.videoRequest(urlPath, params)
-       }
     
-
+    public static func videoSearchRequest(q: String, completion: ((URL, WallCellConstant.VideoPlatform)->Void)?) {
+        let urlPath: String = "video.search"
+        
+        let params: Parameters = [
+            "q":q,
+            "count":"1",
+            "access_token": Session.shared.token,
+            "v": NetworkConstant.shared.versionAPI
+        ]
+        AlamofireService.videoRequest(urlPath, params, completion)
+    }
+    
     
     static func authVkRequest(webview: WKWebView) {
         var urlComponents = URLComponents()
@@ -209,15 +210,15 @@ class ApiVKService {
                                     _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                     _ onError: @escaping onErrResponse_SyncCompletion,
                                     _ onChecked: ((Bool)->Void)?
-                                    ) {
-       
+    ) {
+        
         let urlPath: String = "secure.checkToken"
         
         let params: Parameters = [
-                "token": token,
-                "client_id": NetworkConstant.shared.clientId,
-                "client_secret": NetworkConstant.shared.clientSecret,
-                "v": NetworkConstant.shared.versionAPI
+            "token": token,
+            "client_id": NetworkConstant.shared.clientId,
+            "client_secret": NetworkConstant.shared.clientSecret,
+            "v": NetworkConstant.shared.versionAPI
         ]
         
         AlamofireService.checkVkTokenRequest(urlPath, params, onSuccess, onError, onChecked)

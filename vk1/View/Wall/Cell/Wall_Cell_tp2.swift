@@ -1,4 +1,5 @@
 import UIKit
+import WebKit
 
 class Wall_Cell_tp2: UICollectionViewCell {
     @IBOutlet weak var imageView1: UIImageView!
@@ -19,6 +20,8 @@ class Wall_Cell_tp2: UICollectionViewCell {
 }
 
 extension Wall_Cell_tp2: Wall_CellProtocol {
+
+    
     
     func setup(_ wall: WallModelProtocol, _ indexPath: IndexPath, _ presenter: PullWallPresenterProtocol) {
         self.indexPath = indexPath

@@ -13,8 +13,9 @@ protocol WallModelProtocol{
     func getOrigPostDate() -> Double
     func getOrigTitle() -> String?
     
-    // wall images block
+    // wall media block
     func getImageURLs() -> [URL]
+    func getCellType() -> WallCellConstant.CellTypeEnum
     
     
     // wall bottom block

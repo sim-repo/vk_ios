@@ -16,13 +16,13 @@ enum PrintLogEnum {
         case .presenterCallsFromView:
             return false
         case .sync:
-            return false
+            return true
         case .alamofire:
-            return false
+            return true
         case .viewReloadData:
             return false
         case .login:
-            return true
+            return false
         case .pagination:
             return false
         }

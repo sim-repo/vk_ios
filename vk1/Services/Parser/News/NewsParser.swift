@@ -26,7 +26,7 @@ class NewsParser {
         default:
             break
         }
-        return WallCellConstant.CellTypeEnum.audio
+        return WallCellConstant.CellTypeEnum.unknown
     }
     
     
@@ -53,34 +53,49 @@ class NewsParser {
             
             let repost = isRepost(item)
             
-            var news: News?
             switch getNewsType(item){
                 case .post:
-                    news = parsePost(item, groups: dicGroups, profiles: dicProfile, isRepost: repost)
-                    break
+                    if let news = parsePost(item, groups: dicGroups, profiles: dicProfile, isRepost: repost) {
+                        enrichNews(news, ownOffset, vkOffset)
+                        res.append(news)
+                    }
                 
                 case .wall_photo:
-                    news = parseWallPhoto(item, groups: dicGroups, profiles: dicProfile)
-                    break
+                    let subitems = item["photos"]["items"].arrayValue
+                    for subitem in subitems {
+                        if let news = parseWallPhoto(subitem, groups: dicGroups, profiles: dicProfile) {
+                            enrichNews(news, ownOffset, vkOffset)
+                            res.append(news)
+                        }
+                    }
                 
                 case .video:
-                    news = parseVideo(item, groups: dicGroups, profiles: dicProfile)
-                    break
+                    let subitems = item["video"]["items"].arrayValue
+                    
+                    for subitem in subitems {
+                        if let news = parseVideo(subitem) {
+                            enrichNews(news, ownOffset, vkOffset)
+                            res.append(news)
+                        }
+                    }
                 
                 case .audio:
                         break
-            }
             
-            if let news_ = news {
-                news_.ownOffset = ownOffset
-                news_.vkOffset = vkOffset
-                news_.createDate = getUnixTime(date: Date())
-                res.append(news_)
+                case .unknown:
+                    break
             }
         }
         return res
     }
     
+    private static func enrichNews(_ news: News?, _ ownOffset: Int, _ vkOffset: String) {
+        if let news_ = news {
+            news_.ownOffset = ownOffset
+            news_.vkOffset = vkOffset
+            news_.createDate = getUnixTime(date: Date())
+        }
+    }
 
     public static func parseNextOffset(_ val: Any) -> String? {
         let json = JSON(val)

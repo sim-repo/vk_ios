@@ -24,4 +24,13 @@ extension SyncMgt {
     public func doCheckVkToken(token: String, _ onChecked: ((Bool)->Void)? ) {
         SyncVkLogin.shared.checkToken(token: token, onChecked )
     }
+    
+    public func doVideoGet(postId: Int, ownerId: Int, completion: ((URL, WallCellConstant.VideoPlatform)->Void)?) {
+        SyncVideo.doVideoGet(postId: postId, ownerId: ownerId, completion: completion)
+    }
+    
+    public func doVideoSearch(q: String, completion: ((URL, WallCellConstant.VideoPlatform) -> Void)?) {
+        SyncVideo.doVideoSearch(q: q, completion: completion)
+    }
+
 }

@@ -74,6 +74,7 @@
             <connections>
                 <outlet property="hConHeaderView" destination="Ciz-0x-4Ca" id="Dp3-rF-ykM"/>
                 <outlet property="headerView" destination="M3r-Qa-YN5" id="pDT-69-Pnq"/>
+                <outlet property="imageButton" destination="s5h-cY-fJZ" id="iPz-hB-lZf"/>
                 <outlet property="imageView" destination="4eh-UL-0M1" id="23m-he-mb5"/>
                 <outlet property="likeView" destination="R5z-Ug-TPi" id="h57-BU-sih"/>
             </connections>

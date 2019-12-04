@@ -30,14 +30,14 @@ class RealmService {
         }
     }
     
-
-    //MARK:- public
+    
+    //MARK:- public >>
     
     public static func loadToken() -> (String?, String?)? {
-
+        
         guard let realm = getInstance(.safe)
-        else {
-            return nil
+            else {
+                return nil
         }
         let token: String? = realm.objects(RealmToken.self).first?.token
         let userId: String? = realm.objects(RealmToken.self).first?.userId
@@ -47,10 +47,10 @@ class RealmService {
     
     
     public static func loadFirebaseCredentials() -> (String?, String?)? {
-
+        
         guard let realm = getInstance(.safe)
-        else {
-            return nil
+            else {
+                return nil
         }
         let login: String? = realm.objects(RealmFirebase.self).first?.login
         let psw: String? = realm.objects(RealmFirebase.self).first?.psw
@@ -99,13 +99,13 @@ class RealmService {
         let walls = realmToWall(results: results)
         return walls
     }
-
+    
     
     public static func loadFriend(filter: String? = nil) -> [Friend]? {
         
         var results: Results<RealmFriend>
         guard let realm = getInstance(.unsafe) else { return nil }
-            
+        
         if let _filter = filter {
             results = realm.objects(RealmFriend.self).filter(_filter)
         } else {
@@ -160,9 +160,9 @@ class RealmService {
     
     public static func delete(moduleEnum: ModuleEnum, id: typeId? = nil) {
         switch moduleEnum {
-            case .news: delete(confEnum: .unsafe, clazz: RealmNews.self)
-            case .friend: delete(confEnum: .unsafe, clazz: RealmFriend.self)
-            case .friend_wall, .my_group_wall: delete(confEnum: .unsafe, clazz: RealmWall.self, id: id)
+        case .news: delete(confEnum: .unsafe, clazz: RealmNews.self)
+        case .friend: delete(confEnum: .unsafe, clazz: RealmFriend.self)
+        case .friend_wall, .my_group_wall: delete(confEnum: .unsafe, clazz: RealmWall.self, id: id)
         default:
             catchError(msg: "RealmService(): delete(): no case is found")
         }
@@ -253,8 +253,7 @@ class RealmService {
     
     
     
-    
-    //MARK:- private:
+    //MARK:- private >>>
     
     private static func getInstance(_ confEnum: RealmConfigEnum) -> Realm? {
         do {
@@ -268,7 +267,7 @@ class RealmService {
     }
     
     
-
+    
     
     
     private static func save<T: Object>(items: [T], update: Bool) {
@@ -327,13 +326,7 @@ class RealmService {
     }
     
     
-
-
     
-    
-    //MARK:- load models
-    
-
     
     
     //MARK:- transfom: model into realm
@@ -357,11 +350,10 @@ class RealmService {
         realmWall.offset = wall.offset
         
         let realmImagesURL = List<RealmURL>()
-        var count = 0
-        for url in wall.imageURLs {
+        
+        for (idx, url) in wall.imageURLs.enumerated() {
             let realmURL = RealmURL()
-            realmURL.id = wall.id + count
-            count += 1
+            realmURL.id = wall.id + idx
             realmURL.url = url.absoluteString
             realmImagesURL.append(realmURL)
         }
@@ -376,28 +368,47 @@ class RealmService {
         // service fields:
         realmNews.ownOffset = news.ownOffset
         realmNews.vkOffset = news.vkOffset
-        // others:
+        realmNews.createDate = news.createDate
+        realmNews.cellType = news.cellType.rawValue
+        
+        
+        // header block:
         realmNews.ownerId = news.ownerId
         realmNews.name = news.name
         realmNews.postDate = Int(news.postDate)
         realmNews.avaURL = news.avaURL?.absoluteString ?? ""
         realmNews.title = news.title
+        
+        // media block:
         realmNews.imagesPlanCode = news.imagesPlanCode
+        
+        let realmImageURLs = List<RealmURL>()
+        
+        for (idx, url) in news.imageURLs.enumerated() {
+            let realmURL = RealmURL()
+            realmURL.id = news.id + idx
+            realmURL.url = url.absoluteString
+            realmImageURLs.append(realmURL)
+        }
+        realmNews.imageURLs = realmImageURLs
+        
+        
+        let realmVideoURLs = List<RealmVideoURL>()
+        
+        for video in news.videos {
+            let realmVideoURL = RealmVideoURL()
+            realmVideoURL.id = video.id
+            realmVideoURL.ownerId = video.ownerId
+            realmVideoURL.platform = video.platform.rawValue
+            realmVideoURLs.append(realmVideoURL)
+        }
+        realmNews.videoURLs = realmVideoURLs
+        
+        
+        // footer block:
         realmNews.viewCount = news.viewCount
         realmNews.likeCount = news.likeCount
         realmNews.messageCount = news.messageCount
-        realmNews.createDate = news.createDate
-        
-        let realmImagesURL = List<RealmURL>()
-        var count = 0
-        for url in news.imageURLs {
-            let realmURL = RealmURL()
-            realmURL.id = news.id + count
-            count += 1
-            realmURL.url = url.absoluteString
-            realmImagesURL.append(realmURL)
-        }
-        realmNews.imageURLs = realmImagesURL
         
         return realmNews
     }
@@ -472,7 +483,7 @@ class RealmService {
     }
     
     
-    //MARK:- transofm: realm to model
+    //MARK:- transfom: realm to model >>
     
     private static func realmToWall(results: Results<RealmWall>) -> [Wall] {
         var walls = [Wall]()
@@ -509,27 +520,58 @@ class RealmService {
     
     
     private static func realmToNews(results: Results<RealmNews>) -> [News] {
+        
         var newsArr = [News]()
         for result in results {
             let news = News()
+            
+            //service fields:
+            news.vkOffset = result.vkOffset
+            guard let cellType = WallCellConstant.CellTypeEnum(rawValue: result.cellType)
+                else {
+                    log("realmToNews(): enum: no case found by rawvalue \(result.cellType)", printEnum: nil, isErr: true)
+                    return []
+            }
+            news.cellType = cellType
+            
+            // header block:
             news.id = typeId(result.id)
             news.ownerId = result.ownerId
             news.name = result.name
             news.postDate = Double(result.postDate)
             news.avaURL = URL(string: result.avaURL)
             news.title = result.title
+            
+            // media block:
             news.imagesPlanCode = result.imagesPlanCode
+            var imageURLs = [URL]()
+            for url in result.imageURLs {
+               if let sURL = URL(string: url.url) {
+                   imageURLs.append(sURL)
+               }
+            }
+            news.imageURLs = imageURLs
+            
+            var videoURLs = [News.Video]()
+            for realmVideo in result.videoURLs {
+                var video = News.Video()
+                video.id = realmVideo.id
+                video.ownerId = realmVideo.ownerId
+                if let platform = WallCellConstant.VideoPlatform(rawValue: realmVideo.platform) {
+                    video.platform = platform
+                }
+                if let sURL = URL(string: realmVideo.url) {
+                    video.url = sURL
+                }
+                videoURLs.append(video)
+            }
+            
+            // footer block:
             news.viewCount = result.viewCount
             news.likeCount = result.likeCount
             news.messageCount = result.messageCount
-            news.vkOffset = result.vkOffset
-            var imagesURL = [URL]()
-            for url in result.imageURLs {
-                if let sURL = URL(string: url.url) {
-                    imagesURL.append(sURL)
-                }
-            }
-            news.imageURLs = imagesURL
+            news.shareCount = result.shareCount
+            
             newsArr.append(news)
         }
         return newsArr
@@ -639,7 +681,7 @@ class RealmService {
         // Identifier for our keychain entry - should be unique for your application
         let keychainIdentifier = "io.Realm.EncryptionExampleKey"
         let keychainIdentifierData = keychainIdentifier.data(using: String.Encoding.utf8, allowLossyConversion: false)!
-
+        
         // First check in the keychain for an existing key
         var query: [NSString: AnyObject] = [
             kSecClass: kSecClassKey,
@@ -647,7 +689,7 @@ class RealmService {
             kSecAttrKeySizeInBits: 512 as AnyObject,
             kSecReturnData: true as AnyObject
         ]
-
+        
         // To avoid Swift optimization bug, should use withUnsafeMutablePointer() function to retrieve the keychain item
         // See also: http://stackoverflow.com/questions/24145838/querying-ios-keychain-using-swift/27721328#27721328
         var dataTypeRef: AnyObject?
@@ -655,12 +697,12 @@ class RealmService {
         if status == errSecSuccess {
             return dataTypeRef as! NSData
         }
-
+        
         // No pre-existing key from this application, so generate a new one
         let keyData = NSMutableData(length: 64)!
         let result = SecRandomCopyBytes(kSecRandomDefault, 64, keyData.mutableBytes.bindMemory(to: UInt8.self, capacity: 64))
         assert(result == 0, "Failed to get random bytes")
-
+        
         // Store the key in the keychain
         query = [
             kSecClass: kSecClassKey,
@@ -668,18 +710,20 @@ class RealmService {
             kSecAttrKeySizeInBits: 512 as AnyObject,
             kSecValueData: keyData
         ]
-
+        
         status = SecItemAdd(query as CFDictionary, nil)
         assert(status == errSecSuccess, "Failed to insert the new key in the keychain")
-
+        
         return keyData
     }
     
-    private static func log(_ msg: String, printEnum: PrintLogEnum, isErr:Bool = false) {
-         if isErr {
-             catchError(msg: "RealmService(): " + msg)
-         } else {
-             console(msg: "RealmService(): " + msg, printEnum: printEnum)
-         }
+    private static func log(_ msg: String, printEnum: PrintLogEnum?, isErr:Bool = false) {
+        if isErr {
+            catchError(msg: "RealmService(): " + msg)
+        } else {
+            if let printEnum_ = printEnum {
+                console(msg: "RealmService(): " + msg, printEnum: printEnum_)
+            }
+        }
     }
 }

@@ -88,7 +88,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                 let slice = self.dataSource[last...]
                 let endIndex = slice.endIndex-1 < 0 ? 0: slice.endIndex-1
                 //no guarantee new data has appended:
-                guard endIndex > slice.startIndex else { return }
+                guard endIndex >= slice.startIndex else { return }
                 self.view?.insertItems(startIdx: slice.startIndex, endIdx: endIndex)
             }
         }

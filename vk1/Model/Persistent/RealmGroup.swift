@@ -3,7 +3,6 @@ import Foundation
 
 class RealmGroup: RealmBase {
     
-   // @objc dynamic var id: Double = 0.0
     @objc dynamic var name: String = ""
     @objc dynamic var desc: String = ""
     @objc dynamic var avaURL50: String = ""

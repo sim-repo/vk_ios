@@ -8,12 +8,17 @@ struct WallCellConstant {
     static let footerHeight: CGFloat = 30
     
     
-    
-    enum CellTypeEnum: String{
+    enum CellTypeEnum: String {
         case post = "post"
         case wall_photo = "wall_photo"
         case video = "video"
         case audio = "audio"
+        case unknown = "unknown"
+    }
+    
+    enum VideoPlatform: String {
+        case youtube = "YouTube"
+        case other = "other"
     }
     
     static let  cellByCode = ["tp1": "Wall_Cell_tp1",

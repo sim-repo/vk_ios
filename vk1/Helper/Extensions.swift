@@ -183,8 +183,15 @@ func getRealmURL(dbName: String) -> URL {
 }
 
 func getRandomInt() -> Int {
-    return Int(arc4random_uniform(UInt32(Int.max)))
+    return Int(arc4random_uniform(UInt32(1000000)))
 }
+
+
+func getSystemImage(name: String, pointSize: CGFloat) -> UIImage?{
+    let config = UIImage.SymbolConfiguration(pointSize: pointSize, weight: .light, scale: .large)
+    return UIImage(systemName: name, withConfiguration: config)?.withTintColor(ColorSystemHelper.secondary, renderingMode: .alwaysOriginal)
+}
+
 
 //MARK:- Extensions
 

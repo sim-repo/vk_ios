@@ -1,4 +1,6 @@
 import UIKit
+import WebKit
+
 
 class Wall_Cell_tp6: UICollectionViewCell {
     @IBOutlet weak var imageView1: UIImageView!
@@ -12,8 +14,7 @@ class Wall_Cell_tp6: UICollectionViewCell {
     @IBOutlet weak var hConHeaderView: NSLayoutConstraint!
     var indexPath: IndexPath!
     var presenter: PullWallPresenterProtocol!
-    
-    
+
     @IBAction func doPressImage1(_ sender: Any) {
        presenter.selectImage(indexPath: indexPath, imageIdx: 0)
     }

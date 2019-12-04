@@ -5,12 +5,12 @@ import SwiftyJSON
 class News : DecodableProtocol, PlainModelProtocol {
 
     var id: typeId = 0
-    var cellType: WallCellConstant.CellTypeEnum?
+    var cellType: WallCellConstant.CellTypeEnum = .unknown
     var imagesPlanCode: String!
     var ownerId = 0
     
-    // wall header block
     
+    // wall header block
     var avaURL: URL?
     var name: String = ""
     var postDate: Double = 0
@@ -30,11 +30,11 @@ class News : DecodableProtocol, PlainModelProtocol {
     var vkOffset = "" // returned by vk server
     var createDate = 0
     
-    
     struct Video {
         var id: Int = 0
         var ownerId: Int = 0
-        var coverImageURL: URL?
+        var platform: WallCellConstant.VideoPlatform = .other
+        var url: URL?
     }
     
     required init(){}
@@ -92,9 +92,13 @@ extension News: WallModelProtocol {
     func getImageURLs() -> [URL] {
         return imageURLs
     }
-
-    // wall footer block >>
     
+    func getCellType() -> WallCellConstant.CellTypeEnum {
+        return cellType
+    }
+
+    
+    // wall footer block >>
     func getLikeCount() -> Int {
            return likeCount
     }

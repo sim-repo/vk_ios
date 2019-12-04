@@ -2,7 +2,6 @@ import Foundation
 
 class RealmFriend: RealmBase {
     
-   // @objc dynamic var id: Double = 0.0
     @objc dynamic var firstName: String = ""
     @objc dynamic var lastName: String = ""
     @objc dynamic var avaURL50: String = ""

@@ -27,8 +27,8 @@ public struct NetworkConstant {
     static let intervalViewReload = 5 // in percent
     static let newsResponseItemsPerRequest = 20 // in number
     static let wallResponseItemsPerRequest = 20 // in number
-    static let maxIntervalBeforeCleanupDataSource = 60.0*5 //5 min
-    static let minIntervalBeforeSendRequest = 30.0 //sec
+    static let maxIntervalBeforeCleanupDataSource = 60.0*30 //in min
+    static let minIntervalBeforeSendRequest = 240.0 //sec
     static let remItemsToStartFetch = 5 //in items
     
     func infoForKey(_ key: String) -> String? {

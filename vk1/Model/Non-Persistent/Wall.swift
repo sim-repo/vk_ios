@@ -2,10 +2,11 @@ import Foundation
 import SwiftyJSON
 
 
-class Wall : WallModelProtocol, DecodableProtocol, PlainModelProtocol {
+class Wall : DecodableProtocol, PlainModelProtocol {
 
     var id: typeId = 0
     var postTypeCode: String!
+    var cellType: WallCellConstant.CellTypeEnum = .unknown
     var ownerId = 0
     
     // wall header block
@@ -59,6 +60,12 @@ class Wall : WallModelProtocol, DecodableProtocol, PlainModelProtocol {
         }
     }
     
+}
+
+    
+extension Wall: WallModelProtocol {
+
+    
     func getId() -> typeId {
         return id
     }
@@ -101,10 +108,15 @@ class Wall : WallModelProtocol, DecodableProtocol, PlainModelProtocol {
         return origTitle
     }
     
-    // wall image block >>
+    // wall media block >>
     func getImageURLs() -> [URL] {
         return imageURLs
     }
+    
+    func getCellType() -> WallCellConstant.CellTypeEnum {
+        return cellType
+    }
+    
 
     // wall footer block >>
     

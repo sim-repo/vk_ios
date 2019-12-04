@@ -1,4 +1,6 @@
 import UIKit
+import WebKit
+
 
 class News_ViewController: UIViewController {
     
@@ -35,7 +37,7 @@ class News_ViewController: UIViewController {
             else {
                 log("setupPresenter(): conform exception", printEnum: nil, isErr: true)
                 return
-            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,9 +131,17 @@ extension News_ViewController: UIScrollViewDelegate {
         guard let indexPath = collectionView.indexPathForItem(at: location)
             else {
                 log("scrollViewWillBeginDragging(): could not specify an indexpath", printEnum: nil, isErr: true)
-            return
+                return
         }
         didScrollEnd(indexPath)
+    }
+    
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        scrollView.pinchGestureRecognizer?.isEnabled = false
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return nil
     }
 }
 
@@ -176,6 +186,15 @@ extension News_ViewController: PushPlainViewProtocol{
 //MARK: - PushWallViewProtocol
 
 extension News_ViewController: PushWallViewProtocol {
+
+    
+    func playVideo(url: URL, platformEnum: WallCellConstant.VideoPlatform, indexPath: IndexPath) {
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? Video_CellProtocol {
+            cell.play(url: url, platformEnum: platformEnum)
+        }
+    }
+    
     
     func runPerformSegue(segueId: String, wall: WallModelProtocol, selectedImageIdx: Int) {
         self.selectedImageIdx = selectedImageIdx
