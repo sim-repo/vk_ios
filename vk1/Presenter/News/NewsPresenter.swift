@@ -21,24 +21,27 @@ extension NewsPresenter: PullWallPresenterProtocol {
         
         guard let news = getData(indexPath: indexPath) as? News
             else {
-                catchError(msg: "NewsPresenter(): PullWallPresenterProtocol(): selectImage: getData exception ")
+                Logger.catchError(msg: "NewsPresenter(): PullWallPresenterProtocol(): selectImage: getData exception ")
                 return
             }
         
-        guard let view_ = view as? PushWallViewProtocol
+        guard let view = view as? PushWallViewProtocol
                  else {
-                     catchError(msg: "NewsPresenter(): PullWallPresenterProtocol(): selectImage: protocol conform exception")
+                     Logger.catchError(msg: "NewsPresenter(): PullWallPresenterProtocol(): selectImage: protocol conform exception")
                      return
                  }
         
         if news.cellType == .video {
-            let completion: ((URL, WallCellConstant.VideoPlatform)->Void)? = { (url, platformEnum) in
-                view_.playVideo(url: url, platformEnum: platformEnum, indexPath: indexPath)
+            let onSuccess: ((URL, WallCellConstant.VideoPlatform)->Void)? = { (url, platformEnum) in
+                view.playVideo(url, platformEnum, indexPath)
             }
-            SyncMgt.shared.doVideoGet(postId: news.videos[imageIdx].id, ownerId: news.videos[imageIdx].ownerId, completion: completion)
+            let onError: ((String)->Void)? = {error in
+                view.showError(indexPath, err: error)
+            }
+            SyncMgt.shared.doVideoGet(postId: news.videos[imageIdx].id, ownerId: news.videos[imageIdx].ownerId, onSuccess, onError )
            // SyncMgt.shared.doVideoSearch(q: news.title, completion: completion)
         } else {
-            view_.runPerformSegue(segueId: "NewsPostSegue", wall: news, selectedImageIdx: imageIdx)
+            view.runPerformSegue(segueId: "NewsPostSegue", news, selectedImageIdx: imageIdx)
         }
     }
 }

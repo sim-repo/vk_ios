@@ -47,7 +47,7 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
     final func getData(indexPath: IndexPath? = nil) -> ModelProtocol? {
         guard let idxPath = indexPath
         else {
-            log("getData(indexPath:) argument is nil", isErr: true)
+            log("getData(indexPath:) argument is nil", level: .error)
             return nil
         }
         guard sectionsOffset.count > 0
@@ -117,13 +117,13 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
       
         guard let model = getData(indexPath: indexPath)
                     else {
-                        log("viewDidSeguePrepare(): no data with indexPath: \(indexPath)", isErr: true)
+                        log("viewDidSeguePrepare(): no data with indexPath: \(indexPath)", level: .error)
                         return
                     }
         
         guard let detailPresenter = PresenterFactory.shared.getInstance(segueId: segueId) as? DetailPresenterProtocol
             else {
-                log("viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue)", isErr: true)
+                log("viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue)", level: .error)
                 return
             }
         detailPresenter.setParentModel(model: model)
@@ -132,20 +132,24 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
     
     final func didEndScroll(){
         guard !pageInProgess else {
-            log("didEndScroll(): pageInProgress == false", isErr: false)
+            log("didEndScroll(): pageInProgress == false", level: .info)
             return
         }
         pageInProgess = true
         guard let _ = self as? PaginationPresenterProtocol else { return }
-        log("didEndScroll(): started", isErr: false)
+        log("didEndScroll(): started", level: .info)
         SyncMgt.shared.doSync(moduleEnum: moduleEnum)
     }
     
-    private func log(_ msg: String, isErr: Bool) {
-       if isErr {
-           catchError(msg: "SectionBasePresenter: \(self.clazz): " + msg)
-       } else {
-           console(msg: "SectionBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromView)
-       }
+    
+    private func log(_ msg: String, level: Logger.LogLevelEnum) {
+         switch level {
+         case .info:
+             Logger.console(msg: "SectionBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromView)
+         case .warning:
+             Logger.catchWarning(msg: "SectionBasePresenter: \(self.clazz): " + msg)
+         case .error:
+             Logger.catchError(msg: "SectionBasePresenter: \(self.clazz): " + msg)
+         }
      }
 }

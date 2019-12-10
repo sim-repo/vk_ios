@@ -35,7 +35,7 @@ class News_ViewController: UIViewController {
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
         guard  let _ = presenter as? PullWallPresenterProtocol
             else {
-                log("setupPresenter(): conform exception", printEnum: nil, isErr: true)
+                log("setupPresenter(): conform exception", level: .error)
                 return
         }
     }
@@ -52,14 +52,14 @@ class News_ViewController: UIViewController {
         }
     }
     
-    
-    private func log(_ msg: String, printEnum: PrintLogEnum?, isErr: Bool = false) {
-        if isErr {
-            catchError(msg: "News_ViewController(): "+msg)
-        } else {
-            if let printEnum_ = printEnum {
-                console(msg: msg, printEnum: printEnum_)
-            }
+    private func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+        case .info:
+            Logger.console(msg: "News_ViewController: " + msg, printEnum: .pagination)
+        case .warning:
+            Logger.catchWarning(msg: "News_ViewController: " + msg)
+        case .error:
+            Logger.catchError(msg: "News_ViewController: " + msg)
         }
     }
 }
@@ -85,10 +85,10 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
         var cell: UICollectionViewCell!
         guard let news = presenter.getData(indexPath: indexPath) as? News
             else {
-                catchError(msg: "News_ViewController(): cellForItemAt(): presenter.getData is incorrected ")
+                log("cellForItemAt(): presenter.getData is incorrected ", level: .error)
                 return cell
         }
-        log("cellForItemAt(): idx: \(indexPath.row) - news.id: \(news.getId())", printEnum: .pagination)
+        log("cellForItemAt(): idx: \(indexPath.row) - news.id: \(news.getId())", level: .info)
         if let name = WallCellConstant.cellByCode[news.imagesPlanCode] {
             cell = cellConfigure(name, indexPath, news)
         }
@@ -114,7 +114,8 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     private func didScrollEnd(_ indexPath: IndexPath) {
-        log("didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch)", printEnum: .pagination)
+        log("didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch)", level: .info)
+        
         if indexPath.row >= presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch {
             presenter.didEndScroll()
         }
@@ -130,7 +131,6 @@ extension News_ViewController: UIScrollViewDelegate {
         let location = scrollView.panGestureRecognizer.location(in: collectionView)
         guard let indexPath = collectionView.indexPathForItem(at: location)
             else {
-                log("scrollViewWillBeginDragging(): could not specify an indexpath", printEnum: nil, isErr: true)
                 return
         }
         didScrollEnd(indexPath)
@@ -155,7 +155,7 @@ extension News_ViewController: PushPlainViewProtocol{
     
     
     func viewReloadData(moduleEnum: ModuleEnum) {
-        log("viewReloadData()", printEnum: .viewReloadData)
+        log("viewReloadData()", level: .info)
         collectionView.reloadData()
     }
     
@@ -169,7 +169,7 @@ extension News_ViewController: PushPlainViewProtocol{
     }
     
     func insertItems(startIdx: Int, endIdx: Int) {
-        log("insertItems()", printEnum: .viewReloadData)
+        log("insertItems()", level: .info)
         var indexes = [IndexPath]()
         for idx in startIdx...endIdx {
             let idx = IndexPath(row: idx, section: 0)
@@ -186,9 +186,8 @@ extension News_ViewController: PushPlainViewProtocol{
 //MARK: - PushWallViewProtocol
 
 extension News_ViewController: PushWallViewProtocol {
-
     
-    func playVideo(url: URL, platformEnum: WallCellConstant.VideoPlatform, indexPath: IndexPath) {
+    func playVideo(_ url: URL, _ platformEnum: WallCellConstant.VideoPlatform, _ indexPath: IndexPath) {
         
         if let cell = collectionView.cellForItem(at: indexPath) as? Video_CellProtocol {
             cell.play(url: url, platformEnum: platformEnum)
@@ -196,9 +195,15 @@ extension News_ViewController: PushWallViewProtocol {
     }
     
     
-    func runPerformSegue(segueId: String, wall: WallModelProtocol, selectedImageIdx: Int) {
+    func runPerformSegue(segueId: String, _ wall: WallModelProtocol, selectedImageIdx: Int) {
         self.selectedImageIdx = selectedImageIdx
         performSegue(withIdentifier: segueId, sender: wall)
+    }
+    
+    func showError(_ indexPath: IndexPath, err: String) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? Video_CellProtocol {
+            cell.showErr(err: err)
+        }
     }
 }
 

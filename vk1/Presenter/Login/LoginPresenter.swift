@@ -11,13 +11,15 @@ class LoginPresenter: PlainPresenterProtocols {
         return Login.self
     }
     
-    
-    private func log(_ msg: String, isErr:Bool = false) {
-      if isErr {
-          catchError(msg: "LoginPresenter: \(self.clazz): " + msg)
-      } else {
-          console(msg: "LoginPresenter: \(self.clazz): " + msg, printEnum: .login)
-      }
+    private func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+        case .info:
+            Logger.console(msg: "PlainBasePresenter: \(self.clazz): " + msg, printEnum: .login)
+        case .warning:
+            Logger.catchWarning(msg: "PlainBasePresenter: \(self.clazz): " + msg)
+        case .error:
+            Logger.catchError(msg: "PlainBasePresenter: \(self.clazz): " + msg)
+        }
     }
 }
 
@@ -30,12 +32,12 @@ extension LoginPresenter {
         
         guard let view_ = view as? (PushLoginViewProtocol & PushViewProtocol)
         else {
-            log("viewDidLoad(): conform protocol exception", isErr: true)
+            log("viewDidLoad(): conform protocol exception", level: .error)
             return
         }
         
         view_.setRunAfterVkAuthentication(onVkAuthCompletion: { [weak self] (token, userId) in
-            self?.log("setRunAfterVkAuthentication()")
+            self?.log("setRunAfterVkAuthentication()", level: .info)
             RealmService.saveVKCredentials(token, userId)
             Session.shared.set(token, userId)
             self?.checkFirebaseCredentials(view: view_)
@@ -44,13 +46,13 @@ extension LoginPresenter {
         
         checkVKCredentials(
             onSuccess: { [weak self] in
-                self?.log("checkVKCredentials(): checked success")
+                self?.log("checkVKCredentials(): checked success", level: .info)
                 self?.checkFirebaseCredentials(view: view_)
             },
             onError: { [weak self] in
-                self?.log("checkVKCredentials(): checked failed")
+                self?.log("checkVKCredentials(): checked failed", level: .info)
                 view_.showVkFormAuthentication() {  (webview) in
-                    self?.log("checkVKCredentials(): showVkFormAuthentication()")
+                    self?.log("checkVKCredentials(): showVkFormAuthentication()", level: .info)
                     SyncMgt.shared.doVkAuth(webview: webview)
                 }
             })
@@ -61,7 +63,7 @@ extension LoginPresenter {
         if let (t,u) = RealmService.loadToken(),
             let token = t,
             let userId = u {
-                log("checkVKCredentials(): loadToken(): success")
+                log("checkVKCredentials(): loadToken(): success", level: .info)
                 let onChecked: ((Bool)->Void)? = { (checked) in
                     if checked {
                         Session.shared.token = token
@@ -83,18 +85,18 @@ extension LoginPresenter {
         view.showFirebaseFormAuthentication(login: login,
                                             psw: psw,
                                             onSignIn: { [weak self] (login, psw) in
-                                                self?.log("runFirebaseAuthentication(): onSignIn()")
+                                                self?.log("runFirebaseAuthentication(): onSignIn()", level: .info)
                                                 self?.firebaseSignIn(view, login, psw)
                                             },
                                             onRegister: { [weak self] in
-                                                self?.log("runFirebaseAuthentication(): onRegister()")
+                                                self?.log("runFirebaseAuthentication(): onRegister()", level: .info)
                                                 view.showFirebaseFormRegister(
                                                     onRegister: { [weak self] (login, psw) in
-                                                        self?.log("showFirebaseFormRegister(): onRegister()")
+                                                        self?.log("showFirebaseFormRegister(): onRegister()", level: .info)
                                                         self?.firebaseRegister(view, login, psw)
                                                     },
                                                     onCancel: {  [weak self] in
-                                                        self?.log("showFirebaseFormRegister(): onCancel()")
+                                                        self?.log("showFirebaseFormRegister(): onCancel()", level: .info)
                                                         view.back()
                                                     })
                                             })
@@ -114,12 +116,12 @@ extension LoginPresenter {
         FirebaseService.shared.signUp(login: login,
                                         psw: psw,
                                         onSuccess: { [weak self] (login, psw) in
-                                          self?.log("FirebaseService(): register(): onSuccess()")
+                                          self?.log("FirebaseService(): register(): onSuccess()", level: .info)
                                           RealmService.saveFirebaseCredentials(login, psw)
                                             view.runPerformSegue(segueId: "showAppSegue", nil)
                                         },
                                         onError: { [weak self] (err) in
-                                          self?.log("FirebaseService(): register(): onError(): \(err)", isErr: true)
+                                          self?.log("FirebaseService(): register(): onError(): \(err)", level: .error)
                                         })
     }
     
@@ -127,12 +129,12 @@ extension LoginPresenter {
         FirebaseService.shared.signIn(login: login,
                                         psw: psw,
                                         onSuccess: { [weak self] in
-                                            self?.log("FirebaseService(): signIn(): onSuccess()")
+                                            self?.log("FirebaseService(): signIn(): onSuccess()", level: .info)
                                             RealmService.saveFirebaseCredentials(login, psw)
                                             view.runPerformSegue(segueId: "showAppSegue", nil)
                                         },
                                         onError: { [weak self] (err) in
-                                          self?.log("FirebaseService(): signIn(): onError(): \(err)", isErr: true)
+                                          self?.log("FirebaseService(): signIn(): onError(): \(err)", level: .error)
                                         })
     }
 }

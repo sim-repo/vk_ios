@@ -2,12 +2,12 @@ import UIKit
 
 class SyncVideo {
     
-    public static func doVideoGet(postId: Int, ownerId: Int, completion: ((URL, WallCellConstant.VideoPlatform)->Void)?) {
-         ApiVKService.videoRequest(postId: postId, ownerId: ownerId, completion: completion )
+    public static func doVideoGet(postId: Int, ownerId: Int, _ onSuccess: ((URL, WallCellConstant.VideoPlatform)->Void)?, _ onError: ((String)->Void)? ) {
+         ApiVKService.videoRequest(postId: postId, ownerId: ownerId, onSuccess, onError )
     }
     
-    public static func doVideoSearch(q: String, completion: ((URL, WallCellConstant.VideoPlatform)->Void)?) {
-         ApiVKService.videoSearchRequest(q: q, completion: completion )
+    public static func doVideoSearch(q: String, _ onSuccess: ((URL, WallCellConstant.VideoPlatform)->Void)?, _ onError: ((String)->Void)?) {
+         ApiVKService.videoSearchRequest(q: q, onSuccess, onError)
     }
 }
 

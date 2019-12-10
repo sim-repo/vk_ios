@@ -93,40 +93,6 @@ func DELAY_THREAD(sec: Int, _ block: @escaping (() -> Void)) {
 }
 
 
-//MARK: - logger
-
-func catchError(msg: String){
-    #if DEBUG
-        print("----------------------")
-        print("ERROR: " + msg)
-        print("----------------------")
-        //fatalError()
-    #else
-        sendCrashlytics(msg)
-    #endif
-}
-
-func console(msg: String, printEnum: PrintLogEnum) {
-    #if DEBUG
-        if printEnum.print {
-            print(msg)
-            print()
-        }
-    #else
-        logInf(msg)
-    #endif
-}
-
-func logInf(msg: String) {
-    //TODO
-}
-
-func sendCrashlytics(_ msg: String) {
-    //TODO
-}
-
-
-
 
 
 //MARK: - MISC

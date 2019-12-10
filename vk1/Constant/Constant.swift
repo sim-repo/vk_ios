@@ -3,12 +3,12 @@ import UIKit
 
 // for debug purpose only: fast way to enable console logging by area
 enum PrintLogEnum {
-    case realm, presenter, presenterCallsFromSync, presenterCallsFromView, sync, alamofire, viewReloadData, login, pagination
+    case realm, presenter, presenterCallsFromSync, presenterCallsFromView, sync, alamofire, viewReloadData, login, pagination, warning
     
     var print: Bool {
         switch self {
         case .realm:
-            return true
+            return false
         case .presenter:
             return false
         case .presenterCallsFromSync:
@@ -24,6 +24,8 @@ enum PrintLogEnum {
         case .login:
             return false
         case .pagination:
+            return false
+        case .warning:
             return false
         }
     }
@@ -54,10 +56,6 @@ enum MyGroupByEnum: String {
 enum LogicPredicateEnum {
     case equal, notEqual
 }
-
-
-
-
 
 
 typealias typeId = Int

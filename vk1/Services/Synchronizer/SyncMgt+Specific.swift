@@ -8,7 +8,7 @@ extension SyncMgt {
         case .group:
             SyncGroup.shared.search(filter: filter)
         default:
-            log("doFilter(): no case \(moduleEnum)", isErr: true)
+            log("doFilter(): no case \(moduleEnum)", level: .warning)
         }
     }
     
@@ -25,12 +25,12 @@ extension SyncMgt {
         SyncVkLogin.shared.checkToken(token: token, onChecked )
     }
     
-    public func doVideoGet(postId: Int, ownerId: Int, completion: ((URL, WallCellConstant.VideoPlatform)->Void)?) {
-        SyncVideo.doVideoGet(postId: postId, ownerId: ownerId, completion: completion)
+    public func doVideoGet(postId: Int, ownerId: Int, _ onSuccess: ((URL, WallCellConstant.VideoPlatform) -> Void)?, _ onError: ((String)->Void)? ) {
+        SyncVideo.doVideoGet(postId: postId, ownerId: ownerId, onSuccess, onError)
     }
     
-    public func doVideoSearch(q: String, completion: ((URL, WallCellConstant.VideoPlatform) -> Void)?) {
-        SyncVideo.doVideoSearch(q: q, completion: completion)
+    public func doVideoSearch(q: String, _ onSuccess: ((URL, WallCellConstant.VideoPlatform) -> Void)?, _ onError: ((String)->Void)?) {
+        SyncVideo.doVideoSearch(q: q, onSuccess, onError)
     }
 
 }

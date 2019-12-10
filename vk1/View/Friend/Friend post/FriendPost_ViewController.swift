@@ -41,7 +41,7 @@ class FriendPost_ViewController: UIViewController{
         var imageURLs = [URL]()
         guard wall.imageURLs.count >= selectedImageIdx + 1
         else {
-            catchError(msg: "FriendPost_ViewController(): prepareForViewAnimator(): index out of range: \(selectedImageIdx)")
+            Logger.catchError(msg: "FriendPost_ViewController(): prepareForViewAnimator(): index out of range: \(selectedImageIdx)")
             return
         }
         imageURLs.append(wall.imageURLs[selectedImageIdx])

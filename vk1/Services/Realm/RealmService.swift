@@ -164,7 +164,7 @@ class RealmService {
         case .friend: delete(confEnum: .unsafe, clazz: RealmFriend.self)
         case .friend_wall, .my_group_wall: delete(confEnum: .unsafe, clazz: RealmWall.self, id: id)
         default:
-            catchError(msg: "RealmService(): delete(): no case is found")
+            Logger.catchError(msg: "RealmService(): delete(): no case is found")
         }
     }
     
@@ -212,8 +212,7 @@ class RealmService {
                 break
                 
             default:
-                catchError(msg: "RealmService: save(models:): no case for \(model)")
-                
+                log("save(models:): no case for \(model)", level: .warning)
             }
         }
         save(items: objects, update: update)
@@ -229,10 +228,10 @@ class RealmService {
                 obj.token = token
                 obj.userId = userId
                 realm?.add(obj, update: .all)
-                log("saveVKCredentials(): success", printEnum: .login)
+                log("saveVKCredentials(): success", level: .info)
             }
         } catch(let err) {
-            catchError(msg: err.localizedDescription)
+            Logger.catchError(msg: err.localizedDescription)
         }
     }
     
@@ -247,7 +246,7 @@ class RealmService {
                 realm?.add(obj, update: .all)
             }
         } catch(let err) {
-            catchError(msg: err.localizedDescription)
+            log(err.localizedDescription, level: .error)
         }
     }
     
@@ -258,10 +257,10 @@ class RealmService {
     private static func getInstance(_ confEnum: RealmConfigEnum) -> Realm? {
         do {
             let realm = try Realm(configuration: confEnum.config)
-            console(msg: "Realm DB Path: \(realm.configuration.fileURL?.absoluteString ?? "")", printEnum: .realm)
+            Logger.console(msg: "Realm DB Path: \(realm.configuration.fileURL?.absoluteString ?? "")", printEnum: .realm)
             return realm
         } catch(let err) {
-            catchError(msg: err.localizedDescription)
+            Logger.catchError(msg: err.localizedDescription)
         }
         return nil
     }
@@ -281,7 +280,7 @@ class RealmService {
                 }
             }
         } catch(let err) {
-            catchError(msg: err.localizedDescription)
+            Logger.catchError(msg: err.localizedDescription)
         }
     }
     
@@ -308,7 +307,7 @@ class RealmService {
                 }
             }
         } catch(let err) {
-            catchError(msg: err.localizedDescription)
+            Logger.catchError(msg: err.localizedDescription)
         }
     }
     
@@ -321,7 +320,7 @@ class RealmService {
                 realm?.deleteAll()
             }
         } catch(let err) {
-            catchError(msg: err.localizedDescription)
+            Logger.catchError(msg: err.localizedDescription)
         }
     }
     
@@ -529,7 +528,7 @@ class RealmService {
             news.vkOffset = result.vkOffset
             guard let cellType = WallCellConstant.CellTypeEnum(rawValue: result.cellType)
                 else {
-                    log("realmToNews(): enum: no case found by rawvalue \(result.cellType)", printEnum: nil, isErr: true)
+                    log("realmToNews(): enum: no case found \(result.cellType)", level: .error)
                     return []
             }
             news.cellType = cellType
@@ -552,19 +551,23 @@ class RealmService {
             }
             news.imageURLs = imageURLs
             
-            var videoURLs = [News.Video]()
-            for realmVideo in result.videoURLs {
-                var video = News.Video()
-                video.id = realmVideo.id
-                video.ownerId = realmVideo.ownerId
-                if let platform = WallCellConstant.VideoPlatform(rawValue: realmVideo.platform) {
-                    video.platform = platform
+            if news.cellType == .video {
+                var videoURLs = [News.Video]()
+                for realmVideo in result.videoURLs {
+                    var video = News.Video()
+                    video.id = realmVideo.id
+                    video.ownerId = realmVideo.ownerId
+                    if let platform = WallCellConstant.VideoPlatform(rawValue: realmVideo.platform) {
+                        video.platform = platform
+                    }
+                    if let sURL = URL(string: realmVideo.url) {
+                        video.url = sURL
+                    }
+                    videoURLs.append(video)
                 }
-                if let sURL = URL(string: realmVideo.url) {
-                    video.url = sURL
-                }
-                videoURLs.append(video)
+                news.videos = videoURLs
             }
+            
             
             // footer block:
             news.viewCount = result.viewCount
@@ -717,13 +720,15 @@ class RealmService {
         return keyData
     }
     
-    private static func log(_ msg: String, printEnum: PrintLogEnum?, isErr:Bool = false) {
-        if isErr {
-            catchError(msg: "RealmService(): " + msg)
-        } else {
-            if let printEnum_ = printEnum {
-                console(msg: "RealmService(): " + msg, printEnum: printEnum_)
-            }
+    
+    private static func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+        case .info:
+            Logger.console(msg: "RealmService: " + msg, printEnum: .realm)
+        case .warning:
+            Logger.catchWarning(msg: "RealmService: " + msg)
+        case .error:
+            Logger.catchError(msg: "RealmService: " + msg)
         }
     }
 }

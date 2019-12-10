@@ -13,4 +13,5 @@ protocol Wall_CellProtocol: UICollectionViewCell{
 
 protocol Video_CellProtocol {
     func play(url: URL, platformEnum: WallCellConstant.VideoPlatform)
+    func showErr(err: String)
 }

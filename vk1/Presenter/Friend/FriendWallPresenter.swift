@@ -24,7 +24,7 @@ extension FriendWallPresenter: DetailPresenterProtocol {
     func getId() -> typeId? {
         guard let passed = parentModel
         else {
-            catchError(msg: "FriendWallPresenter: getId(): modelPassedThrowSegue is null")
+            Logger.catchError(msg: "FriendWallPresenter: getId(): modelPassedThrowSegue is null")
             return nil
         }
         return passed.getId()
@@ -44,7 +44,7 @@ extension FriendWallPresenter: PullWallPresenterProtocol {
         
         guard let wall = getData(indexPath: indexPath) as? Wall
             else {
-                catchError(msg: "FriendWallPresenter(): PullWallPresenterProtocol(): selectImage: getData exception ")
+                Logger.catchError(msg: "FriendWallPresenter(): PullWallPresenterProtocol(): selectImage: getData exception ")
                 return
             }
         
@@ -52,9 +52,9 @@ extension FriendWallPresenter: PullWallPresenterProtocol {
      
         guard let view_ = view as? PushWallViewProtocol
             else {
-                catchError(msg: "FriendWallPresenter(): PullWallPresenterProtocol(): selectImage: protocol conform exception")
+                Logger.catchError(msg: "FriendWallPresenter(): PullWallPresenterProtocol(): selectImage: protocol conform exception")
                 return
             }
-        view_.runPerformSegue(segueId: "FriendPostSegue", wall: wall, selectedImageIdx: imageIdx)
+        view_.runPerformSegue(segueId: "FriendPostSegue", wall, selectedImageIdx: imageIdx)
     }
 }

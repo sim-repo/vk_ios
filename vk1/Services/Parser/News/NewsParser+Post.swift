@@ -128,7 +128,7 @@ extension NewsParser {
         
         
         if imageURLs.isEmpty {
-            catchError(msg: "NewsParser(): parseImages() is Empty")
+            Logger.catchError(msg: "NewsParser(): parseImages() is Empty")
         }
         return imageURLs
     }
@@ -247,11 +247,6 @@ extension NewsParser {
     }
     
     
-    
-    
-    
-    
-    
     internal static func parseVideoBlock(_ jsonItem: JSON, _ isRepost: Bool) -> [News.Video] {
         
         var videos = [News.Video]()
@@ -262,10 +257,6 @@ extension NewsParser {
            videos = getVideos(jsonItem)
         }
         
-
-        if videos.isEmpty {
-            catchError(msg: "NewsParser(): parseVideoBlock() is Empty")
-        }
         return videos
     }
     

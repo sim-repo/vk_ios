@@ -114,6 +114,8 @@
 		166D1B09234F6C7100C552E4 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166D1B08234F6C7100C552E4 /* Video.storyboard */; };
 		166D1B0C234F6E3900C552E4 /* Video_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D1B0B234F6E3900C552E4 /* Video_ViewController.swift */; };
 		16A25E452396C7A1001BEA13 /* ViewDidAppearInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25E442396C7A1001BEA13 /* ViewDidAppearInjector.swift */; };
+		16A25E7923992803001BEA13 /* LoggerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25E7823992803001BEA13 /* LoggerHelper.swift */; };
+		16A25EAA239953F2001BEA13 /* YouTubeConfigHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25EA9239953F2001BEA13 /* YouTubeConfigHTML.swift */; };
 		16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B86232F7BF000E21B7F /* Friend.swift */; };
 		16AB0B89232F7C7800E21B7F /* MyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B88232F7C7800E21B7F /* MyGroup.swift */; };
 		16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB0B91232F7DAC00E21B7F /* Friend_TableCell.swift */; };
@@ -126,8 +128,7 @@
 		16B999842391593000F52010 /* NewsParser+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B999832391593000F52010 /* NewsParser+Video.swift */; };
 		16B9999E2391F85000F52010 /* SyncVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B9999D2391F85000F52010 /* SyncVideo.swift */; };
 		16C693592395254000F3DD93 /* RealmVideoURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C693582395254000F3DD93 /* RealmVideoURL.swift */; };
-		16C6938923953EC100F3DD93 /* VideoWebViewMgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6938823953EC100F3DD93 /* VideoWebViewMgt.swift */; };
-		16C6938B239540AC00F3DD93 /* YouTubeConfigHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6938A239540AB00F3DD93 /* YouTubeConfigHTML.swift */; };
+		16C6938923953EC100F3DD93 /* VideoWebViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6938823953EC100F3DD93 /* VideoWebViewService.swift */; };
 		16C6938D239540F900F3DD93 /* OtherConfigHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6938C239540F900F3DD93 /* OtherConfigHTML.swift */; };
 		16C693912395444700F3DD93 /* Wall_Cell_tp1_archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C693902395444700F3DD93 /* Wall_Cell_tp1_archive.swift */; };
 		16D58BE02366BABD00735296 /* DecodableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BDF2366BABD00735296 /* DecodableProtocol.swift */; };
@@ -407,6 +408,8 @@
 		166D1B0B234F6E3900C552E4 /* Video_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video_ViewController.swift; sourceTree = "<group>"; };
 		168AC57C236ABDB800A1B2A6 /* RAMAnimatedTabBarController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RAMAnimatedTabBarController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16A25E442396C7A1001BEA13 /* ViewDidAppearInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidAppearInjector.swift; sourceTree = "<group>"; };
+		16A25E7823992803001BEA13 /* LoggerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerHelper.swift; sourceTree = "<group>"; };
+		16A25EA9239953F2001BEA13 /* YouTubeConfigHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeConfigHTML.swift; sourceTree = "<group>"; };
 		16AB0B86232F7BF000E21B7F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		16AB0B88232F7C7800E21B7F /* MyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroup.swift; sourceTree = "<group>"; };
 		16AB0B91232F7DAC00E21B7F /* Friend_TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend_TableCell.swift; sourceTree = "<group>"; };
@@ -419,8 +422,7 @@
 		16B999832391593000F52010 /* NewsParser+Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsParser+Video.swift"; sourceTree = "<group>"; };
 		16B9999D2391F85000F52010 /* SyncVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncVideo.swift; sourceTree = "<group>"; };
 		16C693582395254000F3DD93 /* RealmVideoURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmVideoURL.swift; sourceTree = "<group>"; };
-		16C6938823953EC100F3DD93 /* VideoWebViewMgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWebViewMgt.swift; sourceTree = "<group>"; };
-		16C6938A239540AB00F3DD93 /* YouTubeConfigHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouTubeConfigHTML.swift; path = ../../../../../../effect/WebViewPlayVideo/WebViewPlayVideo/YouTubeConfigHTML.swift; sourceTree = "<group>"; };
+		16C6938823953EC100F3DD93 /* VideoWebViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWebViewService.swift; sourceTree = "<group>"; };
 		16C6938C239540F900F3DD93 /* OtherConfigHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherConfigHTML.swift; sourceTree = "<group>"; };
 		16C693902395444700F3DD93 /* Wall_Cell_tp1_archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall_Cell_tp1_archive.swift; sourceTree = "<group>"; };
 		16D58BDF2366BABD00735296 /* DecodableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableProtocol.swift; sourceTree = "<group>"; };
@@ -619,8 +621,9 @@
 			isa = PBXGroup;
 			children = (
 				1611273F234B45E50080FD54 /* DataGeneratorHelper.swift */,
-				16FF6FD523522E41001C33CF /* Extensions.swift */,
+				16A25E7823992803001BEA13 /* LoggerHelper.swift */,
 				16D58BEF236847C300735296 /* CellImagesHelper.swift */,
+				16FF6FD523522E41001C33CF /* Extensions.swift */,
 				166CB8EE2382F93E009DA806 /* Date+Extensions.swift */,
 				16D669A6239061070086C55C /* SelfSized+Extensions.swift */,
 			);
@@ -723,6 +726,7 @@
 				16D58BFC236986A600735296 /* Synchronizer */,
 				16D58BFA2369645E00735296 /* Configurator */,
 				1647649A2365E012007D1B19 /* Network */,
+				16A25E902399522F001BEA13 /* Video */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -862,7 +866,6 @@
 		166667462347C9D200FD2B86 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				16C6937123953E7100F3DD93 /* video support */,
 				16BA48362345CB6A007D0981 /* xib */,
 				166667672347E2C700FD2B86 /* Wall_CellProtocol.swift */,
 				1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */,
@@ -899,6 +902,17 @@
 			isa = PBXGroup;
 			children = (
 				166D1B0B234F6E3900C552E4 /* Video_ViewController.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		16A25E902399522F001BEA13 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				16C6938C239540F900F3DD93 /* OtherConfigHTML.swift */,
+				16C6938823953EC100F3DD93 /* VideoWebViewService.swift */,
+				16A25E442396C7A1001BEA13 /* ViewDidAppearInjector.swift */,
+				16A25EA9239953F2001BEA13 /* YouTubeConfigHTML.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -995,17 +1009,6 @@
 				166667652347CBA100FD2B86 /* Wall_Cell_tp9.xib */,
 			);
 			path = xib;
-			sourceTree = "<group>";
-		};
-		16C6937123953E7100F3DD93 /* video support */ = {
-			isa = PBXGroup;
-			children = (
-				16C6938A239540AB00F3DD93 /* YouTubeConfigHTML.swift */,
-				16C6938C239540F900F3DD93 /* OtherConfigHTML.swift */,
-				16C6938823953EC100F3DD93 /* VideoWebViewMgt.swift */,
-				16A25E442396C7A1001BEA13 /* ViewDidAppearInjector.swift */,
-			);
-			path = "video support";
 			sourceTree = "<group>";
 		};
 		16D58BE9236706B800735296 /* Base */ = {
@@ -1532,7 +1535,6 @@
 				164F80BB238477AB000F95E7 /* PlainBasePresenter+CalledBySync.swift in Sources */,
 				16E08B66236F80B800340F09 /* FriendWall_ViewController.swift in Sources */,
 				164F8144238B0F23000F95E7 /* SyncGroup.swift in Sources */,
-				16C6938B239540AC00F3DD93 /* YouTubeConfigHTML.swift in Sources */,
 				1666674E2347CA0B00FD2B86 /* Wall_Cell_tp6.swift in Sources */,
 				16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */,
 				16D58BE02366BABD00735296 /* DecodableProtocol.swift in Sources */,
@@ -1544,6 +1546,7 @@
 				164F80B72384754D000F95E7 /* SectionedBasePresenter+CalledBySync.swift in Sources */,
 				16B999822391590B00F52010 /* NewsParser+WallPhoto.swift in Sources */,
 				164F819C238BE256000F95E7 /* FIBUser.swift in Sources */,
+				16A25E7923992803001BEA13 /* LoggerHelper.swift in Sources */,
 				163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */,
 				16E08B78237010B200340F09 /* DetailPresenterProtocol.swift in Sources */,
 				161C1136234718B000A2EC9D /* WallCellConfigurator.swift in Sources */,
@@ -1599,7 +1602,7 @@
 				16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */,
 				166667412347BB9900FD2B86 /* News_ViewController.swift in Sources */,
 				1666674A2347C9FA00FD2B86 /* Wall_Cell_tp4.swift in Sources */,
-				16C6938923953EC100F3DD93 /* VideoWebViewMgt.swift in Sources */,
+				16C6938923953EC100F3DD93 /* VideoWebViewService.swift in Sources */,
 				16200D1923389CCE00F02440 /* WallPresenter.swift in Sources */,
 				16AB0B87232F7BF000E21B7F /* Friend.swift in Sources */,
 				16C6938D239540F900F3DD93 /* OtherConfigHTML.swift in Sources */,
@@ -1624,6 +1627,7 @@
 				16E08B86237065F100340F09 /* MyGroupWallPresenter.swift in Sources */,
 				16040603234E39130083F3C3 /* CustomInteractiveTransition.swift in Sources */,
 				1647649E2365E04C007D1B19 /* AlamofireService.swift in Sources */,
+				16A25EAA239953F2001BEA13 /* YouTubeConfigHTML.swift in Sources */,
 				166667FA2349062E00FD2B86 /* WallModelProtocol.swift in Sources */,
 				164F80EC2385B4A0000F95E7 /* RealmToken.swift in Sources */,
 				1611F28F23787437002FCE3C /* RealmService.swift in Sources */,

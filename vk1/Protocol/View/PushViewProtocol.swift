@@ -38,8 +38,9 @@ protocol PushLoginViewProtocol {
 
 
 protocol PushWallViewProtocol {
-    func runPerformSegue(segueId: String, wall: WallModelProtocol, selectedImageIdx: Int)
-    func playVideo(url: URL, platformEnum: WallCellConstant.VideoPlatform, indexPath: IndexPath)
+    func runPerformSegue(segueId: String, _ wall: WallModelProtocol, selectedImageIdx: Int)
+    func playVideo(_ url: URL, _ platformEnum: WallCellConstant.VideoPlatform, _ indexPath: IndexPath)
+    func showError(_ indexPath: IndexPath, err: String)
 }
 
 

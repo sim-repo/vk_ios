@@ -158,7 +158,10 @@ class ApiVKService {
     }
     
     
-    static func videoRequest(postId: Int, ownerId: Int, completion: ((URL, WallCellConstant.VideoPlatform)->Void)? ) {
+    static func videoRequest(postId: Int,
+                             ownerId: Int,
+                             _ onSuccess: ((URL, WallCellConstant.VideoPlatform)->Void)?,
+                             _ onError: ((String)->Void)? ) {
         
         let urlPath: String = "video.get"
         
@@ -170,11 +173,15 @@ class ApiVKService {
             "access_token": Session.shared.token,
             "v": NetworkConstant.shared.versionAPI
         ]
-        AlamofireService.videoRequest(urlPath, params, completion)
+        AlamofireService.videoRequest(urlPath, params, onSuccess, onError)
     }
     
     
-    public static func videoSearchRequest(q: String, completion: ((URL, WallCellConstant.VideoPlatform)->Void)?) {
+    
+    static func videoSearchRequest(q: String,
+                                   _ onSuccess: ((URL, WallCellConstant.VideoPlatform)->Void)?,
+                                   _ onError: ((String)->Void)?) {
+        
         let urlPath: String = "video.search"
         
         let params: Parameters = [
@@ -183,7 +190,7 @@ class ApiVKService {
             "access_token": Session.shared.token,
             "v": NetworkConstant.shared.versionAPI
         ]
-        AlamofireService.videoRequest(urlPath, params, completion)
+        AlamofireService.videoRequest(urlPath, params, onSuccess, onError)
     }
     
     

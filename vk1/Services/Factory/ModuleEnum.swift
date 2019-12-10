@@ -41,7 +41,7 @@ enum ModuleEnum: String {
             self = .login
         default:
             self = .unknown
-            catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol.Type): no case: \(presenterType)")
+            Logger.catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol.Type): no case: \(presenterType)")
         }
     }
     
@@ -69,7 +69,7 @@ enum ModuleEnum: String {
             self = .news
         default:
             self = .unknown
-            catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol): no case: \(presenter)")
+            Logger.catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol): no case: \(presenter)")
         }
     }
     
@@ -93,7 +93,7 @@ enum ModuleEnum: String {
             self = .login
         default:
             self = .unknown
-            catchError(msg: "ModuleEnum: init(:PushViewProtocol): no case: \(vc)")
+            Logger.catchError(msg: "ModuleEnum: init(:PushViewProtocol): no case: \(vc)")
         }
     }
     
@@ -104,7 +104,7 @@ enum ModuleEnum: String {
             case .detailGroup:
                 self = .my_group_detail
             default:
-                catchError(msg: "ModuleEnum: init(:segueId): no case: \(segueId)")
+                Logger.catchError(msg: "ModuleEnum: init(:segueId): no case: \(segueId)")
         }
     }
     

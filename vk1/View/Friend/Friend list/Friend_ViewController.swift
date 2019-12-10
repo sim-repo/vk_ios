@@ -121,7 +121,7 @@ extension Friend_ViewController: UITableViewDataSource, UITableViewDelegate {
         if segue.identifier == "FriendDetailSegue" {
             guard let indexPath = sender as? IndexPath
             else {
-                catchError(msg: "Friend_Controller: prepare(for segue:)")
+                Logger.catchError(msg: "Friend_Controller: prepare(for segue:)")
                 return
             }
             presenter?.viewDidSeguePrepare(segueId: ModuleEnum.SegueIdEnum.detailFriend, indexPath: indexPath)

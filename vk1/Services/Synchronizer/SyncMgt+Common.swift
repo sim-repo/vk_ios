@@ -55,7 +55,7 @@ class SyncMgt {
             case .friend_wall:
                 SyncFriendWall.shared.resetOffset()
             default:
-                log("viewDidDisappear(): no case \(presenter)", isErr: true)
+                log("viewDidDisappear(): no case \(presenter)", level: .warning)
         }
     }
     
@@ -66,7 +66,7 @@ class SyncMgt {
             case .news:
                 SyncNews.shared.resetOffset()
             default:
-                log("clearPresenterData(): no case \(moduleEnum)", isErr: true)
+                log("didClearDataSource(): no case \(moduleEnum)", level: .warning)
         }
     }
     
@@ -100,7 +100,7 @@ class SyncMgt {
             SyncNews.shared.sync()
             
          default:
-             catchError(msg: "SynchronizerManager: startSync: no case")
+            log("sync(): no case for \(moduleEnum)", level: .warning)
          }
      }
     
@@ -179,7 +179,7 @@ class SyncMgt {
                 self.dispatchGroup = nil
                 
                 let duration = Date().timeIntervalSince(startSyncTime)
-                self.log("Sync finished. Sync duration: \(Int(duration)) seconds.", isErr: false)
+                self.log("Sync finished. Sync duration: \(Int(duration)) seconds.", level: .info)
                 
                 self.scheduleNextSync()
                 
@@ -207,7 +207,7 @@ class SyncMgt {
     func getOnErrorCompletion(_ completion: (()-> Void)? = nil ) -> onErrResponse_SyncCompletion {
         let onError: onErrResponse_SyncCompletion = { (error) in
             completion?()
-            catchError(msg: "\(error.domain)")
+            self.log("\(error.domain)", level: .error)
         }
         return onError
     }
@@ -218,11 +218,14 @@ class SyncMgt {
         }
     }
     
-    internal func log(_ msg: String, isErr: Bool) {
-        if isErr {
-            catchError(msg: "SynchronizerManager(): " + msg)
-        } else {
-            console(msg: "SynchronizerManager(): " + msg, printEnum: .sync)
+    internal func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+            case .info:
+                Logger.console(msg: "SynchronizerManager(): " + msg, printEnum: .sync)
+            case .warning:
+                Logger.catchWarning(msg: "SynchronizerManager(): " + msg)
+            case .error:
+                Logger.catchError(msg: "SynchronizerManager(): " + msg)
         }
     }
 }

@@ -19,6 +19,7 @@ struct WallCellConstant {
     enum VideoPlatform: String {
         case youtube = "YouTube"
         case other = "other"
+        case null = "null"
     }
     
     static let  cellByCode = ["tp1": "Wall_Cell_tp1",

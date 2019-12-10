@@ -36,7 +36,7 @@ class FriendWall_ViewController: UIViewController {
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
         guard  let _ = presenter as? PullWallPresenterProtocol
             else {
-                log("setupPresenter(): conform exception", printEnum: nil, isErr: true)
+                log("setupPresenter(): conform exception", level: .error)
                 return
         }
     }
@@ -53,13 +53,14 @@ class FriendWall_ViewController: UIViewController {
         }
     }
     
-    private func log(_ msg: String, printEnum: PrintLogEnum?, isErr: Bool = false) {
-        if isErr {
-            catchError(msg: "FriendWall_ViewController(): "+msg)
-        } else {
-            if let printEnum_ = printEnum {
-                console(msg: msg, printEnum: printEnum_)
-            }
+    private func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+        case .info:
+            Logger.console(msg: "FriendWall_ViewController: " + msg, printEnum: .pagination)
+        case .warning:
+            Logger.catchWarning(msg: "FriendWall_ViewController: " + msg)
+        case .error:
+            Logger.catchError(msg: "FriendWall_ViewController: " + msg)
         }
     }
     
@@ -123,7 +124,7 @@ extension FriendWall_ViewController: UIScrollViewDelegate {
         let location = scrollView.panGestureRecognizer.location(in: collectionView)
         guard let indexPath = collectionView.indexPathForItem(at: location)
             else {
-                log("scrollViewWillBeginDragging(): could not specify an indexpath", printEnum: nil, isErr: true)
+                log("scrollViewWillBeginDragging(): could not specify an indexpath", level: .error)
                 return
         }
         didScrollEnd(indexPath)
@@ -155,7 +156,7 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
     }
     
     func insertItems(startIdx: Int, endIdx: Int) {
-        log("insertItems()", printEnum: .viewReloadData)
+        log("insertItems()", level: .info)
         var indexes = [IndexPath]()
         for idx in startIdx...endIdx {
             let idx = IndexPath(row: idx, section: 0)
@@ -173,14 +174,18 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
 
 extension FriendWall_ViewController: PushWallViewProtocol {
     
-    func playVideo(url: URL, platformEnum: WallCellConstant.VideoPlatform, indexPath: IndexPath) {
-        
+    func playVideo(_ url: URL, _ platformEnum: WallCellConstant.VideoPlatform, _ indexPath: IndexPath) {
+        //TODO: implement code here
     }
     
     
-    func runPerformSegue(segueId: String, wall: WallModelProtocol, selectedImageIdx: Int) {
+    func runPerformSegue(segueId: String, _ wall: WallModelProtocol, selectedImageIdx: Int) {
         self.selectedImageIdx = selectedImageIdx
         performSegue(withIdentifier: segueId, sender: wall)
+    }
+    
+    func showError(_ indexPath: IndexPath, err: String) {
+        //TODO: implement code here
     }
 }
 

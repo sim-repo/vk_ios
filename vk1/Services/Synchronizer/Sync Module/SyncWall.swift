@@ -8,9 +8,6 @@ class SyncWall: SyncBaseProtocol {
     static let shared = SyncWall()
     private override init() {}
     
-    private func log(_ msg: String) {
-        console(msg: msg, printEnum: .sync)
-    }
     
     public func getId() -> String {
         return ModuleEnum.wall.rawValue

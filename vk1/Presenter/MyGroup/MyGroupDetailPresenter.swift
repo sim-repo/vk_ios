@@ -24,7 +24,7 @@ class MyGroupDetailPresenter: PlainPresenterProtocols {
         didSetViewCompletion = { [weak self] (view) in
             guard let self = self else { return }
             guard let v = view else {
-                catchError(msg: "\(self.clazz): save(): didSetViewCompletion view is nil")
+                Logger.catchError(msg: "\(self.clazz): save(): didSetViewCompletion view is nil")
                 return
             }
             self.myGroupWallPresenter?.setView(vc: v)
@@ -38,7 +38,7 @@ class MyGroupDetailPresenter: PlainPresenterProtocols {
         let detailGroup = validated[0] as! DetailGroup
         guard let group = parentModel as? MyGroup
         else {
-            catchError(msg: "\(clazz): enrichData(): detailModel is incorrect")
+            Logger.catchError(msg: "\(clazz): enrichData(): detailModel is incorrect")
             return nil
         }
         //enrich
@@ -57,7 +57,7 @@ extension MyGroupDetailPresenter: DetailPresenterProtocol {
         guard let detailPresenter = myGroupWallPresenter,
               let detail = parentModel
         else {
-            catchError(msg: "\(clazz): setDetailModel(): myGroupWallPresenter or detailModel is nil")
+            Logger.catchError(msg: "\(clazz): setDetailModel(): myGroupWallPresenter or detailModel is nil")
             return
         }
         // #child begin
@@ -69,7 +69,7 @@ extension MyGroupDetailPresenter: DetailPresenterProtocol {
     func getId() -> typeId? {
         guard let passed = parentModel
         else {
-            catchError(msg: "\(clazz): getId(): modelPassedThrowSegue is nil")
+            Logger.catchError(msg: "\(clazz): getId(): modelPassedThrowSegue is nil")
             return nil
         }
         return passed.getId()

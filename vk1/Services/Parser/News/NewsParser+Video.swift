@@ -54,16 +54,19 @@ extension NewsParser {
         return news
     }
     
-    public static func parseVideoURL(_ val: Any) -> (URL?, WallCellConstant.VideoPlatform)? {
+    public static func parseVideoURL(_ val: Any) -> (URL?, WallCellConstant.VideoPlatform, String?) {
         let json = JSON(val)
         let items = json["response"]["items"].arrayValue
         
         if let item = items.first {
             let url = searchVideoFiles(item)
             let platformEnum = searchVideoPlatform(item)
-            return (url, platformEnum)
+            if url == nil || platformEnum == .null {
+                return (url, platformEnum, "NewsParser(): parseVideoURL(): parse exception: url or platform is incorrected")
+            }
+            return (url, platformEnum, nil)
         }
-        return nil
+        return (nil, WallCellConstant.VideoPlatform.other, "NewsParser(): parseVideoURL(): parse exception")
     }
     
     private static func searchVideoFiles(_ jsonItem: JSON) -> URL? {

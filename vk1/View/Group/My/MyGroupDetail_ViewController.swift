@@ -49,7 +49,7 @@ class MyGroupDetail_ViewController: UIViewController {
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
         guard  let _ = presenter as? PullWallPresenterProtocol
             else {
-                log("setupPresenter(): conform exception", isErr: true)
+                log("setupPresenter(): conform exception", level: .error)
                 return
         }
     }
@@ -63,11 +63,15 @@ class MyGroupDetail_ViewController: UIViewController {
         layout.itemSize = CGSize(width: 100, height: 300)
     }
     
-    private func log(_ msg: String, isErr: Bool = false) {
-        if isErr {
-            catchError(msg: "MyGroupDetail_ViewController(): "+msg)
-        } else {
-            console(msg: msg, printEnum: .viewReloadData)
+    
+    private func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+        case .info:
+            Logger.console(msg: "MyGroupDetail_ViewController: " + msg, printEnum: .viewReloadData)
+        case .warning:
+            Logger.catchWarning(msg: "MyGroupDetail_ViewController: " + msg)
+        case .error:
+            Logger.catchError(msg: "MyGroupDetail_ViewController: " + msg)
         }
     }
 }
@@ -85,7 +89,7 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
         if let subPresenter = presenter.getSubPlainPresenter() {
             return subPresenter.numberOfRowsInSection()
         } else {
-            catchError(msg: "MyGroupDetail_ViewController: numberOfItemsInSection: child presenter in not initialized")
+            log("numberOfItemsInSection: child presenter in not initialized", level: .error)
         }
         return 1
     }
@@ -96,13 +100,13 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
         
         guard let subPresenter = presenter.getSubPlainPresenter()
             else {
-                catchError(msg: "MyGroupDetail_ViewController: cellForItemAt: child presenter in not initialized")
+                log("cellForItemAt: child presenter in not initialized", level: .error)
                 return cell
         }
         
         guard let wall = subPresenter.getData(indexPath: indexPath) as? Wall
             else {
-                catchError(msg: "MyGroupDetail_ViewController: cellForItemAt: no data")
+                log("cellForItemAt: no data", level: .error)
                 return cell
         }
         
@@ -164,9 +168,9 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
         if moduleEnum == .my_group_detail {
             
             guard let group = presenter.getData(indexPath: nil) as? DetailGroup
-                else { catchError(msg: "MyGroupDetail_ViewController: setup(): datasource is null" )
-                    return
-            }
+                else {
+                    log("setup(): datasource is null", level: .error)
+                    return }
             navigationItem.title = group.name
             if group.coverURL400 == nil {
                 coverImageView.kf.setImage(with: group.avaURL200)

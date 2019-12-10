@@ -17,7 +17,7 @@ class SyncBase {
     func getLastSyncDate() -> Date? {
         guard let implement = self as? SyncBaseProtocol
         else {
-            catchError(msg: "SyncBase(): getLastSyncDate(): SyncBaseProtocol is not implemented")
+            Logger.catchError(msg: "SyncBase(): getLastSyncDate(): SyncBaseProtocol is not implemented")
             return nil
         }
         return UserDefaults.standard.value(forKey: UserDefaultsEnum.lastSyncDate.rawValue + implement.getId()) as? Date
@@ -27,7 +27,7 @@ class SyncBase {
     func setLastSyncDate(date: Date) {
         guard let implement = self as? SyncBaseProtocol
                else {
-                    catchError(msg: "SyncBase(): setLastSyncDate(): SyncBaseProtocol is not implemented")
+                    Logger.catchError(msg: "SyncBase(): setLastSyncDate(): SyncBaseProtocol is not implemented")
                     return
                }
         UserDefaults.standard.setValue(date, forKey: UserDefaultsEnum.lastSyncDate.rawValue + implement.getId())
@@ -56,7 +56,7 @@ class SyncBase {
                }
                self!.tryCount+=1
             } else {
-                catchError(msg: "SyncBase(): network request")
+                Logger.catchError(msg: "SyncBase(): network request")
                 
                 self!.tryCount = 0
                 presenter.didErrorNetworkFinish()

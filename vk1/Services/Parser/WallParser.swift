@@ -117,7 +117,7 @@ class WallParser {
         }
        
         if imageURLs.isEmpty {
-            catchError(msg: "WallParser() : parseImages(): is Empty")
+            Logger.catchError(msg: "WallParser() : parseImages(): is Empty")
         }
         return imageURLs
     }

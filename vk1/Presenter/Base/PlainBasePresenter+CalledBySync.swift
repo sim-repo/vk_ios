@@ -40,7 +40,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
         PRESENTER_UI_THREAD { [weak self] in
             guard let self = self else { return }
             let last = self.numberOfRowsInSection()
-            self.log("setFromPersistent()", isErr: false)
+            self.log("setFromPersistent()", level: .info)
             self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
             self.waitIndicator(start: false)
             
@@ -76,7 +76,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                 let last = self.numberOfRowsInSection()
                 
                 self.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
-                self.log("didSuccessNetworkResponse", isErr: false)
+                self.log("didSuccessNetworkResponse", level: .info)
                 completion?()
                 
                 self.waitIndicator(start: false)
@@ -99,10 +99,10 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     final func didSuccessNetworkFinish() {
         PRESENTER_UI_THREAD { [weak self] in
             guard let self = self else { return }
-            self.log("didSuccessNetworkFinish()", isErr: false)
+            self.log("didSuccessNetworkFinish()", level: .info)
             guard let child = self as? ModelOwnerPresenterProtocol
                        else {
-                            self.log("didSuccessNetworkFinish(): self is not implemented ModelOwnerPresenterProtocol", isErr: true)
+                            self.log("didSuccessNetworkFinish(): self is not implemented ModelOwnerPresenterProtocol", level: .error)
                             return
                        }
             if child.netFinishViewReload {
@@ -116,12 +116,16 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
         self.pageInProgess = false
     }
     
-
-    private func log(_ msg: String, isErr: Bool) {
-        if isErr {
-            catchError(msg: "PlainBasePresenter: \(self.clazz): " + msg)
-        } else {
-            console(msg: "PlainBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromSync)
+    
+    
+    private func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+        case .info:
+            Logger.console(msg: "PlainBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromSync)
+        case .warning:
+            Logger.catchWarning(msg: "PlainBasePresenter: \(self.clazz): " + msg)
+        case .error:
+            Logger.catchError(msg: "PlainBasePresenter: \(self.clazz): " + msg)
         }
     }
 }

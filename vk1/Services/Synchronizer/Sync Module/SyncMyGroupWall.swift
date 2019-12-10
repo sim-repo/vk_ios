@@ -46,13 +46,13 @@ class SyncMyGroupWall: SyncBaseProtocol {
             
             guard let p = presenter as? DetailPresenterProtocol
             else {
-               catchError(msg: "SyncMyGroupWall: sync(): presenter is not conformed DetailPresenterProtocol")
+               Logger.catchError(msg: "SyncMyGroupWall: sync(): presenter is not conformed DetailPresenterProtocol")
                return
             }
             
             guard let id_ = p.getId()
             else {
-                catchError(msg: "SyncMyGroupWall: sync(): no id")
+                Logger.catchError(msg: "SyncMyGroupWall: sync(): no id")
                 return
             }
         

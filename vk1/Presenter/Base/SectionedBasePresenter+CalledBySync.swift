@@ -41,7 +41,7 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     final func setFromPersistent(models: [DecodableProtocol]) {
         PRESENTER_UI_THREAD {[weak self] in
             guard let self = self else { return }
-            self.log("setFromPersistent()", isErr: false)
+            self.log("setFromPersistent()", level: .info)
             self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
             self.sort()
             self.filterAndRegroupData()
@@ -67,7 +67,7 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
             PRESENTER_UI_THREAD {
                 guard let self = self else { return }
                 self.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
-                self.log("didSuccessNetworkResponse()", isErr: false)
+                self.log("didSuccessNetworkResponse()", level: .info)
                 completion?()
                 
                 self.waitIndicator(start: false)
@@ -81,7 +81,7 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     final func didSuccessNetworkFinish() {
         PRESENTER_UI_THREAD {[weak self] in
             guard let self = self else { return }
-            self.log("didSuccessNetworkFinish()", isErr: false)
+            self.log("didSuccessNetworkFinish()", level: .info)
             self.sort()
             self.filterAndRegroupData()
             self.viewReloadData()
@@ -94,11 +94,15 @@ extension SectionedBasePresenter: SynchronizedPresenterProtocol {
     }
     
 
-    private func log(_ msg: String, isErr: Bool) {
-         if isErr {
-             catchError(msg: "SectionBasePresenter: \(self.clazz): " + msg)
-         } else {
-             console(msg: "SectionBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromSync)
-         }
-     }
+    
+    private func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+        case .info:
+            Logger.console(msg: "SectionBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromSync)
+        case .warning:
+            Logger.catchWarning(msg: "SectionBasePresenter: \(self.clazz): " + msg)
+        case .error:
+            Logger.catchError(msg: "SectionBasePresenter: \(self.clazz): " + msg)
+        }
+    }
 }

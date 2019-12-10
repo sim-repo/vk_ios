@@ -17,13 +17,13 @@ class SyncGroupDetail: SyncBaseProtocol {
         
         guard let p = presenter as? DetailPresenterProtocol
             else {
-                catchError(msg: "SyncFriendWall: sync(): presenter is not conformed DetailPresenterProtocol")
+                Logger.catchError(msg: "SyncFriendWall: sync(): presenter is not conformed DetailPresenterProtocol")
                 return
         }
         
         guard let id = p.getId()
             else {
-                catchError(msg: "SyncFriendWall: sync(): no id")
+                Logger.catchError(msg: "SyncFriendWall: sync(): no id")
                 return
         }
     

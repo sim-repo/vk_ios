@@ -50,7 +50,7 @@ public class SectionedBasePresenter {
         self.init()
         guard let _view = vc as? PushSectionedViewProtocol
         else {
-            log("init(vc:) - vc \(vc) doesn't conform protocol PushSectionViewProtocol", isErr: true)
+            log("init(vc:) - vc \(vc) doesn't conform protocol PushSectionViewProtocol", level: .error)
             return
         }
         self.view = _view
@@ -63,7 +63,7 @@ public class SectionedBasePresenter {
     final func validateView(_ vc: PushViewProtocol){
         guard let _ = vc as? PushSectionedViewProtocol
         else {
-            log("init(vc:) - incorrect passed vc", isErr: true)
+            log("init(vc:) - incorrect passed vc", level: .error)
             return
         }
     }
@@ -79,7 +79,7 @@ public class SectionedBasePresenter {
         
         guard let validatedData = validate(dirtyData)
             else {
-                log("setModel(): no valid data", isErr: true)
+                log("setModel(): no valid data", level: .error)
                 return
         }
         
@@ -96,7 +96,7 @@ public class SectionedBasePresenter {
                if let enriched = enrichData(validated: sortedDataSource) {
                    save(enriched: enriched)
                } else {
-                   log("enriched data is empty", isErr: true)
+                   log("enriched data is empty", level: .error)
                }
         }
     }
@@ -118,13 +118,13 @@ public class SectionedBasePresenter {
         
         guard dirtyData.count > 0
             else {
-                log("validate(): datasource is empty", isErr: true)
+                log("validate(): datasource is empty", level: .error)
                 return nil
         }
         
         guard let implement = self as? ModelOwnerPresenterProtocol
         else {
-            log("validate(): downcasting error", isErr: true)
+            log("validate(): downcasting error", level: .error)
             return nil
         }
         
@@ -133,7 +133,7 @@ public class SectionedBasePresenter {
         let current = getRawClassName(object: type(of: dirtyData[0]))
         guard required == current
                else {
-                   log("validate(): returned datasource incorrected", isErr: true)
+                log("validate(): returned datasource incorrected", level: .error)
                    return nil
                }
         return dirtyData as? [SectionModelProtocol]
@@ -197,13 +197,17 @@ public class SectionedBasePresenter {
             view?.stopWaitIndicator(moduleEnum)
         }
     }
+
     
-    private func log(_ msg: String, isErr: Bool) {
-      if isErr {
-          catchError(msg: "SectionBasePresenter: \(self.clazz): " + msg)
-      } else {
-          console(msg: "SectionBasePresenter: \(self.clazz): " + msg, printEnum: .presenter)
-      }
+    private func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+        case .info:
+            Logger.console(msg: "SectionBasePresenter: \(self.clazz): " + msg, printEnum: .presenter)
+        case .warning:
+            Logger.catchWarning(msg: "SectionBasePresenter: \(self.clazz): " + msg)
+        case .error:
+            Logger.catchError(msg: "SectionBasePresenter: \(self.clazz): " + msg)
+        }
     }
 }
 

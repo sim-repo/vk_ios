@@ -2,7 +2,7 @@ import UIKit
 import WebKit
 import AVKit
 
-class VideoWebViewMgt: NSObject {
+class VideoWebViewService: NSObject {
     
     var webview: WKWebView? {
         didSet {
@@ -37,27 +37,22 @@ class VideoWebViewMgt: NSObject {
         blackView?.backgroundColor = .black
         blackView?.alpha = 0
         webviewContent.addSubview(blackView!)
-        webviewContent.layoutIfNeeded()
+        
+        self.activityView = UIActivityIndicatorView(style: .large)
+        self.activityView?.center = CGPoint(x: self.webviewContent.bounds.midX, y: self.webviewContent.bounds.midY)
+        self.activityView?.color = ColorSystemHelper.secondary
+        self.webviewContent?.addSubview(self.activityView!)
+        self.activityView?.startAnimating()
         
         UIView.animate(
             withDuration: 1,
-            animations: {
-                self.blackView!.alpha = 1.0
-                self.webviewContent.layoutIfNeeded()
-            },
-            completion: {_ in
-                self.activityView = UIActivityIndicatorView(style: .large)
-                self.activityView?.center = CGPoint(x: self.webviewContent.bounds.midX, y: self.webviewContent.bounds.midY)
-                self.activityView?.color = ColorSystemHelper.secondary
-                self.webviewContent?.addSubview(self.activityView!)
-                self.activityView?.startAnimating()
-                self.webviewContent?.layoutIfNeeded()
-            }
-        )
-            
+            animations: { [weak self] in
+                self?.blackView!.alpha = 1.0
+                self?.webviewContent.layoutIfNeeded()
+            })
     }
     
-    private func stopActivityIndicator() {
+    func stopActivityIndicator() {
         blackView?.removeFromSuperview()
         blackView = nil
         activityView?.stopAnimating()
@@ -121,14 +116,14 @@ class VideoWebViewMgt: NSObject {
     
     
     public func playVideo(url: URL, platformEnum: WallCellConstant.VideoPlatform, completion: (()->Void)? = nil) {
-        if webview == nil {
-            self.completion = completion
-            switch platformEnum {
-            case .youtube:
-                createYouTubeWebView(url: url)
-            case .other:
-                createOtherWebView(url: url)
-            }
+        self.completion = completion
+        switch platformEnum {
+        case .youtube:
+            createYouTubeWebView(url: url)
+        case .other:
+            createOtherWebView(url: url)
+        case .null:
+            Logger.catchError(msg: "VideoWebViewMgt(): playVideo: case exception")
         }
     }
     
@@ -150,7 +145,7 @@ class VideoWebViewMgt: NSObject {
 
 
 //You Tube:
-extension VideoWebViewMgt: WKScriptMessageHandler {
+extension VideoWebViewService: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         // print("message: \(message.body)")
         webview?.removeFromSuperview()
@@ -159,7 +154,7 @@ extension VideoWebViewMgt: WKScriptMessageHandler {
 
 
 
-extension VideoWebViewMgt: WKNavigationDelegate {
+extension VideoWebViewService: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         stopActivityIndicator()
@@ -168,7 +163,7 @@ extension VideoWebViewMgt: WKNavigationDelegate {
 }
 
 //Other Web View:
-extension VideoWebViewMgt {
+extension VideoWebViewService {
     
     func add(vc: AVPlayerViewController) {
         vc.addObserver(self, forKeyPath: #keyPath(AVPlayerViewController.view.frame), options: [.old, .new, .initial], context: nil)
@@ -182,17 +177,16 @@ extension VideoWebViewMgt {
             }
             
             if let _ = change[.oldKey] {
-                PRESENTER_UI_THREAD {
-                UIView.animate(withDuration: 2,
-                            animations: {
-                                self.webview?.alpha = 0.1
-                                self.webview?.layoutIfNeeded()
-                },
-                completion: { _ in
-                    self.webview?.removeFromSuperview()
-                    self.completion?()
-                })
-            }
+                PRESENTER_UI_THREAD { [weak self] in
+                    UIView.animate(withDuration: 2,
+                                   animations: {
+                                    self?.webview?.alpha = 0.1
+                                    self?.webview?.layoutIfNeeded()},
+                                   completion: { _ in
+                                    self?.webview?.removeFromSuperview()
+                                    self?.webview = nil
+                                    self?.completion?()})
+                }
             }
         }
     }

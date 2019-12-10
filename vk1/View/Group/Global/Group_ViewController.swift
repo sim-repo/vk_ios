@@ -54,7 +54,7 @@ extension Group_ViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         guard let group = presenter.getData(indexPath: indexPath) as? Group
                    else {
-                       catchError(msg: "Group_ViewController(): cellForItemAt(): presenter.getData is incorrected ")
+                       Logger.catchError(msg: "Group_ViewController(): cellForItemAt(): presenter.getData is incorrected ")
                        return cell
                }
         cell.setup(group: group, presenter: presenter)

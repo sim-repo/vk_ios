@@ -22,7 +22,7 @@ extension MyGroupWallPresenter: DetailPresenterProtocol {
     func getId() -> typeId? {
         guard let passed = parentModel
             else {
-                catchError(msg: "MyGroupWallPresenter: getId(): modelPassedThrowSegue is null")
+                Logger.catchError(msg: "MyGroupWallPresenter: getId(): modelPassedThrowSegue is null")
                 return nil
         }
         return passed.getId()

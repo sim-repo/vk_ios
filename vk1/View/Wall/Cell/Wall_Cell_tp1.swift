@@ -8,24 +8,29 @@ class Wall_Cell_tp1: UICollectionViewCell {
     @IBOutlet weak var likeView: WallLike_View!
     @IBOutlet weak var headerView: WallHeader_View!
     @IBOutlet weak var hConHeaderView: NSLayoutConstraint!
-    
     @IBOutlet weak var imageButton: UIButton!
     
     var presenter: PullWallPresenterProtocol?
     
     var indexPath: IndexPath?
     
-    var videoWebView: VideoWebViewMgt?
+    var videoService: VideoWebViewService?
+    
+    var cellType: WallCellConstant.CellTypeEnum!
     
     override func prepareForReuse() {
         imageView.image = UIImage(named: "placeholder")
         shouldShowPlayButton(isShow: false)
-        videoWebView?.prepareForReuse()
+        videoService?.prepareForReuse()
     }
     
     @IBAction func doPressImage1(_ sender: Any) {
         if let idx = indexPath {
-            videoWebView?.startActivityIndicator()
+            if cellType == .video {
+                videoService = VideoWebViewService()
+                videoService?.setup(webviewContent: imageView)
+                videoService?.startActivityIndicator()
+            }
             presenter?.selectImage(indexPath: idx, imageIdx: 0)
         }
     }
@@ -48,9 +53,8 @@ extension Wall_Cell_tp1: Wall_CellProtocol {
         self.presenter = presenter
         WallCellConfigurator.setupCell(cell: self, wall: wall)
         
-        if wall.getCellType() == .video {
-            videoWebView = VideoWebViewMgt()
-            videoWebView?.setup(webviewContent: imageView)
+        cellType = wall.getCellType()
+        if cellType == .video {
             shouldShowPlayButton(isShow: true)
         }
     }
@@ -76,14 +80,28 @@ extension Wall_Cell_tp1: Wall_CellProtocol {
     }
 }
 
-extension Wall_Cell_tp1: Video_CellProtocol {
+extension Wall_Cell_tp1: Video_CellProtocol { 
     
     func play(url: URL, platformEnum: WallCellConstant.VideoPlatform) {
         shouldShowPlayButton(isShow: false)
 
-        self.videoWebView?.playVideo(url: url, platformEnum: platformEnum) {[weak self] in
-            self?.shouldShowPlayButton(isShow: true)
+        self.videoService?.playVideo(url: url, platformEnum: platformEnum) {[weak self] in
+            guard let self = self else { return }
+            if self.cellType == .video {
+                self.shouldShowPlayButton(isShow: true)
+            }
         }
+    }
+    
+    func showErr(err: String) {
+
+        PRESENTER_UI_THREAD {
+            let image = getSystemImage(name: "exclamationmark.icloud", pointSize: 50)
+            self.imageButton.setImage(image, for: .normal)
+            self.videoService?.stopActivityIndicator()
+            self.videoService = nil
+        }
+        
     }
 }
 

@@ -3,8 +3,8 @@ import Alamofire
 import SwiftyJSON
 
 class AlamofireService {
-
-
+    
+    
     public static let sharedManager: SessionManager = {
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
@@ -15,9 +15,9 @@ class AlamofireService {
     }()
     
     typealias Completion = (() -> Void)?
-       
+    
     private static var wallRequestTask: Completion?
-   
+    
     private static func runRequest(task: Completion = nil){
         task?()
     }
@@ -35,79 +35,79 @@ class AlamofireService {
     
     
     public static func requestItems<T: DecodableProtocol>(clazz: T.Type ,
-                                                             _ urlPath: String,
-                                                             _ params: Parameters,
-                                                             _ onSuccess: @escaping onSuccess_PresenterCompletion,
-                                                             _ onError: @escaping  onErrResponse_SyncCompletion ) {
+                                                          _ urlPath: String,
+                                                          _ params: Parameters,
+                                                          _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                                          _ onError: @escaping  onErrResponse_SyncCompletion ) {
         
-           AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
-               switch response.result {
-               case .success(let json):
-                   let arr:[T]? = parseJsonItems(json)
-                   if let arr = arr {
-                        if arr.isEmpty {
-                            let err = NSError(domain: "AlamofireService: requestItems(): response data is null \(json)", code: 123, userInfo: nil)
-                            onError(err)
-                        } else {
-                            onSuccess(arr)
-                        }
-                   }
-               case .failure(let err):
-                    let error = err as NSError
-                    onError(error)
-               }
-           }
+        AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+            switch response.result {
+            case .success(let json):
+                let arr:[T]? = parseJsonItems(json)
+                if let arr = arr {
+                    if arr.isEmpty {
+                        let err = NSError(domain: "AlamofireService: requestItems(): response data is null \(json)", code: 123, userInfo: nil)
+                        onError(err)
+                    } else {
+                        onSuccess(arr)
+                    }
+                }
+            case .failure(let err):
+                let error = err as NSError
+                onError(error)
+            }
+        }
     }
     
     
     public static func requestSingle<T: DecodableProtocol>(clazz: T.Type ,
-                                                             _ urlPath: String,
-                                                             _ params: Parameters,
-                                                             _ onSuccess: @escaping onSuccess_PresenterCompletion,
-                                                             _ onError: @escaping  onErrResponse_SyncCompletion ) {
-            
-           log(msg: "requestSingle(): start..")
-           AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
-               log(msg: "requestSingle(): response..")
-               switch response.result {
-               case .success(let json):
-                  if let t: T = parseJson(json) {
-                           var arr: [T] = []
-                           arr.append(t)
-                            NET_DELAY_THREAD {
-                                onSuccess(arr)
-                            }
-                        }
-                        else {
-                            let err = NSError(domain: "AlamofireService: requestSingle(): response data is null : \(json)", code: 123, userInfo: nil)
-                            onError(err)
-                        }
-               case .failure(let err):
-                    let error = err as NSError
-                    onError(error)
-               }
-           }
+                                                           _ urlPath: String,
+                                                           _ params: Parameters,
+                                                           _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                                           _ onError: @escaping  onErrResponse_SyncCompletion ) {
+        
+        log("requestSingle(): start..", level: .info)
+        AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+            log("requestSingle(): response..", level: .info)
+            switch response.result {
+            case .success(let json):
+                if let t: T = parseJson(json) {
+                    var arr: [T] = []
+                    arr.append(t)
+                    NET_DELAY_THREAD {
+                        onSuccess(arr)
+                    }
+                }
+                else {
+                    let err = NSError(domain: "AlamofireService: requestSingle(): response data is null : \(json)", code: 123, userInfo: nil)
+                    onError(err)
+                }
+            case .failure(let err):
+                let error = err as NSError
+                onError(error)
+            }
+        }
     }
     
     
     
     
     public static func requestJoinGroup<T: DecodableProtocol>(clazz: T.Type ,
-                                                         _ urlPath: String,
-                                                         _ params: Parameters) {
-           AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
-            log(msg: "requestJoin: requestSingle(): response..")
-               switch response.result {
-                   case .success(let _):
-                     print("SUCCESS")
-                   case .failure(let err):
-                        let error = err as NSError
-                        print(error.localizedDescription)
-               }
-           }
+                                                              _ urlPath: String,
+                                                              _ params: Parameters) {
+        AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
+            log("requestJoin: requestSingle(): response..", level: .info)
+            switch response.result {
+            case .success(let _):
+                print("SUCCESS")
+            case .failure(let err):
+                let error = err as NSError
+                print(error.localizedDescription)
+            }
+        }
     }
     
-
+    
     
     public static func wallRequest(_ urlPath: String,
                                    _ params: Parameters,
@@ -120,7 +120,7 @@ class AlamofireService {
                 switch response.result {
                 case .success(let json):
                     let arr:[Wall]? = WallParser.parseWallJson(json, offset: offset)
-                       
+                    
                     if let arr = arr {
                         if arr.isEmpty {
                             if count < 4 {
@@ -128,7 +128,7 @@ class AlamofireService {
                                 return
                             }
                             count = 0
-                           // let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null : \(json)", code: 123, userInfo: nil)
+                            // let err = NSError(domain: "AlamofireNetworkManager: wallRequest(): response data is null : \(json)", code: 123, userInfo: nil)
                             let err = NSError(domain: "AlamofireService: wallRequest(): response data is null", code: 123, userInfo: nil)
                             offsetCompletion?()
                             onError(err)
@@ -159,13 +159,13 @@ class AlamofireService {
                                    _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                    _ onError: @escaping  onErrResponse_SyncCompletion,
                                    _ offsetCompletion: ((String)->Void)?
-                                   ){
-
+    ){
+        
         AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let json):
                 let arr:[News]? = NewsParser.parseJson(json, ownOffset, vkOffset)
-                   
+                
                 if let arr = arr {
                     if arr.isEmpty {
                         let err = NSError(domain: "AlamofireService: newsRequest(): response data is null", code: 123, userInfo: nil)
@@ -189,24 +189,24 @@ class AlamofireService {
     
     
     public static func checkVkTokenRequest(_ urlPath: String,
-                                    _ params: Parameters,
-                                    _ onSuccess: @escaping onSuccess_PresenterCompletion,
-                                    _ onError: @escaping onErrResponse_SyncCompletion,
-                                    _ onChecked: ((Bool)->Void)?) {
-    
-
+                                           _ params: Parameters,
+                                           _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                           _ onError: @escaping onErrResponse_SyncCompletion,
+                                           _ onChecked: ((Bool)->Void)?) {
+        
+        
         AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .post, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let val):
-                 let json = JSON(val)
-                 let (success,_) = VkTokenParser.parseCheckTokenJson(json)
-                 if success != "" {
+                let json = JSON(val)
+                let (success,_) = VkTokenParser.parseCheckTokenJson(json)
+                if success != "" {
                     onChecked?(true)
                     return
-                 } else {
+                } else {
                     onChecked?(false)
                 }
-                 
+                
                 
             case .failure(let err):
                 onChecked?(false)
@@ -216,25 +216,25 @@ class AlamofireService {
         }
     }
     
-    public static func videoRequest(_ urlPath: String, _ params: Parameters, _ completion: ((URL, WallCellConstant.VideoPlatform)->Void)? ){
+    public static func videoRequest(_ urlPath: String, _ params: Parameters, _ onSuccess: ((URL, WallCellConstant.VideoPlatform) -> Void)?, _ onError: ((String)->Void)? ) {
         AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
-                   switch response.result {
-                    case .success(let val):
-                        if let (videoURL, platformEnum) = NewsParser.parseVideoURL(val),
-                           let videoURL_ = videoURL {
-                            completion?(videoURL_, platformEnum)
-                        } else {
-                            catchError(msg: "AlamofireService(): videoRequest(): parsing exception")
-                        }
-                    case .failure(let err):
-                            catchError(msg: err.localizedDescription)
-                        }
-                    }
+            switch response.result {
+            case .success(let val):
+                let (videoURL, platformEnum, err) = NewsParser.parseVideoURL(val)
+                if let err_ = err {
+                    onError?(err_)
+                } else {
+                    onSuccess?(videoURL!, platformEnum)
+                }
+            case .failure(let err):
+                log(err.localizedDescription, level: .error)
+            }
+        }
     }
     
     
     
-
+    
     private static func parseJsonItems<T: DecodableProtocol>(_ val: Any)->[T]?{
         let json = JSON(val)
         var res: [T] = []
@@ -259,12 +259,16 @@ class AlamofireService {
         }
         return res
     }
+
     
-    private static func log(msg: String, isErr: Bool = false) {
-        if isErr {
-            catchError(msg: "AlamofireService(): " + msg)
-        } else {
-            console(msg: "AlamofireService(): " + msg, printEnum: .alamofire)
+    private static func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+        case .info:
+            Logger.console(msg: "AlamofireService: " + msg, printEnum: .alamofire)
+        case .warning:
+            Logger.catchWarning(msg: "AlamofireService: " + msg)
+        case .error:
+            Logger.catchError(msg: "AlamofireService: " + msg)
         }
     }
     

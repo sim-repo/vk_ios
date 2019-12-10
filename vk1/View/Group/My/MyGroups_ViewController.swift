@@ -105,7 +105,7 @@ extension MyGroups_ViewController {
                 guard let indexPath = sender as? IndexPath,
                       let dest = segue.destination as? MyGroupDetail_ViewController
                 else {
-                    catchError(msg: "MyGroups_ViewController: prepare(for segue:)")
+                    Logger.catchError(msg: "MyGroups_ViewController: prepare(for segue:)")
                     return
                 }
                 dest.modalPresentationStyle = .custom

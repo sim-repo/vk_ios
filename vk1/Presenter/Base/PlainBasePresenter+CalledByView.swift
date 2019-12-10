@@ -17,7 +17,7 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
         if indexPath == nil {
             guard dataSource.count == 1
                 else {
-                    log("getData(): datasource must be 1", isErr: true)
+                    log("getData(): datasource must be 1", level: .error)
                     return nil
             }
             return dataSource[0]
@@ -58,13 +58,13 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
         
         guard let model = getData(indexPath: indexPath)
             else {
-                log("viewDidSeguePrepare(): no data with indexPath: \(indexPath)", isErr: true)
+                log("viewDidSeguePrepare(): no data with indexPath: \(indexPath)", level: .error)
                 return
         }
         
         guard let detailPresenter = PresenterFactory.shared.getInstance(segueId: segueId) as? DetailPresenterProtocol
             else {
-                log("viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue)", isErr: true)
+                log("viewDidSeguePrepare(): can't get detailPresenter by segueId: \(segueId.rawValue)", level: .error)
                 return
         }
         detailPresenter.setParentModel(model: model)
@@ -92,20 +92,25 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
     
     final func didEndScroll(){
         guard !pageInProgess else {
-            log("didEndScroll(): pageInProgress == false", isErr: false)
+            log("didEndScroll(): pageInProgress == false", level: .info)
             return
         }
         pageInProgess = true
         guard let _ = self as? PaginationPresenterProtocol else { return }
-        log("didEndScroll(): started", isErr: false)
+        log("didEndScroll(): started", level: .info)
         SyncMgt.shared.doSync(moduleEnum: moduleEnum)
     }
     
-    private func log(_ msg: String, isErr: Bool) {
-        if isErr {
-            catchError(msg: "PlainBasePresenter: \(self.clazz): " + msg)
-        } else {
-            console(msg: "PlainBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromView)
+    
+    
+    private func log(_ msg: String, level: Logger.LogLevelEnum) {
+        switch level {
+        case .info:
+            Logger.console(msg: "PlainBasePresenter: \(self.clazz): " + msg, printEnum: .presenterCallsFromView)
+        case .warning:
+            Logger.catchWarning(msg: "PlainBasePresenter: \(self.clazz): " + msg)
+        case .error:
+            Logger.catchError(msg: "PlainBasePresenter: \(self.clazz): " + msg)
         }
     }
 }
