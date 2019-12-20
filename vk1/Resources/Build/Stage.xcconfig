@@ -1,0 +1,8 @@
+MY_APP_NAME = Friend Space Stage
+MY_APP_VERSION = 0.2
+MY_APP_BUNDLE_ID = ivanov.igor.vk1
+MY_APP_ICON = AppIconStage
+MY_VK_CLIEND_ID = 7225214
+MY_VK_CLIEND_SECRET = iAlDcWkImx4qDGZWgRTy
+MY_VK_BASE_URL = https:\/\/api.vk.com/method/
+MY_VK_API_VERSION = 5.103
