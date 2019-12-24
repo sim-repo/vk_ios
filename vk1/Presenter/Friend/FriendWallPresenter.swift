@@ -10,6 +10,8 @@ class FriendWallPresenter: PlainPresenterProtocols {
     }
     
     var parentModel: ModelProtocol?
+    
+    var expandedIndexPath: IndexPath?
 }
 
 
@@ -56,5 +58,13 @@ extension FriendWallPresenter: PullWallPresenterProtocol {
                 return
             }
         view_.runPerformSegue(segueId: "FriendPostSegue", wall, selectedImageIdx: imageIdx)
+    }
+    
+    func expandCell(isExpand: Bool, indexPath: IndexPath?) {
+        expandedIndexPath = isExpand ? indexPath : nil
+    }
+    
+    func isExpandedCell(indexPath: IndexPath) -> Bool {
+        return expandedIndexPath == indexPath
     }
 }

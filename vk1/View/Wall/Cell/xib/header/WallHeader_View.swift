@@ -1,5 +1,9 @@
 import UIKit
 
+
+
+
+
 class WallHeader_View : UIView{
     
     @IBOutlet weak var contentView: UIView!
@@ -21,8 +25,10 @@ class WallHeader_View : UIView{
     @IBOutlet weak var origPostDateLabel: UILabel!
     @IBOutlet weak var origTitleTextView: UITextView!
     
+    @IBOutlet weak var expandedButton: UIButton!
     
-    
+    var delegate: WallHeaderProtocolDelegate?
+
     override init(frame: CGRect) {
            super.init(frame: frame)
            commonInit()
@@ -40,4 +46,13 @@ class WallHeader_View : UIView{
        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
+    @IBAction func pressExpandedButton(_ sender: Any) {
+        expandedButton.setTitle("", for: .normal)
+        layoutIfNeeded()
+        delegate?.didPressExpand()
+    }
+    
+    public func addExpandedButton(expanded: Bool){
+        expandedButton.setTitle(expanded ? "" : "Показать полностью...", for: .normal)
+    }
 }

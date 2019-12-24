@@ -9,6 +9,8 @@ class MyGroupWallPresenter: PlainPresenterProtocols {
     }
     
     var parentModel: ModelProtocol?
+    
+    var expandedIndexPath: IndexPath?
 }
 
 
@@ -40,5 +42,13 @@ extension MyGroupWallPresenter: PullWallPresenterProtocol {
     func selectImage(indexPath: IndexPath, imageIdx: Int) {
             let wall = getData(indexPath: indexPath) as? Wall
             let url = wall?.getImageURLs()[imageIdx]
+    }
+    
+    func expandCell(isExpand: Bool, indexPath: IndexPath?) {
+        expandedIndexPath = isExpand ? indexPath : nil
+    }
+    
+    func isExpandedCell(indexPath: IndexPath) -> Bool {
+        return expandedIndexPath == indexPath
     }
 }

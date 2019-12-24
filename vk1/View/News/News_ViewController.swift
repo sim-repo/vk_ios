@@ -67,7 +67,7 @@ class News_ViewController: UIViewController {
 
 //MARK: - UICollectionViewDelegate
 
-extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -103,15 +103,11 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ news: News) -> UICollectionViewCell{
         let c = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as! Wall_CellProtocol
         if let p = getPullWallPresenterProtocol() {
-            c.setup(news, indexPath, p)
+            c.setup(news, indexPath, p, isExpanded: p.isExpandedCell(indexPath: indexPath), delegate: self)
         }
         return c
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.size.width - constraintSpaceX.constant * 40
-        return CGSize(width: width, height: WallCellConstant.headerHeight + WallCellConstant.mediaBlockHeight + WallCellConstant.footerHeight)
-    }
     
     private func didScrollEnd(_ indexPath: IndexPath) {
         log("didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch)", level: .info)
@@ -200,6 +196,7 @@ extension News_ViewController: PushWallViewProtocol {
         performSegue(withIdentifier: segueId, sender: wall)
     }
     
+    
     func showError(_ indexPath: IndexPath, err: String) {
         if let cell = collectionView.cellForItem(at: indexPath) as? Video_CellProtocol {
             cell.showErr(err: err)
@@ -207,3 +204,39 @@ extension News_ViewController: PushWallViewProtocol {
     }
 }
 
+
+
+//MARK: - Expanded Cell
+
+extension News_ViewController: WallCellProtocolDelegate {
+    
+    func didPressExpand(isExpand: Bool, indexPath: IndexPath) {
+        if let presenter = getPullWallPresenterProtocol() {
+            presenter.expandCell(isExpand: isExpand, indexPath: indexPath)
+            UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+                  self.collectionView.reloadItems(at: [indexPath])
+                }, completion: nil)
+        }
+    }
+}
+
+
+extension News_ViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = view.frame.size.width - constraintSpaceX.constant * 40
+        if let presenter = getPullWallPresenterProtocol() {
+           
+            let isExpanded = presenter.isExpandedCell(indexPath: indexPath)
+            
+            if isExpanded,
+               let cell = collectionView.cellForItem(at: indexPath) as? Wall_CellProtocol,
+               let attr = collectionView.layoutAttributesForItem(at: indexPath) {
+                    cell.preferredLayoutAttributesFitting(attr)
+                    return CGSize(width: width, height: cell.getPreferedHeight())
+                }
+            }
+            return CGSize(width: width, height: WallCellConstant.cellHeight)
+        }
+}

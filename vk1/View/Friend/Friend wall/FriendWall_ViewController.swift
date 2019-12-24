@@ -68,7 +68,7 @@ class FriendWall_ViewController: UIViewController {
 
 //MARK: - UICollectionViewDelegate
 
-extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -97,14 +97,9 @@ extension FriendWall_ViewController: UICollectionViewDelegate, UICollectionViewD
     private func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ wall: Wall) -> UICollectionViewCell{
         let c = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as! Wall_CellProtocol
         if let p = getPullWallPresenterProtocol() {
-            c.setup(wall, indexPath, p)
+            c.setup(wall, indexPath, p, isExpanded: p.isExpandedCell(indexPath: indexPath), delegate: self)
         }
         return c
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.size.width - constraintSpaceX.constant * 40
-        return CGSize(width: width, height: WallCellConstant.headerHeight + WallCellConstant.mediaBlockHeight + WallCellConstant.footerHeight)
     }
     
     
@@ -189,3 +184,40 @@ extension FriendWall_ViewController: PushWallViewProtocol {
     }
 }
 
+
+
+
+//MARK: - Expanded Cell
+
+extension FriendWall_ViewController: WallCellProtocolDelegate {
+    
+    func didPressExpand(isExpand: Bool, indexPath: IndexPath) {
+        if let presenter = getPullWallPresenterProtocol() {
+            presenter.expandCell(isExpand: isExpand, indexPath: indexPath)
+            UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+                  self.collectionView.reloadItems(at: [indexPath])
+                }, completion: nil)
+        }
+    }
+}
+
+
+extension FriendWall_ViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = view.frame.size.width - constraintSpaceX.constant * 40
+        if let presenter = getPullWallPresenterProtocol() {
+           
+            let isExpanded = presenter.isExpandedCell(indexPath: indexPath)
+            
+            if isExpanded,
+               let cell = collectionView.cellForItem(at: indexPath) as? Wall_CellProtocol,
+               let attr = collectionView.layoutAttributesForItem(at: indexPath) {
+                    cell.preferredLayoutAttributesFitting(attr)
+                    return CGSize(width: width, height: cell.getPreferedHeight())
+                }
+            }
+            return CGSize(width: width, height: WallCellConstant.cellHeight)
+        }
+}

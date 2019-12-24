@@ -7,6 +7,8 @@ class NewsPresenter: PlainPresenterProtocols {
     var modelClass: AnyClass  {
         return News.self
     }
+    
+    var expandedIndexPath: IndexPath?
 }
 
 
@@ -43,5 +45,13 @@ extension NewsPresenter: PullWallPresenterProtocol {
         } else {
             view.runPerformSegue(segueId: "NewsPostSegue", news, selectedImageIdx: imageIdx)
         }
+    }
+    
+    func expandCell(isExpand: Bool, indexPath: IndexPath?) {
+        expandedIndexPath = isExpand ? indexPath : nil
+    }
+    
+    func isExpandedCell(indexPath: IndexPath) -> Bool {
+        return expandedIndexPath == indexPath
     }
 }

@@ -1,33 +1,5 @@
 import UIKit
 
-
-
-//MARK: - UIPanGestureRecognizer
-
-internal enum Direction {
-    case up
-    case down
-    case left
-    case right
-}
-
-
-internal extension UIPanGestureRecognizer {
-    var direction: Direction? {
-        let velocity = self.velocity(in: view)
-        let isVertical = abs(velocity.y) > abs(velocity.x)
-
-        switch (isVertical, velocity.x, velocity.y) {
-            case (true, _, let y) where y < 0: return .up
-            case (true, _, let y) where y > 0: return .down
-            case (false, let x, _) where x > 0: return .right
-            case (false, let x, _) where x < 0: return .left
-            default: return nil
-        }
-    }
-}
-
-
 //MARK: - screen
 
 var wScreen: CGFloat {
@@ -47,6 +19,34 @@ var hHalfScreen: CGFloat {
 }
 
 
+//MARK: - UIPanGestureRecognizer
+
+internal enum Direction {
+    case up
+    case down
+    case left
+    case right
+}
+
+
+internal extension UIPanGestureRecognizer {
+    var direction: Direction? {
+        let velocity = self.velocity(in: view)
+        let isVertical = abs(velocity.y) > abs(velocity.x)
+        
+        switch (isVertical, velocity.x, velocity.y) {
+        case (true, _, let y) where y < 0: return .up
+        case (true, _, let y) where y > 0: return .down
+        case (false, let x, _) where x > 0: return .right
+        case (false, let x, _) where x < 0: return .left
+        default: return nil
+        }
+    }
+}
+
+
+
+
 
 //MARK:- THREAD
 
@@ -62,7 +62,7 @@ private let concurrentQueue = DispatchQueue(label: "", attributes: .concurrent)
 func THREAD_SAFETY(_ block: @escaping (() -> Void)) {
     concurrentQueue.async(flags: .barrier, execute: block)
 }
-    
+
 
 
 
@@ -135,17 +135,17 @@ func getRawClassName(object: AnyClass) -> String {
 
 
 func renderImage(imageView: UIImageView, color: UIColor) {
-   if let image = imageView.image {
-       let tintableImage = image.withRenderingMode(.alwaysTemplate)
-       imageView.image = tintableImage
-       imageView.tintColor = color
-   }
+    if let image = imageView.image {
+        let tintableImage = image.withRenderingMode(.alwaysTemplate)
+        imageView.image = tintableImage
+        imageView.tintColor = color
+    }
 }
 
 func getRealmURL(dbName: String) -> URL {
-   let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
-                                                        appropriateFor: nil, create: false)
-   return documentDirectory.appendingPathComponent("\(dbName).realm")
+    let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
+                                                         appropriateFor: nil, create: false)
+    return documentDirectory.appendingPathComponent("\(dbName).realm")
 }
 
 func getRandomInt() -> Int {

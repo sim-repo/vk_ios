@@ -8,7 +8,7 @@ enum PrintLogEnum {
     var print: Bool {
         switch self {
         case .realm:
-            return false
+            return true
         case .presenter:
             return false
         case .presenterCallsFromSync:

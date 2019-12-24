@@ -17,4 +17,11 @@ extension FriendPresenter: PullWallPresenterProtocol {
         let wall = getData(indexPath: indexPath) as? Wall
         let url = wall?.getImageURLs()[imageIdx]
     }
+    
+    func expandCell(isExpand: Bool, indexPath: IndexPath?) {
+    }
+    
+    func isExpandedCell(indexPath: IndexPath) -> Bool {
+        return false
+    }
 }

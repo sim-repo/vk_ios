@@ -12,11 +12,19 @@ class Wall_Cell_tp1: UICollectionViewCell {
     
     var presenter: PullWallPresenterProtocol?
     
-    var indexPath: IndexPath?
+    var indexPath: IndexPath!
     
     var videoService: VideoWebViewService?
     
     var cellType: WallCellConstant.CellTypeEnum!
+    
+    var preferedHeight: CGFloat = WallCellConstant.cellHeight
+    
+    var isExpanded = false
+    
+    var delegate: WallCellProtocolDelegate?
+    
+    var wall: WallModelProtocol!
     
     override func prepareForReuse() {
         imageView.image = UIImage(named: "placeholder")
@@ -25,14 +33,13 @@ class Wall_Cell_tp1: UICollectionViewCell {
     }
     
     @IBAction func doPressImage1(_ sender: Any) {
-        if let idx = indexPath {
-            if cellType == .video {
-                videoService = VideoWebViewService()
-                videoService?.setup(webviewContent: imageView)
-                videoService?.startActivityIndicator()
-            }
-            presenter?.selectImage(indexPath: idx, imageIdx: 0)
+        if cellType == .video {
+            videoService = VideoWebViewService()
+            videoService?.setup(webviewContent: imageView)
+            videoService?.startActivityIndicator()
         }
+        presenter?.selectImage(indexPath: indexPath, imageIdx: 0)
+
     }
     
     func shouldShowPlayButton(isShow: Bool){
@@ -44,19 +51,52 @@ class Wall_Cell_tp1: UICollectionViewCell {
         }
         layoutIfNeeded()
     }
+    
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        
+        setNeedsLayout()
+    
+        let preferredLayoutAttributes = layoutAttributes
+        
+        var fittingSize = UIView.layoutFittingCompressedSize
+        fittingSize.width = preferredLayoutAttributes.size.width
+        let size = systemLayoutSizeFitting(fittingSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
+        var adjustedFrame = preferredLayoutAttributes.frame
+        adjustedFrame.size.height = ceil(size.height)
+        preferredLayoutAttributes.frame = adjustedFrame
+        preferedHeight = adjustedFrame.size.height
+        return preferredLayoutAttributes
+    }
 }
+
+
 
 extension Wall_Cell_tp1: Wall_CellProtocol {
     
-    func setup(_ wall: WallModelProtocol, _ indexPath: IndexPath, _ presenter: PullWallPresenterProtocol) {
+    func setup(_ wall: WallModelProtocol,
+               _ indexPath: IndexPath,
+               _ presenter: PullWallPresenterProtocol,
+               isExpanded: Bool,
+               delegate: WallCellProtocolDelegate) {
+        
         self.indexPath = indexPath
         self.presenter = presenter
-        WallCellConfigurator.setupCell(cell: self, wall: wall)
+        self.isExpanded = isExpanded
+        self.wall = wall
+        self.delegate = delegate
+        headerView.delegate = self
+        
+        WallCellConfigurator.setupCell(cell: self, wall: wall, isExpanded: isExpanded)
         
         cellType = wall.getCellType()
         if cellType == .video {
             shouldShowPlayButton(isShow: true)
         }
+    }
+    
+    func getPreferedHeight() -> CGFloat {
+        return preferedHeight
     }
     
     func getImagesView() -> [UIImageView] {
@@ -68,7 +108,7 @@ extension Wall_Cell_tp1: Wall_CellProtocol {
     }
     
     func getIndexRow() -> Int {
-        return indexPath?.row ?? 0
+        return indexPath.row
     }
     
     func getHeaderView() -> WallHeader_View {
@@ -105,3 +145,10 @@ extension Wall_Cell_tp1: Video_CellProtocol {
     }
 }
 
+extension Wall_Cell_tp1: WallHeaderProtocolDelegate {
+    func didPressExpand() {
+        isExpanded = !isExpanded
+        WallCellConfigurator.expandCell(cell: self, wall: wall, isExpanded: isExpanded)
+        delegate?.didPressExpand(isExpand: isExpanded, indexPath: indexPath)
+    }
+}

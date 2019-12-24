@@ -2,11 +2,14 @@ import UIKit
 
 struct WallCellConstant {
     
+
+    
+    
     static let headerHeight: CGFloat = 240
     static let quarterHeight: CGFloat = 240 / 4
     static let mediaBlockHeight: CGFloat = 180
     static let footerHeight: CGFloat = 30
-    
+    static let cellHeight: CGFloat = headerHeight + mediaBlockHeight + footerHeight
     
     enum CellTypeEnum: String {
         case post = "post"

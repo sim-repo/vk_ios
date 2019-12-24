@@ -56,6 +56,7 @@
 		162BEFB32371C7CF00D765FB /* Typing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162BEFB22371C7CF00D765FB /* Typing.swift */; };
 		162BEFBE2372465E00D765FB /* subway-ticker_[allfont.ru].ttf in Resources */ = {isa = PBXBuildFile; fileRef = 162BEFBD2372464B00D765FB /* subway-ticker_[allfont.ru].ttf */; };
 		162BEFC0237247CB00D765FB /* arcade.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 162BEFBF237247B800D765FB /* arcade.ttf */; };
+		1638C38823B187D1005DF0E5 /* WallProtocolDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1638C38723B187D1005DF0E5 /* WallProtocolDelegates.swift */; };
 		163CF9AA23334DED0087C6E2 /* MyGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */; };
 		163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */; };
 		1647649C2365E031007D1B19 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647649B2365E031007D1B19 /* Session.swift */; };
@@ -346,6 +347,7 @@
 		162BEFB22371C7CF00D765FB /* Typing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typing.swift; sourceTree = "<group>"; };
 		162BEFBD2372464B00D765FB /* subway-ticker_[allfont.ru].ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "subway-ticker_[allfont.ru].ttf"; sourceTree = "<group>"; };
 		162BEFBF237247B800D765FB /* arcade.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arcade.ttf; sourceTree = "<group>"; };
+		1638C38723B187D1005DF0E5 /* WallProtocolDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallProtocolDelegates.swift; sourceTree = "<group>"; };
 		163CF9A923334DED0087C6E2 /* MyGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupPresenter.swift; sourceTree = "<group>"; };
 		163CF9AB2333504A0087C6E2 /* SectionedBasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedBasePresenter.swift; sourceTree = "<group>"; };
 		1647649B2365E031007D1B19 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -786,6 +788,7 @@
 			isa = PBXGroup;
 			children = (
 				164764B22365FB86007D1B19 /* PushViewProtocol.swift */,
+				1638C38723B187D1005DF0E5 /* WallProtocolDelegates.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1634,6 +1637,7 @@
 				164F80D623858044000F95E7 /* News.swift in Sources */,
 				16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */,
 				16E08B51236DD82100340F09 /* SyncFriendWall.swift in Sources */,
+				1638C38823B187D1005DF0E5 /* WallProtocolDelegates.swift in Sources */,
 				161B0EA5234A046C0081008B /* Group_ViewController.swift in Sources */,
 				16D58BE22366BE2900735296 /* PlainBasePresenter.swift in Sources */,
 				166D1B0C234F6E3900C552E4 /* Video_ViewController.swift in Sources */,

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Ahy-lZ-HXP"/>
+                <outlet property="expandedButton" destination="TSM-DU-59t" id="IZR-y1-WTe"/>
                 <outlet property="hConOrigAuthorContentView" destination="hEF-MT-y52" id="HxZ-9e-hth"/>
                 <outlet property="hConOrigTitleTextView" destination="Qlu-j8-ea3" id="Myj-NC-qf3"/>
                 <outlet property="hConRepostAuthorContentView" destination="63m-Av-rCU" id="OAb-nr-TIF"/>
@@ -30,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rRx-Oz-F4Q">
-                    <rect key="frame" x="0.0" y="0.0" width="659" height="120"/>
+                    <rect key="frame" x="0.0" y="0.0" width="659" height="140"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFn-PZ-aUZ" userLabel="RepostAuthorContentView">
                             <rect key="frame" x="0.0" y="0.0" width="659" height="30"/>
@@ -152,6 +152,17 @@
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSM-DU-59t">
+                            <rect key="frame" x="0.0" y="120" width="659" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="PHA-j3-cNu"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="pressExpandedButton:" destination="-1" eventType="touchUpInside" id="mdD-cz-e1Z"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="4EE-Kj-XUU" secondAttribute="trailing" id="EZV-vO-TuD"/>
@@ -161,6 +172,7 @@
             <constraints>
                 <constraint firstItem="rRx-Oz-F4Q" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Jcl-ha-BFw"/>
                 <constraint firstItem="rRx-Oz-F4Q" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Kbm-9Q-zKs"/>
+                <constraint firstAttribute="bottom" secondItem="rRx-Oz-F4Q" secondAttribute="bottom" id="WsH-l0-rpR"/>
                 <constraint firstItem="rRx-Oz-F4Q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ntg-vz-una"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
