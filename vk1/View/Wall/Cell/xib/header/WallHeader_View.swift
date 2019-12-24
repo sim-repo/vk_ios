@@ -54,5 +54,10 @@ class WallHeader_View : UIView{
     
     public func addExpandedButton(expanded: Bool){
         expandedButton.setTitle(expanded ? "" : "Показать полностью...", for: .normal)
+        layoutIfNeeded()
+    }
+    
+    public func prepare(){
+        expandedButton.setTitle("", for: .normal)
     }
 }

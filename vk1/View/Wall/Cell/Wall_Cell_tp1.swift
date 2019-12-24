@@ -86,6 +86,7 @@ extension Wall_Cell_tp1: Wall_CellProtocol {
         self.wall = wall
         self.delegate = delegate
         headerView.delegate = self
+        headerView.prepare()
         
         WallCellConfigurator.setupCell(cell: self, wall: wall, isExpanded: isExpanded)
         
@@ -134,14 +135,12 @@ extension Wall_Cell_tp1: Video_CellProtocol {
     }
     
     func showErr(err: String) {
-
         PRESENTER_UI_THREAD {
             let image = getSystemImage(name: "exclamationmark.icloud", pointSize: 50)
             self.imageButton.setImage(image, for: .normal)
             self.videoService?.stopActivityIndicator()
             self.videoService = nil
         }
-        
     }
 }
 

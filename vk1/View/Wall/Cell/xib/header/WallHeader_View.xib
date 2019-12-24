@@ -146,7 +146,7 @@
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EE-Kj-XUU" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="90" width="659" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="Qlu-j8-ea3"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Qlu-j8-ea3"/>
                             </constraints>
                             <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
