@@ -234,6 +234,7 @@ extension News_ViewController: UICollectionViewDelegateFlowLayout {
                let cell = collectionView.cellForItem(at: indexPath) as? Wall_CellProtocol,
                let attr = collectionView.layoutAttributesForItem(at: indexPath) {
                     cell.preferredLayoutAttributesFitting(attr)
+                    print("getPreferedHeight : \(cell.getPreferedHeight())")
                     return CGSize(width: width, height: cell.getPreferedHeight())
                 }
             }

@@ -33,6 +33,23 @@ class Wall_Cell_tp4: UICollectionViewCell {
     @IBAction func doPressImage4(_ sender: Any) {
         presenter.selectImage(indexPath: indexPath, imageIdx: 3)
     }
+    
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        
+        setNeedsLayout()
+    
+        let preferredLayoutAttributes = layoutAttributes
+        
+        var fittingSize = UIView.layoutFittingCompressedSize
+        fittingSize.width = preferredLayoutAttributes.size.width
+        let size = systemLayoutSizeFitting(fittingSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
+        var adjustedFrame = preferredLayoutAttributes.frame
+        adjustedFrame.size.height = ceil(size.height)
+        preferredLayoutAttributes.frame = adjustedFrame
+        preferedHeight = adjustedFrame.size.height
+        return preferredLayoutAttributes
+    }
 }
 
 extension Wall_Cell_tp4: Wall_CellProtocol {

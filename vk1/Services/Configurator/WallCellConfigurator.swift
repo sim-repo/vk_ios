@@ -80,8 +80,7 @@ class WallCellConfigurator {
         
         // search and hide empty
         var negativeHCon: CGFloat = 0
-        print()
-        print()
+
         if wall.getMyAvaURL() == nil {
             cell.getHeaderView().hConRepostAuthorContentView.constant = 0
             negativeHCon += WallCellConstant.quarterHeight
@@ -106,15 +105,15 @@ class WallCellConfigurator {
         // parent block: decrease height
         cell.getHConHeaderView().constant -= negativeHCon
         
-        let canExpanded = cell.getHeaderView().origTitleTextView.numberOfLines() >= 4
+        let canExpanded = cell.getHeaderView().origTitleTextView.numberOfLines() >= 8
         if canExpanded {
             let size = cell.getHeaderView().origTitleTextView.sizeForLines(numberOfLines: 3)
             cell.getHConHeaderView().constant = WallCellConstant.quarterHeight + size + 20
             cell.getHeaderView().hConOrigTitleTextView.constant = size
             cell.getHeaderView().addExpandedButton(expanded: false)
         } else if cell.getHeaderView().origTitleTextView.text.count > 0 {
-            let delta = WallCellConstant.quarterHeight
-            cell.getHConHeaderView().constant -= (delta + 20 - cell.getHeaderView().origTitleTextView.actualSize().height - 20)
+            let delta = cell.getHeaderView().origTitleTextView.actualSize().height - WallCellConstant.quarterHeight
+            cell.getHConHeaderView().constant += delta
             cell.getHeaderView().hConOrigTitleTextView.constant = cell.getHeaderView().origTitleTextView.actualSize().height
         }
     }

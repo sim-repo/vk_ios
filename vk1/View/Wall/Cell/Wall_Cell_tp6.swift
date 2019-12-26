@@ -43,6 +43,22 @@ class Wall_Cell_tp6: UICollectionViewCell {
     @IBAction func doPressImage6(_ sender: Any) {
         presenter.selectImage(indexPath: indexPath, imageIdx: 5)
     }
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        
+        setNeedsLayout()
+    
+        let preferredLayoutAttributes = layoutAttributes
+        
+        var fittingSize = UIView.layoutFittingCompressedSize
+        fittingSize.width = preferredLayoutAttributes.size.width
+        let size = systemLayoutSizeFitting(fittingSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
+        var adjustedFrame = preferredLayoutAttributes.frame
+        adjustedFrame.size.height = ceil(size.height)
+        preferredLayoutAttributes.frame = adjustedFrame
+        preferedHeight = adjustedFrame.size.height
+        return preferredLayoutAttributes
+    }
 }
 
 extension Wall_Cell_tp6: Wall_CellProtocol {
