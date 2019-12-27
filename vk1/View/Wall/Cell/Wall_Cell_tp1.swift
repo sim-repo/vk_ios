@@ -39,7 +39,6 @@ class Wall_Cell_tp1: UICollectionViewCell {
             videoService?.startActivityIndicator()
         }
         presenter?.selectImage(indexPath: indexPath, imageIdx: 0)
-
     }
     
     func shouldShowPlayButton(isShow: Bool){

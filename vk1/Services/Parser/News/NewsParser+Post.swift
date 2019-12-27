@@ -34,6 +34,8 @@ extension NewsParser {
         let videos = parseVideoBlock(jsonItem, isRepost)
         
         
+        guard photoURLs.count >= 1 && photoURLs.count <= 9 || videos.count > 0 else { return nil }
+        
         let footer = parsePostFooter(jsonItem)
         let news = News()
         
@@ -49,7 +51,7 @@ extension NewsParser {
         news.name = header.name
         news.title = header.title
         news.postDate = header.unixTime
-        
+    
             
         // media block
         news.imageURLs = photoURLs
@@ -88,6 +90,12 @@ extension NewsParser {
             postHeader.name = g.name
             postHeader.title = jsonItem["text"].stringValue
             postHeader.unixTime = jsonItem["date"].doubleValue
+            
+//            if postHeader.title == "Фильм про настоящих супергероев!" {
+//                print("A")
+//            }
+            
+            
             return postHeader
         }
         
@@ -95,6 +103,12 @@ extension NewsParser {
             postHeader.avaURL = f.avaURL100
             postHeader.name = f.firstName + " "+f.lastName
             postHeader.title = jsonItem["text"].stringValue
+            
+//            if postHeader.title == "Фильм про настоящих супергероев!" {
+//                print("A")
+//            }
+            
+            
             postHeader.unixTime = jsonItem["date"].doubleValue
             return postHeader
         }
@@ -230,19 +244,20 @@ extension NewsParser {
     
     private static func searchInImageItems(_ jsonItem: JSON, tag1: String, tag2: String) -> JSON? {
         let res = jsonItem[tag1][tag2].arrayValue.first(where: { (json) -> Bool in
-            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) && json["height"].intValue <= 400})
+            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) /*&& json["height"].intValue <= 400*/})
         return res
     }
     
     private static func searchInImageItems2(_ jsonItem: JSON, tag1: String) -> JSON? {
-        let res = jsonItem[tag1].arrayValue.first(where: { (json) -> Bool in
-            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) && json["height"].intValue <= 400})
+        let res = jsonItem[tag1].arrayValue.last
+//        let res = jsonItem[tag1].arrayValue.first(where: { (json) -> Bool in
+//            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) /*&& json["height"].intValue <= 400*/})
         return res
     }
     
     private static func searchInImageItems3(_ jsonItem: JSON, tag1: String, tag2: String, tag3: String) -> JSON? {
         let res = jsonItem[tag1][tag2][tag3].arrayValue.first(where: { (json) -> Bool in
-            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) && json["height"].intValue <= 400})
+            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) /*&& json["height"].intValue <= 400*/})
         return res
     }
     

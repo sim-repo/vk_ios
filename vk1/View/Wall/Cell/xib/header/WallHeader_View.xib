@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Ahy-lZ-HXP"/>
                 <outlet property="expandedButton" destination="TSM-DU-59t" id="IZR-y1-WTe"/>
+                <outlet property="hConExpandingButton" destination="PHA-j3-cNu" id="okh-fZ-geB"/>
                 <outlet property="hConOrigAuthorContentView" destination="hEF-MT-y52" id="HxZ-9e-hth"/>
                 <outlet property="hConOrigTitleTextView" destination="Qlu-j8-ea3" id="Myj-NC-qf3"/>
                 <outlet property="hConRepostAuthorContentView" destination="63m-Av-rCU" id="OAb-nr-TIF"/>

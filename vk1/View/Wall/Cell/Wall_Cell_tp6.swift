@@ -76,6 +76,7 @@ extension Wall_Cell_tp6: Wall_CellProtocol {
         self.wall = wall
         self.delegate = delegate
         headerView.delegate = self
+        headerView.prepare()
         
         WallCellConfigurator.setupCell(cell: self, wall: wall, isExpanded: isExpanded)
         layoutIfNeeded()

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,14 +11,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Wall_Cell_tp1" customModule="vk1" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Wall_Cell_tp1" id="Tcj-Gj-lsD" customClass="Wall_Cell_tp1" customModule="vk1" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="408" height="420"/>
+            <rect key="frame" x="0.0" y="0.0" width="408" height="496"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nf8-51-Uxy" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
-                <rect key="frame" x="0.0" y="0.0" width="408" height="420"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="nf8-51-Uxy" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="408" height="496"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-cS-hRa" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
-                        <rect key="frame" x="1" y="1" width="406" height="418"/>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-cS-hRa" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
+                        <rect key="frame" x="1" y="1" width="406" height="494"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3r-Qa-YN5" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="406" height="120"/>
@@ -26,18 +26,21 @@
                                     <constraint firstAttribute="height" constant="120" id="Ciz-0x-4Ca"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-UL-0M1" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="4" y="124" width="398" height="254"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-UL-0M1" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                <rect key="frame" x="4" y="124" width="398" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="UBp-5F-d63"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5h-cY-fJZ" userLabel="ImageButton1">
-                                <rect key="frame" x="4" y="124" width="398" height="254"/>
+                                <rect key="frame" x="4" y="124" width="398" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="doPressImage1:" destination="Tcj-Gj-lsD" eventType="touchUpInside" id="rla-Ni-6DX"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5z-Ug-TPi" userLabel="LikeView" customClass="WallLike_View" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="4" y="378" width="398" height="36"/>
+                                <rect key="frame" x="4" y="154" width="398" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="MdS-z8-mER"/>
                                 </constraints>
@@ -69,7 +72,7 @@
                 </constraints>
             </collectionViewCellContentView>
             <viewLayoutGuide key="safeArea" id="ycv-qo-a6x"/>
-            <size key="customSize" width="578" height="363"/>
+            <size key="customSize" width="578" height="439"/>
             <connections>
                 <outlet property="hConHeaderView" destination="Ciz-0x-4Ca" id="Dp3-rF-ykM"/>
                 <outlet property="headerView" destination="M3r-Qa-YN5" id="pDT-69-Pnq"/>
@@ -77,7 +80,7 @@
                 <outlet property="imageView" destination="4eh-UL-0M1" id="23m-he-mb5"/>
                 <outlet property="likeView" destination="R5z-Ug-TPi" id="h57-BU-sih"/>
             </connections>
-            <point key="canvasLocation" x="505.79710144927537" y="169.41964285714286"/>
+            <point key="canvasLocation" x="505.79710144927537" y="194.86607142857142"/>
         </collectionViewCell>
     </objects>
 </document>

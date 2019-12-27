@@ -12,7 +12,6 @@ class WallCellConfigurator {
         
         // wall header block >>
         
-        
         // set initial height
         
         cell.getHeaderView().origTitleTextView.textContainer.maximumNumberOfLines = 1000
@@ -70,7 +69,7 @@ class WallCellConfigurator {
         cell.getHeaderView().hConOrigTitleTextView.isActive = true
         
         
-        cell.getHConHeaderView().constant = WallCellConstant.headerHeight + 20
+        cell.getHConHeaderView().constant = WallCellConstant.headerHeight
         cell.getHeaderView().hConRepostAuthorContentView.constant = WallCellConstant.quarterHeight
         cell.getHeaderView().hConRepostTitleTextView.constant = WallCellConstant.quarterHeight
         cell.getHeaderView().hConOrigAuthorContentView.constant = WallCellConstant.quarterHeight
