@@ -30,7 +30,7 @@
             <rect key="frame" x="0.0" y="0.0" width="659" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rRx-Oz-F4Q">
+                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="rRx-Oz-F4Q">
                     <rect key="frame" x="0.0" y="0.0" width="659" height="140"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFn-PZ-aUZ" userLabel="RepostAuthorContentView">
@@ -89,7 +89,7 @@
                             </constraints>
                         </view>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOh-P7-LL8" userLabel="Repost Title Text View" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="30" width="659" height="30"/>
+                            <rect key="frame" x="0.0" y="32" width="659" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="oPJ-QJ-M0c"/>
                             </constraints>
@@ -99,7 +99,7 @@
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkM-Uu-dAG" userLabel="OrigAuthorContentView">
-                            <rect key="frame" x="0.0" y="60" width="659" height="30"/>
+                            <rect key="frame" x="0.0" y="64" width="659" height="30"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="plA-St-pCx">
                                     <rect key="frame" x="16" y="0.0" width="97.5" height="30"/>
@@ -144,17 +144,19 @@
                                 <constraint firstAttribute="height" constant="30" id="hEF-MT-y52"/>
                             </constraints>
                         </view>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EE-Kj-XUU" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="90" width="659" height="30"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EE-Kj-XUU" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="96" width="659" height="22"/>
+                            <color key="backgroundColor" red="0.29633097590000002" green="0.072775813019999996" blue="0.65515942260000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Qlu-j8-ea3"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="30" id="Qlu-j8-ea3"/>
                             </constraints>
                             <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSM-DU-59t">
+                        <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSM-DU-59t">
                             <rect key="frame" x="0.0" y="120" width="659" height="20"/>
+                            <color key="backgroundColor" red="0.1148069523" green="0.062780063950000006" blue="0.27482550760000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="PHA-j3-cNu"/>
                             </constraints>

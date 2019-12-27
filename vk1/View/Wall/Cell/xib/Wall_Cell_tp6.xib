@@ -20,7 +20,7 @@
                         <rect key="frame" x="1" y="1" width="618" height="673"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilu-nw-Nfz" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="618" height="120"/>
+                                <rect key="frame" x="4" y="0.0" width="610" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="MDD-ax-ic8"/>
                                 </constraints>
@@ -28,22 +28,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GyM-qO-K2y" userLabel="ImageView">
                                 <rect key="frame" x="4" y="124" width="610" height="509"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-as-KgE" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-as-KgE" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="149.5" height="144.5"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fyW-ue-MIw" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fyW-ue-MIw" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="153.5" y="0.0" width="149.5" height="144.5"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R7F-LX-Qov" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R7F-LX-Qov" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="307" y="0.0" width="149.5" height="144.5"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bvI-BR-sgn" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bvI-BR-sgn" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="460.5" y="0.0" width="149.5" height="144.5"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="93c-XZ-6GI" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="93c-XZ-6GI" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="148.5" width="303" height="360.5"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XdG-BR-hN2" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XdG-BR-hN2" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="307" y="148.5" width="303" height="360.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYS-8z-cLh" userLabel="ImageButton1">
@@ -148,13 +148,11 @@
                             <constraint firstAttribute="trailing" secondItem="Bax-7c-M73" secondAttribute="trailing" constant="4" id="FDz-OA-sNO"/>
                             <constraint firstItem="GyM-qO-K2y" firstAttribute="top" secondItem="Ilu-nw-Nfz" secondAttribute="bottom" constant="4" id="GyQ-mS-EcU"/>
                             <constraint firstItem="Ilu-nw-Nfz" firstAttribute="top" secondItem="RmV-L3-SVQ" secondAttribute="top" id="JAt-jh-9LG"/>
-                            <constraint firstAttribute="trailing" secondItem="Ilu-nw-Nfz" secondAttribute="trailing" id="f0g-5L-gfs"/>
-                            <constraint firstAttribute="trailing" secondItem="Ilu-nw-Nfz" secondAttribute="trailing" id="lPb-oi-fz6"/>
+                            <constraint firstAttribute="trailing" secondItem="Ilu-nw-Nfz" secondAttribute="trailing" constant="4" id="f0g-5L-gfs"/>
                             <constraint firstItem="Bax-7c-M73" firstAttribute="top" secondItem="GyM-qO-K2y" secondAttribute="bottom" id="ohF-jF-IuJ"/>
                             <constraint firstItem="GyM-qO-K2y" firstAttribute="leading" secondItem="RmV-L3-SVQ" secondAttribute="leading" constant="4" id="rWg-fJ-O5j"/>
                             <constraint firstAttribute="trailing" secondItem="GyM-qO-K2y" secondAttribute="trailing" constant="4" id="tR6-Yu-Md8"/>
-                            <constraint firstItem="Ilu-nw-Nfz" firstAttribute="leading" secondItem="RmV-L3-SVQ" secondAttribute="leading" id="u89-o9-JUD"/>
-                            <constraint firstItem="Ilu-nw-Nfz" firstAttribute="leading" secondItem="RmV-L3-SVQ" secondAttribute="leading" id="xLo-09-tMz"/>
+                            <constraint firstItem="Ilu-nw-Nfz" firstAttribute="leading" secondItem="RmV-L3-SVQ" secondAttribute="leading" constant="4" id="xLo-09-tMz"/>
                         </constraints>
                     </view>
                 </subviews>

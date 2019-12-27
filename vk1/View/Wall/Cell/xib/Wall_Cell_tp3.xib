@@ -20,7 +20,7 @@
                         <rect key="frame" x="1" y="1" width="375" height="414"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbh-hI-FCO" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                <rect key="frame" x="4" y="0.0" width="367" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="UXG-NI-bHB"/>
                                 </constraints>
@@ -57,7 +57,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paa-06-JGA" userLabel="ImageButton3">
-                                        <rect key="frame" x="0.0" y="79" width="367" height="30"/>
+                                        <rect key="frame" x="0.0" y="79" width="367" height="171"/>
                                         <connections>
                                             <action selector="doPressImage3:" destination="i0G-fj-bVU" eventType="touchUpInside" id="ooo-mp-hS1"/>
                                         </connections>
@@ -88,7 +88,7 @@
                                     <constraint firstItem="FcK-PF-ueO" firstAttribute="width" secondItem="eNy-VO-Niw" secondAttribute="width" id="q9Q-hD-ZRK"/>
                                     <constraint firstItem="LyA-7P-oid" firstAttribute="leading" secondItem="FcK-PF-ueO" secondAttribute="leading" id="qtk-tG-VxE"/>
                                     <constraint firstItem="bqF-EM-a7K" firstAttribute="width" secondItem="klf-nZ-NfF" secondAttribute="width" id="uHP-cd-7Yh"/>
-                                    <constraint firstItem="paa-06-JGA" firstAttribute="height" relation="lessThanOrEqual" secondItem="bqF-EM-a7K" secondAttribute="height" id="wr2-Av-LPc"/>
+                                    <constraint firstItem="paa-06-JGA" firstAttribute="height" secondItem="bqF-EM-a7K" secondAttribute="height" id="wr2-Av-LPc"/>
                                     <constraint firstItem="FcK-PF-ueO" firstAttribute="top" secondItem="klf-nZ-NfF" secondAttribute="top" id="zqW-ZK-qx5"/>
                                 </constraints>
                             </view>
@@ -103,12 +103,10 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Zej-Bo-NRC" secondAttribute="trailing" constant="4" id="1cl-qb-sZd"/>
                             <constraint firstItem="Zej-Bo-NRC" firstAttribute="top" secondItem="klf-nZ-NfF" secondAttribute="bottom" id="4Ss-9H-3YK"/>
-                            <constraint firstAttribute="trailing" secondItem="dbh-hI-FCO" secondAttribute="trailing" id="H2D-ul-F1U"/>
                             <constraint firstItem="klf-nZ-NfF" firstAttribute="top" secondItem="dbh-hI-FCO" secondAttribute="bottom" constant="4" id="Iir-L4-yte"/>
                             <constraint firstAttribute="trailing" secondItem="klf-nZ-NfF" secondAttribute="trailing" constant="4" id="MIn-ws-loM"/>
-                            <constraint firstAttribute="trailing" secondItem="dbh-hI-FCO" secondAttribute="trailing" id="ToR-UI-DsV"/>
-                            <constraint firstItem="dbh-hI-FCO" firstAttribute="leading" secondItem="3V3-sO-M01" secondAttribute="leading" id="Uqq-Vs-82L"/>
-                            <constraint firstItem="dbh-hI-FCO" firstAttribute="leading" secondItem="3V3-sO-M01" secondAttribute="leading" id="W6N-aH-dkB"/>
+                            <constraint firstAttribute="trailing" secondItem="dbh-hI-FCO" secondAttribute="trailing" constant="4" id="ToR-UI-DsV"/>
+                            <constraint firstItem="dbh-hI-FCO" firstAttribute="leading" secondItem="3V3-sO-M01" secondAttribute="leading" constant="4" id="W6N-aH-dkB"/>
                             <constraint firstItem="klf-nZ-NfF" firstAttribute="leading" secondItem="3V3-sO-M01" secondAttribute="leading" constant="4" id="X0d-6c-O8n"/>
                             <constraint firstAttribute="bottom" secondItem="Zej-Bo-NRC" secondAttribute="bottom" constant="4" id="bfM-j4-rBo"/>
                             <constraint firstItem="dbh-hI-FCO" firstAttribute="top" secondItem="3V3-sO-M01" secondAttribute="top" id="fZv-VG-OPb"/>

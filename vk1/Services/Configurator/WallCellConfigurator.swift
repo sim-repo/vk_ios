@@ -13,9 +13,8 @@ class WallCellConfigurator {
         // wall header block >>
         
         // set initial height
-        
         cell.getHeaderView().origTitleTextView.textContainer.maximumNumberOfLines = 1000
-        cell.getHeaderView().origTitleTextView.text = wall.getOrigTitle()
+        cell.getHeaderView().origTitleTextView.text = wall.getOrigTitle()?.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if !isExpanded {
             configNormalCell(cell: cell, wall: wall)
@@ -103,9 +102,9 @@ class WallCellConfigurator {
         // parent block: decrease height
         cell.getHConHeaderView().constant -= negativeHCon
         
-        let canExpanded = cell.getHeaderView().origTitleTextView.numberOfLines() >= 8
+        let canExpanded = cell.getHeaderView().origTitleTextView.numberOfLines() >= 12
         if canExpanded {
-            let size = cell.getHeaderView().origTitleTextView.sizeForLines(numberOfLines: 3)
+            let size = cell.getHeaderView().origTitleTextView.sizeForLines(numberOfLines: 8)
             cell.getHConHeaderView().constant = WallCellConstant.quarterHeight + size + 20
             cell.getHeaderView().hConOrigTitleTextView.constant = size
             cell.getHeaderView().addExpandedButton(expanded: false)
@@ -120,7 +119,7 @@ class WallCellConfigurator {
         if !isExpanded {
             cell.getHeaderView().origTitleTextView.textContainer.lineBreakMode = .byWordWrapping
         } else {
-            cell.getHeaderView().origTitleTextView.text = wall.getOrigTitle()
+            cell.getHeaderView().origTitleTextView.text = wall.getOrigTitle()?.trimmingCharacters(in: .whitespacesAndNewlines)
             let titleHeight = cell.getHeaderView().origTitleTextView.actualSize().height
             let headerHeight = calcHeaderHeight(cell, wall) + titleHeight
             cell.getHConHeaderView().constant = headerHeight

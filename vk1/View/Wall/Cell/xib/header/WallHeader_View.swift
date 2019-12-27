@@ -40,28 +40,40 @@ class WallHeader_View : UIView{
         commonInit()
     }
     
+    private func setupForm(){
+        origTitleTextView.layer.masksToBounds = true
+        origTitleTextView.layer.cornerRadius = 5
+        
+        expandedButton.layer.masksToBounds = true
+        expandedButton.layer.cornerRadius = 5
+    }
+    
     private func commonInit(){
         let view = Bundle.main.loadNibNamed("WallHeader_View", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        setupForm()
+      
         expandedButton.setTitle("", for: .normal)
     }
     
     @IBAction func pressExpandedButton(_ sender: Any) {
         expandedButton.setTitle("", for: .normal)
+        hConExpandingButton.constant = 0
         layoutIfNeeded()
         delegate?.didPressExpand()
     }
     
     public func addExpandedButton(expanded: Bool){
         expandedButton.setTitle(expanded ? "" : "Показать полностью...", for: .normal)
-        hConExpandingButton.constant = 20
+        hConExpandingButton.constant = expanded ? 0 : 20
         layoutIfNeeded()
     }
     
     public func prepare(){
         expandedButton.setTitle("", for: .normal)
         hConExpandingButton.constant = 0
+        layoutIfNeeded()
     }
 }

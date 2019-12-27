@@ -12,102 +12,93 @@
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Wall_Cell_tp9" id="tbt-XZ-tcD" userLabel="Wall_Cell_tp9" customClass="Wall_Cell_tp9" customModule="vk1" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="620" height="675"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NhW-NU-OgO" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="NhW-NU-OgO" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="620" height="675"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9H-Yo-ezz" userLabel="RootView" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
-                        <rect key="frame" x="1" y="1" width="618" height="258"/>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u9H-Yo-ezz" userLabel="RootView" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
+                        <rect key="frame" x="1" y="1" width="618" height="673"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bna-iB-FTS" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="618" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="AMd-fs-NZ0"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG2-FK-Bdf" userLabel="ImageView">
-                                <rect key="frame" x="4" y="120" width="610" height="98"/>
+                                <rect key="frame" x="4" y="120" width="610" height="500"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zPY-lT-Paz" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="200.5" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zPY-lT-Paz" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="200.5" height="164"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8oM-rb-vfL" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="204.5" y="0.0" width="201" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8oM-rb-vfL" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="204.5" y="0.0" width="201" height="164"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Vh-fi-53x" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="409.5" y="0.0" width="200.5" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Vh-fi-53x" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="409.5" y="0.0" width="200.5" height="164"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="279-X3-yS3" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="409.5" y="34" width="200.5" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="279-X3-yS3" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="409.5" y="168" width="200.5" height="164"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3eo-RE-jlA" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="34" width="200.5" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3eo-RE-jlA" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="168" width="200.5" height="164"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-RE-44n" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="204.5" y="34" width="201" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-RE-44n" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="204.5" y="168" width="201" height="164"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="him-qk-K7t" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="68" width="53.5" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="him-qk-K7t" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="336" width="200.5" height="164"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kpy-5e-25T" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="57.5" y="68" width="53" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kpy-5e-25T" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="204.5" y="336" width="201" height="164"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oTT-Xg-zis" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="114.5" y="68" width="53.5" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oTT-Xg-zis" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="409.5" y="336" width="200.5" height="164"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2U-z8-HqR" userLabel="ImageButton1">
-                                        <rect key="frame" x="0.0" y="0.0" width="200.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200.5" height="164"/>
                                         <connections>
                                             <action selector="doPressImage1:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="XGc-Rf-Rn9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jy3-h1-ke3" userLabel="ImageButton2">
-                                        <rect key="frame" x="204.5" y="0.0" width="201" height="30"/>
+                                        <rect key="frame" x="204.5" y="0.0" width="201" height="164"/>
                                         <connections>
                                             <action selector="doPressImage2:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="ENS-Cv-IYH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwH-FV-Bdw" userLabel="ImageButton3">
-                                        <rect key="frame" x="409.5" y="0.0" width="200.5" height="30"/>
+                                        <rect key="frame" x="409.5" y="0.0" width="200.5" height="164"/>
                                         <connections>
                                             <action selector="doPressImage3:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="HfJ-rB-cLx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvS-Wf-G6S" userLabel="ImageButton4">
-                                        <rect key="frame" x="409.5" y="34" width="200.5" height="30"/>
+                                        <rect key="frame" x="409.5" y="168" width="200.5" height="164"/>
                                         <connections>
                                             <action selector="doPressImage4:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="eTe-eP-9vY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmV-5z-gMm" userLabel="ImageButton5">
-                                        <rect key="frame" x="0.0" y="34" width="200.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="168" width="200.5" height="164"/>
                                         <connections>
                                             <action selector="doPressImage5:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="ODk-uc-ctf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFV-gh-1j4" userLabel="ImageButton6">
-                                        <rect key="frame" x="204.5" y="34" width="201" height="30"/>
+                                        <rect key="frame" x="204.5" y="168" width="201" height="164"/>
                                         <connections>
                                             <action selector="doPressImage6:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="sch-VH-Eld"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCn-wF-1DG" userLabel="ImageButton7">
-                                        <rect key="frame" x="0.0" y="68" width="53.5" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="kCn-wF-1DG" secondAttribute="height" multiplier="16:9" id="aZx-ho-nsY"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="336" width="200.5" height="164"/>
                                         <connections>
                                             <action selector="doPressImage7:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="4R2-tZ-kh9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TER-PG-bqB" userLabel="ImageButton9">
-                                        <rect key="frame" x="114.5" y="68" width="53.5" height="30"/>
+                                        <rect key="frame" x="409.5" y="336" width="200.5" height="164"/>
                                         <connections>
                                             <action selector="doPressImage9:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="yFg-BM-VOf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-hD-Qcz" userLabel="ImageButton8">
-                                        <rect key="frame" x="57.5" y="68" width="53" height="30"/>
+                                        <rect key="frame" x="204.5" y="336" width="201" height="164"/>
                                         <connections>
                                             <action selector="doPressImage8:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="AUf-XH-0zJ"/>
                                         </connections>
@@ -174,6 +165,7 @@
                                     <constraint firstItem="zPY-lT-Paz" firstAttribute="height" secondItem="3eo-RE-jlA" secondAttribute="height" id="qQe-Zm-3ny"/>
                                     <constraint firstItem="jy3-h1-ke3" firstAttribute="leading" secondItem="8oM-rb-vfL" secondAttribute="leading" id="qXR-8B-1gW"/>
                                     <constraint firstItem="279-X3-yS3" firstAttribute="height" secondItem="0nh-RE-44n" secondAttribute="height" id="qfS-Em-oAS"/>
+                                    <constraint firstAttribute="height" constant="500" id="rr0-Hs-xvD"/>
                                     <constraint firstItem="jy3-h1-ke3" firstAttribute="width" secondItem="8oM-rb-vfL" secondAttribute="width" id="sLb-bA-Pli"/>
                                     <constraint firstItem="him-qk-K7t" firstAttribute="top" secondItem="3eo-RE-jlA" secondAttribute="bottom" constant="4" id="sUl-dV-qJA"/>
                                     <constraint firstItem="279-X3-yS3" firstAttribute="top" secondItem="3Vh-fi-53x" secondAttribute="bottom" constant="4" id="sVT-Jt-csh"/>
@@ -190,26 +182,30 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="goS-nc-bVy" userLabel="LikeView" customClass="WallLike_View" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="4" y="218" width="610" height="36"/>
+                                <rect key="frame" x="4" y="620" width="610" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="YEL-Ix-Lgp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bna-iB-FTS" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
+                                <rect key="frame" x="4" y="0.0" width="610" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="AMd-fs-NZ0"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="GG2-FK-Bdf" secondAttribute="trailing" constant="4" id="5yW-o9-XJv"/>
-                            <constraint firstItem="Bna-iB-FTS" firstAttribute="leading" secondItem="u9H-Yo-ezz" secondAttribute="leading" id="9Pf-Z9-NLR"/>
                             <constraint firstItem="GG2-FK-Bdf" firstAttribute="leading" secondItem="u9H-Yo-ezz" secondAttribute="leading" constant="4" id="I9N-JN-4aa"/>
-                            <constraint firstAttribute="trailing" secondItem="Bna-iB-FTS" secondAttribute="trailing" id="IKi-qw-Qto"/>
                             <constraint firstItem="goS-nc-bVy" firstAttribute="top" secondItem="GG2-FK-Bdf" secondAttribute="bottom" id="IoX-oR-B1l"/>
                             <constraint firstAttribute="trailing" secondItem="goS-nc-bVy" secondAttribute="trailing" constant="4" id="OZ5-om-Mik"/>
-                            <constraint firstAttribute="trailing" secondItem="Bna-iB-FTS" secondAttribute="trailing" id="RsL-xB-CDT"/>
+                            <constraint firstAttribute="trailing" secondItem="Bna-iB-FTS" secondAttribute="trailing" constant="4" id="RsL-xB-CDT"/>
                             <constraint firstAttribute="bottom" secondItem="goS-nc-bVy" secondAttribute="bottom" constant="4" id="hgs-gN-sZv"/>
                             <constraint firstItem="goS-nc-bVy" firstAttribute="leading" secondItem="u9H-Yo-ezz" secondAttribute="leading" constant="4" id="nPJ-4J-BOf"/>
                             <constraint firstItem="Bna-iB-FTS" firstAttribute="top" secondItem="u9H-Yo-ezz" secondAttribute="top" id="rnD-yc-y6H"/>
                             <constraint firstItem="GG2-FK-Bdf" firstAttribute="top" secondItem="Bna-iB-FTS" secondAttribute="bottom" id="xTo-Rw-iM0"/>
-                            <constraint firstItem="Bna-iB-FTS" firstAttribute="leading" secondItem="u9H-Yo-ezz" secondAttribute="leading" id="zpo-zH-fPS"/>
+                            <constraint firstItem="Bna-iB-FTS" firstAttribute="leading" secondItem="u9H-Yo-ezz" secondAttribute="leading" constant="4" id="zpo-zH-fPS"/>
                         </constraints>
                     </view>
                 </subviews>

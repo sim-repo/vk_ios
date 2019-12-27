@@ -20,7 +20,7 @@
                         <rect key="frame" x="1" y="1" width="468" height="692"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYh-Tl-s2X" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="468" height="120"/>
+                                <rect key="frame" x="4" y="0.0" width="460" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="mQj-Ig-eqC"/>
                                 </constraints>
@@ -92,8 +92,8 @@
                             <constraint firstAttribute="bottom" secondItem="bwU-zo-3xE" secondAttribute="bottom" constant="4" id="FWc-cX-LIQ"/>
                             <constraint firstItem="bwU-zo-3xE" firstAttribute="top" secondItem="3v8-Nz-UQn" secondAttribute="bottom" id="Iag-bc-3Hl"/>
                             <constraint firstItem="bwU-zo-3xE" firstAttribute="leading" secondItem="tY9-At-0cZ" secondAttribute="leading" constant="4" id="Jlp-qe-B1C"/>
-                            <constraint firstItem="bYh-Tl-s2X" firstAttribute="leading" secondItem="tY9-At-0cZ" secondAttribute="leading" id="Szm-uR-nsV"/>
-                            <constraint firstAttribute="trailing" secondItem="bYh-Tl-s2X" secondAttribute="trailing" id="WLH-yR-ryl"/>
+                            <constraint firstItem="bYh-Tl-s2X" firstAttribute="leading" secondItem="tY9-At-0cZ" secondAttribute="leading" constant="4" id="Szm-uR-nsV"/>
+                            <constraint firstAttribute="trailing" secondItem="bYh-Tl-s2X" secondAttribute="trailing" constant="4" id="WLH-yR-ryl"/>
                             <constraint firstItem="3v8-Nz-UQn" firstAttribute="top" secondItem="bYh-Tl-s2X" secondAttribute="bottom" constant="4" id="byi-VI-AMm"/>
                             <constraint firstAttribute="trailing" secondItem="3v8-Nz-UQn" secondAttribute="trailing" constant="4" id="sxx-tG-rNa"/>
                         </constraints>
