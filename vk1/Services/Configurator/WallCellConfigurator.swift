@@ -55,7 +55,6 @@ class WallCellConfigurator {
         cell.getLikeView().messageCount.text = "\(wall.getMessageCount())"
         cell.getLikeView().shareCount.text = "\(wall.getShareCount())"
         cell.getLikeView().eyeCount.text = "\(wall.getEyeCount())"
-        
     }
     
     
