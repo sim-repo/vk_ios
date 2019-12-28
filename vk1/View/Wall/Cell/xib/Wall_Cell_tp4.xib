@@ -22,7 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phj-N8-blj" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="4" y="0.0" width="520" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="It5-nH-aaP"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="120" id="It5-nH-aaP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLs-YX-nTH" userLabel="ImageView">
@@ -80,9 +80,10 @@
                                     <constraint firstItem="42g-gz-pCR" firstAttribute="top" secondItem="vlP-dO-VXv" secondAttribute="top" id="IGK-Yb-Hen"/>
                                     <constraint firstItem="Mvh-Du-ABL" firstAttribute="leading" secondItem="WLs-YX-nTH" secondAttribute="leading" id="Jh4-Ps-hkF"/>
                                     <constraint firstItem="wAH-Gc-FKc" firstAttribute="top" secondItem="QO6-F6-Py1" secondAttribute="top" id="Kux-gh-k6b"/>
-                                    <constraint firstAttribute="height" priority="750" constant="509" id="OQw-5X-1lf"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="600" id="OQw-5X-1lf"/>
                                     <constraint firstItem="vlP-dO-VXv" firstAttribute="leading" secondItem="Hnm-wo-EIR" secondAttribute="trailing" constant="8" id="Pbd-rI-eUn"/>
                                     <constraint firstItem="Mvh-Du-ABL" firstAttribute="width" secondItem="QO6-F6-Py1" secondAttribute="width" id="VCt-Z2-r04"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="280" id="VJr-gS-AES"/>
                                     <constraint firstItem="8bu-fj-FnW" firstAttribute="top" secondItem="Hnm-wo-EIR" secondAttribute="top" id="arT-or-nOF"/>
                                     <constraint firstItem="6un-Ev-ldc" firstAttribute="height" secondItem="Mvh-Du-ABL" secondAttribute="height" id="cm0-cJ-9Ck"/>
                                     <constraint firstItem="Hnm-wo-EIR" firstAttribute="leading" secondItem="WLs-YX-nTH" secondAttribute="leading" id="d35-QP-oiY"/>

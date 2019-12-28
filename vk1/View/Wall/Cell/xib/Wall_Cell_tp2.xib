@@ -17,40 +17,31 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tY9-At-0cZ" userLabel="RootView" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
-                        <rect key="frame" x="1" y="1" width="468" height="692"/>
+                        <rect key="frame" x="1" y="1" width="468" height="663"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYh-Tl-s2X" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="4" y="0.0" width="460" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="mQj-Ig-eqC"/>
+                                    <constraint firstAttribute="height" priority="750" constant="120" id="mQj-Ig-eqC"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3v8-Nz-UQn" userLabel="ImageView">
-                                <rect key="frame" x="4" y="124" width="460" height="528"/>
+                                <rect key="frame" x="4" y="124" width="460" height="499"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XUV-7o-4eJ" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="460" height="259"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="XUV-7o-4eJ" secondAttribute="height" multiplier="16:9" id="x4a-Th-C59"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="460" height="244.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E3D-ec-6ZK" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="269.5" width="460" height="258.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="E3D-ec-6ZK" secondAttribute="height" multiplier="16:9" id="5ji-Kl-jx4"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="254.5" width="460" height="244.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijN-tg-A3m" userLabel="ImageButton1">
-                                        <rect key="frame" x="0.0" y="0.0" width="460" height="259"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="ijN-tg-A3m" secondAttribute="height" multiplier="16:9" id="KuK-n6-7Tl"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="460" height="244.5"/>
                                         <connections>
                                             <action selector="doPressImage1:" destination="Po5-W3-gQU" eventType="touchUpInside" id="3aG-Mc-OFv"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETK-qA-coi" userLabel="ImageButton2">
-                                        <rect key="frame" x="0.0" y="269.5" width="460" height="258.5"/>
+                                        <rect key="frame" x="0.0" y="254.5" width="460" height="244.5"/>
                                         <connections>
                                             <action selector="doPressImage2:" destination="Po5-W3-gQU" eventType="touchUpInside" id="I3K-WD-oQD"/>
                                         </connections>
@@ -68,17 +59,19 @@
                                     <constraint firstItem="ijN-tg-A3m" firstAttribute="leading" secondItem="XUV-7o-4eJ" secondAttribute="leading" id="PWP-K2-eIN"/>
                                     <constraint firstItem="ijN-tg-A3m" firstAttribute="top" secondItem="XUV-7o-4eJ" secondAttribute="top" id="Ra4-1U-wtc"/>
                                     <constraint firstItem="ETK-qA-coi" firstAttribute="top" secondItem="E3D-ec-6ZK" secondAttribute="top" id="XI7-vU-V1b"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="600" id="ZY4-K0-RPa"/>
                                     <constraint firstAttribute="bottom" secondItem="E3D-ec-6ZK" secondAttribute="bottom" id="ZaI-5U-G0b"/>
                                     <constraint firstAttribute="trailing" secondItem="E3D-ec-6ZK" secondAttribute="trailing" id="cmg-3u-ai9"/>
                                     <constraint firstItem="ETK-qA-coi" firstAttribute="leading" secondItem="E3D-ec-6ZK" secondAttribute="leading" id="eh9-AB-1Vg"/>
                                     <constraint firstItem="ETK-qA-coi" firstAttribute="height" secondItem="E3D-ec-6ZK" secondAttribute="height" id="jQT-Of-XnE"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="280" id="qto-uJ-pAb"/>
                                     <constraint firstItem="XUV-7o-4eJ" firstAttribute="top" secondItem="3v8-Nz-UQn" secondAttribute="top" id="siy-gb-CEM"/>
                                     <constraint firstItem="ijN-tg-A3m" firstAttribute="width" secondItem="XUV-7o-4eJ" secondAttribute="width" id="th2-li-yty"/>
                                     <constraint firstItem="ETK-qA-coi" firstAttribute="width" secondItem="E3D-ec-6ZK" secondAttribute="width" id="xLS-YF-IbN"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-zo-3xE" userLabel="LikeView" customClass="WallLike_View" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="4" y="652" width="460" height="36"/>
+                                <rect key="frame" x="4" y="623" width="460" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="iLe-Fc-lgb"/>
                                 </constraints>

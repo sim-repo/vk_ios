@@ -214,7 +214,8 @@ extension News_ViewController: WallCellProtocolDelegate {
         if let presenter = getPullWallPresenterProtocol() {
             presenter.expandCell(isExpand: isExpand, indexPath: indexPath)
             UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIView.AnimationOptions.curveEaseInOut, animations: {
-                  self.collectionView.reloadItems(at: [indexPath])
+                    self.collectionView.reloadItems(at: [indexPath])
+                    self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
                 }, completion: nil)
         }
     }

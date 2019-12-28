@@ -22,7 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFb-Jk-SOi" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="4" y="0.0" width="610" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="Tng-ed-NT9"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="120" id="Tng-ed-NT9"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0v-Ty-beK" userLabel="ImageView">
@@ -120,7 +120,7 @@
                                     <constraint firstItem="mRy-1x-OMN" firstAttribute="top" secondItem="NbG-VS-FQy" secondAttribute="top" id="E6u-hi-fDx"/>
                                     <constraint firstItem="crU-FR-MMN" firstAttribute="top" secondItem="b0v-Ty-beK" secondAttribute="top" id="HAg-QC-P4I"/>
                                     <constraint firstItem="OKy-1t-few" firstAttribute="leading" secondItem="rdr-eJ-Co5" secondAttribute="leading" id="IH8-AZ-Rru"/>
-                                    <constraint firstAttribute="height" constant="509" id="Kf8-zY-Sla"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="650" constant="509" id="Kf8-zY-Sla"/>
                                     <constraint firstItem="Pfa-TL-zb7" firstAttribute="height" secondItem="eYs-1O-uo9" secondAttribute="height" id="KmM-G5-a1O"/>
                                     <constraint firstItem="3HY-uR-e8j" firstAttribute="top" secondItem="crU-FR-MMN" secondAttribute="bottom" constant="4" id="L4T-bW-4sC"/>
                                     <constraint firstItem="adS-Ea-lEk" firstAttribute="width" secondItem="3HY-uR-e8j" secondAttribute="width" id="M1Y-BA-hVj"/>
@@ -155,6 +155,7 @@
                                     <constraint firstItem="buL-r2-cJS" firstAttribute="leading" secondItem="PI5-dV-5by" secondAttribute="leading" id="leZ-My-hu1"/>
                                     <constraint firstAttribute="bottom" secondItem="dDm-wb-6zm" secondAttribute="bottom" id="lra-Ce-kGF"/>
                                     <constraint firstItem="PI5-dV-5by" firstAttribute="height" secondItem="crU-FR-MMN" secondAttribute="height" id="m27-ou-UaL"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="280" id="meP-G5-xKz"/>
                                     <constraint firstItem="C1X-wv-5TA" firstAttribute="height" secondItem="WFG-rg-6d7" secondAttribute="height" id="nRJ-IK-BON"/>
                                     <constraint firstItem="buL-r2-cJS" firstAttribute="width" secondItem="PI5-dV-5by" secondAttribute="width" id="p4h-RF-s7R"/>
                                     <constraint firstItem="NbG-VS-FQy" firstAttribute="width" secondItem="eYs-1O-uo9" secondAttribute="width" id="rB0-hj-SFU"/>

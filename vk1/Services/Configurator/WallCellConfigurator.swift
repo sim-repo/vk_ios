@@ -144,6 +144,6 @@ class WallCellConfigurator {
             negativeHCon += WallCellConstant.quarterHeight
         }
         
-        return WallCellConstant.headerHeight - negativeHCon - 20
+        return WallCellConstant.headerHeight - negativeHCon
     }
 }

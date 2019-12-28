@@ -22,7 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilu-nw-Nfz" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="4" y="0.0" width="610" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="MDD-ax-ic8"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="120" id="MDD-ax-ic8"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GyM-qO-K2y" userLabel="ImageView">
@@ -100,7 +100,9 @@
                                     <constraint firstItem="93c-XZ-6GI" firstAttribute="leading" secondItem="GyM-qO-K2y" secondAttribute="leading" id="KIC-mw-VtZ"/>
                                     <constraint firstItem="1jo-Jl-rPQ" firstAttribute="width" secondItem="R7F-LX-Qov" secondAttribute="width" id="KjR-Ye-jTt"/>
                                     <constraint firstItem="bvI-BR-sgn" firstAttribute="height" secondItem="R7F-LX-Qov" secondAttribute="height" id="Lxx-vv-HpR"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="280" id="Ncn-ec-QjH"/>
                                     <constraint firstItem="jgS-wP-wKj" firstAttribute="top" secondItem="fyW-ue-MIw" secondAttribute="top" id="Nx4-dd-p4q"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="600" id="Pfq-YX-3X7"/>
                                     <constraint firstItem="jgS-wP-wKj" firstAttribute="height" secondItem="fyW-ue-MIw" secondAttribute="height" id="RJc-xA-l7z"/>
                                     <constraint firstItem="fyW-ue-MIw" firstAttribute="height" secondItem="RHU-as-KgE" secondAttribute="height" id="Rcd-5B-fLq"/>
                                     <constraint firstItem="XdG-BR-hN2" firstAttribute="leading" secondItem="93c-XZ-6GI" secondAttribute="trailing" constant="4" id="U5m-6b-Lgn"/>
