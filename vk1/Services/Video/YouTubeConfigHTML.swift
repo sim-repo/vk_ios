@@ -48,56 +48,60 @@ struct YouTubeConfigHTML {
         var player;
         
         function onYouTubePlayerAPIReady() {
-        player = new YT.Player('player', {
-        playerVars: { 'autoplay': 1,
-        'controls': 0,
-        'playsinline': 1,
-        'frameborder' : 0,
-        'modestbranding': 1,
-        'showinfo' : 0,
-        'enablejsapi': 1},
-        height: '768',
-        width: '1365',
-        videoId: '\(videoId)',
-        events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-        }
-        });
+            player = new YT.Player('player', {
+                    playerVars: { 'autoplay': 1,
+                    'controls': 0,
+                    'playsinline': 0,
+                    'frameborder' : 0,
+                    'modestbranding': 1,
+                    'showinfo' : 0,
+                    'enablejsapi': 1},
+                    height: '768',
+                    width: '1365',
+                    videoId: '\(videoId)',
+                    events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                    }
+                });
         }
         
         function onPlayerReady(event) {
-        event.target.mute();
-        event.target.playVideo();
+            //event.target.mute();
+            event.target.playVideo();
         }
         
         var done = false;
         function onPlayerStateChange(event) {
         
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-        //setTimeout(stopVideo, 6000);
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+                //setTimeout(stopVideo, 6000);
+                done = true;
+            }
         
-        done = true;
-        }
+            if (event.data == YT.PlayerState.ENDED) {
+                document.dispatchEvent(didStopVideoEvent);
+                window.location = "callback:anything"; //here's the key
+            };
         
-        if (event.data == YT.PlayerState.ENDED) {
-        document.dispatchEvent(didStopVideoEvent);
-        window.location = "callback:anything"; //here's the key
-        };
+            if (event.data == YT.PlayerState.PAUSED) {
+                document.dispatchEvent(didStopVideoEvent);
+                window.location = "callback:anything"; //here's the key
+            };
         }
         
         function stopVideo() {
-        document.dispatchEvent(didStopVideoEvent);
-        player.stopVideo();
+            document.dispatchEvent(didStopVideoEvent);
+            player.stopVideo();
         }
         
         function unmuteVideo() {
-        player.setPlaybackQuality("small")
-        player.unMute()
+            player.setPlaybackQuality("small")
+            player.unMute()
         }
         
         function muteVideo() {
-        player.mute()
+            player.mute()
         }
         
         </script>

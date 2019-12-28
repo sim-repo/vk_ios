@@ -148,7 +148,7 @@
                             <rect key="frame" x="0.0" y="96" width="659" height="22"/>
                             <color key="backgroundColor" red="0.29633097590000002" green="0.072775813019999996" blue="0.65515942260000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="30" id="Qlu-j8-ea3"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" id="Qlu-j8-ea3"/>
                             </constraints>
                             <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>

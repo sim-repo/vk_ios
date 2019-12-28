@@ -91,16 +91,16 @@
                                             <action selector="doPressImage7:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="4R2-tZ-kh9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TER-PG-bqB" userLabel="ImageButton9">
-                                        <rect key="frame" x="409.5" y="336" width="200.5" height="164"/>
-                                        <connections>
-                                            <action selector="doPressImage9:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="yFg-BM-VOf"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-hD-Qcz" userLabel="ImageButton8">
                                         <rect key="frame" x="204.5" y="336" width="201" height="164"/>
                                         <connections>
                                             <action selector="doPressImage8:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="AUf-XH-0zJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TER-PG-bqB" userLabel="ImageButton9">
+                                        <rect key="frame" x="409.5" y="336" width="200.5" height="164"/>
+                                        <connections>
+                                            <action selector="doPressImage9:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="yFg-BM-VOf"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -221,6 +221,16 @@
             <connections>
                 <outlet property="hConHeaderView" destination="AMd-fs-NZ0" id="rgD-fA-UDl"/>
                 <outlet property="headerView" destination="Bna-iB-FTS" id="NEB-VG-yxF"/>
+                <outlet property="imageButton1" destination="H2U-z8-HqR" id="yPO-At-jZE"/>
+                <outlet property="imageButton2" destination="jy3-h1-ke3" id="VQG-KC-dmo"/>
+                <outlet property="imageButton3" destination="xwH-FV-Bdw" id="Xre-q3-kk2"/>
+                <outlet property="imageButton4" destination="uvS-Wf-G6S" id="3rg-Pa-kGo"/>
+                <outlet property="imageButton5" destination="dmV-5z-gMm" id="tTm-9D-MSq"/>
+                <outlet property="imageButton6" destination="JFV-gh-1j4" id="s07-F7-4oI"/>
+                <outlet property="imageButton7" destination="kCn-wF-1DG" id="Z59-0c-Pwk"/>
+                <outlet property="imageButton8" destination="dkH-hD-Qcz" id="FGH-EJ-HhH"/>
+                <outlet property="imageButton9" destination="TER-PG-bqB" id="YJN-QA-dQy"/>
+                <outlet property="imageContentView" destination="GG2-FK-Bdf" id="FsL-lG-g4S"/>
                 <outlet property="imageView1" destination="zPY-lT-Paz" id="PXN-8B-nGv"/>
                 <outlet property="imageView2" destination="8oM-rb-vfL" id="lPr-OA-iCY"/>
                 <outlet property="imageView3" destination="3Vh-fi-53x" id="wnt-1b-43y"/>

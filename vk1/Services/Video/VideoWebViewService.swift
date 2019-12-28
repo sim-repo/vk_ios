@@ -65,7 +65,7 @@ class VideoWebViewService: NSObject {
         let config = WKWebViewConfiguration()
         config.preferences.javaScriptEnabled = true
         config.mediaPlaybackRequiresUserAction = false
-        config.allowsInlineMediaPlayback = true
+        config.allowsInlineMediaPlayback = false
         let source = "document.addEventListener('stopVideoEvent', function(){ window.webkit.messageHandlers.iosListener.postMessage('Did Video Stop'); })"
         let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
         config.userContentController.addUserScript(script)
@@ -80,6 +80,8 @@ class VideoWebViewService: NSObject {
         let htmlConfig = YouTubeConfigHTML.getConfig(sURL: url.absoluteString)
         webview?.loadHTMLString(htmlConfig, baseURL: nil)
         webviewContent?.addSubview(webview!)
+        
+        inject(webview: webview!)
     }
     
     
@@ -147,15 +149,15 @@ class VideoWebViewService: NSObject {
 //You Tube:
 extension VideoWebViewService: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        // comment out if needed!
         // print("message: \(message.body)")
-        webview?.removeFromSuperview()
+        // webview?.removeFromSuperview()
     }
 }
 
 
 
 extension VideoWebViewService: WKNavigationDelegate {
-    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         stopActivityIndicator()
         webviewContent?.addSubview(webview!)

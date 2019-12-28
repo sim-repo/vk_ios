@@ -91,9 +91,9 @@ extension NewsParser {
             postHeader.title = jsonItem["text"].stringValue
             postHeader.unixTime = jsonItem["date"].doubleValue
             
-//            if postHeader.title == "Фильм про настоящих супергероев!" {
-//                print("A")
-//            }
+            if postHeader.title == "Подборка обучающих видео на английском языке👇🏻" {
+                print("A")
+            }
             
             
             return postHeader
@@ -104,9 +104,9 @@ extension NewsParser {
             postHeader.name = f.firstName + " "+f.lastName
             postHeader.title = jsonItem["text"].stringValue
             
-//            if postHeader.title == "Фильм про настоящих супергероев!" {
-//                print("A")
-//            }
+            if postHeader.title == "Подборка обучающих видео на английском языке👇🏻" {
+                print("A")
+            }
             
             
             postHeader.unixTime = jsonItem["date"].doubleValue

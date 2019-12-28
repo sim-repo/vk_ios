@@ -101,11 +101,6 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ news: News) -> UICollectionViewCell{
-        print()
-        print()
-        print("cell: \(cell) :  \(news.getOrigTitle())")
-        print()
-        print()
         let c = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as! Wall_CellProtocol
         if let p = getPullWallPresenterProtocol() {
             c.setup(news, indexPath, p, isExpanded: p.isExpandedCell(indexPath: indexPath), delegate: self)
