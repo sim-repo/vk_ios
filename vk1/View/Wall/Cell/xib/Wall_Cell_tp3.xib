@@ -121,6 +121,10 @@
             <connections>
                 <outlet property="hConHeaderView" destination="UXG-NI-bHB" id="vWv-xg-wP0"/>
                 <outlet property="headerView" destination="dbh-hI-FCO" id="QKN-aX-PZp"/>
+                <outlet property="imageButton1" destination="QU0-JR-nhA" id="mUE-R6-Y2i"/>
+                <outlet property="imageButton2" destination="LyA-7P-oid" id="0uR-OC-NhL"/>
+                <outlet property="imageButton3" destination="paa-06-JGA" id="Anu-wp-cQc"/>
+                <outlet property="imageContentView" destination="klf-nZ-NfF" id="wiJ-xW-rMN"/>
                 <outlet property="imageView1" destination="eNy-VO-Niw" id="PCN-Ja-MQa"/>
                 <outlet property="imageView2" destination="FcK-PF-ueO" id="l4S-Ej-AsZ"/>
                 <outlet property="imageView3" destination="bqF-EM-a7K" id="PvK-ie-Kyc"/>

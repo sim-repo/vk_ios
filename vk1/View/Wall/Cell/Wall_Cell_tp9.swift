@@ -34,54 +34,50 @@ class Wall_Cell_tp9: UICollectionViewCell {
     var delegate: WallCellProtocolDelegate?
     var preferedHeight: CGFloat = WallCellConstant.cellHeight
     var wall: WallModelProtocol!
-    var cellType: WallCellConstant.CellTypeEnum!
-    var videoService: VideoWebViewService?
+    lazy var buttons = [imageButton1!,imageButton2!,imageButton3!,imageButton4!,imageButton5!,imageButton6!,imageButton7!,imageButton8!,imageButton9!]
+    lazy var imageViews = [imageView1!,imageView2!,imageView3!,imageView4!,imageView5!,imageView6!,imageView7!,imageView8!,imageView9!]
+    var baseWallVideo: BaseWallVideo = BaseWallVideo()
     
     @IBAction func doPressImage1(_ sender: Any) {
-        pressImage(imageContentView, 0)
+        pressImage(imageIdx: 0)
     }
     
     @IBAction func doPressImage2(_ sender: Any) {
-        pressImage(imageContentView, 1)
+        pressImage(imageIdx: 1)
     }
     
     @IBAction func doPressImage3(_ sender: Any) {
-        pressImage(imageContentView, 2)
+        pressImage(imageIdx: 2)
     }
     
     @IBAction func doPressImage4(_ sender: Any) {
-        pressImage(imageContentView, 3)
+        pressImage(imageIdx: 3)
     }
     
     @IBAction func doPressImage5(_ sender: Any) {
-        pressImage(imageContentView, 4)
+        pressImage(imageIdx: 4)
     }
     
     @IBAction func doPressImage6(_ sender: Any) {
-        pressImage(imageContentView, 5)
+        pressImage(imageIdx: 5)
     }
     
     @IBAction func doPressImage7(_ sender: Any) {
-        pressImage(imageContentView, 6)
+        pressImage(imageIdx: 6)
     }
     
     @IBAction func doPressImage8(_ sender: Any) {
-        pressImage(imageContentView, 7)
+        pressImage(imageIdx: 7)
     }
     
     @IBAction func doPressImage9(_ sender: Any) {
-        pressImage(imageContentView, 8)
+        pressImage(imageIdx: 8)
     }
     
-    private func pressImage(_ view: UIView, _ imageIdx: Int) {
-        if cellType == .video {
-           videoService = VideoWebViewService()
-           videoService?.setup(webviewContent: view)
-           videoService?.startActivityIndicator()
-        }
+    private func pressImage(imageIdx: Int){
+        baseWallVideo.pressImage(presenter: presenter, view: imageContentView, indexPath: indexPath, imageIdx: imageIdx)
         presenter.selectImage(indexPath: indexPath, imageIdx: imageIdx)
     }
-    
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         setNeedsLayout()
@@ -97,11 +93,11 @@ class Wall_Cell_tp9: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        imageView1.image = UIImage(named: "placeholder")
-        shouldShowPlayButton(isShow: false)
-        videoService?.prepareForReuse()
+        for imageView in imageViews {
+            imageView.image = UIImage(named: "placeholder")
+        }
+        baseWallVideo.prepareReuse(buttons: buttons)
     }
-    
 }
 
 
@@ -121,9 +117,8 @@ extension Wall_Cell_tp9: Wall_CellProtocol {
         headerView.delegate = self
         headerView.prepare()
         
-        cellType = wall.getCellType()
-        if cellType == .video {
-            shouldShowPlayButton(isShow: true)
+        if wall.getCellType() == .video {
+            baseWallVideo.setup(buttons: buttons)
         }
         
         WallCellConfigurator.setupCell(cell: self, wall: wall, isExpanded: isExpanded)
@@ -135,7 +130,7 @@ extension Wall_Cell_tp9: Wall_CellProtocol {
     }
     
     func getImagesView() -> [UIImageView] {
-        return [imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8, imageView9]
+        return imageViews
     }
     
     func getLikeView() -> WallLike_View {
@@ -153,55 +148,17 @@ extension Wall_Cell_tp9: Wall_CellProtocol {
     func getHConHeaderView() -> NSLayoutConstraint {
         return hConHeaderView
     }
-    
-    func shouldShowPlayButton(isShow: Bool){
-        if isShow {
-            let image = getSystemImage(name: "play.circle", pointSize: 50)
-            imageButton1.setImage(image, for: .normal)
-            imageButton2.setImage(image, for: .normal)
-            imageButton3.setImage(image, for: .normal)
-            imageButton4.setImage(image, for: .normal)
-            imageButton5.setImage(image, for: .normal)
-            imageButton6.setImage(image, for: .normal)
-            imageButton7.setImage(image, for: .normal)
-            imageButton8.setImage(image, for: .normal)
-            imageButton9.setImage(image, for: .normal)
-        } else {
-            imageButton1.setImage(.none, for: .normal)
-            imageButton2.setImage(.none, for: .normal)
-            imageButton3.setImage(.none, for: .normal)
-            imageButton4.setImage(.none, for: .normal)
-            imageButton5.setImage(.none, for: .normal)
-            imageButton6.setImage(.none, for: .normal)
-            imageButton7.setImage(.none, for: .normal)
-            imageButton8.setImage(.none, for: .normal)
-            imageButton9.setImage(.none, for: .normal)
-        }
-        layoutIfNeeded()
-    }
 }
 
 
 extension Wall_Cell_tp9: Video_CellProtocol {
     
     func play(url: URL, platformEnum: WallCellConstant.VideoPlatform) {
-        shouldShowPlayButton(isShow: false)
-
-        self.videoService?.playVideo(url: url, platformEnum: platformEnum) {[weak self] in
-            guard let self = self else { return }
-            if self.cellType == .video {
-                self.shouldShowPlayButton(isShow: true)
-            }
-        }
+        baseWallVideo.play(url: url, platformEnum: platformEnum)
     }
     
     func showErr(err: String) {
-        PRESENTER_UI_THREAD {
-            let image = getSystemImage(name: "exclamationmark.icloud", pointSize: 50)
-            self.imageButton1.setImage(image, for: .normal)
-            self.videoService?.stopActivityIndicator()
-            self.videoService = nil
-        }
+        baseWallVideo.showErr(err: err)
     }
 }
 

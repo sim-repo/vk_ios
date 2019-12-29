@@ -10,47 +10,24 @@ class Wall_Cell_tp1: UICollectionViewCell {
     @IBOutlet weak var hConHeaderView: NSLayoutConstraint!
     @IBOutlet weak var imageButton: UIButton!
     
-    var presenter: PullWallPresenterProtocol?
-    
+    var presenter: PullWallPresenterProtocol!
     var indexPath: IndexPath!
-    
-    var videoService: VideoWebViewService?
-    
     var cellType: WallCellConstant.CellTypeEnum!
-    
     var preferedHeight: CGFloat = WallCellConstant.cellHeight
-    
     var isExpanded = false
-    
     var delegate: WallCellProtocolDelegate?
-    
     var wall: WallModelProtocol!
+    var baseWallVideo: BaseWallVideo = BaseWallVideo()
     
     override func prepareForReuse() {
         imageView.image = UIImage(named: "placeholder")
-        shouldShowPlayButton(isShow: false)
-        videoService?.prepareForReuse()
+        baseWallVideo.prepareReuse(buttons: [imageButton])
     }
     
     @IBAction func doPressImage1(_ sender: Any) {
-        if cellType == .video {
-            videoService = VideoWebViewService()
-            videoService?.setup(webviewContent: imageView)
-            videoService?.startActivityIndicator()
-        }
+        baseWallVideo.pressImage(presenter: presenter, view: imageView, indexPath: indexPath, imageIdx: 0)
         presenter?.selectImage(indexPath: indexPath, imageIdx: 0)
     }
-    
-    func shouldShowPlayButton(isShow: Bool){
-        if isShow {
-            let image = getSystemImage(name: "play.circle", pointSize: 50)
-            imageButton.setImage(image, for: .normal)
-        } else {
-            imageButton.setImage(.none, for: .normal)
-        }
-        layoutIfNeeded()
-    }
-    
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         
@@ -90,8 +67,8 @@ extension Wall_Cell_tp1: Wall_CellProtocol {
         WallCellConfigurator.setupCell(cell: self, wall: wall, isExpanded: isExpanded)
         
         cellType = wall.getCellType()
-        if cellType == .video {
-            shouldShowPlayButton(isShow: true)
+        if wall.getCellType() == .video {
+            baseWallVideo.setup(buttons: [imageButton])
         }
     }
     
@@ -120,26 +97,14 @@ extension Wall_Cell_tp1: Wall_CellProtocol {
     }
 }
 
-extension Wall_Cell_tp1: Video_CellProtocol { 
+extension Wall_Cell_tp1: Video_CellProtocol {
     
     func play(url: URL, platformEnum: WallCellConstant.VideoPlatform) {
-        shouldShowPlayButton(isShow: false)
-
-        self.videoService?.playVideo(url: url, platformEnum: platformEnum) {[weak self] in
-            guard let self = self else { return }
-            if self.cellType == .video {
-                self.shouldShowPlayButton(isShow: true)
-            }
-        }
+        baseWallVideo.play(url: url, platformEnum: platformEnum)
     }
     
     func showErr(err: String) {
-        PRESENTER_UI_THREAD {
-            let image = getSystemImage(name: "exclamationmark.icloud", pointSize: 50)
-            self.imageButton.setImage(image, for: .normal)
-            self.videoService?.stopActivityIndicator()
-            self.videoService = nil
-        }
+        baseWallVideo.showErr(err: err)
     }
 }
 

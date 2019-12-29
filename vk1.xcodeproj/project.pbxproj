@@ -106,6 +106,7 @@
 		166667DE2348F50A00FD2B86 /* UIControlThemeMgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667DD2348F50A00FD2B86 /* UIControlThemeMgt.swift */; };
 		166667FA2349062E00FD2B86 /* WallModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667F92349062E00FD2B86 /* WallModelProtocol.swift */; };
 		166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166667FB234912B800FD2B86 /* FriendWallPresenter.swift */; };
+		1667975823B7F8BE00AC6ECF /* BaseWallVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667975723B7F8BE00AC6ECF /* BaseWallVideo.swift */; };
 		166CB8DB238291CC009DA806 /* RealmBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CB8DA238291CC009DA806 /* RealmBase.swift */; };
 		166CB8E42382E690009DA806 /* SyncBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CB8E32382E690009DA806 /* SyncBase.swift */; };
 		166CB8ED2382F8CA009DA806 /* DefaultSyncConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CB8EC2382F8CA009DA806 /* DefaultSyncConfiguration.swift */; };
@@ -400,6 +401,7 @@
 		166667DD2348F50A00FD2B86 /* UIControlThemeMgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlThemeMgt.swift; sourceTree = "<group>"; };
 		166667F92349062E00FD2B86 /* WallModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallModelProtocol.swift; sourceTree = "<group>"; };
 		166667FB234912B800FD2B86 /* FriendWallPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWallPresenter.swift; sourceTree = "<group>"; };
+		1667975723B7F8BE00AC6ECF /* BaseWallVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWallVideo.swift; sourceTree = "<group>"; };
 		166CB8DA238291CC009DA806 /* RealmBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBase.swift; sourceTree = "<group>"; };
 		166CB8E32382E690009DA806 /* SyncBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncBase.swift; sourceTree = "<group>"; };
 		166CB8EC2382F8CA009DA806 /* DefaultSyncConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSyncConfiguration.swift; sourceTree = "<group>"; };
@@ -871,6 +873,7 @@
 			children = (
 				16BA48362345CB6A007D0981 /* xib */,
 				166667672347E2C700FD2B86 /* Wall_CellProtocol.swift */,
+				1667975723B7F8BE00AC6ECF /* BaseWallVideo.swift */,
 				1666673C2347B8E900FD2B86 /* Wall_Cell_tp1.swift */,
 				166667442347BFE100FD2B86 /* Wall_Cell_tp2.swift */,
 				166667472347C9ED00FD2B86 /* Wall_Cell_tp3.swift */,
@@ -1592,6 +1595,7 @@
 				164F80D923858891000F95E7 /* NewsPresenter.swift in Sources */,
 				166667452347BFE100FD2B86 /* Wall_Cell_tp2.swift in Sources */,
 				16FF6FD623522E41001C33CF /* Extensions.swift in Sources */,
+				1667975823B7F8BE00AC6ECF /* BaseWallVideo.swift in Sources */,
 				166667FC234912B800FD2B86 /* FriendWallPresenter.swift in Sources */,
 				16E08B3E236CEBB800340F09 /* ModelOwnerPresenterProtocol.swift in Sources */,
 				16C693592395254000F3DD93 /* RealmVideoURL.swift in Sources */,

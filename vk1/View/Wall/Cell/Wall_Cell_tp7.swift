@@ -13,40 +13,58 @@ class Wall_Cell_tp7: UICollectionViewCell {
     @IBOutlet weak var likeView: WallLike_View!
     @IBOutlet weak var headerView: WallHeader_View!
     @IBOutlet weak var hConHeaderView: NSLayoutConstraint!
+    @IBOutlet weak var imageButton1: UIButton!
+    @IBOutlet weak var imageButton2: UIButton!
+    @IBOutlet weak var imageButton3: UIButton!
+    @IBOutlet weak var imageButton4: UIButton!
+    @IBOutlet weak var imageButton5: UIButton!
+    @IBOutlet weak var imageButton6: UIButton!
+    @IBOutlet weak var imageButton7: UIButton!
+    
+    @IBOutlet weak var imageContentView: UIView!
+    
     var indexPath: IndexPath!
     var presenter: PullWallPresenterProtocol!
     var isExpanded = false
     var delegate: WallCellProtocolDelegate?
     var preferedHeight: CGFloat = WallCellConstant.cellHeight
     var wall: WallModelProtocol!
+    lazy var buttons = [imageButton1!,imageButton2!,imageButton3!,imageButton4!,imageButton5!,imageButton6!,imageButton7!]
+    lazy var imageViews = [imageView1!,imageView2!,imageView3!,imageView4!,imageView5!,imageView6!,imageView7!]
+    var baseWallVideo: BaseWallVideo = BaseWallVideo()
     
     
     @IBAction func doPressImage1(_ sender: Any) {
-       presenter.selectImage(indexPath: indexPath, imageIdx: 0)
+       pressImage(imageIdx: 0)
     }
     
     @IBAction func doPressImage2(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 1)
+        pressImage(imageIdx: 1)
     }
     
     @IBAction func doPressImage3(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 2)
+        pressImage(imageIdx: 2)
     }
     
     @IBAction func doPressImage4(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 3)
+        pressImage(imageIdx: 3)
     }
     
     @IBAction func doPressImage5(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 4)
+        pressImage(imageIdx: 4)
     }
     
     @IBAction func doPressImage6(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 5)
+        pressImage(imageIdx: 5)
     }
     
     @IBAction func doPressImage7(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 6)
+        pressImage(imageIdx: 6)
+    }
+    
+    private func pressImage(imageIdx: Int){
+        baseWallVideo.pressImage(presenter: presenter, view: imageContentView, indexPath: indexPath, imageIdx: imageIdx)
+        presenter.selectImage(indexPath: indexPath, imageIdx: imageIdx)
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
@@ -63,6 +81,13 @@ class Wall_Cell_tp7: UICollectionViewCell {
         preferredLayoutAttributes.frame = adjustedFrame
         preferedHeight = adjustedFrame.size.height
         return preferredLayoutAttributes
+    }
+    
+    override func prepareForReuse() {
+        for imageView in imageViews {
+            imageView.image = UIImage(named: "placeholder")
+        }
+        baseWallVideo.prepareReuse(buttons: buttons)
     }
 }
 
@@ -83,6 +108,10 @@ extension Wall_Cell_tp7: Wall_CellProtocol {
         headerView.delegate = self
         headerView.prepare()
     
+        if wall.getCellType() == .video {
+            baseWallVideo.setup(buttons: buttons)
+        }
+    
         WallCellConfigurator.setupCell(cell: self, wall: wall, isExpanded: isExpanded)
         layoutIfNeeded()
     }
@@ -92,7 +121,7 @@ extension Wall_Cell_tp7: Wall_CellProtocol {
     }
     
     func getImagesView() -> [UIImageView] {
-       return [imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7]
+       return imageViews
     }
 
     func getLikeView() -> WallLike_View {
@@ -113,6 +142,16 @@ extension Wall_Cell_tp7: Wall_CellProtocol {
 }
 
 
+extension Wall_Cell_tp7: Video_CellProtocol {
+    
+    func play(url: URL, platformEnum: WallCellConstant.VideoPlatform) {
+        baseWallVideo.play(url: url, platformEnum: platformEnum)
+    }
+    
+    func showErr(err: String) {
+        baseWallVideo.showErr(err: err)
+    }
+}
 
 extension Wall_Cell_tp7: WallHeaderProtocolDelegate {
     func didPressExpand() {

@@ -170,6 +170,13 @@
             <connections>
                 <outlet property="hConHeaderView" destination="MDD-ax-ic8" id="Os3-BT-AUy"/>
                 <outlet property="headerView" destination="Ilu-nw-Nfz" id="yJA-qv-w63"/>
+                <outlet property="imageButton1" destination="ZYS-8z-cLh" id="Geb-D2-4bT"/>
+                <outlet property="imageButton2" destination="jgS-wP-wKj" id="jyd-HQ-Wjo"/>
+                <outlet property="imageButton3" destination="1jo-Jl-rPQ" id="Ldl-64-nxZ"/>
+                <outlet property="imageButton4" destination="tQg-b2-b1o" id="Fu3-BN-zMb"/>
+                <outlet property="imageButton5" destination="1Gl-01-dhw" id="7f4-hh-IK3"/>
+                <outlet property="imageButton6" destination="oqR-cJ-exh" id="5lU-1d-5ne"/>
+                <outlet property="imageContentView" destination="GyM-qO-K2y" id="oi2-QM-mxC"/>
                 <outlet property="imageView1" destination="RHU-as-KgE" id="Qx0-nb-ZIT"/>
                 <outlet property="imageView2" destination="fyW-ue-MIw" id="Zw9-5O-2cc"/>
                 <outlet property="imageView3" destination="R7F-LX-Qov" id="8vO-gF-dAK"/>

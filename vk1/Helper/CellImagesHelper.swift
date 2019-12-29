@@ -94,7 +94,6 @@ class CellImagesHelper {
         let maxColumn: CGFloat = 3
         let row = ceil(CGFloat(count) / maxColumn)
         let column = Int(ceil(CGFloat(count) / row))
-        print(abs((column * Int(row) - count)))
         let rem = Int(maxColumn) - abs((column * Int(row) - count))
         return (Int(row), column, rem == 3 ? 0 : rem)
     }

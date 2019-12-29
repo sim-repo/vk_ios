@@ -2,25 +2,42 @@ import UIKit
 import WebKit
 
 class Wall_Cell_tp2: UICollectionViewCell {
+    
     @IBOutlet weak var imageView1: UIImageView!
     @IBOutlet weak var imageView2: UIImageView!
     @IBOutlet weak var likeView: WallLike_View!
     @IBOutlet weak var headerView: WallHeader_View!
     @IBOutlet weak var hConHeaderView: NSLayoutConstraint!
+    
+    @IBOutlet weak var imageButton1: UIButton!
+    @IBOutlet weak var imageButton2: UIButton!
+    
+    @IBOutlet weak var imageContentView: UIView!
+    
     var indexPath: IndexPath!
     var presenter: PullWallPresenterProtocol!
     var isExpanded = false
     var delegate: WallCellProtocolDelegate?
     var preferedHeight: CGFloat = WallCellConstant.cellHeight
     var wall: WallModelProtocol!
+    lazy var buttons = [imageButton1!, imageButton2!]
+    lazy var imageViews = [imageView1!, imageView2!]
+    var baseWallVideo: BaseWallVideo = BaseWallVideo()
+    
     
     @IBAction func doPressImage1(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 0)
+        pressImage(imageIdx: 0)
     }
     
     @IBAction func doPressImage2(_ sender: Any) {
-        presenter.selectImage(indexPath: indexPath, imageIdx: 1)
+        pressImage(imageIdx: 1)
     }
+    
+    private func pressImage(imageIdx: Int){
+        baseWallVideo.pressImage(presenter: presenter, view: imageContentView, indexPath: indexPath, imageIdx: imageIdx)
+        presenter.selectImage(indexPath: indexPath, imageIdx: imageIdx)
+    }
+    
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         
@@ -36,6 +53,13 @@ class Wall_Cell_tp2: UICollectionViewCell {
         preferredLayoutAttributes.frame = adjustedFrame
         preferedHeight = adjustedFrame.size.height
         return preferredLayoutAttributes
+    }
+    
+    override func prepareForReuse() {
+        for imageView in imageViews {
+            imageView.image = UIImage(named: "placeholder")
+        }
+        baseWallVideo.prepareReuse(buttons: buttons)
     }
 }
 
@@ -56,6 +80,10 @@ extension Wall_Cell_tp2: Wall_CellProtocol {
         headerView.delegate = self
         headerView.prepare()
         
+        if wall.getCellType() == .video {
+            baseWallVideo.setup(buttons: buttons)
+        }
+        
         WallCellConfigurator.setupCell(cell: self, wall: wall, isExpanded: isExpanded)
         layoutIfNeeded()
     }
@@ -65,7 +93,7 @@ extension Wall_Cell_tp2: Wall_CellProtocol {
     }
     
     func getImagesView() -> [UIImageView] {
-        return [imageView1, imageView2]
+        return imageViews
     }
     
     func getLikeView() -> WallLike_View {
@@ -85,6 +113,17 @@ extension Wall_Cell_tp2: Wall_CellProtocol {
     }
 }
 
+
+extension Wall_Cell_tp2: Video_CellProtocol {
+    
+    func play(url: URL, platformEnum: WallCellConstant.VideoPlatform) {
+        baseWallVideo.play(url: url, platformEnum: platformEnum)
+    }
+    
+    func showErr(err: String) {
+        baseWallVideo.showErr(err: err)
+    }
+}
 
 extension Wall_Cell_tp2: WallHeaderProtocolDelegate {
     func didPressExpand() {

@@ -184,7 +184,6 @@ extension News_ViewController: PushPlainViewProtocol{
 extension News_ViewController: PushWallViewProtocol {
     
     func playVideo(_ url: URL, _ platformEnum: WallCellConstant.VideoPlatform, _ indexPath: IndexPath) {
-        
         if let cell = collectionView.cellForItem(at: indexPath) as? Video_CellProtocol {
             cell.play(url: url, platformEnum: platformEnum)
         }
@@ -235,7 +234,6 @@ extension News_ViewController: UICollectionViewDelegateFlowLayout {
                let cell = collectionView.cellForItem(at: indexPath) as? Wall_CellProtocol,
                let attr = collectionView.layoutAttributesForItem(at: indexPath) {
                     cell.preferredLayoutAttributesFitting(attr)
-                    print("getPreferedHeight : \(cell.getPreferedHeight())")
                     return CGSize(width: width, height: cell.getPreferedHeight())
                 }
             }

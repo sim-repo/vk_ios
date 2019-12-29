@@ -153,6 +153,12 @@
             <connections>
                 <outlet property="hConHeaderView" destination="zlj-0g-QK4" id="Cfv-hH-UPM"/>
                 <outlet property="headerView" destination="acu-SR-FyE" id="eX5-66-qZX"/>
+                <outlet property="imageButton1" destination="D6c-6D-2Mo" id="yI3-aD-jw5"/>
+                <outlet property="imageButton2" destination="dQX-Du-XCl" id="JNV-Ro-efx"/>
+                <outlet property="imageButton3" destination="Pvq-lv-B8o" id="dgs-p2-u6R"/>
+                <outlet property="imageButton4" destination="Gt8-nj-Uwy" id="0vC-RC-iuE"/>
+                <outlet property="imageButton5" destination="D28-UV-OcT" id="rNJ-A9-mw9"/>
+                <outlet property="imageContentView" destination="407-Mj-FJx" id="pCi-Fn-ltM"/>
                 <outlet property="imageView1" destination="hk5-Ma-A4b" id="nJc-VS-htb"/>
                 <outlet property="imageView2" destination="lK4-SS-ZCe" id="29Y-K6-mAs"/>
                 <outlet property="imageView3" destination="Ibd-ko-fKH" id="Jlf-YP-xHa"/>

@@ -104,6 +104,9 @@
             <connections>
                 <outlet property="hConHeaderView" destination="mQj-Ig-eqC" id="BFj-q8-8lv"/>
                 <outlet property="headerView" destination="bYh-Tl-s2X" id="Wfw-QU-7cl"/>
+                <outlet property="imageButton1" destination="ijN-tg-A3m" id="qSA-Ia-yxq"/>
+                <outlet property="imageButton2" destination="ETK-qA-coi" id="lNL-Ag-RPB"/>
+                <outlet property="imageContentView" destination="3v8-Nz-UQn" id="XzQ-Bl-0OO"/>
                 <outlet property="imageView1" destination="XUV-7o-4eJ" id="p6A-2n-dDw"/>
                 <outlet property="imageView2" destination="E3D-ec-6ZK" id="pO3-2I-wHM"/>
                 <outlet property="likeView" destination="bwU-zo-3xE" id="6bd-Js-AVT"/>
