@@ -10,6 +10,8 @@ class News_ViewController: UIViewController {
     var presenter: PullPlainPresenterProtocol!
     var waiter: SpinnerViewController?
     var selectedImageIdx: Int?
+    lazy var cellWidth = view.frame.size.width - constraintSpaceX.constant * 40
+    var cellHeights = [IndexPath: CGFloat]() // for prevent "jumping" scrolling
     
     
     override func viewDidLoad() {
@@ -94,6 +96,13 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
         didScrollEnd(indexPath)
         return cell
     }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cellHeights[indexPath] = cell.frame.size.height
+    }
+    
     
     private func getPullWallPresenterProtocol() -> PullWallPresenterProtocol? {
         return presenter as? PullWallPresenterProtocol
@@ -235,18 +244,17 @@ extension News_ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = view.frame.size.width - constraintSpaceX.constant * 40
         if let presenter = getPullWallPresenterProtocol() {
-           
             let isExpanded = presenter.isExpandedCell(indexPath: indexPath)
-            
             if isExpanded,
                let cell = collectionView.cellForItem(at: indexPath) as? Wall_CellProtocol,
                let attr = collectionView.layoutAttributesForItem(at: indexPath) {
                     cell.preferredLayoutAttributesFitting(attr)
-                    return CGSize(width: width, height: cell.getPreferedHeight())
+                    return CGSize(width: cellWidth, height: cell.getPreferedHeight())
                 }
             }
-            return CGSize(width: width, height: WallCellConstant.cellHeight)
+        
+            let height = cellHeights[indexPath]
+            return CGSize(width: cellWidth, height: height ?? WallCellConstant.cellHeight)
         }
 }

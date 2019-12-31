@@ -8,7 +8,7 @@ class WallCellConfigurator {
     
     static func setupCell(cell: Wall_CellProtocol, wall: WallModelProtocol, isExpanded: Bool) {
         
-
+        
         
         // wall header block >>
         
@@ -46,8 +46,8 @@ class WallCellConfigurator {
         let images = cell.getImagesView()
         for (idx, url) in URLs.enumerated() {
             if idx < 9 {
-
-               images[idx].kf.setImage(with: url)
+                
+                images[idx].kf.setImage(with: url)
             }
         }
         
@@ -57,10 +57,10 @@ class WallCellConfigurator {
         cell.getLikeView().shareCount.text = "\(wall.getShareCount())"
         cell.getLikeView().eyeCount.text = "\(wall.getEyeCount())"
     }
-
+    
     
     static func configNormalCell(cell: Wall_CellProtocol, wall: WallModelProtocol){
-  
+        
         cell.getHConHeaderView().isActive = true
         cell.getHeaderView().hConRepostAuthorContentView.isActive = true
         cell.getHeaderView().hConRepostTitleTextView.isActive = true
@@ -77,7 +77,7 @@ class WallCellConfigurator {
         
         // search and hide empty
         var negativeHCon: CGFloat = 0
-
+        
         if wall.getMyAvaURL() == nil {
             cell.getHeaderView().hConRepostAuthorContentView.constant = 0
             negativeHCon += WallCellConstant.quarterHeight
