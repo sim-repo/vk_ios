@@ -28,7 +28,7 @@ class WallHeader_View : UIView{
     
     @IBOutlet weak var expandedButton: UIButton!
     
-    var delegate: WallHeaderProtocolDelegate?
+    weak var delegate: WallHeaderProtocolDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

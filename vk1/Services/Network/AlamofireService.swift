@@ -162,26 +162,29 @@ class AlamofireService {
     ){
         
         AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
-            switch response.result {
-            case .success(let json):
-                let arr:[News]? = NewsParser.parseJson(json, ownOffset, vkOffset)
-                
-                if let arr = arr {
-                    if arr.isEmpty {
-                        let err = NSError(domain: "AlamofireService: newsRequest(): response data is null", code: 123, userInfo: nil)
-                        onError(err)
-                    } else {
-                        if let offset = NewsParser.parseNextOffset(json) {
-                            offsetCompletion?(offset)
-                        }
-                        NET_LDELAY_THREAD {
-                            onSuccess(arr)
+            
+            SYNC_THREAD {
+                switch response.result {
+                case .success(let json):
+                    let arr:[News]? = NewsParser.parseJson(json, ownOffset, vkOffset)
+                    
+                    if let arr = arr {
+                        if arr.isEmpty {
+                            let err = NSError(domain: "AlamofireService: newsRequest(): response data is null", code: 123, userInfo: nil)
+                            onError(err)
+                        } else {
+                            if let offset = NewsParser.parseNextOffset(json) {
+                                offsetCompletion?(offset)
+                            }
+                            //NET_LDELAY_THREAD {
+                                onSuccess(arr)
+                            //}
                         }
                     }
+                case .failure(let err):
+                    let error = err as NSError
+                    onError(error)
                 }
-            case .failure(let err):
-                let error = err as NSError
-                onError(error)
             }
         }
     }

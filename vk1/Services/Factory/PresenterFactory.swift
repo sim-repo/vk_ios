@@ -80,7 +80,9 @@ class PresenterFactory {
         } else {
             presenter?.setView(vc: vc)
         }
-        SyncMgt.shared.viewDidLoad(presenterEnum: moduleEnum)
+        SYNC_THREAD {
+            SyncMgt.shared.viewDidLoad(presenterEnum: moduleEnum)
+        }
         return presenter
     }
     

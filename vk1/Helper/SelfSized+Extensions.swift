@@ -29,7 +29,7 @@ extension UITextView {
         return frame.size
     }
     
-    func numberOfLines() -> Int{
+    func numberOfLines() -> Int {
         if let fontUnwrapped = self.font{
             return Int(self.actualSize().height / fontUnwrapped.lineHeight)
         }

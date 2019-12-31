@@ -54,4 +54,12 @@ extension NewsPresenter: PullWallPresenterProtocol {
     func isExpandedCell(indexPath: IndexPath) -> Bool {
         return expandedIndexPath == indexPath
     }
+    
+    func disableExpanding(indexPath: IndexPath) {
+        if let expandedIdx = expandedIndexPath {
+            if abs(expandedIdx.row - indexPath.row) > 4 {
+                expandedIndexPath = nil
+            }
+        }
+    }
 }

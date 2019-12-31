@@ -24,45 +24,36 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     }
     
     final func setView(vc: PushViewProtocol) {
-        PRESENTER_UI_THREAD { [weak self] in
-            guard let self = self else { return }
-            self.validateView(vc)
-            self.view = vc as? PushPlainViewProtocol
-            if self.dataSourceIsEmpty() {
-                self.waitIndicator(start: true)
-            } else {
-                self.viewReloadData()
-            }
+        validateView(vc)
+        view = vc as? PushPlainViewProtocol
+        if dataSourceIsEmpty() {
+            waitIndicator(start: true)
+        } else {
+            viewReloadData()
         }
     }
     
     final func setFromPersistent(models: [DecodableProtocol]) {
-        PRESENTER_UI_THREAD { [weak self] in
-            guard let self = self else { return }
-            let last = self.numberOfRowsInSection()
-            self.log("setFromPersistent()", level: .info)
-            self.appendDataSource(dirtyData: models, didLoadedFrom: .disk)
-            self.waitIndicator(start: false)
-            
-            self.pageInProgess = false
-            //pagination:
-            guard let _ = self as? PaginationPresenterProtocol
-                  else { return }
-            
-            let slice = self.dataSource[last...]
-            let endIndex = slice.endIndex-1 < 0 ? 0: slice.endIndex-1
-            //no guarantee new data has appended:
-            guard endIndex > slice.startIndex else { return }
-            self.view?.insertItems(startIdx: slice.startIndex, endIdx: endIndex)
-            
-        }
+        let last = self.numberOfRowsInSection()
+        log("setFromPersistent()", level: .info)
+        appendDataSource(dirtyData: models, didLoadedFrom: .disk)
+        waitIndicator(start: false)
+        
+        pageInProgess = false
+        //pagination:
+        guard let _ = self as? PaginationPresenterProtocol
+              else { return }
+        
+        let slice = dataSource[last...]
+        let endIndex = slice.endIndex-1 < 0 ? 0: slice.endIndex-1
+        //no guarantee new data has appended:
+        guard endIndex > slice.startIndex else { return }
+        view?.insertItems(startIdx: slice.startIndex, endIdx: endIndex)
     }
     
     func setSyncProgress(curr: Int, sum: Int) {
-        PRESENTER_UI_THREAD { [weak self] in
-            if curr/sum * 100 % NetworkConstant.intervalViewReload == 0 {
-                self?.viewReloadData()
-            }
+        if curr/sum * 100 % NetworkConstant.intervalViewReload == 0 {
+            viewReloadData()
         }
     }
     
@@ -71,7 +62,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
     // when response has got from network
     final func didSuccessNetworkResponse(completion: onSuccessResponse_SyncCompletion? = nil) -> onSuccess_PresenterCompletion {
         let outerCompletion: onSuccess_PresenterCompletion = {[weak self] (arr: [DecodableProtocol]) in
-            PRESENTER_UI_THREAD {
+        
                 guard let self = self else { return }
                 let last = self.numberOfRowsInSection()
                 
@@ -91,29 +82,26 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                 guard endIndex >= slice.startIndex else { return }
                 self.view?.insertItems(startIdx: slice.startIndex, endIdx: endIndex)
             }
-        }
         return outerCompletion
     }
     
     // when all responses have got from network
     final func didSuccessNetworkFinish() {
-        PRESENTER_UI_THREAD { [weak self] in
-            guard let self = self else { return }
-            self.log("didSuccessNetworkFinish()", level: .info)
-            guard let child = self as? ModelOwnerPresenterProtocol
-                       else {
-                            self.log("didSuccessNetworkFinish(): self is not implemented ModelOwnerPresenterProtocol", level: .error)
-                            return
-                       }
-            if child.netFinishViewReload {
-                self.viewReloadData()
-            }
-            self.pageInProgess = false
+
+        log("didSuccessNetworkFinish()", level: .info)
+        guard let child = self as? ModelOwnerPresenterProtocol
+                   else {
+                        log("didSuccessNetworkFinish(): self is not implemented ModelOwnerPresenterProtocol", level: .error)
+                        return
+                   }
+        if child.netFinishViewReload {
+            viewReloadData()
         }
+        pageInProgess = false
     }
     
     final func didErrorNetworkFinish() {
-        self.pageInProgess = false
+        pageInProgess = false
     }
     
     

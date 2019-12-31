@@ -138,78 +138,88 @@ extension MyGroupDetail_ViewController: PushPlainViewProtocol{
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?) {
         
-        if moduleEnum == .my_group_detail {
-            waiter.add(vcView: headerView)
-        }
-        if moduleEnum == .my_group_wall {
-            waiter.add(vcView: collectionView)
+        PRESENTER_UI_THREAD { [weak self] in
+            guard let self = self else { return }
+            
+            if moduleEnum == .my_group_detail {
+                self.waiter.add(vcView: self.headerView)
+            }
+            if moduleEnum == .my_group_wall {
+                self.waiter.add(vcView: self.collectionView)
+            }
         }
     }
     
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?) {
-        
-        if moduleEnum == .my_group_detail {
-            waiter.stop(vcView: headerView)
-        }
-        
-        if moduleEnum == .my_group_wall {
-            waiter.stop(vcView: collectionView)
+        PRESENTER_UI_THREAD { [weak self] in
+            guard let self = self else { return }
+                
+            if moduleEnum == .my_group_detail {
+                self.waiter.stop(vcView: self.headerView)
+            }
+            
+            if moduleEnum == .my_group_wall {
+                self.waiter.stop(vcView: self.collectionView)
+            }
         }
     }
     
     func viewReloadData(moduleEnum: ModuleEnum) {
         
-        // MyGroup Detail:
-        if moduleEnum == .my_group_detail {
-            
-            guard let group = presenter.getData(indexPath: nil) as? DetailGroup
-                else {
-                    log("setup(): datasource is null", level: .error)
-                    return }
-            navigationItem.title = group.name
-            if group.coverURL400 == nil {
-                coverImageView.kf.setImage(with: group.avaURL200)
-            } else {
-                logoImageView.kf.setImage(with: group.avaURL200)
-                coverImageView.kf.setImage(with: group.coverURL400)
+        PRESENTER_UI_THREAD { [weak self] in
+        guard let self = self else { return }
+            // MyGroup Detail:
+            if moduleEnum == .my_group_detail {
+                
+                guard let group = self.presenter.getData(indexPath: nil) as? DetailGroup
+                    else {
+                        self.log("setup(): datasource is null", level: .error)
+                        return }
+                self.navigationItem.title = group.name
+                if group.coverURL400 == nil {
+                    self.coverImageView.kf.setImage(with: group.avaURL200)
+                } else {
+                    self.logoImageView.kf.setImage(with: group.avaURL200)
+                    self.coverImageView.kf.setImage(with: group.coverURL400)
+                }
+                
+                
+                self.descTextView?.text = group.desc
+                //resize UITEXTVIEW:
+                self.descOriginalHeight = self.descTextView.actualSize().height
+                self.constraintDescHeight.constant = self.descOriginalHeight
+                
+                
+                let str = "[members]: " + group.membersCount.toString() +
+                    "\n[photos]: " + group.photosCounter.toString() +
+                    "\n[albums]: " + group.albumsCounter.toString() +
+                    "\n[topics]: " + group.topicsCounter.toString() +
+                    "\n[videos]: " + group.videosCounter.toString() +
+                    "\n[market]: " + group.marketCounter.toString() +
+                    "\n[closed]: " + group.isClosed.toString() +
+                    "\n[deactivated]: " + group.isDeactivated.toString()
+                
+                
+                //resize UILABEL:
+                self.counterLabel.text = str // set
+                self.counterLabel.sizeToFit()
+                self.constraintCounterHeight.constant = self.counterLabel.frame.size.height
+                self.counterLabel.text = "" // reset
+                self.counterLabel.setTextWithTypeAnimation(typedText: str, characterDelay: 10)
+                
+                //resize UIVIEW:
+                self.headerViewOriginalHeight = self.constraintDescHeight.constant + self.constraintCounterHeight.constant + self.constraintCoverHeight.constant + 16
+                self.conHeightHeader.constant = self.headerViewOriginalHeight
+                
+                self.stopWaitIndicator(moduleEnum)
             }
             
-            
-            descTextView?.text = group.desc
-            //resize UITEXTVIEW:
-            descOriginalHeight = descTextView.actualSize().height
-            constraintDescHeight.constant = descOriginalHeight
-            
-            
-            let str = "[members]: " + group.membersCount.toString() +
-                "\n[photos]: " + group.photosCounter.toString() +
-                "\n[albums]: " + group.albumsCounter.toString() +
-                "\n[topics]: " + group.topicsCounter.toString() +
-                "\n[videos]: " + group.videosCounter.toString() +
-                "\n[market]: " + group.marketCounter.toString() +
-                "\n[closed]: " + group.isClosed.toString() +
-                "\n[deactivated]: " + group.isDeactivated.toString()
-            
-            
-            //resize UILABEL:
-            counterLabel.text = str // set
-            counterLabel.sizeToFit()
-            constraintCounterHeight.constant = counterLabel.frame.size.height
-            counterLabel.text = "" // reset
-            counterLabel.setTextWithTypeAnimation(typedText: str, characterDelay: 10)
-            
-            //resize UIVIEW:
-            headerViewOriginalHeight = self.constraintDescHeight.constant + constraintCounterHeight.constant + constraintCoverHeight.constant + 16
-            conHeightHeader.constant = headerViewOriginalHeight
-            
-            stopWaitIndicator(moduleEnum)
-        }
-        
-        // MyGroup Wall:
-        if moduleEnum == .my_group_wall {
-            if presenter.getSubPlainPresenter()!.numberOfRowsInSection() > 0 {
-                stopWaitIndicator(moduleEnum)
-                collectionView.reloadData()
+            // MyGroup Wall:
+            if moduleEnum == .my_group_wall {
+                if self.presenter.getSubPlainPresenter()!.numberOfRowsInSection() > 0 {
+                    self.stopWaitIndicator(moduleEnum)
+                    self.collectionView.reloadData()
+                }
             }
         }
     }

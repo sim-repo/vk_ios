@@ -95,10 +95,14 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
             log("didEndScroll(): pageInProgress == false", level: .info)
             return
         }
-        pageInProgess = true
-        guard let _ = self as? PaginationPresenterProtocol else { return }
-        log("didEndScroll(): started", level: .info)
-        SyncMgt.shared.doSync(moduleEnum: moduleEnum)
+        
+        SYNC_THREAD { [weak self] in
+            guard let self = self else { return }
+            self.pageInProgess = true
+            guard let _ = self as? PaginationPresenterProtocol else { return }
+            self.log("didEndScroll(): started", level: .info)
+            SyncMgt.shared.doSync(moduleEnum: self.moduleEnum)
+        }
     }
     
     

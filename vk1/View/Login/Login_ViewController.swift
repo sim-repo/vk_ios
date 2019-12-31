@@ -229,7 +229,10 @@ extension Login_ViewController: WKNavigationDelegate {
 extension Login_ViewController: PushPlainViewProtocol {
     
     func runPerformSegue(segueId: String, _ model: ModelProtocol? = nil) {
-        performSegue(withIdentifier: segueId, sender: nil)
+        PRESENTER_UI_THREAD { [weak self] in
+            guard let self = self else { return }
+            self.performSegue(withIdentifier: segueId, sender: nil)
+        }
     }
     
     func viewReloadData(moduleEnum: ModuleEnum) {

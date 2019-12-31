@@ -116,16 +116,25 @@ extension Group_ViewController: PushPlainViewProtocol{
     
     
     func viewReloadData(moduleEnum: ModuleEnum) {
-        self.collectionView.reloadData()
+        PRESENTER_UI_THREAD { [weak self] in
+            guard let self = self else { return }
+            self.collectionView.reloadData()
+        }
     }
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?){
-        waiter = SpinnerViewController(vc: self)
-        waiter?.add(vcView: view)
+        PRESENTER_UI_THREAD { [weak self] in
+            guard let self = self else { return }
+            self.waiter = SpinnerViewController(vc: self)
+            self.waiter?.add(vcView: self.view)
+        }
     }
     
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?){
-        waiter?.stop(vcView: view)
+        PRESENTER_UI_THREAD { [weak self] in
+            guard let self = self else { return }
+            self.waiter?.stop(vcView: self.view)
+        }
     }
     
     func insertItems(startIdx: Int, endIdx: Int) {
@@ -135,9 +144,12 @@ extension Group_ViewController: PushPlainViewProtocol{
             indexes.append(idx)
         }
         
-        collectionView.performBatchUpdates({ () -> Void in
-            collectionView.insertItems(at: indexes)
-        }, completion: nil)
+        PRESENTER_UI_THREAD { [weak self] in
+                guard let self = self else { return }
+                self.collectionView.performBatchUpdates({ () -> Void in
+                    self.collectionView.insertItems(at: indexes)
+                }, completion: nil)
+        }
     }
     
 }

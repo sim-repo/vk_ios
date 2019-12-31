@@ -1,6 +1,6 @@
 import UIKit
 import Firebase
-
+import Kingfisher
 
 
 @UIApplicationMain
@@ -10,6 +10,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        
+        KingfisherConfigurator.setup()
         
         // color themes:
         ColorSystemHelper.setupDark()
@@ -30,5 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              completionHandler(hasNewData ? .newData : .noData)
          }
      }
+    
+
+
 }
+
 

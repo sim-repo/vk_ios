@@ -24,4 +24,8 @@ extension FriendPresenter: PullWallPresenterProtocol {
     func isExpandedCell(indexPath: IndexPath) -> Bool {
         return false
     }
+    
+    func disableExpanding(indexPath: IndexPath) {
+        
+    }
 }

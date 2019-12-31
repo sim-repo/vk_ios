@@ -68,6 +68,11 @@ func THREAD_SAFETY(_ block: @escaping (() -> Void)) {
 
 //NETWORK LAYER:
 
+func SYNC_THREAD(_ block: @escaping (() -> Void)) {
+    DispatchQueue.global(qos: .userInitiated).async(execute: block)
+}
+
+
 func NET_THREAD(_ block: @escaping (() -> Void)) {
     DispatchQueue.global(qos: .background).async(execute: block)
 }
