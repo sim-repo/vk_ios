@@ -91,17 +91,19 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
     
     
     final func didEndScroll(){
-        guard !pageInProgess else {
-            log("didEndScroll(): pageInProgress == false", level: .info)
-            return
-        }
-        
-        SYNC_THREAD { [weak self] in
+        SEQUENCE_THREAD {  [weak self] in
             guard let self = self else { return }
-            self.pageInProgess = true
-            guard let _ = self as? PaginationPresenterProtocol else { return }
-            self.log("didEndScroll(): started", level: .info)
-            SyncMgt.shared.doSync(moduleEnum: self.moduleEnum)
+            guard !self.pageInProgess else {
+                self.log("didEndScroll(): pageInProgress == false", level: .info)
+                return
+            }
+            
+           // SYNC_THREAD { [weak self] in
+                
+                self.pageInProgess = true
+                guard let _ = self as? PaginationPresenterProtocol else { return }
+                self.log("didEndScroll(): started", level: .info)
+                SyncMgt.shared.doSync(moduleEnum: self.moduleEnum)
         }
     }
     

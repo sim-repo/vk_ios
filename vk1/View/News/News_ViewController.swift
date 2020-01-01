@@ -55,13 +55,15 @@ class News_ViewController: UIViewController {
     }
     
     private func log(_ msg: String, level: Logger.LogLevelEnum) {
-        switch level {
-        case .info:
-            Logger.console(msg: "News_ViewController: " + msg, printEnum: .pagination)
-        case .warning:
-            Logger.catchWarning(msg: "News_ViewController: " + msg)
-        case .error:
-            Logger.catchError(msg: "News_ViewController: " + msg)
+        SEQUENCE_THREAD {
+            switch level {
+            case .info:
+                Logger.console(msg: "News_ViewController: " + msg, printEnum: .pagination)
+            case .warning:
+                Logger.catchWarning(msg: "News_ViewController: " + msg)
+            case .error:
+                Logger.catchError(msg: "News_ViewController: " + msg)
+            }
         }
     }
 }
@@ -93,7 +95,9 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
         if let name = WallCellConstant.cellByCode[news.imagesPlanCode] {
             cell = cellConfigure(name, indexPath, news)
         }
+        
         didScrollEnd(indexPath)
+        
         return cell
     }
     
@@ -119,10 +123,13 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     
     private func didScrollEnd(_ indexPath: IndexPath) {
-        log("didScrollEnd(): \(indexPath.row) >= \(presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch)", level: .info)
-        
-        if indexPath.row >= presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch {
-            presenter.didEndScroll()
+        SEQUENCE_THREAD { [weak self] in
+            guard let self = self else { return }
+            self.log("didScrollEnd(): \(indexPath.row) >= \(self.presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch)", level: .info)
+            
+            if indexPath.row >= self.presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch {
+                self.presenter.didEndScroll()
+            }
         }
     }
 }

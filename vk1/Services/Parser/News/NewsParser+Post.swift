@@ -249,9 +249,9 @@ extension NewsParser {
     }
     
     private static func searchInImageItems2(_ jsonItem: JSON, tag1: String) -> JSON? {
-        let res = jsonItem[tag1].arrayValue.last
-//        let res = jsonItem[tag1].arrayValue.first(where: { (json) -> Bool in
-//            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) /*&& json["height"].intValue <= 400*/})
+//        let res = jsonItem[tag1].arrayValue.last
+        let res = jsonItem[tag1].arrayValue.first(where: { (json) -> Bool in
+            json["height"].intValue >= Int(WallCellConstant.mediaBlockHeight) /*&& json["height"].intValue <= 400*/})
         return res
     }
     

@@ -59,7 +59,7 @@
                                     <constraint firstItem="ijN-tg-A3m" firstAttribute="leading" secondItem="XUV-7o-4eJ" secondAttribute="leading" id="PWP-K2-eIN"/>
                                     <constraint firstItem="ijN-tg-A3m" firstAttribute="top" secondItem="XUV-7o-4eJ" secondAttribute="top" id="Ra4-1U-wtc"/>
                                     <constraint firstItem="ETK-qA-coi" firstAttribute="top" secondItem="E3D-ec-6ZK" secondAttribute="top" id="XI7-vU-V1b"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="600" id="ZY4-K0-RPa"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="600" id="ZY4-K0-RPa"/>
                                     <constraint firstAttribute="bottom" secondItem="E3D-ec-6ZK" secondAttribute="bottom" id="ZaI-5U-G0b"/>
                                     <constraint firstAttribute="trailing" secondItem="E3D-ec-6ZK" secondAttribute="trailing" id="cmg-3u-ai9"/>
                                     <constraint firstItem="ETK-qA-coi" firstAttribute="leading" secondItem="E3D-ec-6ZK" secondAttribute="leading" id="eh9-AB-1Vg"/>

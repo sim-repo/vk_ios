@@ -30,7 +30,7 @@
                                 <rect key="frame" x="4" y="120" width="398" height="289"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="280" id="UBp-5F-d63"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="380" id="tJY-bF-lKB"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="380" id="tJY-bF-lKB"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5h-cY-fJZ" userLabel="ImageButton1">

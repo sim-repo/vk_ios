@@ -59,7 +59,7 @@ func PRESENTER_UI_THREAD(_ block: @escaping (() -> Void)) {
 
 private let concurrentQueue = DispatchQueue(label: "", attributes: .concurrent)
 
-func THREAD_SAFETY(_ block: @escaping (() -> Void)) {
+func SEQUENCE_THREAD(_ block: @escaping (() -> Void)) {
     concurrentQueue.async(flags: .barrier, execute: block)
 }
 
