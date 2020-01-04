@@ -75,6 +75,7 @@ class Wall_Cell_tp4: BaseWall {
     }
     
     @IBAction func doExpand(_ sender: Any) {
+        didPressExpand()
     }
     
     override func setupOutlets(){

@@ -62,6 +62,7 @@ class Wall_Cell_tp2: BaseWall {
     
     
     @IBAction func doExpand(_ sender: Any) {
+        didPressExpand()
     }
     
     

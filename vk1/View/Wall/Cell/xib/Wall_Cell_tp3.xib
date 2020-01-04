@@ -83,7 +83,7 @@
                                     <constraint firstAttribute="height" constant="35" id="5ak-Ac-48l"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysx-Ae-cHl" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysx-Ae-cHl" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="501" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -159,6 +159,7 @@
                                     <constraint firstItem="LyA-7P-oid" firstAttribute="top" secondItem="FcK-PF-ueO" secondAttribute="top" id="jqn-3z-xCK"/>
                                     <constraint firstItem="eNy-VO-Niw" firstAttribute="leading" secondItem="klf-nZ-NfF" secondAttribute="leading" id="kiW-8O-7Wc"/>
                                     <constraint firstItem="FcK-PF-ueO" firstAttribute="width" secondItem="eNy-VO-Niw" secondAttribute="width" id="q9Q-hD-ZRK"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="qsu-sy-epW"/>
                                     <constraint firstItem="LyA-7P-oid" firstAttribute="leading" secondItem="FcK-PF-ueO" secondAttribute="leading" id="qtk-tG-VxE"/>
                                     <constraint firstItem="bqF-EM-a7K" firstAttribute="width" secondItem="klf-nZ-NfF" secondAttribute="width" id="uHP-cd-7Yh"/>
                                     <constraint firstItem="paa-06-JGA" firstAttribute="height" secondItem="bqF-EM-a7K" secondAttribute="height" id="wr2-Av-LPc"/>

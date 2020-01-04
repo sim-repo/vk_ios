@@ -83,7 +83,7 @@
                                     <constraint firstAttribute="height" constant="35" id="U8Z-1c-Yoz"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZG-cd-3ZJ" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZG-cd-3ZJ" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="620" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -170,6 +170,7 @@
                                     <constraint firstAttribute="trailing" secondItem="XdG-BR-hN2" secondAttribute="trailing" id="4vb-ja-RgH"/>
                                     <constraint firstItem="tQg-b2-b1o" firstAttribute="width" secondItem="bvI-BR-sgn" secondAttribute="width" id="6la-EH-tVi"/>
                                     <constraint firstItem="oqR-cJ-exh" firstAttribute="width" secondItem="XdG-BR-hN2" secondAttribute="width" id="76o-ho-Pl7"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="7Zb-Ql-mPI"/>
                                     <constraint firstItem="tQg-b2-b1o" firstAttribute="leading" secondItem="bvI-BR-sgn" secondAttribute="leading" id="8Oz-lf-7wt"/>
                                     <constraint firstItem="1jo-Jl-rPQ" firstAttribute="leading" secondItem="R7F-LX-Qov" secondAttribute="leading" id="8wT-MG-ZyV"/>
                                     <constraint firstItem="XdG-BR-hN2" firstAttribute="top" secondItem="R7F-LX-Qov" secondAttribute="bottom" constant="4" id="CWN-i0-ERL"/>

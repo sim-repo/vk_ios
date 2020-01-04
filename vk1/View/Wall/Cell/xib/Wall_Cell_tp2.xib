@@ -83,7 +83,7 @@
                                     <constraint firstAttribute="height" constant="35" id="Fdt-Y3-7AV"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0z-O2-dGW" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0z-O2-dGW" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="529" height="14.5"/>
                                 <color key="backgroundColor" red="0.29633097590000002" green="0.072775813019999996" blue="0.65515942260000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -141,6 +141,7 @@
                                     <constraint firstItem="ETK-qA-coi" firstAttribute="top" secondItem="E3D-ec-6ZK" secondAttribute="top" id="XI7-vU-V1b"/>
                                     <constraint firstAttribute="bottom" secondItem="E3D-ec-6ZK" secondAttribute="bottom" id="ZaI-5U-G0b"/>
                                     <constraint firstAttribute="trailing" secondItem="E3D-ec-6ZK" secondAttribute="trailing" id="cmg-3u-ai9"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="d6y-U7-RKP"/>
                                     <constraint firstItem="ETK-qA-coi" firstAttribute="leading" secondItem="E3D-ec-6ZK" secondAttribute="leading" id="eh9-AB-1Vg"/>
                                     <constraint firstItem="ETK-qA-coi" firstAttribute="height" secondItem="E3D-ec-6ZK" secondAttribute="height" id="jQT-Of-XnE"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="280" id="qto-uJ-pAb"/>

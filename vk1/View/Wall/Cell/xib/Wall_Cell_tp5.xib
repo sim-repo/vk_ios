@@ -83,7 +83,7 @@
                                     <constraint firstAttribute="height" constant="35" id="FKT-r9-uQ5"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETJ-nB-zTp" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETJ-nB-zTp" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="620" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -186,6 +186,7 @@
                                     <constraint firstItem="AFX-j5-SAl" firstAttribute="height" secondItem="Ibd-ko-fKH" secondAttribute="height" id="md0-a7-3ZI"/>
                                     <constraint firstItem="Ibd-ko-fKH" firstAttribute="leading" secondItem="lK4-SS-ZCe" secondAttribute="trailing" constant="4" id="msO-Kz-NzM"/>
                                     <constraint firstItem="qBn-cQ-6oz" firstAttribute="leading" secondItem="407-Mj-FJx" secondAttribute="leading" id="oIH-Q9-2YN"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="rNm-qo-ZJJ"/>
                                     <constraint firstItem="D6c-6D-2Mo" firstAttribute="width" secondItem="hk5-Ma-A4b" secondAttribute="width" id="rep-Oy-qNY"/>
                                     <constraint firstItem="D28-UV-OcT" firstAttribute="leading" secondItem="qBn-cQ-6oz" secondAttribute="leading" id="sFZ-Df-uJA"/>
                                     <constraint firstItem="hk5-Ma-A4b" firstAttribute="height" secondItem="407-Mj-FJx" secondAttribute="height" multiplier="0.25" id="sWI-3F-hT7"/>

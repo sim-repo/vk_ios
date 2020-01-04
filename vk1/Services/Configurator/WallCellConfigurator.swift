@@ -8,8 +8,7 @@ class WallCellConfigurator {
     
     static func setupCell(cell: Wall_CellProtocol, wall: WallModelProtocol, isExpanded: Bool) {
         
-        
-
+    
         // reposter
         if let name = wall.getMyName(),
             name.count > 0 {
@@ -30,6 +29,9 @@ class WallCellConfigurator {
             cell.getAuthorHeightCon().constant = 35
             cell.getAuthorName().text = wall.getOrigName()
             cell.getAuthorDate().text = convertUnixTime(unixTime: wall.getOrigPostDate())
+            if cell.getAuthorDate().text == "Jan 4, 2020 at 12:31:00 PM" {
+                print("A")
+            }
             cell.getAuthorAva().kf.setImage(with: wall.getOrigAvaURL())
         } else {
             cell.getAuthorHeightCon().constant = 0
@@ -71,16 +73,7 @@ class WallCellConfigurator {
         cell.getLikeView().eyeCount.text = "\(wall.getEyeCount())"
     }
     
-    
-    static func configNormalCell(cell: Wall_CellProtocol, wall: WallModelProtocol){
-
-    }
-    
     static func expandCell(cell: Wall_CellProtocol, wall: WallModelProtocol, isExpanded: Bool) {
         cell.getAuthorPostMsg().text = wall.getOrigTitle()
-    }
-    
-    static func calcHeaderHeight(_ cell: Wall_CellProtocol, _ wall: WallModelProtocol) -> CGFloat {
-        return 0.0
     }
 }

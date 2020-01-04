@@ -90,12 +90,6 @@ extension NewsParser {
             postHeader.name = g.name
             postHeader.title = jsonItem["text"].stringValue
             postHeader.unixTime = jsonItem["date"].doubleValue
-            
-            if postHeader.title == "Подборка обучающих видео на английском языке👇🏻" {
-                print("A")
-            }
-            
-            
             return postHeader
         }
         
@@ -103,12 +97,6 @@ extension NewsParser {
             postHeader.avaURL = f.avaURL100
             postHeader.name = f.firstName + " "+f.lastName
             postHeader.title = jsonItem["text"].stringValue
-            
-            if postHeader.title == "Подборка обучающих видео на английском языке👇🏻" {
-                print("A")
-            }
-            
-            
             postHeader.unixTime = jsonItem["date"].doubleValue
             return postHeader
         }

@@ -83,7 +83,7 @@
                                     <constraint firstAttribute="height" constant="35" id="dpV-K4-84w"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFL-us-QAd" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFL-us-QAd" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="620" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -189,6 +189,7 @@
                                     <constraint firstItem="JCg-x9-88R" firstAttribute="top" secondItem="ebw-SK-OFk" secondAttribute="top" id="8DO-yX-bal"/>
                                     <constraint firstItem="B1I-E1-VBh" firstAttribute="top" secondItem="uzp-MW-Q6L" secondAttribute="top" id="8VB-av-MQb"/>
                                     <constraint firstItem="lcR-UB-5LH" firstAttribute="width" secondItem="J8p-5x-EPq" secondAttribute="width" id="9DG-2i-Yr6"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="A5F-38-NU3"/>
                                     <constraint firstItem="uzp-MW-Q6L" firstAttribute="height" secondItem="IaF-7h-8LA" secondAttribute="height" id="BEo-lG-GU8"/>
                                     <constraint firstItem="lcR-UB-5LH" firstAttribute="leading" secondItem="J8p-5x-EPq" secondAttribute="leading" id="BO8-CW-GvJ"/>
                                     <constraint firstItem="hdl-a8-EyS" firstAttribute="width" secondItem="0tq-Fa-nVG" secondAttribute="width" id="COI-Aw-mvd"/>

@@ -83,7 +83,7 @@
                                     <constraint firstAttribute="height" constant="35" id="KiM-Z0-qj4"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdB-8f-Mo4" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdB-8f-Mo4" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="620" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -215,6 +215,7 @@
                                     <constraint firstItem="dmV-5z-gMm" firstAttribute="height" secondItem="3eo-RE-jlA" secondAttribute="height" id="Mwa-lf-v7g"/>
                                     <constraint firstItem="279-X3-yS3" firstAttribute="width" secondItem="0nh-RE-44n" secondAttribute="width" id="N1w-nD-S8y"/>
                                     <constraint firstItem="279-X3-yS3" firstAttribute="leading" secondItem="0nh-RE-44n" secondAttribute="trailing" constant="4" id="OoA-i7-5cz"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="OvS-tl-WWc"/>
                                     <constraint firstItem="JFV-gh-1j4" firstAttribute="width" secondItem="0nh-RE-44n" secondAttribute="width" id="P6T-5T-b1I"/>
                                     <constraint firstItem="oTT-Xg-zis" firstAttribute="width" secondItem="Kpy-5e-25T" secondAttribute="width" id="S7P-f3-YWQ"/>
                                     <constraint firstItem="kCn-wF-1DG" firstAttribute="top" secondItem="him-qk-K7t" secondAttribute="top" id="SnF-t4-cG1"/>

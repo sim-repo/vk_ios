@@ -82,7 +82,7 @@
                                     <constraint firstAttribute="height" constant="35" id="Uhv-bF-Ax1"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuO-4h-DZP" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuO-4h-DZP" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="400" height="14.5"/>
                                 <color key="backgroundColor" red="0.29633097590000002" green="0.072775813019999996" blue="0.65515942260000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,6 +133,7 @@
                                     <constraint firstItem="qtE-xg-1y7" firstAttribute="centerX" secondItem="WrY-Op-9X2" secondAttribute="centerX" id="UpV-Ce-e5d"/>
                                     <constraint firstItem="qtE-xg-1y7" firstAttribute="width" secondItem="WrY-Op-9X2" secondAttribute="width" id="bBH-vY-6LT"/>
                                     <constraint firstItem="p0p-6r-6gN" firstAttribute="width" secondItem="WrY-Op-9X2" secondAttribute="width" id="nFv-IQ-hib"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="410" id="qBs-x7-rWT"/>
                                     <constraint firstItem="p0p-6r-6gN" firstAttribute="height" secondItem="WrY-Op-9X2" secondAttribute="height" id="qfL-IX-2yh"/>
                                     <constraint firstItem="qtE-xg-1y7" firstAttribute="height" secondItem="WrY-Op-9X2" secondAttribute="height" id="zJc-m0-8wP"/>
                                 </constraints>
