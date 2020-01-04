@@ -25,6 +25,8 @@ class Wall_Cell_tp6: BaseWall {
     lazy var imageViews = [imageView1!,imageView2!,imageView3!,imageView4!,imageView5!,imageView6!]
 
     override func setupHeaderView(){
+        let frame = headerView.origTitleTextView.frame
+        presenter?.sendPostText(postText: frame )
         headerView.delegate = self
         headerView.prepare()
     }

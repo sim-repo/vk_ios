@@ -11,6 +11,7 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="Ahy-lZ-HXP"/>
                 <outlet property="expandedButton" destination="TSM-DU-59t" id="IZR-y1-WTe"/>
                 <outlet property="hConExpandingButton" destination="PHA-j3-cNu" id="okh-fZ-geB"/>
+                <outlet property="hConMyAvaImageView" destination="o3X-LQ-adK" id="lUN-ZE-t8z"/>
                 <outlet property="hConOrigAuthorContentView" destination="hEF-MT-y52" id="HxZ-9e-hth"/>
                 <outlet property="hConOrigTitleTextView" destination="Qlu-j8-ea3" id="Myj-NC-qf3"/>
                 <outlet property="hConRepostAuthorContentView" destination="63m-Av-rCU" id="OAb-nr-TIF"/>
@@ -27,13 +28,13 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Content View">
-            <rect key="frame" x="0.0" y="0.0" width="659" height="140"/>
+            <rect key="frame" x="0.0" y="0.0" width="659" height="174"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="rRx-Oz-F4Q">
-                    <rect key="frame" x="0.0" y="0.0" width="659" height="140"/>
+                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rRx-Oz-F4Q">
+                    <rect key="frame" x="0.0" y="0.0" width="659" height="174"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFn-PZ-aUZ" userLabel="RepostAuthorContentView">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFn-PZ-aUZ" userLabel="RepostAuthorContentView" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="659" height="30"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C0p-t0-To8">
@@ -43,7 +44,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="30" id="70h-qw-roA"/>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="o3X-LQ-adK"/>
+                                                <constraint firstAttribute="height" constant="30" id="o3X-LQ-adK"/>
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-eJ-epm">
@@ -89,7 +90,7 @@
                             </constraints>
                         </view>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOh-P7-LL8" userLabel="Repost Title Text View" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="32" width="659" height="30"/>
+                            <rect key="frame" x="0.0" y="30" width="659" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="oPJ-QJ-M0c"/>
                             </constraints>
@@ -98,8 +99,8 @@
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkM-Uu-dAG" userLabel="OrigAuthorContentView">
-                            <rect key="frame" x="0.0" y="64" width="659" height="30"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkM-Uu-dAG" userLabel="OrigAuthorContentView" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="60" width="659" height="30"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="plA-St-pCx">
                                     <rect key="frame" x="16" y="0.0" width="97.5" height="30"/>
@@ -107,8 +108,8 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="am2" translatesAutoresizingMaskIntoConstraints="NO" id="FYk-Av-4XT" customClass="MyImageView_Circled" customModule="vk1" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="30" id="6sl-q0-3kf"/>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="o1j-2S-Agn"/>
+                                                <constraint firstAttribute="height" constant="30" id="C5p-jM-auM"/>
+                                                <constraint firstAttribute="width" secondItem="FYk-Av-4XT" secondAttribute="height" multiplier="1:1" id="FeQ-pc-P5N"/>
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DsZ-NP-InU">
@@ -145,20 +146,20 @@
                             </constraints>
                         </view>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EE-Kj-XUU" customClass="MyTextView_OnBackground" customModule="vk1" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="96" width="659" height="22"/>
+                            <rect key="frame" x="0.0" y="90" width="659" height="84"/>
                             <color key="backgroundColor" red="0.29633097590000002" green="0.072775813019999996" blue="0.65515942260000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" id="Qlu-j8-ea3"/>
+                                <constraint firstAttribute="height" id="Qlu-j8-ea3"/>
                             </constraints>
                             <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSM-DU-59t">
-                            <rect key="frame" x="0.0" y="120" width="659" height="20"/>
+                            <rect key="frame" x="0.0" y="174" width="659" height="0.0"/>
                             <color key="backgroundColor" red="0.1148069523" green="0.062780063950000006" blue="0.27482550760000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="PHA-j3-cNu"/>
+                                <constraint firstAttribute="height" id="PHA-j3-cNu"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -180,7 +181,7 @@
                 <constraint firstItem="rRx-Oz-F4Q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ntg-vz-una"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="138.40579710144928" y="-60.267857142857139"/>
+            <point key="canvasLocation" x="140" y="-69"/>
         </view>
     </objects>
     <resources>

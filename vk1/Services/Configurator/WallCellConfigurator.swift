@@ -73,11 +73,13 @@ class WallCellConfigurator {
         cell.getHeaderView().hConOrigAuthorContentView.constant = WallCellConstant.quarterHeight
         cell.getHeaderView().hConOrigTitleTextView.constant = WallCellConstant.quarterHeight
         
+        cell.getHeaderView().hConMyAvaImageView.constant = 30
         
         // search and hide empty
         var negativeHCon: CGFloat = 0
         
         if wall.getMyAvaURL() == nil {
+            cell.getHeaderView().hConMyAvaImageView.constant = 0
             cell.getHeaderView().hConRepostAuthorContentView.constant = 0
             negativeHCon += WallCellConstant.quarterHeight
         }
@@ -108,7 +110,7 @@ class WallCellConfigurator {
             cell.getHeaderView().hConOrigTitleTextView.constant = size
             cell.getHeaderView().addExpandedButton(expanded: false)
         } else if cell.getHeaderView().origTitleTextView.text.count > 0 {
-            let delta = cell.getHeaderView().origTitleTextView.actualSize().height - WallCellConstant.quarterHeight
+            let delta = cell.getHeaderView().origTitleTextView.actualSize().height - WallCellConstant.quarterHeight - 20
             cell.getHConHeaderView().constant += delta
             cell.getHeaderView().hConOrigTitleTextView.constant = cell.getHeaderView().origTitleTextView.actualSize().height
         }
@@ -144,5 +146,21 @@ class WallCellConfigurator {
         }
         
         return WallCellConstant.headerHeight - negativeHCon
+    }
+    
+    
+    static func calcHeaderHeight2(_ wall: WallModelProtocol, frame: CGRect) -> CGFloat {
+        let textView = UITextView(frame: frame)
+        textView.text = wall.getOrigTitle()?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let canExpanded = textView.numberOfLines() >= 12
+        if canExpanded {
+            let size = textView.sizeForLines(numberOfLines: 8)
+            return WallCellConstant.quarterHeight + size + 20 + 280 + 30 + 50
+            
+        } else if textView.text.count > 0 {
+            let delta = textView.actualSize().height - WallCellConstant.quarterHeight - 20
+            return 120 + delta + 280 + 30
+        }
+        return 120 + 280 + 30
     }
 }

@@ -13,6 +13,7 @@ class WallHeader_View : UIView{
     
     @IBOutlet weak var hConRepostTitleTextView: NSLayoutConstraint!
     @IBOutlet weak var hConOrigTitleTextView: NSLayoutConstraint!
+    @IBOutlet weak var hConMyAvaImageView: NSLayoutConstraint!
     
     @IBOutlet weak var hConExpandingButton: NSLayoutConstraint!
     @IBOutlet weak var myAvaImageView: UIImageView!

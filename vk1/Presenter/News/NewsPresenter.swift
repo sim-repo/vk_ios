@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 class NewsPresenter: PlainPresenterProtocols {
     
@@ -8,7 +8,24 @@ class NewsPresenter: PlainPresenterProtocols {
         return News.self
     }
     
-    var expandedIndexPath: IndexPath?
+    var expandedIndexesPath: [IndexPath] = []
+    
+    var precalculatedCellHeights = [CGFloat]()
+    
+    var postText = CGRect(x: 0.0, y: 90.0, width: 659.0, height: 84.0)
+    
+    
+    override func enrichData(validated: [PlainModelProtocol]) -> [PlainModelProtocol]? {
+        
+   
+        for element in validated {
+            if let news = element as? News {
+                let height = WallCellConfigurator.calcHeaderHeight2(news, frame: postText)
+                precalculatedCellHeights.append(height)
+            }
+        }
+        return validated
+    }
 }
 
 
@@ -18,6 +35,19 @@ extension NewsPresenter: PaginationPresenterProtocol {
 
 
 extension NewsPresenter: PullWallPresenterProtocol {
+    
+    func getHeightForCell(indexPath: IndexPath) -> CGFloat {
+        guard precalculatedCellHeights.count > indexPath.row else {
+            return 0
+        }
+        return precalculatedCellHeights[indexPath.row]
+    }
+    
+    
+    func sendPostText(postText: CGRect) {
+        self.postText = postText
+    }
+    
     
     func selectImage(indexPath: IndexPath, imageIdx: Int) {
         
@@ -48,18 +78,20 @@ extension NewsPresenter: PullWallPresenterProtocol {
     }
     
     func expandCell(isExpand: Bool, indexPath: IndexPath?) {
-        expandedIndexPath = isExpand ? indexPath : nil
+        if isExpand, let idx = indexPath {
+            expandedIndexesPath.append(idx)
+        }
     }
     
     func isExpandedCell(indexPath: IndexPath) -> Bool {
-        return expandedIndexPath == indexPath
+        return expandedIndexesPath.contains(indexPath)
     }
     
     func disableExpanding(indexPath: IndexPath) {
-        if let expandedIdx = expandedIndexPath {
-            if abs(expandedIdx.row - indexPath.row) > 4 {
-                expandedIndexPath = nil
-            }
-        }
+//        if let expandedIdx = expandedIndexPath {
+//            if abs(expandedIdx.row - indexPath.row) > 4 {
+//                expandedIndexPath = nil
+//            }
+//        }
     }
 }

@@ -30,6 +30,8 @@ class Wall_Cell_tp8: BaseWall {
     
     
     override func setupHeaderView(){
+        let frame = headerView.origTitleTextView.frame
+        presenter?.sendPostText(postText: frame )
         headerView.delegate = self
         headerView.prepare()
     }

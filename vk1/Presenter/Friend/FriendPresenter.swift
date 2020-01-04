@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 class FriendPresenter: SectionPresenterProtocols {
     
@@ -12,6 +12,18 @@ class FriendPresenter: SectionPresenterProtocols {
 
 
 extension FriendPresenter: PullWallPresenterProtocol {
+    
+    
+    func getHeightForCell(indexPath: IndexPath) -> CGFloat {
+        //TODO
+        return 0
+    }
+    
+    
+    func sendPostText(postText: CGRect) {
+        //TODO
+    }
+    
     
     func selectImage(indexPath: IndexPath, imageIdx: Int) {
         let wall = getData(indexPath: indexPath) as? Wall

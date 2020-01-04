@@ -185,6 +185,7 @@ extension Friend_ViewController: AlphabetSearchViewControlProtocol {
 
 
 extension Friend_ViewController: UITextFieldDelegate {
+    
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         searchTextField.resignFirstResponder()
         return true

@@ -30,6 +30,8 @@ class Wall_Cell_tp9: BaseWall {
     lazy var imageViews = [imageView1!,imageView2!,imageView3!,imageView4!,imageView5!,imageView6!,imageView7!,imageView8!,imageView9!]
    
     override func setupHeaderView(){
+        let frame = headerView.origTitleTextView.frame
+        presenter?.sendPostText(postText: frame )
         headerView.delegate = self
         headerView.prepare()
     }

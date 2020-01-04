@@ -20,14 +20,18 @@ class BaseWall : UICollectionViewCell {
                isExpanded: Bool,
                delegate: WallCellProtocolDelegate) {
         
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
         self.indexPath = indexPath
         self.presenter = presenter
         self.isExpanded = isExpanded
         self.delegate = delegate
         self.wall = wall
         
-        setupHeaderView()
         
+        setupHeaderView()
+        if wall.getOrigTitle()?.contains("6 National Lampoon's Christmas Vacation ") ?? false {
+            print("A")
+        }
         WallCellConfigurator.setupCell(cell: self, wall: wall, isExpanded: isExpanded)
         
         cellType = wall.getCellType()

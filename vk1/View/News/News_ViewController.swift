@@ -28,8 +28,8 @@ class News_ViewController: UIViewController {
         }
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let width = view.frame.size.width - constraintSpaceX.constant * 40
-        let height = view.frame.size.height*0.3
-        layout.minimumLineSpacing = 50
+        let height = view.frame.size.height*0.2
+        layout.minimumLineSpacing = 20
         layout.itemSize = CGSize(width: width, height: height)
     }
     
@@ -116,7 +116,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let c = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as! Wall_CellProtocol
         if let p = getPullWallPresenterProtocol() {
             c.setup(news, indexPath, p, isExpanded: p.isExpandedCell(indexPath: indexPath), delegate: self)
-            p.disableExpanding(indexPath: indexPath)
+            //p.disableExpanding(indexPath: indexPath)
         }
         return c
     }
@@ -240,7 +240,7 @@ extension News_ViewController: WallCellProtocolDelegate {
             presenter.expandCell(isExpand: isExpand, indexPath: indexPath)
             UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIView.AnimationOptions.curveEaseInOut, animations: {
                     self.collectionView.reloadItems(at: [indexPath])
-                    self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
+                  //  self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
                 }, completion: nil)
         }
     }
@@ -258,9 +258,14 @@ extension News_ViewController: UICollectionViewDelegateFlowLayout {
                let attr = collectionView.layoutAttributesForItem(at: indexPath) {
                     cell.preferredLayoutAttributesFitting(attr)
                     return CGSize(width: cellWidth, height: cell.getPreferedHeight())
+            } else {
+                let height = presenter.getHeightForCell(indexPath: indexPath)
+                if height > 0 {
+                    return CGSize(width: cellWidth, height: height)
                 }
             }
-        
+        }
+            
             let height = cellHeights[indexPath]
             return CGSize(width: cellWidth, height: height ?? WallCellConstant.cellHeight)
         }

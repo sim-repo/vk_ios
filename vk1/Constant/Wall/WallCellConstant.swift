@@ -6,9 +6,9 @@ struct WallCellConstant {
     
     
     static let headerHeight: CGFloat = 120
-    static let quarterHeight: CGFloat = 120 / 4
+    static let quarterHeight: CGFloat =  120 / 4
     static let mediaBlockHeight: CGFloat = 280
-    static let footerHeight: CGFloat = 36
+    static let footerHeight: CGFloat = 30
     static let cellHeight: CGFloat = headerHeight + mediaBlockHeight + footerHeight
     
     enum CellTypeEnum: String {

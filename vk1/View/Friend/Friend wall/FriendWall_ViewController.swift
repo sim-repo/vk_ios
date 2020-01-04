@@ -185,6 +185,7 @@ extension FriendWall_ViewController: PushPlainViewProtocol {
 
 extension FriendWall_ViewController: PushWallViewProtocol {
     
+    
     func playVideo(_ url: URL, _ platformEnum: WallCellConstant.VideoPlatform, _ indexPath: IndexPath) {
         //TODO: implement code here
     }
