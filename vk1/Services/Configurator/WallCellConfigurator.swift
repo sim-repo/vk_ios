@@ -9,38 +9,52 @@ class WallCellConfigurator {
     static func setupCell(cell: Wall_CellProtocol, wall: WallModelProtocol, isExpanded: Bool) {
         
         
+
+        // reposter
+        if let name = wall.getMyName(),
+            name.count > 0 {
+                cell.getReposterHeightCon().constant = 35
+                cell.getReposterName().text = wall.getMyName()
+                cell.getReposterDate().text = convertUnixTime(unixTime: wall.getMyPostDate())
+                cell.getReposterAva().kf.setImage(with: wall.getMyAvaURL())
+        } else {
+                cell.getReposterHeightCon().constant = 0
+                cell.getReposterName().text = ""
+                cell.getReposterDate().text = ""
+                cell.getReposterAva().image = UIImage(named: "placeholder")
+        }
         
-        // wall header block >>
+        // author
+        if let name = wall.getOrigName(),
+        name.count > 0 {
+            cell.getAuthorHeightCon().constant = 35
+            cell.getAuthorName().text = wall.getOrigName()
+            cell.getAuthorDate().text = convertUnixTime(unixTime: wall.getOrigPostDate())
+            cell.getAuthorAva().kf.setImage(with: wall.getOrigAvaURL())
+        } else {
+            cell.getAuthorHeightCon().constant = 0
+            cell.getAuthorName().text = ""
+            cell.getAuthorDate().text = ""
+            cell.getAuthorAva().image = UIImage(named: "placeholder")
+        }
         
-        // set initial height
-        cell.getHeaderView().origTitleTextView.textContainer.maximumNumberOfLines = 1000
-        cell.getHeaderView().origTitleTextView.text = wall.getOrigTitle()?.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+        // post message
         if !isExpanded {
-            configNormalCell(cell: cell, wall: wall)
+            cell.getExpandButton().isHidden = true
+            if let origPostMsg = wall.getOrigTitle() {
+                cell.getAuthorPostMsg().text = String(origPostMsg.prefix(160))
+                if origPostMsg.count > 160 {
+                    cell.getExpandButton().isHidden = false
+                }
+            }
+        } else {
+            cell.getExpandButton().isHidden = true
+            if let origPostMsg = wall.getOrigTitle() {
+                cell.getAuthorPostMsg().text = origPostMsg
+            }
         }
         
-        // set attributes
-        cell.getHeaderView().myAvaImageView.kf.setImage(with: wall.getMyAvaURL())
-        cell.getHeaderView().myNameLabel.text = wall.getMyName()
-        
-        cell.getHeaderView().myPostDateLabel.text = convertUnixTime(unixTime: wall.getMyPostDate())
-        cell.getHeaderView().myTitleTextView.text = wall.getTitle()
-        cell.getHeaderView().myTitleTextView.textContainer.lineBreakMode = .byTruncatingTail
-        
-        
-        cell.getHeaderView().origAvaImageView.kf.setImage(with: wall.getOrigAvaURL())
-        cell.getHeaderView().origNameLabel.text = wall.getOrigName()
-        cell.getHeaderView().origPostDateLabel.text = convertUnixTime(unixTime: wall.getOrigPostDate())
-        
-        
-        if isExpanded {
-            expandCell(cell: cell, wall: wall, isExpanded: isExpanded)
-            cell.getHeaderView().addExpandedButton(expanded: true)
-        }
-        
-        
-        KingfisherConfigurator.clearCache()
+        // KingfisherConfigurator.clearCache()
         // wall image block >>
         let URLs = wall.getImageURLs()
         let images = cell.getImagesView()
@@ -59,108 +73,14 @@ class WallCellConfigurator {
     
     
     static func configNormalCell(cell: Wall_CellProtocol, wall: WallModelProtocol){
-        
-        cell.getHConHeaderView().isActive = true
-        cell.getHeaderView().hConRepostAuthorContentView.isActive = true
-        cell.getHeaderView().hConRepostTitleTextView.isActive = true
-        cell.getHeaderView().hConOrigAuthorContentView.isActive = true
-        cell.getHeaderView().hConOrigTitleTextView.isActive = true
-        
-        
-        cell.getHConHeaderView().constant = WallCellConstant.headerHeight
-        cell.getHeaderView().hConRepostAuthorContentView.constant = WallCellConstant.quarterHeight
-        cell.getHeaderView().hConRepostTitleTextView.constant = WallCellConstant.quarterHeight
-        cell.getHeaderView().hConOrigAuthorContentView.constant = WallCellConstant.quarterHeight
-        cell.getHeaderView().hConOrigTitleTextView.constant = WallCellConstant.quarterHeight
-        
-        cell.getHeaderView().hConMyAvaImageView.constant = 30
-        
-        // search and hide empty
-        var negativeHCon: CGFloat = 0
-        
-        if wall.getMyAvaURL() == nil {
-            cell.getHeaderView().hConMyAvaImageView.constant = 0
-            cell.getHeaderView().hConRepostAuthorContentView.constant = 0
-            negativeHCon += WallCellConstant.quarterHeight
-        }
-        
-        if wall.getTitle() == nil || wall.getTitle()?.count == 0 {
-            cell.getHeaderView().hConRepostTitleTextView.constant = 0
-            negativeHCon += WallCellConstant.quarterHeight
-        }
-        
-        if wall.getOrigAvaURL() == nil {
-            cell.getHeaderView().hConOrigAuthorContentView.constant = 0
-            negativeHCon += WallCellConstant.quarterHeight
-        }
-        
-        if wall.getOrigTitle() == nil || wall.getOrigTitle()?.count == 0 {
-            cell.getHeaderView().hConOrigTitleTextView.constant = 0
-            negativeHCon += WallCellConstant.quarterHeight
-        }
-        
-        
-        // parent block: decrease height
-        cell.getHConHeaderView().constant -= negativeHCon
-        
-        let canExpanded = cell.getHeaderView().origTitleTextView.numberOfLines() >= 12
-        if canExpanded {
-            let size = cell.getHeaderView().origTitleTextView.sizeForLines(numberOfLines: 8)
-            cell.getHConHeaderView().constant = WallCellConstant.quarterHeight + size + 20
-            cell.getHeaderView().hConOrigTitleTextView.constant = size
-            cell.getHeaderView().addExpandedButton(expanded: false)
-        } else if cell.getHeaderView().origTitleTextView.text.count > 0 {
-            let delta = cell.getHeaderView().origTitleTextView.actualSize().height - WallCellConstant.quarterHeight - 20
-            cell.getHConHeaderView().constant += delta
-            cell.getHeaderView().hConOrigTitleTextView.constant = cell.getHeaderView().origTitleTextView.actualSize().height
-        }
+
     }
     
     static func expandCell(cell: Wall_CellProtocol, wall: WallModelProtocol, isExpanded: Bool) {
-        if !isExpanded {
-            cell.getHeaderView().origTitleTextView.textContainer.lineBreakMode = .byWordWrapping
-        } else {
-            cell.getHeaderView().origTitleTextView.text = wall.getOrigTitle()?.trimmingCharacters(in: .whitespacesAndNewlines)
-            let titleHeight = cell.getHeaderView().origTitleTextView.actualSize().height
-            let headerHeight = calcHeaderHeight(cell, wall) + titleHeight
-            cell.getHConHeaderView().constant = headerHeight
-            cell.getHeaderView().hConOrigTitleTextView.constant = titleHeight
-        }
+        cell.getAuthorPostMsg().text = wall.getOrigTitle()
     }
-    
     
     static func calcHeaderHeight(_ cell: Wall_CellProtocol, _ wall: WallModelProtocol) -> CGFloat {
-        
-        var negativeHCon: CGFloat = 0
-        
-        if wall.getMyAvaURL() == nil {
-            negativeHCon += WallCellConstant.quarterHeight
-        }
-        
-        if wall.getTitle() == nil || wall.getTitle()?.count == 0 {
-            negativeHCon += WallCellConstant.quarterHeight
-        }
-        
-        if wall.getOrigAvaURL() == nil {
-            negativeHCon += WallCellConstant.quarterHeight
-        }
-        
-        return WallCellConstant.headerHeight - negativeHCon
-    }
-    
-    
-    static func calcHeaderHeight2(_ wall: WallModelProtocol, frame: CGRect) -> CGFloat {
-        let textView = UITextView(frame: frame)
-        textView.text = wall.getOrigTitle()?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let canExpanded = textView.numberOfLines() >= 12
-        if canExpanded {
-            let size = textView.sizeForLines(numberOfLines: 8)
-            return WallCellConstant.quarterHeight + size + 20 + 280 + 30 + 50
-            
-        } else if textView.text.count > 0 {
-            let delta = textView.actualSize().height - WallCellConstant.quarterHeight - 20
-            return 120 + delta + 280 + 30
-        }
-        return 120 + 280 + 30
+        return 0.0
     }
 }

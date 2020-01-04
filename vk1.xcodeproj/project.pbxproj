@@ -139,8 +139,6 @@
 		16D58BE22366BE2900735296 /* PlainBasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BE12366BE2900735296 /* PlainBasePresenter.swift */; };
 		16D58BED236725DC00735296 /* PullPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEC236725DC00735296 /* PullPresenterProtocol.swift */; };
 		16D58BF0236847C300735296 /* CellImagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BEF236847C300735296 /* CellImagesHelper.swift */; };
-		16D58BF52368516800735296 /* WallHeader_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D58BF42368516800735296 /* WallHeader_View.xib */; };
-		16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BF623685F0900735296 /* WallHeader_View.swift */; };
 		16D58BFE236986EB00735296 /* SyncMgt+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58BFD236986EB00735296 /* SyncMgt+Common.swift */; };
 		16D58C052369D65100735296 /* WallParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D58C042369D65100735296 /* WallParser.swift */; };
 		16D64125234BE4FE00AA0D0B /* LineEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D64124234BE4FE00AA0D0B /* LineEffect.swift */; };
@@ -437,8 +435,6 @@
 		16D58BE12366BE2900735296 /* PlainBasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainBasePresenter.swift; sourceTree = "<group>"; };
 		16D58BEC236725DC00735296 /* PullPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullPresenterProtocol.swift; sourceTree = "<group>"; };
 		16D58BEF236847C300735296 /* CellImagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImagesHelper.swift; sourceTree = "<group>"; };
-		16D58BF42368516800735296 /* WallHeader_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallHeader_View.xib; sourceTree = "<group>"; };
-		16D58BF623685F0900735296 /* WallHeader_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallHeader_View.swift; sourceTree = "<group>"; };
 		16D58BFD236986EB00735296 /* SyncMgt+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SyncMgt+Common.swift"; sourceTree = "<group>"; };
 		16D58C042369D65100735296 /* WallParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallParser.swift; sourceTree = "<group>"; };
 		16D64124234BE4FE00AA0D0B /* LineEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEffect.swift; sourceTree = "<group>"; };
@@ -1007,7 +1003,6 @@
 		16BA48362345CB6A007D0981 /* xib */ = {
 			isa = PBXGroup;
 			children = (
-				16D58BF1236850C500735296 /* header */,
 				161B0E9A2349EE780081008B /* footer */,
 				1666673A2347B75F00FD2B86 /* Wall_Cell_tp1.xib */,
 				166667572347CB5100FD2B86 /* Wall_Cell_tp2.xib */,
@@ -1033,15 +1028,6 @@
 				164F80B62384754D000F95E7 /* SectionedBasePresenter+CalledBySync.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		16D58BF1236850C500735296 /* header */ = {
-			isa = PBXGroup;
-			children = (
-				16D58BF42368516800735296 /* WallHeader_View.xib */,
-				16D58BF623685F0900735296 /* WallHeader_View.swift */,
-			);
-			path = header;
 			sourceTree = "<group>";
 		};
 		16D58BFA2369645E00735296 /* Configurator */ = {
@@ -1477,7 +1463,6 @@
 				1666673B2347B75F00FD2B86 /* Wall_Cell_tp1.xib in Resources */,
 				166667622347CB8A00FD2B86 /* Wall_Cell_tp7.xib in Resources */,
 				166D1B09234F6C7100C552E4 /* Video.storyboard in Resources */,
-				16D58BF52368516800735296 /* WallHeader_View.xib in Resources */,
 				1666675E2347CB7300FD2B86 /* Wall_Cell_tp5.xib in Resources */,
 				D4001F432327B7B60070829F /* LaunchScreen.storyboard in Resources */,
 				166667662347CBA100FD2B86 /* Wall_Cell_tp9.xib in Resources */,
@@ -1608,7 +1593,6 @@
 				16C693592395254000F3DD93 /* RealmVideoURL.swift in Sources */,
 				166D1B05234EFF0F00C552E4 /* ZoomAnimator.swift in Sources */,
 				1611F29D23788422002FCE3C /* RealmURL.swift in Sources */,
-				16D58BF723685F0900735296 /* WallHeader_View.swift in Sources */,
 				164AEA8E23B9937D0080F5B3 /* KingfisherConfigurator.swift in Sources */,
 				164F8263238F0985000F95E7 /* NetworkConstant.swift in Sources */,
 				16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */,

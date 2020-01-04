@@ -12,99 +12,178 @@
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Wall_Cell_tp9" id="tbt-XZ-tcD" userLabel="Wall_Cell_tp9" customClass="Wall_Cell_tp9" customModule="vk1" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="620" height="563"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NhW-NU-OgO">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NhW-NU-OgO" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="620" height="563"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9H-Yo-ezz" userLabel="RootView" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
+                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QLJ-nH-dvL">
                         <rect key="frame" x="0.0" y="0.0" width="620" height="563"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bna-iB-FTS" customClass="WallHeader_View" customModule="vk1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="620" height="253"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUa-Qj-732">
+                                <rect key="frame" x="0.0" y="0.0" width="620" height="35"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="am-32" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-XQ-ryl" customClass="MyImageView_Circled" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="35" id="e9E-KK-3YO"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="35" id="sND-zu-7Zv"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7dL-j5-fIE">
+                                        <rect key="frame" x="35" y="0.0" width="585" height="35"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Reposter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tsa-SX-ssb" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="585" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="yesterday, 11:00 a.m" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh7-5Z-9hQ" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="21.5" width="585" height="13.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="AMd-fs-NZ0"/>
+                                    <constraint firstAttribute="height" constant="35" id="nHu-Ho-Onl"/>
                                 </constraints>
-                            </view>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rwv-k9-9e5">
+                                <rect key="frame" x="0.0" y="43" width="620" height="35"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="am-32" translatesAutoresizingMaskIntoConstraints="NO" id="Odt-r4-lH3" customClass="MyImageView_Circled" customModule="vk1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="35" id="ZGT-5k-h6x"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="35" id="fDd-4v-kcH"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VWR-bS-XWD">
+                                        <rect key="frame" x="35" y="0.0" width="585" height="35"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Alex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7a-1h-26w" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="585" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="yesterday, 10:00 a.m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZd-Bv-qBb" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="21.5" width="585" height="13.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="KiM-Z0-qj4"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdB-8f-Mo4" userLabel="Post Message" customClass="MyLabel_PostMessage" customModule="vk1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="86" width="620" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UK6-tU-qtP" userLabel="Expand Button">
+                                <rect key="frame" x="0.0" y="108.5" width="620" height="21"/>
+                                <color key="backgroundColor" red="0.1148069523" green="0.062780063950000006" blue="0.27482550760000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="dcz-rE-pQ8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="показать полностью...">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="doExpand:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="Bee-U4-iz0"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG2-FK-Bdf" userLabel="ImageView">
-                                <rect key="frame" x="0.0" y="253" width="620" height="280"/>
+                                <rect key="frame" x="0.0" y="137.5" width="620" height="387.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zPY-lT-Paz" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="204" height="90.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="204" height="126.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8oM-rb-vfL" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="208" y="0.0" width="204" height="90.5"/>
+                                        <rect key="frame" x="208" y="0.0" width="204" height="126.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Vh-fi-53x" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="416" y="0.0" width="204" height="90.5"/>
+                                        <rect key="frame" x="416" y="0.0" width="204" height="126.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="279-X3-yS3" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="416" y="94.5" width="204" height="91"/>
+                                        <rect key="frame" x="416" y="130.5" width="204" height="126.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3eo-RE-jlA" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="94.5" width="204" height="91"/>
+                                        <rect key="frame" x="0.0" y="130.5" width="204" height="126.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-RE-44n" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="208" y="94.5" width="204" height="91"/>
+                                        <rect key="frame" x="208" y="130.5" width="204" height="126.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="him-qk-K7t" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="189.5" width="204" height="90.5"/>
+                                        <rect key="frame" x="0.0" y="261" width="204" height="126.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kpy-5e-25T" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="208" y="189.5" width="204" height="90.5"/>
+                                        <rect key="frame" x="208" y="261" width="204" height="126.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oTT-Xg-zis" customClass="MyImageView_DarkPrimary" customModule="vk1" customModuleProvider="target">
-                                        <rect key="frame" x="416" y="189.5" width="204" height="90.5"/>
+                                        <rect key="frame" x="416" y="261" width="204" height="126.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2U-z8-HqR" userLabel="ImageButton1">
-                                        <rect key="frame" x="0.0" y="0.0" width="204" height="90.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="204" height="126.5"/>
                                         <connections>
                                             <action selector="doPressImage1:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="XGc-Rf-Rn9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jy3-h1-ke3" userLabel="ImageButton2">
-                                        <rect key="frame" x="208" y="0.0" width="204" height="90.5"/>
+                                        <rect key="frame" x="208" y="0.0" width="204" height="126.5"/>
                                         <connections>
                                             <action selector="doPressImage2:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="ENS-Cv-IYH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwH-FV-Bdw" userLabel="ImageButton3">
-                                        <rect key="frame" x="416" y="0.0" width="204" height="90.5"/>
+                                        <rect key="frame" x="416" y="0.0" width="204" height="126.5"/>
                                         <connections>
                                             <action selector="doPressImage3:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="HfJ-rB-cLx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvS-Wf-G6S" userLabel="ImageButton4">
-                                        <rect key="frame" x="416" y="94.5" width="204" height="91"/>
+                                        <rect key="frame" x="416" y="130.5" width="204" height="126.5"/>
                                         <connections>
                                             <action selector="doPressImage4:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="eTe-eP-9vY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmV-5z-gMm" userLabel="ImageButton5">
-                                        <rect key="frame" x="0.0" y="94.5" width="204" height="91"/>
+                                        <rect key="frame" x="0.0" y="130.5" width="204" height="126.5"/>
                                         <connections>
                                             <action selector="doPressImage5:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="ODk-uc-ctf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFV-gh-1j4" userLabel="ImageButton6">
-                                        <rect key="frame" x="208" y="94.5" width="204" height="91"/>
+                                        <rect key="frame" x="208" y="130.5" width="204" height="126.5"/>
                                         <connections>
                                             <action selector="doPressImage6:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="sch-VH-Eld"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCn-wF-1DG" userLabel="ImageButton7">
-                                        <rect key="frame" x="0.0" y="189.5" width="204" height="90.5"/>
+                                        <rect key="frame" x="0.0" y="261" width="204" height="126.5"/>
                                         <connections>
                                             <action selector="doPressImage7:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="4R2-tZ-kh9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-hD-Qcz" userLabel="ImageButton8">
-                                        <rect key="frame" x="208" y="189.5" width="204" height="90.5"/>
+                                        <rect key="frame" x="208" y="261" width="204" height="126.5"/>
                                         <connections>
                                             <action selector="doPressImage8:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="AUf-XH-0zJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TER-PG-bqB" userLabel="ImageButton9">
-                                        <rect key="frame" x="416" y="189.5" width="204" height="90.5"/>
+                                        <rect key="frame" x="416" y="261" width="204" height="126.5"/>
                                         <connections>
                                             <action selector="doPressImage9:" destination="tbt-XZ-tcD" eventType="touchUpInside" id="yFg-BM-VOf"/>
                                         </connections>
@@ -118,7 +197,7 @@
                                     <constraint firstItem="jy3-h1-ke3" firstAttribute="top" secondItem="8oM-rb-vfL" secondAttribute="top" id="6B9-sq-tAA"/>
                                     <constraint firstItem="JFV-gh-1j4" firstAttribute="leading" secondItem="0nh-RE-44n" secondAttribute="leading" id="6BT-Uc-ZAt"/>
                                     <constraint firstItem="uvS-Wf-G6S" firstAttribute="width" secondItem="279-X3-yS3" secondAttribute="width" id="6vU-hb-5rw"/>
-                                    <constraint firstAttribute="height" constant="280" id="75N-IV-d3L"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="280" id="75N-IV-d3L"/>
                                     <constraint firstItem="zPY-lT-Paz" firstAttribute="leading" secondItem="GG2-FK-Bdf" secondAttribute="leading" id="8YQ-hJ-m3F"/>
                                     <constraint firstItem="zPY-lT-Paz" firstAttribute="width" secondItem="8oM-rb-vfL" secondAttribute="width" id="8so-0S-3VO"/>
                                     <constraint firstItem="him-qk-K7t" firstAttribute="width" secondItem="Kpy-5e-25T" secondAttribute="width" id="90F-vl-i3l"/>
@@ -187,49 +266,32 @@
                                     <constraint firstItem="TER-PG-bqB" firstAttribute="width" secondItem="oTT-Xg-zis" secondAttribute="width" id="yl9-Gh-AYL"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="goS-nc-bVy" userLabel="LikeView" customClass="WallLike_View" customModule="vk1" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTd-46-oKZ" customClass="WallLike_View" customModule="vk1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="533" width="620" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="YEL-Ix-Lgp"/>
+                                    <constraint firstAttribute="height" constant="30" id="NWe-d0-Za0"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmu-qm-aYg">
-                                <rect key="frame" x="0.0" y="563" width="620" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="hmu-qm-aYg" secondAttribute="trailing" id="1tV-2B-iaW"/>
-                            <constraint firstAttribute="trailing" secondItem="GG2-FK-Bdf" secondAttribute="trailing" id="5yW-o9-XJv"/>
-                            <constraint firstItem="hmu-qm-aYg" firstAttribute="top" secondItem="goS-nc-bVy" secondAttribute="bottom" id="6j9-hI-NZr"/>
-                            <constraint firstAttribute="bottom" secondItem="hmu-qm-aYg" secondAttribute="bottom" id="Dn8-f9-17l"/>
-                            <constraint firstItem="hmu-qm-aYg" firstAttribute="leading" secondItem="u9H-Yo-ezz" secondAttribute="leading" id="FX6-xG-Rjm"/>
-                            <constraint firstItem="GG2-FK-Bdf" firstAttribute="leading" secondItem="u9H-Yo-ezz" secondAttribute="leading" id="I9N-JN-4aa"/>
-                            <constraint firstItem="goS-nc-bVy" firstAttribute="top" secondItem="GG2-FK-Bdf" secondAttribute="bottom" id="IoX-oR-B1l"/>
-                            <constraint firstAttribute="trailing" secondItem="goS-nc-bVy" secondAttribute="trailing" id="OZ5-om-Mik"/>
-                            <constraint firstAttribute="trailing" secondItem="Bna-iB-FTS" secondAttribute="trailing" id="RsL-xB-CDT"/>
-                            <constraint firstItem="goS-nc-bVy" firstAttribute="leading" secondItem="u9H-Yo-ezz" secondAttribute="leading" id="nPJ-4J-BOf"/>
-                            <constraint firstItem="Bna-iB-FTS" firstAttribute="top" secondItem="u9H-Yo-ezz" secondAttribute="top" id="rnD-yc-y6H"/>
-                            <constraint firstItem="GG2-FK-Bdf" firstAttribute="top" secondItem="Bna-iB-FTS" secondAttribute="bottom" id="xTo-Rw-iM0"/>
-                            <constraint firstItem="Bna-iB-FTS" firstAttribute="leading" secondItem="u9H-Yo-ezz" secondAttribute="leading" id="zpo-zH-fPS"/>
-                        </constraints>
-                    </view>
+                    </stackView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="u9H-Yo-ezz" firstAttribute="top" secondItem="NhW-NU-OgO" secondAttribute="top" id="3Zy-FZ-wtj"/>
-                    <constraint firstAttribute="trailing" secondItem="u9H-Yo-ezz" secondAttribute="trailing" id="8RZ-yg-hSc"/>
-                    <constraint firstItem="u9H-Yo-ezz" firstAttribute="leading" secondItem="NhW-NU-OgO" secondAttribute="leading" id="EJq-RV-JUk"/>
-                    <constraint firstAttribute="bottom" secondItem="u9H-Yo-ezz" secondAttribute="bottom" id="cfq-is-1VE"/>
+                    <constraint firstItem="QLJ-nH-dvL" firstAttribute="leading" secondItem="NhW-NU-OgO" secondAttribute="leading" id="Cp5-Qe-73d"/>
+                    <constraint firstAttribute="trailing" secondItem="QLJ-nH-dvL" secondAttribute="trailing" id="JpW-tH-UOZ"/>
+                    <constraint firstItem="QLJ-nH-dvL" firstAttribute="top" secondItem="NhW-NU-OgO" secondAttribute="top" id="SeH-jd-Bdh"/>
+                    <constraint firstAttribute="bottom" secondItem="QLJ-nH-dvL" secondAttribute="bottom" id="cmr-Ii-zbd"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="620" height="506"/>
             <connections>
-                <outlet property="hConHeaderView" destination="AMd-fs-NZ0" id="rgD-fA-UDl"/>
-                <outlet property="headerView" destination="Bna-iB-FTS" id="NEB-VG-yxF"/>
+                <outlet property="authorAvaImageView" destination="Odt-r4-lH3" id="A2i-Hc-3sJ"/>
+                <outlet property="authorDateLabel" destination="VZd-Bv-qBb" id="DlO-pv-Jpk"/>
+                <outlet property="authorNameLabel" destination="I7a-1h-26w" id="qCt-sQ-zQQ"/>
+                <outlet property="authorPostMsgLabel" destination="XdB-8f-Mo4" id="xZn-yK-8Te"/>
+                <outlet property="authorStackViewHeightCon" destination="KiM-Z0-qj4" id="glR-k5-reQ"/>
+                <outlet property="expandButton" destination="UK6-tU-qtP" id="JH4-vU-JcX"/>
                 <outlet property="imageButton1" destination="H2U-z8-HqR" id="yPO-At-jZE"/>
                 <outlet property="imageButton2" destination="jy3-h1-ke3" id="VQG-KC-dmo"/>
                 <outlet property="imageButton3" destination="xwH-FV-Bdw" id="Xre-q3-kk2"/>
@@ -249,9 +311,16 @@
                 <outlet property="imageView7" destination="him-qk-K7t" id="hOB-BH-gWo"/>
                 <outlet property="imageView8" destination="Kpy-5e-25T" id="jw3-pB-F6u"/>
                 <outlet property="imageView9" destination="oTT-Xg-zis" id="7ho-qf-WUs"/>
-                <outlet property="likeView" destination="goS-nc-bVy" id="h0a-J5-w5b"/>
+                <outlet property="likeView" destination="gTd-46-oKZ" id="D5p-b3-v91"/>
+                <outlet property="reposterAvaImageView" destination="Yzu-XQ-ryl" id="AAy-lk-PkU"/>
+                <outlet property="reposterDateLabel" destination="Yh7-5Z-9hQ" id="hiJ-gi-nil"/>
+                <outlet property="reposterNameLabel" destination="Tsa-SX-ssb" id="Ss1-ON-iOE"/>
+                <outlet property="reposterStackViewHeightCon" destination="nHu-Ho-Onl" id="Pst-LW-DPL"/>
             </connections>
             <point key="canvasLocation" x="1547.8260869565217" y="217.29910714285714"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="am-32" width="32" height="32"/>
+    </resources>
 </document>

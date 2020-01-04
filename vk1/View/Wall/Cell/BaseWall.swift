@@ -20,15 +20,14 @@ class BaseWall : UICollectionViewCell {
                isExpanded: Bool,
                delegate: WallCellProtocolDelegate) {
         
-        self.contentView.translatesAutoresizingMaskIntoConstraints = false
         self.indexPath = indexPath
         self.presenter = presenter
         self.isExpanded = isExpanded
         self.delegate = delegate
         self.wall = wall
         
+        setupOutlets()
         
-        setupHeaderView()
         if wall.getOrigTitle()?.contains("6 National Lampoon's Christmas Vacation ") ?? false {
             print("A")
         }
@@ -40,8 +39,7 @@ class BaseWall : UICollectionViewCell {
         }
     }
     
-    func setupHeaderView() {}
-    
+    func setupOutlets(){}
     
     func prepareReuse(){
         for imageView in getImagesView() {
@@ -50,11 +48,13 @@ class BaseWall : UICollectionViewCell {
         baseWallVideo.prepareReuse(buttons: getButtons())
     }
     
+    
     func pressImage(imageIdx: Int){
         guard let presenter = presenter else { return }
         baseWallVideo.pressImage(presenter: presenter, view: getImageContent(), indexPath: indexPath, imageIdx: imageIdx)
         presenter.selectImage(indexPath: indexPath, imageIdx: imageIdx)
     }
+    
     
     func getButtons() -> [UIButton] {
         return []
@@ -103,27 +103,45 @@ extension BaseWall: WallHeaderProtocolDelegate {
 
 extension BaseWall: Wall_CellProtocol {
     
+    // header constraints
+    @objc func getReposterHeightCon() -> NSLayoutConstraint {
+        return NSLayoutConstraint()
+    }
+    
+    @objc func getAuthorHeightCon() -> NSLayoutConstraint {
+        return NSLayoutConstraint()
+    }
+    
+    // reposter
+    @objc func getReposterName() -> UILabel { return UILabel() }
+    
+    @objc func getReposterDate() -> UILabel { return UILabel() }
+    @objc func getReposterAva() -> UIImageView  { return UIImageView() }
+
+    // author
+    @objc func getAuthorName() -> UILabel { return UILabel() }
+    @objc func getAuthorDate() -> UILabel { return UILabel() }
+    @objc func getAuthorAva() -> UIImageView  { return UIImageView() }
+
+    // post message
+    @objc func getAuthorPostMsg() -> UILabel { return UILabel() }
+
+    // media
+    @objc func getImagesView() -> [UIImageView] { return [] }
+
+    // footer
+    @objc func getLikeView() -> WallLike_View { return WallLike_View() }
+    
+    
+    @objc func getExpandButton() -> UIButton {
+        return UIButton()
+    }
+    
     @objc func getPreferedHeight() -> CGFloat {
         return 0
     }
     
-    @objc func getImagesView() -> [UIImageView] {
-        return []
-    }
-    
-    @objc func getLikeView() -> WallLike_View {
-        return WallLike_View()
-    }
-    
     @objc func getIndexRow() -> Int {
         return 0
-    }
-    
-    @objc func getHeaderView() -> WallHeader_View {
-        return WallHeader_View()
-    }
-    
-    @objc func getHConHeaderView() -> NSLayoutConstraint {
-        return NSLayoutConstraint()
     }
 }

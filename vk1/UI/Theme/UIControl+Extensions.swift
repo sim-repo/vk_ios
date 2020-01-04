@@ -77,6 +77,35 @@ class MyButton_AdaptiveRotated: UIButton {
 
 //MARK:- UILabel
 
+class MyLabel_PostMessage: UILabel {
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.firstLineHeadIndent = 10
+        paragraphStyle.headIndent = 5
+
+        let font = UIFont.systemFont(ofSize: 12)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: UIColor.white,
+            NSAttributedString.Key.paragraphStyle: paragraphStyle
+        ]
+        
+        let text = NSAttributedString(string: "gonna ", attributes: attributes)
+        attributedText = text
+        
+        layer.cornerRadius = 5
+        layer.masksToBounds = true
+        
+        backgroundColor = #colorLiteral(red: 0.32472682, green: 0.04594633728, blue: 0.6819890738, alpha: 1)
+    }
+}
+
+
+
+
 class MyTitle_OnPrimary : UILabel {
     required init?(coder: NSCoder) {
         super.init(coder: coder)

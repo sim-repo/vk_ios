@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 class MyGroupWallPresenter: PlainPresenterProtocols {
     
@@ -38,16 +38,6 @@ extension MyGroupWallPresenter: PaginationPresenterProtocol {
 
 
 extension MyGroupWallPresenter: PullWallPresenterProtocol {
-    
-    func getHeightForCell(indexPath: IndexPath) -> CGFloat {
-        //TODO
-        return 0
-    }
-    
-    func sendPostText(postText: CGRect) {
-        //TODO
-    }
-    
     
     func selectImage(indexPath: IndexPath, imageIdx: Int) {
             let wall = getData(indexPath: indexPath) as? Wall

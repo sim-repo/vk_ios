@@ -13,6 +13,8 @@ class News_ViewController: UIViewController {
     lazy var cellWidth = view.frame.size.width - constraintSpaceX.constant * 40
     var cellHeights = [IndexPath: CGFloat]() // for prevent "jumping" scrolling
     
+
+    var notExpandedHeight : CGFloat = 500
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +28,11 @@ class News_ViewController: UIViewController {
         for i in 1...WallCellConstant.cellByCode.count {
             collectionView.register(UINib(nibName: WallCellConstant.cellByCode["tp\(i)"]!, bundle: nil), forCellWithReuseIdentifier: WallCellConstant.cellByCode["tp\(i)"]!)
         }
+        
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let width = view.frame.size.width - constraintSpaceX.constant * 40
-        let height = view.frame.size.height*0.2
-        layout.minimumLineSpacing = 20
-        layout.itemSize = CGSize(width: width, height: height)
+        layout.minimumLineSpacing = 50
+        layout.itemSize = CGSize(width: width, height: 400)
     }
     
     private func setupPresenter(){
@@ -250,7 +252,7 @@ extension News_ViewController: WallCellProtocolDelegate {
 extension News_ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         if let presenter = getPullWallPresenterProtocol() {
             let isExpanded = presenter.isExpandedCell(indexPath: indexPath)
             if isExpanded,
@@ -258,15 +260,10 @@ extension News_ViewController: UICollectionViewDelegateFlowLayout {
                let attr = collectionView.layoutAttributesForItem(at: indexPath) {
                     cell.preferredLayoutAttributesFitting(attr)
                     return CGSize(width: cellWidth, height: cell.getPreferedHeight())
-            } else {
-                let height = presenter.getHeightForCell(indexPath: indexPath)
-                if height > 0 {
-                    return CGSize(width: cellWidth, height: height)
                 }
             }
-        }
-            
+
             let height = cellHeights[indexPath]
-            return CGSize(width: cellWidth, height: height ?? WallCellConstant.cellHeight)
+            return CGSize(width: cellWidth, height: height ?? notExpandedHeight)
         }
 }

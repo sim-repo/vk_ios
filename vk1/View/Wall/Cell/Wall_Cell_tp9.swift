@@ -3,6 +3,27 @@ import WebKit
 
 class Wall_Cell_tp9: BaseWall {
     
+    
+    // header constraints
+    @IBOutlet weak var reposterStackViewHeightCon: NSLayoutConstraint!
+    @IBOutlet weak var authorStackViewHeightCon: NSLayoutConstraint!
+    
+    
+    // reposter
+    @IBOutlet weak var reposterNameLabel: UILabel!
+    @IBOutlet weak var reposterDateLabel: UILabel!
+    @IBOutlet weak var reposterAvaImageView: UIImageView!
+    
+    // author
+    @IBOutlet weak var authorNameLabel: UILabel!
+    @IBOutlet weak var authorDateLabel: UILabel!
+    @IBOutlet weak var authorAvaImageView: UIImageView!
+    
+    // post message
+    @IBOutlet weak var authorPostMsgLabel: UILabel!
+    
+    
+    // media
     @IBOutlet weak var imageView1: UIImageView!
     @IBOutlet weak var imageView2: UIImageView!
     @IBOutlet weak var imageView3: UIImageView!
@@ -12,9 +33,6 @@ class Wall_Cell_tp9: BaseWall {
     @IBOutlet weak var imageView7: UIImageView!
     @IBOutlet weak var imageView8: UIImageView!
     @IBOutlet weak var imageView9: UIImageView!
-    @IBOutlet weak var likeView: WallLike_View!
-    @IBOutlet weak var headerView: WallHeader_View!
-    @IBOutlet weak var hConHeaderView: NSLayoutConstraint!
     @IBOutlet weak var imageButton1: UIButton!
     @IBOutlet weak var imageButton2: UIButton!
     @IBOutlet weak var imageButton3: UIButton!
@@ -24,19 +42,21 @@ class Wall_Cell_tp9: BaseWall {
     @IBOutlet weak var imageButton7: UIButton!
     @IBOutlet weak var imageButton9: UIButton!
     @IBOutlet weak var imageButton8: UIButton!
+    
+    @IBOutlet weak var likeView: WallLike_View!
+    
     @IBOutlet weak var imageContentView: UIView!
+    
+    // expand button
+    @IBOutlet weak var expandButton: UIButton!
     
     lazy var buttons = [imageButton1!,imageButton2!,imageButton3!,imageButton4!,imageButton5!,imageButton6!,imageButton7!,imageButton8!,imageButton9!]
     lazy var imageViews = [imageView1!,imageView2!,imageView3!,imageView4!,imageView5!,imageView6!,imageView7!,imageView8!,imageView9!]
-   
-    override func setupHeaderView(){
-        let frame = headerView.origTitleTextView.frame
-        presenter?.sendPostText(postText: frame )
-        headerView.delegate = self
-        headerView.prepare()
-    }
     
     override func prepareForReuse() {
+        reposterStackViewHeightCon.constant = 35
+        authorStackViewHeightCon.constant = 35
+        expandButton.isHidden = true
         prepareReuse()
     }
     
@@ -80,38 +100,84 @@ class Wall_Cell_tp9: BaseWall {
         pressImage(imageIdx: 8)
     }
     
+    @IBAction func doExpand(_ sender: Any) {
+    }
+    
+    override func setupOutlets(){
+        expandButton.isHidden = true
+    }
     
     // MARK: - implementation Wall_CellProtocol
     
-     override func getImageContent() -> UIView {
-         return imageContentView
-     }
-     
-     override func getButtons() -> [UIButton]{
-         return buttons
-     }
-     
-     override func getPreferedHeight() -> CGFloat {
-         return preferedHeight
-     }
-     
-     override func getImagesView() -> [UIImageView] {
-         return imageViews
-     }
-     
-     override func getLikeView() -> WallLike_View {
-         return likeView
-     }
-     
-     override func getIndexRow() -> Int {
-         return indexPath.row
-     }
-     
-     override func getHeaderView() -> WallHeader_View {
-         return headerView
-     }
-     
-     override func getHConHeaderView() -> NSLayoutConstraint {
-         return hConHeaderView
-     }
+    // header constraints
+    override func getReposterHeightCon() -> NSLayoutConstraint {
+        return reposterStackViewHeightCon
+    }
+    
+    override func getAuthorHeightCon() -> NSLayoutConstraint {
+        return authorStackViewHeightCon
+    }
+    
+    // reposter
+    override func getReposterName() -> UILabel {
+        return reposterNameLabel
+    }
+    
+    override func getReposterDate() -> UILabel {
+        return reposterDateLabel
+    }
+    
+    override func getReposterAva() -> UIImageView {
+        return reposterAvaImageView
+    }
+    
+    // author
+    override func getAuthorName() -> UILabel {
+        return authorNameLabel
+    }
+    
+    override func getAuthorDate() -> UILabel {
+        return authorDateLabel
+    }
+    
+    override func getAuthorAva() -> UIImageView  {
+        return authorAvaImageView
+    }
+    
+    // post message
+    override func getAuthorPostMsg() -> UILabel {
+        return authorPostMsgLabel
+    }
+    
+    // media
+    override func getImagesView() -> [UIImageView] {
+        return imageViews
+    }
+    
+    // footer
+    override func getLikeView() -> WallLike_View {
+        return likeView
+    }
+    
+    
+    override func getImageContent() -> UIView {
+        return imageContentView
+    }
+    
+    override func getButtons() -> [UIButton]{
+        return buttons
+    }
+    
+    override func getExpandButton() -> UIButton {
+        return expandButton
+    }
+    
+    override func getPreferedHeight() -> CGFloat {
+        return preferedHeight
+    }
+    
+    override func getIndexRow() -> Int {
+        return indexPath.row
+    }
+    
 }

@@ -5,7 +5,7 @@ struct WallCellConstant {
 
     
     
-    static let headerHeight: CGFloat = 120
+    static let headerHeight: CGFloat = 30
     static let quarterHeight: CGFloat =  120 / 4
     static let mediaBlockHeight: CGFloat = 280
     static let footerHeight: CGFloat = 30

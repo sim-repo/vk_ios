@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 class FriendWallPresenter: PlainPresenterProtocols {
     
@@ -41,16 +41,6 @@ extension FriendWallPresenter: PaginationPresenterProtocol {
 
 
 extension FriendWallPresenter: PullWallPresenterProtocol {
-    
-    func getHeightForCell(indexPath: IndexPath) -> CGFloat {
-        //TODO
-        return 0
-    }
-    
-    
-    func sendPostText(postText: CGRect) {
-        //TODO
-    }
     
     func selectImage(indexPath: IndexPath, imageIdx: Int) {
         

@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 // view get access to presenter
 protocol PullPresenterProtocol: class {
@@ -41,6 +41,4 @@ protocol PullWallPresenterProtocol: class{
     func expandCell(isExpand: Bool, indexPath: IndexPath?)
     func isExpandedCell(indexPath: IndexPath) -> Bool
     func disableExpanding(indexPath: IndexPath)
-    func sendPostText(postText: CGRect)
-    func getHeightForCell(indexPath: IndexPath) -> CGFloat
 }
