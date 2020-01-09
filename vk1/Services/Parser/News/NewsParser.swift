@@ -41,14 +41,12 @@ class NewsParser {
         
         var res: [News] = []
         let items = json["response"]["items"].arrayValue
-        
         let jsonProfiles = json["response"]["profiles"].arrayValue
         let jsonGroups = json["response"]["groups"].arrayValue
         let dicGroups = parseGroup(jsonGroups)
         let dicProfile = parseProfiles(jsonProfiles)
         
       
-        
         for item in items {
             
             let repost = isRepost(item)
@@ -106,7 +104,7 @@ class NewsParser {
 
     
     //MARK:- private functions >>
-    
+
     
     private static func parseProfiles(_ profiles: [JSON]) -> [typeId:Friend]{
         var res: [typeId:Friend] = [:]

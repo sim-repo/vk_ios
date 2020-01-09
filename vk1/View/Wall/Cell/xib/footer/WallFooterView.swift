@@ -5,15 +5,22 @@ enum PostControlEnum {
     case like
     case share
     case comment
-    case shake
+    case views
 }
 
-class PostImageView: UIImageView {
+protocol WallFooterViewProtocolDelegate: class {
+    func didPressLike()
+    func didPressComment()
+    func didPressShare()
+}
+
+class WallFooterView: UIImageView {
     
     private var activated = false
     var boundMetrics: UILabel?
     var color = UIColor(red: 0.919, green: 0.919, blue: 0.919, alpha: 1.000)
     var userActivityType: PostControlEnum?
+    var delegate: WallFooterViewProtocolDelegate?
     
     lazy var tapGestureRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer(target: self,
@@ -40,10 +47,12 @@ class PostImageView: UIImageView {
         switch activity {
             case .like:
                 doLike()
-            case .shake:
-                doShake()
-            default:
-                doShake()
+            case .comment:
+                doComment()
+            case .share:
+                doShare()
+            case .views:
+                doViews()
         }
     }
     
@@ -71,10 +80,10 @@ class PostImageView: UIImageView {
         })
     }
     
-    func doLike(){
+    private func doLike(){
         var sign: Int = 1
         let numb = Int( (boundMetrics?.text)!)
-        doShake()
+        runShakeEffect()
         if activated {
             color = UIColor(red: 0.826, green: 0.200, blue: 0.200, alpha: 1.000)
             
@@ -86,9 +95,26 @@ class PostImageView: UIImageView {
             boundMetrics?.text = String(numb + sign)
         }
         boundMetrics?.textColor = color
+        delegate?.didPressLike()
     }
     
-    func doShake(){
+    private func doComment(){
+        runShakeEffect()
+        delegate?.didPressComment()
+    }
+    
+    private func doShare() {
+        runShakeEffect()
+        delegate?.didPressShare()
+    }
+    
+    private func doViews() {
+        runShakeEffect()
+    }
+    
+    
+    
+    private func runShakeEffect(){
         let animation = CASpringAnimation(keyPath: "transform.scale")
         animation.duration = 3
         animation.fromValue = 0.6
@@ -100,6 +126,4 @@ class PostImageView: UIImageView {
         animation.beginTime = CACurrentMediaTime()
         self.layer.add(animation, forKey: "transform.scale")
     }
-    
- 
 }

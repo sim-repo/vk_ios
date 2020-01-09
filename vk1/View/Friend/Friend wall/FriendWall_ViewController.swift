@@ -36,7 +36,7 @@ class FriendWall_ViewController: UIViewController {
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
         guard  let _ = presenter as? PullWallPresenterProtocol
             else {
-                log("setupPresenter(): conform exception", level: .error)
+                log("setupPresenter(): conformation exception", level: .error)
                 return
         }
     }

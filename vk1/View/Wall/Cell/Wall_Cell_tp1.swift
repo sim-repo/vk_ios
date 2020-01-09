@@ -35,6 +35,8 @@ class Wall_Cell_tp1: BaseWall {
     // expand button
     @IBOutlet weak var expandButton: UIButton!
     
+    // footer constraint
+    @IBOutlet weak var footerHeightCon: NSLayoutConstraint!
     
     
     
@@ -62,6 +64,10 @@ class Wall_Cell_tp1: BaseWall {
     
     override func setupOutlets(){
         expandButton.isHidden = true
+        // footer
+        likeView.likeImageView.delegate = self
+        likeView.message.delegate = self
+        likeView.share.delegate = self
     }
     
     
@@ -132,6 +138,10 @@ class Wall_Cell_tp1: BaseWall {
     
     override func getIndexRow() -> Int {
         return indexPath.row
+    }
+    
+    override func getFooterHeightCon() -> NSLayoutConstraint {
+        return footerHeightCon
     }
 }
 

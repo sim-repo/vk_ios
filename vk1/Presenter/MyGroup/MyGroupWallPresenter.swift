@@ -52,11 +52,16 @@ extension MyGroupWallPresenter: PullWallPresenterProtocol {
         return expandedIndexPath == indexPath
     }
     
-    func disableExpanding(indexPath: IndexPath) {
-        if let expandedIdx = expandedIndexPath {
-            if abs(expandedIdx.row - indexPath.row) > 4 {
-                expandedIndexPath = nil
-            }
-        }
+    func didPressLike(indexPath: IndexPath) {
+        // TODO
     }
+    
+    func didPressComment(indexPath: IndexPath) {
+        // TODO
+    }
+    
+    func didPressShare(indexPath: IndexPath) {
+        // TODO
+    }
+
 }

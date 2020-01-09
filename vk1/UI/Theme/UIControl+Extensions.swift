@@ -365,3 +365,24 @@ extension CAGradientLayer {
         return image
     }
 }
+
+
+//MARK:- UIStackView
+
+extension UIStackView {
+    func addBackground(color: UIColor) {
+        let subView = UIView(frame: bounds)
+        subView.backgroundColor = color
+        subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        insertSubview(subView, at: 0)
+    }
+}
+
+
+//MARK:- UILabel
+class MyStackView: UIStackView {
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+        addBackground(color: #colorLiteral(red: 0.1237688735, green: 0.05985450745, blue: 0.2865382433, alpha: 1) )
+    }
+}

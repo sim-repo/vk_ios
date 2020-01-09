@@ -25,7 +25,16 @@ extension FriendPresenter: PullWallPresenterProtocol {
         return false
     }
     
-    func disableExpanding(indexPath: IndexPath) {
-        
+    func didPressLike(indexPath: IndexPath) {
+        // TODO
     }
+    
+    func didPressComment(indexPath: IndexPath) {
+        // TODO
+    }
+    
+    func didPressShare(indexPath: IndexPath) {
+        // TODO
+    }
+    
 }

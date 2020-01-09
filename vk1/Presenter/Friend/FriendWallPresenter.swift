@@ -54,7 +54,7 @@ extension FriendWallPresenter: PullWallPresenterProtocol {
      
         guard let view_ = view as? PushWallViewProtocol
             else {
-                Logger.catchError(msg: "FriendWallPresenter(): PullWallPresenterProtocol(): selectImage: protocol conform exception")
+                Logger.catchError(msg: "FriendWallPresenter(): PullWallPresenterProtocol(): selectImage: protocol conformation exception")
                 return
             }
         view_.runPerformSegue(segueId: "FriendPostSegue", wall, selectedImageIdx: imageIdx)
@@ -68,11 +68,16 @@ extension FriendWallPresenter: PullWallPresenterProtocol {
         return expandedIndexPath == indexPath
     }
     
-    func disableExpanding(indexPath: IndexPath) {
-        if let expandedIdx = expandedIndexPath {
-            if abs(expandedIdx.row - indexPath.row) > 4 {
-                expandedIndexPath = nil
-            }
-        }
+    func didPressLike(indexPath: IndexPath) {
+        // TODO
     }
+    
+    func didPressComment(indexPath: IndexPath) {
+        // TODO
+    }
+    
+    func didPressShare(indexPath: IndexPath) {
+        // TODO
+    }
+    
 }

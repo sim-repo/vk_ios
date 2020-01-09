@@ -79,8 +79,9 @@ class SyncMgt {
     
     
     func sync(_ moduleEnum: ModuleEnum){
-         switch moduleEnum {
         
+         switch moduleEnum {
+            
          case .friend:
              SyncFriend.shared.sync()
              
@@ -98,6 +99,9 @@ class SyncMgt {
 
          case .news:
             SyncNews.shared.sync()
+            
+         case .comment:
+            SyncComment.shared.sync()
             
          default:
             log("sync(): no case for \(moduleEnum)", level: .warning)

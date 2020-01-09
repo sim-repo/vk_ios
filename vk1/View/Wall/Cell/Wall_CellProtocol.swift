@@ -3,7 +3,7 @@ import WebKit
 
 protocol Wall_CellProtocol: UICollectionViewCell {
     
-    func setup(_ wall: WallModelProtocol, _ indexPath: IndexPath, _ presenter: PullWallPresenterProtocol, isExpanded: Bool, delegate: WallCellProtocolDelegate)
+    func setup(_ wall: WallModelProtocol, _ indexPath: IndexPath, _ presenter: PullWallPresenterProtocol, isExpanded: Bool, delegate: WallCellProtocolDelegate?)
     
     
     // header constraints
@@ -29,11 +29,11 @@ protocol Wall_CellProtocol: UICollectionViewCell {
     
     // footer
     func getLikeView() -> WallLike_View
-    
-    func getExpandButton() -> UIButton 
-    
-    
+    func getExpandButton() -> UIButton
     func getIndexRow() -> Int
+    func hideFooter()
+    
+    // cell
     func getPreferedHeight() -> CGFloat
 }
 

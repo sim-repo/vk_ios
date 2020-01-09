@@ -237,6 +237,29 @@ class AlamofireService {
     }
     
     
+    public static func commentRequest(_ urlPath: String,
+                                      _ params: Parameters,
+                                        _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                        _ onError: @escaping  onErrResponse_SyncCompletion ) {
+        AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+            switch response.result {
+            case .success(let json):
+                let arr:[Comment]? = CommentParser.parseJson(json)
+                if let arr = arr {
+                    if arr.isEmpty {
+                        let err = NSError(domain: "AlamofireService: newsRequest(): response data is null", code: 123, userInfo: nil)
+                        onError(err)
+                    } else {
+                        onSuccess(arr)
+                    }
+                }
+            case .failure(let err):
+                log(err.localizedDescription, level: .error)
+            }
+        }
+    }
+    
+    
     
     
     private static func parseJsonItems<T: DecodableProtocol>(_ val: Any)->[T]?{

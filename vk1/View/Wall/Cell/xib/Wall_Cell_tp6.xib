@@ -19,7 +19,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tI0-R1-4DW">
                         <rect key="frame" x="0.0" y="0.0" width="620" height="496"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2uT-B5-2Tp">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2uT-B5-2Tp">
                                 <rect key="frame" x="0.0" y="0.0" width="620" height="35"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="am-32" translatesAutoresizingMaskIntoConstraints="NO" id="hPG-Rw-7sK" customClass="MyImageView_Circled" customModule="vk1" customModuleProvider="target">
@@ -30,16 +30,16 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jFL-fm-Tlf">
-                                        <rect key="frame" x="35" y="0.0" width="585" height="35"/>
+                                        <rect key="frame" x="43" y="0.0" width="577" height="35"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Reposter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ii3-Th-w5Q" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="585" height="21.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="577" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="yesterday, 11:00 a.m" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWB-PJ-hL0" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="21.5" width="585" height="13.5"/>
+                                                <rect key="frame" x="0.0" y="21.5" width="577" height="13.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="height" constant="35" id="EG2-Wd-s5t"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWt-PN-aDH">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nWt-PN-aDH">
                                 <rect key="frame" x="0.0" y="43" width="620" height="35"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="am-32" translatesAutoresizingMaskIntoConstraints="NO" id="ylw-Fy-T96" customClass="MyImageView_Circled" customModule="vk1" customModuleProvider="target">
@@ -62,16 +62,16 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tdJ-az-AIk">
-                                        <rect key="frame" x="35" y="0.0" width="585" height="35"/>
+                                        <rect key="frame" x="43" y="0.0" width="577" height="35"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Alex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gyo-oE-5HJ" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="585" height="21.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="577" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="yesterday, 10:00 a.m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLU-ya-1AS" customClass="MyLabel_Adaptive" customModule="vk1" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="21.5" width="585" height="13.5"/>
+                                                <rect key="frame" x="0.0" y="21.5" width="577" height="13.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -170,7 +170,7 @@
                                     <constraint firstAttribute="trailing" secondItem="XdG-BR-hN2" secondAttribute="trailing" id="4vb-ja-RgH"/>
                                     <constraint firstItem="tQg-b2-b1o" firstAttribute="width" secondItem="bvI-BR-sgn" secondAttribute="width" id="6la-EH-tVi"/>
                                     <constraint firstItem="oqR-cJ-exh" firstAttribute="width" secondItem="XdG-BR-hN2" secondAttribute="width" id="76o-ho-Pl7"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="7Zb-Ql-mPI"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="410" id="7Zb-Ql-mPI"/>
                                     <constraint firstItem="tQg-b2-b1o" firstAttribute="leading" secondItem="bvI-BR-sgn" secondAttribute="leading" id="8Oz-lf-7wt"/>
                                     <constraint firstItem="1jo-Jl-rPQ" firstAttribute="leading" secondItem="R7F-LX-Qov" secondAttribute="leading" id="8wT-MG-ZyV"/>
                                     <constraint firstItem="XdG-BR-hN2" firstAttribute="top" secondItem="R7F-LX-Qov" secondAttribute="bottom" constant="4" id="CWN-i0-ERL"/>
@@ -241,6 +241,7 @@
                 <outlet property="authorPostMsgLabel" destination="xZG-cd-3ZJ" id="SJV-UZ-Hq7"/>
                 <outlet property="authorStackViewHeightCon" destination="U8Z-1c-Yoz" id="J3J-5o-00y"/>
                 <outlet property="expandButton" destination="fRz-EZ-npZ" id="7gY-ON-TeX"/>
+                <outlet property="footerHeightCon" destination="5ZC-TA-6fI" id="2dY-YE-Hab"/>
                 <outlet property="imageButton1" destination="ZYS-8z-cLh" id="Geb-D2-4bT"/>
                 <outlet property="imageButton2" destination="jgS-wP-wKj" id="jyd-HQ-Wjo"/>
                 <outlet property="imageButton3" destination="1jo-Jl-rPQ" id="Ldl-64-nxZ"/>

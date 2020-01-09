@@ -44,6 +44,10 @@ class Wall_Cell_tp5: BaseWall {
     @IBOutlet weak var expandButton: UIButton!
     
     
+    // footer height constraint
+    @IBOutlet weak var footerHeightCon: NSLayoutConstraint!
+    
+    
     lazy var buttons = [imageButton1!,imageButton2!,imageButton3!,imageButton4!,imageButton5!]
     lazy var imageViews = [imageView1!,imageView2!,imageView3!,imageView4!,imageView5!]
     
@@ -85,6 +89,10 @@ class Wall_Cell_tp5: BaseWall {
     
     override func setupOutlets(){
         expandButton.isHidden = true
+        // footer
+        likeView.likeImageView.delegate = self
+        likeView.message.delegate = self
+        likeView.share.delegate = self
     }
     
     // MARK: - implementation Wall_CellProtocol
@@ -157,5 +165,9 @@ class Wall_Cell_tp5: BaseWall {
     
     override func getIndexRow() -> Int {
         return indexPath.row
+    }
+    
+    override func getFooterHeightCon() -> NSLayoutConstraint {
+        return footerHeightCon
     }
 }

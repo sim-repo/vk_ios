@@ -1,10 +1,7 @@
 import UIKit
 
 struct WallCellConstant {
-    
 
-    
-    
     static let headerHeight: CGFloat = 30
     static let quarterHeight: CGFloat =  120 / 4
     static let mediaBlockHeight: CGFloat = 280
@@ -34,6 +31,7 @@ struct WallCellConstant {
                              "tp7": "Wall_Cell_tp7",
                              "tp8": "Wall_Cell_tp8",
                              "tp9": "Wall_Cell_tp9"]
+    
     
     static func getImagePlanCode(imageCount: Int) -> String {
         switch imageCount {

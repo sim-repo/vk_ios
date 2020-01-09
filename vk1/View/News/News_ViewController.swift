@@ -12,9 +12,12 @@ class News_ViewController: UIViewController {
     var selectedImageIdx: Int?
     lazy var cellWidth = view.frame.size.width - constraintSpaceX.constant * 40
     var cellHeights = [IndexPath: CGFloat]() // for prevent "jumping" scrolling
+    var notExpandedHeight : CGFloat = 500
     
 
-    var notExpandedHeight : CGFloat = 500
+    static let gallerySegueId = "NewsPostSegue"
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,22 +42,39 @@ class News_ViewController: UIViewController {
         presenter = PresenterFactory.shared.getPlain(viewDidLoad: self)
         guard  let _ = presenter as? PullWallPresenterProtocol
             else {
-                log("setupPresenter(): conform exception", level: .error)
+                log("setupPresenter(): conformation exception", level: .error)
                 return
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let news = sender as? News
-            else { return }
-        if let destinationView = segue.destination as? NewsPost_ViewController {
-            if let idx = selectedImageIdx {
-                destinationView.selectedImageIdx = idx
-            }
-            destinationView.news = news
-        }
+        switch segue.identifier {
+            
+               case ModuleEnum.SegueIdEnum.comment.rawValue:
+                   guard let indexPath = sender as? IndexPath
+                   else {
+                       Logger.catchError(msg: "NewsPost_ViewController: prepare(for segue:)")
+                       return
+                   }
+                   segue.destination.modalPresentationStyle = .custom
+                   presenter.viewDidSeguePrepare(segueId: ModuleEnum.SegueIdEnum.comment, indexPath: indexPath)
+            
+            
+                case News_ViewController.gallerySegueId:
+                   guard let news = sender as? News else { return }
+                   if let dest = segue.destination as? NewsPost_ViewController {
+                       if let idx = selectedImageIdx {
+                           dest.selectedImageIdx = idx
+                       }
+                       dest.news = news
+                   }
+            
+                   default:
+                       return
+               }
     }
+    
     
     private func log(_ msg: String, level: Logger.LogLevelEnum) {
         SEQUENCE_THREAD {
@@ -94,8 +114,8 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 return cell
         }
         log("cellForItemAt(): idx: \(indexPath.row) - news.id: \(news.getId())", level: .info)
-        if let name = WallCellConstant.cellByCode[news.imagesPlanCode] {
-            cell = cellConfigure(name, indexPath, news)
+        if let cellId = WallCellConstant.cellByCode[news.imagesPlanCode] {
+            cell = cellConfigure(cellId, indexPath, news)
         }
         
         didScrollEnd(indexPath)
@@ -104,23 +124,27 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     
-    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cellHeights[indexPath] = cell.frame.size.height
     }
     
     
     private func getPullWallPresenterProtocol() -> PullWallPresenterProtocol? {
+        guard let _ = presenter as? PullWallPresenterProtocol
+        else {
+            log("getPullWallPresenterProtocol(): presenter must be conformed PullWallPresenterProtocol", level: .error)
+            return nil
+        }
         return presenter as? PullWallPresenterProtocol
     }
     
-    func cellConfigure(_ cell: String, _ indexPath: IndexPath, _ news: News) -> UICollectionViewCell{
-        let c = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as! Wall_CellProtocol
-        if let p = getPullWallPresenterProtocol() {
-            c.setup(news, indexPath, p, isExpanded: p.isExpandedCell(indexPath: indexPath), delegate: self)
-            //p.disableExpanding(indexPath: indexPath)
+    func cellConfigure(_ cellId: String, _ indexPath: IndexPath, _ news: News) -> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! Wall_CellProtocol
+        if let presenter = getPullWallPresenterProtocol() {
+            let isExpanded = presenter.isExpandedCell(indexPath: indexPath)
+            cell.setup(news, indexPath, presenter, isExpanded: isExpanded, delegate: self)
         }
-        return c
+        return cell
     }
     
     
@@ -162,10 +186,18 @@ extension News_ViewController: UIScrollViewDelegate {
 
 //MARK: - PushPlainViewProtocol
 
-extension News_ViewController: PushPlainViewProtocol{
+extension News_ViewController: PushPlainViewProtocol {
     
     
-    func runPerformSegue(segueId: String, _ model: ModelProtocol?){}
+    func runPerformSegue(segueId: String, _ model: ModelProtocol?){
+        guard let model = model
+            else {
+                log("runPerformSegue()", level: .warning)
+                return }
+        
+        let indexPath = presenter?.getIndexPath(model: model)
+        performSegue(withIdentifier: segueId, sender: indexPath)
+    }
     
     
     func viewReloadData(moduleEnum: ModuleEnum) {
@@ -242,7 +274,6 @@ extension News_ViewController: WallCellProtocolDelegate {
             presenter.expandCell(isExpand: isExpand, indexPath: indexPath)
             UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIView.AnimationOptions.curveEaseInOut, animations: {
                     self.collectionView.reloadItems(at: [indexPath])
-                  //  self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
                 }, completion: nil)
         }
     }

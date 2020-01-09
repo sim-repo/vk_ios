@@ -98,7 +98,7 @@ class UIControlThemeMgt {
     }
     
     
-    static func setupLikeControl(like: PostImageView, likeCount: UILabel, message: PostImageView, eye: PostImageView, share: PostImageView, messageCount: UILabel, eyeCount: UILabel, shareCount: UILabel) {
+    static func setupLikeControl(like: WallFooterView, likeCount: UILabel, message: WallFooterView, eye: WallFooterView, share: WallFooterView, messageCount: UILabel, eyeCount: UILabel, shareCount: UILabel) {
         like.isUserInteractionEnabled = true
         message.isUserInteractionEnabled = true
         eye.isUserInteractionEnabled = true
@@ -111,9 +111,9 @@ class UIControlThemeMgt {
         
         like.userActivityType = .like
         like.boundMetrics = likeCount
-        message.userActivityType = .shake
-        eye.userActivityType = .shake
-        share.userActivityType = .shake
+        message.userActivityType = .comment
+        eye.userActivityType = .views
+        share.userActivityType = .share
         
         
         likeCount.textColor = isDark ? ColorSystemHelper.secondary : ColorSystemHelper.primary
@@ -181,5 +181,6 @@ class UIControlThemeMgt {
             }
         }
     }
+    
 }
 

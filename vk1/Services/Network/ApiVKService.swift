@@ -194,6 +194,27 @@ class ApiVKService {
     }
     
     
+    static func commentRequest(postId: Int,
+                             ownerId: Int,
+                             _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                             _ onError: @escaping onErrResponse_SyncCompletion ) {
+        
+        let urlPath: String = "wall.getComments"
+        
+        let params: Parameters = [
+            "owner_id": ownerId,
+            "post_id": postId,
+            "access_token": Session.shared.token,
+            "extended": "1",
+            "sord":"asc",
+            "count": "100",
+            "v": NetworkConstant.shared.versionAPI
+        ]
+        AlamofireService.commentRequest(urlPath, params, onSuccess, onError)
+    }
+    
+    
+    
     static func authVkRequest(webview: WKWebView) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"

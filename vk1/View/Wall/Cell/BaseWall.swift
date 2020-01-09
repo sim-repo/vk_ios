@@ -18,7 +18,7 @@ class BaseWall : UICollectionViewCell {
                _ indexPath: IndexPath,
                _ presenter: PullWallPresenterProtocol,
                isExpanded: Bool,
-               delegate: WallCellProtocolDelegate) {
+               delegate: WallCellProtocolDelegate?) {
         
         self.indexPath = indexPath
         self.presenter = presenter
@@ -28,9 +28,6 @@ class BaseWall : UICollectionViewCell {
         
         setupOutlets()
         
-        if wall.getOrigTitle()?.contains("6 National Lampoon's Christmas Vacation ") ?? false {
-            print("A")
-        }
         WallCellConfigurator.setupCell(cell: self, wall: wall, isExpanded: isExpanded)
         
         cellType = wall.getCellType()
@@ -60,16 +57,19 @@ class BaseWall : UICollectionViewCell {
         return []
     }
     
+    
     func getImageContent() -> UIView {
         return UIView()
     }
     
+    func getFooterHeightCon() -> NSLayoutConstraint {
+        return NSLayoutConstraint()
+    }
+    
+    
     func getPreferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        
         setNeedsLayout()
-        
         let preferredLayoutAttributes = layoutAttributes
-        
         var fittingSize = UIView.layoutFittingCompressedSize
         fittingSize.width = preferredLayoutAttributes.size.width
         let size = systemLayoutSizeFitting(fittingSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
@@ -102,6 +102,7 @@ extension BaseWall: WallHeaderProtocolDelegate {
 
 
 extension BaseWall: Wall_CellProtocol {
+
     
     // header constraints
     @objc func getReposterHeightCon() -> NSLayoutConstraint {
@@ -143,5 +144,26 @@ extension BaseWall: Wall_CellProtocol {
     
     @objc func getIndexRow() -> Int {
         return 0
+    }
+    
+    func hideFooter() {
+        getFooterHeightCon().constant = 0
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
+}
+
+extension BaseWall: WallFooterViewProtocolDelegate {
+    
+    func didPressLike() {
+        presenter?.didPressLike(indexPath: indexPath)
+    }
+    
+    func didPressComment() {
+        presenter?.didPressComment(indexPath: indexPath)
+    }
+    
+    func didPressShare() {
+        presenter?.didPressShare(indexPath: indexPath)
     }
 }

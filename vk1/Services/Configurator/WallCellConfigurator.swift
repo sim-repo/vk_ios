@@ -29,9 +29,6 @@ class WallCellConfigurator {
             cell.getAuthorHeightCon().constant = 35
             cell.getAuthorName().text = wall.getOrigName()
             cell.getAuthorDate().text = convertUnixTime(unixTime: wall.getOrigPostDate())
-            if cell.getAuthorDate().text == "Jan 4, 2020 at 12:31:00 PM" {
-                print("A")
-            }
             cell.getAuthorAva().kf.setImage(with: wall.getOrigAvaURL())
         } else {
             cell.getAuthorHeightCon().constant = 0

@@ -15,6 +15,7 @@ enum ModuleEnum: String {
     case profile = "profile"
     case login = "login"
     case news = "news"
+    case comment = "comment"
     case unknown = "unknown"
     
     init(presenterType: SynchronizedPresenterProtocol.Type) {
@@ -39,6 +40,8 @@ enum ModuleEnum: String {
             self = .news
         case is LoginPresenter.Type:
             self = .login
+        case is CommentPresenter.Type:
+            self = .comment
         default:
             self = .unknown
             Logger.catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol.Type): no case: \(presenterType)")
@@ -67,6 +70,8 @@ enum ModuleEnum: String {
             self = .login
         case is NewsPresenter:
             self = .news
+        case is CommentPresenter:
+            self = .comment
         default:
             self = .unknown
             Logger.catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol): no case: \(presenter)")
@@ -91,6 +96,8 @@ enum ModuleEnum: String {
             self = .profile
         case is Login_ViewController:
             self = .login
+        case is NewsComment_ViewController:
+            self = .comment
         default:
             self = .unknown
             Logger.catchError(msg: "ModuleEnum: init(:PushViewProtocol): no case: \(vc)")
@@ -103,6 +110,8 @@ enum ModuleEnum: String {
                 self = .friend_wall
             case .detailGroup:
                 self = .my_group_detail
+            case .comment:
+                self = .comment
             default:
                 Logger.catchError(msg: "ModuleEnum: init(:segueId): no case: \(segueId)")
         }
@@ -131,6 +140,8 @@ enum ModuleEnum: String {
             return Login_ViewController.self
         case .news:
             return News_ViewController.self
+        case .comment:
+            return NewsComment_ViewController.self
         case .unknown:
             return Friend_ViewController.self //TODO
         }
@@ -158,6 +169,8 @@ enum ModuleEnum: String {
             return LoginPresenter.self
         case .news:
             return NewsPresenter.self
+        case .comment:
+            return CommentPresenter.self
         case .unknown:
             return FriendPresenter.self //TODO
         }
@@ -167,6 +180,7 @@ enum ModuleEnum: String {
     enum SegueIdEnum: String {
         case detailFriend = "detailFriend"
         case detailGroup = "detailGroup"
+        case comment = "NewsCommentSegue"
     }
 }
 

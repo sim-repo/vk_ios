@@ -9,7 +9,6 @@ class News : DecodableProtocol, PlainModelProtocol {
     var imagesPlanCode: String!
     var ownerId = 0
     
-    
     // wall header block
     var avaURL: URL?
     var name: String = ""

@@ -34,7 +34,7 @@ extension NewsParser {
         let videos = parseVideoBlock(jsonItem, isRepost)
         
         
-        guard photoURLs.count >= 1 && photoURLs.count <= 9 || videos.count > 0 else { return nil }
+        guard photoURLs.count > 0 || videos.count > 0 else { return nil }
         
         let footer = parsePostFooter(jsonItem)
         let news = News()
