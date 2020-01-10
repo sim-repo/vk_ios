@@ -71,7 +71,7 @@ class CommentParser {
             profile.id = profileJson["id"].intValue
             profile.firstName = profileJson["first_name"].stringValue
             profile.lastName = profileJson["last_name"].stringValue
-            profile.photo_50 = profileJson["photo_50"].stringValue
+            profile.photo_50 = profileJson["photo_100"].stringValue
             profile.online = profileJson["online"].intValue
             res.append(profile)
         }

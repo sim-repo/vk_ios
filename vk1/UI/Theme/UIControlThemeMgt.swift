@@ -137,6 +137,14 @@ class UIControlThemeMgt {
         }
     }
     
+    static func renderImage(imageView: UIImageView, color: UIColor){
+        if let image = imageView.image {
+            let tintableImage = image.withRenderingMode(.alwaysTemplate)
+            imageView.image = tintableImage
+            imageView.tintColor = color
+        }
+    }
+    
     private static func headerColor() -> UIColor {
            return ColorSystemHelper.primary
     }

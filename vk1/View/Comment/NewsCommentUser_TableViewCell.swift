@@ -8,6 +8,7 @@ class NewsCommentUser_TableViewCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!
 
+    @IBOutlet weak var bubbleMsgImageView: UIImageView!
     
     var comment: Comment!
     var audioSizeBlock: CGFloat = 0
@@ -26,7 +27,9 @@ class NewsCommentUser_TableViewCell: UITableViewCell {
         avaImageView.kf.setImage(with: comment.avaURL50)
         nameLabel.text = comment.firstName + " " + comment.lastName
         dateLabel.text = convertUnixTime(unixTime: comment.date)
-        commentLabel.text = comment.text
+        if comment.text.count > 0 {
+            commentLabel.text = "\n" + comment.text + "\n"
+        }
         self.comment = comment
         addAudioBlock()
     }
@@ -46,6 +49,7 @@ class NewsCommentUser_TableViewCell: UITableViewCell {
     
     
     private func reset(){
+        UIControlThemeMgt.renderImage(imageView: bubbleMsgImageView, color: #colorLiteral(red: 0.32472682, green: 0.04594633728, blue: 0.6819890738, alpha: 1))
         audioSizeBlock = 0
         avaImageView.image = UIImage(named: "placeholder")
         nameLabel.text = ""
