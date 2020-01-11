@@ -9,6 +9,7 @@ class NewsPresenter: PlainPresenterProtocols {
     }
     
     var expandedIndexesPath: [IndexPath] = []
+
 }
 
 
@@ -18,7 +19,6 @@ extension NewsPresenter: PaginationPresenterProtocol {
 
 
 extension NewsPresenter: PullWallPresenterProtocol {
-    
     
     
     func selectImage(indexPath: IndexPath, imageIdx: Int) {
@@ -57,32 +57,15 @@ extension NewsPresenter: PullWallPresenterProtocol {
         }
     }
     
-    
-    
     func isExpandedCell(indexPath: IndexPath) -> Bool {
         return expandedIndexesPath.contains(indexPath)
     }
     
-    
-    
-    func didPressLike(indexPath: IndexPath) {
-        // TODO
-    }
-    
-    
+    func didPressLike(indexPath: IndexPath) {}
     
     func didPressComment(indexPath: IndexPath) {
-        
-        guard let news = getData(indexPath: indexPath) as? News
-            else {
-                Logger.catchError(msg: "NewsPresenter(): PullWallPresenterProtocol(): didPressComment: getData exception ")
-                return
-        }
-        view?.runPerformSegue(segueId: ModuleEnum.SegueIdEnum.comment.rawValue, news)
+        view?.runPerformSegue(segueId: ModuleEnum.SegueIdEnum.comment.rawValue, indexPath)
     }
     
-    
-    func didPressShare(indexPath: IndexPath) {
-        // TODO
-    }
+    func didPressShare(indexPath: IndexPath) {}
 }

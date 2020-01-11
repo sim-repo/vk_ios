@@ -103,6 +103,9 @@ class SyncMgt {
          case .comment:
             SyncComment.shared.sync()
             
+         case .postLikes:
+            PostSyncLikes.shared.sync()
+            
          default:
             log("sync(): no case for \(moduleEnum)", level: .warning)
          }

@@ -16,6 +16,7 @@ enum ModuleEnum: String {
     case login = "login"
     case news = "news"
     case comment = "comment"
+    case postLikes = "postLikes"
     case unknown = "unknown"
     
     init(presenterType: SynchronizedPresenterProtocol.Type) {
@@ -42,6 +43,8 @@ enum ModuleEnum: String {
             self = .login
         case is CommentPresenter.Type:
             self = .comment
+        case is PostLikesPresenter.Type:
+            self = .postLikes
         default:
             self = .unknown
             Logger.catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol.Type): no case: \(presenterType)")
@@ -72,6 +75,8 @@ enum ModuleEnum: String {
             self = .news
         case is CommentPresenter:
             self = .comment
+        case is PostLikesPresenter:
+            self = .postLikes
         default:
             self = .unknown
             Logger.catchError(msg: "ModuleEnum: init(:SynchronizedPresenterProtocol): no case: \(presenter)")
@@ -98,6 +103,8 @@ enum ModuleEnum: String {
             self = .login
         case is NewsComment_ViewController:
             self = .comment
+        case is Likes_ViewController:
+            self = .postLikes
         default:
             self = .unknown
             Logger.catchError(msg: "ModuleEnum: init(:PushViewProtocol): no case: \(vc)")
@@ -112,6 +119,8 @@ enum ModuleEnum: String {
                 self = .my_group_detail
             case .comment:
                 self = .comment
+            case .postLikes:
+                self = .postLikes
             default:
                 Logger.catchError(msg: "ModuleEnum: init(:segueId): no case: \(segueId)")
         }
@@ -142,6 +151,8 @@ enum ModuleEnum: String {
             return News_ViewController.self
         case .comment:
             return NewsComment_ViewController.self
+        case .postLikes:
+            return Likes_ViewController.self
         case .unknown:
             return Friend_ViewController.self //TODO
         }
@@ -171,6 +182,8 @@ enum ModuleEnum: String {
             return NewsPresenter.self
         case .comment:
             return CommentPresenter.self
+        case .postLikes:
+            return PostLikesPresenter.self
         case .unknown:
             return FriendPresenter.self //TODO
         }
@@ -181,6 +194,7 @@ enum ModuleEnum: String {
         case detailFriend = "detailFriend"
         case detailGroup = "detailGroup"
         case comment = "NewsCommentSegue"
+        case postLikes = "PostLikesSegue"
     }
 }
 

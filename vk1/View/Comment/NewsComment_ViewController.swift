@@ -1,7 +1,7 @@
 import UIKit
 
 class NewsComment_ViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -16,6 +16,7 @@ class NewsComment_ViewController: UIViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
+        tableView.allowsSelection = false
     }
     
     private func registerCell(){
@@ -43,6 +44,21 @@ class NewsComment_ViewController: UIViewController {
                 return nil
         }
         return presenter as? PullCommentPresenterProtocol
+    }
+    
+    
+    func didPressShowLikes() {
+        getPullCommentPresenterProtocol()?.didPressShowLikes()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueEnum: ModuleEnum.SegueIdEnum = .postLikes
+        guard let indexPath = sender as? IndexPath
+            else {
+                Logger.catchError(msg: "NewsPost_ViewController: prepare(for segue:)")
+                return }
+        segue.destination.modalPresentationStyle = .custom
+        presenter.viewDidSeguePrepare(segueId: segueEnum, indexPath: indexPath)
     }
     
     
@@ -95,9 +111,9 @@ extension NewsComment_ViewController: UITableViewDataSource {
     private func userCell(_ indexPath: IndexPath) -> UITableViewCell {
         
         guard let comment = presenter.getData(indexPath: indexPath) as? Comment
-        else {
-            log("cellForItemAt(): presenter.getData is incorrect ", level: .error)
-            return UITableViewCell()
+            else {
+                log("cellForItemAt(): presenter.getData is incorrect ", level: .error)
+                return UITableViewCell()
         }
         
         let cellIdentifier = CommentCellConstant.getCellIdentifier2(imageCount: comment.imageURLs.count)
@@ -136,7 +152,7 @@ extension NewsComment_ViewController: UITableViewDataSource {
                 let objects = UINib(nibName: cellId, bundle: nil).instantiate(withOwner: nil, options: nil)
                 let cell = objects.first as! UITableViewCell
                 for row in 1..<presenter.numberOfRowsInSection() {
-                let idx = IndexPath(row: row, section: 0)
+                    let idx = IndexPath(row: row, section: 0)
                     if let comment = presenter.getData(indexPath: idx) as? Comment {
                         let commentCell = cell as! NewsCommentUser_TableViewCell
                         commentCell.setup(comment)
@@ -151,14 +167,12 @@ extension NewsComment_ViewController: UITableViewDataSource {
     }
 }
 
-extension NewsComment_ViewController: UITableViewDelegate {
-    
-}
-
 
 
 //MARK: - PushWallViewProtocol
 extension NewsComment_ViewController: PushViewProtocol {
+   
+    
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?) {
     }
@@ -167,7 +181,11 @@ extension NewsComment_ViewController: PushViewProtocol {
     }
     
     func runPerformSegue(segueId: String, _ model: ModelProtocol?) {
-        //TODO
+       
+    }
+    
+    func runPerformSegue(segueId: String, _ indexPath: IndexPath) {
+        performSegue(withIdentifier: segueId, sender: indexPath)
     }
 }
 
@@ -196,3 +214,6 @@ extension NewsComment_ViewController: CommentCellProtocolDelegate {
         tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
 }
+
+
+

@@ -133,8 +133,9 @@ extension MyGroupDetail_ViewController: UICollectionViewDataSource, UICollection
 
 extension MyGroupDetail_ViewController: PushPlainViewProtocol{
     
-    func runPerformSegue(segueId: String, _ model: ModelProtocol?) {
-    }
+    func runPerformSegue(segueId: String, _ model: ModelProtocol?) {}
+    
+    func runPerformSegue(segueId: String, _ indexPath: IndexPath) {}
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?) {
         

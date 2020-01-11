@@ -39,6 +39,8 @@ extension Profile_TableViewController: PushPlainViewProtocol {
     
     func runPerformSegue(segueId: String, _ model: ModelProtocol?){}
     
+    func runPerformSegue(segueId: String, _ indexPath: IndexPath) {}
+    
     func viewReloadData(moduleEnum: ModuleEnum) {
         PRESENTER_UI_THREAD { [weak self] in
             guard let self = self else { return }

@@ -23,6 +23,12 @@
 		1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611273D234B3E940080FD54 /* WaitIndicator2.swift */; };
 		16112740234B45E50080FD54 /* DataGeneratorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611273F234B45E50080FD54 /* DataGeneratorHelper.swift */; };
 		16112742234B4D600080FD54 /* ColorSystemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16112741234B4D600080FD54 /* ColorSystemHelper.swift */; };
+		16115C6B23C9155500412D0C /* Likes_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16115C6A23C9155500412D0C /* Likes_ViewController.swift */; };
+		16115C6E23C9171200412D0C /* Likes_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16115C6D23C9171200412D0C /* Likes_TableViewCell.swift */; };
+		16115C7023C917C400412D0C /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16115C6F23C917C400412D0C /* Like.swift */; };
+		16115C7323C91C3400412D0C /* PostLikesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16115C7223C91C3400412D0C /* PostLikesPresenter.swift */; };
+		16115C7523C91D4300412D0C /* PostSyncLikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16115C7423C91D4300412D0C /* PostSyncLikes.swift */; };
+		16115C8F23C9225500412D0C /* LikesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16115C8E23C9225500412D0C /* LikesParser.swift */; };
 		1611F28F23787437002FCE3C /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F28E23787437002FCE3C /* RealmService.swift */; };
 		1611F29323788308002FCE3C /* RealmWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F29223788308002FCE3C /* RealmWall.swift */; };
 		1611F29523788319002FCE3C /* RealmFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F29423788319002FCE3C /* RealmFriend.swift */; };
@@ -327,6 +333,12 @@
 		1611273D234B3E940080FD54 /* WaitIndicator2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitIndicator2.swift; sourceTree = "<group>"; };
 		1611273F234B45E50080FD54 /* DataGeneratorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGeneratorHelper.swift; sourceTree = "<group>"; };
 		16112741234B4D600080FD54 /* ColorSystemHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSystemHelper.swift; sourceTree = "<group>"; };
+		16115C6A23C9155500412D0C /* Likes_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Likes_ViewController.swift; sourceTree = "<group>"; };
+		16115C6D23C9171200412D0C /* Likes_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Likes_TableViewCell.swift; sourceTree = "<group>"; };
+		16115C6F23C917C400412D0C /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		16115C7223C91C3400412D0C /* PostLikesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLikesPresenter.swift; sourceTree = "<group>"; };
+		16115C7423C91D4300412D0C /* PostSyncLikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSyncLikes.swift; sourceTree = "<group>"; };
+		16115C8E23C9225500412D0C /* LikesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesParser.swift; sourceTree = "<group>"; };
 		1611F28E23787437002FCE3C /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		1611F29223788308002FCE3C /* RealmWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWall.swift; sourceTree = "<group>"; };
 		1611F29423788319002FCE3C /* RealmFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFriend.swift; sourceTree = "<group>"; };
@@ -586,6 +598,36 @@
 			path = "Friend post";
 			sourceTree = "<group>";
 		};
+		16115C6923C9151A00412D0C /* Likes */ = {
+			isa = PBXGroup;
+			children = (
+				16115C6A23C9155500412D0C /* Likes_ViewController.swift */,
+				16115C6D23C9171200412D0C /* Likes_TableViewCell.swift */,
+			);
+			path = Likes;
+			sourceTree = "<group>";
+		};
+		16115C6C23C9160C00412D0C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				16247D5823C5522C00995129 /* Comment_AudioBlock.xib */,
+				165532DD23C554DA00EC281D /* Comment_AudioBlock.swift */,
+				167D61CD23C7407200CB02E0 /* NewsCommentTop_TableViewCell.swift */,
+				167D61CE23C7407200CB02E0 /* NewsCommentTop_TableViewCell.xib */,
+				167D61D123C744E200CB02E0 /* NewsCommentUser_TableViewCell.swift */,
+				167D61D223C744E200CB02E0 /* NewsCommentUser_TableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		16115C7123C91C1D00412D0C /* PostLikes */ = {
+			isa = PBXGroup;
+			children = (
+				16115C7223C91C3400412D0C /* PostLikesPresenter.swift */,
+			);
+			path = PostLikes;
+			sourceTree = "<group>";
+		};
 		1611F2832378741C002FCE3C /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +647,7 @@
 				16E08B36236B62FD00340F09 /* DetailGroup.swift */,
 				16E08B5A236DF1B900340F09 /* Login.swift */,
 				16E01D1E23C128CA009B5357 /* Comment.swift */,
+				16115C6F23C917C400412D0C /* Like.swift */,
 			);
 			path = "Non-Persistent";
 			sourceTree = "<group>";
@@ -735,7 +778,8 @@
 			children = (
 				16D58BE9236706B800735296 /* Base */,
 				164F80D72385887A000F95E7 /* News */,
-				16E01D3223C15D7B009B5357 /* Comment */,
+				16E01D3223C15D7B009B5357 /* NewsComment */,
+				16115C7123C91C1D00412D0C /* PostLikes */,
 				16E08B2E236B3BED00340F09 /* Friend */,
 				16E08B3A236C6C7F00340F09 /* Login */,
 				16E08B84237065D100340F09 /* MyGroup */,
@@ -952,13 +996,8 @@
 		167D61B423C73DF600CB02E0 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
-				16247D5823C5522C00995129 /* Comment_AudioBlock.xib */,
-				165532DD23C554DA00EC281D /* Comment_AudioBlock.swift */,
+				16115C6C23C9160C00412D0C /* Cell */,
 				167D61CB23C73E3000CB02E0 /* NewsComment_ViewController.swift */,
-				167D61CD23C7407200CB02E0 /* NewsCommentTop_TableViewCell.swift */,
-				167D61CE23C7407200CB02E0 /* NewsCommentTop_TableViewCell.xib */,
-				167D61D123C744E200CB02E0 /* NewsCommentUser_TableViewCell.swift */,
-				167D61D223C744E200CB02E0 /* NewsCommentUser_TableViewCell.xib */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -987,9 +1026,10 @@
 		16AB0B8A232F7D0D00E21B7F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				167D61B423C73DF600CB02E0 /* Comment */,
 				16200D11233899F700F02440 /* Wall */,
 				164F80E42385AB09000F95E7 /* News */,
+				167D61B423C73DF600CB02E0 /* Comment */,
+				16115C6923C9151A00412D0C /* Likes */,
 				166D1B0A234F6E2900C552E4 /* Video */,
 				16200D0823388F6D00F02440 /* Profile */,
 				16AB0B90232F7D8000E21B7F /* Friend */,
@@ -1048,6 +1088,7 @@
 				16B999812391590B00F52010 /* NewsParser+WallPhoto.swift */,
 				16B999832391593000F52010 /* NewsParser+Video.swift */,
 				16E01D2023C12B69009B5357 /* CommentParser.swift */,
+				16115C8E23C9225500412D0C /* LikesParser.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -1113,12 +1154,12 @@
 			path = Parser;
 			sourceTree = "<group>";
 		};
-		16E01D3223C15D7B009B5357 /* Comment */ = {
+		16E01D3223C15D7B009B5357 /* NewsComment */ = {
 			isa = PBXGroup;
 			children = (
 				16E01D3323C15D96009B5357 /* CommentPresenter.swift */,
 			);
-			path = Comment;
+			path = NewsComment;
 			sourceTree = "<group>";
 		};
 		16E08B2D236B3BDA00340F09 /* Group */ = {
@@ -1177,6 +1218,7 @@
 				04ABED58238D5AC00077AB59 /* SyncVkLogin.swift */,
 				16B9999D2391F85000F52010 /* SyncVideo.swift */,
 				16E01D0623C126D5009B5357 /* SyncComment.swift */,
+				16115C7423C91D4300412D0C /* PostSyncLikes.swift */,
 			);
 			path = "Sync Module";
 			sourceTree = "<group>";
@@ -1600,6 +1642,7 @@
 				1666674E2347CA0B00FD2B86 /* Wall_Cell_tp6.swift in Sources */,
 				16200D10233895EF00F02440 /* Profile_TableCell.swift in Sources */,
 				16D58BE02366BABD00735296 /* DecodableProtocol.swift in Sources */,
+				16115C7323C91C3400412D0C /* PostLikesPresenter.swift in Sources */,
 				163CF9AC2333504A0087C6E2 /* SectionedBasePresenter.swift in Sources */,
 				04ABEDA5238D76D90077AB59 /* FirSignin_View.swift in Sources */,
 				16040619234E74FE0083F3C3 /* MyGroups_ViewController.swift in Sources */,
@@ -1646,6 +1689,7 @@
 				164F80BF2384C033000F95E7 /* PaginationPresenterProtocol.swift in Sources */,
 				16D669A7239061070086C55C /* SelfSized+Extensions.swift in Sources */,
 				1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */,
+				16115C7523C91D4300412D0C /* PostSyncLikes.swift in Sources */,
 				161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */,
 				1611F29323788308002FCE3C /* RealmWall.swift in Sources */,
 				16E08B64236ED9FF00340F09 /* ModelProtocol.swift in Sources */,
@@ -1661,8 +1705,10 @@
 				16C693592395254000F3DD93 /* RealmVideoURL.swift in Sources */,
 				166D1B05234EFF0F00C552E4 /* ZoomAnimator.swift in Sources */,
 				1611F29D23788422002FCE3C /* RealmURL.swift in Sources */,
+				16115C8F23C9225500412D0C /* LikesParser.swift in Sources */,
 				164AEA8E23B9937D0080F5B3 /* KingfisherConfigurator.swift in Sources */,
 				164F8263238F0985000F95E7 /* NetworkConstant.swift in Sources */,
+				16115C6E23C9171200412D0C /* Likes_TableViewCell.swift in Sources */,
 				16E08B39236C45E500340F09 /* SpinnerViewController.swift in Sources */,
 				16E01D2123C12B69009B5357 /* CommentParser.swift in Sources */,
 				167D61D623C7966600CB02E0 /* CommentProtocolDelegates.swift in Sources */,
@@ -1679,6 +1725,7 @@
 				16B99966239128FB00F52010 /* WallCellConstant.swift in Sources */,
 				164764B32365FB86007D1B19 /* PushViewProtocol.swift in Sources */,
 				16E08B8A23707EEE00340F09 /* SyncMyGroupWall.swift in Sources */,
+				16115C6B23C9155500412D0C /* Likes_ViewController.swift in Sources */,
 				1611F29923788333002FCE3C /* RealmGroup.swift in Sources */,
 				16AB0BA9232F985D00E21B7F /* Group.swift in Sources */,
 				166CB8E42382E690009DA806 /* SyncBase.swift in Sources */,
@@ -1704,6 +1751,7 @@
 				16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */,
 				16E08B51236DD82100340F09 /* SyncFriendWall.swift in Sources */,
 				1638C38823B187D1005DF0E5 /* WallProtocolDelegates.swift in Sources */,
+				16115C7023C917C400412D0C /* Like.swift in Sources */,
 				161B0EA5234A046C0081008B /* Group_ViewController.swift in Sources */,
 				16D58BE22366BE2900735296 /* PlainBasePresenter.swift in Sources */,
 				16E01D0723C126D5009B5357 /* SyncComment.swift in Sources */,

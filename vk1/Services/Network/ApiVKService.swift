@@ -195,22 +195,61 @@ class ApiVKService {
     
     
     static func commentRequest(postId: Int,
-                             ownerId: Int,
-                             _ onSuccess: @escaping onSuccess_PresenterCompletion,
-                             _ onError: @escaping onErrResponse_SyncCompletion ) {
+                               ownerId: Int,
+                               _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                               _ onError: @escaping onErrResponse_SyncCompletion ) {
         
         let urlPath: String = "wall.getComments"
-        
+        print("ownerId: \(ownerId) postId: \(postId)")
         let params: Parameters = [
             "owner_id": ownerId,
             "post_id": postId,
             "access_token": Session.shared.token,
             "extended": "1",
-            "sord":"asc",
+            "sort":"asc",
             "count": "100",
             "v": NetworkConstant.shared.versionAPI
         ]
         AlamofireService.commentRequest(urlPath, params, onSuccess, onError)
+    }
+    
+    
+    static func likesRequest(itemId: Int,
+                            _ ownerId: Int,
+                            _ type: Like.LikeType,
+                            _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                            _ onError: @escaping onErrResponse_SyncCompletion ) {
+        
+        let urlPath: String = "likes.getList"
+        let params: Parameters = [
+            "type": type.rawValue,
+            "owner_id": ownerId,
+            "item_id": itemId,
+            "access_token": Session.shared.token,
+            "extended": "1",
+            "count": "100",
+            "v": NetworkConstant.shared.versionAPI
+        ]
+        AlamofireService.likesRequest(itemId, ownerId, type, urlPath, params, onSuccess, onError)
+    }
+    
+    
+    static func usersRequest(likes: [Like],
+                             userIds: [Int],
+                             fields: [String],
+                             _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                             _ onError: @escaping onErrResponse_SyncCompletion ) {
+        
+        let urlPath: String = "users.get"
+        let params: Parameters = [
+            "user_ids": userIds,
+            "fields": fields,
+            "access_token": Session.shared.token,
+            "extended": "1",
+            "count": "100",
+            "v": NetworkConstant.shared.versionAPI
+        ]
+        AlamofireService.usersRequest(likes: likes, urlPath, params, onSuccess, onError)
     }
     
     

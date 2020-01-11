@@ -48,4 +48,12 @@ protocol PullWallPresenterProtocol: class{
 
 protocol PullCommentPresenterProtocol: class {
     func getNews() -> News
+    func didPressShowLikes()
 }
+
+
+protocol PullPostLikesPresenterProtocol: class {
+    func getComment() -> Comment
+}
+
+

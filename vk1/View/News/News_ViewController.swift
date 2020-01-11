@@ -51,28 +51,28 @@ class News_ViewController: UIViewController {
         
         switch segue.identifier {
             
-               case ModuleEnum.SegueIdEnum.comment.rawValue:
-                   guard let indexPath = sender as? IndexPath
-                   else {
-                       Logger.catchError(msg: "NewsPost_ViewController: prepare(for segue:)")
-                       return
-                   }
-                   segue.destination.modalPresentationStyle = .custom
-                   presenter.viewDidSeguePrepare(segueId: ModuleEnum.SegueIdEnum.comment, indexPath: indexPath)
-            
-            
-                case News_ViewController.gallerySegueId:
-                   guard let news = sender as? News else { return }
-                   if let dest = segue.destination as? NewsPost_ViewController {
-                       if let idx = selectedImageIdx {
-                           dest.selectedImageIdx = idx
-                       }
-                       dest.news = news
-                   }
-            
-                   default:
-                       return
+           case ModuleEnum.SegueIdEnum.comment.rawValue:
+               guard let indexPath = sender as? IndexPath
+               else {
+                   Logger.catchError(msg: "NewsPost_ViewController: prepare(for segue:)")
+                   return
                }
+               segue.destination.modalPresentationStyle = .custom
+               presenter.viewDidSeguePrepare(segueId: ModuleEnum.SegueIdEnum.comment, indexPath: indexPath)
+        
+        
+            case News_ViewController.gallerySegueId:
+               guard let news = sender as? News else { return }
+               if let dest = segue.destination as? NewsPost_ViewController {
+                   if let idx = selectedImageIdx {
+                       dest.selectedImageIdx = idx
+                   }
+                   dest.news = news
+               }
+        
+               default:
+                   return
+           }
     }
     
     
@@ -187,7 +187,7 @@ extension News_ViewController: UIScrollViewDelegate {
 //MARK: - PushPlainViewProtocol
 
 extension News_ViewController: PushPlainViewProtocol {
-    
+
     
     func runPerformSegue(segueId: String, _ model: ModelProtocol?){
         guard let model = model
@@ -199,6 +199,9 @@ extension News_ViewController: PushPlainViewProtocol {
         performSegue(withIdentifier: segueId, sender: indexPath)
     }
     
+    func runPerformSegue(segueId: String, _ indexPath: IndexPath) {
+        performSegue(withIdentifier: segueId, sender: indexPath)
+    }
     
     func viewReloadData(moduleEnum: ModuleEnum) {
         log("viewReloadData()", level: .info)

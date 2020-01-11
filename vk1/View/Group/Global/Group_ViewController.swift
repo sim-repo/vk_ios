@@ -114,6 +114,7 @@ extension Group_ViewController: PushPlainViewProtocol{
     
     func runPerformSegue(segueId: String, _ model: ModelProtocol?){}
     
+    func runPerformSegue(segueId: String, _ indexPath: IndexPath) {}
     
     func viewReloadData(moduleEnum: ModuleEnum) {
         PRESENTER_UI_THREAD { [weak self] in

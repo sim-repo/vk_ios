@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fae-sJ-8c3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fae-sJ-8c3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Groups-->
+        <!--Мои Группы-->
         <scene sceneID="DLF-fK-Upz">
             <objects>
                 <viewController id="64S-nl-E60" customClass="MyGroups_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
@@ -169,7 +168,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TxH-Cf-mdk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Groups" id="b6o-K8-AD5">
+                    <navigationItem key="navigationItem" title="Мои Группы" id="b6o-K8-AD5">
                         <barButtonItem key="backBarButtonItem" title=" " id="G4u-Dh-Qwp"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2MJ-xD-b8m">
                             <connections>
@@ -440,11 +439,11 @@
             </objects>
             <point key="canvasLocation" x="4443.4782608695659" y="354.91071428571428"/>
         </scene>
-        <!--Group-->
+        <!--Сообщества-->
         <scene sceneID="SST-In-cyB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fae-sJ-8c3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Group" image="g.circle.fill" catalog="system" id="Y4i-ZX-lCM"/>
+                    <tabBarItem key="tabBarItem" title="Сообщества" image="g.circle.fill" catalog="system" id="Y4i-ZX-lCM"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Ju-Lk-UOb">

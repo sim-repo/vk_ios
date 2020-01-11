@@ -152,6 +152,8 @@ extension Friend_ViewController: PushSectionedViewProtocol{
     
     func runPerformSegue(segueId: String, _ model: ModelProtocol?){}
     
+    func runPerformSegue(segueId: String, _ indexPath: IndexPath) {}
+    
     func viewReloadData(groupByIds: [String]) {
         self.lettersSearchControl.updateControl(with: groupByIds)
         self.tableView.reloadData()

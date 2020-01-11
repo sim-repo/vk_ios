@@ -239,8 +239,8 @@ class AlamofireService {
     
     public static func commentRequest(_ urlPath: String,
                                       _ params: Parameters,
-                                        _ onSuccess: @escaping onSuccess_PresenterCompletion,
-                                        _ onError: @escaping  onErrResponse_SyncCompletion ) {
+                                      _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                      _ onError: @escaping  onErrResponse_SyncCompletion ) {
         AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let json):
@@ -259,6 +259,64 @@ class AlamofireService {
         }
     }
     
+    
+    public static func likesRequest(_ itemId: Int,
+                                    _ ownerId: Int,
+                                    _ type: Like.LikeType,
+                                    _ urlPath: String,
+                                    _ params: Parameters,
+                                    _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                    _ onError: @escaping  onErrResponse_SyncCompletion
+        
+    ) {
+        AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+            switch response.result {
+            case .success(let json):
+                let likes:[Like]? = LikesParser.parseLikeJson(itemId, ownerId, json, type: type)
+                if let likes = likes {
+                    if likes.isEmpty {
+                        let err = NSError(domain: "AlamofireService: newsRequest(): response data is null", code: 123, userInfo: nil)
+                        onError(err)
+                    } else {
+                        let userIds = likes.map({ $0.profileId })
+                        
+                        ApiVKService.usersRequest(likes: likes,
+                                                  userIds: userIds,
+                                                  fields: ["photo_100","city","online"],
+                                                  onSuccess,
+                                                  onError)
+                    }
+                }
+            case .failure(let err):
+                log(err.localizedDescription, level: .error)
+            }
+        }
+    }
+    
+    
+    public static func usersRequest(likes: [Like],
+                                    _ urlPath: String,
+                                    _ params: Parameters,
+                                    _ onSuccess: @escaping onSuccess_PresenterCompletion,
+                                    _ onError: @escaping  onErrResponse_SyncCompletion) {
+        
+        AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
+            switch response.result {
+            case .success(let json):
+                let arr:[Like]? = LikesParser.parseUserJson(likes, json)
+                if let arr = arr {
+                    if arr.isEmpty {
+                        let err = NSError(domain: "AlamofireService: newsRequest(): response data is null", code: 123, userInfo: nil)
+                        onError(err)
+                    } else {
+                        onSuccess(arr)
+                    }
+                }
+            case .failure(let err):
+                log(err.localizedDescription, level: .error)
+            }
+        }
+    }
     
     
     

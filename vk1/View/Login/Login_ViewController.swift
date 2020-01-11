@@ -235,6 +235,8 @@ extension Login_ViewController: PushPlainViewProtocol {
         }
     }
     
+    func runPerformSegue(segueId: String, _ indexPath: IndexPath) {}
+    
     func viewReloadData(moduleEnum: ModuleEnum) {
     }
     

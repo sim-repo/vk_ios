@@ -9,8 +9,19 @@ class CommentPresenter: PlainPresenterProtocols {
     }
     
     var news: News!
-    var comments: [Comment]?
     var parentModel: ModelProtocol? // deprecated
+    
+    
+    //MARK: override func
+    override func enrichData(validated: [PlainModelProtocol]) -> [PlainModelProtocol]? {
+        
+        for element in validated {
+            let comment = element as! Comment
+            comment.newsSourceId = news.ownerId
+            comment.newsPostId = news.id
+        }
+        return validated
+    }
 }
 
 
@@ -35,5 +46,10 @@ extension CommentPresenter: PullCommentPresenterProtocol {
     
     func getNews() -> News {
         return news
+    }
+    
+    func didPressShowLikes() {
+        let indexPath = IndexPath(row: 1, section: 0)
+        view?.runPerformSegue(segueId: ModuleEnum.SegueIdEnum.postLikes.rawValue, indexPath)
     }
 }

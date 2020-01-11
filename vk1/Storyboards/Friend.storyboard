@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t6f-4v-MOv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t6f-4v-MOv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Friends-->
+        <!--Друзья-->
         <scene sceneID="YOT-nO-XSG">
             <objects>
                 <viewController id="Yrv-35-SAN" customClass="Friend_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,7 +142,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Friends" id="51F-ae-nlX"/>
+                    <navigationItem key="navigationItem" title="Друзья" id="51F-ae-nlX"/>
                     <connections>
                         <outlet property="buttonSearchCancel" destination="DMZ-MF-Uka" id="YDf-oB-x48"/>
                         <outlet property="lettersSearchControl" destination="iIh-nj-LGM" id="by0-KD-7aD"/>
@@ -167,7 +166,7 @@
             </objects>
             <point key="canvasLocation" x="1296" y="147"/>
         </scene>
-        <!--Wall-->
+        <!--Стена-->
         <scene sceneID="Ir4-rL-LAt">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="fcm-jH-4N3" customClass="FriendWall_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
@@ -207,7 +206,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wLJ-h7-wu1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Wall" id="Mkq-3b-QT5">
+                    <navigationItem key="navigationItem" title="Стена" id="Mkq-3b-QT5">
                         <barButtonItem key="backBarButtonItem" title=" " id="VmU-h1-ZVh"/>
                     </navigationItem>
                     <connections>
@@ -287,11 +286,11 @@
             </objects>
             <point key="canvasLocation" x="3247.826086956522" y="146.65178571428569"/>
         </scene>
-        <!--Friend-->
+        <!--Друзья-->
         <scene sceneID="S9l-EZ-Bmv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t6f-4v-MOv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friend" image="f.circle.fill" catalog="system" id="udK-1c-l0c"/>
+                    <tabBarItem key="tabBarItem" title="Друзья" image="f.circle.fill" catalog="system" id="udK-1c-l0c"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="krA-dk-gMl">
@@ -309,7 +308,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="f.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="f.circle.fill" catalog="system" width="32" height="32"/>
         <image name="search" width="32" height="32"/>
     </resources>
 </document>

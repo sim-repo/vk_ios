@@ -1,14 +1,3 @@
-//import UIKit
-//
-//class SyncComment {
-//
-//    public static func doCommentGet(postId: Int, ownerId: Int, _ onSuccess: (([Comment]?)->Void)?, _ onError: ((String)->Void)? ) {
-//         ApiVKService.commentRequest(postId: postId, ownerId: ownerId, onSuccess, onError )
-//    }
-//}
-//
-
-
 import UIKit
 
 class SyncComment: SyncBaseProtocol {
@@ -25,13 +14,12 @@ class SyncComment: SyncBaseProtocol {
         
         let presenter = PresenterFactory.shared.getInstance(clazz: CommentPresenter.self)
         
-        guard let p = presenter as? PullCommentPresenterProtocol
+        guard let news = (presenter as? PullCommentPresenterProtocol)?.getNews()
             else {
                 Logger.catchError(msg: "SyncComment: sync(): presenter is not conformed PullCommentPresenterProtocol")
                 return
         }
         
-        let news = p.getNews()
         presenter.clearDataSource(id: news.getId())
         
         syncFromNetwork(presenter, news: news, dispatchCompletion)

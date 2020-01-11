@@ -323,6 +323,15 @@ class MyView_GradiendBackground : UIView {
 }
 
 
+class MyView_Circled : UIView {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.layer.cornerRadius = self.frame.size.width/2
+        self.clipsToBounds = true
+        self.layer.borderWidth = 0
+    }
+}
+
 //MARK:- UINavigationBar
 
 extension UINavigationBar {

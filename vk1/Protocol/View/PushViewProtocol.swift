@@ -7,6 +7,7 @@ protocol PushViewProtocol: class {
     func startWaitIndicator(_ moduleEnum: ModuleEnum?)
     func stopWaitIndicator(_ moduleEnum: ModuleEnum?)
     func runPerformSegue(segueId: String, _ model: ModelProtocol?)
+    func runPerformSegue(segueId: String, _ indexPath: IndexPath)
 }
 
 

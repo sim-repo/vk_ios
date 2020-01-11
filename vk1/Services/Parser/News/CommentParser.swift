@@ -38,13 +38,13 @@ class CommentParser {
             
             let comment = Comment()
             comment.id = item["id"].intValue
-            comment.post_id = item["post_id"].intValue
-            comment.from_id = item["from_id"].intValue
-            comment.owner_id = item["owner_id"].intValue
+            comment.postId = item["post_id"].intValue
+            comment.fromId = item["from_id"].intValue
+            comment.ownerId = item["owner_id"].intValue
             comment.text = item["text"].stringValue
             comment.date = item["date"].doubleValue
             
-            if let profile = profiles.first(where: {$0.id == comment.from_id}) {
+            if let profile = profiles.first(where: {$0.id == comment.fromId}) {
                 comment.firstName = profile.firstName
                 comment.lastName = profile.lastName
                 comment.avaURL50 = URL(string: profile.photo_50)

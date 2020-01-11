@@ -132,6 +132,9 @@ extension FriendWall_ViewController: UIScrollViewDelegate {
 
 extension FriendWall_ViewController: PushPlainViewProtocol {
     
+    func runPerformSegue(segueId: String, _ indexPath: IndexPath) {}
+    
+    
     func runPerformSegue(segueId: String, _ model: ModelProtocol? = nil) {
         
         PRESENTER_UI_THREAD { [weak self] in

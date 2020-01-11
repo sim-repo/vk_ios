@@ -9,6 +9,13 @@ class NewsCommentTop_TableViewCell: UITableViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var expandingButton: UIButton!
     
+    @IBOutlet weak var pressedLikeImageView1: UIImageView!
+    @IBOutlet weak var pressedLikeImageView2: UIImageView!
+    @IBOutlet weak var pressedLikeImageView3: UIImageView!
+    
+    @IBOutlet weak var showLikesButton: UIButton!
+    
+    
     var wall: WallModelProtocol?
     var delegate: NewsComment_ViewController?
     
@@ -18,6 +25,7 @@ class NewsCommentTop_TableViewCell: UITableViewCell {
         nameLabel.text = ""
         dateLabel.text = ""
         titleLabel.text = ""
+        showLikesButton.setTitle("", for: .normal)
     }
     
     static func clazz() -> String {
@@ -39,6 +47,7 @@ class NewsCommentTop_TableViewCell: UITableViewCell {
         photoImageView.kf.setImage(with: URLs[0])
         self.wall = wall
         expandingButton.isHidden = isExpanded
+        showLikesButton.setTitle("Понравилось \(wall.getLikeCount()) людям", for: .normal)
     }
     
     @IBAction func doExpand(_ sender: Any) {
@@ -46,4 +55,11 @@ class NewsCommentTop_TableViewCell: UITableViewCell {
         expandingButton.isHidden = true
         delegate?.didPressExpand()
     }
+    
+    
+    @IBAction func doShowLikes(_ sender: Any) {
+        delegate?.didPressShowLikes()
+    }
+    
 }
+

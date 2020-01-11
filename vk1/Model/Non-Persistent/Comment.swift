@@ -5,9 +5,9 @@ import SwiftyJSON
 class Comment: PlainModelProtocol, DecodableProtocol {
    
     var id: typeId = 0
-    var from_id: typeId = 0
-    var post_id: typeId = 0
-    var owner_id: typeId = 0
+    var fromId: typeId = 0
+    var postId: typeId = 0
+    var ownerId: typeId = 0
     var date: Double = 0
     var text: String = ""
     var firstName: String = ""
@@ -17,6 +17,8 @@ class Comment: PlainModelProtocol, DecodableProtocol {
     var imageURLs: [URL] = []
     var imagesPlanCode: String!
     var audio: [Audio] = []
+    var newsSourceId: typeId = 0
+    var newsPostId: typeId = 0
     
     required init(){}
 
