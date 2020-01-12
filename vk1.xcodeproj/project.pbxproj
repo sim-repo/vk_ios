@@ -29,6 +29,7 @@
 		16115C7323C91C3400412D0C /* PostLikesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16115C7223C91C3400412D0C /* PostLikesPresenter.swift */; };
 		16115C7523C91D4300412D0C /* PostSyncLikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16115C7423C91D4300412D0C /* PostSyncLikes.swift */; };
 		16115C8F23C9225500412D0C /* LikesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16115C8E23C9225500412D0C /* LikesParser.swift */; };
+		16115CDE23CA9BFE00412D0C /* 18315.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16115CDD23CA9BFE00412D0C /* 18315.ttf */; };
 		1611F28F23787437002FCE3C /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F28E23787437002FCE3C /* RealmService.swift */; };
 		1611F29323788308002FCE3C /* RealmWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F29223788308002FCE3C /* RealmWall.swift */; };
 		1611F29523788319002FCE3C /* RealmFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1611F29423788319002FCE3C /* RealmFriend.swift */; };
@@ -339,6 +340,7 @@
 		16115C7223C91C3400412D0C /* PostLikesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLikesPresenter.swift; sourceTree = "<group>"; };
 		16115C7423C91D4300412D0C /* PostSyncLikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSyncLikes.swift; sourceTree = "<group>"; };
 		16115C8E23C9225500412D0C /* LikesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesParser.swift; sourceTree = "<group>"; };
+		16115CDD23CA9BFE00412D0C /* 18315.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 18315.ttf; sourceTree = "<group>"; };
 		1611F28E23787437002FCE3C /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		1611F29223788308002FCE3C /* RealmWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWall.swift; sourceTree = "<group>"; };
 		1611F29423788319002FCE3C /* RealmFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFriend.swift; sourceTree = "<group>"; };
@@ -767,6 +769,7 @@
 		162BEFBC2372463E00D765FB /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				16115CDD23CA9BFE00412D0C /* 18315.ttf */,
 				162BEFBF237247B800D765FB /* arcade.ttf */,
 				162BEFBD2372464B00D765FB /* subway-ticker_[allfont.ru].ttf */,
 			);
@@ -1563,6 +1566,7 @@
 				16AB0BA0232F7EE100E21B7F /* Friend.storyboard in Resources */,
 				164F8153238BBFFA000F95E7 /* GoogleService-Info.plist in Resources */,
 				16AB0B9E232F7ED600E21B7F /* MyGroup.storyboard in Resources */,
+				16115CDE23CA9BFE00412D0C /* 18315.ttf in Resources */,
 				1666673B2347B75F00FD2B86 /* Wall_Cell_tp1.xib in Resources */,
 				166667622347CB8A00FD2B86 /* Wall_Cell_tp7.xib in Resources */,
 				166D1B09234F6C7100C552E4 /* Video.storyboard in Resources */,

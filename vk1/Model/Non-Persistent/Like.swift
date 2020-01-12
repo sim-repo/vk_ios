@@ -13,6 +13,7 @@ class Like: PlainModelProtocol, DecodableProtocol {
     var city: String = ""
     var avaURL100: URL?
     var online: Bool = false
+    var isFriend: Bool = false
     
     required init(){}
     

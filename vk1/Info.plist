@@ -32,6 +32,7 @@
 	<array>
 		<string>arcade.ttf</string>
 		<string>subway-ticker_[allfont.ru].ttf</string>
+        <string>18315.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

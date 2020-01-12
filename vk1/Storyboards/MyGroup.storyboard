@@ -189,7 +189,7 @@
             </objects>
             <point key="canvasLocation" x="3230.434782608696" y="792.85714285714278"/>
         </scene>
-        <!--Detail-->
+        <!--Группа Детали-->
         <scene sceneID="nI1-Ht-cSz">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="SKg-kV-3zV" customClass="MyGroupDetail_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
@@ -305,7 +305,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JBG-ue-8z5"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" id="toK-Zw-JyJ">
+                    <navigationItem key="navigationItem" title="Группа Детали" id="toK-Zw-JyJ">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="VGa-j6-IcW">
                             <connections>
                                 <action selector="didPressHamburger:" destination="SKg-kV-3zV" id="3wH-8k-2j6"/>
@@ -331,7 +331,7 @@
             </objects>
             <point key="canvasLocation" x="4396" y="1069"/>
         </scene>
-        <!--Groups-->
+        <!--Группы-->
         <scene sceneID="EkY-zO-Khy">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Gb6-ID-JfA" customClass="Group_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
@@ -426,7 +426,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xZz-D1-25Z"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Groups" id="uc9-Bc-HCd">
+                    <navigationItem key="navigationItem" title="Группы" id="uc9-Bc-HCd">
                         <barButtonItem key="backBarButtonItem" title=" " id="EbJ-YQ-3c0"/>
                     </navigationItem>
                     <connections>
@@ -439,11 +439,11 @@
             </objects>
             <point key="canvasLocation" x="4443.4782608695659" y="354.91071428571428"/>
         </scene>
-        <!--Сообщества-->
+        <!--Группы-->
         <scene sceneID="SST-In-cyB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fae-sJ-8c3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Сообщества" image="g.circle.fill" catalog="system" id="Y4i-ZX-lCM"/>
+                    <tabBarItem key="tabBarItem" title="Группы" image="g.circle.fill" catalog="system" id="Y4i-ZX-lCM"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Ju-Lk-UOb">

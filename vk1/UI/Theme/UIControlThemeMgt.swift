@@ -61,9 +61,10 @@ class UIControlThemeMgt {
     
     
     static func setupNavigationBarColor(navigationController: UINavigationController?){
-        guard let font = UIFont(name: "Arcade", size: 30) else {
+ 
+        guard let font = UIFont(name: "MinecartLCD", size: 18) else {
             fatalError("""
-                Failed to load the "Arcade" font.
+                Failed to load the "MinecartLCD" font.
                 Make sure the font file is included in the project and the font name is spelled correctly.
                 """
             )

@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="250.72463768115944" y="1216.7410714285713"/>
         </scene>
-        <!--Photos-->
+        <!--Фото-->
         <scene sceneID="6rN-g9-7ku">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="HLs-5w-XKk" customClass="NewsPost_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
@@ -138,7 +138,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ohv-47-5gC"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Photos" id="WBs-bC-VUY"/>
+                    <navigationItem key="navigationItem" title="Фото" id="WBs-bC-VUY"/>
                     <connections>
                         <outlet property="imageContainerView" destination="rp8-C9-7g6" id="qGG-am-M1L"/>
                         <outlet property="postTextView" destination="7hS-hO-0GP" id="Imw-VH-a6c"/>

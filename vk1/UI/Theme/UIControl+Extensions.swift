@@ -1,7 +1,7 @@
 import UIKit
 
 
-let buttonFontName = "Courier New-Negret"
+let buttonFontName = "CourierNewPSMT"
 
 
 //MARK:- UIButton
@@ -17,7 +17,7 @@ class MyButton_Secondary : UIButton {
 class MyButton_Adaptive : UIButton {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        titleLabel?.font =  UIFont(name: buttonFontName, size: 12)
+        titleLabel?.font =  UIFont(name: buttonFontName, size: 14)
         if (isDark) {
             if currentImage != nil {
               tintColor = ColorSystemHelper.secondary
@@ -30,6 +30,17 @@ class MyButton_Adaptive : UIButton {
             }
             setTitleColor(ColorSystemHelper.primary, for: .normal)
         }
+    }
+}
+
+
+class MyButton_Rounded : UIButton {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        titleLabel?.font =  UIFont(name: buttonFontName, size: 12)
+        layer.cornerRadius = 4
+        clipsToBounds = true
+        setTitleColor(.white, for: .normal)
     }
 }
 
@@ -383,8 +394,6 @@ extension UIStackView {
     }
 }
 
-
-//MARK:- UIStackView
 class MyStackView: UIStackView {
     required init(coder: NSCoder) {
         super.init(coder: coder)

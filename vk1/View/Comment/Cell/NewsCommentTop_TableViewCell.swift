@@ -8,11 +8,6 @@ class NewsCommentTop_TableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var expandingButton: UIButton!
-    
-    @IBOutlet weak var pressedLikeImageView1: UIImageView!
-    @IBOutlet weak var pressedLikeImageView2: UIImageView!
-    @IBOutlet weak var pressedLikeImageView3: UIImageView!
-    
     @IBOutlet weak var showLikesButton: UIButton!
     
     

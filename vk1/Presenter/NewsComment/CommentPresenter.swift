@@ -14,7 +14,6 @@ class CommentPresenter: PlainPresenterProtocols {
     
     //MARK: override func
     override func enrichData(validated: [PlainModelProtocol]) -> [PlainModelProtocol]? {
-        
         for element in validated {
             let comment = element as! Comment
             comment.newsSourceId = news.ownerId

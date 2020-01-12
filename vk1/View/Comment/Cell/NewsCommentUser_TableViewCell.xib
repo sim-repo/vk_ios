@@ -135,6 +135,7 @@
                 <outlet property="dateLabel" destination="0qa-YZ-N5L" id="6I4-8h-EKm"/>
                 <outlet property="nameLabel" destination="V2I-zl-8H7" id="3s7-k4-fwU"/>
                 <outlet property="stackView" destination="kjf-Ru-R61" id="Xnk-EJ-grO"/>
+                <outlet property="tailBubbleMsgView" destination="IqY-gJ-DaA" id="ztW-DX-gbA"/>
             </connections>
             <point key="canvasLocation" x="623.91304347826087" y="239.39732142857142"/>
         </tableViewCell>

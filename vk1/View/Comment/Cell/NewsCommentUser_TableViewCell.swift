@@ -7,7 +7,7 @@ class NewsCommentUser_TableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!
-
+    @IBOutlet weak var tailBubbleMsgView: UIView!
     @IBOutlet weak var bubbleMsgImageView: UIImageView!
     
     var comment: Comment!
@@ -28,6 +28,8 @@ class NewsCommentUser_TableViewCell: UITableViewCell {
         nameLabel.text = comment.firstName + " " + comment.lastName
         dateLabel.text = convertUnixTime(unixTime: comment.date)
         if comment.text.count > 0 {
+            commentLabel.isHidden = false
+            tailBubbleMsgView.isHidden = false
             commentLabel.text = "\n" + comment.text + "\n"
         }
         self.comment = comment
@@ -49,6 +51,8 @@ class NewsCommentUser_TableViewCell: UITableViewCell {
     
     
     private func reset(){
+        tailBubbleMsgView.isHidden = true
+        commentLabel.isHidden = true
         UIControlThemeMgt.renderImage(imageView: bubbleMsgImageView, color: #colorLiteral(red: 0.32472682, green: 0.04594633728, blue: 0.6819890738, alpha: 1))
         audioSizeBlock = 0
         avaImageView.image = UIImage(named: "placeholder")
