@@ -80,7 +80,7 @@ public class PlainBasePresenter {
                 dataSource.append(model)
             }
         }
-        
+   
         switch didLoadedFrom {
         case .disk:
         return // data stored already

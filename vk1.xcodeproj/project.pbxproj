@@ -325,6 +325,7 @@
 		04ABEDA6238D7B8A0077AB59 /* FirSignup_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirSignup_View.swift; sourceTree = "<group>"; };
 		04ABEDA8238D7BA20077AB59 /* FirSignup_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirSignup_View.xib; sourceTree = "<group>"; };
 		0D199D1CB7592D94236B23CA /* Pods-vk1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vk1.release.xcconfig"; path = "Target Support Files/Pods-vk1/Pods-vk1.release.xcconfig"; sourceTree = "<group>"; };
+		160014C523CB30990005408B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		16040600234E390A0083F3C3 /* RotatedPopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedPopAnimator.swift; sourceTree = "<group>"; };
 		16040602234E39130083F3C3 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		16040604234E39170083F3C3 /* RotatedNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedNavigationController.swift; sourceTree = "<group>"; };
@@ -1353,6 +1354,7 @@
 				D4001F442327B7B60070829F /* Info.plist */,
 				164F814C238BBFFA000F95E7 /* GoogleService-Info.plist */,
 				161C11452347592300A2EC9D /* Assets.xcassets */,
+				160014C523CB30990005408B /* README.md */,
 			);
 			path = vk1;
 			sourceTree = "<group>";

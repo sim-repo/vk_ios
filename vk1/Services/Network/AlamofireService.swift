@@ -219,8 +219,13 @@ class AlamofireService {
             }
         }
     }
+
     
-    public static func videoRequest(_ urlPath: String, _ params: Parameters, _ onSuccess: ((URL, WallCellConstant.VideoPlatform) -> Void)?, _ onError: ((String)->Void)? ) {
+    public static func videoRequest(_ urlPath: String,
+                                    _ params: Parameters,
+                                    _ onSuccess: ((URL, WallCellConstant.VideoPlatform) -> Void)?,
+                                    _ onError: ((String)->Void)? ) {
+        
         AlamofireService.sharedManager.request(NetworkConstant.shared.baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let val):

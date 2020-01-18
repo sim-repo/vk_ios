@@ -34,9 +34,7 @@ extension FriendWallPresenter: DetailPresenterProtocol {
 }
 
 
-extension FriendWallPresenter: PaginationPresenterProtocol {
-    
-}
+extension FriendWallPresenter: PaginationPresenterProtocol {}
 
 
 
