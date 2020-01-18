@@ -19,13 +19,13 @@
 <H3>Поведение Presenters:</H3>
 1. есть два базовых класса Presenter: PlainBasePresenter и SectionedBasePresenter, поддерживающие работу с TableView, CollectionView без секций и с секциями соотвественно<br/>
 2.  Базовые классы описывают:<br/>
-∙ инциализацию "naked initial" и вместе с view-контроллером + валидация<br/>
-∙ хранят  объект datasource, добавляют в нее данные + сортировка + валидация<br/>
+*  инциализацию "naked initial" и вместе с view-контроллером + валидация<br/>
+*  хранят  объект datasource, добавляют в нее данные + сортировка + валидация<br/>
 3. Модульные Presenters <br/>
-∙ наследуются от базового + ModelOwnerPresenterProtocol, который нужен для привязки презентера к модулю<br/>
-∙ переопределяют функцию enrichData, когда требуется специфичная мутация datasource<br/>
-∙ могут быть дочерними, тогда имплементируют протокол DetailPresenterProtocol (например, PostLikesPresenter)<br/>
-∙ могут поддерживать пагинацию, тогда имплементация на PaginationPresenterProtocol (пример, NewsPresenter)<br/>
+* наследуются от базового + ModelOwnerPresenterProtocol, который нужен для привязки презентера к модулю<br/>
+*  переопределяют функцию enrichData, когда требуется специфичная мутация datasource<br/>
+* могут быть дочерними, тогда имплементируют протокол DetailPresenterProtocol (например, PostLikesPresenter)<br/>
+*  могут поддерживать пагинацию, тогда имплементация на PaginationPresenterProtocol (пример, NewsPresenter)<br/>
 
 
 <H3>Протоколы Presenters:</H3><br/>
