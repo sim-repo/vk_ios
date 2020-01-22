@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t6f-4v-MOv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t6f-4v-MOv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +10,7 @@
         <!--Друзья-->
         <scene sceneID="YOT-nO-XSG">
             <objects>
-                <viewController id="Yrv-35-SAN" customClass="Friend_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Yrv-35-SAN" customClass="FriendListViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8zj-qu-qN8" customClass="MyView_GradiendBackground" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +169,7 @@
         <!--Стена-->
         <scene sceneID="Ir4-rL-LAt">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="fcm-jH-4N3" customClass="FriendWall_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="fcm-jH-4N3" customClass="FriendWallViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q0E-jA-dxd" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -308,7 +308,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="f.circle.fill" catalog="system" width="32" height="32"/>
+        <image name="f.circle.fill" catalog="system" width="64" height="60"/>
         <image name="search" width="32" height="32"/>
     </resources>
 </document>

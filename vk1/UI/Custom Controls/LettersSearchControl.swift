@@ -78,7 +78,7 @@ public protocol AlphabetSearchViewControlProtocol : class {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        if (!isDark) {
+        if (!ColorSystemHelper.isDark) {
             backgroundColor = ColorSystemHelper.primary_contrast_30
             alpha = 0.8
         }
