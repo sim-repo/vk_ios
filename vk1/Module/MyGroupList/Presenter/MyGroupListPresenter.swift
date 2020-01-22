@@ -1,8 +1,8 @@
 import Foundation
 
-class MyGroupPresenter: SectionedBasePresenter {
+class MyGroupListPresenter: SectionedBasePresenter {
 
-    var netFinishViewReload: Bool = true
+    var isViewReloadWhenNetFinish = true
     
     var module: ModuleEnum  = .myGroupList
     
@@ -13,6 +13,11 @@ class MyGroupPresenter: SectionedBasePresenter {
     
     var coordinator: PresentableCoordinatorProtocol?
     
+    override func didSetContext() {
+      //  synchronizer?.tryRunSync()
+    }
+    
+    // specific func:
     
     func addGroup(group: Group) -> Bool {
         let has = dataSource.contains {$0.getId() == group.id}
@@ -27,9 +32,9 @@ class MyGroupPresenter: SectionedBasePresenter {
     }
 }
 
-extension MyGroupPresenter: ModulablePresenterProtocol {}
+extension MyGroupListPresenter: ModulablePresenterProtocol {}
 
-extension MyGroupPresenter: ViewableTransitionPresenterProtocol {
+extension MyGroupListPresenter: ViewableTransitionPresenterProtocol {
     
     func didPressTransition(to module: ModuleEnum, selectedIndexPath: IndexPath) {
         
@@ -43,6 +48,23 @@ extension MyGroupPresenter: ViewableTransitionPresenterProtocol {
     
     func didPressBack() {
         coordinator?.didPressBack()
+    }
+}
+
+extension MyGroupListPresenter: SyncablePresenterParametersProtocol {}
+
+extension MyGroupListPresenter: GroupablePresenterProtocol, SortablePresenterProtocol {
+    
+    func sort() {
+           let ds = dataSource as! [MyGroup]
+           dataSource = ds.sorted {
+               $0.name > $1.name
+           }
+       }
+
+    
+    func groupBy(model: ModelProtocol) -> String {
+        (model as! MyGroup).name
     }
 }
 

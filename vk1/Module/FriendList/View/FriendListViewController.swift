@@ -1,6 +1,6 @@
 import UIKit
 
-class FriendListViewController: UIViewController {
+class FriendListViewController: UIViewController, Storyboarded{
     
     @IBOutlet weak var lettersSearchControl: LettersSearchControl!
     @IBOutlet weak var tableView: UITableView!
@@ -18,7 +18,7 @@ class FriendListViewController: UIViewController {
     @IBOutlet weak var searchTextFieldHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonSearchCancel: UIButton!
     
-    var presenter: ViewableFriendListPresenterProtocol!
+    private var presenter: ViewableFriendListPresenterProtocol!
     var searchTextWidth: CGFloat = 0
     var lastContentOffset: CGFloat = 0
     var waiter: SpinnerViewController?
@@ -254,5 +254,12 @@ extension FriendListViewController: UIScrollViewDelegate {
                }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    }
+}
+
+//MARK:- CoordinatableViewProtocol
+extension FriendListViewController: CoordinatableViewProtocol {
+    func setPresenter(_ presenter: ViewablePresenterProtocol) {
+        self.presenter = presenter as? ViewableFriendListPresenterProtocol
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 
 
-public class SectionedBasePresenter : BasePresenter {
+public class SectionedBasePresenter : BaseIndexingPresenter {
     
     var sectionsOffset: [Int] = []
     
@@ -11,6 +11,15 @@ public class SectionedBasePresenter : BasePresenter {
     
     var filteredText: String?
     
+    
+    // when view is not exists
+    required init() {
+        super.init()
+        guard let _ = self as? GroupablePresenterProtocol & SortablePresenterProtocol
+        else {
+            fatalError("SectionedBasePresenter: \(clazz): init(): all protocols must be implemented")
+        }
+    }
     
     override func viewReloadData(){
         if let sortable = self as? SortablePresenterProtocol {
@@ -22,9 +31,12 @@ public class SectionedBasePresenter : BasePresenter {
     
     
     func getView() -> PresentableSectionedViewProtocol? {
+       guard view != nil
+        else { return nil }
+    
        guard let view = view as? PresentableSectionedViewProtocol
        else {
-           log("viewReloadData() \(String(describing: self.view)) doesn't conform protocol PresentableSectionedViewProtocol", level: .error)
+           log("viewReloadData(): \(String(describing: self.view)) doesn't conform protocol PresentableSectionedViewProtocol", level: .error)
            return nil
        }
         return view

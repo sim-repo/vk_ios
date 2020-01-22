@@ -2,10 +2,14 @@ import Foundation
 
 //MARK:- called from coordinate
 
-extension BasePresenter : CoordinatablePresenterProtocol {
-    
+extension BaseIndexingPresenter : CoordinatableIndexingPresenterProtocol {
     func setView(view: PresentableViewProtocol) {
-        self.view = view as? PresentablePlainViewProtocol
+        self.view = view
+        
+        if let multiple = self as? MultiplePresenterProtocol {
+            multiple.didSetView()
+        }
+        
         if dataSource.isEmpty {
             waitIndicator(start: true)
         } else {

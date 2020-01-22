@@ -10,7 +10,7 @@
         <!--Настройки-->
         <scene sceneID="l9z-Qw-w2o">
             <objects>
-                <tableViewController id="I0v-zq-Knl" customClass="Profile_TableViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ProfileTableViewController" id="I0v-zq-Knl" customClass="ProfileTableViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TGo-3O-Tp6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

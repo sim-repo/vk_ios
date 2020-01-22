@@ -6,7 +6,8 @@ class MyGroupListViewController: UIViewController, Storyboarded  {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
     
-    var presenter: ViewableSectionPresenterProtocol!
+    private var presenter: ViewableSectionPresenterProtocol!
+    
     static let cellId = "MyGroup_CollectionViewCell"
     static let detailSegueId = "MyGroupDetailSegue"
     static let groupSegueId = "GroupSegue"
@@ -87,3 +88,10 @@ extension MyGroupListViewController: AlphabetSearchViewControlProtocol {
     }
 }
 
+
+//MARK:- CoordinatableViewProtocol
+extension MyGroupListViewController: CoordinatableViewProtocol {
+    func setPresenter(_ presenter: ViewablePresenterProtocol) {
+        self.presenter = presenter as? ViewableFriendListPresenterProtocol
+    }
+}

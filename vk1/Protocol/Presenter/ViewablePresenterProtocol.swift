@@ -4,7 +4,12 @@ import Foundation
 // view get access to presenter
 
 //MARK: - Common
+
 protocol ViewablePresenterProtocol: class {
+}
+
+
+protocol ViewableIndexingPresenterProtocol: ViewablePresenterProtocol {
     func getData(indexPath: IndexPath?) -> ModelProtocol?
     func getIndexPath(model: ModelProtocol) -> IndexPath?
     func didEndScroll()
@@ -12,13 +17,13 @@ protocol ViewablePresenterProtocol: class {
 
 
 //MARK: - Plain
-protocol ViewablePlainPresenterProtocol: ViewablePresenterProtocol {
+protocol ViewablePlainPresenterProtocol: ViewableIndexingPresenterProtocol {
     func numberOfRowsInSection() -> Int
 }
 
 
 //MARK: - Sectioned
-protocol ViewableSectionPresenterProtocol: ViewablePresenterProtocol {
+protocol ViewableSectionPresenterProtocol: ViewableIndexingPresenterProtocol {
     func numberOfSections() -> Int
     func numberOfRowsInSection (section: Int) -> Int
     func getSectionTitle(section: Int)->String
@@ -54,7 +59,7 @@ protocol ViewableFriendListPresenterProtocol: ViewableSectionPresenterProtocol {
 
 
 //Login
-protocol ViewableLoginPresenterProtocol {
+protocol ViewableLoginPresenterProtocol: ViewablePresenterProtocol{
     func viewDidLoad()
 }
 

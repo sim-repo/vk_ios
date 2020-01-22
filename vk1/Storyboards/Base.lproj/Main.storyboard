@@ -78,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="1137.68115942029" y="-15.401785714285714"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="Kiz-Zk-0bN">
             <objects>
-                <tabBarController storyboardIdentifier="MainController" modalPresentationStyle="fullScreen" id="28x-hE-Guy" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CustomTabBarController" modalPresentationStyle="fullScreen" id="28x-hE-Guy" customClass="CustomTabBarController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="GLj-Oe-nqk"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cib-LK-b5H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>

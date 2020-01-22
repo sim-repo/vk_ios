@@ -10,7 +10,7 @@
         <!--Друзья-->
         <scene sceneID="YOT-nO-XSG">
             <objects>
-                <viewController id="Yrv-35-SAN" customClass="FriendListViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendListViewController" id="Yrv-35-SAN" customClass="FriendListViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8zj-qu-qN8" customClass="MyView_GradiendBackground" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" id="9zH-95-otg" customClass="Friend_TableCell" customModule="vk1" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendListCell" id="9zH-95-otg" customClass="FriendListCell" customModule="vk1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9zH-95-otg" id="Tj9-q5-Ojd">
@@ -50,8 +50,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="avaImage" destination="QbC-lf-0jh" id="PAS-M0-GIj"/>
-                                            <outlet property="name" destination="wKW-AT-XRN" id="mlb-vh-6bi"/>
+                                            <outlet property="avaImage" destination="QbC-lf-0jh" id="PP8-cs-RYL"/>
+                                            <outlet property="name" destination="wKW-AT-XRN" id="6ch-ro-fa4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -289,7 +289,7 @@
         <!--Друзья-->
         <scene sceneID="S9l-EZ-Bmv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t6f-4v-MOv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CustomNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="t6f-4v-MOv" customClass="CustomNavigationController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" image="f.circle.fill" catalog="system" id="udK-1c-l0c"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

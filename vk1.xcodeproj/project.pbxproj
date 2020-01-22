@@ -91,7 +91,7 @@
 		164C9C1623D7CC2100D221C6 /* MyGroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B6B23D7CC2000D221C6 /* MyGroupDetailViewController.swift */; };
 		164C9C1723D7CC2100D221C6 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B6F23D7CC2000D221C6 /* News.swift */; };
 		164C9C1823D7CC2100D221C6 /* RealmNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B7023D7CC2000D221C6 /* RealmNews.swift */; };
-		164C9C1923D7CC2100D221C6 /* MyGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B7423D7CC2000D221C6 /* MyGroupPresenter.swift */; };
+		164C9C1923D7CC2100D221C6 /* MyGroupListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B7423D7CC2000D221C6 /* MyGroupListPresenter.swift */; };
 		164C9C1A23D7CC2100D221C6 /* RealmMyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B7623D7CC2000D221C6 /* RealmMyGroup.swift */; };
 		164C9C1B23D7CC2100D221C6 /* MyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B7723D7CC2000D221C6 /* MyGroup.swift */; };
 		164C9C1C23D7CC2100D221C6 /* GroupSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B7923D7CC2000D221C6 /* GroupSectionHeader.swift */; };
@@ -102,7 +102,7 @@
 		164C9C2123D7CC2100D221C6 /* PlainBasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B7F23D7CC2000D221C6 /* PlainBasePresenter.swift */; };
 		164C9C2223D7CC2100D221C6 /* SectionedBasePresenter+Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B8023D7CC2000D221C6 /* SectionedBasePresenter+Syncable.swift */; };
 		164C9C2323D7CC2100D221C6 /* SectionedBasePresenter+Viewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B8123D7CC2000D221C6 /* SectionedBasePresenter+Viewable.swift */; };
-		164C9C2423D7CC2100D221C6 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B8223D7CC2000D221C6 /* BasePresenter.swift */; };
+		164C9C2423D7CC2100D221C6 /* BaseIndexingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B8223D7CC2000D221C6 /* BaseIndexingPresenter.swift */; };
 		164C9C2523D7CC2100D221C6 /* SectionedBasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B8323D7CC2000D221C6 /* SectionedBasePresenter.swift */; };
 		164C9C2623D7CC2100D221C6 /* BasePresenter+Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B8423D7CC2000D221C6 /* BasePresenter+Coordinatable.swift */; };
 		164C9C2723D7CC2100D221C6 /* RealmVideoURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B8623D7CC2000D221C6 /* RealmVideoURL.swift */; };
@@ -155,6 +155,14 @@
 		164C9C5623D7CC2100D221C6 /* QueueHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BC823D7CC2100D221C6 /* QueueHelper.swift */; };
 		164C9C5723D7CC2100D221C6 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BC923D7CC2100D221C6 /* ViewController+Extensions.swift */; };
 		164C9C5823D7CC2100D221C6 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BCA23D7CC2100D221C6 /* Date+Extensions.swift */; };
+		164C9C5C23D7E28B00D221C6 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C5B23D7E28B00D221C6 /* CustomNavigationController.swift */; };
+		164C9C7423D8524100D221C6 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C7323D8524100D221C6 /* CustomTabBarController.swift */; };
+		164C9C7623D8557500D221C6 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C7523D8557500D221C6 /* NewsListViewController.swift */; };
+		164C9C7B23D855DE00D221C6 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C7A23D855DE00D221C6 /* ProfileTableViewController.swift */; };
+		164C9C9623D86DD900D221C6 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C9523D86DD900D221C6 /* ProfilePresenter.swift */; };
+		164C9C9823D86E0800D221C6 /* NewsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C9723D86E0800D221C6 /* NewsListPresenter.swift */; };
+		164C9C9A23D883B600D221C6 /* PresenterConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C9923D883B600D221C6 /* PresenterConstant.swift */; };
+		164C9C9C23D886B500D221C6 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C9B23D886B500D221C6 /* BasePresenter.swift */; };
 		164F8153238BBFFA000F95E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 164F814C238BBFFA000F95E7 /* GoogleService-Info.plist */; };
 		166D1B09234F6C7100C552E4 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166D1B08234F6C7100C552E4 /* Video.storyboard */; };
 		16AB0B9E232F7ED600E21B7F /* MyGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16AB0B9D232F7ED600E21B7F /* MyGroup.storyboard */; };
@@ -374,7 +382,7 @@
 		164C9B6B23D7CC2000D221C6 /* MyGroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupDetailViewController.swift; sourceTree = "<group>"; };
 		164C9B6F23D7CC2000D221C6 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		164C9B7023D7CC2000D221C6 /* RealmNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmNews.swift; sourceTree = "<group>"; };
-		164C9B7423D7CC2000D221C6 /* MyGroupPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupPresenter.swift; sourceTree = "<group>"; };
+		164C9B7423D7CC2000D221C6 /* MyGroupListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupListPresenter.swift; sourceTree = "<group>"; };
 		164C9B7623D7CC2000D221C6 /* RealmMyGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmMyGroup.swift; sourceTree = "<group>"; };
 		164C9B7723D7CC2000D221C6 /* MyGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroup.swift; sourceTree = "<group>"; };
 		164C9B7923D7CC2000D221C6 /* GroupSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSectionHeader.swift; sourceTree = "<group>"; };
@@ -385,7 +393,7 @@
 		164C9B7F23D7CC2000D221C6 /* PlainBasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlainBasePresenter.swift; sourceTree = "<group>"; };
 		164C9B8023D7CC2000D221C6 /* SectionedBasePresenter+Syncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionedBasePresenter+Syncable.swift"; sourceTree = "<group>"; };
 		164C9B8123D7CC2000D221C6 /* SectionedBasePresenter+Viewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionedBasePresenter+Viewable.swift"; sourceTree = "<group>"; };
-		164C9B8223D7CC2000D221C6 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		164C9B8223D7CC2000D221C6 /* BaseIndexingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseIndexingPresenter.swift; sourceTree = "<group>"; };
 		164C9B8323D7CC2000D221C6 /* SectionedBasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionedBasePresenter.swift; sourceTree = "<group>"; };
 		164C9B8423D7CC2000D221C6 /* BasePresenter+Coordinatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasePresenter+Coordinatable.swift"; sourceTree = "<group>"; };
 		164C9B8623D7CC2000D221C6 /* RealmVideoURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmVideoURL.swift; sourceTree = "<group>"; };
@@ -438,6 +446,14 @@
 		164C9BC823D7CC2100D221C6 /* QueueHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueHelper.swift; sourceTree = "<group>"; };
 		164C9BC923D7CC2100D221C6 /* ViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
 		164C9BCA23D7CC2100D221C6 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		164C9C5B23D7E28B00D221C6 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		164C9C7323D8524100D221C6 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		164C9C7523D8557500D221C6 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
+		164C9C7A23D855DE00D221C6 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		164C9C9523D86DD900D221C6 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		164C9C9723D86E0800D221C6 /* NewsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListPresenter.swift; sourceTree = "<group>"; };
+		164C9C9923D883B600D221C6 /* PresenterConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterConstant.swift; sourceTree = "<group>"; };
+		164C9C9B23D886B500D221C6 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		164F814C238BBFFA000F95E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		164F825C238EF669000F95E7 /* Stage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Stage.xcconfig; sourceTree = "<group>"; };
 		164F825E238EF6DC000F95E7 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -623,18 +639,19 @@
 		164C9B2523D7CC2000D221C6 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				164C9B2623D7CC2000D221C6 /* GlobalGroup */,
+				164C9B7C23D7CC2000D221C6 /* BasePresenter */,
+				164C9B8523D7CC2000D221C6 /* BaseRealm */,
+				164C9B8923D7CC2000D221C6 /* Login */,
+				164C9B5A23D7CC2000D221C6 /* FriendList */,
+				164C9B6C23D7CC2000D221C6 /* News */,
+				164C9C7723D8559B00D221C6 /* Profile */,
 				164C9B2C23D7CC2000D221C6 /* Like */,
 				164C9B3123D7CC2000D221C6 /* Wall */,
 				164C9B5123D7CC2000D221C6 /* FriendWall */,
 				164C9B5523D7CC2000D221C6 /* Comment */,
-				164C9B5A23D7CC2000D221C6 /* FriendList */,
-				164C9B6323D7CC2000D221C6 /* MyGroupDetail */,
-				164C9B6C23D7CC2000D221C6 /* News */,
 				164C9B7223D7CC2000D221C6 /* MyGroupList */,
-				164C9B7C23D7CC2000D221C6 /* BasePresenter */,
-				164C9B8523D7CC2000D221C6 /* BaseRealm */,
-				164C9B8923D7CC2000D221C6 /* Login */,
+				164C9B6323D7CC2000D221C6 /* MyGroupDetail */,
+				164C9B2623D7CC2000D221C6 /* GlobalGroup */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -889,8 +906,8 @@
 		164C9B6423D7CC2000D221C6 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				164C9B6523D7CC2000D221C6 /* MyGroupWallPresenter.swift */,
 				164C9B6623D7CC2000D221C6 /* MyGroupDetailPresenter.swift */,
+				164C9B6523D7CC2000D221C6 /* MyGroupWallPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -925,6 +942,7 @@
 		164C9B6D23D7CC2000D221C6 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				164C9C9723D86E0800D221C6 /* NewsListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -941,6 +959,7 @@
 		164C9B7123D7CC2000D221C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				164C9C7523D8557500D221C6 /* NewsListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -958,7 +977,7 @@
 		164C9B7323D7CC2000D221C6 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				164C9B7423D7CC2000D221C6 /* MyGroupPresenter.swift */,
+				164C9B7423D7CC2000D221C6 /* MyGroupListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -975,9 +994,9 @@
 		164C9B7823D7CC2000D221C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				164C9B7B23D7CC2000D221C6 /* MyGroupListViewController.swift */,
 				164C9B7923D7CC2000D221C6 /* GroupSectionHeader.swift */,
 				164C9B7A23D7CC2000D221C6 /* MyGroupCollectionViewCell.swift */,
-				164C9B7B23D7CC2000D221C6 /* MyGroupListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -985,14 +1004,15 @@
 		164C9B7C23D7CC2000D221C6 /* BasePresenter */ = {
 			isa = PBXGroup;
 			children = (
+				164C9C9B23D886B500D221C6 /* BasePresenter.swift */,
+				164C9B8223D7CC2000D221C6 /* BaseIndexingPresenter.swift */,
+				164C9B8423D7CC2000D221C6 /* BasePresenter+Coordinatable.swift */,
+				164C9B7F23D7CC2000D221C6 /* PlainBasePresenter.swift */,
 				164C9B7D23D7CC2000D221C6 /* PlainBasePresenter+Viewable.swift */,
 				164C9B7E23D7CC2000D221C6 /* PlainBasePresenter+Syncable.swift */,
-				164C9B7F23D7CC2000D221C6 /* PlainBasePresenter.swift */,
-				164C9B8023D7CC2000D221C6 /* SectionedBasePresenter+Syncable.swift */,
-				164C9B8123D7CC2000D221C6 /* SectionedBasePresenter+Viewable.swift */,
-				164C9B8223D7CC2000D221C6 /* BasePresenter.swift */,
 				164C9B8323D7CC2000D221C6 /* SectionedBasePresenter.swift */,
-				164C9B8423D7CC2000D221C6 /* BasePresenter+Coordinatable.swift */,
+				164C9B8123D7CC2000D221C6 /* SectionedBasePresenter+Viewable.swift */,
+				164C9B8023D7CC2000D221C6 /* SectionedBasePresenter+Syncable.swift */,
 			);
 			path = BasePresenter;
 			sourceTree = "<group>";
@@ -1055,6 +1075,7 @@
 				164C9B9923D7CC2000D221C6 /* WallCellConstant.swift */,
 				164C9B9A23D7CC2000D221C6 /* CommentCellConstant.swift */,
 				164C9B9B23D7CC2000D221C6 /* NetworkConstant.swift */,
+				164C9C9923D883B600D221C6 /* PresenterConstant.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1199,6 +1220,31 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		164C9C7723D8559B00D221C6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				164C9C9323D86DBF00D221C6 /* Presenter */,
+				164C9C9423D86DC500D221C6 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		164C9C9323D86DBF00D221C6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				164C9C9523D86DD900D221C6 /* ProfilePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		164C9C9423D86DC500D221C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				164C9C7A23D855DE00D221C6 /* ProfileTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		164F825D238EF67B000F95E7 /* Build */ = {
 			isa = PBXGroup;
 			children = (
@@ -1219,6 +1265,8 @@
 				16200D1223389A1B00F02440 /* Wall.storyboard */,
 				166D1B08234F6C7100C552E4 /* Video.storyboard */,
 				D4001F412327B7B60070829F /* LaunchScreen.storyboard */,
+				164C9C5B23D7E28B00D221C6 /* CustomNavigationController.swift */,
+				164C9C7323D8524100D221C6 /* CustomTabBarController.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1571,6 +1619,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				164C9C5C23D7E28B00D221C6 /* CustomNavigationController.swift in Sources */,
 				164C9C1523D7CC2100D221C6 /* RealmDetailGroup.swift in Sources */,
 				164C9BE323D7CC2100D221C6 /* SyncGroup.swift in Sources */,
 				164C9BD023D7CC2100D221C6 /* ApiVKService.swift in Sources */,
@@ -1580,11 +1629,13 @@
 				164C9C3123D7CC2100D221C6 /* FirSignin_View.swift in Sources */,
 				164C9C4D23D7CC2100D221C6 /* LettersSearchControl.swift in Sources */,
 				164C9C1023D7CC2100D221C6 /* FriendListViewController.swift in Sources */,
+				164C9C9623D86DD900D221C6 /* ProfilePresenter.swift in Sources */,
 				164C9C0D23D7CC2100D221C6 /* FriendListPresenter.swift in Sources */,
 				164C9C2023D7CC2100D221C6 /* PlainBasePresenter+Syncable.swift in Sources */,
 				164C9C5223D7CC2100D221C6 /* WaitIndicator.swift in Sources */,
 				164C9C0923D7CC2100D221C6 /* BaseWallVideo.swift in Sources */,
 				164C9C3523D7CC2100D221C6 /* WallCellConstant.swift in Sources */,
+				164C9C9A23D883B600D221C6 /* PresenterConstant.swift in Sources */,
 				164C9C3423D7CC2100D221C6 /* ModuleEnum.swift in Sources */,
 				164C9C4323D7CC2100D221C6 /* ViewablePresenterProtocol.swift in Sources */,
 				164C9BDC23D7CC2100D221C6 /* NewsParser+Post.swift in Sources */,
@@ -1606,6 +1657,7 @@
 				164C9BD523D7CC2100D221C6 /* MyGroupParser.swift in Sources */,
 				164C9BD423D7CC2100D221C6 /* GlobalGroupParser.swift in Sources */,
 				164C9C4B23D7CC2100D221C6 /* PresentableViewProtocol.swift in Sources */,
+				164C9C7B23D855DE00D221C6 /* ProfileTableViewController.swift in Sources */,
 				164C9BE923D7CC2100D221C6 /* SyncPostLikes.swift in Sources */,
 				164C9BEC23D7CC2100D221C6 /* SyncVkLogin.swift in Sources */,
 				164C9C0323D7CC2100D221C6 /* WallCell3.swift in Sources */,
@@ -1615,6 +1667,7 @@
 				164C9C4523D7CC2100D221C6 /* ModulablePresenterProtocol.swift in Sources */,
 				164C9C0B23D7CC2100D221C6 /* FriendWallViewController.swift in Sources */,
 				164C9C1323D7CC2100D221C6 /* MyGroupDetailPresenter.swift in Sources */,
+				164C9C9823D86E0800D221C6 /* NewsListPresenter.swift in Sources */,
 				164C9C4123D7CC2100D221C6 /* DetailablePresenterProtocol.swift in Sources */,
 				164C9BE523D7CC2100D221C6 /* SyncMyGroupWall.swift in Sources */,
 				164C9C0F23D7CC2100D221C6 /* RealmFriend.swift in Sources */,
@@ -1648,6 +1701,7 @@
 				164C9C3223D7CC2100D221C6 /* SyncConstant.swift in Sources */,
 				164C9C0223D7CC2100D221C6 /* BaseWall.swift in Sources */,
 				164C9BCE23D7CC2100D221C6 /* YouTubeConfigHTML.swift in Sources */,
+				164C9C7423D8524100D221C6 /* CustomTabBarController.swift in Sources */,
 				164C9C2823D7CC2100D221C6 /* RealmURL.swift in Sources */,
 				164C9BCB23D7CC2100D221C6 /* ViewDidAppearInjector.swift in Sources */,
 				164C9C0023D7CC2100D221C6 /* WallLike_View.swift in Sources */,
@@ -1677,8 +1731,9 @@
 				164C9C4F23D7CC2100D221C6 /* Typing.swift in Sources */,
 				164C9C5023D7CC2100D221C6 /* SpinnerViewController.swift in Sources */,
 				164C9C1B23D7CC2100D221C6 /* MyGroup.swift in Sources */,
+				164C9C9C23D886B500D221C6 /* BasePresenter.swift in Sources */,
 				164C9BED23D7CC2100D221C6 /* RealmService.swift in Sources */,
-				164C9C1923D7CC2100D221C6 /* MyGroupPresenter.swift in Sources */,
+				164C9C1923D7CC2100D221C6 /* MyGroupListPresenter.swift in Sources */,
 				164C9BF323D7CC2100D221C6 /* Wall.swift in Sources */,
 				164C9C1623D7CC2100D221C6 /* MyGroupDetailViewController.swift in Sources */,
 				164C9BD323D7CC2100D221C6 /* GroupParser.swift in Sources */,
@@ -1687,7 +1742,7 @@
 				164C9C0623D7CC2100D221C6 /* WallCell4.swift in Sources */,
 				164C9C1A23D7CC2100D221C6 /* RealmMyGroup.swift in Sources */,
 				164C9C3F23D7CC2100D221C6 /* PaginablePresenterProtocol.swift in Sources */,
-				164C9C2423D7CC2100D221C6 /* BasePresenter.swift in Sources */,
+				164C9C2423D7CC2100D221C6 /* BaseIndexingPresenter.swift in Sources */,
 				164C9C5723D7CC2100D221C6 /* ViewController+Extensions.swift in Sources */,
 				164C9C2123D7CC2100D221C6 /* PlainBasePresenter.swift in Sources */,
 				164C9C1E23D7CC2100D221C6 /* MyGroupListViewController.swift in Sources */,
@@ -1698,6 +1753,7 @@
 				164C9C2323D7CC2100D221C6 /* SectionedBasePresenter+Viewable.swift in Sources */,
 				164C9C0523D7CC2100D221C6 /* WallCell6.swift in Sources */,
 				164C9C4823D7CC2100D221C6 /* CoordinatableViewProtocol.swift in Sources */,
+				164C9C7623D8557500D221C6 /* NewsListViewController.swift in Sources */,
 				164C9C1723D7CC2100D221C6 /* News.swift in Sources */,
 				164C9BEB23D7CC2100D221C6 /* SyncBase.swift in Sources */,
 				164C9C1F23D7CC2100D221C6 /* PlainBasePresenter+Viewable.swift in Sources */,

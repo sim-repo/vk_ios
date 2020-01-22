@@ -1,7 +1,7 @@
 import Foundation
 
 
-public class PlainBasePresenter: BasePresenter {
+public class PlainBasePresenter: BaseIndexingPresenter {
     
     override func viewReloadData(){
         getView()?.viewReloadData(moduleEnum: getModule())

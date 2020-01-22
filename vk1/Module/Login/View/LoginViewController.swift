@@ -8,7 +8,8 @@ class LoginViewController: UIViewController, Storyboarded {
     @IBOutlet weak var bottomInsetView: UIView!
     @IBOutlet weak var bottomHeightConstraint: NSLayoutConstraint!
     
-    var presenter: ViewableLoginPresenterProtocol!
+    private var presenter: ViewableLoginPresenterProtocol!
+    private var isRoot = false
     var webview: WKWebView?
     
     enum ViewEnum: Int {
@@ -279,5 +280,9 @@ extension LoginViewController: CoordinatableLoginViewProtocol {
     
     func setPresenter(_ presenter: ViewablePresenterProtocol) {
         self.presenter = presenter as? ViewableLoginPresenterProtocol
+    }
+    
+    func setRoot(isRoot: Bool) {
+        self.isRoot = isRoot
     }
 }

@@ -10,7 +10,7 @@
         <!--Новости-->
         <scene sceneID="7LV-dm-YOx">
             <objects>
-                <viewController id="oep-Qk-SeX" customClass="News_ViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsListViewController" id="oep-Qk-SeX" customClass="NewsListViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GXI-Yv-Tz2" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
