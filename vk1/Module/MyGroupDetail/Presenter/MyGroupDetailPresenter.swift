@@ -28,7 +28,7 @@ extension MyGroupDetailPresenter: MultiplePresenterProtocol {
 }
 
 
-extension MyGroupDetailPresenter: DetailablePresenterProtocol {
+extension MyGroupDetailPresenter: EnrichablePresenterProtocol {
     
     func didSetMaster(master: ModelProtocol) {
         guard let group = master as? MyGroup

@@ -1,13 +1,17 @@
 import UIKit
 
-class FriendWallViewController: UIViewController {
+class FriendWallViewController: UIViewController, Storyboarded {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var constraintSpaceX: NSLayoutConstraint!
     
-    var presenter: ViewableWallPresenterProtocol!
+    private var presenter: ViewableWallPresenterProtocol!
     var waiter: SpinnerViewController?
     var selectedImageIdx: Int?
+    
+    lazy var cellWidth = view.frame.size.width - constraintSpaceX.constant * 40
+    var cellHeights = [IndexPath: CGFloat]() // for prevent "jumping" scrolling
+    var notExpandedHeight : CGFloat = 500
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +24,6 @@ class FriendWallViewController: UIViewController {
             fatalError("FriendWallViewController: checkPresenter(): presenter is nil")
         }
     }
-    
     
     private func setupCells() {
         for i in 1...WallCellConstant.maxImagesInCell {
@@ -57,7 +60,7 @@ extension FriendWallViewController: UICollectionViewDelegate, UICollectionViewDa
         var cell: UICollectionViewCell!
         guard let wall = presenter.getData(indexPath: indexPath) as? Wall
             else { return UICollectionViewCell() }
-        
+   
         let cellName = WallCellConstant.getId(imageCount: wall.imageURLs.count)
         cell = cellConfigure(cellName, indexPath, wall)
         didScrollEnd(indexPath)
@@ -74,6 +77,10 @@ extension FriendWallViewController: UICollectionViewDelegate, UICollectionViewDa
         if indexPath.row >= presenter.numberOfRowsInSection() - NetworkConstant.remItemsToStartFetch {
             presenter.didEndScroll()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cellHeights[indexPath] = cell.frame.size.height
     }
 }
 
@@ -109,7 +116,7 @@ extension FriendWallViewController: PresentablePlainViewProtocol {
     func viewReloadData(moduleEnum: ModuleEnum) {
         UI_THREAD { [weak self] in
             guard let self = self else { return }
-            self.collectionView.reloadData()
+            self.collectionView?.reloadData()
         }
     }
     
@@ -175,5 +182,33 @@ extension FriendWallViewController: WallCellProtocolDelegate {
         UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIView.AnimationOptions.curveEaseInOut, animations: {
               self.collectionView.reloadItems(at: [indexPath])
             }, completion: nil)
+    }
+}
+
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension FriendWallViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let isExpanded = presenter.isExpandedCell(indexPath: indexPath)
+        if isExpanded,
+           let cell = collectionView.cellForItem(at: indexPath) as? WallCellProtocol,
+           let attr = collectionView.layoutAttributesForItem(at: indexPath) {
+                cell.preferredLayoutAttributesFitting(attr)
+                return CGSize(width: cellWidth, height: cell.getPreferedHeight())
+            }
+        let height = cellHeights[indexPath]
+        return CGSize(width: cellWidth, height: height ?? notExpandedHeight)
+    }
+}
+
+
+//MARK:- CoordinatableViewProtocol
+
+extension FriendWallViewController: CoordinatableViewProtocol {
+    func setPresenter(_ presenter: ViewablePresenterProtocol) {
+        self.presenter = presenter as! ViewableWallPresenterProtocol
     }
 }

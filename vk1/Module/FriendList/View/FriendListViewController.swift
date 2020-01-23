@@ -94,7 +94,7 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "FriendDetailSegue", sender: indexPath)
+        (presenter as! ViewableTransitionPresenterProtocol).didPressTransition(to: .friendWall, selectedIndexPath: indexPath)
     }
     
     

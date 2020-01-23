@@ -52,6 +52,10 @@ class WallCell1: BaseWall {
         return getPreferredLayoutAttributesFitting(layoutAttributes)
     }
     
+    @IBAction func doPressAuthor(_ sender: Any) {
+        presenter?.didPressAuthor(indexPath: indexPath)
+    }
+    
     @IBAction func doPressImage(_ sender: Any) {
         guard let presenter = presenter else { return }
         baseWallVideo.pressImage(view: imageView)

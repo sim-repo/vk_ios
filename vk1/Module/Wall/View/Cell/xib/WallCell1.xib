@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WallCell1" customModule="vk1" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WallCell1" translatesAutoresizingMaskIntoConstraints="NO" id="Tcj-Gj-lsD" userLabel="WallCell1" customClass="Wall_Cell_tp1" customModule="vk1" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WallCell1" translatesAutoresizingMaskIntoConstraints="NO" id="Tcj-Gj-lsD" userLabel="WallCell1" customClass="WallCell1" customModule="vk1" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="408" height="552"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nf8-51-Uxy" customClass="MyView_DarkBackground" customModule="vk1" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="408" height="552"/>
@@ -53,13 +53,35 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zag-Bq-tBI">
                                 <rect key="frame" x="0.0" y="43" width="400" height="35"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="am-32" translatesAutoresizingMaskIntoConstraints="NO" id="1AY-7h-bsd" customClass="MyImageView_Circled" customModule="vk1" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XmQ-XV-3l0">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="am-32" translatesAutoresizingMaskIntoConstraints="NO" id="1AY-7h-bsd" customClass="MyImageView_Circled" customModule="vk1" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="35" id="Gnt-tX-6vo"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="35" id="LBG-yY-jjx"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXM-h6-rjH">
+                                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                                <connections>
+                                                    <action selector="doPressAuthor:" destination="Tcj-Gj-lsD" eventType="touchUpInside" id="Sff-UY-Tub"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="35" id="Gnt-tX-6vo"/>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="35" id="LBG-yY-jjx"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="35" id="3EY-l0-hej"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="35" id="AMI-jr-weg"/>
+                                            <constraint firstItem="kXM-h6-rjH" firstAttribute="width" secondItem="1AY-7h-bsd" secondAttribute="width" id="Cps-3Y-iit"/>
+                                            <constraint firstItem="kXM-h6-rjH" firstAttribute="height" secondItem="1AY-7h-bsd" secondAttribute="height" id="LIk-T4-foW"/>
+                                            <constraint firstItem="1AY-7h-bsd" firstAttribute="top" secondItem="XmQ-XV-3l0" secondAttribute="top" id="Wxg-cj-yoV"/>
+                                            <constraint firstItem="kXM-h6-rjH" firstAttribute="leading" secondItem="1AY-7h-bsd" secondAttribute="leading" id="nJ5-tY-hEz"/>
+                                            <constraint firstItem="kXM-h6-rjH" firstAttribute="top" secondItem="1AY-7h-bsd" secondAttribute="top" id="qwj-oD-S3B"/>
+                                            <constraint firstItem="1AY-7h-bsd" firstAttribute="leading" secondItem="XmQ-XV-3l0" secondAttribute="leading" id="rdw-j2-Sns"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fLZ-fk-Eqn">
                                         <rect key="frame" x="43" y="0.0" width="357" height="35"/>
                                         <subviews>

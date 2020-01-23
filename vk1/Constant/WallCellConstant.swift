@@ -16,6 +16,7 @@ struct WallCellConstant {
     }
     
     static func getId(imageCount: Int) -> String {
-       "WallCell\(imageCount)"
+       let cnt = min(maxImagesInCell, imageCount)
+       return "WallCell\(cnt)"
     }
 }

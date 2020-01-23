@@ -19,6 +19,11 @@ extension MyGroupWallPresenter: PaginablePresenterProtocol {}
  
 extension MyGroupWallPresenter: ViewableWallPresenterProtocol {
     
+    
+    func didPressAuthor(indexPath: IndexPath) {
+        // TODO: must implemented
+    }
+    
     func didPressLike(indexPath: IndexPath) {
         // TODO: must implemented
     }

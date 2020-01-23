@@ -125,13 +125,12 @@
 		164C9C3823D7CC2100D221C6 /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B9D23D7CC2000D221C6 /* UIControl+Extensions.swift */; };
 		164C9C3923D7CC2100D221C6 /* UIControlThemeMgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B9E23D7CC2000D221C6 /* UIControlThemeMgt.swift */; };
 		164C9C3A23D7CC2100D221C6 /* ColorSystemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9B9F23D7CC2000D221C6 /* ColorSystemHelper.swift */; };
-		164C9C3B23D7CC2100D221C6 /* Coordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BA123D7CC2100D221C6 /* Coordinators.swift */; };
 		164C9C3C23D7CC2100D221C6 /* ModalablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BA423D7CC2100D221C6 /* ModalablePresenterProtocol.swift */; };
 		164C9C3D23D7CC2100D221C6 /* SyncablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BA523D7CC2100D221C6 /* SyncablePresenterProtocol.swift */; };
 		164C9C3E23D7CC2100D221C6 /* MultiplePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BA623D7CC2100D221C6 /* MultiplePresenterProtocol.swift */; };
 		164C9C3F23D7CC2100D221C6 /* PaginablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BA723D7CC2100D221C6 /* PaginablePresenterProtocol.swift */; };
 		164C9C4023D7CC2100D221C6 /* SortablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BA823D7CC2100D221C6 /* SortablePresenterProtocol.swift */; };
-		164C9C4123D7CC2100D221C6 /* DetailablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BA923D7CC2100D221C6 /* DetailablePresenterProtocol.swift */; };
+		164C9C4123D7CC2100D221C6 /* EnrichablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BA923D7CC2100D221C6 /* EnrichablePresenterProtocol.swift */; };
 		164C9C4223D7CC2100D221C6 /* CoordinatablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BAA23D7CC2100D221C6 /* CoordinatablePresenterProtocol.swift */; };
 		164C9C4323D7CC2100D221C6 /* ViewablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BAB23D7CC2100D221C6 /* ViewablePresenterProtocol.swift */; };
 		164C9C4423D7CC2100D221C6 /* GroupablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9BAC23D7CC2100D221C6 /* GroupablePresenterProtocol.swift */; };
@@ -163,6 +162,14 @@
 		164C9C9823D86E0800D221C6 /* NewsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C9723D86E0800D221C6 /* NewsListPresenter.swift */; };
 		164C9C9A23D883B600D221C6 /* PresenterConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C9923D883B600D221C6 /* PresenterConstant.swift */; };
 		164C9C9C23D886B500D221C6 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9C9B23D886B500D221C6 /* BasePresenter.swift */; };
+		164C9CB723D8E3D400D221C6 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9CB623D8E3D400D221C6 /* CoordinatorProtocol.swift */; };
+		164C9CB923D8E49A00D221C6 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9CB823D8E49A00D221C6 /* LoginCoordinator.swift */; };
+		164C9CBB23D8E4B500D221C6 /* MainMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9CBA23D8E4B500D221C6 /* MainMenuCoordinator.swift */; };
+		164C9CBD23D8E4D300D221C6 /* MyGroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9CBC23D8E4D300D221C6 /* MyGroupCoordinator.swift */; };
+		164C9CBF23D8E51D00D221C6 /* PresentableCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9CBE23D8E51D00D221C6 /* PresentableCoordinatorProtocol.swift */; };
+		164C9CC123D8E53200D221C6 /* FriendListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9CC023D8E53200D221C6 /* FriendListCoordinator.swift */; };
+		164C9CC323D8E5DC00D221C6 /* FriendWallCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9CC223D8E5DC00D221C6 /* FriendWallCoordinator.swift */; };
+		164C9CC523D8F6F000D221C6 /* FriendWallPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C9CC423D8F6F000D221C6 /* FriendWallPresenter.swift */; };
 		164F8153238BBFFA000F95E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 164F814C238BBFFA000F95E7 /* GoogleService-Info.plist */; };
 		166D1B09234F6C7100C552E4 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166D1B08234F6C7100C552E4 /* Video.storyboard */; };
 		16AB0B9E232F7ED600E21B7F /* MyGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16AB0B9D232F7ED600E21B7F /* MyGroup.storyboard */; };
@@ -416,13 +423,12 @@
 		164C9B9D23D7CC2000D221C6 /* UIControl+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
 		164C9B9E23D7CC2000D221C6 /* UIControlThemeMgt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlThemeMgt.swift; sourceTree = "<group>"; };
 		164C9B9F23D7CC2000D221C6 /* ColorSystemHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSystemHelper.swift; sourceTree = "<group>"; };
-		164C9BA123D7CC2100D221C6 /* Coordinators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinators.swift; sourceTree = "<group>"; };
 		164C9BA423D7CC2100D221C6 /* ModalablePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalablePresenterProtocol.swift; sourceTree = "<group>"; };
 		164C9BA523D7CC2100D221C6 /* SyncablePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncablePresenterProtocol.swift; sourceTree = "<group>"; };
 		164C9BA623D7CC2100D221C6 /* MultiplePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplePresenterProtocol.swift; sourceTree = "<group>"; };
 		164C9BA723D7CC2100D221C6 /* PaginablePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginablePresenterProtocol.swift; sourceTree = "<group>"; };
 		164C9BA823D7CC2100D221C6 /* SortablePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortablePresenterProtocol.swift; sourceTree = "<group>"; };
-		164C9BA923D7CC2100D221C6 /* DetailablePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailablePresenterProtocol.swift; sourceTree = "<group>"; };
+		164C9BA923D7CC2100D221C6 /* EnrichablePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnrichablePresenterProtocol.swift; sourceTree = "<group>"; };
 		164C9BAA23D7CC2100D221C6 /* CoordinatablePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatablePresenterProtocol.swift; sourceTree = "<group>"; };
 		164C9BAB23D7CC2100D221C6 /* ViewablePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewablePresenterProtocol.swift; sourceTree = "<group>"; };
 		164C9BAC23D7CC2100D221C6 /* GroupablePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupablePresenterProtocol.swift; sourceTree = "<group>"; };
@@ -454,6 +460,14 @@
 		164C9C9723D86E0800D221C6 /* NewsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListPresenter.swift; sourceTree = "<group>"; };
 		164C9C9923D883B600D221C6 /* PresenterConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterConstant.swift; sourceTree = "<group>"; };
 		164C9C9B23D886B500D221C6 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		164C9CB623D8E3D400D221C6 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		164C9CB823D8E49A00D221C6 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		164C9CBA23D8E4B500D221C6 /* MainMenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuCoordinator.swift; sourceTree = "<group>"; };
+		164C9CBC23D8E4D300D221C6 /* MyGroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupCoordinator.swift; sourceTree = "<group>"; };
+		164C9CBE23D8E51D00D221C6 /* PresentableCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		164C9CC023D8E53200D221C6 /* FriendListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCoordinator.swift; sourceTree = "<group>"; };
+		164C9CC223D8E5DC00D221C6 /* FriendWallCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWallCoordinator.swift; sourceTree = "<group>"; };
+		164C9CC423D8F6F000D221C6 /* FriendWallPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWallPresenter.swift; sourceTree = "<group>"; };
 		164F814C238BBFFA000F95E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		164F825C238EF669000F95E7 /* Stage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Stage.xcconfig; sourceTree = "<group>"; };
 		164F825E238EF6DC000F95E7 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -544,13 +558,13 @@
 		164C9AFF23D7CC1F00D221C6 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				164C9B0623D7CC1F00D221C6 /* News */,
 				164C9B0023D7CC1F00D221C6 /* WallParser.swift */,
 				164C9B0123D7CC1F00D221C6 /* GroupParser.swift */,
 				164C9B0223D7CC1F00D221C6 /* GlobalGroupParser.swift */,
 				164C9B0323D7CC1F00D221C6 /* MyGroupParser.swift */,
 				164C9B0423D7CC1F00D221C6 /* VkTokenParser.swift */,
 				164C9B0523D7CC1F00D221C6 /* MyGroupDetailParser.swift */,
-				164C9B0623D7CC1F00D221C6 /* News */,
 				164C9B0D23D7CC1F00D221C6 /* FriendParser.swift */,
 			);
 			path = Parser;
@@ -643,11 +657,11 @@
 				164C9B8523D7CC2000D221C6 /* BaseRealm */,
 				164C9B8923D7CC2000D221C6 /* Login */,
 				164C9B5A23D7CC2000D221C6 /* FriendList */,
+				164C9B5123D7CC2000D221C6 /* FriendWall */,
 				164C9B6C23D7CC2000D221C6 /* News */,
 				164C9C7723D8559B00D221C6 /* Profile */,
 				164C9B2C23D7CC2000D221C6 /* Like */,
 				164C9B3123D7CC2000D221C6 /* Wall */,
-				164C9B5123D7CC2000D221C6 /* FriendWall */,
 				164C9B5523D7CC2000D221C6 /* Comment */,
 				164C9B7223D7CC2000D221C6 /* MyGroupList */,
 				164C9B6323D7CC2000D221C6 /* MyGroupDetail */,
@@ -759,17 +773,17 @@
 			isa = PBXGroup;
 			children = (
 				164C9B3823D7CC2000D221C6 /* xib */,
-				164C9B4323D7CC2000D221C6 /* WallCell5.swift */,
 				164C9B4423D7CC2000D221C6 /* Footer */,
-				164C9B4723D7CC2000D221C6 /* WallCell7.swift */,
 				164C9B4823D7CC2000D221C6 /* BaseWall.swift */,
-				164C9B4923D7CC2000D221C6 /* WallCell3.swift */,
-				164C9B4A23D7CC2000D221C6 /* WallCell1.swift */,
-				164C9B4B23D7CC2000D221C6 /* WallCell6.swift */,
-				164C9B4C23D7CC2000D221C6 /* WallCell4.swift */,
-				164C9B4D23D7CC2000D221C6 /* WallCell2.swift */,
-				164C9B4E23D7CC2000D221C6 /* WallCell8.swift */,
 				164C9B4F23D7CC2000D221C6 /* BaseWallVideo.swift */,
+				164C9B4A23D7CC2000D221C6 /* WallCell1.swift */,
+				164C9B4D23D7CC2000D221C6 /* WallCell2.swift */,
+				164C9B4923D7CC2000D221C6 /* WallCell3.swift */,
+				164C9B4C23D7CC2000D221C6 /* WallCell4.swift */,
+				164C9B4323D7CC2000D221C6 /* WallCell5.swift */,
+				164C9B4B23D7CC2000D221C6 /* WallCell6.swift */,
+				164C9B4723D7CC2000D221C6 /* WallCell7.swift */,
+				164C9B4E23D7CC2000D221C6 /* WallCell8.swift */,
 				164C9B5023D7CC2000D221C6 /* WallCell9.swift */,
 			);
 			path = Cell;
@@ -781,10 +795,10 @@
 				164C9B3923D7CC2000D221C6 /* WallCell1.xib */,
 				164C9B3A23D7CC2000D221C6 /* WallCell2.xib */,
 				164C9B3B23D7CC2000D221C6 /* WallCell3.xib */,
-				164C9B3C23D7CC2000D221C6 /* WallCell7.xib */,
-				164C9B3D23D7CC2000D221C6 /* WallCell6.xib */,
 				164C9B3E23D7CC2000D221C6 /* WallCell4.xib */,
 				164C9B3F23D7CC2000D221C6 /* WallCell5.xib */,
+				164C9B3D23D7CC2000D221C6 /* WallCell6.xib */,
+				164C9B3C23D7CC2000D221C6 /* WallCell7.xib */,
 				164C9B4023D7CC2000D221C6 /* WallCell8.xib */,
 				164C9B4123D7CC2000D221C6 /* WallCell9.xib */,
 				164C9B4223D7CC2000D221C6 /* WallLike_View.xib */,
@@ -813,6 +827,7 @@
 		164C9B5223D7CC2000D221C6 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				164C9CC423D8F6F000D221C6 /* FriendWallPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1093,7 +1108,11 @@
 		164C9BA023D7CC2100D221C6 /* Coord */ = {
 			isa = PBXGroup;
 			children = (
-				164C9BA123D7CC2100D221C6 /* Coordinators.swift */,
+				164C9CB823D8E49A00D221C6 /* LoginCoordinator.swift */,
+				164C9CBA23D8E4B500D221C6 /* MainMenuCoordinator.swift */,
+				164C9CBC23D8E4D300D221C6 /* MyGroupCoordinator.swift */,
+				164C9CC023D8E53200D221C6 /* FriendListCoordinator.swift */,
+				164C9CC223D8E5DC00D221C6 /* FriendWallCoordinator.swift */,
 			);
 			path = Coord;
 			sourceTree = "<group>";
@@ -1101,6 +1120,7 @@
 		164C9BA223D7CC2100D221C6 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				164C9C9F23D8E3B300D221C6 /* Coord */,
 				164C9BA323D7CC2100D221C6 /* Presenter */,
 				164C9BAE23D7CC2100D221C6 /* Model */,
 				164C9BB123D7CC2100D221C6 /* View */,
@@ -1117,7 +1137,7 @@
 				164C9BA623D7CC2100D221C6 /* MultiplePresenterProtocol.swift */,
 				164C9BA723D7CC2100D221C6 /* PaginablePresenterProtocol.swift */,
 				164C9BA823D7CC2100D221C6 /* SortablePresenterProtocol.swift */,
-				164C9BA923D7CC2100D221C6 /* DetailablePresenterProtocol.swift */,
+				164C9BA923D7CC2100D221C6 /* EnrichablePresenterProtocol.swift */,
 				164C9BAA23D7CC2100D221C6 /* CoordinatablePresenterProtocol.swift */,
 				164C9BAB23D7CC2100D221C6 /* ViewablePresenterProtocol.swift */,
 				164C9BAC23D7CC2100D221C6 /* GroupablePresenterProtocol.swift */,
@@ -1243,6 +1263,15 @@
 				164C9C7A23D855DE00D221C6 /* ProfileTableViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		164C9C9F23D8E3B300D221C6 /* Coord */ = {
+			isa = PBXGroup;
+			children = (
+				164C9CB623D8E3D400D221C6 /* CoordinatorProtocol.swift */,
+				164C9CBE23D8E51D00D221C6 /* PresentableCoordinatorProtocol.swift */,
+			);
+			path = Coord;
 			sourceTree = "<group>";
 		};
 		164F825D238EF67B000F95E7 /* Build */ = {
@@ -1620,6 +1649,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				164C9C5C23D7E28B00D221C6 /* CustomNavigationController.swift in Sources */,
+				164C9CC323D8E5DC00D221C6 /* FriendWallCoordinator.swift in Sources */,
 				164C9C1523D7CC2100D221C6 /* RealmDetailGroup.swift in Sources */,
 				164C9BE323D7CC2100D221C6 /* SyncGroup.swift in Sources */,
 				164C9BD023D7CC2100D221C6 /* ApiVKService.swift in Sources */,
@@ -1631,6 +1661,7 @@
 				164C9C1023D7CC2100D221C6 /* FriendListViewController.swift in Sources */,
 				164C9C9623D86DD900D221C6 /* ProfilePresenter.swift in Sources */,
 				164C9C0D23D7CC2100D221C6 /* FriendListPresenter.swift in Sources */,
+				164C9CBD23D8E4D300D221C6 /* MyGroupCoordinator.swift in Sources */,
 				164C9C2023D7CC2100D221C6 /* PlainBasePresenter+Syncable.swift in Sources */,
 				164C9C5223D7CC2100D221C6 /* WaitIndicator.swift in Sources */,
 				164C9C0923D7CC2100D221C6 /* BaseWallVideo.swift in Sources */,
@@ -1657,10 +1688,12 @@
 				164C9BD523D7CC2100D221C6 /* MyGroupParser.swift in Sources */,
 				164C9BD423D7CC2100D221C6 /* GlobalGroupParser.swift in Sources */,
 				164C9C4B23D7CC2100D221C6 /* PresentableViewProtocol.swift in Sources */,
+				164C9CBB23D8E4B500D221C6 /* MainMenuCoordinator.swift in Sources */,
 				164C9C7B23D855DE00D221C6 /* ProfileTableViewController.swift in Sources */,
 				164C9BE923D7CC2100D221C6 /* SyncPostLikes.swift in Sources */,
 				164C9BEC23D7CC2100D221C6 /* SyncVkLogin.swift in Sources */,
 				164C9C0323D7CC2100D221C6 /* WallCell3.swift in Sources */,
+				164C9CB723D8E3D400D221C6 /* CoordinatorProtocol.swift in Sources */,
 				164C9C4223D7CC2100D221C6 /* CoordinatablePresenterProtocol.swift in Sources */,
 				164C9C0C23D7CC2100D221C6 /* Comment.swift in Sources */,
 				164C9C1823D7CC2100D221C6 /* RealmNews.swift in Sources */,
@@ -1668,7 +1701,7 @@
 				164C9C0B23D7CC2100D221C6 /* FriendWallViewController.swift in Sources */,
 				164C9C1323D7CC2100D221C6 /* MyGroupDetailPresenter.swift in Sources */,
 				164C9C9823D86E0800D221C6 /* NewsListPresenter.swift in Sources */,
-				164C9C4123D7CC2100D221C6 /* DetailablePresenterProtocol.swift in Sources */,
+				164C9C4123D7CC2100D221C6 /* EnrichablePresenterProtocol.swift in Sources */,
 				164C9BE523D7CC2100D221C6 /* SyncMyGroupWall.swift in Sources */,
 				164C9C0F23D7CC2100D221C6 /* RealmFriend.swift in Sources */,
 				164C9C0823D7CC2100D221C6 /* WallCell8.swift in Sources */,
@@ -1693,6 +1726,7 @@
 				164C9C1D23D7CC2100D221C6 /* MyGroupCollectionViewCell.swift in Sources */,
 				164C9BE723D7CC2100D221C6 /* SyncFriend.swift in Sources */,
 				164C9BD723D7CC2100D221C6 /* MyGroupDetailParser.swift in Sources */,
+				164C9CC523D8F6F000D221C6 /* FriendWallPresenter.swift in Sources */,
 				164C9C0723D7CC2100D221C6 /* WallCell2.swift in Sources */,
 				164C9C4723D7CC2100D221C6 /* WallModelProtocol.swift in Sources */,
 				164C9BCD23D7CC2100D221C6 /* OtherConfigHTML.swift in Sources */,
@@ -1706,6 +1740,7 @@
 				164C9BCB23D7CC2100D221C6 /* ViewDidAppearInjector.swift in Sources */,
 				164C9C0023D7CC2100D221C6 /* WallLike_View.swift in Sources */,
 				164C9BE823D7CC2100D221C6 /* SyncMyGroup.swift in Sources */,
+				164C9CBF23D8E51D00D221C6 /* PresentableCoordinatorProtocol.swift in Sources */,
 				164C9C4A23D7CC2100D221C6 /* WallCellProtocolDelegate.swift in Sources */,
 				164C9C5823D7CC2100D221C6 /* Date+Extensions.swift in Sources */,
 				164C9BD823D7CC2100D221C6 /* CommentParser.swift in Sources */,
@@ -1726,7 +1761,7 @@
 				164C9BF123D7CC2100D221C6 /* Like.swift in Sources */,
 				164C9C4C23D7CC2100D221C6 /* PresentableSyncProtocol.swift in Sources */,
 				164C9C3A23D7CC2100D221C6 /* ColorSystemHelper.swift in Sources */,
-				164C9C3B23D7CC2100D221C6 /* Coordinators.swift in Sources */,
+				164C9CC123D8E53200D221C6 /* FriendListCoordinator.swift in Sources */,
 				164C9C2F23D7CC2100D221C6 /* FirSignup_View.swift in Sources */,
 				164C9C4F23D7CC2100D221C6 /* Typing.swift in Sources */,
 				164C9C5023D7CC2100D221C6 /* SpinnerViewController.swift in Sources */,
@@ -1753,6 +1788,7 @@
 				164C9C2323D7CC2100D221C6 /* SectionedBasePresenter+Viewable.swift in Sources */,
 				164C9C0523D7CC2100D221C6 /* WallCell6.swift in Sources */,
 				164C9C4823D7CC2100D221C6 /* CoordinatableViewProtocol.swift in Sources */,
+				164C9CB923D8E49A00D221C6 /* LoginCoordinator.swift in Sources */,
 				164C9C7623D8557500D221C6 /* NewsListViewController.swift in Sources */,
 				164C9C1723D7CC2100D221C6 /* News.swift in Sources */,
 				164C9BEB23D7CC2100D221C6 /* SyncBase.swift in Sources */,

@@ -13,7 +13,7 @@ struct Logger {
             print("----------------------")
             print("ERROR: " + msg)
             print("----------------------")
-            //fatalError()
+           // fatalError()
         #else
             sendCrashlytics(msg)
         #endif

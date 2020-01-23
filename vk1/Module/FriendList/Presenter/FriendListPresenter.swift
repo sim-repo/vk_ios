@@ -36,3 +36,20 @@ extension FriendListPresenter: GroupablePresenterProtocol, SortablePresenterProt
         (model as! Friend).firstName
     }
 }
+
+extension FriendListPresenter: ViewableTransitionPresenterProtocol {
+    
+    func didPressTransition(to module: ModuleEnum, selectedIndexPath: IndexPath) {
+        
+        guard let friend = getData(indexPath: selectedIndexPath) as? Friend
+        else {
+            Logger.catchError(msg: "FriendListPresenter(): didPressTransition(): selectImage: getData exception ")
+            return
+        }
+        coordinator?.didPressTransition(to: module, model: friend)
+    }
+    
+    func didPressBack() {
+        coordinator?.didPressBack()
+    }
+}

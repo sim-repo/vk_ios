@@ -7,11 +7,13 @@ class Wall : ModelProtocol, WallModelProtocol {
     var type: WallCellConstant.CellEnum = .unknown
     
     // header block
+    var reposterId = 0
     var reposterAvaURL: URL?
     var reposterName = ""
     var reposterPostDate: Double = 0
     var reposterTitle = ""
     
+    var authorId = 0
     var authorAvaURL: URL?
     var authorName = ""
     var authorPostDate: Double = 0

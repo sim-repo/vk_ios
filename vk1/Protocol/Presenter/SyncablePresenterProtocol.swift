@@ -32,5 +32,5 @@ protocol SyncableMyGroupWallPresenterProtocol: class {
 
 
 protocol SyncableFriendWallPresenterProtocol: class {
-    func getFriend() -> Friend
+    func getOwnerId() -> Int
 }

@@ -15,7 +15,7 @@ public class PlainBasePresenter: BaseIndexingPresenter {
     func getView() -> PresentablePlainViewProtocol? {
        guard let view = view as? PresentablePlainViewProtocol
        else {
-           log("viewReloadData() \(String(describing: self.view)) doesn't conform protocol PresentablePlainViewProtocol", level: .error)
+           log("getView() \(String(describing: self.view)) doesn't conform protocol PresentablePlainViewProtocol", level: .error)
            return nil
        }
         return view

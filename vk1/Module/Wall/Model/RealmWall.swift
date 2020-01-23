@@ -8,11 +8,14 @@ class RealmWall: RealmBase {
     @objc dynamic var ownerId = 0
     
     // wall header block
+    @objc dynamic var reposterId = 0
     @objc dynamic var reposterAvaURL = ""
     @objc dynamic var reposterName: String = ""
     @objc dynamic var reposterPostDate: Double = 0
     @objc dynamic var reposterTitle: String = ""
-
+    
+    
+    @objc dynamic var authorId = 0
     @objc dynamic var authorAvaURL = ""
     @objc dynamic var authorName: String = ""
     @objc dynamic var authorPostDate: Double = 0

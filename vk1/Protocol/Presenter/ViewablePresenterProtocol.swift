@@ -46,6 +46,7 @@ protocol ViewableWallPresenterProtocol: ViewablePlainPresenterProtocol {
     func isExpandedCell(indexPath: IndexPath) -> Bool
     func didPressExpandCell(isExpand: Bool, indexPath: IndexPath?)
     func didSelectImage(indexPath: IndexPath, imageIdx: Int)
+    func didPressAuthor(indexPath: IndexPath)
     func didPressLike(indexPath: IndexPath)
     func didPressComment(indexPath: IndexPath)
     func didPressShare(indexPath: IndexPath)

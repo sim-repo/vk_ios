@@ -52,7 +52,7 @@ public class BaseIndexingPresenter: BasePresenter {
         }
         
         if didLoadedFrom == .network {
-            (self as? DetailablePresenterProtocol)?.enrichData(datasource: validated)
+            (self as? EnrichablePresenterProtocol)?.enrichData(datasource: validated)
             save(validated)
         }
     }

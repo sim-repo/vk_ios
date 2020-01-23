@@ -169,7 +169,7 @@
         <!--Стена-->
         <scene sceneID="Ir4-rL-LAt">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="fcm-jH-4N3" customClass="FriendWallViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendWallViewController" modalPresentationStyle="fullScreen" id="fcm-jH-4N3" customClass="FriendWallViewController" customModule="vk1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q0E-jA-dxd" customClass="MyView_SecondaryDark" customModule="vk1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

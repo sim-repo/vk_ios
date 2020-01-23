@@ -11,8 +11,6 @@ class MyGroupListPresenter: SectionedBasePresenter {
         return MyGroup.self
     }
     
-    var coordinator: PresentableCoordinatorProtocol?
-    
     override func didSetContext() {
       //  synchronizer?.tryRunSync()
     }
