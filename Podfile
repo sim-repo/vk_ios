@@ -8,4 +8,6 @@ target 'vk1' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod "PromiseKit", "~> 6.0"
+  pod "PromiseKit/MapKit"
 end

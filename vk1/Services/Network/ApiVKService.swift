@@ -4,18 +4,14 @@ import WebKit
 
 class ApiVKService {
     
-    
+    //lesson 4: Promises
     static func friendRequest(onSuccess: @escaping onSuccess_PresenterCompletion, onError: @escaping onErrResponse_SyncCompletion) {
-        
+    
         let urlPath: String = "friends.get"
         
-        let params: Parameters = [
-            "access_token": Session.shared.token,
-            "extended": "1",
-            "fields":["bdate","sex","photo_50","photo_200_orig"],
-            "v": NetworkConstant.shared.versionAPI
-        ]
-        AlamofireService.requestItems(clazz: Friend.self, urlPath, params, onSuccess, onError)
+        NetworkPromiseRequest.friendRequest(urlPath,
+                                                onSuccess,
+                                                onError)
     }
     
     

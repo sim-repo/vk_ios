@@ -16,6 +16,6 @@ class Friend_TableCell: UITableViewCell {
     
     func setup(friend: Friend) {
         name?.text = friend.firstName + " " + friend.lastName
-        avaImage?.kf.setImage(with: friend.avaURL50)
+        avaImage?.kf.setImage(with: friend.avaURL200)
     }
 }

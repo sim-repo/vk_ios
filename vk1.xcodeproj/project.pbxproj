@@ -135,6 +135,7 @@
 		1699CFAC23DF3DD100EC8A39 /* NewsNetworkOperationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFAB23DF3DD100EC8A39 /* NewsNetworkOperationService.swift */; };
 		1699CFC523DF4A3900EC8A39 /* CallerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFC423DF4A3900EC8A39 /* CallerOperation.swift */; };
 		1699CFC723DF78BB00EC8A39 /* AsyncOperaton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFC623DF78BB00EC8A39 /* AsyncOperaton.swift */; };
+		1699CFCA23DF820B00EC8A39 /* NetworkPromiseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFC923DF820B00EC8A39 /* NetworkPromiseService.swift */; };
 		16A25E452396C7A1001BEA13 /* ViewDidAppearInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25E442396C7A1001BEA13 /* ViewDidAppearInjector.swift */; };
 		16A25E7923992803001BEA13 /* LoggerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25E7823992803001BEA13 /* LoggerHelper.swift */; };
 		16A25EAA239953F2001BEA13 /* YouTubeConfigHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25EA9239953F2001BEA13 /* YouTubeConfigHTML.swift */; };
@@ -288,6 +289,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 06FC5C9CF96D60C50FCD47D339C91951;
 			remoteInfo = nanopb;
+		};
+		1699CFE523DF8D4400EC8A39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E08B67236F924400340F09 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 002B1E88BA14EBF633CD66EBFBA107E9;
+			remoteInfo = PromiseKit;
 		};
 		16E08B6E236F924400340F09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -454,6 +462,7 @@
 		1699CFAB23DF3DD100EC8A39 /* NewsNetworkOperationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNetworkOperationService.swift; sourceTree = "<group>"; };
 		1699CFC423DF4A3900EC8A39 /* CallerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallerOperation.swift; sourceTree = "<group>"; };
 		1699CFC623DF78BB00EC8A39 /* AsyncOperaton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperaton.swift; sourceTree = "<group>"; };
+		1699CFC923DF820B00EC8A39 /* NetworkPromiseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPromiseService.swift; sourceTree = "<group>"; };
 		16A25E442396C7A1001BEA13 /* ViewDidAppearInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidAppearInjector.swift; sourceTree = "<group>"; };
 		16A25E7823992803001BEA13 /* LoggerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerHelper.swift; sourceTree = "<group>"; };
 		16A25EA9239953F2001BEA13 /* YouTubeConfigHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeConfigHTML.swift; sourceTree = "<group>"; };
@@ -818,6 +827,7 @@
 		1647649A2365E012007D1B19 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1699CFC823DF7E8500EC8A39 /* Network Promise */,
 				1699CFC323DF474800EC8A39 /* Network Operations */,
 				1647649B2365E031007D1B19 /* Session.swift */,
 				16E08B34236B499B00340F09 /* ApiVKService.swift */,
@@ -1021,6 +1031,14 @@
 				1699CFC623DF78BB00EC8A39 /* AsyncOperaton.swift */,
 			);
 			path = "Network Operations";
+			sourceTree = "<group>";
+		};
+		1699CFC823DF7E8500EC8A39 /* Network Promise */ = {
+			isa = PBXGroup;
+			children = (
+				1699CFC923DF820B00EC8A39 /* NetworkPromiseService.swift */,
+			);
+			path = "Network Promise";
 			sourceTree = "<group>";
 		};
 		16A25E902399522F001BEA13 /* Video */ = {
@@ -1261,6 +1279,7 @@
 				164F817E238BC180000F95E7 /* leveldb.framework */,
 				164F8180238BC180000F95E7 /* nanopb.framework */,
 				16E08B73236F924400340F09 /* Pods_vk1.framework */,
+				1699CFE623DF8D4400EC8A39 /* PromiseKit.framework */,
 				1611F28B2378741C002FCE3C /* Realm.framework */,
 				1611F28D2378741C002FCE3C /* RealmSwift.framework */,
 				16E08B75236F924400340F09 /* SwiftyJSON.framework */,
@@ -1539,6 +1558,13 @@
 			remoteRef = 164F817F238BC180000F95E7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		1699CFE623DF8D4400EC8A39 /* PromiseKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PromiseKit.framework;
+			remoteRef = 1699CFE523DF8D4400EC8A39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		16E08B6F236F924400340F09 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1713,6 +1739,7 @@
 				164F80BF2384C033000F95E7 /* PaginationPresenterProtocol.swift in Sources */,
 				16D669A7239061070086C55C /* SelfSized+Extensions.swift in Sources */,
 				1611273E234B3E940080FD54 /* WaitIndicator2.swift in Sources */,
+				1699CFCA23DF820B00EC8A39 /* NetworkPromiseService.swift in Sources */,
 				16115C7523C91D4300412D0C /* PostSyncLikes.swift in Sources */,
 				161B0E9F2349F8860081008B /* MyGroup_CollectionViewCell.swift in Sources */,
 				1611F29323788308002FCE3C /* RealmWall.swift in Sources */,
