@@ -132,6 +132,9 @@
 		167D61D323C744E200CB02E0 /* NewsCommentUser_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D61D123C744E200CB02E0 /* NewsCommentUser_TableViewCell.swift */; };
 		167D61D423C744E200CB02E0 /* NewsCommentUser_TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167D61D223C744E200CB02E0 /* NewsCommentUser_TableViewCell.xib */; };
 		167D61D623C7966600CB02E0 /* CommentProtocolDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D61D523C7966600CB02E0 /* CommentProtocolDelegates.swift */; };
+		1699CFAC23DF3DD100EC8A39 /* NewsNetworkOperationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFAB23DF3DD100EC8A39 /* NewsNetworkOperationService.swift */; };
+		1699CFC523DF4A3900EC8A39 /* CallerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFC423DF4A3900EC8A39 /* CallerOperation.swift */; };
+		1699CFC723DF78BB00EC8A39 /* AsyncOperaton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFC623DF78BB00EC8A39 /* AsyncOperaton.swift */; };
 		16A25E452396C7A1001BEA13 /* ViewDidAppearInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25E442396C7A1001BEA13 /* ViewDidAppearInjector.swift */; };
 		16A25E7923992803001BEA13 /* LoggerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25E7823992803001BEA13 /* LoggerHelper.swift */; };
 		16A25EAA239953F2001BEA13 /* YouTubeConfigHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25EA9239953F2001BEA13 /* YouTubeConfigHTML.swift */; };
@@ -448,6 +451,9 @@
 		167D61D223C744E200CB02E0 /* NewsCommentUser_TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCommentUser_TableViewCell.xib; sourceTree = "<group>"; };
 		167D61D523C7966600CB02E0 /* CommentProtocolDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentProtocolDelegates.swift; sourceTree = "<group>"; };
 		168AC57C236ABDB800A1B2A6 /* RAMAnimatedTabBarController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RAMAnimatedTabBarController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1699CFAB23DF3DD100EC8A39 /* NewsNetworkOperationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNetworkOperationService.swift; sourceTree = "<group>"; };
+		1699CFC423DF4A3900EC8A39 /* CallerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallerOperation.swift; sourceTree = "<group>"; };
+		1699CFC623DF78BB00EC8A39 /* AsyncOperaton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperaton.swift; sourceTree = "<group>"; };
 		16A25E442396C7A1001BEA13 /* ViewDidAppearInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidAppearInjector.swift; sourceTree = "<group>"; };
 		16A25E7823992803001BEA13 /* LoggerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerHelper.swift; sourceTree = "<group>"; };
 		16A25EA9239953F2001BEA13 /* YouTubeConfigHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeConfigHTML.swift; sourceTree = "<group>"; };
@@ -812,6 +818,7 @@
 		1647649A2365E012007D1B19 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1699CFC323DF474800EC8A39 /* Network Operations */,
 				1647649B2365E031007D1B19 /* Session.swift */,
 				16E08B34236B499B00340F09 /* ApiVKService.swift */,
 				1647649D2365E04C007D1B19 /* AlamofireService.swift */,
@@ -1004,6 +1011,16 @@
 				167D61CB23C73E3000CB02E0 /* NewsComment_ViewController.swift */,
 			);
 			path = Comment;
+			sourceTree = "<group>";
+		};
+		1699CFC323DF474800EC8A39 /* Network Operations */ = {
+			isa = PBXGroup;
+			children = (
+				1699CFAB23DF3DD100EC8A39 /* NewsNetworkOperationService.swift */,
+				1699CFC423DF4A3900EC8A39 /* CallerOperation.swift */,
+				1699CFC623DF78BB00EC8A39 /* AsyncOperaton.swift */,
+			);
+			path = "Network Operations";
 			sourceTree = "<group>";
 		};
 		16A25E902399522F001BEA13 /* Video */ = {
@@ -1663,6 +1680,7 @@
 				161C1136234718B000A2EC9D /* WallCellConfigurator.swift in Sources */,
 				16200CFD233360FF00F02440 /* GroupPresenter.swift in Sources */,
 				16B9999E2391F85000F52010 /* SyncVideo.swift in Sources */,
+				1699CFAC23DF3DD100EC8A39 /* NewsNetworkOperationService.swift in Sources */,
 				16E08B4D236DD7DB00340F09 /* SyncGroupDetail.swift in Sources */,
 				166CB8ED2382F8CA009DA806 /* DefaultSyncConfiguration.swift in Sources */,
 				16D669D62390842C0086C55C /* NewsPost_ViewController.swift in Sources */,
@@ -1719,6 +1737,7 @@
 				16E01D2123C12B69009B5357 /* CommentParser.swift in Sources */,
 				167D61D623C7966600CB02E0 /* CommentProtocolDelegates.swift in Sources */,
 				164F80B92384777B000F95E7 /* PlainBasePresenter+CalledByView.swift in Sources */,
+				1699CFC723DF78BB00EC8A39 /* AsyncOperaton.swift in Sources */,
 				1604060D234E5A250083F3C3 /* MyGroupDetail_ViewController.swift in Sources */,
 				16200CFF233371FD00F02440 /* FriendPresenter.swift in Sources */,
 				166667412347BB9900FD2B86 /* News_ViewController.swift in Sources */,
@@ -1734,6 +1753,7 @@
 				16115C6B23C9155500412D0C /* Likes_ViewController.swift in Sources */,
 				1611F29923788333002FCE3C /* RealmGroup.swift in Sources */,
 				16AB0BA9232F985D00E21B7F /* Group.swift in Sources */,
+				1699CFC523DF4A3900EC8A39 /* CallerOperation.swift in Sources */,
 				166CB8E42382E690009DA806 /* SyncBase.swift in Sources */,
 				04ABED59238D5AC00077AB59 /* SyncVkLogin.swift in Sources */,
 				1647649C2365E031007D1B19 /* Session.swift in Sources */,
