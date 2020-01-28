@@ -30,6 +30,7 @@ class Friend_ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCeil()
         setupPresenter()
         setupAlphabetSearchControl()
         setupSearchTextField()
@@ -54,6 +55,17 @@ class Friend_ViewController: UIViewController {
         searchTextField.layer.borderWidth = 1.0
         searchTextField.delegate = self
         searchTextWidth = searchTextWidthConstraint.constant
+    }
+    
+    // lesson 6
+    private func setupCeil(){
+        let all = self.view.subviews
+        for item in all {
+            item.frame.origin.x = ceil(item.frame.origin.x)
+            item.frame.origin.y = ceil(item.frame.origin.y)
+            item.frame.size.width = ceil(item.frame.width)
+            item.frame.size.height = ceil(item.frame.height)
+        }
     }
     
     @IBAction func viewDidFilterInput(_ sender: Any) {

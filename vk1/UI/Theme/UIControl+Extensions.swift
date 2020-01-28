@@ -3,6 +3,8 @@ import UIKit
 
 let buttonFontName = "CourierNewPSMT"
 
+// lesson 6: Setup all
+
 
 //MARK:- UIButton
 

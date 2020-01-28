@@ -11,6 +11,8 @@ class News_ViewController: UIViewController {
     var waiter: SpinnerViewController?
     var selectedImageIdx: Int?
     lazy var cellWidth = view.frame.size.width - constraintSpaceX.constant * 40
+    
+    // lesson 6
     var cellHeights = [IndexPath: CGFloat]() // for prevent "jumping" scrolling
     var notExpandedHeight : CGFloat = 500
     
@@ -125,6 +127,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        // lesson 6
         cellHeights[indexPath] = cell.frame.size.height
     }
     
@@ -297,6 +300,7 @@ extension News_ViewController: UICollectionViewDelegateFlowLayout {
                 }
             }
 
+            // lesson 6
             let height = cellHeights[indexPath]
             return CGSize(width: cellWidth, height: height ?? notExpandedHeight)
         }
