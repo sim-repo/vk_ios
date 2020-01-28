@@ -38,8 +38,8 @@ class SyncMgt {
     
 // MARK: - called from presenter:
     
-    public func doSync(moduleEnum: ModuleEnum){
-        sync(moduleEnum)
+    public func doSync(moduleEnum: ModuleEnum, isRefresh: Bool = false, _ completion: (()->Void)? = nil){
+        sync(moduleEnum, isRefresh, completion)
     }
     
    
@@ -78,7 +78,7 @@ class SyncMgt {
     }
     
     
-    func sync(_ moduleEnum: ModuleEnum){
+    func sync(_ moduleEnum: ModuleEnum, _ isRefresh: Bool = false, _ completion: (()->Void)? = nil){
         
          switch moduleEnum {
             
@@ -98,7 +98,7 @@ class SyncMgt {
              SyncMyGroupWall.shared.sync()
 
          case .news:
-            SyncNews.shared.sync()
+            SyncNews.shared.sync(completion, isRefresh: isRefresh)
             
          case .comment:
             SyncComment.shared.sync()
@@ -175,9 +175,9 @@ class SyncMgt {
             // Start every synchronizer
             for synchronizer in self.synchronizers {
                 self.dispatchGroup?.enter()
-                synchronizer.sync(){ [weak self] in
-                    self?.dispatchGroup?.leave()
-                }
+                synchronizer.sync({ [weak self] in
+                                    self?.dispatchGroup?.leave()},
+                                    isRefresh: false)
             }
             
             // Perform when sync will be finished

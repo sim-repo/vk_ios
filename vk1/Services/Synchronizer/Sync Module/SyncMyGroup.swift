@@ -9,7 +9,7 @@ class SyncMyGroup: SyncBaseProtocol {
         return ModuleEnum.my_group.rawValue
     }
     
-    func sync(_ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil, isRefresh: Bool = false) {
         
         let presenter = PresenterFactory.shared.getInstance(clazz: MyGroupPresenter.self)
         

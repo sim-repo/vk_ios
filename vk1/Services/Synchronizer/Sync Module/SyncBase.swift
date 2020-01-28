@@ -4,7 +4,7 @@ import Foundation
 typealias SyncBaseProtocol = SyncBase & SyncUserDefaultsProtocol
 
 protocol SyncUserDefaultsProtocol {
-    func sync(_ dispatchCompletion: (()->Void)?)
+    func sync(_ dispatchCompletion: (()->Void)?, isRefresh: Bool)
     func getId() -> String
 }
 
@@ -52,7 +52,7 @@ class SyncBase {
             self?.syncing = false
             if self!.tryCount < 3 {
                if let child = self as? SyncBaseProtocol {
-                  child.sync(dispatchCompletion)
+                  child.sync(dispatchCompletion, isRefresh: false)
                }
                self!.tryCount+=1
             } else {

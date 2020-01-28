@@ -18,7 +18,7 @@ protocol PullPresenterProtocol: class {
 
 
 protocol PullSectionPresenterProtocol: PullPresenterProtocol {
-        
+    func tryRefresh(_ completion: (()->Void)?)
     func numberOfSections() -> Int
     func numberOfRowsInSection (section: Int) -> Int
     func getSectionTitle(section: Int)->String
@@ -30,13 +30,14 @@ protocol PullSectionPresenterProtocol: PullPresenterProtocol {
 
 
 protocol PullPlainPresenterProtocol: PullPresenterProtocol {
+    func tryRefresh(_ completion: (()->Void)?)
     func numberOfRowsInSection() -> Int
 }
 
 
 //MARK: - Specific Protocols
 
-protocol PullWallPresenterProtocol: class{
+protocol PullWallPresenterProtocol: class {
     func selectImage(indexPath: IndexPath, imageIdx: Int)
     func expandCell(isExpand: Bool, indexPath: IndexPath?)
     func isExpandedCell(indexPath: IndexPath) -> Bool

@@ -26,12 +26,20 @@ class SyncNews: SyncBaseProtocol {
         ownOffset += 1
     }
     
-    func sync(_ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil, isRefresh: Bool = false) {
         
         guard !syncing else { return }
         
         let presenter = PresenterFactory.shared.getInstance(clazz: NewsPresenter.self)
         
+        //lesson 7
+        if isRefresh {
+            resetOffset()
+            presenter.clearDataSource(id: nil)
+            syncing = true
+            syncFromNetwork(presenter, NetworkConstant.newsResponseItemsPerRequest, dispatchCompletion)
+            return
+        }
         
         //check update schedule
         if ownOffset == 0,

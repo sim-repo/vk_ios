@@ -43,7 +43,7 @@ class SyncFriendWall: SyncBaseProtocol {
     }
     
     
-    func sync(_ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil, isRefresh: Bool = false) {
         
             guard !syncing else { return }
         

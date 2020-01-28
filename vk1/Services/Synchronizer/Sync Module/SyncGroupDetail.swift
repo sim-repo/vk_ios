@@ -10,7 +10,7 @@ class SyncGroupDetail: SyncBaseProtocol {
     }
     
     
-    func sync(_ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil, isRefresh: Bool = false) {
         
         
         let presenter = PresenterFactory.shared.getInstance(clazz: MyGroupDetailPresenter.self)

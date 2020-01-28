@@ -13,7 +13,7 @@ class SyncWall: SyncBaseProtocol {
         return ModuleEnum.wall.rawValue
     }
     
-    func sync(_ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil, isRefresh: Bool = false) {
         /*
         if syncing {
             return

@@ -40,7 +40,7 @@ class SyncMyGroupWall: SyncBaseProtocol {
         return PresenterFactory.shared.getInstance(clazz: MyGroupWallPresenter.self)
     }
     
-    func sync(_ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil, isRefresh: Bool = false) {
         
             guard !syncing else { return }
             

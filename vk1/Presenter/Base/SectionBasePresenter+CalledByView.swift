@@ -152,4 +152,9 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
              Logger.catchError(msg: "SectionBasePresenter: \(self.clazz): " + msg)
          }
      }
+    
+    //lesson 7
+    func tryRefresh(_ completion: (()->Void)? = nil) {
+        SyncMgt.shared.doSync(moduleEnum: self.moduleEnum, isRefresh: true, completion)
+    }
 }

@@ -9,7 +9,7 @@ class PostSyncLikes: SyncBaseProtocol {
          return ModuleEnum.postLikes.rawValue
     }
     
-    func sync(_ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil, isRefresh: Bool = false) {
         
         let presenter = PresenterFactory.shared.getInstance(clazz: PostLikesPresenter.self)
         

@@ -20,7 +20,7 @@ class SyncVkLogin: SyncBaseProtocol {
         ApiVKService.checkVkTokenRequest(token: token, onSuccess, onError, onChecked)
     }
     
-    func sync(_ dispatchCompletion: (()->Void)? = nil) {
+    func sync(_ dispatchCompletion: (()->Void)? = nil, isRefresh: Bool = false) {
     }
 }
 

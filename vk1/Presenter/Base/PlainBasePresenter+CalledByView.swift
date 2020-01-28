@@ -4,7 +4,7 @@ import UIKit
 
 //MARK:- called from view
 extension PlainBasePresenter: PullPlainPresenterProtocol {
-    
+
     
     //MARK:- getters:
     
@@ -97,13 +97,10 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
                 self.log("didEndScroll(): pageInProgress == false", level: .info)
                 return
             }
-            
-           // SYNC_THREAD { [weak self] in
-                
-                self.pageInProgess = true
-                guard let _ = self as? PaginationPresenterProtocol else { return }
-                self.log("didEndScroll(): started", level: .info)
-                SyncMgt.shared.doSync(moduleEnum: self.moduleEnum)
+            self.pageInProgess = true
+            guard let _ = self as? PaginationPresenterProtocol else { return }
+            self.log("didEndScroll(): started", level: .info)
+            SyncMgt.shared.doSync(moduleEnum: self.moduleEnum)
         }
     }
     
@@ -118,5 +115,10 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
         case .error:
             Logger.catchError(msg: "PlainBasePresenter: \(self.clazz): " + msg)
         }
+    }
+    
+    //lesson 7
+    func tryRefresh(_ completion: (()->Void)? = nil) {
+        SyncMgt.shared.doSync(moduleEnum: self.moduleEnum, isRefresh: true, completion)
     }
 }

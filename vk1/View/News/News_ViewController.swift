@@ -19,10 +19,9 @@ class News_ViewController: UIViewController {
 
     static let gallerySegueId = "NewsPostSegue"
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupRefresh()
         setupPresenter()
         setupCells()
         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
@@ -47,6 +46,14 @@ class News_ViewController: UIViewController {
                 log("setupPresenter(): conformation exception", level: .error)
                 return
         }
+    }
+    
+    // lesson 7
+    private func setupRefresh(){
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.attributedTitle = NSAttributedString(string: "refreshing..")
+        collectionView.refreshControl?.tintColor = ColorSystemHelper.primary
+        collectionView.refreshControl?.addTarget(self, action: #selector(doRefresh(sender:)), for: .valueChanged)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,6 +84,13 @@ class News_ViewController: UIViewController {
            }
     }
     
+    //lesson 6
+    @objc func doRefresh(sender: UIRefreshControl){
+        collectionView.refreshControl?.beginRefreshing()
+        let completion: (()->Void)? = { [weak self] in
+            self?.collectionView.refreshControl?.endRefreshing() }
+        presenter.tryRefresh(completion)
+    }
     
     private func log(_ msg: String, level: Logger.LogLevelEnum) {
         SEQUENCE_THREAD {
@@ -286,6 +300,7 @@ extension News_ViewController: WallCellProtocolDelegate {
 }
 
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension News_ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
