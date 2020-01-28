@@ -39,7 +39,7 @@ protocol PullPlainPresenterProtocol: PullPresenterProtocol {
 
 protocol PullWallPresenterProtocol: class {
     func selectImage(indexPath: IndexPath, imageIdx: Int)
-    func expandCell(isExpand: Bool, indexPath: IndexPath?)
+    func expandCell(isExpand: Bool, indexPath: IndexPath?) //lesson 7: expand
     func isExpandedCell(indexPath: IndexPath) -> Bool
     func didPressLike(indexPath: IndexPath)
     func didPressComment(indexPath: IndexPath)

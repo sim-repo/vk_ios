@@ -293,6 +293,7 @@ extension News_ViewController: PushWallViewProtocol {
 
 extension News_ViewController: WallCellProtocolDelegate {
     
+    //lesson 7: expand
     func didPressExpand(isExpand: Bool, indexPath: IndexPath) {
         if let presenter = getPullWallPresenterProtocol() {
             presenter.expandCell(isExpand: isExpand, indexPath: indexPath)

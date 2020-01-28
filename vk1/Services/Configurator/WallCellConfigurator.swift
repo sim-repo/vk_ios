@@ -70,6 +70,7 @@ class WallCellConfigurator {
         cell.getLikeView().eyeCount.text = "\(wall.getEyeCount())"
     }
     
+    //lesson 7: expand
     static func expandCell(cell: Wall_CellProtocol, wall: WallModelProtocol, isExpanded: Bool) {
         cell.getAuthorPostMsg().text = wall.getOrigTitle()
     }
