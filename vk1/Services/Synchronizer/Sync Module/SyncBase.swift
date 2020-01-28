@@ -34,6 +34,7 @@ class SyncBase {
     }
     
     
+    
     func getCompletions(presenter: SynchronizedPresenterProtocol, _ dispatchCompletion: (()->Void)? = nil) ->
         (onSuccess_PresenterCompletion, onErrResponse_SyncCompletion) {
         

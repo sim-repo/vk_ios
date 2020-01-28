@@ -38,6 +38,7 @@ class SyncMgt {
     
 // MARK: - called from presenter:
     
+    // lesson 7: added isRefresh
     public func doSync(moduleEnum: ModuleEnum, isRefresh: Bool = false, _ completion: (()->Void)? = nil){
         sync(moduleEnum, isRefresh, completion)
     }
@@ -97,7 +98,7 @@ class SyncMgt {
          case .my_group_wall:
              SyncMyGroupWall.shared.sync()
 
-         case .news:
+         case .news: // lesson 7: added isRefresh
             SyncNews.shared.sync(completion, isRefresh: isRefresh)
             
          case .comment:

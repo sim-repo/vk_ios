@@ -66,6 +66,11 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                 guard let self = self else { return }
                 let last = self.numberOfRowsInSection()
                 
+                //lesson 7: reset indexes
+                if last == 0 {
+                    self.view?.viewReloadData(moduleEnum: self.moduleEnum)
+                }
+            
                 self.appendDataSource(dirtyData: arr, didLoadedFrom: .network)
                 self.log("didSuccessNetworkResponse", level: .info)
                 completion?()

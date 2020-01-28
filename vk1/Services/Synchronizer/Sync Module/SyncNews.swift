@@ -32,7 +32,7 @@ class SyncNews: SyncBaseProtocol {
         
         let presenter = PresenterFactory.shared.getInstance(clazz: NewsPresenter.self)
         
-        //lesson 7
+        // lesson 7: force update
         if isRefresh {
             resetOffset()
             presenter.clearDataSource(id: nil)

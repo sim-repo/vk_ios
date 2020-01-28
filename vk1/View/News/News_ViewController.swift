@@ -84,13 +84,14 @@ class News_ViewController: UIViewController {
            }
     }
     
-    //lesson 6
+    //lesson 7
     @objc func doRefresh(sender: UIRefreshControl){
         collectionView.refreshControl?.beginRefreshing()
         let completion: (()->Void)? = { [weak self] in
             self?.collectionView.refreshControl?.endRefreshing() }
         presenter.tryRefresh(completion)
     }
+    
     
     private func log(_ msg: String, level: Logger.LogLevelEnum) {
         SEQUENCE_THREAD {
@@ -127,6 +128,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
         guard let news = presenter.getData(indexPath: indexPath) as? News
             else {
                 log("cellForItemAt(): presenter.getData is incorrected ", level: .error)
+                var cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallCellConstant.cellByCode["tp1"]!, for: indexPath)
                 return cell
         }
         log("cellForItemAt(): idx: \(indexPath.row) - news.id: \(news.getId())", level: .info)
