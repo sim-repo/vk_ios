@@ -178,6 +178,10 @@ extension MyGroups_ViewController: PushSectionedViewProtocol{
         self.collectionView.reloadData()
     }
     
+    func viewReloadImage(indexPath: IndexPath) {
+        self.collectionView.reloadItems(at: [indexPath])
+    }
+    
     func startWaitIndicator(_ moduleEnum: ModuleEnum?){
         waiter = SpinnerViewController(vc: self)
         waiter?.add(vcView: view)

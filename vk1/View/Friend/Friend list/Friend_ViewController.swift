@@ -36,6 +36,10 @@ class Friend_ViewController: UIViewController {
         UIControlThemeMgt.setupNavigationBarColor(navigationController: navigationController)
     }
     
+    override func didReceiveMemoryWarning() {
+        (presenter as? ImageablePresenterProtocol)?.didReceiveMemoryWarning()
+    }
+    
     private func setupPresenter(){
         presenter = PresenterFactory.shared.getSectioned(viewDidLoad: self)
     }
@@ -82,12 +86,16 @@ extension Friend_ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! Friend_TableCell
         
-        guard let data = presenter?.getData(indexPath: indexPath)
+        guard let friend = presenter?.getData(indexPath: indexPath) as? Friend
            else {
                return UITableViewCell()
            }
-       
-        let friend = data as! Friend
+        
+        //lesson 5: Cache
+        if let avaURL = friend.avaURL200 {
+            (presenter as? ImageablePresenterProtocol)?.tryImageLoad(indexPath: indexPath, url: avaURL)
+        }
+        
         cell.setup(friend: friend)
         return cell
     }
@@ -157,6 +165,10 @@ extension Friend_ViewController: PushSectionedViewProtocol{
     func viewReloadData(groupByIds: [String]) {
         self.lettersSearchControl.updateControl(with: groupByIds)
         self.tableView.reloadData()
+    }
+    
+    func viewReloadImage(indexPath: IndexPath) {
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     func startWaitIndicator(_ moduleEnum: ModuleEnum?){

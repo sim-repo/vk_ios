@@ -13,6 +13,15 @@ class NetworkPromiseRequest {
 
     
     
+    public static func imageRequest(_ url: URL) -> Promise<UIImage?> {
+        return firstly {
+            URLSession.shared.dataTask(.promise, with: url)
+        }.map { data, _ in
+            return UIImage(data: data)
+        }
+    }
+    
+    
     public static func friendRequest (_ urlPath: String,
                                       _ onSuccess: @escaping onSuccess_PresenterCompletion,
                                       _ onError: @escaping  onErrResponse_SyncCompletion ) {

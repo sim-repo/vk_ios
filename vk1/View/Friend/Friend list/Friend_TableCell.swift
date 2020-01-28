@@ -16,6 +16,10 @@ class Friend_TableCell: UITableViewCell {
     
     func setup(friend: Friend) {
         name?.text = friend.firstName + " " + friend.lastName
-        avaImage?.kf.setImage(with: friend.avaURL200)
+        avaImage.image = friend.avaImage200
+    }
+    
+    override func prepareForReuse() {
+        avaImage.image = UIImage(named: "am32")
     }
 }

@@ -13,6 +13,7 @@ protocol PushViewProtocol: class {
 
 protocol PushSectionedViewProtocol : PushViewProtocol {
     func viewReloadData(groupByIds: [String])
+    func viewReloadImage(indexPath: IndexPath)
 }
 
 

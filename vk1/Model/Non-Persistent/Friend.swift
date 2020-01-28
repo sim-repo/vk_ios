@@ -10,7 +10,11 @@ class Friend: SectionModelProtocol, DecodableProtocol {
     var avaURL100: URL?
     var avaURL200: URL?
     var groupBy: FriendGroupByEnum = .firstName
-
+    
+    var avaImage50: UIImage?
+    var avaImage100: UIImage?
+    var avaImage200: UIImage?
+    
     required init(){}
     
     func setup(json: JSON?) {
@@ -22,6 +26,13 @@ class Friend: SectionModelProtocol, DecodableProtocol {
             avaURL100 = URL(string: json["photo_100"].stringValue)
             avaURL200 = URL(string: json["photo_200_orig"].stringValue)
         }
+    }
+    
+    
+    func setImages(avaImage50: UIImage? = nil, avaImage100: UIImage? = nil, avaImage200: UIImage?  = nil) {
+        self.avaImage50 = avaImage50
+        self.avaImage100 = avaImage100
+        self.avaImage200 = avaImage200
     }
     
     func getId() -> typeId {

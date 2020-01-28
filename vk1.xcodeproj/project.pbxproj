@@ -136,6 +136,8 @@
 		1699CFC523DF4A3900EC8A39 /* CallerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFC423DF4A3900EC8A39 /* CallerOperation.swift */; };
 		1699CFC723DF78BB00EC8A39 /* AsyncOperaton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFC623DF78BB00EC8A39 /* AsyncOperaton.swift */; };
 		1699CFCA23DF820B00EC8A39 /* NetworkPromiseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFC923DF820B00EC8A39 /* NetworkPromiseService.swift */; };
+		1699CFED23DFA48B00EC8A39 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFEC23DFA48B00EC8A39 /* PhotoService.swift */; };
+		1699CFEF23DFA56900EC8A39 /* ImageablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699CFEE23DFA56900EC8A39 /* ImageablePresenterProtocol.swift */; };
 		16A25E452396C7A1001BEA13 /* ViewDidAppearInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25E442396C7A1001BEA13 /* ViewDidAppearInjector.swift */; };
 		16A25E7923992803001BEA13 /* LoggerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25E7823992803001BEA13 /* LoggerHelper.swift */; };
 		16A25EAA239953F2001BEA13 /* YouTubeConfigHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A25EA9239953F2001BEA13 /* YouTubeConfigHTML.swift */; };
@@ -463,6 +465,8 @@
 		1699CFC423DF4A3900EC8A39 /* CallerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallerOperation.swift; sourceTree = "<group>"; };
 		1699CFC623DF78BB00EC8A39 /* AsyncOperaton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperaton.swift; sourceTree = "<group>"; };
 		1699CFC923DF820B00EC8A39 /* NetworkPromiseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPromiseService.swift; sourceTree = "<group>"; };
+		1699CFEC23DFA48B00EC8A39 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		1699CFEE23DFA56900EC8A39 /* ImageablePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageablePresenterProtocol.swift; sourceTree = "<group>"; };
 		16A25E442396C7A1001BEA13 /* ViewDidAppearInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidAppearInjector.swift; sourceTree = "<group>"; };
 		16A25E7823992803001BEA13 /* LoggerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerHelper.swift; sourceTree = "<group>"; };
 		16A25EA9239953F2001BEA13 /* YouTubeConfigHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeConfigHTML.swift; sourceTree = "<group>"; };
@@ -812,6 +816,7 @@
 		164764992365DF8A007D1B19 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1699CFEB23DFA47600EC8A39 /* Photo */,
 				164F819D238BE42A000F95E7 /* Firebase */,
 				1611F2832378741C002FCE3C /* Realm */,
 				16D58C032369D61000735296 /* Parser */,
@@ -864,6 +869,7 @@
 				16E08B77237010B200340F09 /* DetailPresenterProtocol.swift */,
 				16E08B61236EC64700340F09 /* SynchronizedPresenterProtocol.swift */,
 				164F80BE2384C033000F95E7 /* PaginationPresenterProtocol.swift */,
+				1699CFEE23DFA56900EC8A39 /* ImageablePresenterProtocol.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1039,6 +1045,14 @@
 				1699CFC923DF820B00EC8A39 /* NetworkPromiseService.swift */,
 			);
 			path = "Network Promise";
+			sourceTree = "<group>";
+		};
+		1699CFEB23DFA47600EC8A39 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				1699CFEC23DFA48B00EC8A39 /* PhotoService.swift */,
+			);
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		16A25E902399522F001BEA13 /* Video */ = {
@@ -1803,10 +1817,12 @@
 				164F80D623858044000F95E7 /* News.swift in Sources */,
 				16AB0B92232F7DAC00E21B7F /* Friend_TableCell.swift in Sources */,
 				16E08B51236DD82100340F09 /* SyncFriendWall.swift in Sources */,
+				1699CFEF23DFA56900EC8A39 /* ImageablePresenterProtocol.swift in Sources */,
 				1638C38823B187D1005DF0E5 /* WallProtocolDelegates.swift in Sources */,
 				16115C7023C917C400412D0C /* Like.swift in Sources */,
 				161B0EA5234A046C0081008B /* Group_ViewController.swift in Sources */,
 				16D58BE22366BE2900735296 /* PlainBasePresenter.swift in Sources */,
+				1699CFED23DFA48B00EC8A39 /* PhotoService.swift in Sources */,
 				16E01D0723C126D5009B5357 /* SyncComment.swift in Sources */,
 				166D1B0C234F6E3900C552E4 /* Video_ViewController.swift in Sources */,
 				166667682347E2C700FD2B86 /* Wall_CellProtocol.swift in Sources */,

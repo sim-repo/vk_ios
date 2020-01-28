@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 class FriendPresenter: SectionPresenterProtocols {
     
@@ -37,4 +37,24 @@ extension FriendPresenter: PullWallPresenterProtocol {
         // TODO
     }
     
+}
+
+//lesson 5: Cache
+extension FriendPresenter: ImageablePresenterProtocol {
+    
+    func tryImageLoad(indexPath: IndexPath, url: URL){
+        PhotoService.shared.loadImage(presenter: self, indexPath: indexPath, url: url)
+    }
+    
+    func didImageLoad(indexPath: IndexPath, image: UIImage) {
+        
+        if let friend = getData(indexPath: indexPath) as? Friend {
+            friend.setImages(avaImage200: image)
+            view?.viewReloadImage(indexPath: indexPath)
+        }
+    }
+    
+    func didReceiveMemoryWarning() {
+        PhotoService.shared.clear()
+    }
 }
