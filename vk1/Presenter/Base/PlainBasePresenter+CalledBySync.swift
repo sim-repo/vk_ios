@@ -66,7 +66,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                 guard let self = self else { return }
                 let last = self.numberOfRowsInSection()
                 
-                //lesson 7: reset indexes
+                //lesson 7: refresh
                 if last == 0 {
                     self.view?.viewReloadData(moduleEnum: self.moduleEnum)
                 }
@@ -77,7 +77,7 @@ extension PlainBasePresenter: SynchronizedPresenterProtocol {
                 
                 self.waitIndicator(start: false)
                 
-                //pagination:
+                //lesson 7: pagination
                 guard let _ = self as? PaginationPresenterProtocol
                       else { return }
                 

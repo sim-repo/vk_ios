@@ -129,7 +129,7 @@ extension SectionedBasePresenter: PullSectionPresenterProtocol {
         detailPresenter.setParentModel(model: model)
     }
     
-    
+    //lesson 7: pagination
     final func didEndScroll(){
         guard !pageInProgess else {
             log("didEndScroll(): pageInProgress == false", level: .info)

@@ -13,6 +13,7 @@ class NewsPresenter: PlainPresenterProtocols {
 }
 
 
+//lesson 7: pagination
 extension NewsPresenter: PaginationPresenterProtocol {
 }
 

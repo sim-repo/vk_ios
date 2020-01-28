@@ -48,7 +48,7 @@ class News_ViewController: UIViewController {
         }
     }
     
-    // lesson 7
+    // lesson 7: refresh
     private func setupRefresh(){
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.attributedTitle = NSAttributedString(string: "refreshing..")
@@ -84,7 +84,7 @@ class News_ViewController: UIViewController {
            }
     }
     
-    //lesson 7
+    //lesson 7: refresh
     @objc func doRefresh(sender: UIRefreshControl){
         collectionView.refreshControl?.beginRefreshing()
         let completion: (()->Void)? = { [weak self] in
@@ -167,6 +167,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     
+    //lesson 7: pagination
     private func didScrollEnd(_ indexPath: IndexPath) {
         SEQUENCE_THREAD { [weak self] in
             guard let self = self else { return }
@@ -244,6 +245,7 @@ extension News_ViewController: PushPlainViewProtocol {
         }
     }
     
+    //lesson 7: pagination
     func insertItems(startIdx: Int, endIdx: Int) {
         log("insertItems()", level: .info)
         var indexes = [IndexPath]()

@@ -90,6 +90,7 @@ extension PlainBasePresenter: PullPlainPresenterProtocol {
     }
     
     
+    //lesson 7: pagination
     final func didEndScroll(){
         SEQUENCE_THREAD {  [weak self] in
             guard let self = self else { return }

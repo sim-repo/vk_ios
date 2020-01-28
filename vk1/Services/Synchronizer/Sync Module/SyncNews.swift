@@ -5,8 +5,8 @@ class SyncNews: SyncBaseProtocol {
     static let shared = SyncNews()
     private override init() {}
     
-    var vkOffset = "" // returned by vk
-    var ownOffset = 0 // generated here
+    var vkOffset = "" //lesson 7: pagination: returned by vk
+    var ownOffset = 0 //lesson 7: pagination: generated here
     
     public func getId() -> String {
         return ModuleEnum.news.rawValue
@@ -32,7 +32,7 @@ class SyncNews: SyncBaseProtocol {
         
         let presenter = PresenterFactory.shared.getInstance(clazz: NewsPresenter.self)
         
-        // lesson 7: force update
+        // lesson 7: refresh
         if isRefresh {
             resetOffset()
             presenter.clearDataSource(id: nil)
