@@ -13,8 +13,8 @@ class SyncMgt {
     static let shared = SyncMgt()
     private init() {
         self.synchronizers = [
-            SyncWall.shared,
-            SyncGroupDetail.shared
+            SyncWallAdapter.shared,
+            SyncGroupDetailAdapter.shared
         ]
     }
     
@@ -51,9 +51,9 @@ class SyncMgt {
                 PresenterFactory.shared.removePresenter(moduleEnum: .my_group_detail)
                 PresenterFactory.shared.removePresenter(moduleEnum: .my_group_wall)
                 
-                SyncMyGroupWall.shared.resetOffset()
+                SyncMyGroupWallAdapter.shared.resetOffset()
             case .friend_wall:
-                SyncFriendWall.shared.resetOffset()
+                SyncFriendWallAdapter.shared.resetOffset()
             default:
                 log("viewDidDisappear(): no case \(presenter)", level: .warning)
         }
@@ -62,9 +62,9 @@ class SyncMgt {
     public func didClearDataSource(moduleEnum: ModuleEnum){
         switch moduleEnum {
             case .friend_wall:
-                SyncFriendWall.shared.resetOffset()
+                SyncFriendWallAdapter.shared.resetOffset()
             case .news:
-                SyncNews.shared.resetOffset()
+                SyncNewsAdapter.shared.resetOffset()
             default:
                 log("didClearDataSource(): no case \(moduleEnum)", level: .warning)
         }
@@ -83,28 +83,28 @@ class SyncMgt {
          switch moduleEnum {
             
          case .friend:
-             SyncFriend.shared.sync()
+             SyncFriendAdapter.shared.sync()
              
          case .friend_wall:
-            SyncFriendWall.shared.sync()
+            SyncFriendWallAdapter.shared.sync()
              
          case .my_group:
-             SyncMyGroup.shared.sync()
+             SyncMyGroupAdapter.shared.sync()
              
          case .my_group_detail:
-             SyncGroupDetail.shared.sync()
+             SyncGroupDetailAdapter.shared.sync()
              
          case .my_group_wall:
-             SyncMyGroupWall.shared.sync()
+             SyncMyGroupWallAdapter.shared.sync()
 
          case .news:
-            SyncNews.shared.sync()
+            SyncNewsAdapter.shared.sync()
             
          case .comment:
-            SyncComment.shared.sync()
+            SyncCommentAdapter.shared.sync()
             
          case .postLikes:
-            PostSyncLikes.shared.sync()
+            PostSyncLikesAdapter.shared.sync()
             
          default:
             log("sync(): no case for \(moduleEnum)", level: .warning)

@@ -18,7 +18,7 @@ class WallFooterView: UIImageView {
     
     private var activated = false
     var boundMetrics: UILabel?
-    var color = UIColor(red: 0.919, green: 0.919, blue: 0.919, alpha: 1.000)
+    var color = ColorSystemHelper.likeSymbolNormalColor
     var userActivityType: PostControlEnum?
     var delegate: WallFooterViewProtocolDelegate?
     
@@ -37,7 +37,6 @@ class WallFooterView: UIImageView {
         super.init(coder: aDecoder)
         self.addGestureRecognizer(tapGestureRecognizer)
     }
-    
     
     @objc func onTap() {
         activated = !activated
@@ -85,12 +84,13 @@ class WallFooterView: UIImageView {
         let numb = Int( (boundMetrics?.text)!)
         runShakeEffect()
         if activated {
-            color = UIColor(red: 0.826, green: 0.200, blue: 0.200, alpha: 1.000)
+            color = ColorSystemHelper.likeSymbolActivatedColor
             
         } else {
-            color = UIColor(red: 0.919, green: 0.919, blue: 0.919, alpha: 1.000)
+            color = ColorSystemHelper.likeSymbolNormalColor
             sign = numb == 0 ? 0 : -1
         }
+        
         if let numb = numb {
             boundMetrics?.text = String(numb + sign)
         }

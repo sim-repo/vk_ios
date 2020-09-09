@@ -103,7 +103,7 @@ import UIKit
         if (self.drawOnPrimary != 0) {
             backgroundColor = ColorSystemHelper.primary
         } else {
-            backgroundColor = .clear
+            backgroundColor = ColorSystemHelper.clearColor
         }
        // backgroundColor = ColorThemeHelper.primary
         self.setImage()

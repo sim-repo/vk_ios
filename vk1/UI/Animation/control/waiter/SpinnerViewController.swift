@@ -18,7 +18,7 @@ class SpinnerViewController: UIViewController {
     func add(vcView: UIView) {
         let childView = UIView()
         childView.frame = vcView.frame
-        childView.backgroundColor = UIColor(white: 0, alpha: 0.9)
+        childView.backgroundColor = ColorSystemHelper.spinnerWaiterBkgColor
         self.view.addSubview(childView)
         self.dictChildByParent[vcView] = childView
         self.start(childView: childView) { childView in
@@ -45,7 +45,7 @@ class SpinnerViewController: UIViewController {
     
     override func loadView() {
         view = UIView()
-        view.backgroundColor = UIColor(white: 0, alpha: 0.9)
+        view.backgroundColor = ColorSystemHelper.spinnerWaiterBkgColor
     }
     
     

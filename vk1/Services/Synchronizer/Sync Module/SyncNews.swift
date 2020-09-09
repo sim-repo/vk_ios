@@ -1,8 +1,8 @@
 import UIKit
 
-class SyncNews: SyncBaseProtocol {
+class SyncNewsAdapter: SyncBaseProtocol {
     
-    static let shared = SyncNews()
+    static let shared = SyncNewsAdapter()
     private override init() {}
     
     var vkOffset = "" // returned by vk

@@ -1,5 +1,7 @@
 import UIKit
 
+
+// #flyweight
 class ColorSystemHelper {
     
     static func setupDark() {
@@ -109,7 +111,7 @@ class ColorSystemHelper {
     static var bottomBackground = UIColor.white
     static var onBackground = UIColor.black
     static var logoBackground = #colorLiteral(red: 0.006316497922, green: 0.05537363142, blue: 0.1266883016, alpha: 1)
-    
+    static var clearColor = UIColor.clear
     
     
     static var shadow = UIColor.white
@@ -180,6 +182,13 @@ class ColorSystemHelper {
     }
 }
 
+
+//MARK:- specific colors
+extension ColorSystemHelper {
+    static var likeSymbolNormalColor = UIColor(red: 0.826, green: 0.200, blue: 0.200, alpha: 1)
+    static var likeSymbolActivatedColor = UIColor(red: 0.919, green: 0.919, blue: 0.919, alpha: 1)
+    static var spinnerWaiterBkgColor = UIColor(white: 0, alpha: 0.9)
+}
 
 extension UIColor {
     var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {

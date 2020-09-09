@@ -115,7 +115,7 @@ extension News_ViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
         log("cellForItemAt(): idx: \(indexPath.row) - news.id: \(news.getId())", level: .info)
         if let cellId = WallCellConstant.cellByCode[news.imagesPlanCode] {
-            cell = cellConfigure(cellId, indexPath, news)
+            cell =  cellConfigure(cellId, indexPath, news)
         }
         
         didScrollEnd(indexPath)

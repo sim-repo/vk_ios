@@ -75,8 +75,8 @@ class VideoWebViewService: NSObject {
         
         webview?.translatesAutoresizingMaskIntoConstraints = false
         webview?.isOpaque = false
-        webview?.backgroundColor = .clear
-        webview?.scrollView.backgroundColor = .clear
+        webview?.backgroundColor = ColorSystemHelper.clearColor
+        webview?.scrollView.backgroundColor = ColorSystemHelper.clearColor
         let htmlConfig = YouTubeConfigHTML.getConfig(sURL: url.absoluteString)
         webview?.loadHTMLString(htmlConfig, baseURL: nil)
         webviewContent?.addSubview(webview!)
@@ -93,8 +93,8 @@ class VideoWebViewService: NSObject {
         
         webview = WKWebView(frame: webviewContent!.bounds, configuration: config)
         webview?.isOpaque = false
-        webview?.backgroundColor = .clear
-        webview?.scrollView.backgroundColor = UIColor.clear
+        webview?.backgroundColor = ColorSystemHelper.clearColor
+        webview?.scrollView.backgroundColor = ColorSystemHelper.clearColor
         webview?.translatesAutoresizingMaskIntoConstraints = false
         
         inject(webview: webview!)

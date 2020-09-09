@@ -2,6 +2,7 @@ import UIKit
 
 
 // Class-Factory for creating and storing presenters
+//#factory
 class PresenterFactory {
     
     static let shared = PresenterFactory()

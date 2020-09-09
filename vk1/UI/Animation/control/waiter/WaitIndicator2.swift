@@ -36,8 +36,7 @@ class WaitIndicator2: UIView, CAAnimationDelegate {
 
     func runAnimate(){
   
-        let strokeColor: UIColor = .clear
-        //http://www.paintcodeapp.com
+        let strokeColor: UIColor = ColorSystemHelper.clearColor
         let duration = 2.0
         let wLine: CGFloat = 4.0
         

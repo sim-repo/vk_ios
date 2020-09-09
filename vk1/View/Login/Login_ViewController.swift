@@ -25,7 +25,7 @@ class Login_ViewController: UIViewController {
     var onVkAuthCompletion: ((MyAuth.token, MyAuth.userId) -> Void)?
     
     override func viewDidLoad() {
-        containterView.backgroundColor = .clear
+        containterView.backgroundColor = ColorSystemHelper.clearColor
         setupPresenter()
         presenter.viewDidLoad()
     }
@@ -56,8 +56,8 @@ class Login_ViewController: UIViewController {
         let w: CGFloat = 232.0
         let logoAnimation = WaitIndicator2(frame: CGRect(x: wHalfScreen - w/2.0,
                                                          y: logoView.frame.height/3, width: wScreen, height: 100))
-        logoAnimation.backgroundColor = .clear
-        logoView.backgroundColor = .clear
+        logoAnimation.backgroundColor = ColorSystemHelper.clearColor
+        logoView.backgroundColor = ColorSystemHelper.clearColor
         logoView.addSubview(logoAnimation)
     }
 }

@@ -131,7 +131,7 @@ extension Friend_ViewController: UITableViewDataSource, UITableViewDelegate {
     func searchTextReset(){
         searchTextField.text = ""
         buttonSearchCancel.isEnabled = false
-        buttonSearchCancel.setTitleColor(.clear, for: .normal)
+        buttonSearchCancel.setTitleColor(ColorSystemHelper.clearColor, for: .normal)
         searchTextField.resignFirstResponder()
         UIView.animate(withDuration: 1.0, animations: {
             self.loupeLeadingXConstraint.isActive = false

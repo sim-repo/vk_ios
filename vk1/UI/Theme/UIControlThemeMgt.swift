@@ -5,9 +5,6 @@ class UIControlThemeMgt {
     
     static let likeControlAlpha: CGFloat = 1
     
-    
-    
-    
     static func setupTableHeader(view: UIView, title: UILabel) {
         title.textColor = ColorSystemHelper.onPrimary
         view.backgroundColor = ColorSystemHelper.primary
@@ -39,7 +36,7 @@ class UIControlThemeMgt {
         cell.contentView.layer.cornerRadius = 1
         cell.contentView.layer.borderWidth = 1.0
 
-        cell.contentView.layer.borderColor = UIColor.clear.cgColor
+        cell.contentView.layer.borderColor = ColorSystemHelper.clearColor.cgColor
         cell.contentView.layer.masksToBounds = true
         
         cell.backgroundColor = ColorSystemHelper.primary

@@ -397,6 +397,7 @@ extension UIStackView {
 class MyStackView: UIStackView {
     required init(coder: NSCoder) {
         super.init(coder: coder)
-        addBackground(color: #colorLiteral(red: 0.1237688735, green: 0.05985450745, blue: 0.2865382433, alpha: 1) )
+        addBackground(color: ColorSystemHelper.background)
     }
 }
+

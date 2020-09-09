@@ -29,7 +29,7 @@ class LineEffect: UIView {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = bezierPath.cgPath
         shapeLayer.strokeColor = ColorSystemHelper.secondary.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.fillColor = ColorSystemHelper.clearColor.cgColor
         shapeLayer.lineWidth = 1
         self.layer.addSublayer(shapeLayer)
 
